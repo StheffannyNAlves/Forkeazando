@@ -10,7 +10,7 @@ public class MenuPrincipal {
         int largura = 30;
 
         System.out.println(Cores.CIANO + "╔" + "═".repeat(largura) + "╗" + Cores.RESET);
-        System.out.println(linha("NOME DO JOGO", largura));
+        System.out.println(linha("FORKEAZANDO", largura));
         System.out.println(Cores.CIANO + "╠" + "═".repeat(largura) + "╣" + Cores.RESET);
 
         System.out.println(linha("1. Nova Partida", largura));

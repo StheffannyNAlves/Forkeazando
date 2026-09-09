@@ -9,6 +9,7 @@ import br.uefs.forkeazando.view.TelaCaracteristicas;
 public class MenuPrincipalController {
     private final MenuPrincipal view;
     private boolean rodando = true;
+    private Estado estado;
 
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;

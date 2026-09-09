@@ -26,7 +26,7 @@ public class Estado {
         participacao += valor;
     }
 
-    public boolean atingiuRequisitoBifurcacao(int scoreMinimo, int participacaoMinima) {
+    public boolean atingiuRequisito(int scoreMinimo, int participacaoMinima) {
         return score >= scoreMinimo && participacao >= participacaoMinima;
     }
 

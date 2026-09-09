@@ -20,7 +20,7 @@ Em desenvolvimento — Fase 1 do projeto (estrutura de classes, menu inicial e t
 
 ## Modelagem
 
-O diagrama de classes do Model está disponível em [`docs/diagrama-classes.png`](docs/diagrama-classes.png).
+O diagrama de classes do Model está disponível em [`docs/diagrama_de-classes.png`](docs/diagrama-classes.png).
 
 ## Como executar
 

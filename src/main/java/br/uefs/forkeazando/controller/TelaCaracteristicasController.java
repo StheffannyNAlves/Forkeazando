@@ -1,7 +1,6 @@
-// controller/TelaCaracteristicasController.java
 package br.uefs.forkeazando.controller;
 
-import br.uefs.forkeazando.model.Caracteristicas;
+import br.uefs.forkeazando.model.CaracteristicasProtagonista;
 import br.uefs.forkeazando.view.TelaCaracteristicas;
 
 public class TelaCaracteristicasController {
@@ -11,10 +10,12 @@ public class TelaCaracteristicasController {
         this.view = view;
     }
 
-    public Caracteristicas iniciar() {
+    public CaracteristicasProtagonista iniciar() {
         boolean perfeccionista = view.perguntarPersonalidade();
         boolean sociavel = view.perguntarSociavel();
         boolean estudoTeorico = view.perguntarTipoDeEstudo();
-        return new Caracteristicas(perfeccionista, sociavel, estudoTeorico);
+        // ADICIONAR AS NOVAS CARACTERISTICAS
+
+        return new CaracteristicasProtagonista(perfeccionista, sociavel, estudoTeorico);
     }
 }

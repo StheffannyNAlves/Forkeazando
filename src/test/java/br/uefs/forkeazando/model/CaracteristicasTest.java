@@ -9,8 +9,8 @@ class CaracteristicasTest {
 
     @Test
     void deveArmazenarCaracteristicasCorretamente() {
-        Caracteristicas caracteristicas =
-                new Caracteristicas(true, false, true);
+        CaracteristicasProtagonista caracteristicas =
+                new CaracteristicasProtagonista(true, false, true);
 
         assertTrue(caracteristicas.isPerfeccionista());
         assertFalse(caracteristicas.isSociavel());
@@ -19,8 +19,8 @@ class CaracteristicasTest {
 
     @Test
     void deveArmazenarCaracteristicasFalsasCorretamente() {
-        Caracteristicas caracteristicas =
-                new Caracteristicas(false, true, false);
+        CaracteristicasProtagonista caracteristicas =
+                new CaracteristicasProtagonista(false, true, false);
 
         assertFalse(caracteristicas.isPerfeccionista());
         assertTrue(caracteristicas.isSociavel());

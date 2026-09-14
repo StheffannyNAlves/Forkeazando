@@ -1,9 +1,9 @@
 package br.uefs.forkeazando.model;
 
 public class Protagonista {
-    private Caracteristicas caracteristicas;
+    private CaracteristicasProtagonista caracteristicas;
 
-    public Protagonista(Caracteristicas caracteristicas) {
+    public Protagonista(CaracteristicasProtagonista caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
 }

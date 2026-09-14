@@ -1,5 +1,5 @@
 package br.uefs.forkeazando.controller;
-import br.uefs.forkeazando.model.Caracteristicas;
+import br.uefs.forkeazando.model.CaracteristicasProtagonista;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Protagonista;
 import br.uefs.forkeazando.view.MenuPrincipal;
@@ -26,7 +26,7 @@ public class MenuPrincipalController {
     private String processarOpcao(String opcao) {
         switch (opcao){
             case "1":
-                Caracteristicas c = new TelaCaracteristicasController(new TelaCaracteristicas()).iniciar();
+                CaracteristicasProtagonista c = new TelaCaracteristicasController(new TelaCaracteristicas()).iniciar();
                 Protagonista protagonista = new Protagonista(c);
                 Estado estado = new Estado();
                 estado.iniciar(protagonista);

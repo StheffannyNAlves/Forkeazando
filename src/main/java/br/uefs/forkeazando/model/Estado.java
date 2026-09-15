@@ -1,14 +1,13 @@
 package br.uefs.forkeazando.model;
-
+// só sabe o estado da partida, mas tbm precisa conhecer o protagonista e o relacionamento com os personagens secundarios, além das decisões tomadas ao longo do jogo
 import java.util.ArrayList;
 import java.util.List;
 
 public class Estado {
     private Protagonista protagonista;
-    private List<PersonagemSecundario> personagensSecundarios = new ArrayList<>();
+    // private List<PersonagemSecundario> personagensSecundarios = new ArrayList<>(); aqui existe em
     private int capituloAtual = 1;
-    private int score = 0;
-    private int participacao = 0;
+    private int cenaAtualId = 0;
 
     public void iniciar(Protagonista protagonista) {
         this.protagonista = protagonista;
@@ -18,20 +17,20 @@ public class Estado {
         capituloAtual++;
     }
 
-    public void ganharScore(int valor) {
-        score += valor;
+    public Protagonista getProtagonista() {
+        return protagonista;
     }
 
-    public void ganharParticipacao(int valor) {
-        participacao += valor;
+    public int getCapituloAtual() {
+        return capituloAtual;
     }
 
-    public boolean atingiuRequisito(int scoreMinimo, int participacaoMinima) {
-        return score >= scoreMinimo && participacao >= participacaoMinima;
+    public int getCenaAtualId() {
+        return cenaAtualId;
     }
 
-    public Protagonista getProtagonista() { return protagonista; }
-    public int getCapituloAtual() { return capituloAtual; }
-    public int getScore() { return score; }
-    public int getParticipacao() { return participacao; }
+    public void setCenaAtualId(int novoid){
+        this.cenaAtualId = novoid;
+    }
+
 }

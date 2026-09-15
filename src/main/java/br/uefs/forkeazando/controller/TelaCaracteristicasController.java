@@ -14,8 +14,11 @@ public class TelaCaracteristicasController {
         boolean perfeccionista = view.perguntarPersonalidade();
         boolean sociavel = view.perguntarSociavel();
         boolean estudoTeorico = view.perguntarTipoDeEstudo();
-        // ADICIONAR AS NOVAS CARACTERISTICAS
+        CaracteristicasProtagonista.SituacaoEconomica situacaoEconomica = view.perguntarSituacaoEconomica();
+        CaracteristicasProtagonista.NivelVidaSocial nivelVidaSocial = view.perguntarVidaSocial();
+        CaracteristicasProtagonista.ExperienciaEmocionalEnsinoMedio experienciaEmocional = view.perguntarExperienciaEM();
 
-        return new CaracteristicasProtagonista(perfeccionista, sociavel, estudoTeorico);
+        return new CaracteristicasProtagonista(perfeccionista, sociavel, estudoTeorico,
+                nivelVidaSocial, experienciaEmocional, situacaoEconomica);
     }
 }

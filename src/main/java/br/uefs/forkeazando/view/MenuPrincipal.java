@@ -8,27 +8,26 @@ public class MenuPrincipal {
     private final Scanner scanner = new Scanner(System.in);
 
     public void mostrarMenu() {
-        int largura = 30;
+        int largura = 50;
         int terminal = 80;
         int larguraCaixa = largura + 2; // bordas
         int offset = (terminal - larguraCaixa) / 2;
         String prefixo = " ".repeat(offset);
 
+        System.out.println();
+        System.out.println(prefixo + Cores.CIANO + "╔" + "═".repeat(largura) + "╗" + Cores.RESET);
+        System.out.println(prefixo + linha("FORKEAZANDO", largura));
+        System.out.println(prefixo + linha("\"Você sabe jogar o jogo?\"", largura));
+        System.out.println(prefixo + Cores.CIANO + "╠" + "═".repeat(largura) + "╣" + Cores.RESET);
 
-        System.out.println(Cores.CIANO + "╔" + "═".repeat(largura) + "╗" + Cores.RESET);
-        System.out.println(linha("FORKEAZANDO", largura));
-        System.out.println(Cores.CIANO + "╠" + "═".repeat(largura) + "╣" + Cores.RESET);
+        System.out.println(prefixo + linha("[1] Nova Partida", largura));
+        System.out.println(prefixo + linha("[2] Instruções", largura));
+        System.out.println(prefixo + linha("[3] Créditos", largura));
+        System.out.println(prefixo + linha("[0] Sair", largura));
 
-        System.out.println(linha("1. Nova Partida", largura));
-        System.out.println(linha("2. Instruções", largura));
-        System.out.println(linha("3. Créditos", largura));
-        System.out.println(linha("0. Sair", largura));
+        System.out.println(prefixo + Cores.CIANO + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);
 
-        System.out.println(Cores.CIANO + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);
-
-        System.out.print(Cores.AMARELO + "Escolha: " + Cores.RESET);
-
-
+        System.out.print(prefixo + Cores.AMARELO + "Escolha > " + Cores.RESET);
     }
 
 
@@ -49,4 +48,17 @@ public class MenuPrincipal {
                 + Cores.CIANO + "║"
                 + Cores.RESET;
     }
+
+    public void mostrarInstrucoes(){
+        System.out.println(Cores.CIANO + "[Instruções...]" + Cores.RESET);
+    }
+
+    public void mostrarCreditos() {
+        System.out.println(Cores.CIANO + "[Créditos: Stheffanny e Davi]" + Cores.RESET);
+    }
+
+    public void mostrarMensagem(String msg) {
+        System.out.println(msg);
+    }
+
 }

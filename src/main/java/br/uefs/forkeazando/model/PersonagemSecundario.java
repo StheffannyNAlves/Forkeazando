@@ -8,7 +8,7 @@ public class PersonagemSecundario {
         this.caracteristicas = caracteristicas;
     }
 
-    public CaracteristicaPersonagemSecundario getCaracteristicas() {
+    public CaracteristicaPersonagemSecundario getCaracteristicasPS() {
         return caracteristicas;
     }
 

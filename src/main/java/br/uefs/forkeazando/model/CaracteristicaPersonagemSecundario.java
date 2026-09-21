@@ -55,5 +55,5 @@ public class CaracteristicaPersonagemSecundario {
         return nivelRelacionamento;
     }
 
-    public String getNome() { return nome; }
+    public String getNomePersonagemS() { return nome; }
 }

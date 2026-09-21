@@ -1,11 +1,10 @@
 package br.uefs.forkeazando.controller;
-import br.uefs.forkeazando.model.Cena;
+import br.uefs.forkeazando.model.*;
 import br.uefs.forkeazando.model.Escolha;
-import br.uefs.forkeazando.model.Estado;
-import br.uefs.forkeazando.model.Protagonista;
 import br.uefs.forkeazando.view.CenaView;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class CenasController {
@@ -37,9 +36,24 @@ public class CenasController {
 
             view.exibirEscolhas(disponiveis);
 
-            String entrada = scanner.nextLine().trim();
-            int indiceEscolhido = Integer.parseInt(entrada);
-            Escolha escolhida = disponiveis.get(indiceEscolhido - 1);
+            view.exibirEscolhas(disponiveis);
+
+            Escolha escolhida = null;
+            while (escolhida == null) {
+                String entrada = scanner.nextLine().trim();
+                try {
+                    int indiceEscolhido = Integer.parseInt(entrada);
+                    if (indiceEscolhido >= 1 && indiceEscolhido <= disponiveis.size()) {
+                        escolhida = disponiveis.get(indiceEscolhido - 1);
+                    } else {
+                        view.mostrarMensagem("Essa opção não existe. Tente novamente.");
+                        view.exibirEscolhas(disponiveis);
+                    }
+                } catch (NumberFormatException e) {
+                    view.mostrarMensagem("Essa opção não existe. Tente novamente.");
+                    view.exibirEscolhas(disponiveis);
+                }
+            }
 
             if (escolhida.getFlagConcedida() != null) {
                 estado.getProtagonista().adicionarFlag(escolhida.getFlagConcedida());
@@ -49,9 +63,18 @@ public class CenasController {
             p.ganharScore(escolhida.getScoreGanho());
             p.ganharParticipacao(escolhida.getParticipacaoGanha());
             p.gastarEnergia(escolhida.getCustoEnergia());
-            if (escolhida.getPersonagemAfetado() != null) {
-                p.alterarRelacionamento(escolhida.getPersonagemAfetado(), escolhida.getRelacionamentoGanho());
+            Map<PersonagemSecundario, Float> impactos = escolhida.getImpactosRelacionamento();
+            if (!impactos.isEmpty()){
+                for( Map.Entry<PersonagemSecundario, Float> impacto : impactos.entrySet()){
+                    PersonagemSecundario npc = impacto.getKey();
+                    float valor = impacto.getValue();
+
+                    p.alterarRelacionamento(npc, valor);
+                    Protagonista.NivelRelacionamento nivel = Protagonista.categorizarRelacionamento(p.getRelacionamento(npc));
+                    view.mostrarImpactoRelacionamento(npc, valor, nivel);
+                }
             }
+
             if (escolhida.getCenaDestinoId() == Estado.CENA_ENCERRAR) {
                 view.mostrarMensagem("Espere os próximos capítulos...");
                 jogando = false;

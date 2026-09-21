@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
-
+// Os metodos comentados ainda serão utilizados na fase 2 ou 3
 public class Protagonista {
     private CaracteristicasProtagonista caracteristicas;
     private int score = 0;
@@ -28,11 +28,19 @@ public class Protagonista {
 
     }
 
+    public enum NivelRelacionamento { ALIADO, COLEGA, RIVAL }
+
+    public static NivelRelacionamento categorizarRelacionamento(float valor) {
+        if (valor >= 3) return NivelRelacionamento.ALIADO;
+        if (valor <= -3) return NivelRelacionamento.RIVAL;
+        return NivelRelacionamento.COLEGA;
+    }
+
     private Map<PersonagemSecundario, Float> relacionamentos = new HashMap<>();
 
     public void alterarRelacionamento(PersonagemSecundario personagem, float delta) {
-        float atual = relacionamentos.getOrDefault(personagem, 0f);
-        relacionamentos.put(personagem, atual + delta);
+        float atual = relacionamentos.getOrDefault(personagem, 0f); // aqui evita que o compilador retorne uma exceção braba(NullPointerException)
+        relacionamentos.put(personagem, atual + delta); // garante o acumulo da afinidadde
     }
 
     public float getRelacionamento(PersonagemSecundario personagem) {
@@ -45,19 +53,18 @@ public class Protagonista {
     }
 
     public void ganharParticipacao(int valor){
+
         participacao += valor; // isso aqui poderia entrar no score
     }
 
 
-
-
-    public void ganharConfianca(int valor)    { confianca += valor; }
+    // public void ganharConfianca(int valor)    { confianca += valor; } // Só vai ser utilizado na fase 2
 
     public void gastarEnergia(int valor) {
         energia -= valor;
     }
 
-    public void alterarVidaSocial(int valor)  { vidaSocial += valor; }
+    // public void alterarVidaSocial(int valor)  { vidaSocial += valor; } // Só vai ser utilizada na fase 2
 
     public void adicionarFlag(String flag) {
         if (!historicoFlags.contains(flag)) historicoFlags.add(flag);
@@ -73,7 +80,7 @@ public class Protagonista {
 
     public int getScore() { return score; }
 
-    public int getParticipacao()  { return participacao; }
+    // public int getParticipacao()  { return participacao; } // Getter de suporte, mas ainda não utilizado
 
     public int getConfianca()  { return confianca; }
 
@@ -88,8 +95,7 @@ public class Protagonista {
     }
 
     public List<String> getHistoricoFlags() { return Collections.unmodifiableList(historicoFlags); }
-    public CaracteristicasProtagonista getCaracteristicas() { return caracteristicas; }
-
+    // public CaracteristicasProtagonista getCaracteristicas() { return caracteristicas; } // Getter de suporte, mas ainda não utilizado
 
 }
 

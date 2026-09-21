@@ -17,7 +17,7 @@ public class TelaCaracteristicas {
         System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
         return lerEscolhaBinaria();
-    } // Ainda sem influencia
+    } // Ainda sem influenciar no jogo
 
 
     public boolean perguntarSociavel() {
@@ -30,7 +30,7 @@ public class TelaCaracteristicas {
             System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
             return lerEscolhaBinaria();
-        } // Ainda sem influencia
+        } // Ainda sem influenciar no jogo
 
         public boolean perguntarTipoDeEstudo() {
             System.out.println();
@@ -45,15 +45,19 @@ public class TelaCaracteristicas {
         }
 
         private boolean lerEscolhaBinaria() {
-            System.out.print(Cores.AMARELO + "Escolha > " + Cores.RESET);
-            return scanner.nextLine().trim().equals("1");
+            while (true) {
+                System.out.print(Cores.AMARELO + "Escolha > " + Cores.RESET);
+                String entrada = scanner.nextLine().trim();
+                if (entrada.equals("1")) return true;
+                if (entrada.equals("2")) return false;
+                System.out.println(Cores.VERMELHO + "Essa opção não existe. Tente novamente." + Cores.RESET);
+            }
         }
 
-        // Adicionar a resposta pela seta + enter, fica melhor assim. MAS TERMINE O QUE PRECISA SER FINALIZADO LOGO
         public CaracteristicasProtagonista.SituacaoEconomica perguntarSituacaoEconomica() {
             System.out.println();
             System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
-            System.out.println(Cores.CIANO + "║              SITUAÇÃO ECONÔMICA DA FAMÍLIA               ║" + Cores.RESET);
+            System.out.println(Cores.CIANO + "║                  SITUAÇÃO ECONÔMICA                      ║" + Cores.RESET);
             System.out.println(Cores.CIANO + "╠══════════════════════════════════════════════════════════╣" + Cores.RESET);
             System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [1] Apertada      " + Cores.CIANO + "║" + Cores.RESET);
             System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [2] Estável       " + Cores.CIANO + "║" + Cores.RESET);
@@ -70,9 +74,17 @@ public class TelaCaracteristicas {
         }
 
         private int lerEscolha(int max) {
-            System.out.print(Cores.AMARELO + "Escolha > " + Cores.RESET);
-            String entrada = scanner.nextLine().trim();
-            return Integer.parseInt(entrada); // esse metodo converte texto pra numero, ajuda dms
+            while (true) {
+                System.out.print(Cores.AMARELO + "Escolha > " + Cores.RESET);
+                String entrada = scanner.nextLine().trim();
+                try {
+                    int valor = Integer.parseInt(entrada);
+                    if (valor >= 1 && valor <= max) {
+                        return valor;
+                    }
+                } catch (NumberFormatException e) {}
+                System.out.println(Cores.VERMELHO + "Essa opção não existe. Tente novamente." + Cores.RESET);
+            }
         }
 
         public CaracteristicasProtagonista.ExperienciaEmocionalEnsinoMedio perguntarExperienciaEM() {

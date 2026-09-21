@@ -2,13 +2,27 @@ package br.uefs.forkeazando.view;
 
 import br.uefs.forkeazando.model.Cena;
 import br.uefs.forkeazando.model.Escolha;
+import br.uefs.forkeazando.model.PersonagemSecundario;
+import br.uefs.forkeazando.model.Protagonista;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CenaView {
 
-    private static final int LARGURA = 60;
+    private static final int LARGURA = 64;
+
+    public void mostrarImpactoRelacionamento(PersonagemSecundario npc, float valor, Protagonista.NivelRelacionamento nivel) {
+        String nome = npc.getCaracteristicasPS().getNomePersonagemS();
+        String cor = valor > 0 ? "\u001B[32m" : "\u001B[31m"; // Verde==positivo, Vermelho==negativo
+        String mudanca = valor > 0 ? "melhorou" : "piorou";
+
+        System.out.println(cor + ">>> O teu relacionamento com " + nome + " " + mudanca + "." + "\u001B[0m");
+
+        System.out.println("\u001B[36m" + "[ Pressione ENTER para continuar... ]" + "\u001B[0m");
+        try { System.in.read(); } catch (Exception e) {}
+    }
+
 
     public void renderizar(Cena cena) {
         String corTexto = corPorFalante(cena.getPersonagemFalando());

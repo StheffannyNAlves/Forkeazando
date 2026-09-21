@@ -13,8 +13,6 @@ public class Escolha {
     private final int scoreGanho;
     private final int participacaoGanha;
     private final int custoEnergia;
-    private final PersonagemSecundario personagemAfetado; // pode ser null
-    private final float relacionamentoGanho;
     private final Map<PersonagemSecundario, Float> impactoRelacionamento;
 
 
@@ -28,8 +26,6 @@ public class Escolha {
         this.participacaoMinima  = builder.participacaoMinima;
         this.scoreGanho = builder.scoreGanho;
         this.custoEnergia = builder.custoEnergia;
-        this.personagemAfetado = builder.personagemAfetado;
-        this.relacionamentoGanho = builder.relacionamentoGanho;
         this.impactoRelacionamento = builder.impactoRelacionamento;
     }
 
@@ -43,8 +39,7 @@ public class Escolha {
     public String getTextoAlternativa() { return textoAlternativa; }
     public int getCenaDestinoId()       { return cenaDestinoId; }
     public String getFlagConcedida()    { return flagConcedida; }
-    public PersonagemSecundario getPersonagemAfetado() { return personagemAfetado; }
-    public float getRelacionamentoGanho() { return relacionamentoGanho; }
+
 
     public int getParticipacaoGanha() {
         return participacaoGanha;
@@ -53,9 +48,12 @@ public class Escolha {
     public int getScoreGanho() {
         return scoreGanho;
     }
-
     public int getCustoEnergia() {
         return custoEnergia;
+    }
+
+    public Map<PersonagemSecundario, Float> getImpactosRelacionamento() {
+        return impactoRelacionamento;
     }
 
     public static class Builder{
@@ -68,8 +66,6 @@ public class Escolha {
         private int participacaoGanha = 0;
         private int scoreGanho = 0;
         private int custoEnergia;
-        private PersonagemSecundario personagemAfetado = null;
-        private float relacionamentoGanho = 0f;
         private Map<PersonagemSecundario, Float> impactoRelacionamento = new HashMap<>();
 
 
@@ -115,8 +111,6 @@ public class Escolha {
         }
 
         public Builder comRelacionamento(PersonagemSecundario personagem, float ganho) {
-            this.personagemAfetado = personagem;
-            this.relacionamentoGanho = ganho;
             this.impactoRelacionamento.put(personagem, ganho);
             return this;
         }

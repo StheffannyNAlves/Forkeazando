@@ -7,12 +7,12 @@ import br.uefs.forkeazando.model.PersonagemSecundario;
 
 import java.util.ArrayList;
 import java.util.List;
-
+// Os comentários são precisos aqui
 public class Capitulo1 {
 
     public static List<Cena> criarCenas() {
         List<Cena> cenas = new ArrayList<>();
-
+        // Cenas Iniciais
         Cena cena0 = new Cena(0, "Capítulo 1", "Sistema",
                 "A tela do SISU pisca. A página recarrega pela 15ª vez. O servidor do MEC respira por aparelhos, mas finalmente carrega a tabela: 'Aprovada - Engenharia de Computação'. O seu primeiro erro já foi validado pelo governo federal.");
         cena0.adicionarEscolha(new Escolha.Builder("Atualizar a página mais uma vez só para ter a certeza.", 1).build());
@@ -91,7 +91,7 @@ public class Capitulo1 {
                 .comScoreGanho(3).comCustoEnergia(0).build());
         cenas.add(cena9);
 
-        // Sessão de PBL - A restrição pesada de energia entra aqui
+        // Sessão  PBL
         Cena cena10 = new Cena(10, "Capítulo 1", "Colega / Rival",
                 "Primeira sessão de PBL de EXA854. O professor tá no canto, em silêncio. Precisamos definir os papéis pra resolver esse problema de arquitetura na nossa discussão: Coordenador, Quadro ou Mesa. Quem assume o quê?");
         cena10.adicionarEscolha(new Escolha.Builder("Eu assumo a Coordenação. Foco nas metas, pessoal.", 11)

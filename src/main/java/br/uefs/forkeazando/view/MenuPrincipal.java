@@ -78,7 +78,14 @@ public class MenuPrincipal {
         } catch (Exception e) {}
     }
     public void mostrarCreditos() {
-        System.out.println(Cores.CIANO + "[Créditos: Stheffanny e Davi]" + Cores.RESET);
+        System.out.println(Cores.CIANO + "╔══════════════════════════════╗" + Cores.RESET);
+        System.out.println(Cores.CIANO + "║           CRÉDITOS           ║" + Cores.RESET);
+        System.out.println(Cores.CIANO + "║                              ║" + Cores.RESET);
+        System.out.println(Cores.MAGENTA + "║       Stheffanny & Davi      ║");
+        System.out.println(Cores.BRANCO + "║                              ║" + Cores.RESET);
+        System.out.println(Cores.CIANO+ "║         FORKEAZANDO          ║");
+        System.out.println(Cores.CIANO +"║             2026             ║");
+        System.out.println(Cores.CIANO + "╚══════════════════════════════╝" + Cores.RESET);
     }
 
     public void mostrarMensagem(String msg) {

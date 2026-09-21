@@ -5,9 +5,11 @@ import java.util.List;
 
 public class Estado {
     private Protagonista protagonista;
-    // private List<PersonagemSecundario> personagensSecundarios = new ArrayList<>(); aqui existe em
+    // private List<CaracteristicaPersonagemSecundario> caracteristicaPersonagensSecundarios = new ArrayList<>(); aqui existe em
     private int capituloAtual = 1;
     private int cenaAtualId = 0;
+    public static final int CENA_ENCERRAR = 999;
+
 
     public void iniciar(Protagonista protagonista) {
         this.protagonista = protagonista;

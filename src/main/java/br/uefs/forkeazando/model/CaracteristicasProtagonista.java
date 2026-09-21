@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.model;
-// Aqui é só para o protagonista, as caracteristicas dos personagens secundarios serão definidas em outra class
+// parte de protagonista
+
 public class CaracteristicasProtagonista {
 
 
@@ -28,7 +29,7 @@ public class CaracteristicasProtagonista {
     }
 
 
-    public int getNivelSocialInicial() {
+    public int getConfiancaInicial() {
         return switch (experienciaEmocionalEnsinoMedio){
             case NEGATIVA -> 1;
             case NEUTRA -> 3;
@@ -44,6 +45,22 @@ public class CaracteristicasProtagonista {
         };
     }
 
+    public int getEnergiaMaximaInicial() {
+        int base = switch (situacaoEconomica) {
+            case ELITE -> 90;
+            case CONFORTAVEL -> 75;
+            case ESTAVEL -> 60;
+            case APERTADA -> 45;
+        };
+
+        int ajuste = switch (experienciaEmocionalEnsinoMedio) {
+            case POSITIVA -> 10;
+            case NEUTRA -> 0;
+            case NEGATIVA -> -10;
+        };
+
+        return base + ajuste;
+    }
     public boolean isPerfeccionista() { return perfeccionista; }
     public boolean isSociavel() { return sociavel; }
     public boolean isEstudoTeorico() { return estudoTeorico; }

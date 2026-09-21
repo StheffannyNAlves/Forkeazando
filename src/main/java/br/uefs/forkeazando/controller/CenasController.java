@@ -38,14 +38,27 @@ public class CenasController {
             view.exibirEscolhas(disponiveis);
 
             String entrada = scanner.nextLine().trim();
-            int indiceEscolhido = Integer.parseInt(entrada); // lê o número que o jogador digitou (1, 2, 3...)
+            int indiceEscolhido = Integer.parseInt(entrada);
             Escolha escolhida = disponiveis.get(indiceEscolhido - 1);
 
             if (escolhida.getFlagConcedida() != null) {
-                estado.getProtagonista().adicionarFlag(escolhida.getFlagConcedida()); // concede a flag ao protagonista
+                estado.getProtagonista().adicionarFlag(escolhida.getFlagConcedida());
             }
 
-            estado.setCenaAtualId(escolhida.getCenaDestinoId()); // pra onde a escolha leva
+            Protagonista p = estado.getProtagonista();
+            p.ganharScore(escolhida.getScoreGanho());
+            p.ganharParticipacao(escolhida.getParticipacaoGanha());
+            p.gastarEnergia(escolhida.getCustoEnergia());
+            if (escolhida.getPersonagemAfetado() != null) {
+                p.alterarRelacionamento(escolhida.getPersonagemAfetado(), escolhida.getRelacionamentoGanho());
+            }
+            if (escolhida.getCenaDestinoId() == Estado.CENA_ENCERRAR) {
+                view.mostrarMensagem("Espere os próximos capítulos...");
+                jogando = false;
+                continue;
+
+            }
+            estado.setCenaAtualId(escolhida.getCenaDestinoId());
         }
     }
 

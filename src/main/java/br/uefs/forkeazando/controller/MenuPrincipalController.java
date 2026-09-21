@@ -10,7 +10,6 @@ import br.uefs.forkeazando.view.TelaCaracteristicas;
 
 import java.util.List;
 
-// Refere-se ao MenuPrincipal
 public class MenuPrincipalController {
     private final MenuPrincipal view;
     private boolean rodando = true;
@@ -40,7 +39,7 @@ public class MenuPrincipalController {
                 System.out.println("Partida iniciada!");
                 return "NOVA PARTIDA";
             case "2": view.mostrarInstrucoes(); return "INSTRUCOES";
-            case "3": view.mostrarInstrucoes(); return "CREDITOS";
+            case "3": view.mostrarCreditos(); return "CREDITOS";
             case "0": rodando = false; view.mostrarMensagem("Saindo..."); return "SAIR";
             default: view.mostrarMensagem("Opção inválida!"); return "INVALIDO";
         }

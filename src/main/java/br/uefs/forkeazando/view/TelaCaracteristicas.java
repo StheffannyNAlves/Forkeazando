@@ -3,14 +3,21 @@ package br.uefs.forkeazando.view;
 import br.uefs.forkeazando.model.CaracteristicasProtagonista;
 
 import java.util.Scanner;
-
+// INCOMPLETO
 public class TelaCaracteristicas {
       private final Scanner scanner = new Scanner(System.in);
 
     public boolean perguntarPersonalidade() {
-        return false;
-    }
+        System.out.println();
+        System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
+        System.out.println(Cores.CIANO + "║                      Personalidade                        ║" + Cores.RESET);
+        System.out.println(Cores.CIANO + "╠══════════════════════════════════════════════════════════╣" + Cores.RESET);
+        System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [1] Perfeccionista        " + Cores.CIANO + "║" + Cores.RESET);
+        System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [2] Relaxado(a)           " + Cores.CIANO + "║" + Cores.RESET);
+        System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
+        return lerEscolhaBinaria();
+    } // Ainda sem influencia
 
 
     public boolean perguntarSociavel() {
@@ -23,7 +30,7 @@ public class TelaCaracteristicas {
             System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
             return lerEscolhaBinaria();
-        }
+        } // Ainda sem influencia
 
         public boolean perguntarTipoDeEstudo() {
             System.out.println();

@@ -3,7 +3,6 @@ package br.uefs.forkeazando.view;
 import br.uefs.forkeazando.model.CaracteristicasProtagonista;
 
 import java.util.Scanner;
-// INCOMPLETO
 public class TelaCaracteristicas {
       private final Scanner scanner = new Scanner(System.in);
 

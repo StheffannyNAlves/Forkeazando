@@ -6,30 +6,30 @@ import java.util.Scanner;
 public class TelaCaracteristicas {
       private final Scanner scanner = new Scanner(System.in);
 
-    public boolean perguntarPersonalidade() {
-        System.out.println();
-        System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
-        System.out.println(Cores.CIANO + "║                      Personalidade                        ║" + Cores.RESET);
-        System.out.println(Cores.CIANO + "╠══════════════════════════════════════════════════════════╣" + Cores.RESET);
-        System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [1] Perfeccionista        " + Cores.CIANO + "║" + Cores.RESET);
-        System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [2] Relaxado(a)           " + Cores.CIANO + "║" + Cores.RESET);
-        System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
-
-        return lerEscolhaBinaria();
-    } // Ainda sem influenciar no jogo
-
-
-    public boolean perguntarSociavel() {
+        public boolean perguntarPersonalidade() {
             System.out.println();
             System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
-            System.out.println(Cores.CIANO + "║                      VIDA SOCIAL                         ║" + Cores.RESET);
+            System.out.println(Cores.CIANO + "║                      Personalidade                        ║" + Cores.RESET);
             System.out.println(Cores.CIANO + "╠══════════════════════════════════════════════════════════╣" + Cores.RESET);
-            System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [1] Sim           " + Cores.CIANO + "║" + Cores.RESET);
-            System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [2] Não           " + Cores.CIANO + "║" + Cores.RESET);
+            System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [1] Perfeccionista        " + Cores.CIANO + "║" + Cores.RESET);
+            System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [2] Relaxado(a)           " + Cores.CIANO + "║" + Cores.RESET);
             System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
             return lerEscolhaBinaria();
         } // Ainda sem influenciar no jogo
+
+
+        public boolean perguntarSociavel() {
+                System.out.println();
+                System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
+                System.out.println(Cores.CIANO + "║                      VIDA SOCIAL                         ║" + Cores.RESET);
+                System.out.println(Cores.CIANO + "╠══════════════════════════════════════════════════════════╣" + Cores.RESET);
+                System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [1] Sim           " + Cores.CIANO + "║" + Cores.RESET);
+                System.out.println(Cores.CIANO + "║" + Cores.RESET + "  [2] Não           " + Cores.CIANO + "║" + Cores.RESET);
+                System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
+
+                return lerEscolhaBinaria();
+            } // Ainda sem influenciar no jogo
 
         public boolean perguntarTipoDeEstudo() {
             System.out.println();

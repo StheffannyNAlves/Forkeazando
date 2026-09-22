@@ -57,3 +57,4 @@ public class CaracteristicaPersonagemSecundario {
 
     public String getNomePersonagemS() { return nome; }
 }
+// +calcularArea(lado: int): float

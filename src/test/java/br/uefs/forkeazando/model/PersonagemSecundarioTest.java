@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 public class PersonagemSecundarioTest {
     @Test
     void personagemDeveSerIgualAElePropio() {
-        CaracteristicaPersonagemSecundario p = new CaracteristicaPersonagemSecundario("Teste", CaracteristicaPersonagemSecundario.Interesse.ESTABILIDADE);
+        PersonagemSecundario p = new CaracteristicaPersonagemSecundario("Teste", CaracteristicaPersonagemSecundario.Interesse.ESTABILIDADE);
         assertEquals(p, p);
     }
 

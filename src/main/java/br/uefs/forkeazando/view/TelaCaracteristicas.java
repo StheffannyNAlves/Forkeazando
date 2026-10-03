@@ -1,10 +1,8 @@
 package br.uefs.forkeazando.view;
 
-import br.uefs.forkeazando.model.CaracteristicasProtagonista;
+import br.uefs.forkeazando.model.Protagonista;
 
-import java.util.Scanner;
 public class TelaCaracteristicas {
-      private final Scanner scanner = new Scanner(System.in);
 
         public boolean perguntarPersonalidade() {
             System.out.println();
@@ -29,7 +27,7 @@ public class TelaCaracteristicas {
                 System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
                 return lerEscolhaBinaria();
-            } // Ainda sem influenciar no jogo
+            }
 
         public boolean perguntarTipoDeEstudo() {
             System.out.println();
@@ -46,14 +44,14 @@ public class TelaCaracteristicas {
         private boolean lerEscolhaBinaria() {
             while (true) {
                 System.out.print(Cores.AMARELO + "Escolha > " + Cores.RESET);
-                String entrada = scanner.nextLine().trim();
+                String entrada = Entrada.lerLinha();
                 if (entrada.equals("1")) return true;
                 if (entrada.equals("2")) return false;
                 System.out.println(Cores.VERMELHO + "Essa opção não existe. Tente novamente." + Cores.RESET);
             }
         }
 
-        public CaracteristicasProtagonista.SituacaoEconomica perguntarSituacaoEconomica() {
+        public Protagonista.SituacaoEconomica perguntarSituacaoEconomica() {
             System.out.println();
             System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
             System.out.println(Cores.CIANO + "║                  SITUAÇÃO ECONÔMICA                      ║" + Cores.RESET);
@@ -65,28 +63,19 @@ public class TelaCaracteristicas {
             System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
             return switch (lerEscolha(4)) {
-                case 1 -> CaracteristicasProtagonista.SituacaoEconomica.APERTADA;
-                case 2 -> CaracteristicasProtagonista.SituacaoEconomica.ESTAVEL;
-                case 3 -> CaracteristicasProtagonista.SituacaoEconomica.CONFORTAVEL;
-                default -> CaracteristicasProtagonista.SituacaoEconomica.ELITE;
+                case 1 -> Protagonista.SituacaoEconomica.APERTADA;
+                case 2 -> Protagonista.SituacaoEconomica.ESTAVEL;
+                case 3 -> Protagonista.SituacaoEconomica.CONFORTAVEL;
+                default -> Protagonista.SituacaoEconomica.ELITE;
             };
         }
 
         private int lerEscolha(int max) {
-            while (true) {
-                System.out.print(Cores.AMARELO + "Escolha > " + Cores.RESET);
-                String entrada = scanner.nextLine().trim();
-                try {
-                    int valor = Integer.parseInt(entrada);
-                    if (valor >= 1 && valor <= max) {
-                        return valor;
-                    }
-                } catch (NumberFormatException e) {}
-                System.out.println(Cores.VERMELHO + "Essa opção não existe. Tente novamente." + Cores.RESET);
-            }
+            System.out.print(Cores.AMARELO + "Escolha > " + Cores.RESET);
+            return Entrada.lerInteiro(1, max);
         }
 
-        public CaracteristicasProtagonista.ExperienciaEmocionalEnsinoMedio perguntarExperienciaEM() {
+        public Protagonista.ExperienciaEmocionalEnsinoMedio perguntarExperienciaEM() {
             System.out.println();
             System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
             System.out.println(Cores.CIANO + "║                 EXPERIÊNCIA NO ENSINO MÉDIO              ║" + Cores.RESET);
@@ -97,13 +86,13 @@ public class TelaCaracteristicas {
             System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
             return switch (lerEscolha(3)) {
-                case 1 -> CaracteristicasProtagonista.ExperienciaEmocionalEnsinoMedio.NEGATIVA;
-                case 2 -> CaracteristicasProtagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA;
-                default -> CaracteristicasProtagonista.ExperienciaEmocionalEnsinoMedio.POSITIVA;
+                case 1 -> Protagonista.ExperienciaEmocionalEnsinoMedio.NEGATIVA;
+                case 2 -> Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA;
+                default -> Protagonista.ExperienciaEmocionalEnsinoMedio.POSITIVA;
             };
         }
 
-        public CaracteristicasProtagonista.NivelVidaSocial perguntarVidaSocial() {
+        public Protagonista.NivelVidaSocial perguntarVidaSocial() {
             System.out.println();
             System.out.println(Cores.CIANO + "╔══════════════════════════════════════════════════════════╗" + Cores.RESET);
             System.out.println(Cores.CIANO + "║                   VIDA SOCIAL                            ║" + Cores.RESET);
@@ -114,9 +103,9 @@ public class TelaCaracteristicas {
             System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
             return switch (lerEscolha(3)) {
-                case 1 -> CaracteristicasProtagonista.NivelVidaSocial.ISOLADO;
-                case 2 -> CaracteristicasProtagonista.NivelVidaSocial.EQUILIBRADO;
-                default -> CaracteristicasProtagonista.NivelVidaSocial.AMIGUEIRO;
+                case 1 -> Protagonista.NivelVidaSocial.ISOLADO;
+                case 2 -> Protagonista.NivelVidaSocial.EQUILIBRADO;
+                default -> Protagonista.NivelVidaSocial.AMIGUEIRO;
             };
         }
     }

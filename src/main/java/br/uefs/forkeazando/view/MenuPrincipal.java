@@ -1,15 +1,11 @@
 package br.uefs.forkeazando.view;
-
-import java.util.Scanner;
-
+// SEM MUDANÇAS
 public class MenuPrincipal {
-
-    private final Scanner scanner = new Scanner(System.in);
 
     public void mostrarMenu() {
         int largura = 50;
         int terminal = 80;
-        int larguraCaixa = largura + 2; // bordas
+        int larguraCaixa = largura + 2;
         int offset = (terminal - larguraCaixa) / 2;
         String prefixo = " ".repeat(offset);
 
@@ -20,8 +16,11 @@ public class MenuPrincipal {
         System.out.println(prefixo + Cores.CIANO + "╠" + "═".repeat(largura) + "╣" + Cores.RESET);
 
         System.out.println(prefixo + linha("[1] Nova Partida", largura));
-        System.out.println(prefixo + linha("[2] Instruções", largura));
-        System.out.println(prefixo + linha("[3] Créditos", largura));
+        System.out.println(prefixo + linha("[2] Continuar", largura));
+        System.out.println(prefixo + linha("[3] Carregar", largura));
+        System.out.println(prefixo + linha("[4] Instruções", largura));
+        System.out.println(prefixo + linha("[5] Opções de Estilo", largura));
+        System.out.println(prefixo + linha("[6] Créditos", largura));
         System.out.println(prefixo + linha("[0] Sair", largura));
 
         System.out.println(prefixo + Cores.CIANO + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);
@@ -29,9 +28,8 @@ public class MenuPrincipal {
         System.out.print(prefixo + Cores.AMARELO + "Escolha > " + Cores.RESET);
     }
 
-
     public String lerOpcoes() {
-        return scanner.nextLine().trim();
+        return Entrada.lerLinha();
     }
 
     private String linha(String texto, int largura) {
@@ -64,7 +62,7 @@ public class MenuPrincipal {
 
         System.out.println(Cores.VERMELHO + "Energia:" + Cores.RESET + " Sua moeda mais valiosa. Assumir muita responsabilidade drena energia rapidamente.");
         System.out.println(Cores.AMARELO + "Score:" + Cores.RESET + " Seu desempenho técnico. Necessário para provar que você sabe o que está fazendo.");
-        System.out.println(Cores.AZUL+ "Participação:" + Cores.RESET + " Sua voz ativa nas discussões de PBL. Ficar calada poupa energia, mas bloqueia o acesso a laboratórios.\n");
+        System.out.println(Cores.AZUL + "Participação:" + Cores.RESET + " Sua voz ativa nas discussões de PBL. Ficar calada poupa energia, mas bloqueia o acesso a laboratórios.\n");
 
         System.out.println(Cores.MAGENTA + "[ RELACIONAMENTOS ]" + Cores.RESET);
         System.out.println("Os veteranos, professores e colegas lembram de você. O mercado é feito de networking (e o Módulo 8 também).\n");
@@ -72,24 +70,24 @@ public class MenuPrincipal {
         System.out.println(Cores.AMARELO + "Dica:" + Cores.RESET + " O seu background (Situação Econômica e Ensino Médio) define sua Energia Inicial. O sistema não é justo. Adapte-se.\n");
 
         System.out.println(Cores.CIANO + "Pressione [ENTER] para voltar ao menu principal..." + Cores.RESET);
-
-        try {
-            System.in.read();
-        } catch (Exception e) {}
+        Entrada.lerLinha();
     }
+
+
+
+
     public void mostrarCreditos() {
         System.out.println(Cores.CIANO + "╔══════════════════════════════╗" + Cores.RESET);
         System.out.println(Cores.CIANO + "║           CRÉDITOS           ║" + Cores.RESET);
         System.out.println(Cores.CIANO + "║                              ║" + Cores.RESET);
         System.out.println(Cores.MAGENTA + "║       Stheffanny & Davi      ║");
         System.out.println(Cores.BRANCO + "║                              ║" + Cores.RESET);
-        System.out.println(Cores.CIANO+ "║         FORKEAZANDO          ║");
-        System.out.println(Cores.CIANO +"║             2026             ║");
+        System.out.println(Cores.CIANO + "║         FORKEAZANDO          ║");
+        System.out.println(Cores.CIANO + "║             2026             ║");
         System.out.println(Cores.CIANO + "╚══════════════════════════════╝" + Cores.RESET);
     }
 
     public void mostrarMensagem(String msg) {
         System.out.println(msg);
     }
-
 }

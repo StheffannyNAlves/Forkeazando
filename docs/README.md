@@ -220,13 +220,13 @@ A Fase 2 tem como foco a persistência do progresso, gerenciamento de partidas, 
 
 ### Requisitos
 
-* [ ] Nova partida e continuação
-* [ ] Múltiplos slots
+* [x] Nova partida e continuação
+* [x] Múltiplos slots
 * [ ] Metadados do save
-* [ ] Salvamento manual
+* [x] Salvamento manual
 * [ ] Salvamento automático
-* [ ] Carregamento de cena e progresso
-* [ ] Sobrescrita com confirmação
+* [*] Carregamento de cena e progresso
+* [x] Sobrescrita com confirmação
 * [ ] Exclusão com confirmação
 * [x] Configurações persistentes
 * [ ] Registro de finais

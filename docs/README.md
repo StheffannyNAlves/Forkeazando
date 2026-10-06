@@ -80,16 +80,16 @@ P → Pausar / Continuar
 O cabeçalho indica o estado atual:
 
 ```text
-[P] Pausar
+[Ctrl + P] Pausar
 ```
 
 Quando a partida estiver pausada:
 
 ```text
-[P] Continuar
+[Ctrl + P] Continuar
 ```
 
-Pressione `P`/`p novamente para retomar.
+Pressione `Ctrl +P`/`Ctrl + p` novamente para retomar.
 
 ---
 
@@ -138,7 +138,7 @@ Os dados que deverão ser preservados incluem:
 
 * [x] Nova partida e continuação
 * [x] Múltiplos slots de salvamento
-* [ ] Metadados do save
+* [*] Metadados do save 
 * [x] Salvamento manual
 * [ ] Salvamento automático
 * [ ] Carregamento do progresso
@@ -150,7 +150,7 @@ Os saves deverão apresentar informações como:
 * nome do jogador;
 * data e hora;
 * capítulo ou cena atual;
-* resumo da progressão.
+* resumo da progressão.(Falta ser implementado)
 
 ---
 
@@ -222,7 +222,7 @@ A Fase 2 tem como foco a persistência do progresso, gerenciamento de partidas, 
 
 * [x] Nova partida e continuação
 * [x] Múltiplos slots
-* [ ] Metadados do save
+* [x] Metadados do save
 * [x] Salvamento manual
 * [ ] Salvamento automático
 * [*] Carregamento de cena e progresso
@@ -230,7 +230,7 @@ A Fase 2 tem como foco a persistência do progresso, gerenciamento de partidas, 
 * [ ] Exclusão com confirmação
 * [x] Configurações persistentes
 * [ ] Registro de finais
-* [ ] Conteúdo desbloqueável / conquistas
+* [*] Conteúdo desbloqueável / conquistas
 * [x] Exceções personalizadas
 
 ---
@@ -238,5 +238,6 @@ A Fase 2 tem como foco a persistência do progresso, gerenciamento de partidas, 
 ## Autora
 
 **Stheffanny Nascimento Alves**
+
 Projeto desenvolvido para a disciplina de **Algoritmos II — UEFS**.
 

@@ -1,4 +1,5 @@
 package br.uefs.forkeazando.view;
+
 import java.util.concurrent.TimeUnit;
 
 import org.jline.terminal.Terminal;
@@ -21,6 +22,10 @@ public class Entrada {
     public static final BlockingQueue<String> TECLAS =
             new LinkedBlockingQueue<>();
 
+
+    public static Terminal terminal(){
+        return TERMINAL;
+    }
     static {
         try {
             TERMINAL = TerminalBuilder.builder().system(true).build();
@@ -97,21 +102,21 @@ public class Entrada {
         }
     }
 
-
     public static String lerLinha() {
         StringBuilder sb = new StringBuilder();
         try {
             while (true) {
-                aguardarPause();                              // bloqueia se pausado
+                aguardarPause();
 
                 String tecla = TECLAS.poll(100, TimeUnit.MILLISECONDS);
-                if (tecla == null) continue;                 // timeout → volta pro topo, checa pause de novo
+                if (tecla == null) continue;
 
                 if ("ENTER".equals(tecla)) {
                     WRITER.println();
                     WRITER.flush();
                     break;
                 }
+
                 if ("BACKSPACE".equals(tecla)) {
                     if (sb.length() > 0) {
                         sb.deleteCharAt(sb.length() - 1);
@@ -120,6 +125,7 @@ public class Entrada {
                     }
                     continue;
                 }
+
                 if (tecla.length() == 1 && tecla.charAt(0) >= 32) {
                     sb.append(tecla);
                     WRITER.print(tecla);
@@ -131,6 +137,7 @@ public class Entrada {
         }
         return sb.toString().trim();
     }
+
     public static int lerInteiro(int min, int max) {
         while (true) {
             aguardarPause();

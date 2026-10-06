@@ -2,27 +2,36 @@ package br.uefs.forkeazando.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class PersonagemSecundarioTest {
+class PersonagemSecundarioTest {
+
     @Test
-    void personagemDeveSerIgualAElePropio() {
-        PersonagemSecundario p = new CaracteristicaPersonagemSecundario("Teste", CaracteristicaPersonagemSecundario.Interesse.ESTABILIDADE);
-        assertEquals(p, p);
+    void porCodigoDevolveAMesmaInstanciaDaConstante() {
+        assertSame(PersonagemSecundario.BIA, PersonagemSecundario.porCodigo("BIA"));
     }
 
     @Test
-    void doisPersonagensDiferentesNuncaSaoIguais() {
-        CaracteristicaPersonagemSecundario p1 = new CaracteristicaPersonagemSecundario("A", CaracteristicaPersonagemSecundario.Interesse.ESTABILIDADE);
-        CaracteristicaPersonagemSecundario p2 = new CaracteristicaPersonagemSecundario("A", CaracteristicaPersonagemSecundario.Interesse.ESTABILIDADE);
-        assertNotEquals(p1, p2);
+    void porCodigoResolveTodosOsPersonagensDoJogo() {
+        assertSame(PersonagemSecundario.VETERANO, PersonagemSecundario.porCodigo("VETERANO"));
+        assertSame(PersonagemSecundario.ORIENTADOR_IC, PersonagemSecundario.porCodigo("ORIENTADOR_IC"));
+        assertSame(PersonagemSecundario.PROFESSOR_DTEC, PersonagemSecundario.porCodigo("PROFESSOR_DTEC"));
+        assertSame(PersonagemSecundario.PROFESSOR_PBL, PersonagemSecundario.porCodigo("PROFESSOR_PBL"));
+        assertSame(PersonagemSecundario.DANDARA, PersonagemSecundario.porCodigo("DANDARA"));
+        assertSame(PersonagemSecundario.ZE_MODULO8, PersonagemSecundario.porCodigo("ZE_MODULO8"));
+        assertSame(PersonagemSecundario.SISTEMA, PersonagemSecundario.porCodigo("SISTEMA"));
+        assertSame(PersonagemSecundario.ALAN, PersonagemSecundario.porCodigo("ALAN"));
+        assertSame(PersonagemSecundario.MALU, PersonagemSecundario.porCodigo("MALU"));
     }
 
     @Test
-    void idsDevemSerSequenciaisSemRepetir() {
-        CaracteristicaPersonagemSecundario p1 = new CaracteristicaPersonagemSecundario("A", CaracteristicaPersonagemSecundario.Interesse.ESTABILIDADE);
-        CaracteristicaPersonagemSecundario p2 = new CaracteristicaPersonagemSecundario("B", CaracteristicaPersonagemSecundario.Interesse.ESTABILIDADE);
-        assertEquals(p1.getId() + 1, p2.getId());
+    void codigoInexistenteLancaExcecao() {
+        assertThrows(IllegalArgumentException.class,
+                () -> PersonagemSecundario.porCodigo("NAO_EXISTE"));
+    }
+
+    @Test
+    void getCodigoBateComACriacao() {
+        assertEquals("BIA", PersonagemSecundario.BIA.getCodigo());
     }
 }

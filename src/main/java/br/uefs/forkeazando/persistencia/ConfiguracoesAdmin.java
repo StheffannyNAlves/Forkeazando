@@ -21,15 +21,15 @@ public class ConfiguracoesAdmin {
 
     }
 
-    public static void salvar()
+    public static void salvarConfigPersonalizadas()
             throws SaveException, DadosInvalidosException {
         if (instancia == null) {
             throw new DadosInvalidosException("Configurações não inicializadas");
         }
-        salvar(instancia);
+        salvarConfigPersonalizadas(instancia);
     }
 
-    public static void salvar(Configuracoes c)
+    public static void salvarConfigPersonalizadas(Configuracoes c)
             throws SaveException, DadosInvalidosException {
         if (c == null) {
             throw new DadosInvalidosException("Configurações nulas");

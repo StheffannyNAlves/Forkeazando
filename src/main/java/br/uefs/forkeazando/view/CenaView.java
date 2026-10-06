@@ -415,6 +415,7 @@ public class CenaView {
         }
 
         System.out.println(Cores.CIANO + "╚" + "═".repeat(LARGURA) + "╝" + Cores.RESET);
+        System.out.println("0 - Menu principal");
     }
 
     public void mostrarMensagem(String mensagem) {

@@ -136,13 +136,13 @@ Os dados que deverão ser preservados incluem:
 
 ### Requisitos de salvamento
 
-* [ ] Nova partida e continuação
-* [ ] Múltiplos slots de salvamento
+* [x] Nova partida e continuação
+* [x] Múltiplos slots de salvamento
 * [ ] Metadados do save
-* [ ] Salvamento manual
+* [x] Salvamento manual
 * [ ] Salvamento automático
 * [ ] Carregamento do progresso
-* [ ] Confirmação antes de sobrescrever um save
+* [x] Confirmação antes de sobrescrever um save
 * [ ] Exclusão de saves mediante confirmação
 
 Os saves deverão apresentar informações como:

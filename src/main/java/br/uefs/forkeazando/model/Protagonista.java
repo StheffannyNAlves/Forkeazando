@@ -1,14 +1,12 @@
 package br.uefs.forkeazando.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Protagonista implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class Protagonista {
 
     public enum SituacaoEconomica { APERTADA, ESTAVEL, CONFORTAVEL, ELITE }
     public enum ExperienciaEmocionalEnsinoMedio { NEGATIVA, NEUTRA, POSITIVA }
@@ -34,8 +32,10 @@ public class Protagonista implements Serializable {
     private final int energiaMaxima;
 
     private final List<String> historicoFlags = new ArrayList<>();
-    private final Map<PersonagemSecundario, Float> relacionamentos = new HashMap<>();
-
+    private final Map<String, Float> relacionamentos = new HashMap<>();
+    public boolean dadosInternosValidos() {
+        return true;
+    }
     public Protagonista(String nome, boolean perfeccionista, boolean sociavel,
                         boolean estudoTeorico, NivelVidaSocial nivelVidaSocial,
                         ExperienciaEmocionalEnsinoMedio experienciaEmocional,
@@ -108,16 +108,11 @@ public class Protagonista implements Serializable {
         if (valor <= -3) return NivelRelacionamento.RIVAL;
         return NivelRelacionamento.COLEGA;
     }
-
     public void alterarRelacionamento(PersonagemSecundario personagem, float delta) {
-        float atual = relacionamentos.getOrDefault(personagem, 0f);
-        relacionamentos.put(personagem, atual + delta);
+        relacionamentos.merge(personagem.getCodigo(), delta, Float::sum);
     }
     public float getRelacionamento(PersonagemSecundario personagem) {
-        return relacionamentos.getOrDefault(personagem, 0f);
-    }
-    public Map<PersonagemSecundario, Float> getRelacionamentos() {
-        return Collections.unmodifiableMap(relacionamentos); // usar pra serialzação
+        return relacionamentos.getOrDefault(personagem.getCodigo(), 0f);
     }
 
 
@@ -175,7 +170,7 @@ public class Protagonista implements Serializable {
             case "logica"       -> alterarLogica(delta);
             case "sanidade"     -> alterarSanidade(delta);
             case "score"        -> ganharScore(delta);
-            case "participação" -> ganharParticipacao(delta);
+            case "participacao" -> ganharParticipacao(delta);
             case "energia"      -> gastarEnergia(-delta);
             default -> throw new IllegalArgumentException("Atributo desconhecido: " + chave);
         }
@@ -214,6 +209,10 @@ public class Protagonista implements Serializable {
     public int getSanidade()      { return sanidade; }
     public int getEnergia()       { return energia; }
     public int getEnergiaMaxima() { return energiaMaxima; }
+
+    public Map<String, Float> getRelacionamentos() {
+        return relacionamentos;
+    }
 
     public List<String> getHistoricoFlags() {
         return Collections.unmodifiableList(historicoFlags);

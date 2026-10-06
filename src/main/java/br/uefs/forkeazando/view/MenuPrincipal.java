@@ -20,7 +20,8 @@ public class MenuPrincipal {
         System.out.println(prefixo + linha("[3] Carregar", largura));
         System.out.println(prefixo + linha("[4] Instruções", largura));
         System.out.println(prefixo + linha("[5] Opções de Estilo", largura));
-        System.out.println(prefixo + linha("[6] Créditos", largura));
+        System.out.println(prefixo + linha("[6] Salvar", largura));
+        System.out.println(prefixo + linha("[7] Créditos", largura));
         System.out.println(prefixo + linha("[0] Sair", largura));
 
         System.out.println(prefixo + Cores.CIANO + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);

@@ -118,7 +118,7 @@ public class TelaConfiguracoesController {
 
 
         try {
-            ConfiguracoesAdmin.salvar(original);
+            ConfiguracoesAdmin.salvarConfigPersonalizadas(original);
             System.out.println();
             System.out.println(Cores.VERDE + "  Configurações salvas." + Cores.RESET);
             System.out.println(Cores.CIANO + "  [ ENTER para continuar ]" + Cores.RESET);

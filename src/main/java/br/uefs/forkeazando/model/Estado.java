@@ -11,7 +11,7 @@ public class Estado implements Serializable {
     private int capituloAtual = 1;
     private int cenaAtualId = 0;
     public static final int CENA_ENCERRAR = 999;
-
+    private transient boolean alterado;
 
     public void iniciar(Protagonista protagonista) {
         this.protagonista = protagonista;
@@ -37,4 +37,15 @@ public class Estado implements Serializable {
         this.cenaAtualId = novoid;
     }
 
+    public boolean temAlteracoes() {
+        return alterado;
+    }
+
+    public void marcarAlterado() {
+        alterado = true;
+    }
+
+    public void marcarSalvo() {
+        alterado = false;
+    }
 }

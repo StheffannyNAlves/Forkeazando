@@ -167,17 +167,15 @@ public class MenuInterativo {
         int colunas = calcularColunas(total);
         int selecionado = 0;
 
-        try (Terminal terminal = TerminalBuilder.builder()
-                .system(true)
-                .build()) {
+        Terminal terminal = Entrada.terminal();   // o terminal da Entrada, sem criar outro
 
-            terminal.enterRawMode();
-            String tecla = Entrada.TECLAS.take();
+        Entrada.TECLAS.clear();                   // descarta teclas que sobraram de telas anteriores
 
+        try {
             while (true) {
                 renderizar(terminal, opcoes, selecionado, colunas, titulo);
 
-                if (tecla == null) continue;
+                String tecla = Entrada.TECLAS.take();   // cada volta espera uma tecla nova
 
                 switch (tecla) {
                     case "UP"    -> selecionado = moverCima(selecionado, colunas);
@@ -185,29 +183,22 @@ public class MenuInterativo {
                     case "LEFT"  -> moverEsquerda(opcoes.get(selecionado));
                     case "RIGHT" -> moverDireita(opcoes.get(selecionado));
                     case "ENTER" -> {
-                        terminal.puts(
-                                org.jline.utils.InfoCmp.Capability.clear_screen
-                        );
+                        terminal.puts(InfoCmp.Capability.clear_screen);
                         terminal.flush();
                         return new Resposta(Resultado.SELECIONADO,
                                 selecionado,
                                 coletarValores(opcoes));
                     }
-                    case "EXIT"  -> {
-                        terminal.puts(
-                                org.jline.utils.InfoCmp.Capability.clear_screen
-                        );
+                    case "EXIT" -> {
+                        terminal.puts(InfoCmp.Capability.clear_screen);
                         terminal.flush();
                         return new Resposta(Resultado.CANCELADO, -1, null);
                     }
                 }
             }
-
-        } catch (IOException e) {
-            System.err.println("Erro no terminal: " + e.getMessage());
-            return new Resposta(Resultado.CANCELADO, -1, null);
         } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            Thread.currentThread().interrupt();
+            return new Resposta(Resultado.CANCELADO, -1, null);
         }
     }
 }

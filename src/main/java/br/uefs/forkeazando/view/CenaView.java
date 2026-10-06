@@ -157,25 +157,25 @@ public class CenaView {
         System.out.println();
     }
 
-    public void iniciarAnimacaoPause(Protagonista p) {
-        Thread animacao = new Thread(() -> {
-            while (true) {
-                dormir(500);
-                mostrarIndicadorPause = !mostrarIndicadorPause;
-                atualizarIndicadorPause();
-
-                System.out.print("\033[s");
-                System.out.print("\033[2;1H");
-                System.out.print("\033[2K");
-                imprimirLinha(cabecalhoStatus(p), Cores.CINZA);
-                System.out.print("\033[u");
-                System.out.flush();
-            }
-        });
-
-        animacao.setDaemon(true);
-        animacao.start();
-    }
+//    public void iniciarAnimacaoPause(Protagonista p) {
+//        Thread animacao = new Thread(() -> {
+//            while (true) {
+//                dormir(500);
+//                mostrarIndicadorPause = !mostrarIndicadorPause;
+//                atualizarIndicadorPause();
+//
+//                System.out.print("\033[s");
+//                System.out.print("\033[2;1H");
+//                System.out.print("\033[2K");
+//                imprimirLinha(cabecalhoStatus(p), Cores.CINZA);
+//                System.out.print("\033[u");
+//                System.out.flush();
+//            }
+//        });
+//
+//        animacao.setDaemon(true);
+//        animacao.start();
+//    }
 
 
     private void imprimirLinhaAprovacao(String linha, int margem) {

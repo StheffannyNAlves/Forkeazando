@@ -33,9 +33,9 @@ public class Protagonista {
 
     private final List<String> historicoFlags = new ArrayList<>();
     private final Map<String, Float> relacionamentos = new HashMap<>();
-    public boolean dadosInternosValidos() {
-        return true;
-    }
+//    public boolean dadosInternosValidos() {
+//        return true;
+//    }
     public Protagonista(String nome, boolean perfeccionista, boolean sociavel,
                         boolean estudoTeorico, NivelVidaSocial nivelVidaSocial,
                         ExperienciaEmocionalEnsinoMedio experienciaEmocional,
@@ -210,9 +210,9 @@ public class Protagonista {
     public int getEnergia()       { return energia; }
     public int getEnergiaMaxima() { return energiaMaxima; }
 
-    public Map<String, Float> getRelacionamentos() {
-        return relacionamentos;
-    }
+//    public Map<String, Float> getRelacionamentos() {
+//        return relacionamentos;
+//    }
 
     public List<String> getHistoricoFlags() {
         return Collections.unmodifiableList(historicoFlags);

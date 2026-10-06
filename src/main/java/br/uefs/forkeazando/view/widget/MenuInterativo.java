@@ -1,13 +1,10 @@
 package br.uefs.forkeazando.view.widget;
 
 import br.uefs.forkeazando.view.Entrada;
-import org.jline.keymap.BindingReader;
-import org.jline.keymap.KeyMap;
+
 import org.jline.terminal.Terminal;
-import org.jline.terminal.TerminalBuilder;
 import org.jline.utils.InfoCmp;
 
-import java.io.IOException;
 import java.util.List;
 
 public class MenuInterativo {

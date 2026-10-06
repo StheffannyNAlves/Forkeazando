@@ -40,27 +40,27 @@ public class CenaView {
 
     private String indicadorPause() {
         if (Entrada.estaPausado()) {
-            return "[P] Continuar";
+            return "[Ctrl + P] Continuar";
         }
 
         if (mostrarIndicadorPause) {
-            return "[P] Pausar";
+            return "[Ctrl + P] Pausar";
         }
 
         return "         ";
     }
 
-    private void atualizarIndicadorPause() {
-        System.out.print("\033[s");
-
-        System.out.print("\033[2;1H");
-        System.out.print("\033[2K");
-
-        imprimirLinha(cabecalhoStatus(protagonistaAtual), Cores.CINZA);
-
-        System.out.print("\033[u");
-        System.out.flush();
-    }
+//    private void atualizarIndicadorPause() {
+//        System.out.print("\033[s");
+//
+//        System.out.print("\033[2;1H");
+//        System.out.print("\033[2K");
+//
+//        imprimirLinha(cabecalhoStatus(protagonistaAtual), Cores.CINZA);
+//
+//        System.out.print("\033[u");
+//        System.out.flush();
+//    }
     public void renderizar(Cena cena, Protagonista p) {
         Entrada.aguardarPause();
         String corTexto = corPorFalante(cena.getPersonagemFalando());

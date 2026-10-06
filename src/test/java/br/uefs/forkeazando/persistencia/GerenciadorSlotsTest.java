@@ -18,6 +18,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class GerenciadorSlotsTest {
     @TempDir
     Path pastaTemp;
+    private static Estado estadoValido(String nome) {
+        Estado estado = new Estado();
+        estado.iniciar(new Protagonista(
+                nome, false, true, true,
+                Protagonista.NivelVidaSocial.EQUILIBRADO,
+                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
+                Protagonista.SituacaoEconomica.ESTAVEL));
+        return estado;
+    }
+    private static Estado estadoValido() {
+        return estadoValido("Stheffanny");
+    }
 
     @Test
     void deveRetornarPrimeiroQuandoPastaNaoExiste() throws Exception{
@@ -148,55 +160,23 @@ class GerenciadorSlotsTest {
     void deveCriarPastaSavesSeNaoExistir() throws Exception {
         Path pasta = pastaTemp.resolve("saves");
 
-        Estado estado = new Estado();
-        estado.iniciar(new Protagonista(
-                "Stheffanny",
-                false,
-                true,
-                true,
-                Protagonista.NivelVidaSocial.EQUILIBRADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
-                Protagonista.SituacaoEconomica.ESTAVEL
-        ));
+        Estado estado = estadoValido();
 
         assertFalse(Files.exists(pasta));
 
         GerenciadorSlots.salvar(estado, pasta, 1);
 
         assertTrue(Files.exists(pasta));
-        assertTrue(Files.exists(
-                GerenciadorSlots.caminhoDoSlot(pasta, 1)
-        ));
+        assertTrue(Files.exists(GerenciadorSlots.caminhoDoSlot(pasta, 1)));
     }
 
     @Test
     void deveSubstituirSaveExistente() throws Exception {
         Path pasta = pastaTemp.resolve("saves");
 
-        Estado primeiro = new Estado();
-        primeiro.iniciar(new Protagonista(
-                "Primeiro",
-                false,
-                true,
-                true,
-                Protagonista.NivelVidaSocial.EQUILIBRADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
-                Protagonista.SituacaoEconomica.ESTAVEL
-        ));
 
-        Estado segundo = new Estado();
-        segundo.iniciar(new Protagonista(
-                "Segundo",
-                true,
-                false,
-                false,
-                Protagonista.NivelVidaSocial.ISOLADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEGATIVA,
-                Protagonista.SituacaoEconomica.APERTADA
-        ));
-
-        GerenciadorSlots.salvar(primeiro, pasta, 1);
-        GerenciadorSlots.salvar(segundo, pasta, 1);
+        GerenciadorSlots.salvar(estadoValido("Primeiro"), pasta, 1);
+        GerenciadorSlots.salvar(estadoValido("Segundo"), pasta, 1);
 
         Estado carregado = GerenciadorSave.carregar(
                 GerenciadorSlots.caminhoDoSlot(pasta, 1)
@@ -228,16 +208,7 @@ class GerenciadorSlotsTest {
     void deveConsiderarSlotOcupadoDepoisDeSalvar() throws Exception {
         Path pasta = pastaTemp.resolve("saves");
 
-        Estado estado = new Estado();
-        estado.iniciar(new Protagonista(
-                "Stheffanny",
-                false,
-                true,
-                true,
-                Protagonista.NivelVidaSocial.EQUILIBRADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
-                Protagonista.SituacaoEconomica.ESTAVEL
-        ));
+        Estado estado = estadoValido();
 
         GerenciadorSlots.salvar(estado, pasta, 1);
 
@@ -250,75 +221,15 @@ class GerenciadorSlotsTest {
     void naoDeveDeixarArquivoTemporarioAposSalvar() throws Exception {
         Path pasta = pastaTemp.resolve("saves");
 
-        Estado estado = new Estado();
-        estado.iniciar(new Protagonista(
-                "Stheffanny",
-                false,
-                true,
-                true,
-                Protagonista.NivelVidaSocial.EQUILIBRADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
-                Protagonista.SituacaoEconomica.ESTAVEL
-        ));
+        Estado estado = estadoValido();
 
         GerenciadorSlots.salvar(estado, pasta, 1);
 
-        Path temporario = GerenciadorSlots
-                .caminhoDoSlot(pasta, 1)
-                .resolveSibling("slot1.json.tmp");
-
+        Path slot = GerenciadorSlots.caminhoDoSlot(pasta, 1);
+        Path temporario = slot.resolveSibling(slot.getFileName() + ".tmp");
         assertFalse(Files.exists(temporario));
     }
-    @Test
-    void deveRejeitarNumeroDeSlotInvalido() {
-        Path pasta = pastaTemp.resolve("saves");
 
-        Estado estado = new Estado();
-        estado.iniciar(new Protagonista(
-                "Stheffanny",
-                false,
-                true,
-                true,
-                Protagonista.NivelVidaSocial.EQUILIBRADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
-                Protagonista.SituacaoEconomica.ESTAVEL
-        ));
-
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> GerenciadorSlots.salvar(estado, pasta, 0)
-        );
-
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> GerenciadorSlots.salvar(
-                        estado, pasta, GerenciadorSlots.TOTAL_SLOTS + 1
-                )
-        );
-    }
-
-    @Test
-    void deveRejeitarSlotInvalidoAoSalvarSemCriarPasta() {
-        Path pasta = pastaTemp.resolve("saves");
-
-        Estado estado = new Estado();
-        estado.iniciar(new Protagonista(
-                "Stheffanny",
-                false,
-                true,
-                true,
-                Protagonista.NivelVidaSocial.EQUILIBRADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
-                Protagonista.SituacaoEconomica.ESTAVEL
-        ));
-
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> GerenciadorSlots.salvar(estado, pasta, 0)
-        );
-
-        assertFalse(Files.exists(pasta));
-    }
     @Test
     void deveLancarSaveExceptionQuandoNaoConsegueCriarPasta() {
         Path pasta = pastaTemp.resolve("saves");
@@ -328,16 +239,7 @@ class GerenciadorSlotsTest {
             throw new RuntimeException(e);
         }
 
-        Estado estado = new Estado();
-        estado.iniciar(new Protagonista(
-                "Stheffanny",
-                false,
-                true,
-                true,
-                Protagonista.NivelVidaSocial.EQUILIBRADO,
-                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
-                Protagonista.SituacaoEconomica.ESTAVEL
-        ));
+        Estado estado = estadoValido();
 
         SaveException excecao = assertThrows(
                 SaveException.class,

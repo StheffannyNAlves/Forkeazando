@@ -61,10 +61,7 @@ public class CenasController {
             if (indice == 0){
                 return ResultadoPartida.VOLTAR_AO_MENU;
             }
-            Escolha escolhida = lerEscolha(disponiveis);
-            if (escolhida == null) {
-                return ResultadoPartida.VOLTAR_AO_MENU;
-            }
+            Escolha escolhida = disponiveis.get(indice - 1);
             aplicarEscolha(escolhida);
 
             if (escolhida.getCenaDestinoId() == Estado.CENA_ENCERRAR) {

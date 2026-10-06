@@ -9,6 +9,7 @@ import com.google.gson.*;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -19,7 +20,7 @@ public class GerenciadorSave {
             .setPrettyPrinting()
             .create();
 
-    public static void salvar(Estado estado, Path destino) throws SaveException {
+    public static void salvar(Estado estado, Path destino) throws SaveException, IOException {
 
         Path temporario = destino.resolveSibling(
                 destino.getFileName() + ".tmp"
@@ -36,22 +37,22 @@ public class GerenciadorSave {
                     e
             );
         }
-
-        try {
-            Files.move(
-                    temporario,
-                    destino,
-                    StandardCopyOption.REPLACE_EXISTING,
-                    StandardCopyOption.ATOMIC_MOVE
-            );
-
+        try{
+            try {
+                Files.move(
+                        temporario,
+                        destino,
+                        StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.ATOMIC_MOVE
+                );
+            } catch (AtomicMoveNotSupportedException e) {
+                Files.move(temporario, destino, StandardCopyOption.REPLACE_EXISTING);
+            }
         } catch (IOException e) {
             apagarTemporario(temporario);
 
             throw new SaveException(
-                    "Não foi possível substituir o arquivo: " + destino,
-                    e
-            );
+                    "Não foi possível substituir o arquivo: " + destino, e);
         }
     }
 

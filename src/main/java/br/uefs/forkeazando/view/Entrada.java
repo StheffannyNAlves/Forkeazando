@@ -68,7 +68,8 @@ public class Entrada {
                         TECLAS.put("BACKSPACE");
                     } else if (c == 3) {        // Ctrl+C
                         TECLAS.put("EXIT");
-                    } else if (c == 'p' || c == 'P') {
+
+                    } else if (c == 16) {            // Ctrl+P
                         alternarPause();
                     } else if (c >= 32) {
                         TECLAS.put(String.valueOf((char) c));

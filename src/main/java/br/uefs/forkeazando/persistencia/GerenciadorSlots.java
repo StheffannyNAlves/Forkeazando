@@ -41,7 +41,7 @@ public class GerenciadorSlots {
 
         return pasta.resolve("slot" + numero + ".json");
     }
-    public static void salvar(Estado estado, Path pasta, int numeroSlot) throws SaveException {
+    public static void salvar(Estado estado, Path pasta, int numeroSlot) throws SaveException, IOException {
         Path destino = caminhoDoSlot(pasta, numeroSlot);
         if (estado == null || estado.getProtagonista() == null) {
             throw new SaveException(

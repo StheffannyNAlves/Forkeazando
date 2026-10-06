@@ -283,7 +283,7 @@ class GerenciadorSaveTest {
 
     @Test
     void naoDeveDeixarArquivoTemporarioAposSalvar()
-            throws SaveException {
+            throws SaveException, IOException {
 
         Path arquivo = diretorioTemporario.resolve("save.json");
         Path temporario = diretorioTemporario.resolve("save.json.tmp");

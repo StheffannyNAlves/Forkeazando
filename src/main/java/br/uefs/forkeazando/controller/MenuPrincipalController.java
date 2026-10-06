@@ -16,6 +16,7 @@ import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.TelaCaracteristicas;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -96,7 +97,7 @@ public class MenuPrincipalController {
                 System.out.print("Pressione ENTER para voltar...");
                 Entrada.lerLinha();
             }
-            case "6" -> salvarPartida();
+            case "6" -> salvarPartidaManual();
             case "0" -> {
                 if (confirmarDescarte()) { rodando = false;
                     view.mostrarMensagem("Saindo...");
@@ -120,7 +121,7 @@ public class MenuPrincipalController {
         return switch (decisao){
             case SAIR -> true;
             case PERGUNTAR_SALVAR -> perguntarSalvar();
-            case ESCOLHER_SLOT -> escolherSobrescrita();
+            case ESCOLHER_SLOT -> escolherSobrescrita(true);
         };
     }
 
@@ -147,14 +148,35 @@ public class MenuPrincipalController {
         }
     }
     private void executarPartida() {
-        CenasController controller =
-                new CenasController(partidaAtual, criarCenas(), new CenaView());
+        List<Cena> cenas = criarCenas();
+        int cenaId = partidaAtual.getCenaAtualId();
 
-        ResultadoPartida resultado = controller.iniciar();
+        boolean cenaExiste = cenas.stream().anyMatch(c -> c.getId() == cenaId);
+        if (!cenaExiste) {
+            view.mostrarMensagem(Cores.VERMELHO
+                    + "Save inválido: a cena " + cenaId + " não existe."
+                    + Cores.RESET);
+            partidaAtual = null;
+            return;
+        }
+
+        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView()).iniciar();
 
         if (resultado == ResultadoPartida.FIM_DE_JOGO) {
             partidaAtual = null;
         }
+    }
+
+    private void salvarPartidaManual() {
+        if (partidaAtual == null) {
+            view.mostrarMensagem("Não há partida para salvar.");
+            return;
+        }
+        if (!partidaAtual.temAlteracoes()) {
+            view.mostrarMensagem("Nada novo para salvar.");
+            return;
+        }
+        salvarPartida();
     }
 
     private List<Cena> criarCenas(){
@@ -185,36 +207,34 @@ public class MenuPrincipalController {
         executarPartida();
     }
 
-    private boolean escolherSobrescrita() {
-        List<String> slots = GerenciadorSlots.listar(PASTA_SAVES);
+    private boolean escolherSobrescrita(boolean permitirSairSemSalvar) {
         List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
-
-        for (String slot : slots) {
+        for (String slot : GerenciadorSlots.listar(PASTA_SAVES)) {
             opcoes.add(new MenuInterativo.Opcao(slot));
         }
 
-        opcoes.add(new MenuInterativo.Opcao("Sair sem salvar"));
+        int indiceSairSemSalvar = -1;
+        if (permitirSairSemSalvar) {
+            indiceSairSemSalvar = opcoes.size();
+            opcoes.add(new MenuInterativo.Opcao("Sair sem salvar"));
+        }
+
+        int indiceCancelar = opcoes.size();
         opcoes.add(new MenuInterativo.Opcao("Cancelar"));
 
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(opcoes, "Slots cheios: escolha uma opção, o escolhido será sobrescrito.");
+        MenuInterativo.Resposta resposta = MenuInterativo.abrir(
+                opcoes, "Slots cheios: o slot escolhido será sobrescrito.");
 
-        if (resposta.resultado == MenuInterativo.Resultado.CANCELADO) {
+        if (resposta.resultado == MenuInterativo.Resultado.CANCELADO
+                || resposta.indiceOpcao == indiceCancelar) {
             return false;
         }
-
-        int indice = resposta.indiceOpcao;
-
-        if (indice == opcoes.size() - 1) {
-            return false;
-        }
-
-        if (indice == opcoes.size() - 2) {
+        if (resposta.indiceOpcao == indiceSairSemSalvar) {
             return true;
         }
-
-        return confirmarSobrescrita(indice + 1);
+        return confirmarSobrescrita(resposta.indiceOpcao + 1);
     }
+
     private boolean confirmarSobrescrita(int numeroSlot) {
         List<MenuInterativo.Opcao> opcoes = List.of(
                 new MenuInterativo.Opcao("Sim, sobrescrever"),
@@ -261,7 +281,7 @@ public class MenuPrincipalController {
         OptionalInt slotLivre = GerenciadorSlots.primeiroSlotLivre(PASTA_SAVES);
 
         if (slotLivre.isEmpty()) {
-            return escolherSobrescrita();
+            return escolherSobrescrita(true);
         }
 
         return salvarPartida(slotLivre.getAsInt());
@@ -277,6 +297,8 @@ public class MenuPrincipalController {
                     Cores.VERMELHO + "Erro ao salvar: " + e.getMessage() + Cores.RESET
             );
             return false;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 }

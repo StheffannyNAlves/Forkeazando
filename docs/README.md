@@ -1,4 +1,3 @@
-
 # Forkeazando 🎮
 
 Um jogo narrativo desenvolvido em Java como projeto da disciplina de Algoritmos II da Universidade Estadual de Feira de Santana (UEFS).
@@ -9,20 +8,23 @@ Em **Forkeazando**, você acompanha a trajetória de uma estudante de Engenharia
 
 ## Como jogar
 
-O jogo é executado pelo terminal e utiliza o **JLine** para permitir interação com o teclado em modo raw.
+O jogo é executado no **terminal** e utiliza o **JLine** para ler o teclado tecla a tecla (modo raw), o que permite navegar pelos menus com as setas.
 
 ### Requisitos
 
-- Java 21
-- Maven 3.8+
+- Java 21 ou superior
+- Maven 3.8+ (para compilar a partir do código-fonte)
+- Um terminal de verdade (Terminal do Linux ou do macOS, Windows Terminal)
+
+> **Não execute pelo console de execução da IDE.** Nele as setas do teclado não funcionam, porque o JLine não recebe um terminal real.
 
 ### Execução
 
-Para executar o jogo:
+**A partir do código-fonte:**
 
 ```bash
 ./rodar.sh
-````
+```
 
 Caso necessário, dê permissão de execução ao script:
 
@@ -30,13 +32,17 @@ Caso necessário, dê permissão de execução ao script:
 chmod +x rodar.sh
 ```
 
-O script utiliza o Maven para compilar o projeto, resolver as dependências e gerar automaticamente o classpath necessário para executar o jogo.
+O script usa o Maven para compilar o projeto, resolver as dependências e gerar o classpath necessário para executar o jogo.
 
-> Recomenda-se executar pelo `rodar.sh` em vez do botão `Run` da IDE, principalmente por causa da captura das teclas direcionais utilizadas nas configurações.
+**A partir da release (JAR):**
+
+```bash
+java -jar forkeazando.jar
+```
+
+Execute sempre a partir da mesma pasta: a pasta `saves/` é criada ao lado de onde o jogo foi iniciado.
 
 ### Testes
-
-Para executar os testes automatizados:
 
 ```bash
 mvn test
@@ -46,143 +52,113 @@ mvn test
 
 ## Controles
 
-### 🔢 Menu principal e cenas
+### Menu principal e cenas
 
-No menu principal e durante as cenas, as opções são selecionadas utilizando as **teclas numéricas**:
+As opções são escolhidas digitando o **número** correspondente e pressionando `Enter`.
 
-```text
-1
-2
-3
-...
-```
+Durante uma cena, a opção `0` volta ao menu principal **sem encerrar a partida**. Use **Continuar** para retomá-la.
 
-Digite o número correspondente à opção desejada e pressione `Enter`.
+### Menus de seleção
 
-### Configurações
-
-Nas configurações personalizáveis, a navegação é feita pelas teclas direcionais:
+Configurações, salvar, carregar e confirmações usam o teclado direcional:
 
 ```text
-↑ / ↓  → navegar entre as opções
-← / →  → alterar valores
+↑ / ↓   → navegar entre as opções
+← / →   → alterar valores
 Enter   → confirmar
 ```
 
+Cada menu de confirmação tem uma opção **Cancelar**.
+
 ### Pausa
 
-Durante a partida:
+Durante o texto de uma cena:
 
 ```text
-P → Pausar / Continuar
+P → pausar
+C → continuar
 ```
 
-O cabeçalho indica o estado atual:
-
-```text
-[Ctrl + P] Pausar
-```
-
-Quando a partida estiver pausada:
-
-```text
-[Ctrl + P] Continuar
-```
-
-Pressione `Ctrl +P`/`Ctrl + p` novamente para retomar.
+Ao pausar, o jogo exibe `PAUSADO - [C] Continuar`. A pausa só vale enquanto o texto da cena é exibido, e não nos menus.
 
 ---
 
 ## Configurações
 
-O jogo possui configurações personalizáveis que são persistidas entre diferentes execuções.
-
-As preferências são armazenadas em:
+O jogo possui configurações personalizáveis, persistidas entre execuções em:
 
 ```text
-config.json
+saves/configuracao.json
 ```
 
-Dessa forma, as configurações escolhidas pelo jogador permanecem salvas mesmo após o encerramento do jogo.
-
----
-
-## Sistema de pausa
-
-A partida pode ser pausada utilizando a tecla `P`, sem a necessidade de pressionar `Enter`.
-
-O sistema utiliza a entrada do teclado em modo raw para detectar a tecla durante a execução da partida.
-
-Enquanto estiver pausado, a progressão da partida permanece interrompida até que `P` seja pressionado novamente.
+- **Velocidade do texto:** altera o ritmo de exibição das cenas.
+- **Volume:** reservado para quando o áudio for implementado. A opção é gravada, mas ainda não tem efeito.
 
 ---
 
 ## Sistema de salvamento
 
-O sistema de salvamento faz parte da Fase 2 do projeto.
+Há **três slots de salvamento**, independentes entre si:
 
-O objetivo é permitir que o jogador interrompa uma partida e retome seu progresso posteriormente.
+```text
+saves/
+├── configuracao.json
+├── slot1.json
+├── slot2.json
+└── slot3.json
+```
 
-Os dados que deverão ser preservados incluem:
+Cada save guarda o estado da partida: capítulo, cena atual, atributos, relacionamentos e flags (decisões, habilidades e itens).
 
-* cena atual;
-* capítulo atual;
-* atributos do jogador;
-* relacionamentos;
-* inventário;
-* missões;
-* decisões tomadas;
-* flags e desbloqueios.
+- **Salvar** pelo menu principal ou ao sair com progresso não salvo.
+- **Carregar** escolhendo um slot na lista, que mostra nome do jogador, capítulo e data e hora.
+- **Confirmação** antes de sobrescrever um slot. Se todos estiverem ocupados e houver progresso não salvo, o jogador escolhe qual sobrescrever.
+- **Continuar** retoma a partida em memória depois de voltar ao menu com `0`.
 
-### Requisitos de salvamento
+### Persistência
 
-* [x] Nova partida e continuação
-* [x] Múltiplos slots de salvamento
-* [*] Metadados do save 
-* [x] Salvamento manual
-* [ ] Salvamento automático
-* [ ] Carregamento do progresso
-* [x] Confirmação antes de sobrescrever um save
-* [ ] Exclusão de saves mediante confirmação
+- Os saves são gravados em **JSON** com o **Gson**.
+- A gravação é feita em um arquivo temporário (`.tmp`) que só substitui o save quando está completo, para uma falha no meio da escrita não destruir o save anterior.
+- Os relacionamentos são gravados pelo **código** do personagem, que não muda quando o nome é alterado ou a ordem do código é reorganizada.
+- Ao carregar, o JSON é validado antes de virar objeto.
+- Exceções próprias, todas derivadas de `PersistenciaException`:
 
-Os saves deverão apresentar informações como:
-
-* nome do jogador;
-* data e hora;
-* capítulo ou cena atual;
-* resumo da progressão.(Falta ser implementado)
+```text
+PersistenciaException
+├── SaveException            falha ao gravar
+├── CarregamentoException    falha ao ler ou carregar
+└── DadosInvalidosException  o arquivo foi lido, mas o conteúdo não é um save válido
+```
 
 ---
 
-## Conquistas e galeria
+## Registro de finais, conquistas e galeria
 
-O jogo contará com um sistema de **conquistas e conteúdo desbloqueável**.
+**Em desenvolvimento.**
 
-Quando determinadas condições forem atingidas durante uma partida, uma conquista poderá ser desbloqueada e apresentada ao jogador.
+Esses dados serão armazenados em um arquivo próprio, separado dos slots: o registro dos finais já alcançados e o conteúdo desbloqueável precisam sobreviver a sobrescrever um save e a iniciar uma nova partida.
 
-As conquistas serão armazenadas separadamente do progresso dos saves, permitindo que o jogador consulte posteriormente seu histórico através de uma galeria.
-
-Exemplo:
+Exemplo da apresentação de uma conquista:
 
 ```text
-CONQUISTA DESBLOQUEADA 🏆 
+CONQUISTA DESBLOQUEADA 🏆
 
 Primeiro Passo
 
 Você sobreviveu ao primeiro semestre.
 ```
 
-A galeria permitirá consultar conquistas já desbloqueadas e conteúdos ainda bloqueados.
+A galeria permitirá consultar o que já foi desbloqueado e o que ainda está bloqueado.
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
-* **Java 21**
-* **JLine** — interação com o terminal e captura de teclado
-* **Gson** — serialização e persistência em JSON
-* **Maven** — gerenciamento de dependências e execução do projeto
-* **JUnit** — testes automatizados
+- **Java 21**
+- **JLine** — leitura do teclado e controle do terminal
+- **Gson** — serialização e persistência em JSON
+- **Maven** — dependências, testes e geração do JAR executável
+- **JUnit 5** — testes automatizados
 
 ---
 
@@ -190,49 +166,49 @@ A galeria permitirá consultar conquistas já desbloqueadas e conteúdos ainda b
 
 ```text
 src/
-└── main/
-    └── java/
-        └── br/
-            └── uefs/
-                └── forkeazando/
-                    ├── controller/
-                    ├── model/
-                    ├── roteiro/
-                    ├── view/
-                    └── ...
+├── main/java/br/uefs/forkeazando/
+│   ├── controller/    fluxo do jogo e dos menus
+│   ├── excecao/       exceções de persistência
+│   ├── model/         estado da partida, protagonista, cenas, escolhas
+│   ├── persistencia/  slots, salvamento e configurações
+│   ├── roteiro/       capítulos e cenas
+│   └── view/          telas e entrada do teclado
+└── test/java/br/uefs/forkeazando/
 ```
 
-Os arquivos de dados persistentes são mantidos separadamente do código da aplicação.
-
-Exemplo:
-
-```text
-config.json
-```
-
-Os arquivos referentes aos saves e à galeria serão adicionados ao sistema de persistência.
+Os dados persistentes ficam na pasta `saves/`, separada do código.
 
 ---
 
 ## Fase 2
 
-A Fase 2 tem como foco a persistência do progresso, gerenciamento de partidas, configurações e conteúdo desbloqueável.
-
-### Requisitos
+Legenda: `[x]` feito, `[*]` parcial, `[ ]` pendente.
 
 * [x] Nova partida e continuação
 * [x] Múltiplos slots
-* [x] Metadados do save
+* [*] Metadados do save (falta o resumo da progressão)
 * [x] Salvamento manual
 * [ ] Salvamento automático
-* [*] Carregamento de cena e progresso
+* [x] Carregamento do progresso
 * [x] Sobrescrita com confirmação
 * [ ] Exclusão com confirmação
 * [x] Configurações persistentes
 * [ ] Registro de finais
-* [*] Conteúdo desbloqueável / conquistas
+* [ ] Conteúdo desbloqueável / conquistas
 * [x] Exceções personalizadas
 
+### Limitações conhecidas
+
+- O volume ainda não tem efeito (sem áudio).
+- O salvar usa sempre o primeiro slot livre: uma partida carregada do slot 1 e salva de novo vai para o slot 2.
+- O jogo precisa de um terminal real. Em console de IDE, as setas não funcionam.
+
+
+## Versões
+
+* `v1.0.0` — Fase 1
+* `v1.1.0` — Fase 2, sessão 1 (salvamento em JSON e exceções)
+* `v1.2.0` — Fase 2, sessão 2 (em andamento)
 ---
 
 ## Autora
@@ -240,4 +216,3 @@ A Fase 2 tem como foco a persistência do progresso, gerenciamento de partidas, 
 **Stheffanny Nascimento Alves**
 
 Projeto desenvolvido para a disciplina de **Algoritmos II — UEFS**.
-

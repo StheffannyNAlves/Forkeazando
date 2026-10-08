@@ -40,14 +40,9 @@ public class CenaView {
 
     private String indicadorPause() {
         if (Entrada.estaPausado()) {
-            return "[Ctrl + P] Continuar";
+            return "[C] Continuar";
         }
-
-        if (mostrarIndicadorPause) {
-            return "[Ctrl + P] Pausar";
-        }
-
-        return "         ";
+        return "[P] Continuar";
     }
 
 //    private void atualizarIndicadorPause() {
@@ -62,7 +57,7 @@ public class CenaView {
 //        System.out.flush();
 //    }
     public void renderizar(Cena cena, Protagonista p) {
-        Entrada.aguardarPause();
+        Entrada.permitirPausa(true);
         String corTexto = corPorFalante(cena.getPersonagemFalando());
 
         protagonistaAtual = p;
@@ -300,7 +295,7 @@ public class CenaView {
             renderizarEpilogo("CÁIO", texto);
         }
 
-        // Ajustado: sem trama de denúncia, agora é autoria do artigo
+
         if (p.temFlag("cap7_questionou_autoria")) {
             renderizarEpilogo("ORIENTADOR",
                     "O artigo saiu. Com o nome dele primeiro. Você foi segunda " +

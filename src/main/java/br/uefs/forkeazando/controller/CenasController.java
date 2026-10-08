@@ -30,7 +30,13 @@ public class CenasController {
             Cena atual = buscarCenaPorId(estado.getCenaAtualId());
 
             if (atual.getId() == 0) {
-                view.mostrarAprovacao();
+                Entrada.permitirPausa(true);
+                try {
+                    view.mostrarAprovacao();
+
+                } finally {
+                    Entrada.permitirPausa(false);
+                }
             }
 
             if (view.deveMostrarBencao(atual.getId(), estado.getProtagonista())) {
@@ -173,7 +179,7 @@ public class CenasController {
     private static String calcularChute(Protagonista p) {
         int pontosIC = 0, pontosDTEC = 0, pontosIndep = 0;
 
-        //  Q1: estudar vs mexer
+        //  estudar vs mexer
         if (p.temFlag("sistema_q1_estudar")) {
             pontosIC += 3;
             pontosDTEC += 1;
@@ -184,7 +190,7 @@ public class CenasController {
             pontosIndep += 1;
         }
 
-        // ─── Q2: sozinha vs grupo ───
+        // sozinha vs grupo
         if (p.temFlag("sistema_q2_sozinha")) {
             pontosIC += 1;
             pontosDTEC += 1;
@@ -195,7 +201,7 @@ public class CenasController {
             pontosIndep += 1;
         }
 
-        // ─── Q3: visível vs invisível ───
+        //  visível vs invisível
         if (p.temFlag("sistema_q3_visivel")) {
             pontosIC += 4;
             pontosDTEC += 1;
@@ -206,7 +212,7 @@ public class CenasController {
             pontosIndep += 3;
         }
 
-        // ─── Q4: planejar vs improvisar ───
+        // planejar vs improvisar
         if (p.temFlag("sistema_q4_planejar")) {
             pontosIC += 3;
             pontosDTEC += 2;
@@ -217,7 +223,7 @@ public class CenasController {
             pontosIndep += 4;
         }
 
-        // ─── Sorteio ponderado ───
+        //  Sorteio ponderado
         int total = pontosIC + pontosDTEC + pontosIndep;
         int sorteio = new Random().nextInt(total);
 

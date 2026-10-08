@@ -4,6 +4,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
+import org.jline.utils.NonBlocking;
+import org.jline.utils.NonBlockingReader;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +16,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class Entrada {
 
     static final Terminal TERMINAL;
-    private static final Reader READER;
+    private static final NonBlockingReader READER;
     private static final PrintWriter WRITER;
 
     private static volatile boolean pausado = false;
@@ -48,11 +50,26 @@ public class Entrada {
             try {
                 while (true) {
                     int c = READER.read();
+                    if (pausado) {
+                        if (c == 27) {
+                            if (READER.read(55) == '[') {
+                                READER.read(55);
+                            }
+                        } else if (c == 63 || c == 43) {
+                            pausado = false;
+                        }
+                        continue;
+                    }
 
-                    if (c == 27) {              // ESC — pode ser seta ou EXIT sozinho
-                        int next = READER.read();
+                    if (pausaPermitida && (c == 112 || c == 80)) {
+                        pausado = true;
+                        continue;
+                    }
+
+                    if (c == 27) {              // ESC pode ser seta ou EXIT sozinho
+                        int next = READER.read(55);
                         if (next == '[') {
-                            int dir = READER.read();
+                            int dir = READER.read(55);
                             switch (dir) {
                                 case 'A' -> TECLAS.put("UP");
                                 case 'B' -> TECLAS.put("DOWN");
@@ -69,8 +86,6 @@ public class Entrada {
                     } else if (c == 3) {        // Ctrl+C
                         TECLAS.put("EXIT");
 
-                    } else if (c == 16) {            // Ctrl+P
-                        alternarPause();
                     } else if (c >= 32) {
                         TECLAS.put(String.valueOf((char) c));
                     }
@@ -84,15 +99,28 @@ public class Entrada {
         leitor.start();
     }
 
+
+    private static volatile boolean pausaPermitida = false;
+
+    public static void permitirPausa(boolean permitida) {
+        pausaPermitida = permitida;
+        if (!permitida) {
+            pausado = false;   // nunca sai da animação deixando o jogo pausado
+        }
+    }
+
     public static boolean estaPausado() {
         return pausado;
     }
-
-    public static void alternarPause() {
-        pausado = !pausado;
-    }
-
     public static void aguardarPause() {
+        if (!pausado) {
+            return;
+        }
+
+        System.out.println();
+        System.out.println(Cores.AMARELO + "PAUSADO - [C] Continuar" + Cores.RESET);
+        System.out.flush();
+
         while (pausado) {
             try {
                 Thread.sleep(100);

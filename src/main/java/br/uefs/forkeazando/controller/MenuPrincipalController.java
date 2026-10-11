@@ -6,8 +6,8 @@ import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Cena;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Protagonista;
-import br.uefs.forkeazando.persistencia.ConfiguracoesAdmin;
-import br.uefs.forkeazando.persistencia.GerenciadorSlots;
+import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
+import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.CenaView;
 import br.uefs.forkeazando.view.Cores;
@@ -15,6 +15,11 @@ import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.TelaCaracteristicas;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
+import br.uefs.forkeazando.dao.GerenciadorProgresso;
+import br.uefs.forkeazando.model.Progresso;
+import br.uefs.forkeazando.view.ProgressoView;
+import java.time.LocalDateTime;
+
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -28,18 +33,26 @@ public class MenuPrincipalController {
     private boolean rodando = true;
     private static final Path PASTA_SAVES = Path.of("saves");
     private Estado partidaAtual;
-
+    private final GerenciadorProgresso gerenciadorProgresso = new GerenciadorProgresso(PASTA_SAVES);
+    private Progresso progresso;
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;
     }
 
     public void iniciar() {
+        try {
+            progresso = gerenciadorProgresso.carregar();
+        } catch (CarregamentoException | DadosInvalidosException e){
+            view.mostrarMensagem(Cores.VERMELHO + "Erro ao carregar progresso global" + e.getMessage() + Cores.RESET);
+            progresso = null;
+        }
         while (rodando) {
             view.mostrarMenu();
             String opcao = view.lerOpcoes();
             processarOpcao(opcao);
         }
     }
+
 
     private void carregarPartida() {
         List<String> slots = GerenciadorSlots.listar(PASTA_SAVES);
@@ -72,12 +85,20 @@ public class MenuPrincipalController {
         }
     }
 
+    private void visualizarProgresso() {
+        if (progresso == null) {
+            view.mostrarMensagem(Cores.VERMELHO + "Progresso indisponível. Verifique o arquivo saves/progresso.json." + Cores.RESET);
+            return;
+        }
+        new ProgressoView().mostrar(progresso);
+    }
+
     private void processarOpcao(String opcao) {
         switch (opcao) {
             case "1" -> {
-                if (confirmarDescarte()) {
+                if (confirmarDescarte())
                     novaPartida();
-                }
+
             }
             case "2" -> {
                 if (partidaAtual == null) {
@@ -98,6 +119,7 @@ public class MenuPrincipalController {
                 Entrada.lerLinha();
             }
             case "6" -> salvarPartidaManual();
+            case "8" -> visualizarProgresso();
             case "0" -> {
                 if (confirmarDescarte()) { rodando = false;
                     view.mostrarMensagem("Saindo...");
@@ -163,9 +185,38 @@ public class MenuPrincipalController {
         ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView()).iniciar();
 
         if (resultado == ResultadoPartida.FIM_DE_JOGO) {
+            registrarProgresso();
             partidaAtual = null;
         }
     }
+
+    private void registrarProgresso() {
+        if (progresso == null) {
+            view.mostrarMensagem(Cores.VERMELHO
+                    + "Progresso indisponível. Verifique o arquivo saves/progresso.json."
+                    + Cores.RESET);
+            return;
+        }
+        Protagonista protagonista = partidaAtual.getProtagonista();
+
+        boolean novoFinal = progresso.sincronizarFinais(
+                protagonista, LocalDateTime.now()
+        );
+
+        if (!novoFinal) {
+            return;
+        }
+
+        try {
+            gerenciadorProgresso.salvar(progresso);
+            view.mostrarMensagem(Cores.VERDE + "Novo final desbloqueado!" + Cores.RESET);
+        } catch (SaveException e) {
+            view.mostrarMensagem(Cores.VERMELHO + "O final foi reconhecido, mas não foi possível "
+                            + "salvar o histórico: " + e.getMessage() + Cores.RESET
+            );
+        }
+    }
+
 
     private void salvarPartidaManual() {
         if (partidaAtual == null) {
@@ -281,7 +332,7 @@ public class MenuPrincipalController {
         OptionalInt slotLivre = GerenciadorSlots.primeiroSlotLivre(PASTA_SAVES);
 
         if (slotLivre.isEmpty()) {
-            return escolherSobrescrita(true);
+            return escolherSobrescrita(false);
         }
 
         return salvarPartida(slotLivre.getAsInt());
@@ -297,8 +348,6 @@ public class MenuPrincipalController {
                     Cores.VERMELHO + "Erro ao salvar: " + e.getMessage() + Cores.RESET
             );
             return false;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }

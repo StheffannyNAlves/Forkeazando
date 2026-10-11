@@ -16,6 +16,7 @@ public class Cores {
     public static final String CIANO = "\u001B[36m";
     public static final String BRANCO = "\u001B[37m";
     public static final String CINZA = "\u001B[90m";
+    public static final String MAGEN = "\u001B[35m";
 
     // fundo
     public static final String BG_PRETO = "\u001B[40m";

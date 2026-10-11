@@ -24,7 +24,9 @@ public class Capitulo7 {
                         "(Eu preciso escrever o título.)\n\n" +
                         "(Por onde se começa isso?)");
         cena600.adicionarEscolha(new Escolha.Builder("Uma página por dia.", 601)
-                .comCustoEnergia(15).build());
+                .comCustoEnergia(15)
+                .comFlagConcedida("cap7_tcc_planejou")
+                .build());
         cena600.adicionarEscolha(new Escolha.Builder("Tudo de uma vez.", 601)
                 .comCustoEnergia(40).build());
         cena600.adicionarEscolha(new Escolha.Builder("Começar amanhã.", 601)
@@ -46,7 +48,8 @@ public class Capitulo7 {
         cena600.adicionarEscolha(new Escolha.Builder("Escrever na véspera.", 601)
                 .comFlagRequerida("perfil_pratico")
                 .comCustoEnergia(35)
-                .comAtributo("confianca", -1).build());
+                .comAtributo("confianca", -1)
+                .comFlagConcedida("cap7_tcc_improvisou").build());
         cena600.adicionarEscolha(new Escolha.Builder(
                 "Você senta. Abre o documento. Escreve a primeira frase.", 601)
                 .comConfiancaMinima(6)

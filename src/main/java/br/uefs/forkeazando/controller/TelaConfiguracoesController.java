@@ -3,7 +3,7 @@ package br.uefs.forkeazando.controller;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Configuracoes;
-import br.uefs.forkeazando.persistencia.ConfiguracoesAdmin;
+import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.view.Cores;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.widget.MenuInterativo;

@@ -1,16 +1,16 @@
 package br.uefs.forkeazando.model;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Escolha implements Serializable {
+public class Escolha  {
 
-    private static final long serialVersionUID = 1L;
 
     private final String textoAlternativa;
     private final int cenaDestinoId;
-    private final String flagConcedida;
+    private final List<String> flagsConcedidas;
     private final String flagRequerida;
     private final int scoreMinimo;
     private final int participacaoMinima;
@@ -36,7 +36,7 @@ public class Escolha implements Serializable {
     private Escolha(Builder b) {
         this.textoAlternativa      = b.textoAlternativa;
         this.cenaDestinoId         = b.cenaDestinoId;
-        this.flagConcedida         = b.flagConcedida;
+        this.flagsConcedidas       = List.copyOf(b.flagsConcedidas);
         this.flagRequerida         = b.flagRequerida;
         this.scoreMinimo           = b.scoreMinimo;
         this.participacaoMinima    = b.participacaoMinima;
@@ -80,7 +80,7 @@ public class Escolha implements Serializable {
 
     public String getTextoAlternativa() { return textoAlternativa; }
     public int getCenaDestinoId()       { return cenaDestinoId; }
-    public String getFlagConcedida()    { return flagConcedida; }
+    public List<String> getFlagsConcedidas()    { return flagsConcedidas; }
     public int getParticipacaoGanha()   { return participacaoGanha; }
     public int getScoreGanho()          { return scoreGanho; }
     public int getCustoEnergia()        { return custoEnergia; }
@@ -91,7 +91,7 @@ public class Escolha implements Serializable {
     public static class Builder {
         private final String textoAlternativa;
         private final int cenaDestinoId;
-        private String flagConcedida = null;
+        private final List<String> flagsConcedidas = new ArrayList<>();
         private String flagRequerida = null;
         private int scoreMinimo = 0, participacaoMinima = 0, participacaoMaxima = 0;
         private int participacaoGanha = 0, scoreGanho = 0, custoEnergia = 0;
@@ -107,7 +107,11 @@ public class Escolha implements Serializable {
 
         public Builder(String t, int destino) { this.textoAlternativa = t; this.cenaDestinoId = destino; }
 
-        public Builder comFlagConcedida(String v)   { flagConcedida = v; return this; }
+        public Builder comFlagConcedida(String v)  {
+            if (v != null)
+                flagsConcedidas.add(v);
+            return this;
+        }
         public Builder comFlagRequerida(String v)   { flagRequerida = v; return this; }
         public Builder comScoreMinimo(int v)        { scoreMinimo = v; return this; }
         public Builder comParticipacaoMinima(int v) { participacaoMinima = v; return this; }

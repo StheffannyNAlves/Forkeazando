@@ -1,4 +1,4 @@
-package br.uefs.forkeazando.persistencia;
+package br.uefs.forkeazando.dao;
 
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
@@ -41,7 +41,7 @@ public class GerenciadorSlots {
 
         return pasta.resolve("slot" + numero + ".json");
     }
-    public static void salvar(Estado estado, Path pasta, int numeroSlot) throws SaveException, IOException {
+    public static void salvar(Estado estado, Path pasta, int numeroSlot) throws SaveException {
         Path destino = caminhoDoSlot(pasta, numeroSlot);
         if (estado == null || estado.getProtagonista() == null) {
             throw new SaveException(

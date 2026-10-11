@@ -55,13 +55,13 @@ public class Entrada {
                             if (READER.read(55) == '[') {
                                 READER.read(55);
                             }
-                        } else if (c == 63 || c == 43) {
+                        } else if (c == 'c' || c == 'C') {
                             pausado = false;
                         }
                         continue;
                     }
 
-                    if (pausaPermitida && (c == 112 || c == 80)) {
+                    if (pausaPermitida && (c == 'p' || c == 'P')) {
                         pausado = true;
                         continue;
                     }

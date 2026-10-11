@@ -192,6 +192,7 @@ public class Protagonista {
         return "Lenda do Campus";
     }
 
+
     public String getNome()                          { return nome; }
 //    public boolean isPerfeccionista()                { return perfeccionista; }
 //    public boolean isSociavel()                      { return sociavel; }

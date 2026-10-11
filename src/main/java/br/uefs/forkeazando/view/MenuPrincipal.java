@@ -22,6 +22,7 @@ public class MenuPrincipal {
         System.out.println(prefixo + linha("[5] Opções de Estilo", largura));
         System.out.println(prefixo + linha("[6] Salvar", largura));
         System.out.println(prefixo + linha("[7] Créditos", largura));
+        System.out.println(prefixo + linha("[8] Meu progresso", largura));
         System.out.println(prefixo + linha("[0] Sair", largura));
 
         System.out.println(prefixo + Cores.CIANO + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);
@@ -81,8 +82,8 @@ public class MenuPrincipal {
         System.out.println(Cores.CIANO + "╔══════════════════════════════╗" + Cores.RESET);
         System.out.println(Cores.CIANO + "║           CRÉDITOS           ║" + Cores.RESET);
         System.out.println(Cores.CIANO + "║                              ║" + Cores.RESET);
-        System.out.println(Cores.MAGENTA + "║       Stheffanny & Davi      ║");
-        System.out.println(Cores.BRANCO + "║                              ║" + Cores.RESET);
+        System.out.println(Cores.MAGEN + "║       Stheffanny Alves       ║");
+        System.out.println(Cores.BRANCO+ "║                              ║" + Cores.RESET);
         System.out.println(Cores.CIANO + "║         FORKEAZANDO          ║");
         System.out.println(Cores.CIANO + "║             2026             ║");
         System.out.println(Cores.CIANO + "╚══════════════════════════════╝" + Cores.RESET);

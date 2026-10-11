@@ -1,4 +1,4 @@
-package br.uefs.forkeazando.persistencia;
+package br.uefs.forkeazando.dao;
 
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
@@ -20,7 +20,7 @@ public class GerenciadorSave {
             .setPrettyPrinting()
             .create();
 
-    public static void salvar(Estado estado, Path destino) throws SaveException, IOException {
+    public static void salvar(Estado estado, Path destino) throws SaveException {
 
         Path temporario = destino.resolveSibling(
                 destino.getFileName() + ".tmp"

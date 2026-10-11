@@ -1,4 +1,4 @@
-package br.uefs.forkeazando.persistencia;
+package br.uefs.forkeazando.dao;
 
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;

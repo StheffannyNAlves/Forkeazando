@@ -202,7 +202,7 @@ Legenda: `[x]` feito, `[*]` parcial, `[ ]` pendente.
 - O volume ainda não tem efeito (sem áudio).
 - O salvar usa sempre o primeiro slot livre: uma partida carregada do slot 1 e salva de novo vai para o slot 2.
 - O jogo precisa de um terminal real. Em console de IDE, as setas não funcionam.
-
+- O caminho alternativo de gravação, utilizado quando o sistema de arquivos não suporta a movimentação atômica, não é coberto por testes automatizados.
 
 ## Versões
 

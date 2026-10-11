@@ -53,7 +53,7 @@ public class CenasController {
                 view.mostrarEpilogos(estado.getProtagonista());
             }
 
-            List<Escolha> disponiveis = atual.getEscolhasDisposniveis(estado.getProtagonista());
+            List<Escolha> disponiveis = atual.getEscolhasDisponiveis(estado.getProtagonista());
 
             if (disponiveis.isEmpty()) {
                 view.mostrarMensagem("Fim do Jogo");
@@ -113,8 +113,8 @@ public class CenasController {
         Protagonista p = estado.getProtagonista();
         int tamanhoListaAntes = p.getHistoricoFlags().size();
 
-        if (escolhida.getFlagConcedida() != null) {
-            p.adicionarFlag(escolhida.getFlagConcedida());
+        for (String flag : escolhida.getFlagsConcedidas()) {
+            p.adicionarFlag(flag);
         }
 
         p.ganharScore(escolhida.getScoreGanho());

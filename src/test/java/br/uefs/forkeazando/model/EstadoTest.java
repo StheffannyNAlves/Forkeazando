@@ -1,6 +1,6 @@
 package br.uefs.forkeazando.model;
 
-import br.uefs.forkeazando.persistencia.GerenciadorSave;
+import br.uefs.forkeazando.dao.GerenciadorSave;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 

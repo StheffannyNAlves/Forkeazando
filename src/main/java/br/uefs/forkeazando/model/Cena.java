@@ -20,11 +20,14 @@ public class Cena {
         escolhas.add(e);
      }
 
-     public  List<Escolha> getEscolhasDisposniveis(Protagonista p){  // Expressão lambda, mais limpo que fazer um if. Aqui retorna uma lista com as opções disponiveis
+     public  List<Escolha> getEscolhasDisponiveis(Protagonista p){  // Expressão lambda, mais limpo que fazer um if. Aqui retorna uma lista com as opções disponiveis
         return escolhas.stream()
                 .filter(e -> e.estaDisponivel(p))
                 .toList();
      }
+    public List<Escolha> getEscolhas() {
+        return List.copyOf(escolhas);
+    }
      public int getId(){ return id; }
      public String getCapitulo() { return capitulo;}
      public String getPersonagemFalando() { return personagemFalando;}

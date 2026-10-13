@@ -1,5 +1,7 @@
 package br.uefs.forkeazando.controller;
 
+import br.uefs.forkeazando.dao.GerenciadorProgresso;
+import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Cena;
 import br.uefs.forkeazando.model.Escolha;
 import br.uefs.forkeazando.model.Estado;
@@ -8,7 +10,9 @@ import br.uefs.forkeazando.model.Protagonista;
 import br.uefs.forkeazando.roteiro.Roteador;
 import br.uefs.forkeazando.view.CenaView;
 import br.uefs.forkeazando.view.Entrada;
+import br.uefs.forkeazando.model.Progresso;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -17,12 +21,19 @@ public class CenasController {
     private final Estado estado;
     private final List<Cena> cenas;
     private final CenaView view;
-    private final GerenciadorConquistas gerenciadorConquistas = new GerenciadorConquistas();
+    private final GerenciadorConquistas gerenciadorConquistas;
+    private final GerenciadorProgresso gerenciadorProgresso;
+    private final Progresso progresso;
 
-    public CenasController(Estado estado, List<Cena> cenas, CenaView view) {
+    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso) {
         this.estado = estado;
         this.cenas = cenas;
         this.view = view;
+        this.progresso = progresso;
+        this.gerenciadorConquistas = new GerenciadorConquistas(gerenciadorProgresso);
+        this.gerenciadorProgresso = gerenciadorProgresso;
+        gerenciadorConquistas.carregarDesbloqueadas(progresso);
+
     }
 
 
@@ -136,6 +147,23 @@ public class CenasController {
         return disponiveis.get(indice - 1);
     }
 
+    private void salvarColecao(Protagonista protagonista) {
+        boolean novaColecao = progresso.sincronizarColecao(
+                protagonista,
+                LocalDateTime.now()
+        );
+
+        if (!novaColecao) {
+            return;
+        }
+
+        try {
+            gerenciadorProgresso.salvar(progresso);
+        } catch (SaveException e) {
+            view.mostrarMensagem("Erro ao salvar a coleção: " + e.getMessage());
+        }
+    }
+
     private void aplicarEscolha(Escolha escolhida) {
         estado.marcarAlterado();
         Protagonista p = estado.getProtagonista();
@@ -176,7 +204,8 @@ public class CenasController {
         }
 
         notificaNovasFlags(p, tamanhoListaAntes);
-        gerenciadorConquistas.verificar(p, view::mostrarConquista);
+        salvarColecao(p);
+        gerenciadorConquistas.verificar(p, progresso, view::mostrarConquista);
     }
 
     private void notificaNovasFlags(Protagonista p, int tamanhoAntes) {

@@ -4,8 +4,7 @@ package br.uefs.forkeazando.dao;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
-import br.uefs.forkeazando.model.Final;
-import br.uefs.forkeazando.model.Progresso;
+import br.uefs.forkeazando.model.*;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.junit.jupiter.api.Test;
@@ -214,4 +213,119 @@ class GerenciadorProgressoTest {
         assertDoesNotThrow(() -> g.salvar(new Progresso()));
     }
 
+
+    @Test
+    void salvarECarregarPreservaColecaoEConquistas() throws Exception {
+        Path pasta = tempDir.resolve("colecao");
+        GerenciadorProgresso gerenciador = new GerenciadorProgresso(pasta);
+
+        LocalDateTime data = LocalDateTime.parse("2026-10-13T10:00:00");
+
+        Protagonista protagonista = new Protagonista(
+                "Teste",
+                false,
+                true,
+                true,
+                Protagonista.NivelVidaSocial.EQUILIBRADO,
+                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
+                Protagonista.SituacaoEconomica.ESTAVEL
+        );
+
+        protagonista.adicionarFlag("hab_foco_total");
+
+        Progresso original = new Progresso();
+        original.sincronizarColecao(protagonista, data);
+        original.registrarConquista(Conquista.PRIMEIRO_PASSO, data);
+
+        gerenciador.salvar(original);
+        Progresso carregado = gerenciador.carregar();
+
+        assertTrue(carregado.coletou(Colecionavel.FOCO_TOTAL));
+        assertEquals(data, carregado.quandoColetou(Colecionavel.FOCO_TOTAL).orElseThrow());
+
+        assertTrue(carregado.possui(Conquista.PRIMEIRO_PASSO));
+        assertEquals(
+                data,
+                carregado.quandoDesbloqueou(Conquista.PRIMEIRO_PASSO).orElseThrow()
+        );
+    }
+
+
+    @Test
+    void arquivoAntigoSemColecaoNemConquistasContinuaCarregando() throws Exception {
+        Path pasta = Files.createDirectory(tempDir.resolve("antigo"));
+        Files.writeString(arquivoDe(pasta), "{\"finais\":{}}");
+
+        GerenciadorProgresso g = new GerenciadorProgresso(pasta);
+        Progresso p = g.carregar();
+
+        assertDoesNotThrow(() -> p.registrarConquista(Conquista.PRIMEIRO_PASSO,
+                LocalDateTime.parse("2026-10-13T10:00:00")));
+    }
+
+    @TempDir
+    Path pasta;
+    @Test
+    void deveCarregarSaveAntigoSemColecaoEConquistas() throws Exception {
+        Files.createDirectories(pasta);
+        Files.writeString(
+                pasta.resolve("progresso.json"),
+                """
+                {
+                  "finais": {}
+                }
+                """
+        );
+        GerenciadorProgresso gerenciador =
+                new GerenciadorProgresso(pasta);
+
+        Progresso progresso = gerenciador.carregar();
+
+        assertNotNull(progresso);
+        assertTrue(progresso.finaisAlcancados().isEmpty());
+        assertTrue(progresso.colecionaveisColetados().isEmpty());
+        assertTrue(progresso.conquistasDesbloqueadas().isEmpty());
+    }
+    @Test
+    void deveRejeitarColecaoNula() throws Exception {
+        verificarProgressoInvalido("""
+        {
+          "finais": {},
+          "colecao": null
+        }
+        """);
+    }
+
+    @Test
+    void deveRejeitarConquistasComoLista() throws Exception {
+        verificarProgressoInvalido("""
+        {
+          "finais": {},
+          "conquistas": []
+        }
+        """);
+    }
+
+    @Test
+    void deveRejeitarDataInvalidaNaColecao() throws Exception {
+        verificarProgressoInvalido("""
+        {
+          "finais": {},
+          "colecao": {
+            "qualquer_flag": "data-invalida"
+          }
+        }
+        """);
+    }
+
+    private void verificarProgressoInvalido(String json) throws Exception {
+        Files.writeString(pasta.resolve("progresso.json"), json);
+
+        GerenciadorProgresso gerenciador = new GerenciadorProgresso(pasta);
+
+        assertThrows(
+                DadosInvalidosException.class,
+                gerenciador::carregar
+        );
+    }
 }

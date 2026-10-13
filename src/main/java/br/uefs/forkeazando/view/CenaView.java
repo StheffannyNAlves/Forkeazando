@@ -20,26 +20,7 @@ public class CenaView {
         FRAGILIZADO, OSCILANTE, ESTAVEL
     }
 
-    private static final Map<String, String> NOMES_HABILIDADES = Map.of(
-            "hab_olho_edital", "Olho de Edital",
-            "hab_estomago_ferro", "Estômago de Ferro",
-            "hab_foco_total", "Foco Total",
-            "hab_rede_contatos", "Rede de Contatos",
-            "hab_palavra_honesta", "Palavra Honesta",
-            "hab_sobreviveu_greve", "Sobreviveu à Greve",
-            "hab_contrato_assinado", "Contrato Assinado"
-    );
 
-    private static final Map<String, String> NOMES_ITENS = Map.of(
-            "item_cartao_ru", "Cartão do RU",
-            "item_esquema_copiado", "Esquema elétrico copiado",
-            "item_pdfs_ic", "5 PDFs de IC",
-            "item_contato_freela", "Contato de freela",
-            "item_vaga_estagio", "QR code de vaga de estágio",
-            "item_prova_email", "Foto do e-mail comprometedor",
-            "item_copo_caio", "Copo térmico do Cáio",
-            "item_contato_bia", "Contato da Bia"
-    );
 
     private static final List<Integer> CENAS_DE_CHEFE = List.of(201, 305, 451, 550, 601, 649);
 
@@ -178,7 +159,9 @@ public class CenaView {
 
 
     public void mostrarHabilidade(String flag) {
-        String nome = NOMES_HABILIDADES.getOrDefault(flag, flag);
+        String nome = Colecionavel.porFlag(flag)
+                        .map(Colecionavel::getNome)
+                                .orElse(flag);
         System.out.println();
         System.out.println(Cores.MAGENTA + "  ╭─ NOVA HABILIDADE ─────────────────╮" + Cores.RESET);
         System.out.println(Cores.MAGENTA + "  │  " + nome + Cores.RESET);
@@ -187,7 +170,9 @@ public class CenaView {
     }
 
     public void mostrarItem(String flag) {
-        String nome = NOMES_ITENS.getOrDefault(flag, flag);
+        String nome = Colecionavel.porFlag(flag)
+                .map(Colecionavel::getNome)
+                .orElse(flag);
         System.out.println();
         System.out.println(Cores.CIANO + "  ╭─ ITEM ADQUIRIDO ──────────────────╮" + Cores.RESET);
         System.out.println(Cores.CIANO + "  │  " + nome + Cores.RESET);

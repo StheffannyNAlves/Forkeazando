@@ -3,6 +3,8 @@ package br.uefs.forkeazando.dao;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
+import br.uefs.forkeazando.model.Colecionavel;
+import br.uefs.forkeazando.model.Conquista;
 import br.uefs.forkeazando.model.Progresso;
 import com.google.gson.*;
 
@@ -62,27 +64,96 @@ public class GerenciadorProgresso {
         }
     }
 
-    private static void validar(JsonObject json) throws DadosInvalidosException{
-         if (json.has("finais") && !json.get("finais").isJsonObject()){
-             throw new DadosInvalidosException("Progresso Inválido: 'finais' deve ser um objeto");
-         }
 
-         if (!json.has("finais")){
-             return;
-         }
-         JsonObject finais = json.getAsJsonObject("finais");
+    private static void validar(JsonObject json) throws DadosInvalidosException {
+        validarMapaDeDatas(json, "finais");
+        validarMapaDeDatas(json, "colecao");
+        validarMapaDeDatas(json, "conquistas");
 
-         for (String flag : finais.keySet()){
-             JsonElement valor = finais.get(flag);
-             if (!valor.isJsonPrimitive() || !valor.getAsJsonPrimitive().isString())
-                 throw new DadosInvalidosException("Progresso inválido: data inválida para " + flag);
-             try {
-                 LocalDateTime.parse(valor.getAsString());
-             } catch (DateTimeParseException e){
-                 throw new DadosInvalidosException("Progresso inválido: data inválida para " + flag);
-             }
-         }
+        validarChavesColecao(json);
+        validarChavesConquistas(json);
     }
+
+    private static void validarMapaDeDatas(JsonObject json, String nomeCampo) throws DadosInvalidosException {
+        if (!json.has(nomeCampo)) {
+            return; // Compatibilidade com saves antigos
+        }
+        JsonElement elemento = json.get(nomeCampo);
+
+        if (elemento == null || !elemento.isJsonObject()) {
+            throw new DadosInvalidosException(
+                    "Progresso inválido: '" + nomeCampo + "' deve ser um objeto"
+            );
+        }
+
+        JsonObject mapa = elemento.getAsJsonObject();
+
+        for (String chave : mapa.keySet()) {
+            JsonElement valor = mapa.get(chave);
+
+            if (valor == null || !valor.isJsonPrimitive()
+                    || !valor.getAsJsonPrimitive().isString()) {
+                throw new DadosInvalidosException(
+                        "Progresso inválido: data inválida para " + chave
+                );
+            }
+
+            try {
+                LocalDateTime.parse(valor.getAsString());
+            } catch (DateTimeParseException e) {
+                throw new DadosInvalidosException(
+                        "Progresso inválido: data inválida para " + chave
+                );
+            }
+        }
+    }
+
+    private static void validarChavesColecao(JsonObject json)
+            throws DadosInvalidosException {
+
+        if (!json.has("colecao")) {
+            return;
+        }
+
+        JsonElement elemento = json.get("colecao");
+        if (elemento == null || !elemento.isJsonObject()) {
+            return; // validarMapaDeDatas já rejeita esse formato
+        }
+
+        JsonObject colecao = elemento.getAsJsonObject();
+
+        for (String flag : colecao.keySet()) {
+            if (Colecionavel.porFlag(flag).isEmpty()) {
+                throw new DadosInvalidosException(
+                        "Progresso inválido: colecionável desconhecido: " + flag
+                );
+            }
+        }
+    }
+
+    private static void validarChavesConquistas(JsonObject json)
+            throws DadosInvalidosException {
+
+        if (!json.has("conquistas")) {
+            return;
+        }
+
+        JsonElement elemento = json.get("conquistas");
+        if (elemento == null || !elemento.isJsonObject()) {
+            return; // validarMapaDeDatas já rejeita esse formato
+        }
+
+        JsonObject conquistas = elemento.getAsJsonObject();
+
+        for (String codigo : conquistas.keySet()) {
+            if (Conquista.porCodigo(codigo).isEmpty()) {
+                throw new DadosInvalidosException(
+                        "Progresso inválido: conquista desconhecida: " + codigo
+                );
+            }
+        }
+    }
+
 
     public void salvar(Progresso progresso) throws SaveException{
         if (arquivoCorrompido){

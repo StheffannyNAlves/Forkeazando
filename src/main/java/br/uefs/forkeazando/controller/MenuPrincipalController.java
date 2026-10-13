@@ -90,7 +90,10 @@ public class MenuPrincipalController {
             view.mostrarMensagem(Cores.VERMELHO + "Progresso indisponível. Verifique o arquivo saves/progresso.json." + Cores.RESET);
             return;
         }
-        new ProgressoView().mostrar(progresso);
+
+        ProgressoView progressoView = new ProgressoView();
+        progressoView.mostrarProgresso(progresso);
+        progressoView.mostrarConquistas(progresso);
     }
 
     private void processarOpcao(String opcao) {
@@ -182,38 +185,42 @@ public class MenuPrincipalController {
             return;
         }
 
-        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView()).iniciar();
+        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView(), progresso, gerenciadorProgresso).iniciar();
 
-        if (resultado == ResultadoPartida.FIM_DE_JOGO) {
+        if (resultado == ResultadoPartida.FIM_DE_JOGO
+                || resultado == ResultadoPartida.VOLTAR_AO_MENU) {
             registrarProgresso();
-            partidaAtual = null;
+
+            if (resultado == ResultadoPartida.FIM_DE_JOGO) {
+                partidaAtual = null;
+            }
         }
     }
 
     private void registrarProgresso() {
-        if (progresso == null) {
-            view.mostrarMensagem(Cores.VERMELHO
-                    + "Progresso indisponível. Verifique o arquivo saves/progresso.json."
-                    + Cores.RESET);
+        if (progresso == null || partidaAtual == null) {
+            view.mostrarMensagem(Cores.VERMELHO + "Progresso indisponível. Verifique o arquivo saves/progresso.json." + Cores.RESET);
             return;
         }
+
         Protagonista protagonista = partidaAtual.getProtagonista();
+        LocalDateTime agora = LocalDateTime.now();
 
-        boolean novoFinal = progresso.sincronizarFinais(
-                protagonista, LocalDateTime.now()
-        );
-
-        if (!novoFinal) {
-            return;
-        }
+        boolean novoFinal = progresso.sincronizarFinais(protagonista, agora);
+        boolean novaColecao = progresso.sincronizarColecao(protagonista, agora);
 
         try {
             gerenciadorProgresso.salvar(progresso);
-            view.mostrarMensagem(Cores.VERDE + "Novo final desbloqueado!" + Cores.RESET);
+
+            if (novoFinal) {
+                view.mostrarMensagem(Cores.VERDE + "Novo final desbloqueado!" + Cores.RESET);
+            }
+
+            if (novaColecao) {
+                view.mostrarMensagem(Cores.VERDE + "Coleção atualizada!" + Cores.RESET);
+            }
         } catch (SaveException e) {
-            view.mostrarMensagem(Cores.VERMELHO + "O final foi reconhecido, mas não foi possível "
-                            + "salvar o histórico: " + e.getMessage() + Cores.RESET
-            );
+            view.mostrarMensagem(Cores.VERMELHO + "Não foi possível salvar o progresso global: " + e.getMessage() + Cores.RESET);
         }
     }
 

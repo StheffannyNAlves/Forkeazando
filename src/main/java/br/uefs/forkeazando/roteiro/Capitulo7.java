@@ -13,6 +13,22 @@ public class Capitulo7 {
     public static List<Cena> criarCenas() {
         List<Cena> cenas = new ArrayList<>();
 
+        Cena cena599 = new Cena(599, "Capítulo 7", "Narrador",
+                "O semestre avança.\n\n" +
+                        "O TCC precisa sair do papel. O caminho depende " +
+                        "das escolhas que você fez até aqui.");
+
+        cena599.adicionarEscolha(new Escolha.Builder("Continuar.", 601)
+                .comFlagRequerida("trilha_ic").build());
+
+        cena599.adicionarEscolha(new Escolha.Builder("Continuar.", 602)
+                .comFlagRequerida("trilha_dtec").build());
+
+        cena599.adicionarEscolha(new Escolha.Builder("Continuar.", 603)
+                .comFlagRequerida("trilha_indep").build());
+
+        cenas.add(cena599);
+
         Cena cena600 = new Cena(600, "Capítulo 7 — A Última Prova", "Narrador",
                 "Último semestre.\n\n" +
                         "TCC.\n\n" +
@@ -23,40 +39,40 @@ public class Capitulo7 {
                         "(Título.)\n\n" +
                         "(Eu preciso escrever o título.)\n\n" +
                         "(Por onde se começa isso?)");
-        cena600.adicionarEscolha(new Escolha.Builder("Uma página por dia.", 601)
+        cena600.adicionarEscolha(new Escolha.Builder("Uma página por dia.", 599)
                 .comCustoEnergia(15)
                 .comFlagConcedida("cap7_tcc_planejou")
                 .build());
-        cena600.adicionarEscolha(new Escolha.Builder("Tudo de uma vez.", 601)
+        cena600.adicionarEscolha(new Escolha.Builder("Tudo de uma vez.", 599)
                 .comCustoEnergia(40).build());
-        cena600.adicionarEscolha(new Escolha.Builder("Começar amanhã.", 601)
+        cena600.adicionarEscolha(new Escolha.Builder("Começar amanhã.", 599)
                 .comFlagConcedida("cap7_procrastinou").build());
-        cena600.adicionarEscolha(new Escolha.Builder("Enfrentar tudo. Café e ódio.", 601)
+        cena600.adicionarEscolha(new Escolha.Builder("Enfrentar tudo. Café e ódio.", 599)
                 .comEnergiaAbaixoDe(20)
                 .comCustoEnergia(-30)
                 .comAtributo("confianca", -5).build());
         cena600.adicionarEscolha(new Escolha.Builder(
-                "Você senta. Escreve. Só tem trabalho.", 601)
+                "Você senta. Escreve. Só tem trabalho.", 599)
                 .comSanidadeMinima(6)
                 .comCustoEnergia(20)
                 .comAtributo("confianca", 2).build());
         cena600.adicionarEscolha(new Escolha.Builder(
-                "Dividir em capítulos. Um por semana.", 601)
+                "Dividir em capítulos. Um por semana.", 599)
                 .comFlagRequerida("perfil_perfeccionista")
                 .comCustoEnergia(20)
                 .comAtributo("confianca", 2).build());
-        cena600.adicionarEscolha(new Escolha.Builder("Escrever na véspera.", 601)
+        cena600.adicionarEscolha(new Escolha.Builder("Escrever na véspera.", 599)
                 .comFlagRequerida("perfil_pratico")
                 .comCustoEnergia(35)
                 .comAtributo("confianca", -1)
                 .comFlagConcedida("cap7_tcc_improvisou").build());
         cena600.adicionarEscolha(new Escolha.Builder(
-                "Você senta. Abre o documento. Escreve a primeira frase.", 601)
+                "Você senta. Abre o documento. Escreve a primeira frase.", 599)
                 .comConfiancaMinima(6)
                 .comCustoEnergia(20)
                 .comAtributo("confianca", 1).build());
         cena600.adicionarEscolha(new Escolha.Builder(
-                "Abre. Fecha. Abre de novo.", 601)
+                "Abre. Fecha. Abre de novo.", 599)
                 .comConfiancaMaxima(3)
                 .comAtributo("confianca", -1)
                 .comFlagConcedida("cap7_procrastinou").build());

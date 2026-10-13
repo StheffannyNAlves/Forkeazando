@@ -7,9 +7,9 @@ import br.uefs.forkeazando.model.PersonagemSecundario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class Capitulo1 {
-
     public static List<Cena> criarCenas() {
         List<Cena> cenas = new ArrayList<>();
 
@@ -213,33 +213,62 @@ public class Capitulo1 {
                         "e arrependimento.");
 
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Ler o datasheet. Sozinha. Com calma.", 6)
+                "Ler o datasheet. Sozinha. Com calma.", 16)
                 .comScoreGanho(5).comCustoEnergia(15)
                 .comFlagConcedida("hab_foco_total")
                 .comAtributo("confianca", 2).build());
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Ajudar o pessoal do lado. Já queimaram dois.", 6)
+                "Ajudar o pessoal do lado. Já queimaram dois.", 16)
                 .comScoreGanho(3).comCustoEnergia(20)
                 .comRelacionamento(PersonagemSecundario.DANDARA, 2f).build());
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Ficar no celular. Alguém vai resolver.", 6)
+                "Ficar no celular. Alguém vai resolver.", 16)
                 .comCustoEnergia(5).build());
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Copiar o esquema do grupo da frente.", 6)
+                "Copiar o esquema do grupo da frente.", 16)
                 .comFlagRequerida("traco_pragmatica")
                 .comScoreGanho(3)
                 .comFlagConcedida("item_esquema_copiado")
                 .comAtributo("confianca", -2).build());
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Anotar cada passo. Se der errado, refaz.", 6)
+                "Anotar cada passo. Se der errado, refaz.", 16)
                 .comFlagRequerida("perfil_perfeccionista")
                 .comScoreGanho(7).comCustoEnergia(25)
                 .comAtributo("confianca", 3).build());
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Você lê o datasheet em diagonal e já sabe onde tá o erro.", 6)
+                "Você lê o datasheet em diagonal e já sabe onde tá o erro.", 16)
                 .comLogicaMinima(6)
                 .comScoreGanho(7).comCustoEnergia(10).build());
         cenas.add(cena5);
+
+        // Cena intermediária: o jogador tem a oportunidade de coordenar
+        // uma pequena atividade antes do PBL principal.
+        Cena cena16 = new Cena(16, "Capítulo 1", "Narrador",
+                "Antes de começar o Problema 2, o tutor pede que o grupo organize " +
+                        "rapidamente o que acabou de acontecer na oficina.\n\n" +
+                        "'Em dois minutos: alguém resume o que funcionou, alguém anota " +
+                        "as observações e alguém organiza a ordem das ideias.'\n\n" +
+                        "As pessoas se entreolham. A tarefa é simples, mas alguém precisa " +
+                        "distribuir o trabalho.\n\n" +
+                        "(Você pode tomar a frente ou deixar outra pessoa conduzir.)");
+
+        cena16.adicionarEscolha(new Escolha.Builder(
+                "Assumir a coordenação e distribuir as tarefas.", 6)
+                .comFlagConcedida("ja_foi_coordenador")
+                .comScoreGanho(2).comParticipacaoGanha(2)
+                .comCustoEnergia(5).build());
+        cena16.adicionarEscolha(new Escolha.Builder(
+                "Anotar as observações enquanto outra pessoa organiza o grupo.", 6)
+                .comFlagConcedida("led_anotou_observacoes")
+                .comScoreGanho(2).comCustoEnergia(3).build());
+        cena16.adicionarEscolha(new Escolha.Builder(
+                "Ajudar com as ideias, sem assumir a liderança.", 6)
+                .comFlagConcedida("led_contribuiu_ideias")
+                .comScoreGanho(2).comCustoEnergia(3).build());
+        cena16.adicionarEscolha(new Escolha.Builder(
+                "Esperar que alguém tome a iniciativa.", 6)
+                .comCustoEnergia(1).build());
+        cenas.add(cena16);
 
         Cena cena6 = new Cena(6, "Capítulo 1", "Narrador",
                 "Sala 203. Mesa redonda. Quadro branco. Seis pessoas.\n\n" +
@@ -295,7 +324,7 @@ public class Capitulo1 {
         cena7.adicionarEscolha(new Escolha.Builder("Voltar pra oficina.", 8)
                 .comCustoEnergia(10).build());
         cena7.adicionarEscolha(new Escolha.Builder("Ir ver o grupo de pesquisa.", 10).build());
-        cena7.adicionarEscolha(new Escolha.Builder("Módulo 8.", 12)
+        cena7.adicionarEscolha(new Escolha.Builder("Módulo 8.", 13)
                 .comScoreMinimo(7).comCustoEnergia(-10).build());
         cena7.adicionarEscolha(new Escolha.Builder(
                 "Enfrentar tudo. Café e ódio.", 8)

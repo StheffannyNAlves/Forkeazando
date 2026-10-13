@@ -81,6 +81,7 @@ public class Escolha  {
     public String getTextoAlternativa() { return textoAlternativa; }
     public int getCenaDestinoId()       { return cenaDestinoId; }
     public List<String> getFlagsConcedidas()    { return flagsConcedidas; }
+    public String getFlagRequerida() { return flagRequerida; }
     public int getParticipacaoGanha()   { return participacaoGanha; }
     public int getScoreGanho()          { return scoreGanho; }
     public int getCustoEnergia()        { return custoEnergia; }

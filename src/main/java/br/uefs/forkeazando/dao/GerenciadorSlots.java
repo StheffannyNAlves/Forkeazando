@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
-
+// Tenta unificar com o gerenciadorsave
 
 public class GerenciadorSlots {
 

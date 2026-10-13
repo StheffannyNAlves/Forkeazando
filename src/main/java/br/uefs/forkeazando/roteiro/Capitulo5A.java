@@ -20,16 +20,14 @@ public class Capitulo5A {
                         "A reunião dura quarenta minutos. Ele fala de prazo, de cronograma, " +
                         "de artigo atrasado. Você entende metade.\n\n" +
                         "Você anota tudo.");
-        cena400.adicionarEscolha(new Escolha.Builder(
-                "Falar meu nome e o que eu sei fazer.", 401)
-                .comAtributo("carisma", 2)
+        cena400.adicionarEscolha(new Escolha.Builder("Falar meu nome e o que eu sei fazer.", 402).comAtributo("carisma", 2)
                 .comRelacionamento(PersonagemSecundario.ORIENTADOR_IC, 2f)
                 .comInteresseAlvo(PersonagemSecundario.Interesse.RECONHECIMENTO).build());
         cena400.adicionarEscolha(new Escolha.Builder(
-                "Ficar quieta e anotar. Você vai provar pelo trabalho.", 401)
+                "Ficar quieta e anotar. Você vai provar pelo trabalho.", 402)
                 .comCustoEnergia(10).build());
         cena400.adicionarEscolha(new Escolha.Builder(
-                "Você senta no canto. Ninguém nota que você chegou.", 401)
+                "Você senta no canto. Ninguém nota que você chegou.", 402)
                 .comParticipacaoMaxima(3)
                 .comCustoEnergia(5).build());
         cenas.add(cena400);

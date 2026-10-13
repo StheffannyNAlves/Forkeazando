@@ -17,12 +17,14 @@ public class CenasController {
     private final Estado estado;
     private final List<Cena> cenas;
     private final CenaView view;
+    private final GerenciadorConquistas gerenciadorConquistas = new GerenciadorConquistas();
 
     public CenasController(Estado estado, List<Cena> cenas, CenaView view) {
         this.estado = estado;
         this.cenas = cenas;
         this.view = view;
     }
+
 
     public ResultadoPartida iniciar() {
         boolean jogando = true;
@@ -61,13 +63,39 @@ public class CenasController {
                 continue;
             }
 
-            view.exibirEscolhas(disponiveis);
 
-            int indice = Entrada.lerInteiro(0, disponiveis.size());
-            if (indice == 0){
+            view.exibirEscolhas(disponiveis);
+            view.mostrarMensagem("G - Abrir galeria | 0 - Voltar ao menu");
+
+            String entrada = Entrada.lerLinha();
+
+            if (entrada.equalsIgnoreCase("G")) {
+                view.mostrarGaleria(estado.getProtagonista());
+                // Ao voltar da galeria, continua a leitura nesta mesma cena.
+                view.exibirEscolhas(disponiveis);
+                view.mostrarMensagem("G - Abrir galeria | 0 - Voltar ao menu");
+                entrada = Entrada.lerLinha();
+            }
+
+            int indice;
+            try {
+                indice = Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                view.mostrarMensagem("Opção inválida.");
+                continue;
+            }
+
+            if (indice == 0) {
                 return ResultadoPartida.VOLTAR_AO_MENU;
             }
+
+            if (indice < 1 || indice > disponiveis.size()) {
+                view.mostrarMensagem("Opção inválida.");
+                continue;
+            }
+
             Escolha escolhida = disponiveis.get(indice - 1);
+
             aplicarEscolha(escolhida);
 
             if (escolhida.getCenaDestinoId() == Estado.CENA_ENCERRAR) {
@@ -148,6 +176,7 @@ public class CenasController {
         }
 
         notificaNovasFlags(p, tamanhoListaAntes);
+        gerenciadorConquistas.verificar(p, view::mostrarConquista);
     }
 
     private void notificaNovasFlags(Protagonista p, int tamanhoAntes) {

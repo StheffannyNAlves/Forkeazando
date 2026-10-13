@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 // Só se preocupa em gravar o conteudo num arquivo temporário, tentar a substituição e lidar com falha de escrita e movimentação
+// Revisar essa classe, será que é realmente necessária? <- meus lembretes
 public class ArquivoAtomico {
 
     private ArquivoAtomico(){}

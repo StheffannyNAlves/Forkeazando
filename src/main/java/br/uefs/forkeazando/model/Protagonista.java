@@ -184,6 +184,12 @@ public class Protagonista {
         return score >= scoreMin && participacao >= participacaoMin;
     }
 
+    public long contarRelacionamentos(NivelRelacionamento nivel){
+        return relacionamentos.values().stream()
+                .filter(pontos -> categorizarRelacionamento(pontos) == nivel)
+                .count();
+    }
+
     public String getRank() {
         if (score < 10) return "Calouro Perdido";
         if (score < 25) return "Estagiário do Caos";

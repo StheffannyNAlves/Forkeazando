@@ -35,8 +35,8 @@ public class Capitulo2 {
         cena101.adicionarEscolha(new Escolha.Builder("Ir no CA.", 102).build());
         cena101.adicionarEscolha(new Escolha.Builder("Ir na assembleia do DCE.", 105).build());
         cena101.adicionarEscolha(new Escolha.Builder("Ir no grupo de software.", 108).build());
-        cena101.adicionarEscolha(new Escolha.Builder("Anotar os três e decidir depois.", 111)
-                .comFlagConcedida("indecisa").build());
+        cena101.adicionarEscolha(new Escolha.Builder("Anotar os três e decidir depois.", 111).comFlagConcedida("indecisa").build());
+        cena101.adicionarEscolha(new Escolha.Builder("Ir na Feira de Graduação, no Módulo 3.", 116).build());
         cenas.add(cena101);
 
         Cena cena102 = new Cena(102, "Capítulo 2", "Narrador",

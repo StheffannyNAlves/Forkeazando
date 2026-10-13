@@ -1,9 +1,6 @@
 package br.uefs.forkeazando.view;
 
-import br.uefs.forkeazando.model.Cena;
-import br.uefs.forkeazando.model.Escolha;
-import br.uefs.forkeazando.model.PersonagemSecundario;
-import br.uefs.forkeazando.model.Protagonista;
+import br.uefs.forkeazando.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,6 +61,45 @@ public class CenaView {
 //        System.out.print("\033[u");
 //        System.out.flush();
 //    }
+
+
+    public void mostrarGaleria(Protagonista protagonista) {
+        List<String> flags = protagonista.getHistoricoFlags();
+
+        System.out.println("\n========== GALERIA ==========");
+        System.out.println("\n--- HABILIDADES ---");
+
+        boolean encontrou = false;
+
+        for (String flag : flags) {
+            if (flag.startsWith("hab_")) {
+                mostrarHabilidade(flag);
+                encontrou = true;
+            }
+        }
+
+        if (!encontrou) {
+            System.out.println("Nenhuma habilidade desbloqueada ainda.");
+        }
+
+        System.out.println("\n--- ITENS ---");
+        encontrou = false;
+
+        for (String flag : flags) {
+            if (flag.startsWith("item_")) {
+                mostrarItem(flag);
+                encontrou = true;
+            }
+        }
+
+        if (!encontrou) {
+            System.out.println("Nenhum item conquistado ainda.");
+        }
+
+        System.out.println("\n=============================");
+        System.out.println("Pressione ENTER para voltar...");
+    }
+
     public void renderizar(Cena cena, Protagonista p) {
         Entrada.permitirPausa(true);
         try {
@@ -158,6 +194,15 @@ public class CenaView {
         System.out.println(Cores.CIANO + "  ╰───────────────────────────────────╯" + Cores.RESET);
         System.out.println();
     }
+
+
+    public void mostrarConquista(Conquista conquista) {
+        mostrarMensagem(
+                "\n🏆 CONQUISTA DESBLOQUEADA: " + conquista.getTitulo()
+                        + "\n" + conquista.getDescricao()
+        );
+    }
+
 
 //    public void iniciarAnimacaoPause(Protagonista p) {
 //        Thread animacao = new Thread(() -> {
@@ -402,7 +447,10 @@ public class CenaView {
                             "O currículo cresceu. A dúvida também. Você ainda não sabe " +
                             "se fez a escolha certa. Pelo menos agora sabe que escolhas " +
                             "convenientes também têm consequências.");}
-        if (p.temFlag("rivalidade_sistema")) {
+        if (Protagonista.categorizarRelacionamento(
+                p.getRelacionamento(PersonagemSecundario.DANDARA))
+                == Protagonista.NivelRelacionamento.RIVAL) {
+
             renderizarEpilogo("DANDARA",
                     "Dandara passou num concurso. Postou no LinkedIn, ganhou 200 " +
                             "curtidas, e depois sumiu por três meses. Você acha que ela " +
@@ -411,6 +459,7 @@ public class CenaView {
                             "Agora você consegue olhar pra própria trajetória sem precisar " +
                             "transformar a dela numa disputa.");
         }
+
         if (p.temFlag("cap3_colou_de_fato") || p.temFlag("bia_ainda_vende")) {
             renderizarEpilogo("BIA",
                     "Bia ainda vende resposta antiga. Só que agora é num site " +

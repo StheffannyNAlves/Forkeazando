@@ -2,5 +2,6 @@ package br.uefs.forkeazando.controller;
 
 public enum ResultadoPartida {
     FIM_DE_JOGO,
-    VOLTAR_AO_MENU
+    VOLTAR_AO_MENU,
+    ERRO_DE_ROTA
 }

@@ -4,6 +4,7 @@ import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
+import br.uefs.forkeazando.model.Protagonista;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +16,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
-// Tenta unificar com o gerenciadorsave
 
 public class GerenciadorSlots {
 
@@ -81,6 +81,9 @@ public class GerenciadorSlots {
             try {
                 Estado estado = GerenciadorSave.carregar(arquivo);
                 String nome = estado.getProtagonista().getNome();
+
+                Protagonista p = estado.getProtagonista();
+
                 int capitulo = estado.getCapituloAtual();
                 FileTime tempoArquivo = Files.getLastModifiedTime(arquivo);
                 LocalDateTime data = tempoArquivo.toInstant()
@@ -91,6 +94,11 @@ public class GerenciadorSlots {
                         + " | " + nome
                         + " | Capítulo " + capitulo
                         + " | " + data.format(formato)
+                        + "   Score: " + p.getScore() + "/100"
+                        + " | Participação: " + p.getParticipacao() + "/100"
+                        + " | Rank: " + p.getRank()
+                        + " | Energia: " + p.getEnergia()
+                        + "/" + p.getEnergiaMaxima()
                 );
             } catch (CarregamentoException | DadosInvalidosException | IOException e){
                 linhas.add("Slot " + i + " - Corrompido");

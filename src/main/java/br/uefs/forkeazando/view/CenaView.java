@@ -82,6 +82,10 @@ public class CenaView {
     }
 
     public void renderizar(Cena cena, Protagonista p) {
+        renderizar(cena, p, p.temFlag("cap6_trancou") ? 1 : 0);
+    }
+
+    public void renderizar(Cena cena, Protagonista p, int semestresExtras) {
         Entrada.permitirPausa(true);
         try {
             String corTexto = corPorFalante(cena.getPersonagemFalando());
@@ -103,6 +107,41 @@ public class CenaView {
                     mostrarAprovacao();
                     continue;
                 }
+
+                if (paragrafo.equals("{{CALENDARIO_CAP7}}")) {
+                    String textoCalendario;
+                    if (semestresExtras > 0) {
+                        String unidade = semestresExtras == 1 ? "semestre" : "semestres";
+                        textoCalendario = "O trancamento acrescentou " + semestresExtras + " " + unidade
+                                + " ao seu calendário. O registro guarda a data, mas não explica "
+                                + "o que tornou a pausa necessária.";
+                    } else {
+                        textoCalendario = "Você continuou no calendário previsto. Isso não significa "
+                                + "que a crise tenha passado sem deixar marcas na sua relação com o tempo.";
+                    }
+                    for (String linha : quebrarLinha(textoCalendario, LARGURA - 4)) {
+                        imprimirLinha(linha, Cores.CINZA);
+                    }
+                    continue;
+                }
+
+                if (paragrafo.equals("{{CALENDARIO_CAP8}}")) {
+                    String textoCalendario;
+                    if (semestresExtras > 0) {
+                        String unidade = semestresExtras == 1 ? "semestre" : "semestres";
+                        textoCalendario = "Sua formatura chegou depois do calendário inicial, com "
+                                + semestresExtras + " " + unidade + " extra(s) registrado(s). "
+                                + "O histórico mostra o tempo, mas não tudo o que você precisou reorganizar.";
+                    } else {
+                        textoCalendario = "Você chegou à formatura no calendário previsto. Isso não quer dizer "
+                                + "que o caminho tenha sido simples ou que você tenha atravessado tudo sem pausa.";
+                    }
+                    for (String linha : quebrarLinha(textoCalendario, LARGURA - 4)) {
+                        imprimirLinha(linha, Cores.CINZA);
+                    }
+                    continue;
+                }
+
                 if (paragrafo.isBlank()) {
                     imprimirLinha("", corTexto);
                     continue;
@@ -116,14 +155,14 @@ public class CenaView {
                 for (String linhaQuebrada : quebrarLinha(paragrafo, LARGURA - 4)) {
                     imprimirLinha(linhaQuebrada, corLinha);
                     if (ehPensamento && linhaQuebrada.length() < 25) {
-                       dormir(400);
+                        dormir(400);
                     }
                 }
             }
             System.out.println(Cores.CIANO + "╚" + "═".repeat(LARGURA) + "╝" + Cores.RESET);
-    } finally {
-        Entrada.permitirPausa(false);
-      }
+        } finally {
+            Entrada.permitirPausa(false);
+        }
     }
 
 
@@ -160,8 +199,8 @@ public class CenaView {
 
     public void mostrarHabilidade(String flag) {
         String nome = Colecionavel.porFlag(flag)
-                        .map(Colecionavel::getNome)
-                                .orElse(flag);
+                .map(Colecionavel::getNome)
+                .orElse(flag);
         System.out.println();
         System.out.println(Cores.MAGENTA + "  ╭─ NOVA HABILIDADE ─────────────────╮" + Cores.RESET);
         System.out.println(Cores.MAGENTA + "  │  " + nome + Cores.RESET);
@@ -305,104 +344,8 @@ public class CenaView {
         DesempenhoAcademico desempenho = avaliarDesempenhoAcademico(p);
         System.out.println();
 
-
-        if (p.temFlag("trilha_ic")) {
-            switch (desempenho) {
-                case DIFICULDADE -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você trabalha com segurança de sistemas. O contrato " +
-                                "é temporário, o salário não é grande coisa e a pesquisa " +
-                                "ainda parece distante do que você imaginava.\n\n" +
-                                "Você continua fazendo perguntas, mas nem sempre encontra " +
-                                "alguém disposto a ouvir as respostas. Às vezes, se pergunta " +
-                                "se era isso mesmo que queria.\n\n" +
-                                "Você ainda não chegou onde esperava. Mas sabe investigar, " +
-                                "reconhecer um erro e começar de novo. Isso ninguém pode " +
-                                "tirar do que você aprendeu.");
-
-                case RECUPERACAO -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você trabalha com segurança de sistemas. Empresa média, " +
-                                "carteira assinada, salário ok. Você ainda pesquisa, só que " +
-                                "agora é pago.\n\n" +
-                                "Nem todo projeto dá certo. Nem toda hipótese se confirma. " +
-                                "Você aprendeu que pesquisar não é provar que estava certa: " +
-                                "é descobrir o que os resultados realmente dizem.\n\n" +
-                                "Ainda tem muito que aprender. A diferença é que agora " +
-                                "você não precisa saber tudo para continuar.");
-
-                case DESTAQUE -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você trabalha com segurança de sistemas. Tem seu salário, " +
-                                "seus projetos e uma pesquisa que já não depende apenas " +
-                                "de alguém acreditar no seu potencial.\n\n" +
-                                "Você aprendeu a defender suas ideias sem tratar cada " +
-                                "discordância como uma derrota. Aprendeu também a reconhecer " +
-                                "quando estava errada e a continuar investigando.\n\n" +
-                                "No começo, você queria provar que era capaz. Hoje, " +
-                                "está ocupada demais fazendo perguntas melhores.");
-            }
-        } else if (p.temFlag("trilha_dtec")) {
-            switch (desempenho) {
-                case DIFICULDADE -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você trabalha com sistemas embarcados. Os contratos " +
-                                "são curtos, os prazos são apertados e tem dia em que " +
-                                "uma placa que funcionava ontem resolve não funcionar hoje.\n\n" +
-                                "Você ainda duvida da própria capacidade quando precisa " +
-                                "pedir ajuda ou admitir que não encontrou o defeito.\n\n" +
-                                "Mas continua tentando entender o que aconteceu, em vez " +
-                                "de fingir que sabe. Por enquanto, é assim que você " +
-                                "segue construindo seu espaço.");
-
-                case RECUPERACAO -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você trabalha com sistemas embarcados. Empresa de hardware, " +
-                                "Salvador, café ruim. Você mexe com placa todo dia. Foi a " +
-                                "coisa que você escolheu no primeiro semestre, sem saber " +
-                                "que tava escolhendo.\n\n" +
-                                "Já queimou horas procurando um defeito que estava num fio " +
-                                "solto. Já precisou pedir ajuda. Já voltou pra casa pensando " +
-                                "no que poderia ter feito diferente.\n\n" +
-                                "Você ainda não sabe tudo. Mas agora sabe que consegue " +
-                                "aprender o que falta.");
-
-                case DESTAQUE -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você trabalha com sistemas embarcados. Empresa de hardware, " +
-                                "Salvador, café ruim. Tem projeto que leva semanas e defeito " +
-                                "que só aparece quando tudo parece pronto.\n\n" +
-                                "Você já consegue olhar para um problema, separar as " +
-                                "possibilidades e descobrir por onde começar. E, quando " +
-                                "não consegue resolver sozinha, sabe que pedir ajuda " +
-                                "também faz parte do trabalho.\n\n" +
-                                "No primeiro semestre, você escolheu essa área sem saber " +
-                                "direito o que estava escolhendo. Agora sabe por que ficou.");
-            }
-        } else if (p.temFlag("trilha_indep")) {
-            switch (desempenho) {
-                case DIFICULDADE -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você não tem emprego fixo. Tem clientes. Alguns pagam; " +
-                                "outros desaparecem antes de acertar a conta.\n\n" +
-                                "Você sabe fazer o trabalho. O difícil é conseguir viver " +
-                                "dele. Tem orçamento aberto na tela, mensagens sem resposta " +
-                                "e uma conta vencendo amanhã.\n\n" +
-                                "Você chegou até aqui, mas ainda não chegou à estabilidade " +
-                                "que queria. Amanhã vai precisar tentar de novo.");
-
-                case RECUPERACAO -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você não tem emprego fixo. Tem clientes, alguns bons " +
-                                "e outros que dão trabalho demais pelo que pagam.\n\n" +
-                                "Já aprendeu a cobrar antes e a desconfiar de promessa " +
-                                "vaga. Nem sempre consegue colocar isso em prática.\n\n" +
-                                "A conta do mês quase fecha. Você ainda está aprendendo " +
-                                "a construir uma carreira sem deixar que a instabilidade " +
-                                "decida tudo por você.");
-
-                case DESTAQUE -> renderizarEpilogo("O QUE VOCÊ VIROU",
-                        "Você não tem emprego. Tem clientes. Uns pagam bem. " +
-                                "Uns somem. Você aprendeu a cobrar antes e a dizer não.\n\n" +
-                                "Hoje, escolhe melhor os projetos que aceita. Ainda " +
-                                "existem meses ruins, mas eles já não decidem tudo " +
-                                "por você.\n\n" +
-                                "Não foi a carreira mais segura. Foi uma carreira " +
-                                "que você construiu. E agora sabe melhor como sustentá-la.");
-            }
-        }
+        mostrarRetrospectivaTrilha(p, desempenho);
+        mostrarEcosDosCapitulos(p);
         mostrarPerfilAcademico(p);
         mostrarEvolucaoPerfil(p);
         if (p.temFlag("mentoria_caio")) {
@@ -549,10 +492,299 @@ public class CenaView {
                         "da história.\n\n" +
                         "A próxima não vem com gabarito.");
 
+        mostrarEcoDaRespostaInicial(p);
+        mostrarFuturoEscolhido(p);
         System.out.println(Cores.CIANO + "[ Pressione ENTER para encerrar. ]" + Cores.RESET);
         Entrada.lerLinha();
     }
 
+
+    private void mostrarRetrospectivaTrilha(Protagonista p, DesempenhoAcademico desempenho) {
+        if (p.temFlag("trilha_ic")) {
+            String texto = switch (desempenho) {
+                case DIFICULDADE -> "A iniciação científica foi sua primeira aproximação com perguntas sem resposta pronta. " +
+                        "Nem sempre você teve tempo, orientação ou estabilidade para avançar como queria. " +
+                        "Ainda assim, aprendeu a separar uma hipótese de uma certeza e a reconhecer o que não sabe.";
+                case RECUPERACAO -> "Na iniciação científica, você descobriu que pesquisar não é provar que estava certa; " +
+                        "é investigar o que os resultados sustentam. Aprendeu a revisar uma hipótese e a pedir que outra " +
+                        "pessoa olhe para o que você não percebeu.";
+                case DESTAQUE -> "A iniciação científica ajudou você a formular perguntas melhores e defender uma ideia " +
+                        "sem transformar toda discordância em derrota. Você também aprendeu a reconhecer quando os dados " +
+                        "obrigam a mudar de rumo.";
+            };
+            renderizarEpilogo("O QUE A PESQUISA DEIXOU", texto);
+        } else if (p.temFlag("trilha_dtec")) {
+            String texto = switch (desempenho) {
+                case DIFICULDADE -> "A experiência de monitoria e ensino colocou você diante de pessoas que não aprendiam " +
+                        "no mesmo ritmo. Nem sempre você soube explicar; algumas vezes precisou admitir que também não sabia. " +
+                        "Isso faz parte de ensinar e de construir coisas.";
+                case RECUPERACAO -> "A trilha prática ensinou você a decompor problemas, testar possibilidades e explicar " +
+                        "o raciocínio sem esconder as tentativas que falharam. Você aprendeu que pedir outra opinião é parte do processo.";
+                case DESTAQUE -> "Na trilha de ensino e prática, você aprendeu que saber fazer e conseguir explicar são " +
+                        "habilidades diferentes. As duas podem ajudar uma equipe a sair de um problema que parecia travado.";
+            };
+            renderizarEpilogo("O QUE A PRÁTICA DEIXOU", texto);
+        } else if (p.temFlag("trilha_indep") || p.temFlag("trilha_indefinida")) {
+            String texto = switch (desempenho) {
+                case DIFICULDADE -> "O caminho independente colocou você diante de orçamento, prazo e cliente antes de haver " +
+                        "garantia de estabilidade. Você aprendeu trabalho técnico, mas descobriu que sustentar o trabalho também " +
+                        "exige negociação, organização e uma rede de apoio.";
+                case RECUPERACAO -> "Projetos independentes ensinaram você a traduzir uma necessidade em escopo e a perceber " +
+                        "quando uma promessa está vaga. Nem sempre foi fácil defender seus limites, mas agora você reconhece " +
+                        "que eles precisam existir.";
+                case DESTAQUE -> "A trilha independente fortaleceu sua autonomia e também ensinou que autonomia não é fazer " +
+                        "tudo só. Você aprendeu a negociar, procurar parcerias e recusar um projeto que não se sustenta.";
+            };
+            renderizarEpilogo("O QUE A AUTONOMIA DEIXOU", texto);
+        }
+    }
+
+    private void mostrarEcosDosCapitulos(Protagonista p) {
+        StringBuilder texto = new StringBuilder();
+
+        // Capítulo 1: as primeiras estratégias continuam diferentes; não foram apagadas pelo diploma.
+        if (p.temFlag("hab_olho_edital")) {
+            texto.append("Na primeira semana, você aprendeu a guardar comprovantes e conferir instruções. " +
+                    "Esse cuidado não resolveu toda a burocracia, mas deu a você um ponto de apoio.\n\n");
+        } else if (p.temFlag("pediu_ajuda_grupo")) {
+            texto.append("Na primeira semana, você procurou orientação em vez de fingir que já conhecia o campus. " +
+                    "Pedir informação virou uma ferramenta, não uma confissão de incapacidade.\n\n");
+        } else if (p.temFlag("aceitou_caos")) {
+            texto.append("Na primeira semana, você resolveu seguir mesmo sem entender tudo. A adaptação ajudou, " +
+                    "embora depois tenha sido necessário aprender a se organizar.\n\n");
+        }
+
+// Capítulo 2: limitações e pequenas oportunidades afetam as escolhas que continuam possíveis.
+        if (p.temFlag("origem_apertada")) {
+            texto.append("Você também aprendeu que tempo e dinheiro não são variáveis abstratas. Ônibus, alimentação, " +
+                    "bolsa e trabalho mudaram o conjunto de escolhas que estava realmente ao seu alcance. " +
+                    "Isso não foi falta de esforço.\n\n");
+        }
+        if (p.temFlag("ignorou_email")) {
+            texto.append("Houve um aviso que você deixou passar. A universidade continuou funcionando como se todo mundo " +
+                    "tivesse recebido, lido e entendido a mensagem. Você aprendeu a procurar a informação — e também " +
+                    "que um sistema não deveria depender de um único e-mail.\n\n");
+        } else if (p.temFlag("item_vaga_estagio")) {
+            texto.append("Você investigou uma oportunidade de estágio antes de saber se ela caberia na sua rotina. " +
+                    "Descobriu que oportunidade também tem custo, prazo e condição de acesso.\n\n");
+        } else if (p.temFlag("ras_curiosa") || p.temFlag("tisp_interesse") || p.temFlag("wie_interesse")) {
+            texto.append("Você experimentou espaços e comunidades antes de saber exatamente onde cabia. Nem todo contato " +
+                    "virou projeto, mas alguns ajudaram a ampliar o que você imaginava possível.\n\n");
+        }
+
+// Capítulo 3: a integridade influencia como a protagonista lida depois com autoria e incerteza.
+        if (p.temFlag("cap3_colou_de_fato")) {
+            texto.append("Em uma avaliação, você cruzou uma linha para conseguir entregar. O resultado não desapareceu " +
+                    "da sua história só porque o semestre acabou. Você teve de lidar com a diferença entre escapar de " +
+                    "uma consequência e aprender com o que fez.\n\n");
+        } else if (p.temFlag("hab_palavra_honesta")) {
+            texto.append("Quando seria mais fácil esconder uma dúvida, você decidiu falar a verdade. Isso não resolveu " +
+                    "tudo de imediato, mas tornou possível decidir com base no que realmente estava acontecendo.\n\n");
+        }
+
+// Capítulo 4: a forma como a protagonista pesquisou as opções influencia como o final apresenta suas escolhas.
+        if (p.temFlag("cap4_leu_editais")) {
+            texto.append("Antes de escolher uma trilha, você leu os editais e tentou entender os critérios. " +
+                    "Nem toda regra estava escrita de um jeito útil, mas você aprendeu a procurar informação " +
+                    "antes de assumir um compromisso.\n\n");
+        } else if (p.temFlag("cap4_perguntou_alternativa") || p.temFlag("cap4_procurou_caio")) {
+            texto.append("Na hora de escolher uma trilha, você procurou outra pessoa e perguntou o que não entendia. " +
+                    "O conselho ajudou, mas a decisão e suas consequências continuaram sendo suas.\n\n");
+        }
+
+// Capítulo 5A: a primeira experiência com pesquisa deixou marcas, mesmo que o futuro escolhido mude.
+        if (p.temFlag("cap5a_liderou_artigo")) {
+            texto.append("No grupo de pesquisa, você assumiu a liderança de parte do artigo. Isso deu experiência e " +
+                    "visibilidade, mas também tornou mais concreto o problema de dividir tarefas e reconhecer autoria.\n\n");
+        } else if (p.temFlag("cap5a_perguntou_revisao")) {
+            texto.append("Na pesquisa, você pediu revisão em vez de tratar o primeiro rascunho como pronto. Aprendeu que " +
+                    "receber crítica pode fortalecer um trabalho, desde que haja espaço para discutir o que ela significa.\n\n");
+        } else if (p.temFlag("cap5a_saiu_grupo")) {
+            texto.append("Você saiu do grupo de pesquisa. A saída não apaga o que experimentou; ajudou a entender que " +
+                    "uma oportunidade só vale a pena se as condições de trabalho também fizerem sentido.\n\n");
+        }
+
+// Capítulo 5C: preço e escopo importam para a trajetória independente e continuam relevantes em outros caminhos.
+        if (p.temFlag("cap5c_pesquisou_preco")) {
+            texto.append("No primeiro freela, você pesquisou preços antes de apresentar uma proposta. Descobriu que cobrar " +
+                    "também envolve justificar o escopo e reconhecer o valor do próprio tempo.\n\n");
+        } else if (p.temFlag("cap5c_cobrou")) {
+            texto.append("No primeiro freela, você cobrou pelo trabalho sem ter certeza de como a outra pessoa reagiria. " +
+                    "O desconforto não prova que o preço estava errado; foi parte de aprender a conversar sobre valor.\n\n");
+        } else if (p.temFlag("cap5c_pediu_mais")) {
+            texto.append("No primeiro freela, você pediu mais pelo trabalho. A negociação não garantiu que tudo fosse fácil, " +
+                    "mas mostrou que a primeira oferta não precisa ser o limite da conversa.\n\n");
+        } else if (p.temFlag("cap5c_deixou_rolar")) {
+            texto.append("No primeiro freela, você deixou o valor em aberto e viu como a falta de um acordo claro cria " +
+                    "dúvidas depois. Aprendeu por experiência que escopo e pagamento precisam ser conversados cedo.\n\n");
+        }
+
+// Capítulo 7: as experiências com ensino e as decisões finais sobre o TCC podem influenciar diferentes trajetórias profissionais.
+        if (p.temFlag("cap7_dtec_deu_nota")) {
+            texto.append("Na monitoria, você precisou avaliar o trabalho de outra pessoa. Isso trouxe a responsabilidade " +
+                    "de explicar critérios e separar uma nota da pessoa que a recebe.\n\n");
+        } else if (p.temFlag("cap7_dtec_ultima_aula")) {
+            texto.append("Na última aula como monitora, você percebeu que ensinar também é reconhecer o que não cabe numa " +
+                    "explicação só. A experiência pode continuar útil, mesmo fora da sala de aula.\n\n");
+        }
+        if (p.temFlag("cap7_tcc_improvisou")) {
+            texto.append("Você terminou o TCC improvisando perto do prazo. O trabalho foi entregue, mas você lembra do custo " +
+                    "de deixar decisões difíceis para o último momento.\n\n");
+        } else if (p.temFlag("cap7_tcc_planejou")) {
+            texto.append("Você dividiu o TCC em etapas e acompanhou o que faltava. O plano não impediu mudanças, mas ajudou " +
+                    "a perceber os problemas antes que todos virassem urgência.\n\n");
+        }
+
+        // Capítulos 5B e 6: greve, apoio de pares e crise permanecem como parte da historia
+        if (p.temFlag("hab_sobreviveu_greve")) {
+            texto.append(p.temFlag("cap5b_dividiu_comida")
+                    ? "Na greve, você atravessou dias difíceis dividindo o que tinha. A lembrança não transforma a falta " +
+                    "de comida e de renda em uma aventura; mostra quem tentou se apoiar quando a estrutura falhou.\n\n"
+                    : "A greve mudou sua rotina e o calendário. Você continuou estudando, mas isso não significa que os " +
+                    "65 dias tenham sido simples ou que todo o custo tenha sido individual.\n\n");
+        }
+        if (p.temFlag("cap6_trancou")) {
+            texto.append("Você trancou um semestre. O calendário mudou, e a pausa teve um custo real, mas não apagou o que " +
+                    "você já tinha construído. Continuar depois não exigiu fingir que nada aconteceu.\n\n");
+        } else if (p.temFlag("cap6_continuou")) {
+            texto.append("Você continuou no semestre durante a crise. Isso não transforma sofrimento em mérito nem prova " +
+                    "que insistir seja sempre a única resposta possível. Foi a decisão que fez sentido naquele momento.\n\n");
+        }
+        if (p.temFlag("cap6_pediu_ajuda")) {
+            texto.append("Quando pediu ajuda, você deixou que outra pessoa soubesse o que estava acontecendo. O problema não " +
+                    "sumiu por causa disso, mas você não precisou carregar tudo em silêncio.\n\n");
+        }
+
+        if (!texto.isEmpty()) {
+            renderizarEpilogo("AS ESCOLHAS QUE CONTINUARAM COM VOCÊ", texto.toString().trim());
+        }
+    }
+
+    private void mostrarEcoDaRespostaInicial(Protagonista p) {
+        String texto;
+        if (p.temFlag("prologo_resposta_pratica") && p.temFlag("cap8_resposta_conviccao")) {
+            texto = "No começo, você respondeu que precisava daquele trabalho. Cinco anos depois, conseguiu dizer " +
+                    "que também o escolheu. A necessidade não deixou de existir; ela passou a dividir espaço com " +
+                    "uma decisão que você entende melhor.";
+        } else if (p.temFlag("prologo_resposta_conviccao") && p.temFlag("cap8_resposta_honesta")) {
+            texto = "No começo, você disse que tinha escolhido esse caminho. Anos depois, admitiu que ainda estava " +
+                    "descobrindo. As duas respostas podem ser verdadeiras: escolher não exige prometer que nunca vai mudar.";
+        } else if (p.temFlag("prologo_resposta_aberta") && p.temFlag("cap8_resposta_conviccao")) {
+            texto = "No começo, você não sabia explicar o que estava buscando. No fim, conseguiu defender uma escolha " +
+                    "sem precisar prometer que ela seria definitiva.";
+        } else if (p.temFlag("prologo_resposta_pratica") && p.temFlag("cap8_resposta_honesta")) {
+            texto = "Você começou falando da necessidade e terminou admitindo que ainda estava descobrindo. Não é uma " +
+                    "resposta perfeita para entrevista, mas é uma medida mais honesta da pessoa que chegou até aqui.";
+        } else {
+            texto = "A pergunta da entrevista que abriu a história não ganhou uma resposta universal. O que mudou foi " +
+                    "a sua capacidade de explicar de onde veio, o que escolheu e o que ainda não sabe.";
+        }
+        renderizarEpilogo("A PERGUNTA DO COMEÇO", texto);
+    }
+
+    private void mostrarFuturoEscolhido(Protagonista p) {
+        String titulo;
+        StringBuilder texto = new StringBuilder();
+
+        if (p.temFlag("futuro_pesquisa_brasil")) {
+            titulo = "SEU CAMINHO — PESQUISA NO BRASIL";
+            texto.append("Você continua fazendo perguntas difíceis sem tratar o Brasil como sala de espera para um futuro " +
+                    "mais legítimo. O trabalho pode acontecer numa universidade, num instituto, numa empresa ou em colaboração " +
+                    "com outras equipes. Bolsa, orientação e recursos continuam sendo condições concretas, não garantias.\n\n");
+            if (p.temFlag("trilha_ic")) {
+                texto.append("Você já viu por dentro um pouco da pesquisa. Isso ajuda a reconhecer o trabalho que existe entre " +
+                        "uma hipótese e um resultado, mas não garante vaga nem financiamento.\n\n");
+            } else if (p.temFlag("trilha_dtec")) {
+                texto.append("Você chega à pesquisa com experiência prática e de ensino. Vai precisar aprender métodos e escrita " +
+                        "acadêmica, mas sabe que uma ideia também precisa ser construída, testada e explicada.\n\n");
+            } else {
+                texto.append("Seu caminho até aqui foi menos linear que uma seleção acadêmica costuma supor. Você precisará montar " +
+                        "uma ponte entre as experiências anteriores e as perguntas que deseja investigar.\n\n");
+            }
+        } else if (p.temFlag("futuro_tecnologia")) {
+            titulo = "SEU CAMINHO — TECNOLOGIA APLICADA";
+            texto.append("Você escolhe construir tecnologia que precisa funcionar no mundo real: firmware, hardware, sistemas " +
+                    "embarcados, software ou segurança. O primeiro produto não sai perfeito. Você vai testar, medir, revisar, " +
+                    "documentar e explicar decisões para outras pessoas.\n\n");
+            if (p.temFlag("trilha_dtec")) {
+                texto.append("A experiência prática e de ensino ajuda você a traduzir conhecimento em procedimentos que outra pessoa " +
+                        "consegue repetir. Ainda há ferramentas e domínios que você não conhece.\n\n");
+            } else if (p.temFlag("trilha_ic")) {
+                texto.append("O olhar investigativo que desenvolveu na pesquisa ajuda a formular hipóteses antes de trocar peças ou " +
+                        "reescrever código no escuro. Agora você precisa conectar essa investigação a prazo, equipe e manutenção.\n\n");
+            } else {
+                texto.append("A experiência com projetos e negociação ajuda a entender o problema de quem vai usar a solução. " +
+                        "Você também terá de aprofundar fundamentos técnicos e provar que o sistema funciona.\n\n");
+            }
+        } else if (p.temFlag("futuro_internacional")) {
+            titulo = "SEU CAMINHO — ALÉM DAS FRONTEIRAS";
+            texto.append("Você prepara uma oportunidade internacional. Idioma, portfólio, cartas, visto, financiamento e distância " +
+                    "da rede de apoio entram na conta. Há candidaturas recusadas e planos ajustados; sair do país não acontece " +
+                    "como recompensa automática. Uma colaboração internacional também pode começar sem mudança definitiva.\n\n");
+            if (p.temFlag("origem_apertada")) {
+                texto.append("A parte financeira pesa de forma concreta. Você procura bolsas, prazos e alternativas antes de assumir " +
+                        "um custo que não consegue sustentar. Isso é planejamento, não falta de ambição.\n\n");
+            } else {
+                texto.append("Você compara a oportunidade com o que ela exige de você e de quem faz parte da sua vida. A decisão " +
+                        "não precisa ser tomada para impressionar ninguém.\n\n");
+            }
+        } else if (p.temFlag("futuro_independente")) {
+            titulo = "SEU CAMINHO — CARREIRA INDEPENDENTE";
+            texto.append("Você escolhe montar uma carreira com clientes e projetos. Autonomia vem junto com orçamento, contrato, " +
+                    "imposto, cobrança e períodos sem trabalho. Sustentabilidade passa por escolher melhor o que aceita e procurar " +
+                    "parcerias, não por fazer tudo sem ajuda.\n\n");
+            if (p.temFlag("cap7_indep_negociou")) {
+                texto.append("Você já conseguiu revisar uma cláusula antes de assinar. Essa experiência não elimina o risco, mas deixa " +
+                        "você mais preparada para definir escopo, prazo e pagamento antes de começar.\n\n");
+            } else if (p.temFlag("cap7_indep_aceitou")) {
+                texto.append("Você aceitou um contrato sem compreender tudo o que estava escrito. A consequência não define toda a sua " +
+                        "carreira, mas deixou uma regra mais clara: urgência não transforma uma cláusula ruim em boa.\n\n");
+            } else if (p.temFlag("cap7_indep_advogado")) {
+                texto.append("Você procurou orientação antes de assumir um risco que não compreendia. Aprendeu que negociar também é " +
+                        "conseguir tempo para ler e pedir ajuda.\n\n");
+            } else if (p.temFlag("trilha_indefinida")) {
+                texto.append("A entrada no trabalho independente não veio como um plano perfeito: você perdeu um prazo e precisou encontrar " +
+                        "outra porta. Com o tempo, pode transformar essa contingência numa escolha mais deliberada.\n\n");
+            }
+        } else if (p.temFlag("futuro_transicao")) {
+            titulo = "SEU CAMINHO — RECOMEÇAR SEM APAGAR O PASSADO";
+            texto.append("Você muda de área e encara o custo real de aprender um vocabulário novo, construir portfólio e disputar " +
+                    "oportunidades de entrada. A formação em Engenharia de Computação continua sendo parte de você, mas não substitui " +
+                    "o que o novo caminho exige.\n\n");
+            if (p.temFlag("cap6_trancou")) {
+                texto.append("Você já precisou reorganizar o calendário uma vez. Isso não torna a transição fácil, mas ajuda a reconhecer " +
+                        "que ajustar o plano não é o mesmo que abandonar tudo.\n\n");
+            } else {
+                texto.append("Você não precisou trancar o semestre para perceber que um caminho pode mudar. Continuar e mudar de direção " +
+                        "não são decisões incompatíveis.\n\n");
+            }
+        } else {
+            titulo = "SEU CAMINHO — AINDA EM ABERTO";
+            texto.append("Esta partida chegou ao encerramento sem registrar uma escolha de futuro. Você concluiu a graduação, mas o jogo " +
+                    "não presume qual profissão escolheu. Partidas antigas podem terminar assim; numa nova trajetória, a decisão final " +
+                    "abre um dos cinco caminhos.");
+        }
+
+        if (p.temFlag("cap6_pediu_ajuda")) {
+            texto.append("Você também tem uma lembrança concreta de ter pedido ajuda quando precisava. Na próxima etapa, isso pode significar " +
+                    "procurar orientação, dividir uma tarefa ou admitir cedo que um acordo precisa ser revisto.\n\n");
+        }
+        if (p.temFlag("cap7_questionou_autoria")) {
+            texto.append("Ao discutir a autoria do artigo, você defendeu o reconhecimento do seu trabalho mesmo sabendo que poderia perder " +
+                    "uma oportunidade. Essa experiência não garante que todo ambiente seja justo; ajuda você a reconhecer a questão quando ela aparece.\n\n");
+        } else if (p.temFlag("cap7_aceitou_autoria")) {
+            texto.append("Você aceitou a decisão sobre a autoria e ganhou acesso a novos projetos. A experiência continua ambígua: oportunidades " +
+                    "podem ter valor e, ao mesmo tempo, deixar uma dúvida sobre os limites que você gostaria de ter defendido.\n\n");
+        }
+        if (p.temFlag("hab_olho_edital") && p.temFlag("cap7_tcc_planejou")) {
+            texto.append("No começo, você guardava comprovantes e conferia instruções; no fim, dividiu o TCC em etapas. Essas ações pequenas " +
+                    "viraram uma forma concreta de proteger tempo e trabalho.\n\n");
+        }
+        if (p.temFlag("cap5b_dividiu_comida")) {
+            texto.append("Você leva da greve a lembrança de que a continuidade dos estudos também depende de cuidado coletivo e condições materiais.\n\n");
+        }
+        renderizarEpilogo(titulo, texto.toString().trim());
+    }
 
     public void mostrarChuteDoSistema(Protagonista p) {
         String linhaDoChute;
@@ -723,6 +955,14 @@ public class CenaView {
                                 "procurar orientação antes de assumir o risco.\n\n" +
                                 "Você não deixou de experimentar. Aprendeu " +
                                 "que algumas decisões merecem uma pausa.");
+            }
+
+            if (p.temFlag("cap7_indep_negociou")) {
+                renderizarEpilogo("NEGOCIAR TAMBÉM É SABER DIZER NÃO",
+                        "Você não aceitou o contrato no escuro. Conversou, identificou " +
+                                "a cláusula que não fazia sentido e conseguiu uma versão revisada.\n\n" +
+                                "O trabalho ainda vai exigir esforço; pelo menos, os limites " +
+                                "ficaram mais claros antes de você começar.");
             }
         }
     }

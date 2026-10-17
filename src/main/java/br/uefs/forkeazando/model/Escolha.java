@@ -1,5 +1,5 @@
+// descreve a decisão narrativa e as consequências declaradas
 package br.uefs.forkeazando.model;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +18,7 @@ public class Escolha  {
     private final int scoreGanho;
     private final int participacaoGanha;
     private final int custoEnergia;
+    private final boolean permiteEnergiaInsuficiente;
     private final int energiaAbaixoDe;
     private final int confiancaMinima;
     private final int confiancaMaxima;
@@ -58,12 +59,14 @@ public class Escolha  {
         this.interesseAlvo         = b.interesseAlvo;
         this.impactoRelacionamento = b.impactoRelacionamento;
         this.atributosAlterados    = b.atributosAlterados;
+        this.permiteEnergiaInsuficiente = b.permiteEnergiaInsuficiente;
     }
 
     public boolean estaDisponivel(Protagonista p) {
         return p.atingiuRequisito(scoreMinimo, participacaoMinima)
                 && ((participacaoMaxima <= 0) || p.getParticipacao() <= participacaoMaxima)
-                && p.getEnergia() >= custoEnergia
+                && (permiteEnergiaInsuficiente
+                || p.getEnergia() >= custoEnergia)
                 && ((flagRequerida == null) || p.temFlag(flagRequerida))
                 && ((energiaAbaixoDe <= 0) || p.getEnergia() < energiaAbaixoDe)
                 && ((confiancaMinima <= 0) || p.getConfianca() >= confiancaMinima)
@@ -93,6 +96,7 @@ public class Escolha  {
         private final String textoAlternativa;
         private final int cenaDestinoId;
         private final List<String> flagsConcedidas = new ArrayList<>();
+        private boolean permiteEnergiaInsuficiente = false;
         private String flagRequerida = null;
         private int scoreMinimo = 0, participacaoMinima = 0, participacaoMaxima = 0;
         private int participacaoGanha = 0, scoreGanho = 0, custoEnergia = 0;
@@ -114,23 +118,53 @@ public class Escolha  {
             return this;
         }
         public Builder comFlagRequerida(String v)   { flagRequerida = v; return this; }
+
         public Builder comScoreMinimo(int v)        { scoreMinimo = v; return this; }
+
         public Builder comParticipacaoMinima(int v) { participacaoMinima = v; return this; }
+
         public Builder comParticipacaoMaxima(int v) { participacaoMaxima = v; return this; }
+
         public Builder comParticipacaoGanha(int v)  { participacaoGanha = v; return this; }
+
         public Builder comScoreGanho(int v)         { scoreGanho = v; return this; }
-        public Builder comCustoEnergia(int v)       { custoEnergia = v; return this; }
+
+
+        public Builder comCustoEnergia(int v) { // Agora aceita numeros negativos
+            if (v == Integer.MIN_VALUE)
+                throw new IllegalArgumentException("O custo de energia fora do intervalo permitido");
+            custoEnergia = v;
+            return this;
+        }
+
+        public Builder comPermiteEnergiaInsuficiente() {
+            permiteEnergiaInsuficiente = true;
+            return this;
+        }
+
+
         public Builder comEnergiaAbaixoDe(int v)    { energiaAbaixoDe = v; return this; }
+
         public Builder comConfiancaMinima(int v)    { confiancaMinima = v; return this; }
+
         public Builder comConfiancaMaxima(int v)    { confiancaMaxima = v; return this; }
+
         public Builder comVidaSocialMinima(int v)   { vidaSocialMinima = v; return this; }
+
         public Builder comVidaSocialMaxima(int v)   { vidaSocialMaxima = v; return this; }
+
         public Builder comCarismaMinima(int v)      { carismaMinimo = v; return this; }
+
         public Builder comCarismaMaxima(int v)      { carismaMaximo = v; return this; }
+
         public Builder comLogicaMinima(int v)       { logicaMinima = v; return this; }
+
         public Builder comLogicaMaxima(int v)       { logicaMaxima = v; return this; }
+
         public Builder comSanidadeMinima(int v)     { sanidadeMinima = v; return this; }
+
         public Builder comSanidadeMaxima(int v)     { sanidadeMaxima = v; return this; }
+
         public Builder comInteresseAlvo(PersonagemSecundario.Interesse i) { interesseAlvo = i; return this; }
 
         public Builder comRelacionamento(PersonagemSecundario p, float v) {

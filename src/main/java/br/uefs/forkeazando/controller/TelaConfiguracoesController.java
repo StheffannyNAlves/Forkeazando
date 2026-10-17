@@ -30,7 +30,7 @@ public class TelaConfiguracoesController {
     public void iniciar(){
         while (true){
             List<Opcao> opcoes = montarOpcoes();
-            Resposta r = MenuInterativo.abrir(opcoes, "CONFIGURACOES");
+            Resposta r = MenuInterativo.abrir(opcoes, "CONFIGURACOES", true);
 
             if (r.resultado == MenuInterativo.Resultado.CANCELADO)
                 return;

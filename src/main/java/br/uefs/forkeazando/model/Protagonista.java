@@ -123,8 +123,17 @@ public class Protagonista {
     public void ganharParticipacao(int valor) {
         participacao += valor;
         limitarAtributos(); }
-    public void gastarEnergia(int valor) {
-        energia = Math.clamp(energia - valor, 0, energiaMaxima);
+
+    public void gastarEnergia(int quantidade) {
+        if (quantidade < 0)
+            throw new IllegalArgumentException("A quantidade não pode ser negativa");
+        energia = Math.max(0, energia - quantidade);
+    }
+
+    public void recuperarEnergia(int quantidade){
+        if (quantidade < 0)
+            throw new IllegalArgumentException("A quantidade nao pode ser negativa");
+        energia = Math.min(energiaMaxima, energia + quantidade);
     }
 
     public void limitarAtributos(){
@@ -171,7 +180,12 @@ public class Protagonista {
             case "sanidade"     -> alterarSanidade(delta);
             case "score"        -> ganharScore(delta);
             case "participacao" -> ganharParticipacao(delta);
-            case "energia"      -> gastarEnergia(-delta);
+            case "energia"      -> {
+                if (delta < 0)
+                    gastarEnergia(-delta);
+                else
+                    recuperarEnergia(delta);
+            }
             default -> throw new IllegalArgumentException("Atributo desconhecido: " + chave);
         }
     }

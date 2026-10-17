@@ -22,11 +22,14 @@ public class Abertura {
                         "(Eu ensaiei essa resposta. Eu ensaiei mil vezes.)");
 
         cena700.adicionarEscolha(new Escolha.Builder(
-                "Porque eu preciso. Simples assim.", 701).build());
+                "Porque eu preciso. Simples assim.", 701)
+                .comFlagConcedida("prologo_resposta_pratica").build());
         cena700.adicionarEscolha(new Escolha.Builder(
-                "Porque eu escolhi isso. Faz cinco anos que eu escolhi.", 701).build());
+                "Porque eu escolhi isso. Faz cinco anos que eu escolhi.", 701)
+                .comFlagConcedida("prologo_resposta_conviccao").build());
         cena700.adicionarEscolha(new Escolha.Builder(
-                "Sinceramente? Eu ainda tô descobrindo.", 701).build());
+                "Sinceramente? Eu ainda tô descobrindo.", 701)
+                .comFlagConcedida("prologo_resposta_aberta").build());
         cenas.add(cena700);
 
         Cena cena701 = new Cena(701, "Prólogo", "Narrador",

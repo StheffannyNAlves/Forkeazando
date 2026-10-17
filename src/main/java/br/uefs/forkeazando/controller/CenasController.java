@@ -1,5 +1,5 @@
+// Executa os efeitos das escolhas
 package br.uefs.forkeazando.controller;
-
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Cena;
@@ -11,7 +11,9 @@ import br.uefs.forkeazando.roteiro.Roteador;
 import br.uefs.forkeazando.view.CenaView;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.model.Progresso;
+import br.uefs.forkeazando.view.widget.MenuInterativo;
 
+import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +32,16 @@ public class CenasController {
         this.cenas = cenas;
         this.view = view;
         this.progresso = progresso;
-        this.gerenciadorConquistas = new GerenciadorConquistas(gerenciadorProgresso);
+        this.gerenciadorConquistas = new GerenciadorConquistas(gerenciadorProgresso, view::mostrarMensagem);
         this.gerenciadorProgresso = gerenciadorProgresso;
         gerenciadorConquistas.carregarDesbloqueadas(progresso);
 
+    }
+
+    private enum ResultadoAvancoCapitulo {
+        CAPITULO_AVANCADO,
+        FIM_DE_JOGO,
+        ERRO_DE_ROTA
     }
 
 
@@ -60,8 +68,8 @@ public class CenasController {
                 view.mostrarChuteDoSistema(estado.getProtagonista());
             }
 
-            view.renderizar(atual, estado.getProtagonista());
-
+            view.renderizar(atual, estado.getProtagonista(), estado.getSemestresExtras());
+            Entrada.lerLinha();
             if (atual.getId() == 660) {
                 view.mostrarEpilogos(estado.getProtagonista());
             }
@@ -75,43 +83,62 @@ public class CenasController {
             }
 
 
-            view.exibirEscolhas(disponiveis);
-            view.mostrarMensagem("G - Abrir galeria | 0 - Voltar ao menu");
 
-            String entrada = Entrada.lerLinha();
+            List<MenuInterativo.Opcao> opcoesMenu = new ArrayList<>();
 
-            if (entrada.equalsIgnoreCase("G")) {
-                view.mostrarGaleria(estado.getProtagonista());
-                // Ao voltar da galeria, continua a leitura nesta mesma cena.
-                view.exibirEscolhas(disponiveis);
-                view.mostrarMensagem("G - Abrir galeria | 0 - Voltar ao menu");
-                entrada = Entrada.lerLinha();
+            for (Escolha escolha : disponiveis) {
+                opcoesMenu.add(new MenuInterativo.Opcao(
+                        escolha.getTextoAlternativa()
+                ));
             }
 
-            int indice;
-            try {
-                indice = Integer.parseInt(entrada);
-            } catch (NumberFormatException e) {
-                view.mostrarMensagem("Opção inválida.");
-                continue;
-            }
+            opcoesMenu.add(new MenuInterativo.Opcao("Abrir galeria"));
+            opcoesMenu.add(new MenuInterativo.Opcao("Voltar ao menu principal"));
 
-            if (indice == 0) {
+            MenuInterativo.Resposta resposta = MenuInterativo.abrir(opcoesMenu, "O QUE VOCÊ VAI FAZER?", false);
+
+            if (resposta.resultado == MenuInterativo.Resultado.CANCELADO) {
                 return ResultadoPartida.VOLTAR_AO_MENU;
             }
 
-            if (indice < 1 || indice > disponiveis.size()) {
-                view.mostrarMensagem("Opção inválida.");
+            if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
+                return ResultadoPartida.VOLTAR_AO_MENU;
+            }
+
+            int indice = resposta.indiceOpcao;
+
+            if (indice < 0 || indice >= opcoesMenu.size()) {
                 continue;
             }
 
-            Escolha escolhida = disponiveis.get(indice - 1);
+            if (indice == disponiveis.size()) {
+                view.mostrarGaleria(estado.getProtagonista());
+                Entrada.lerLinha();
+                continue;
+            }
 
+            if (indice == disponiveis.size() + 1) {
+                return ResultadoPartida.VOLTAR_AO_MENU;
+            }
+
+            Escolha escolhida = disponiveis.get(indice);
             aplicarEscolha(escolhida);
 
             if (escolhida.getCenaDestinoId() == Estado.CENA_ENCERRAR) {
-                jogando = tentarAvancarCapitulo();
-                continue;
+                ResultadoAvancoCapitulo resultadoAvanco =
+                        tentarAvancarCapitulo();
+
+                if (resultadoAvanco
+                        == ResultadoAvancoCapitulo.CAPITULO_AVANCADO) {
+                    continue;
+                }
+
+                if (resultadoAvanco
+                        == ResultadoAvancoCapitulo.FIM_DE_JOGO) {
+                    return ResultadoPartida.FIM_DE_JOGO;
+                }
+
+                return ResultadoPartida.ERRO_DE_ROTA;
             }
 
             estado.setCenaAtualId(escolhida.getCenaDestinoId());
@@ -119,25 +146,41 @@ public class CenasController {
         return ResultadoPartida.FIM_DE_JOGO;
     }
 
-    private boolean tentarAvancarCapitulo() {
-        int proximo = estado.getCapituloAtual() + 1;
 
-        if (!Roteador.temProximoCapitulo(estado.getCapituloAtual())) {
+    private ResultadoAvancoCapitulo tentarAvancarCapitulo() {
+        int capituloAtual = estado.getCapituloAtual();
+
+        if (!Roteador.temProximoCapitulo(capituloAtual)) {
             view.mostrarMensagem("Fim. Obrigado por jogar.");
-            return false;
+            return ResultadoAvancoCapitulo.FIM_DE_JOGO;
         }
 
+        int proximoCapitulo = capituloAtual + 1;
+
+        // Determina a rota antes de alterar o estado da partida.
+        int primeiraCena = Roteador.proximaCena(
+                proximoCapitulo,
+                estado
+        );
+
+        if (primeiraCena < 0) {
+            view.mostrarMensagem(
+                    "Não foi possível determinar a próxima rota. "
+                            + "A partida foi mantida na memória, "
+                            + "mas a rota precisa ser corrigida."
+            );
+
+            return ResultadoAvancoCapitulo.ERRO_DE_ROTA;
+        }
+
+        // A transição só ocorre depois de validar o destino.
         estado.avancarCapitulo();
-        int primeiraCena = Roteador.proximaCena(proximo, estado.getProtagonista());
-
-        if (primeiraCena == -1) {
-            view.mostrarMensagem("Espere pelos próximos capítulos...");
-            return false;
-        }
-
         estado.setCenaAtualId(primeiraCena);
-        return true;
+        estado.marcarAlterado();
+
+        return ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
     }
+
 
     private Escolha lerEscolha(List<Escolha> disponiveis) {
         int indice = Entrada.lerInteiro(1, disponiveis.size());
@@ -163,14 +206,104 @@ public class CenasController {
             view.mostrarMensagem("Erro ao salvar a coleção: " + e.getMessage());
         }
     }
+    private void registrarTrilhaConcedida(
+            List<String> flagsConcedidas,
+            Protagonista protagonista) {
+
+        Estado.Trilha trilhaDaEscolha =
+                identificarTrilhaNasFlags(flagsConcedidas);
+
+        Estado.Trilha trilhaDoHistorico =
+                identificarTrilhaNasFlags(protagonista.getHistoricoFlags());
+
+        Estado.Trilha trilhaDoEstado = estado.getTrilha();
+
+        // O Estado e o histórico precisam concordar.
+        if (trilhaDoEstado != null
+                && trilhaDoHistorico != null
+                && trilhaDoEstado != trilhaDoHistorico) {
+
+            throw new IllegalStateException(
+                    "A trilha do Estado diverge das flags da protagonista."
+            );
+        }
+
+        // Um Estado com trilha definida não pode perder sua flag correspondente.
+        if (trilhaDoEstado != null && trilhaDoHistorico == null) {
+            throw new IllegalStateException(
+                    "O Estado possui uma trilha, mas a protagonista não possui "
+                            + "a flag correspondente."
+            );
+        }
+
+        Estado.Trilha trilhaAtual =
+                trilhaDoEstado != null
+                        ? trilhaDoEstado
+                        : trilhaDoHistorico;
+
+        // Uma escolha posterior não pode substituir a trilha.
+        if (trilhaDaEscolha != null
+                && trilhaAtual != null
+                && trilhaDaEscolha != trilhaAtual) {
+
+            throw new IllegalStateException(
+                    "Não é permitido trocar a trilha acadêmica escolhida."
+            );
+        }
+
+        // Registra a primeira trilha selecionada.
+        if (trilhaAtual == null && trilhaDaEscolha != null) {
+            estado.definirTrilha(trilhaDaEscolha);
+        } else if (trilhaDoEstado == null && trilhaDoHistorico != null) {
+            // Recupera a trilha a partir das flags de uma partida antiga.
+            estado.definirTrilha(trilhaDoHistorico);
+        }
+    }
+
+    private Estado.Trilha identificarTrilhaNasFlags(List<String> flags) {
+        boolean ic = flags.contains("trilha_ic");
+        boolean dtec = flags.contains("trilha_dtec");
+        boolean indep = flags.contains("trilha_indep");
+
+        int quantidade =
+                (ic ? 1 : 0)
+                        + (dtec ? 1 : 0)
+                        + (indep ? 1 : 0);
+
+        if (quantidade > 1) {
+            throw new IllegalStateException(
+                    "A protagonista possui mais de uma trilha acadêmica."
+            );
+        }
+
+        if (ic) {
+            return Estado.Trilha.IC;
+        }
+
+        if (dtec) {
+            return Estado.Trilha.DTEC;
+        }
+
+        if (indep) {
+            return Estado.Trilha.INDEP;
+        }
+
+        return null;
+    }
 
     private void aplicarEscolha(Escolha escolhida) {
-        estado.marcarAlterado();
         Protagonista p = estado.getProtagonista();
+        boolean trancamentoJaRegistrado = p.temFlag("cap6_trancou");
         int tamanhoListaAntes = p.getHistoricoFlags().size();
+
+        registrarTrilhaConcedida(escolhida.getFlagsConcedidas(), p);
+        estado.marcarAlterado();
 
         for (String flag : escolhida.getFlagsConcedidas()) {
             p.adicionarFlag(flag);
+        }
+        if (!trancamentoJaRegistrado && p.temFlag("cap6_trancou")) {
+            estado.adicionarSemestreExtra();
         }
 
         p.ganharScore(escolhida.getScoreGanho());

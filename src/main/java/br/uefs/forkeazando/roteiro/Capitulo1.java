@@ -7,9 +7,9 @@ import br.uefs.forkeazando.model.PersonagemSecundario;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Capitulo1 {
+
     public static List<Cena> criarCenas() {
         List<Cena> cenas = new ArrayList<>();
 
@@ -20,10 +20,8 @@ public class Capitulo1 {
                         "barulho que ele não fazia antes.\n\n" +
                         "A tela pisca.\n\n" +
                         "{{APROVACAO}}\n\n" +
-                        "Você olha pra parede..." +
                         "Você olha pra parede. Olha pro teto. Olha de novo pra tela.\n\n" +
                         "Continua lá.\n\n" +
-                        "(Nossa.)\n\n" +
                         "(Nossa.)\n\n" +
                         "Sua mãe tá dormindo no quarto ao lado. Você fecha o notebook " +
                         "bem devagar, como se o barulho pudesse estragar.");
@@ -131,7 +129,7 @@ public class Capitulo1 {
                 .comFlagConcedida("observou_caio").build());
         cenas.add(cena3);
 
-        Cena cena4 = new Cena(4, "Capítulo 1", "Cáio Andrade",
+        Cena cena4 = new Cena(4, "Capítulo 1", "Caio Andrade",
                 "Ele não espera você falar.\n\n" +
                         "'Primeiro semestre?'\n\n" +
                         "Você confirma com a cabeça.\n\n" +
@@ -161,7 +159,7 @@ public class Capitulo1 {
                 .comFlagConcedida("caio_passou_drive").build());
         cenas.add(cena4);
 
-        Cena cena71 = new Cena(71, "Capítulo 1", "Cáio Andrade",
+        Cena cena71 = new Cena(71, "Capítulo 1", "Caio Andrade",
                 "Ele te olha por cima do copo.\n\n" +
                         "'Mudar o mundo.'\n\n" +
                         "Pausa longa. Ele não tá rindo de você.\n\n" +
@@ -171,7 +169,7 @@ public class Capitulo1 {
         cena71.adicionarEscolha(new Escolha.Builder("Onde é a sala?", 5).build());
         cenas.add(cena71);
 
-        Cena cena72 = new Cena(72, "Capítulo 1", "Cáio Andrade",
+        Cena cena72 = new Cena(72, "Capítulo 1", "Caio Andrade",
                 "'Finalmente alguém com senso.'\n\n" +
                         "Ele sorri torto. É o primeiro sorriso que você vê nele.\n\n" +
                         "'O mercado não quer herói. Quer quem entrega na sexta às 18h " +
@@ -181,7 +179,7 @@ public class Capitulo1 {
                 .comInteresseAlvo(PersonagemSecundario.Interesse.ESTABILIDADE).build());
         cenas.add(cena72);
 
-        Cena cena73 = new Cena(73, "Capítulo 1", "Cáio Andrade",
+        Cena cena73 = new Cena(73, "Capítulo 1", "Caio Andrade",
                 "Ele para. O copo fica no ar.\n\n" +
                         "'Cinco anos.'\n\n" +
                         "'Entrei aos 18. Reprovei Cálculo duas vezes. Perdi a bolsa. " +
@@ -321,16 +319,17 @@ public class Capitulo1 {
                         "A tarde inteira tá na sua frente. Pela primeira vez em cinco dias, " +
                         "ninguém tá te pedindo nada.\n\n" +
                         "(O que eu faço agora?)");
-        cena7.adicionarEscolha(new Escolha.Builder("Voltar pra oficina.", 8)
+        cena7.adicionarEscolha(new Escolha.Builder("Voltar pra oficina. Ainda quero tentar resolver o circuito.", 8)
                 .comCustoEnergia(10).build());
-        cena7.adicionarEscolha(new Escolha.Builder("Ir ver o grupo de pesquisa.", 10).build());
-        cena7.adicionarEscolha(new Escolha.Builder("Módulo 8.", 13)
-                .comScoreMinimo(7).comCustoEnergia(-10).build());
+        cena7.adicionarEscolha(new Escolha.Builder("Ir embora e descansar. A semana foi longa.", 14)
+                .comAtributo("energia", -10).build());
+        cena7.adicionarEscolha(new Escolha.Builder("Passar no Módulo 8. Não preciso merecer uma pausa.", 13)
+                .comAtributo("energia", -10).build());
         cena7.adicionarEscolha(new Escolha.Builder(
-                "Enfrentar tudo. Café e ódio.", 8)
+                "Voltar pra oficina mesmo exausta. Café e teimosia.", 8)
                 .comEnergiaAbaixoDe(20)
-                .comCustoEnergia(-30)
-                .comAtributo("confianca", -5).build());
+                .comCustoEnergia(5)
+                .comAtributo("confianca", -2).build());
         cenas.add(cena7);
 
         Cena cena8 = new Cena(8, "Capítulo 1", "Narrador",
@@ -351,64 +350,29 @@ public class Capitulo1 {
         Cena cena9 = new Cena(9, "Capítulo 1", "Narrador",
                 "O LED acende. Uma luz vermelha minúscula. Tremendo de leve.\n\n" +
                         "(Eu consegui.)\n\n" +
-                        "Cáio aparece na porta. Sem falar nada, ele olha pro LED, olha " +
+                        "Caio aparece na porta. Sem falar nada, ele olha pro LED, olha " +
                         "pra você, assente uma vez — bem devagar — e vai embora.\n\n" +
                         "Você fica olhando pra porta por uns cinco segundos.\n\n" +
                         "(Ele assentiu. Eu acho.)");
         cena9.adicionarEscolha(new Escolha.Builder(
-                "Encerrar Capítulo 1 — FINAL: 'Mão na Massa'.",
+                "Encerrar a semana e seguir para o próximo capítulo.",
                 Estado.CENA_ENCERRAR)
                 .comAtributo("confianca", 3)
-                .comFlagConcedida("final_dtec").build());
+                .comFlagConcedida("cap1_oficina_tentada").build());
         cenas.add(cena9);
 
         Cena cena14 = new Cena(14, "Capítulo 1", "Narrador",
                 "Você vai embora.\n\n" +
-                        "No ônibus, o vidro tá embaçado e você desenha um 'UER' com o " +
+                        "No ônibus, o vidro tá embaçado e você desenha um 'UEFS' com o " +
                         "dedo sem perceber.\n\n" +
                         "Depois apaga.\n\n" +
                         "(Talvez eu tenha escolhido o curso errado.)\n\n" +
                         "(Talvez não.)");
         cena14.adicionarEscolha(new Escolha.Builder(
-                "Encerrar Capítulo 1 — FINAL: 'Ponto de Interrogação'.",
+                "Encerrar a semana e seguir para o próximo capítulo.",
                 Estado.CENA_ENCERRAR)
-                .comFlagConcedida("final_indeciso").build());
+                .comFlagConcedida("cap1_foi_embora").build());
         cenas.add(cena14);
-
-        Cena cena10 = new Cena(10, "Capítulo 1", "Prof. Dr. Sérgio Viana",
-                "Ele te aborda no corredor. Sem preâmbulo. Sem se apresentar.\n\n" +
-                        "'Tem gente discutindo um projeto numa sala ali. Passa lá.'\n\n" +
-                        "Ele aponta com o queixo e já vai embora.\n\n" +
-                        "(Foi convite? Ordem? Teste?)");
-        cena10.adicionarEscolha(new Escolha.Builder("Entrar.", 11).build());
-        cena10.adicionarEscolha(new Escolha.Builder("Agradecer e ir embora.", 14).build());
-        cenas.add(cena10);
-
-        Cena cena11 = new Cena(11, "Capítulo 1", "Narrador",
-                "A sala tá cheia. Um cara escreve 'complexidade ciclomática' no " +
-                        "quadro com a paixão de quem tá escrevendo roteiro de novela.\n\n" +
-                        "Ninguém te nota.\n\n" +
-                        "(Ou todos me notaram e escolheram não falar nada.)");
-        cena11.adicionarEscolha(new Escolha.Builder("Perguntar se tem vaga.", 12)
-                .comRelacionamento(PersonagemSecundario.ORIENTADOR_IC, 2f)
-                .comInteresseAlvo(PersonagemSecundario.Interesse.RECONHECIMENTO).build());
-        cena11.adicionarEscolha(new Escolha.Builder("Ficar quieta.", 12)
-                .comFlagConcedida("timidez_ic").build());
-        cenas.add(cena11);
-
-        Cena cena12 = new Cena(12, "Capítulo 1", "Prof. Dr. Sérgio Viana",
-                "'Lê esses cinco artigos aqui até segunda.'\n\n" +
-                        "Ele manda um link no email antes de você sentar. Cinco PDFs de " +
-                        "trinta páginas cada.\n\n" +
-                        "Sem 'por favor'.\n\n" +
-                        "Sem 'obrigado'.\n\n" +
-                        "(Isso é teste? Desafio? Castigo?)");
-        cena12.adicionarEscolha(new Escolha.Builder(
-                "Encerrar Capítulo 1 — FINAL: 'A Cientista'.",
-                Estado.CENA_ENCERRAR)
-                .comFlagConcedida("final_ic")
-                .comFlagConcedida("item_pdfs_ic").build());
-        cenas.add(cena12);
 
         Cena cena13 = new Cena(13, "Capítulo 1", "Narrador",
                 "Módulo 8.\n\n" +
@@ -416,27 +380,29 @@ public class Capitulo1 {
                         "de edital.\n\n" +
                         "Você percebe que não pensa em faculdade há quarenta minutos.\n\n" +
                         "(Quarenta minutos.)");
-        cena13.adicionarEscolha(new Escolha.Builder("Perguntar sobre freela.", 15)
-                .comFlagConcedida("hab_rede_contatos")
-                .comFlagConcedida("item_contato_freela").build());
-        cena13.adicionarEscolha(new Escolha.Builder("Só ouvir.", 15)
-                .comCustoEnergia(-15)
-                .comAtributo("vidaSocial", 2).build());
+        cena13.adicionarEscolha(new Escolha.Builder("Puxar conversa e conhecer melhor o pessoal.", 15)
+                .comFlagConcedida("cap1_conversou_modulo8")
+                .comAtributo("vidaSocial", 1).build());
+        cena13.adicionarEscolha(new Escolha.Builder("Só ouvir por enquanto. Você não precisa render socialmente.", 15)
+                .comAtributo("energia", -5)
+                .comAtributo("vidaSocial", 1).build());
         cena13.adicionarEscolha(new Escolha.Builder(
                 "Alguém te chama pelo nome antes de você sentar.", 15)
                 .comVidaSocialMinima(5)
-                .comCustoEnergia(-20)
-                .comAtributo("vidaSocial", 1).build());
+                .comAtributo("vidaSocial", 1)
+                .comFlagConcedida("cap1_reconhecido_modulo8").build());
         cenas.add(cena13);
 
         Cena cena15 = new Cena(15, "Capítulo 1", "Zé do Módulo 8",
-                "Alguém te passa um papel amassado.\n\n" +
-                        "'Manda mensagem amanhã. Diz que foi o Zé que indicou.'\n\n" +
-                        "É um número de WhatsApp. Sem currículo. Sem edital. Sem carimbo.");
+                "A conversa segue sem grande revelação. Alguém conta uma história absurda " +
+                        "da semana, outra pessoa reclama do sistema acadêmico e, por alguns " +
+                        "minutos, ninguém tenta transformar a noite em oportunidade.\n\n" +
+                        "Você não resolveu a faculdade. Só passou um tempo com outras pessoas. " +
+                        "Por hoje, isso basta.");
         cena15.adicionarEscolha(new Escolha.Builder(
-                "Encerrar Capítulo 1 — FINAL: 'O Contato'.",
+                "Encerrar a semana e seguir para o próximo capítulo.",
                 Estado.CENA_ENCERRAR)
-                .comFlagConcedida("final_independente").build());
+                .comFlagConcedida("cap1_passou_no_modulo8").build());
         cenas.add(cena15);
 
         return cenas;

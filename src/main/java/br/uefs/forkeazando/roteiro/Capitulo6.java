@@ -33,7 +33,7 @@ public class Capitulo6 {
                 .comAtributo("confianca", 2).comCustoEnergia(10).build());
         cena550.adicionarEscolha(new Escolha.Builder("Continuar deitada.", 552)
                 .comAtributo("confianca", -2).build());
-        cena550.adicionarEscolha(new Escolha.Builder("Ligar pro Cáio.", 553)
+        cena550.adicionarEscolha(new Escolha.Builder("Ligar pro Caio.", 553)
                 .comRelacionamento(PersonagemSecundario.VETERANO, 2f)
                 .comInteresseAlvo(PersonagemSecundario.Interesse.ESTABILIDADE).build());
         cena550.adicionarEscolha(new Escolha.Builder(
@@ -83,7 +83,7 @@ public class Capitulo6 {
         Cena cena552 = new Cena(552, "Capítulo 6", "Narrador",
                 "Você fica deitada. O dia passa. O sol bate na parede. Depois some.\n\n" +
                         "No dia seguinte, alguém bate na porta.\n\n" +
-                        "É o Cáio.\n\n" +
+                        "É o Caio.\n\n" +
                         "Ele não pergunta se você tá bem. Ele não fala nada.\n\n" +
                         "Ele só entra. Senta no chão do quarto.\n\n" +
                         "Fica lá.\n\n" +
@@ -98,7 +98,7 @@ public class Capitulo6 {
                 .comAtributo("confianca", 1).build());
         cenas.add(cena552);
 
-        Cena cena553 = new Cena(553, "Capítulo 6", "Cáio Andrade",
+        Cena cena553 = new Cena(553, "Capítulo 6", "Caio Andrade",
                 "Ele atende no terceiro toque.\n\n" +
                         "'Oi.'\n\n" +
                         "Pausa.\n\n" +
@@ -116,8 +116,9 @@ public class Capitulo6 {
         cenas.add(cena553);
 
         Cena cena555 = new Cena(555, "Capítulo 6", "Beatriz Menezes",
-                "Você tá sentada no RU. Sem fome. O frango com quiabo esfriou no " +
-                        "prato há vinte minutos.\n\n" +
+                "Mais tarde, você consegue sair do quarto e chega ao RU. Não lembra direito " +
+                        "do caminho. O frango com quiabo esfria no prato enquanto você tenta " +
+                        "descobrir se está com fome.\n\n" +
                         "Bia senta do seu lado com a marmita dela. Não pergunta nada.\n\n" +
                         "Abre a marmita.\n\n" +
                         "Arroz com ovo. De novo.\n\n" +
@@ -148,9 +149,10 @@ public class Capitulo6 {
         Cena cena554 = new Cena(554, "Capítulo 6", "Narrador",
                 "Você tá de pé de novo.\n\n" +
                         "Não 100%. Mas de pé.\n\n" +
-                        "O semestre ainda não acabou. Tem prova em três semanas. Tem " +
-                        "trabalho pra entregar. Tem gente te esperando.\n\n" +
-                        "Você tem uma escolha: continuar, ou parar de vez.");
+                        "O semestre ainda não acabou. Tem prova em três semanas e trabalho pra entregar. " +
+                        "Tem gente esperando uma resposta sua.\n\n" +
+                        "Você não precisa resolver tudo hoje, mas precisa decidir se tenta " +
+                        "continuar neste calendário ou se pede o trancamento.");
         cena554.adicionarEscolha(new Escolha.Builder("Continuar.", 557)
                 .comAtributo("confianca", 1)
                 .comFlagConcedida("cap6_continuou").build());
@@ -160,17 +162,19 @@ public class Capitulo6 {
                 .comFlagConcedida("cap6_trancou").build());
         cena554.adicionarEscolha(new Escolha.Builder("Enfrentar tudo. Café e ódio.", 557)
                 .comEnergiaAbaixoDe(20)
-                .comCustoEnergia(-30)
-                .comAtributo("confianca", -5).build());
+                .comCustoEnergia(30)
+                .comPermiteEnergiaInsuficiente()
+                .comAtributo("confianca", -5)
+                .comFlagConcedida("cap6_continuou").build());
         cena554.adicionarEscolha(new Escolha.Builder(
-                "Você tranca. Ninguém vai sentir sua falta.", 557)
+                "Trancar. Não é desistir; é admitir que agora não dá para seguir neste calendário.", 557)
                 .comParticipacaoMaxima(3)
                 .comFlagConcedida("cap6_trancou")
                 .comAtributo("sanidade", 3).build());
         cenas.add(cena554);
 
-        Cena cena557 = new Cena(557, "Capítulo 6", "Cáio Andrade",
-                "Você vai embora do RU e encontra o Cáio na porta.\n\n" +
+        Cena cena557 = new Cena(557, "Capítulo 6", "Caio Andrade",
+                "Você vai embora do RU e encontra o Caio na porta.\n\n" +
                         "Copo térmico amassado, como sempre.\n\n" +
                         "Ele tá parado, olhando pra rua como quem tá esperando alguém.\n\n" +
                         "Ele te vê.\n\n" +
@@ -183,7 +187,7 @@ public class Capitulo6 {
                 .comFlagConcedida("caio_nao_contou").build());
         cenas.add(cena557);
 
-        Cena cena558 = new Cena(558, "Capítulo 6", "Cáio Andrade",
+        Cena cena558 = new Cena(558, "Capítulo 6", "Caio Andrade",
                 "Ele olha pro copo. Ele não bebe.\n\n" +
                         "'Eu não reprovei Cálculo duas vezes.'\n\n" +
                         "Pausa longa.\n\n" +
@@ -209,7 +213,7 @@ public class Capitulo6 {
                 .comInteresseAlvo(PersonagemSecundario.Interesse.ESTABILIDADE).build());
         cenas.add(cena558);
 
-        Cena cena559 = new Cena(559, "Capítulo 6", "Cáio Andrade",
+        Cena cena559 = new Cena(559, "Capítulo 6", "Caio Andrade",
                 "Ele dá um gole. Dessa vez ele bebe. Um gole longo.\n\n" +
                         "'Eu voltei porque não sei fazer outra coisa.'\n\n" +
                         "Pausa.\n\n" +
@@ -230,20 +234,31 @@ public class Capitulo6 {
         cenas.add(cena559);
 
         Cena cena560 = new Cena(560, "Capítulo 6", "Narrador",
-                "Você tá de pé de novo. O pior passou.\n\n" +
-                        "Ou não.\n\n" +
-                        "Difícil saber.\n\n" +
-                        "Mas você ainda tá aqui.");
-        cena560.adicionarEscolha(new Escolha.Builder("Continuar na IC.", 561)
-                .comFlagRequerida("trilha_ic").build());
-        cena560.adicionarEscolha(new Escolha.Builder("Continuar no DTEC.", 562)
-                .comFlagRequerida("trilha_dtec").build());
-        cena560.adicionarEscolha(new Escolha.Builder("Continuar sozinha.", 563)
-                .comFlagRequerida("trilha_indep").build());
+                "A conversa com Caio não resolve o semestre por você.\n\n" +
+                        "Mas muda uma coisa: pela primeira vez em dias, você não precisa " +
+                        "fingir que só existe uma maneira de continuar.\n\n" +
+                        "A decisão que você tomou ainda está ali. Agora você entende melhor " +
+                        "o que ela vai exigir — e o que não precisa carregar sozinha.");
         cena560.adicionarEscolha(new Escolha.Builder(
-                "Seguir em frente. Você não tem trilha. Você tem você.", 564)
-                .build());
+                "Continuar. Uma etapa de cada vez.", 567)
+                .comFlagRequerida("cap6_continuou").build());
+        cena560.adicionarEscolha(new Escolha.Builder(
+                "Trancar o semestre e retomar em outro calendário.", 565)
+                .comFlagRequerida("cap6_trancou").build());
         cenas.add(cena560);
+
+        // A decisão de continuar já foi tomada. Agora a trilha acadêmica define a próxima cena.
+        Cena cena567 = new Cena(567, "Capítulo 6", "Narrador",
+                "Você volta a olhar para o caminho que vinha construindo.\n\n" +
+                        "Não precisa decidir os próximos cinco anos hoje. Só precisa " +
+                        "decidir qual é o próximo passo possível.");
+        cena567.adicionarEscolha(new Escolha.Builder("Voltar para a IC.", 561)
+                .comFlagRequerida("trilha_ic").build());
+        cena567.adicionarEscolha(new Escolha.Builder("Voltar para a monitoria de DTEC.", 562)
+                .comFlagRequerida("trilha_dtec").build());
+        cena567.adicionarEscolha(new Escolha.Builder("Retomar os projetos independentes.", 563)
+                .comFlagRequerida("trilha_indep").build());
+        cenas.add(cena567);
 
         Cena cena561 = new Cena(561, "Capítulo 6", "Prof. Dr. Sérgio Viana",
                 "[TRILHA IC]\n\n" +
@@ -299,8 +314,24 @@ public class Capitulo6 {
                         "Você tá viva.\n\n" +
                         "Isso conta.");
         cena564.adicionarEscolha(new Escolha.Builder("Encerrar Capítulo 6.", Estado.CENA_ENCERRAR)
+                .comFlagRequerida("cap6_continuou")
                 .comFlagConcedida("cap6_concluido").build());
         cenas.add(cena564);
+
+        // A pausa muda o calendário, não apaga o percurso vivido.
+        Cena cena565 = new Cena(565, "Capítulo 6 — Retomada", "Narrador",
+                "O pedido de trancamento é confirmado.\n\n" +
+                        "O sistema registra a data, atualiza sua situação acadêmica e " +
+                        "encerra o semestre no papel. Não registra o que custou chegar " +
+                        "até essa decisão.\n\n" +
+                        "Você vai precisar reorganizar o calendário, conversar com quem " +
+                        "depende da sua rotina e retomar as disciplinas quando estiver " +
+                        "pronta para voltar. Isso tem consequências. Também é uma decisão.");
+        cena565.adicionarEscolha(new Escolha.Builder(
+                "Seguir. O tempo passa de qualquer jeito.", Estado.CENA_ENCERRAR)
+                .comFlagRequerida("cap6_trancou")
+                .comFlagConcedida("cap6_concluido").build());
+        cenas.add(cena565);
 
         return cenas;
     }

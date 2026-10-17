@@ -82,7 +82,7 @@ public class Capitulo3 {
         cena201.adicionarEscolha(new Escolha.Builder(
                 "Enfrentar tudo. Café e ódio.", 202)
                 .comEnergiaAbaixoDe(20)
-                .comCustoEnergia(-30)
+                .comAtributo("energia", -30)
                 .comAtributo("confianca", -5).build());
         cena201.adicionarEscolha(new Escolha.Builder(
                 "Reconhecer o formato. É do livro, com números trocados.", 202)
@@ -151,8 +151,8 @@ public class Capitulo3 {
         cena207.adicionarEscolha(new Escolha.Builder("Ir pro ponto.", 209).build());
         cenas.add(cena207);
 
-        Cena cena208 = new Cena(208, "Capítulo 3", "Cáio Andrade",
-                "Cáio senta do seu lado. Sem falar. Cinco minutos de silêncio.\n\n" +
+        Cena cena208 = new Cena(208, "Capítulo 3", "Caio Andrade",
+                "Caio senta do seu lado. Sem falar. Cinco minutos de silêncio.\n\n" +
                         "Aí ele fala, sem olhar pra você:\n\n" +
                         "'Também entreguei em branco a minha primeira prova.'\n\n" +
                         "Pausa.\n\n" +

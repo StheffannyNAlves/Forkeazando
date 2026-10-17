@@ -18,6 +18,15 @@ public class Cores {
     public static final String CINZA = "\u001B[90m";
     public static final String MAGEN = "\u001B[35m";
 
+    public static final String ROXO = "\u001B[38;5;141m";
+    public static final String DOURADO = "\u001B[38;5;220m";
+    public static final String AZUL_CLARO = "\u001B[38;5;117m";
+    public static final String VERDE_CLARO = "\u001B[38;5;120m";
+    public static final String CINZA_ESCURO = "\u001B[38;5;245m";
+
+    public static final String BG_ROXO = "\u001B[48;5;53m";
+
+
     // fundo
     public static final String BG_PRETO = "\u001B[40m";
     public static final String BG_AZUL = "\u001B[44m";

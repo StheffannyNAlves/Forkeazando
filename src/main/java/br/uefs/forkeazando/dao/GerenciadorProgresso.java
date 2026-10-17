@@ -76,7 +76,7 @@ public class GerenciadorProgresso {
 
     private static void validarMapaDeDatas(JsonObject json, String nomeCampo) throws DadosInvalidosException {
         if (!json.has(nomeCampo)) {
-            return; // Compatibilidade com saves antigos
+            return;
         }
         JsonElement elemento = json.get(nomeCampo);
 
@@ -117,7 +117,7 @@ public class GerenciadorProgresso {
 
         JsonElement elemento = json.get("colecao");
         if (elemento == null || !elemento.isJsonObject()) {
-            return; // validarMapaDeDatas já rejeita esse formato
+            return;
         }
 
         JsonObject colecao = elemento.getAsJsonObject();
@@ -140,7 +140,7 @@ public class GerenciadorProgresso {
 
         JsonElement elemento = json.get("conquistas");
         if (elemento == null || !elemento.isJsonObject()) {
-            return; // validarMapaDeDatas já rejeita esse formato
+            return;
         }
 
         JsonObject conquistas = elemento.getAsJsonObject();

@@ -1,33 +1,98 @@
 package br.uefs.forkeazando.view;
+import org.jline.utils.InfoCmp;
+import org.jline.terminal.Terminal;
 // SEM MUDANÇAS
 public class MenuPrincipal {
 
-    public void mostrarMenu() {
-        int largura = 50;
-        int terminal = 80;
+//    public void mostrarMenu() {
+//        int terminal = Entrada.terminal().getWidth();
+//        int largura = Math.min(50, terminal -4);
+//        int larguraCaixa = largura + 2;
+//        int offset = (terminal - larguraCaixa) / 2;
+//        String prefixo = " ".repeat(offset);
+//        if (terminal < larguraCaixa){
+//            System.out.println("Aumente a largura do terminal para jogar");
+//            return;
+//        }
+//        System.out.println();
+//        System.out.println(prefixo + Cores.CIANO + "╔" + "═".repeat(largura) + "╗" + Cores.RESET);
+//        System.out.println(prefixo + linha("FORKEAZANDO", largura));
+//        System.out.println(prefixo + linha("\"Você sabe jogar o jogo?\"", largura));
+//        System.out.println(prefixo + Cores.CIANO + "╠" + "═".repeat(largura) + "╣" + Cores.RESET);
+//
+//        System.out.println(prefixo + linha("[1] Nova Partida", largura));
+//        System.out.println(prefixo + linha("[2] Continuar", largura));
+//        System.out.println(prefixo + linha("[3] Carregar", largura));
+//        System.out.println(prefixo + linha("[4] Instruções", largura));
+//        System.out.println(prefixo + linha("[5] Opções de Estilo", largura));
+//        System.out.println(prefixo + linha("[6] Salvar", largura));
+//        System.out.println(prefixo + linha("[7] Créditos", largura));
+//        System.out.println(prefixo + linha("[8] Meu progresso", largura));
+//        System.out.println(prefixo + linha("[0] Sair", largura));
+//
+//        System.out.println(prefixo + Cores.CIANO + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);
+//
+//        System.out.print(prefixo + Cores.AMARELO + "Escolha > " + Cores.RESET);
+//    }
+
+    public void mostrarMenu(int selecionado) {
+        Terminal terminal = Entrada.terminal();
+        java.io.PrintWriter out = terminal.writer();
+
+        out.print("\033c");
+        out.flush();
+        terminal.puts(InfoCmp.Capability.clear_screen);
+        terminal.flush();
+
+        if (terminal.getWidth() < 20) {
+            System.out.println("Aumente a largura do terminal para jogar.");
+            return;
+        }
+
+        int largura = Math.min(50, terminal.getWidth() - 4);
         int larguraCaixa = largura + 2;
-        int offset = (terminal - larguraCaixa) / 2;
+        int offset = (terminal.getWidth() - larguraCaixa) / 2;
         String prefixo = " ".repeat(offset);
 
+        String[] opcoes = {
+                "[1] Nova Partida",
+                "[2] Continuar",
+                "[3] Carregar",
+                "[4] Instruções",
+                "[5] Opções de Estilo",
+                "[6] Salvar",
+                "[7] Créditos",
+                "[8] Meu progresso",
+                "[0] Sair"
+        };
+
         System.out.println();
-        System.out.println(prefixo + Cores.CIANO + "╔" + "═".repeat(largura) + "╗" + Cores.RESET);
+        System.out.println(prefixo + Cores.CIANO
+                + "╔" + "═".repeat(largura) + "╗" + Cores.RESET);
         System.out.println(prefixo + linha("FORKEAZANDO", largura));
         System.out.println(prefixo + linha("\"Você sabe jogar o jogo?\"", largura));
-        System.out.println(prefixo + Cores.CIANO + "╠" + "═".repeat(largura) + "╣" + Cores.RESET);
+        System.out.println(prefixo + Cores.CIANO
+                + "╠" + "═".repeat(largura) + "╣" + Cores.RESET);
 
-        System.out.println(prefixo + linha("[1] Nova Partida", largura));
-        System.out.println(prefixo + linha("[2] Continuar", largura));
-        System.out.println(prefixo + linha("[3] Carregar", largura));
-        System.out.println(prefixo + linha("[4] Instruções", largura));
-        System.out.println(prefixo + linha("[5] Opções de Estilo", largura));
-        System.out.println(prefixo + linha("[6] Salvar", largura));
-        System.out.println(prefixo + linha("[7] Créditos", largura));
-        System.out.println(prefixo + linha("[8] Meu progresso", largura));
-        System.out.println(prefixo + linha("[0] Sair", largura));
+        for (int i = 0; i < opcoes.length; i++) {
+            String texto = i == selecionado
+                    ? "❯ " + opcoes[i]
+                    : "  " + opcoes[i];
 
-        System.out.println(prefixo + Cores.CIANO + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);
+            String conteudo = linha(texto, largura);
 
-        System.out.print(prefixo + Cores.AMARELO + "Escolha > " + Cores.RESET);
+            if (i == selecionado) {
+                System.out.println(prefixo + "\033[1;30;43m"
+                        + conteudo + "\033[0m");
+            } else {
+                System.out.println(prefixo + conteudo);
+            }
+        }
+
+        System.out.println(prefixo + Cores.CIANO
+                + "╚" + "═".repeat(largura) + "╝" + Cores.RESET);
+        System.out.println(prefixo + Cores.AMARELO
+                + "Use ↑ ↓ e ENTER para selecionar." + Cores.RESET);
     }
 
     public String lerOpcoes() {

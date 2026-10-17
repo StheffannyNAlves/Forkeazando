@@ -14,11 +14,12 @@ public class Capitulo2 {
         List<Cena> cenas = new ArrayList<>();
 
         Cena cena100 = new Cena(100, "Capítulo 2 — As Primeiras Sereias", "Narrador",
-                "Segunda, 7h14. Você tá no ônibus, colada no vidro, e o celular apita.\n\n" +
+                "Segunda, 7h14. Você está no ônibus, encostada no vidro, quando o celular vibra.\n\n" +
                         "'ÁGATA — Bem-vindo ao semestre 2026.2'.\n\n" +
-                        "O corpo do email tem doze links. Onze dizem 'consulte o edital'. " +
-                        "O décimo segundo diz 'bom semestre!'.\n\n" +
-                        "(Exclamação.)");
+                        "O e-mail tem doze links. Onze terminam em 'consulte o edital'. " +
+                        "O último deseja um bom semestre.\n\n" +
+                        "Você abre o primeiro link. A página demora a carregar. O ônibus passa por um buraco, " +
+                        "o sinal desaparece e o aviso continua ali, esperando que você descubra sozinha por onde começar.");
         cena100.adicionarEscolha(new Escolha.Builder(
                 "Abrir os onze agora, com o sinal caindo.", 101)
                 .comCustoEnergia(10).build());
@@ -28,10 +29,12 @@ public class Capitulo2 {
         cenas.add(cena100);
 
         Cena cena101 = new Cena(101, "Capítulo 2", "Narrador",
-                "Mural do módulo 1. Três cartazes novos, presos com fita crepe.\n\n" +
+                "Mural do Módulo 1. Três cartazes novos, presos com fita crepe.\n\n" +
                         "CA de Computação — reunião quarta, 17h, sala 12.\n\n" +
                         "DCE — assembleia sobre o RU, quinta, 14h, pátio.\n\n" +
-                        "Um terceiro, de um grupo de software com nome de quatro siglas.");
+                        "O terceiro anuncia um grupo de software com um nome feito de quatro siglas.\n\n" +
+                        "Você lê os três cartazes. Parece que todo mundo já sabe onde quer estar. " +
+                        "Você ainda está tentando entender o que cada lugar faz.");
         cena101.adicionarEscolha(new Escolha.Builder("Ir no CA.", 102).build());
         cena101.adicionarEscolha(new Escolha.Builder("Ir na assembleia do DCE.", 105).build());
         cena101.adicionarEscolha(new Escolha.Builder("Ir no grupo de software.", 108).build());
@@ -42,7 +45,8 @@ public class Capitulo2 {
         Cena cena102 = new Cena(102, "Capítulo 2", "Narrador",
                 "A reunião do CA é numa sala emprestada. Sete pessoas, duas pizzas, " +
                         "um crachá de 'Diretora' escrito à mão em fita crepe.\n\n" +
-                        "Falam de um projeto de extensão em escola pública.");
+                        "O grupo conversa sobre um projeto de extensão numa escola pública. " +
+                        "Você tenta acompanhar, sem saber ainda se aquilo cabe na sua rotina.");
         cena102.adicionarEscolha(new Escolha.Builder("Assinar a lista.", 103)
                 .comScoreGanho(4).comParticipacaoGanha(5).build());
         cena102.adicionarEscolha(new Escolha.Builder("Perguntar quanto tempo por semana.", 103).build());
@@ -51,10 +55,12 @@ public class Capitulo2 {
         cenas.add(cena102);
 
         Cena cena103 = new Cena(103, "Capítulo 2", "Narrador",
-                "Sexta tem a primeira reunião de verdade.\n\n" +
-                        "'Projeto de extensão' significa: ir numa escola pública às terças, " +
-                        "ensinar Scratch pra vinte crianças de onze anos, e voltar pra casa " +
-                        "às 19h com dor de cabeça.");
+                "Na sexta acontece a primeira reunião de verdade.\n\n" +
+                        "O projeto de extensão significa ir a uma escola pública às terças, " +
+                        "ensinar Scratch a vinte crianças de onze anos e voltar para casa " +
+                        "às 19h com dor de cabeça.\n\n" +
+                        "A descrição parece simples até você imaginar isso encaixado entre aulas, " +
+                        "trabalhos e o tempo que leva para chegar em casa.");
         cena103.adicionarEscolha(new Escolha.Builder("Aguentar.", 112)
                 .comParticipacaoGanha(5).comCustoEnergia(20)
                 .comAtributo("vidaSocial", 1).build());
@@ -63,9 +69,9 @@ public class Capitulo2 {
         cenas.add(cena103);
 
         Cena cena105 = new Cena(105, "Capítulo 2", "Narrador",
-                "A assembleia é no pátio. Quarenta pessoas, um megafone, " +
-                        "duas faixas contra a terceirização do RU.\n\n" +
-                        "O assunto: a empresa quer subir de R$ 2 pra R$ 4.");
+                "A assembleia acontece no pátio. Cerca de quarenta pessoas, um megafone " +
+                        "e duas faixas contra a terceirização do RU.\n\n" +
+                        "A discussão começa com uma proposta: a empresa quer aumentar o preço da refeição de R$ 2 para R$ 4. Você acompanha as falas, tentando entender como uma decisão dessas chega até o prato de quem está na fila.");
         cena105.adicionarEscolha(new Escolha.Builder("Assinar e ficar.", 106)
                 .comParticipacaoGanha(5).comFlagConcedida("dce_ru").build());
         cena105.adicionarEscolha(new Escolha.Builder("Assinar e ir.", 106)
@@ -76,9 +82,9 @@ public class Capitulo2 {
 
         Cena cena106 = new Cena(106, "Capítulo 2", "Narrador",
                 "A assembleia vira discussão sobre orçamento da universidade.\n\n" +
-                        "Você entende metade. Mas entende o suficiente: o RU a R$ 2 é subsídio. " +
-                        "O subsídio depende de verba do estado. A verba depende de político.\n\n" +
-                        "(Tudo é política. Até o frango com quiabo.)");
+                        "Você entende metade. O preço do RU depende de subsídios; os subsídios, " +
+                        "de verbas públicas; e as verbas, de decisões políticas.\n\n" +
+                        "Na volta, você pensa que até o frango com quiabo acaba entrando nessa conversa.");
         cena106.adicionarEscolha(new Escolha.Builder("Continuar indo.", 112)
                 .comParticipacaoGanha(5).comAtributo("vidaSocial", 1).build());
         cena106.adicionarEscolha(new Escolha.Builder("Ir uma vez e nunca mais.", 112)
@@ -110,27 +116,25 @@ public class Capitulo2 {
                         "A primeira é um desafio de código que você não sabe fazer.\n\n" +
                         "A segunda é uma entrevista com alguém que fala 'fit cultural' " +
                         "quatro vezes em sete minutos.\n\n" +
-                        "(Eu contei.)");
+                        "Você tenta imaginar como responder sem fingir que entendeu o que isso quer dizer.");
         cena109.adicionarEscolha(new Escolha.Builder("Fazer mesmo assim.", 112)
                 .comScoreGanho(4).comCustoEnergia(20).build());
         cena109.adicionarEscolha(new Escolha.Builder("Só assistir.", 112).build());
         cenas.add(cena109);
 
         Cena cena111 = new Cena(111, "Capítulo 2", "Narrador",
-                "A semana passou. Você não foi em nada.\n\n" +
-                        "Não foi um erro. Só foi uma semana.");
+                "A semana passa. Você não foi a nenhuma das atividades.\n\n" +
+                        "Não foi um erro. Foi uma semana em que você ainda não conseguiu escolher — e talvez precisasse desse tempo para entender o que queria.");
         cena111.adicionarEscolha(new Escolha.Builder("Ir pra casa.", 112).build());
         cenas.add(cena111);
 
-        Cena cena112 = new Cena(112, "Capítulo 2", "Cáio Andrade",
-                "Cáio tá no pátio, comendo um salgado com uma mão e scrollando o " +
-                        "celular com a outra. Ele te vê. Guarda o celular.\n\n" +
+        Cena cena112 = new Cena(112, "Capítulo 2", "Caio Andrade",
+                "Caio tá no pátio, comendo um salgado com uma mão e scrollando o " +
+                        "celular com a outra. Quando te vê, guarda o aparelho.\n\n" +
                         "'Tá indo em tudo, né?'\n\n" +
-                        "Não é pergunta.\n\n" +
-                        "É diagnóstico.\n\n" +
-                        "(Ele me conhece há uma semana e já sabe.)\n\n" +
+                        "Não parece uma pergunta. Parece que ele já chegou a uma conclusão.\n\n" +
                         "'Eu fiz isso no primeiro semestre. Três grupos, dois projetos, " +
-                        "um campeonato. No segundo eu não tava indo em NADA. Porque tava " +
+                        "um campeonato. No segundo, eu não estava indo a nada. Porque estava " +
                         "reprovando em tudo.'\n\n" +
                         "(Ele tá me assustando ou me avisando?)\n\n" +
                         "Os dois.");
@@ -146,10 +150,10 @@ public class Capitulo2 {
         cena112.adicionarEscolha(new Escolha.Builder("Fico quieta.", 115).build());
         cenas.add(cena112);
 
-        Cena cena113 = new Cena(113, "Capítulo 2", "Cáio Andrade",
-                "Ele pensa. Não responde na hora.\n\n" +
+        Cena cena113 = new Cena(113, "Capítulo 2", "Caio Andrade",
+                "Ele pensa antes de responder.\n\n" +
                         "'Cortei tudo. Fiquei só no que eu não conseguia parar de pensar.'\n\n" +
-                        "Pausa.\n\n" +
+                        "Ele faz uma pausa, como se tentasse escolher as palavras.\n\n" +
                         "'O problema não é fazer muito. É fazer muito do que você não quer.'");
         cena113.adicionarEscolha(new Escolha.Builder(
                 "Perguntar o que ele corta primeiro.", 115)
@@ -161,29 +165,27 @@ public class Capitulo2 {
                 .comRelacionamento(PersonagemSecundario.VETERANO, 1f).build());
         cenas.add(cena113);
 
-        Cena cena114 = new Cena(114, "Capítulo 2", "Cáio Andrade",
-                "Ele te olha por um segundo.\n\n" +
+        Cena cena114 = new Cena(114, "Capítulo 2", "Caio Andrade",
+                "Ele te olha por um instante.\n\n" +
                         "'Tá bom.'\n\n" +
-                        "Volta pro celular.");
+                        "Depois, volta para o celular. A conversa acabou ali.");
         cena114.adicionarEscolha(new Escolha.Builder("Seguir em frente.", 115).build());
         cenas.add(cena114);
 
         Cena cena115 = new Cena(115, "Capítulo 2", "Narrador",
-                "Você vai embora. O semestre tá só começando.");
+                "Você vai embora. O semestre está só começando, e ainda há mais coisas chamando sua atenção do que horas disponíveis no dia.");
         cena115.adicionarEscolha(new Escolha.Builder("Encerrar Capítulo 2.", Estado.CENA_ENCERRAR)
                 .comFlagConcedida("cap2_concluido").build());
         cenas.add(cena115);
 
         // ─── FEIRA — hub IEEE ─────────────────────────────────────────
         Cena cena116 = new Cena(116, "Capítulo 2 — Feira de Graduação", "Narrador",
-                "A universidade tá fazendo a Feira de Graduação.\n\n" +
-                        "Estandes no pátio central. Caravanas de escolas da região. " +
-                        "Crianças de 15 anos com camiseta de colégio público andando em fila.\n\n" +
-                        "E um corredor inteiro de estandes com bandeiras azuis.\n\n" +
-                        "IEEE.\n\n" +
-                        "RAS, WIE, TISP, Liga de Jogos, Industry Electronics. " +
-                        "Cada um com um cartaz, um banner e pelo menos duas pessoas " +
-                        "com camiseta azul tentando te convencer a entrar.");
+                "A universidade está realizando a Feira de Graduação.\n\n" +
+                        "Há estandes no pátio central e caravanas de escolas da região. Estudantes " +
+                        "do ensino médio caminham em grupos, olhando os cursos e tentando imaginar como seria estudar ali.\n\n" +
+                        "Um corredor inteiro reúne estandes com bandeiras azuis: IEEE, RAS, WIE, TISP, Liga de Jogos e Industry Electronics. " +
+                        "Em cada um, alguém tenta explicar o grupo " +
+                        "e convencer os visitantes a participar.");
         cena116.adicionarEscolha(new Escolha.Builder("Ir no RAS. Robô é mais legal.", 120)
                 .comCustoEnergia(10).build());
         cena116.adicionarEscolha(new Escolha.Builder("Ir no WIE. Parece acolhedor.", 121)
@@ -203,7 +205,7 @@ public class Capitulo2 {
                         "que não funciona há dois semestres.\n\n" +
                         "Uma menina com cabelo preso te olha.\n\n" +
                         "'Sabe soldar?'\n\n" +
-                        "Você não sabe. Você acha que não sabe. Você nunca tentou.");
+                        "Você não sabe. Ou acha que não sabe. Nunca tentou.");
         cena120.adicionarEscolha(new Escolha.Builder(
                 "Não sei. Mas quero aprender.", 118)
                 .comParticipacaoGanha(4).comCustoEnergia(15)
@@ -216,11 +218,12 @@ public class Capitulo2 {
 
 // ─── WIE ──────────────────────────────────────────────────────
         Cena cena121 = new Cena(121, "Capítulo 2", "Narrador",
-                "O estande do WIE tá com uma toalha rosa e um banner " +
-                        "que diz 'Women in Engineering'.\n\n" +
-                        "Duas veteranas te cumprimentam. Falam de um projeto " +
-                        "de extensão numa escola pública: ensino de lógica " +
-                        "pra meninas de 12 anos.");
+                "O estande do WIE tem uma toalha rosa e um banner " +
+                        "escrito 'Women in Engineering'.\n\n" +
+                        "Duas veteranas te cumprimentam. Contam sobre um projeto " +
+                        "de extensão numa escola pública, com atividades de lógica " +
+                        "para meninas de doze anos.\n\n" +
+                        "Você escuta, tentando entender como é participar de um grupo assim durante o semestre.");
         cena121.adicionarEscolha(new Escolha.Builder(
                 "Assinar a lista de interesse.", 118)
                 .comParticipacaoGanha(4).comCustoEnergia(5)
@@ -232,12 +235,11 @@ public class Capitulo2 {
 
 // ─── TISP ─────────────────────────────────────────────────────
         Cena cena122 = new Cena(122, "Capítulo 2", "Narrador",
-                "TISP: Teacher In-Service Program.\n\n" +
-                        "O estande tem uma maquete de ponte de palito e um pôster " +
-                        "de como construir uma catapulta com material de escritório.\n\n" +
-                        "É um grupo que ensina professor de escola pública a ensinar " +
-                        "engenharia pra criança.\n\n" +
-                        "Você nunca tinha ouvido falar nisso.");
+                "TISP significa Teacher In-Service Program.\n\n" +
+                        "No estande, há uma maquete de ponte feita de palitos e um pôster " +
+                        "que ensina a construir uma catapulta com materiais de escritório.\n\n" +
+                        "O grupo ajuda professores de escolas públicas a ensinar " +
+                        "engenharia às crianças. Você nunca tinha ouvido falar desse tipo de iniciativa.");
         cena122.adicionarEscolha(new Escolha.Builder(
                 "Assinar a lista.", 118)
                 .comParticipacaoGanha(4).comCustoEnergia(10)
@@ -249,28 +251,29 @@ public class Capitulo2 {
 
 // ─── LIGA DE JOGOS ────────────────────────────────────────────
         Cena cena123 = new Cena(123, "Capítulo 2", "Narrador",
-                "A Liga de Jogos montou um mini fliperama no estande. " +
-                        "Um notebook com controle de SNES e um jogo de plataforma.\n\n" +
-                        "O pessoal tá jogando. Um cara de camiseta de estúdio indie te olha:\n\n" +
-                        "'Você joga? Tô fazendo um projeto de jogo narrativo " +
-                        "pra disciplina de Jogos Digitais. Preciso de gente pra testar.'");
+                "A Liga de Jogos montou um pequeno fliperama no estande: " +
+                        "um notebook, um controle de SNES e um jogo de plataforma.\n\n" +
+                        "As pessoas se revezam no jogo. Um rapaz de camiseta de estúdio indie te olha.\n\n" +
+                        "'Você joga? Estou fazendo um projeto de jogo narrativo " +
+                        "para a disciplina de Jogos Digitais. Preciso de gente para testar.'");
         cena123.adicionarEscolha(new Escolha.Builder(
                 "Anotar o contato dele. Você quer testar.", 118)
                 .comParticipacaoGanha(4).comCustoEnergia(5)
                 .comFlagConcedida("liga_jogos_contato").build());
         cena123.adicionarEscolha(new Escolha.Builder(
                 "Jogar uma partida rápida. Só isso.", 118)
-                .comCustoEnergia(-10)
+                .comAtributo("energia", -10)
                 .comAtributo("sanidade", 3).build());
         cenas.add(cena123);
 
 // ─── FECHAMENTO DA FEIRA (antiga 117) ─────────────────────────
         Cena cena118 = new Cena(118, "Capítulo 2", "Narrador",
-                "No estande do curso, um menino do 3º ano pergunta:\n\n" +
+                "No estande do curso, um estudante do terceiro ano pergunta:\n\n" +
                         "'É difícil?'\n\n" +
-                        "Você olha pro Cáio, que tá do lado com o copo de sempre.\n\n" +
-                        "Ele responde antes de você.\n\n" +
-                        "'É. Mas dá.'");
+                        "Você olha pro Caio, que tá do lado com o copo de sempre.\n\n" +
+                        "Ele responde antes de você:\n\n" +
+                        "'É. Mas dá.'\n\n" +
+                        "O estudante parece pensar na resposta. Você também.");
         cena118.adicionarEscolha(new Escolha.Builder("Concordar.", 112)
                 .comRelacionamento(PersonagemSecundario.VETERANO, 1f)
                 .comInteresseAlvo(PersonagemSecundario.Interesse.ESTABILIDADE).build());

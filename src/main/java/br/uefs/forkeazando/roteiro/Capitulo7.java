@@ -30,7 +30,8 @@ public class Capitulo7 {
         cenas.add(cena599);
 
         Cena cena600 = new Cena(600, "Capítulo 7 — A Última Prova", "Narrador",
-                "Último semestre.\n\n" +
+                "A reta final chegou.\n\n" +
+                        "{{CALENDARIO_CAP7}}\n\n" +
                         "TCC.\n\n" +
                         "Você tá cansada. Não é o cansaço de dormir mal. É o cansaço de " +
                         "cinco anos.\n\n" +
@@ -49,7 +50,8 @@ public class Capitulo7 {
                 .comFlagConcedida("cap7_procrastinou").build());
         cena600.adicionarEscolha(new Escolha.Builder("Enfrentar tudo. Café e ódio.", 599)
                 .comEnergiaAbaixoDe(20)
-                .comCustoEnergia(-30)
+                .comCustoEnergia(30)
+                .comPermiteEnergiaInsuficiente()
                 .comAtributo("confianca", -5).build());
         cena600.adicionarEscolha(new Escolha.Builder(
                 "Você senta. Escreve. Só tem trabalho.", 599)
@@ -84,8 +86,10 @@ public class Capitulo7 {
                         "║      — A AUTORIA DO ARTIGO —             ║\n" +
                         "╚══════════════════════════════════════════╝\n\n" +
                         "Você escreveu o artigo. Sessenta páginas. Sozinha.\n\n" +
-                        "O orientador vai colocar o nome dele primeiro na publicação.\n\n" +
-                        "Isso é normal na academia. Todo orientador faz isso.\n\n" +
+                        "O orientador quer colocar o nome dele primeiro na publicação.\n\n" +
+                        "Ele fala como se fosse um costume impossível de questionar. " +
+                        "Talvez seja comum em alguns grupos; isso não transforma a decisão " +
+                        "automaticamente em justa.\n\n" +
                         "Ele te chama na sala pra confirmar.\n\n" +
                         "'Você entende como funciona, né?'");
         cena601.adicionarEscolha(new Escolha.Builder(
@@ -102,7 +106,7 @@ public class Capitulo7 {
                 .comInteresseAlvo(PersonagemSecundario.Interesse.RECONHECIMENTO).build());
         cena601.adicionarEscolha(new Escolha.Builder("Ficar quieta.", 605).build());
         cena601.adicionarEscolha(new Escolha.Builder(
-                "Lembrar do Cáio. Ele te disse uma vez pra escolher uma coisa só.", 605)
+                "Lembrar do Caio. Ele te disse uma vez pra escolher uma coisa só.", 605)
                 .comFlagRequerida("mentoria_caio")
                 .comAtributo("confianca", 4)
                 .comFlagConcedida("cap7_questionou_autoria")
@@ -172,9 +176,9 @@ public class Capitulo7 {
                 .comFlagConcedida("cap7_indep_advogado")
                 .comAtributo("confianca", 2).build());
         cena603.adicionarEscolha(new Escolha.Builder(
-                "Você convence o cliente a tirar a cláusula.", 605)
+                "Você negocia. O cliente aceita retirar a cláusula e revisar o contrato.", 605)
                 .comCarismaMinima(6)
-                .comFlagConcedida("cap7_indep_recusou")
+                .comFlagConcedida("cap7_indep_negociou")
                 .comAtributo("confianca", 3).build());
         cenas.add(cena603);
 
@@ -183,9 +187,10 @@ public class Capitulo7 {
                         "A defesa foi numa sala com três professores e um projetor que não " +
                         "funcionou na primeira tentativa.\n\n" +
                         "Você passou.\n\n" +
-                        "Você não sentiu o que achou que ia sentir.\n\n" +
+                        "A sensação não chega como nos filmes. Primeiro vem o alívio. " +
+                        "Depois, o silêncio de não ter mais uma entrega para fazer amanhã.\n\n" +
                         "(Era isso?)\n\n" +
-                        "(Cinco anos. Pra isso.)");
+                        "(Cinco anos — e tudo o que coube dentro deles.)");
         cena605.adicionarEscolha(new Escolha.Builder("Encerrar Capítulo 7.", Estado.CENA_ENCERRAR)
                 .comFlagConcedida("cap7_concluido").build());
         cenas.add(cena605);

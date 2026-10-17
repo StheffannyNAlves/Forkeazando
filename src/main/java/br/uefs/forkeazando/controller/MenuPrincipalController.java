@@ -18,10 +18,10 @@ import br.uefs.forkeazando.view.widget.MenuInterativo;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.model.Progresso;
 import br.uefs.forkeazando.view.ProgressoView;
+
 import java.time.LocalDateTime;
 
 
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,7 @@ public class MenuPrincipalController {
     private Estado partidaAtual;
     private final GerenciadorProgresso gerenciadorProgresso = new GerenciadorProgresso(PASTA_SAVES);
     private Progresso progresso;
+
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;
     }
@@ -42,15 +43,42 @@ public class MenuPrincipalController {
     public void iniciar() {
         try {
             progresso = gerenciadorProgresso.carregar();
-        } catch (CarregamentoException | DadosInvalidosException e){
+        } catch (CarregamentoException | DadosInvalidosException e) {
             view.mostrarMensagem(Cores.VERMELHO + "Erro ao carregar progresso global" + e.getMessage() + Cores.RESET);
             progresso = null;
         }
+
         while (rodando) {
-            view.mostrarMenu();
-            String opcao = view.lerOpcoes();
-            processarOpcao(opcao);
+            List<MenuInterativo.Opcao> opcoes = List.of(
+                    new MenuInterativo.Opcao("Nova Partida"),
+                    new MenuInterativo.Opcao("Continuar"),
+                    new MenuInterativo.Opcao("Carregar"),
+                    new MenuInterativo.Opcao("Instruções"),
+                    new MenuInterativo.Opcao("Opções de Estilo"),
+                    new MenuInterativo.Opcao("Salvar"),
+                    new MenuInterativo.Opcao("Créditos"),
+                    new MenuInterativo.Opcao("Meu progresso"),
+                    new MenuInterativo.Opcao("Sair")
+            );
+
+            MenuInterativo.Resposta resposta =
+                    MenuInterativo.abrir(
+                            opcoes, "FORKEAZANDO", view::mostrarMenu);
+
+            if (resposta.resultado
+                    == MenuInterativo.Resultado.CANCELADO) {
+                continue;
+            }
+
+            int indice = resposta.indiceOpcao;
+            String[] codigos = {
+                    "1", "2", "3", "4", "5",
+                    "6", "7", "8", "0"
+            };
+
+            processarOpcao(codigos[indice]);
         }
+
     }
 
 
@@ -117,14 +145,16 @@ public class MenuPrincipalController {
             }
             case "4" -> view.mostrarInstrucoes();
             case "5" -> abrirConfiguracoes();
-            case "7" -> { view.mostrarCreditos();
+            case "7" -> {
+                view.mostrarCreditos();
                 System.out.print("Pressione ENTER para voltar...");
                 Entrada.lerLinha();
             }
             case "6" -> salvarPartidaManual();
             case "8" -> visualizarProgresso();
             case "0" -> {
-                if (confirmarDescarte()) { rodando = false;
+                if (confirmarDescarte()) {
+                    rodando = false;
                     view.mostrarMensagem("Saindo...");
                 }
             }
@@ -133,8 +163,8 @@ public class MenuPrincipalController {
         }
     }
 
-    private boolean confirmarDescarte(){
-        if (partidaAtual == null){
+    private boolean confirmarDescarte() {
+        if (partidaAtual == null) {
             return true;
         }
 
@@ -143,7 +173,7 @@ public class MenuPrincipalController {
                 .primeiroSlotLivre(PASTA_SAVES)
                 .isPresent();
         DecisaoSaida decisao = DecisaoSaida.decidir(temAlteracoes, temSlotLivre);
-        return switch (decisao){
+        return switch (decisao) {
             case SAIR -> true;
             case PERGUNTAR_SALVAR -> perguntarSalvar();
             case ESCOLHER_SLOT -> escolherSobrescrita(true);
@@ -172,6 +202,7 @@ public class MenuPrincipalController {
             );
         }
     }
+
     private void executarPartida() {
         List<Cena> cenas = criarCenas();
         int cenaId = partidaAtual.getCenaAtualId();
@@ -185,15 +216,24 @@ public class MenuPrincipalController {
             return;
         }
 
-        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView(), progresso, gerenciadorProgresso).iniciar();
+        Progresso emUso = (progresso != null) ? progresso : new Progresso(); // evita que o construtor de CenasController receba null, sem apagar ou sobrescrever automaticamente os dados inválidos.
+
+        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView(), emUso, gerenciadorProgresso).iniciar();
 
         if (resultado == ResultadoPartida.FIM_DE_JOGO
                 || resultado == ResultadoPartida.VOLTAR_AO_MENU) {
+
             registrarProgresso();
 
             if (resultado == ResultadoPartida.FIM_DE_JOGO) {
                 partidaAtual = null;
             }
+
+        } else if (resultado == ResultadoPartida.ERRO_DE_ROTA) {
+
+            view.mostrarMensagem("A partida foi mantida na memória. " + "Corrija a rota antes de continuar. "
+                            + "O estado atual ainda não foi salvo automaticamente."
+            );
         }
     }
 
@@ -237,7 +277,7 @@ public class MenuPrincipalController {
         salvarPartida();
     }
 
-    private List<Cena> criarCenas(){
+    private List<Cena> criarCenas() {
         List<Cena> cenas = new ArrayList<>();
 
         cenas.addAll(Abertura.criarCenas());
@@ -313,7 +353,6 @@ public class MenuPrincipalController {
     }
 
 
-
     private boolean perguntarSalvar() {
         List<MenuInterativo.Opcao> opcoes = List.of(
                 new MenuInterativo.Opcao("Salvar"),
@@ -357,4 +396,8 @@ public class MenuPrincipalController {
             return false;
         }
     }
+
+//    public boolean salvarPartidaemNCenas(){
+//
+//    }
 }

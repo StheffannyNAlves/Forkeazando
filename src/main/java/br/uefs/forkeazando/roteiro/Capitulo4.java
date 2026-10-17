@@ -29,11 +29,11 @@ public class Capitulo4 {
         cena300.adicionarEscolha(new Escolha.Builder("Perguntar no grupo do WhatsApp.", 301)
                 .comRelacionamento(PersonagemSecundario.DANDARA, 1f)
                 .comInteresseAlvo(PersonagemSecundario.Interesse.OPORTUNIDADE).build());
-        cena300.adicionarEscolha(new Escolha.Builder("Procurar o Cáio.", 301)
+        cena300.adicionarEscolha(new Escolha.Builder("Procurar o Caio.", 301)
                 .comFlagConcedida("cap4_procurou_caio").build());
         cenas.add(cena300);
 
-        Cena cena301 = new Cena(301, "Capítulo 4", "Cáio Andrade",
+        Cena cena301 = new Cena(301, "Capítulo 4", "Caio Andrade",
                 "Ele tá no mesmo lugar. Mesmo copo. Mesma cara de quem dormiu 4h " +
                         "e não lembra a última vez que comeu algo que não fosse salgado de cantina.\n\n" +
                         "'Os dois editais são de propósito. Eles querem que você escolha.'\n\n" +
@@ -232,7 +232,7 @@ public class Capitulo4 {
         cena305.adicionarEscolha(new Escolha.Builder(
                 "Enfrentar tudo. Café e ódio.", 306)
                 .comEnergiaAbaixoDe(20)
-                .comCustoEnergia(-30)
+                .comAtributo("energia", -30)
                 .comAtributo("confianca", -5).build());
         cenas.add(cena305);
 

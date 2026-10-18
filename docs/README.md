@@ -309,10 +309,11 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - `v1.0.0` — Fase 1.
 - `v1.1.0` — Fase 2, sessão 1: salvamento em JSON e exceções personalizadas.
 - `v1.2.0` — Fase 2, sessão 2: progressão, conquistas e colecionáveis.
+- `1.3.0` - Fase 2, sessão 3
 
 ---
 
-## 👩‍💻 Autoria
+## Autoria
 
 **Stheffanny Nascimento Alves**
 

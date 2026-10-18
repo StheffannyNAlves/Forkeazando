@@ -66,7 +66,7 @@ public class Escolha  {
         return p.atingiuRequisito(scoreMinimo, participacaoMinima)
                 && ((participacaoMaxima <= 0) || p.getParticipacao() <= participacaoMaxima)
                 && (permiteEnergiaInsuficiente
-                || p.getEnergia() >= custoEnergia)
+                || p.getEnergia() >= Math.abs(custoEnergia))
                 && ((flagRequerida == null) || p.temFlag(flagRequerida))
                 && ((energiaAbaixoDe <= 0) || p.getEnergia() < energiaAbaixoDe)
                 && ((confiancaMinima <= 0) || p.getConfianca() >= confiancaMinima)

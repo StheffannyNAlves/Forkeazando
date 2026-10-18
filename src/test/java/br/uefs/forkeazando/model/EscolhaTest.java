@@ -8,9 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EscolhaTest {
 
-    // Valores iniciais deste protagonista (confira com o ProtagonistaTest):
-    // score 0, participação 0, confiança 3, vida social 3, carisma 5,
-    // lógica 7, sanidade 5, energia 60.
+
     private static Protagonista protagonista() {
         return new Protagonista(
                 "Teste",
@@ -123,11 +121,19 @@ class EscolhaTest {
     }
 
     @Test
-    void custoNegativoRecuperaEnergiaEEstaSempreDisponivel() {
-        Protagonista p = protagonista();
-        p.gastarEnergia(60);               // energia 0
+    void custoNegativoRepresentaPerdaEExigeEnergiaSuficiente() {
+        Protagonista p = protagonista(); // energia inicial: 60
 
-        assertTrue(escolha().comCustoEnergia(-30).build().estaDisponivel(p));
+        Escolha escolha = escolha()
+                .comCustoEnergia(-30)
+                .build();
+
+        assertTrue(escolha.estaDisponivel(p));
+
+        // Restam 29 pontos: não consegue pagar o custo de 30.
+        p.gastarEnergia(31);
+
+        assertFalse(escolha.estaDisponivel(p));
     }
 
     @Test
@@ -217,6 +223,21 @@ class EscolhaTest {
                 .build();
 
         assertEquals(List.of("final_ic", "item_pdfs_ic"), e.getFlagsConcedidas());
+    }
+
+
+    @Test
+    void escolhaEspecialPermiteEnergiaInsuficiente() {
+        Protagonista p = protagonista();
+        p.gastarEnergia(60); // energia fica em zero
+
+        Escolha escolha = escolha()
+                .comEnergiaAbaixoDe(20)
+                .comCustoEnergia(-30)
+                .comPermiteEnergiaInsuficiente()
+                .build();
+
+        assertTrue(escolha.estaDisponivel(p));
     }
 
     @Test

@@ -199,7 +199,7 @@ public class Capitulo2 {
         cena116.adicionarEscolha(new Escolha.Builder("Ignorar. Você não tem tempo.", 118).build());
         cenas.add(cena116);
 
-// ─── RAS ──────────────────────────────────────────────────────
+// RAS
         Cena cena120 = new Cena(120, "Capítulo 2", "Narrador",
                 "O estande do RAS tem dois carrinhos de robô e um Arduino " +
                         "que não funciona há dois semestres.\n\n" +
@@ -213,10 +213,10 @@ public class Capitulo2 {
                 .comFlagConcedida("ras_curiosa").build());
         cena120.adicionarEscolha(new Escolha.Builder(
                 "Não sei soldar e não tô afim de aprender agora.", 118)
-                .comCustoEnergia(5).build());
+                .comCustoEnergia(0).build());
         cenas.add(cena120);
 
-// ─── WIE ──────────────────────────────────────────────────────
+// WIE
         Cena cena121 = new Cena(121, "Capítulo 2", "Narrador",
                 "O estande do WIE tem uma toalha rosa e um banner " +
                         "escrito 'Women in Engineering'.\n\n" +
@@ -230,10 +230,14 @@ public class Capitulo2 {
                 .comFlagConcedida("wie_interesse").build());
         cena121.adicionarEscolha(new Escolha.Builder(
                 "Perguntar como é a rotina do grupo.", 118)
-                .comAtributo("confianca", 1).comCustoEnergia(5).build());
+                .comAtributo("confianca", 10).comCustoEnergia(5)
+               .build());
+        cena121.adicionarEscolha(new Escolha.Builder(
+                "Agradecer e seguir. Hoje, você não vai assumir outro compromisso.", 118)
+                .comCustoEnergia(0).build());
         cenas.add(cena121);
 
-// ─── TISP ─────────────────────────────────────────────────────
+// TISP
         Cena cena122 = new Cena(122, "Capítulo 2", "Narrador",
                 "TISP significa Teacher In-Service Program.\n\n" +
                         "No estande, há uma maquete de ponte feita de palitos e um pôster " +
@@ -246,10 +250,11 @@ public class Capitulo2 {
                 .comFlagConcedida("tisp_interesse").build());
         cena122.adicionarEscolha(new Escolha.Builder(
                 "Só olhar e ir embora.", 118)
-                .comCustoEnergia(5).build());
+                .comCustoEnergia(5)
+                .build());
         cenas.add(cena122);
 
-// ─── LIGA DE JOGOS ────────────────────────────────────────────
+// LIGA DE JOGOS
         Cena cena123 = new Cena(123, "Capítulo 2", "Narrador",
                 "A Liga de Jogos montou um pequeno fliperama no estande: " +
                         "um notebook, um controle de SNES e um jogo de plataforma.\n\n" +
@@ -262,11 +267,14 @@ public class Capitulo2 {
                 .comFlagConcedida("liga_jogos_contato").build());
         cena123.adicionarEscolha(new Escolha.Builder(
                 "Jogar uma partida rápida. Só isso.", 118)
-                .comAtributo("energia", -10)
+                .comCustoEnergia(10)
                 .comAtributo("sanidade", 3).build());
+        cena123.adicionarEscolha(new Escolha.Builder(
+                "Agradecer e sair do estande.", 118)
+                .comCustoEnergia(0).build());
         cenas.add(cena123);
 
-// ─── FECHAMENTO DA FEIRA (antiga 117) ─────────────────────────
+// FECHAMENTO DA FEIRA
         Cena cena118 = new Cena(118, "Capítulo 2", "Narrador",
                 "No estande do curso, um estudante do terceiro ano pergunta:\n\n" +
                         "'É difícil?'\n\n" +

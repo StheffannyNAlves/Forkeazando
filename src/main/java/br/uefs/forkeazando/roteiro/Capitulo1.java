@@ -265,7 +265,8 @@ public class Capitulo1 {
                 .comScoreGanho(2).comCustoEnergia(3).build());
         cena16.adicionarEscolha(new Escolha.Builder(
                 "Esperar que alguém tome a iniciativa.", 6)
-                .comCustoEnergia(1).build());
+                .comCustoEnergia(0)
+                .build());
         cenas.add(cena16);
 
         Cena cena6 = new Cena(6, "Capítulo 1", "Narrador",
@@ -309,8 +310,9 @@ public class Capitulo1 {
                 .comFlagConcedida("pbl_cedeu_vez").build());
         cena6.adicionarEscolha(new Escolha.Builder(
                 "Não participar. Celular até acabar.", 7)
-                .comScoreGanho(0).comCustoEnergia(5)
-                .comAtributo("confianca", -1)
+                .comScoreGanho(0).comCustoEnergia(0)
+                .comPermiteEnergiaInsuficiente()
+                .comAtributo("confianca", -2)
                 .comFlagConcedida("pbl_passivo").build());
         cenas.add(cena6);
 
@@ -322,9 +324,11 @@ public class Capitulo1 {
         cena7.adicionarEscolha(new Escolha.Builder("Voltar pra oficina. Ainda quero tentar resolver o circuito.", 8)
                 .comCustoEnergia(10).build());
         cena7.adicionarEscolha(new Escolha.Builder("Ir embora e descansar. A semana foi longa.", 14)
-                .comAtributo("energia", -10).build());
-        cena7.adicionarEscolha(new Escolha.Builder("Passar no Módulo 8. Não preciso merecer uma pausa.", 13)
-                .comAtributo("energia", -10).build());
+                .comAtributo("energia", 20).build());
+        cena7.adicionarEscolha(new Escolha.Builder(
+                "Passar no Módulo 8. Não preciso merecer uma pausa.", 13)
+                .comCustoEnergia(10)
+                .build());
         cena7.adicionarEscolha(new Escolha.Builder(
                 "Voltar pra oficina mesmo exausta. Café e teimosia.", 8)
                 .comEnergiaAbaixoDe(20)
@@ -343,8 +347,11 @@ public class Capitulo1 {
                         "Mexe em outro. Nada.");
         cena8.adicionarEscolha(new Escolha.Builder("Continuar tentando.", 9)
                 .comCustoEnergia(15).comAtributo("confianca", 2).build());
-        cena8.adicionarEscolha(new Escolha.Builder("Ir embora.", 14)
-                .comCustoEnergia(5).build());
+        cena8.adicionarEscolha(new Escolha.Builder(
+                "Ir embora.", 14)
+                .comCustoEnergia(0)
+                .comAtributo("energia", 20)
+                .build());
         cenas.add(cena8);
 
         Cena cena9 = new Cena(9, "Capítulo 1", "Narrador",

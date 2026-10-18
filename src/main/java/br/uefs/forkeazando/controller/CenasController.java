@@ -8,10 +8,12 @@ import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.PersonagemSecundario;
 import br.uefs.forkeazando.model.Protagonista;
 import br.uefs.forkeazando.roteiro.Roteador;
+import br.uefs.forkeazando.roteiro.VisuaisDeCena;
 import br.uefs.forkeazando.view.CenaView;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.model.Progresso;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
+
 
 import java.util.ArrayList;
 import java.time.LocalDateTime;
@@ -68,8 +70,9 @@ public class CenasController {
                 view.mostrarChuteDoSistema(estado.getProtagonista());
             }
 
-            view.renderizar(atual, estado.getProtagonista(), estado.getSemestresExtras());
-            Entrada.lerLinha();
+            view.renderizar(atual, estado.getProtagonista(),
+                    estado.getSemestresExtras(),
+                    VisuaisDeCena.paraCena(atual.getId()).orElse(null));
             if (atual.getId() == 660) {
                 view.mostrarEpilogos(estado.getProtagonista());
             }
@@ -82,43 +85,39 @@ public class CenasController {
                 continue;
             }
 
+            int indice;
 
+            while (true) {
+                List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
 
-            List<MenuInterativo.Opcao> opcoesMenu = new ArrayList<>();
+                for (Escolha escolha : disponiveis) {
+                    opcoes.add(new MenuInterativo.Opcao(escolha.getTextoAlternativa()));
+                }
 
-            for (Escolha escolha : disponiveis) {
-                opcoesMenu.add(new MenuInterativo.Opcao(
-                        escolha.getTextoAlternativa()
-                ));
-            }
+                // Ações extras também ficam disponíveis pelo teclado.
+                opcoes.add(new MenuInterativo.Opcao("Abrir galeria"));
+                opcoes.add(new MenuInterativo.Opcao("Voltar ao menu principal"));
 
-            opcoesMenu.add(new MenuInterativo.Opcao("Abrir galeria"));
-            opcoesMenu.add(new MenuInterativo.Opcao("Voltar ao menu principal"));
+                MenuInterativo.Resposta resposta =
+                        MenuInterativo.abrir(opcoes, "O QUE VOCÊ VAI FAZER?");
 
-            MenuInterativo.Resposta resposta = MenuInterativo.abrir(opcoesMenu, "O QUE VOCÊ VAI FAZER?", false);
+                if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
+                    // Esc: retorna ao menu principal.
+                    return ResultadoPartida.VOLTAR_AO_MENU;
+                }
 
-            if (resposta.resultado == MenuInterativo.Resultado.CANCELADO) {
-                return ResultadoPartida.VOLTAR_AO_MENU;
-            }
+                indice = resposta.indiceOpcao;
 
-            if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
-                return ResultadoPartida.VOLTAR_AO_MENU;
-            }
+                if (indice == disponiveis.size()) {
+                    view.mostrarGaleria(estado.getProtagonista());
+                    continue;
+                }
 
-            int indice = resposta.indiceOpcao;
+                if (indice == disponiveis.size() + 1) {
+                    return ResultadoPartida.VOLTAR_AO_MENU;
+                }
 
-            if (indice < 0 || indice >= opcoesMenu.size()) {
-                continue;
-            }
-
-            if (indice == disponiveis.size()) {
-                view.mostrarGaleria(estado.getProtagonista());
-                Entrada.lerLinha();
-                continue;
-            }
-
-            if (indice == disponiveis.size() + 1) {
-                return ResultadoPartida.VOLTAR_AO_MENU;
+                break;
             }
 
             Escolha escolhida = disponiveis.get(indice);

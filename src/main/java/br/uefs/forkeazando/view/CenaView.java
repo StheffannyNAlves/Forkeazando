@@ -4,13 +4,23 @@ import br.uefs.forkeazando.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
+import br.uefs.forkeazando.view.pixel.Animacao;
+import br.uefs.forkeazando.view.pixel.Animador;
+import br.uefs.forkeazando.view.pixel.Ilustracoes;
+import br.uefs.forkeazando.view.pixel.Retratos;
+import java.util.Optional;
 
 public class CenaView {
 
     private static final int LARGURA = 64;
     private volatile boolean mostrarIndicadorPause = true;
     private volatile Protagonista protagonistaAtual;
+    /** Largura mínima do terminal: a arte tem a largura da caixa (LARGURA + 2 bordas). */
+    private static final int LARGURA_ARTE = LARGURA + 2;
+    private static final int ALTURA_MINIMA_ARTE = 30;
+    private static final int LARGURA_RETRATO = Retratos.LARGURA;
+    private String ultimaIlustracao;
 
     private enum DesempenhoAcademico {
         DIFICULDADE, RECUPERACAO, DESTAQUE
@@ -82,22 +92,29 @@ public class CenaView {
     }
 
     public void renderizar(Cena cena, Protagonista p) {
-        renderizar(cena, p, p.temFlag("cap6_trancou") ? 1 : 0);
+        renderizar(cena, p, p.temFlag("cap6_trancou") ? 1 : 0, null);
     }
 
-    public void renderizar(Cena cena, Protagonista p, int semestresExtras) {
+    /**
+     * @param visual ilustração/retrato decididos pelo roteiro (null = só texto)
+     */
+    public void renderizar(Cena cena, Protagonista p,
+                           int semestresExtras, ApresentacaoDeCena visual)  {
         Entrada.permitirPausa(true);
         try {
             String corTexto = corPorFalante(cena.getPersonagemFalando());
 
             protagonistaAtual = p;
             System.out.println();
+            mostrarIlustracao(visual);
             imprimirLinha(cena.getCapitulo().toUpperCase(), Cores.BRANCO);
             imprimirLinha(cabecalhoStatus(p), Cores.CINZA);   // <- usar BRANCO se não tiver CINZA
             System.out.println(Cores.CIANO + "╠" + "═".repeat(LARGURA) + "╣" + Cores.RESET);
 
             if (!cena.getPersonagemFalando().equalsIgnoreCase("Narrador")) {
-                imprimirLinha(cena.getPersonagemFalando().toUpperCase(), corTexto);
+                if (!mostrarRetrato(cena.getPersonagemFalando(), corTexto, visual)) {
+                    imprimirLinha(cena.getPersonagemFalando().toUpperCase(), corTexto);
+                }
                 imprimirLinha("", corTexto);
             }
 
@@ -785,6 +802,72 @@ public class CenaView {
         }
         renderizarEpilogo(titulo, texto.toString().trim());
     }
+
+
+    static boolean arteCabe(int largura, int altura) {
+        return largura >= LARGURA_ARTE && altura >= ALTURA_MINIMA_ARTE;
+    }
+
+    private boolean terminalComporta() {
+        try {
+            return arteCabe(Entrada.terminal().getWidth(), Entrada.terminal().getHeight());
+        } catch (RuntimeException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Imprime a ilustração acima da caixa da cena. Só desenha quando a chave
+     * muda: cenas seguidas no mesmo lugar não repetem 24 linhas de imagem.
+     */
+    private void mostrarIlustracao(ApresentacaoDeCena visual) {
+        if (visual == null || visual.ilustracao() == null) {
+            return;
+        }
+        String chave = visual.ilustracao();
+        if (chave.equals(ultimaIlustracao) || !Ilustracoes.existe(chave) || !terminalComporta()) {
+            return;
+        }
+        Optional<Animacao> animacao = Ilustracoes.animacao(chave);
+        if (animacao.isPresent() && Animador.habilitada()) {
+            Animador.tocar(animacao.get(), System.out, this::dormir);   // respeita a pausa do jogo
+        } else {
+            for (String linha : Ilustracoes.linhas(chave)) {
+                System.out.println(linha + Cores.RESET);
+            }
+        }
+        ultimaIlustracao = chave;
+    }
+
+    /**
+     * Retrato à esquerda, nome do falante ao lado (centralizado na altura).
+     * @return true se imprimiu o retrato (o nome já está incluso)
+     */
+    private boolean mostrarRetrato(String nomeFalante, String corTexto, ApresentacaoDeCena visual) {
+        if (visual == null || visual.falante() == null || !terminalComporta()) {
+            return false;
+        }
+        Optional<String[]> retrato = Retratos.linhas(visual.falante(), visual.expressao());
+        if (retrato.isEmpty()) {
+            return false;
+        }
+        String[] linhas = retrato.get();
+        int campoNome = LARGURA - 2 - LARGURA_RETRATO - 2;
+        String nome = nomeFalante.toUpperCase();
+        if (nome.length() > campoNome) {
+            nome = nome.substring(0, campoNome);
+        }
+        int meio = linhas.length / 2;
+        for (int i = 0; i < linhas.length; i++) {
+            String lateral = (i == meio)
+                    ? corTexto + nome + Cores.RESET + " ".repeat(campoNome - nome.length())
+                    : " ".repeat(campoNome);
+            System.out.println(Cores.CIANO + "║" + Cores.RESET + "  " + linhas[i] + Cores.RESET
+                    + "  " + lateral + Cores.CIANO + "║" + Cores.RESET);
+        }
+        return true;
+    }
+
 
     public void mostrarChuteDoSistema(Protagonista p) {
         String linhaDoChute;

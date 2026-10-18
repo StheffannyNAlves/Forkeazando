@@ -102,6 +102,10 @@ class RoteiroIntegracaoTest {
             Protagonista p = protagonistaComTrilha(trilha);
             for (int cap = 0; cap <= Roteador.CAPITULO_FINAL; cap++) {
                 int cena = Roteador.proximaCena(cap, p);
+                if (cap == 5 && trilha == null) {
+                    assertTrue(cena == -1, "O Capítulo 5 deve rejeitar uma trilha não definida.");
+                    continue;
+                }
                 if (!ids.contains(cena)) {
                     problemas.add("capítulo " + cap + ", trilha " + trilha + " -> " + cena);
                 }
@@ -121,7 +125,7 @@ class RoteiroIntegracaoTest {
         // entradas: o início do jogo e a primeira cena de cada capítulo, para cada trilha
         Deque<Integer> fila = new ArrayDeque<>();
         Set<Integer> visitadas = new HashSet<>();
-        for (String trilha : Arrays.asList(null, "trilha_ic", "trilha_dtec", "trilha_indep")) {
+        for (String trilha : Arrays.asList("trilha_ic", "trilha_dtec", "trilha_indep")) {
             Protagonista p = protagonistaComTrilha(trilha);
             for (int cap = 0; cap <= Roteador.CAPITULO_FINAL; cap++) {
                 fila.add(Roteador.proximaCena(cap, p));

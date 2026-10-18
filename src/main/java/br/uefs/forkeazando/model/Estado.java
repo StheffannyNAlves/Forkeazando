@@ -79,7 +79,10 @@ public class Estado  {
     }
 
     public void setCenaAtualId(int novoid){
-        this.cenaAtualId = novoid;
+        if (this.cenaAtualId != novoid){
+            this.cenaAtualId = novoid;
+            marcarAlterado();
+        }
     }
 
     public boolean temAlteracoes() {

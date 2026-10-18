@@ -20,11 +20,60 @@ public final class Retratos {
     public static final String NEUTRA = "neutra";
     public static final String TORTO = "torto";   // sorriso torto (cena 72)
     public static final String LADO = "lado";     // olhar de lado (cena 73)
+    public static final String FELIZ = "feliz";
+    public static final String SERIA = "seria";
+    public static final String TRISTE = "triste";
+    public static final String PROCESSANDO = "processando";   // Sistema Acadêmico
+
+    public static final String SERGIO = "sergio";
+    public static final String RAFAEL = "rafael";
+    public static final String BIA = "bia";
+    public static final String DANDARA = "dandara";
+    public static final String ZE = "ze";
+    public static final String SISTEMA = "sistema";
+
+    /** Início do nome (como aparece em Cena.getPersonagemFalando) de quem cada retrato representa. */
+    private static final java.util.Map<String, String> NOMES = java.util.Map.of(
+            CAIO, "Cáio", SERGIO, "Prof. Dr. Sérgio", RAFAEL, "Prof. Rafael", BIA, "Beatriz",
+            DANDARA, "Dandara", ZE, "Zé do", SISTEMA, "Sistema");
+
+    public static String nomeDe(String personagem) { return NOMES.get(personagem); }
+
+    private static final String[] EXPRESSOES = {NEUTRA, FELIZ, SERIA, TRISTE};
 
     private static final RegistroDeArte REGISTRO = new RegistroDeArte()
             .registrar(CAIO + ":" + NEUTRA, () -> caio(NEUTRA))
             .registrar(CAIO + ":" + TORTO, () -> caio(TORTO))
             .registrar(CAIO + ":" + LADO, () -> caio(LADO));
+
+    static {
+        registrarGenerico(SERGIO, RetratosGenericos.SERGIO);
+        registrarGenerico(RAFAEL, RetratosGenericos.RAFAEL);
+        registrarGenerico(BIA, RetratosGenericos.BIA);
+        registrarGenerico(DANDARA, RetratosGenericos.DANDARA);
+        registrarGenerico(ZE, RetratosGenericos.ZE);
+        REGISTRO.registrar(SISTEMA + ":" + NEUTRA, () -> RetratosGenericos.sistema(NEUTRA));
+        REGISTRO.registrar(SISTEMA + ":" + PROCESSANDO, () -> RetratosGenericos.sistema(PROCESSANDO));
+    }
+
+    private static void registrarGenerico(String personagem, RetratosGenericos.Perfil perfil) {
+        for (String expr : EXPRESSOES) {
+            REGISTRO.registrar(personagem + ":" + expr, () -> RetratosGenericos.desenhar(perfil, expr));
+        }
+    }
+
+    /** Desenha (sem cache) o retrato de qualquer personagem; usado em testes. */
+    static Tela desenhar(String personagem, String expressao) {
+        return switch (personagem) {
+            case CAIO -> caio(expressao);
+            case SERGIO -> RetratosGenericos.desenhar(RetratosGenericos.SERGIO, expressao);
+            case RAFAEL -> RetratosGenericos.desenhar(RetratosGenericos.RAFAEL, expressao);
+            case BIA -> RetratosGenericos.desenhar(RetratosGenericos.BIA, expressao);
+            case DANDARA -> RetratosGenericos.desenhar(RetratosGenericos.DANDARA, expressao);
+            case ZE -> RetratosGenericos.desenhar(RetratosGenericos.ZE, expressao);
+            default -> RetratosGenericos.sistema(expressao);
+        };
+    }
 
     private Retratos() {}
 

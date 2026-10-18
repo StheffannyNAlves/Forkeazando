@@ -8,7 +8,7 @@
     width="750"
   />
 </p>
-Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina de **Algoritmos II**, da Universidade Estadual de Feira de Santana (UEFS).
+Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina MI-Programação, que segue a metadologia PBL(Problem-Based Learning), da Universidade Estadual de Feira de Santana (UEFS).
 
 A história acompanha uma estudante de Engenharia de Computação ao longo de sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada escolha pode abrir caminhos, limitar possibilidades e produzir consequências que se refletem nos capítulos seguintes.
 
@@ -317,4 +317,4 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 
 **Stheffanny Nascimento Alves**
 
-Projeto desenvolvido para a disciplina de **Algoritmos II**, na Universidade Estadual de Feira de Santana (UEFS).
+Projeto desenvolvido para a disciplina **MI-Programação**, na Universidade Estadual de Feira de Santana (UEFS).

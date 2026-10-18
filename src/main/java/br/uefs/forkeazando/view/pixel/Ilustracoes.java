@@ -19,50 +19,78 @@ public final class Ilustracoes {
     public static final String ABERTURA_ENTREVISTA = "abertura_entrevista";
     public static final String CAP1_MATRICULA = "cap1_matricula";
     public static final String CAP1_PATIO = "cap1_patio";
+    public static final String CAP1_RU = "cap1_ru";
+    public static final String CAP1_OFICINA = "cap1_oficina";
+    public static final String CAP1_PBL = "cap1_pbl";
+    public static final String SALA_GRUPO = "sala_grupo";
     public static final String CAP1_OFICINA_VAZIA = "cap1_oficina_vazia";
     public static final String CAP1_OFICINA_LED = "cap1_oficina_led";
-
-
+    public static final String CAP1_MODULO8 = "cap1_modulo8";
+    public static final String CAP1_ONIBUS = "cap1_onibus";
+    public static final String CAP2_MURAL = "cap2_mural";
+    public static final String CAP2_ASSEMBLEIA = "cap2_assembleia";
+    public static final String CAP2_FEIRA = "cap2_feira";
+    public static final String CAP3_PROVA = "cap3_prova";
+    public static final String CAP3_NOTAS = "cap3_notas";
+    public static final String CAP4_EDITAIS = "cap4_editais";
+    public static final String CAP4_AGATA = "cap4_agata";
+    public static final String CAP4_PRAZO = "cap4_prazo";
+    public static final String CAP5_GREVE = "cap5_greve";
+    public static final String CAP5_FREELA = "cap5_freela";
+    public static final String CAP6_QUARTO = "cap6_quarto";
+    public static final String CAP6_RU = "cap6_ru";
+    public static final String CAP7_TCC = "cap7_tcc";
+    public static final String CAP7_DEFESA = "cap7_defesa";
+    public static final String CAP8_FORMATURA = "cap8_formatura";
+    public static final String CAP8_PORTAO = "cap8_portao";
 
     /** Quadros de cada animação de entrada. O ÚLTIMO quadro é sempre a arte final (estática). */
     static final int QUADROS_ENTREVISTA = 12;
     static final int QUADROS_MATRICULA = 14;
     static final int QUADROS_PATIO = 18;
-    static final int QUADROS_OFICINA_LED = 12;
-    static final int QUADROS_OFICINA_VAZIA = 6;
 
-    private static final RegistroDeArte REGISTRO = new RegistroDeArte()
-            .registrar(ABERTURA_ENTREVISTA, () -> abertura(QUADROS_ENTREVISTA - 1))
-            .registrar(CAP1_MATRICULA, () -> cap1Matricula(QUADROS_MATRICULA - 1))
-            .registrar(CAP1_PATIO, () -> cap1Patio(QUADROS_PATIO - 1))
-            .registrar(CAP1_OFICINA_VAZIA, () -> oficinaVazia(QUADROS_OFICINA_VAZIA -1))
-            .registrar(CAP1_OFICINA_LED, () -> oficinaLed(QUADROS_OFICINA_LED - 1));
+    private static final RegistroDeArte REGISTRO = new RegistroDeArte();
+    private static final java.util.Map<String, Animacao> ANIMACOES = new java.util.LinkedHashMap<>();
+
+    /** Cadastra a arte final (último quadro) e a animação de entrada sob a mesma chave. */
+    private static void reg(String chave, int quadros, long intervaloMs, java.util.function.IntFunction<Tela> desenho) {
+        REGISTRO.registrar(chave, () -> desenho.apply(quadros - 1));
+        ANIMACOES.put(chave, new Animacao(quadros, intervaloMs, desenho));
+    }
+
+    static {
+        reg(ABERTURA_ENTREVISTA, QUADROS_ENTREVISTA, 90, Ilustracoes::abertura);
+        reg(CAP1_MATRICULA, QUADROS_MATRICULA, 110, Ilustracoes::cap1Matricula);
+        reg(CAP1_PATIO, QUADROS_PATIO, 85, Ilustracoes::cap1Patio);
+        reg(CAP1_RU, CenasCap1.N_RU, 100, CenasCap1::ru);
+        reg(CAP1_OFICINA, CenasCap1.N_OFICINA, 100, CenasCap1::oficina);
+        reg(CAP1_PBL, CenasCap1.N_PBL, 110, CenasCap1::pbl);
+        reg(SALA_GRUPO, CenasCap1.N_GRUPO, 110, CenasCap1::salaGrupo);
+        reg(CAP1_OFICINA_VAZIA, CenasCap1.N_VAZIA, 120, CenasCap1::oficinaVazia);
+        reg(CAP1_OFICINA_LED, CenasCap1.N_LED, 120, CenasCap1::oficinaLed);
+        reg(CAP1_MODULO8, CenasCap1.N_MODULO8, 100, CenasCap1::modulo8);
+        reg(CAP1_ONIBUS, CenasCap1.N_ONIBUS, 110, CenasCap1::onibus);
+        reg(CAP2_MURAL, CenasCap2a4.N_MURAL, 110, CenasCap2a4::mural);
+        reg(CAP2_ASSEMBLEIA, CenasCap2a4.N_ASSEMBLEIA, 100, CenasCap2a4::assembleia);
+        reg(CAP2_FEIRA, CenasCap2a4.N_FEIRA, 100, CenasCap2a4::feira);
+        reg(CAP3_PROVA, CenasCap2a4.N_PROVA, 110, CenasCap2a4::prova);
+        reg(CAP3_NOTAS, CenasCap2a4.N_NOTAS, 120, CenasCap2a4::notas);
+        reg(CAP4_EDITAIS, CenasCap2a4.N_EDITAIS, 120, CenasCap2a4::editais);
+        reg(CAP4_AGATA, CenasCap2a4.N_AGATA, 110, CenasCap2a4::agata);
+        reg(CAP4_PRAZO, CenasCap2a4.N_PRAZO, 120, CenasCap2a4::prazo);
+        reg(CAP5_GREVE, CenasCap5a8.N_GREVE, 100, CenasCap5a8::greve);
+        reg(CAP5_FREELA, CenasCap5a8.N_FREELA, 120, CenasCap5a8::freela);
+        reg(CAP6_QUARTO, CenasCap5a8.N_QUARTO, 120, CenasCap5a8::quarto);
+        reg(CAP6_RU, CenasCap5a8.N_RU6, 120, CenasCap5a8::ru6);
+        reg(CAP7_TCC, CenasCap5a8.N_TCC, 120, CenasCap5a8::tcc);
+        reg(CAP7_DEFESA, CenasCap5a8.N_DEFESA, 120, CenasCap5a8::defesa);
+        reg(CAP8_FORMATURA, CenasCap5a8.N_FORMATURA, 110, CenasCap5a8::formatura);
+        reg(CAP8_PORTAO, CenasCap5a8.N_PORTAO, 110, CenasCap5a8::portao);
+    }
 
     /** Animação de entrada da ilustração, se ela tiver uma. */
     public static java.util.Optional<Animacao> animacao(String chave) {
-        return switch (chave) {
-            case ABERTURA_ENTREVISTA -> java.util.Optional.of(
-                    new Animacao(QUADROS_ENTREVISTA, 90, Ilustracoes::abertura));
-            case CAP1_MATRICULA -> java.util.Optional.of(
-                    new Animacao(QUADROS_MATRICULA, 110, Ilustracoes::cap1Matricula));
-            case CAP1_PATIO -> java.util.Optional.of(
-                    new Animacao(QUADROS_PATIO, 85, Ilustracoes::cap1Patio));
-            case CAP1_OFICINA_LED -> java.util.Optional.of(
-                    new Animacao(
-                            QUADROS_OFICINA_LED,
-                            100,
-                            Ilustracoes::oficinaLed
-                    )
-            );
-            case CAP1_OFICINA_VAZIA -> java.util.Optional.of(
-                    new Animacao(
-                            QUADROS_OFICINA_VAZIA,
-                            100,
-                            Ilustracoes::oficinaVazia
-                    )
-            );
-            default -> java.util.Optional.empty();
-        };
+        return java.util.Optional.ofNullable(ANIMACOES.get(chave));
     }
 
     private Ilustracoes() {}
@@ -73,10 +101,11 @@ public final class Ilustracoes {
 
     public static java.util.Set<String> chaves() { return REGISTRO.chaves(); }
 
+    // =====================================================================
     //  Cap. 1 / cenas 3, 4, 71, 72, 73 — pátio da SIECOMP
     //  Caramelo passa; Cáio olha com o copo térmico amassado.
     //  Paleta de meio-dia: céu saturado, sombra dura, concreto.
-
+    // =====================================================================
     static Tela cap1Patio(int quadro) {
         int faltam = QUADROS_PATIO - 1 - quadro;   // 0 no quadro final
         Tela t = new Tela(LARGURA, LINHAS);
@@ -169,10 +198,12 @@ public final class Ilustracoes {
         return t;
     }
 
+    // =====================================================================
     //  Abertura / cena 700 — "Cinco anos depois." sala de entrevista
     //  Paleta fria (azul-aço + vidro), oposta ao entardecer do menu.
     //  Animação: a luz fluorescente pisca até estabilizar; depois a caneta
     //  do candidato bate na mesa (nervosismo).
+    // =====================================================================
     static Tela abertura(int quadro) {
         double[] luzes = {0.15, 1.0, 0.25, 1.0, 0.45, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         double luz = luzes[Math.min(quadro, luzes.length - 1)];
@@ -300,11 +331,13 @@ public final class Ilustracoes {
         return t;
     }
 
+    // =====================================================================
     //  Cap. 1 / cena 0 — 5h47, SISU, "Nossa."
     //  Quarto às escuras com UMA fonte de luz: a tela.
     //  Animação: a tela liga (brilho sobe e a luz invade o quarto), o banner
     //  APROVADO(A) aparece e só então ela reage (sobrancelha, boca aberta).
     //  O ":" do relógio pisca durante tudo.
+    // =====================================================================
     static Tela cap1Matricula(int quadro) {
         double b = quadro < 2 ? 0.0 : Math.min(1.0, (quadro - 1) / 5.0);   // brilho da tela
         boolean banner = quadro >= 7;
@@ -553,229 +586,5 @@ public final class Ilustracoes {
         for (int i = 19; i < 36; i++) {
             t.tint(i + o, 44, rgb(70, 64, 80), 0.5);
         }
-    }
-
-
-    // Cap. 1 / cenas 8 e 9 — oficina vazia -> o LED acende
-
-    static Tela oficinaVazia(int quadro) {
-        return desenharOficina(quadro, false, false);
-    }
-
-    static Tela oficinaLed(int quadro) {
-        return desenharOficina(quadro, true, true);
-    }
-
-    private static Tela desenharOficina(
-            int quadro,
-            boolean comCaio,
-            boolean animarLed
-    ) {
-        Tela t = new Tela(LARGURA, LINHAS);
-
-        // Parede: oficina pouco iluminada.
-        for (int y = 0; y < 34; y++) {
-            double sombra = y / 34.0;
-            t.rect(
-                    0, y, LARGURA, 1,
-                    mix(rgb(35, 42, 58), rgb(67, 70, 78), sombra)
-            );
-        }
-
-        // Luminária fluorescente: acende gradualmente na oficina vazia.
-        double iluminacao = 1.0;
-
-        if (!comCaio && !animarLed) {
-            iluminacao = Math.max(
-                    0.25,
-                    Math.min(1.0, 0.25 + quadro * 0.15)
-            );
-        }
-
-        int luminariaEscura = rgb(105, 111, 121);
-        int luminariaAcesa = rgb(185, 193, 195);
-
-        t.rect(
-                10, 2, 24, 2,
-                mix(rgb(45, 49, 60), luminariaEscura, iluminacao)
-        );
-
-        t.rect(
-                12, 2, 20, 1,
-                mix(rgb(75, 80, 91), luminariaAcesa, iluminacao)
-        );
-        // Prateleira com componentes.
-        t.rect(3, 8, 21, 2, rgb(86, 75, 67));
-        t.rect(4, 10, 19, 1, rgb(42, 43, 50));
-
-        int[] caixas = {
-                rgb(105, 79, 61),
-                rgb(66, 91, 103),
-                rgb(103, 96, 69),
-                rgb(72, 84, 72)
-        };
-
-        for (int i = 0; i < caixas.length; i++) {
-            int x = 5 + i * 4;
-            t.rect(x, 5, 3, 3, caixas[i]);
-            t.rect(x, 5, 3, 1, mix(caixas[i], rgb(220, 220, 220), 0.2));
-        }
-
-        // Porta ao fundo, inicialmente vazia.
-        t.rect(49, 5, 14, 28, rgb(30, 34, 45));
-        t.rect(51, 7, 10, 25, rgb(51, 59, 70));
-        t.rect(50, 5, 12, 1, rgb(105, 108, 115));
-        t.rect(50, 32, 12, 1, rgb(105, 108, 115));
-        t.px(59, 20, rgb(191, 163, 105));
-
-        // Bancada de eletrônica.
-        t.rect(4, 28, 42, 3, rgb(110, 91, 76));
-        t.rect(4, 28, 42, 1, rgb(160, 137, 112));
-        t.rect(7, 31, 3, 12, rgb(63, 60, 61));
-        t.rect(39, 31, 3, 12, rgb(63, 60, 61));
-
-        // Osciloscópio.
-        t.rect(7, 17, 15, 10, rgb(55, 63, 72));
-        t.rect(8, 18, 13, 7, rgb(17, 31, 38));
-        t.rect(9, 19, 11, 5, rgb(23, 43, 46));
-
-        // Traço do osciloscópio: sinal quase morto.
-        int verde = rgb(80, 190, 133);
-        int[][] sinal = {
-                {10, 22}, {12, 22}, {13, 21},
-                {14, 22}, {16, 22}, {17, 20},
-                {18, 22}, {20, 22}
-        };
-
-        for (int[] p : sinal) {
-            t.px(p[0], p[1], verde);
-        }
-
-        t.rect(10, 26, 3, 1, rgb(145, 147, 144));
-        t.rect(15, 26, 3, 1, rgb(145, 147, 144));
-
-        // Placa de testes.
-        t.rect(25, 24, 15, 4, rgb(53, 104, 72));
-        t.rect(26, 25, 13, 2, rgb(72, 132, 83));
-
-        // Trilhas de cobre.
-        t.rect(28, 25, 1, 2, rgb(190, 157, 92));
-        t.rect(32, 25, 1, 2, rgb(190, 157, 92));
-        t.rect(36, 25, 1, 2, rgb(190, 157, 92));
-
-        // Componentes soldados.
-        t.rect(29, 24, 2, 2, rgb(35, 37, 42));
-        t.rect(34, 24, 2, 2, rgb(35, 37, 42));
-        t.rect(38, 25, 1, 1, rgb(220, 190, 105));
-
-        // LED vermelho: começa apagado e ganha brilho durante a animação.
-        double brilho = 0.0;
-
-        if (animarLed) {
-            brilho = Math.max(
-                    0.0,
-                    Math.min(1.0, (quadro - 3) / 5.0)
-            );
-        }
-
-        int ledApagado = rgb(72, 37, 43);
-        int ledAceso = rgb(255, 48, 58);
-        int corLed = mix(ledApagado, ledAceso, brilho);
-
-        // Base do LED.
-        t.rect(30, 21, 4, 2, rgb(45, 45, 48));
-        t.rect(31, 20, 2, 1, corLed);
-
-        // Halo luminoso: aparece progressivamente.
-        if (brilho > 0.0) {
-            int halo = mix(
-                    rgb(75, 38, 45),
-                    rgb(255, 85, 85),
-                    brilho * 0.7
-            );
-
-            t.px(30, 20, halo);
-            t.px(33, 20, halo);
-            t.px(31, 19, halo);
-            t.px(32, 19, halo);
-
-            if (brilho > 0.65) {
-                t.px(31, 20, rgb(255, 210, 190));
-                t.px(32, 20, rgb(255, 210, 190));
-            }
-        }
-
-        // Fios sobre a bancada.
-        t.rect(22, 29, 5, 1, rgb(224, 180, 55));
-        t.rect(22, 30, 1, 2, rgb(224, 180, 55));
-        t.rect(27, 30, 4, 1, rgb(224, 180, 55));
-        t.rect(37, 29, 5, 1, rgb(180, 65, 65));
-
-        // Ferramentas largadas.
-        t.rect(13, 29, 7, 1, rgb(154, 159, 164));
-        t.rect(17, 29, 1, 3, rgb(84, 91, 102));
-        t.rect(42, 26, 3, 1, rgb(185, 191, 195));
-
-        // Chão da oficina.
-        for (int y = 34; y < LINHAS * 2; y++) {
-            t.rect(
-                    0, y, LARGURA, 1,
-                    mix(rgb(62, 62, 68), rgb(34, 36, 43),
-                            (y - 34) / 14.0)
-            );
-        }
-
-        t.rect(0, 34, LARGURA, 1, rgb(104, 99, 94));
-
-        // Cáio só aparece na cena 9, parado na porta.
-        if (comCaio) {
-            int pele = rgb(176, 120, 92);
-            int cabelo = rgb(24, 20, 28);
-            int roupa = rgb(67, 76, 88);
-
-            // Pernas e tênis.
-            t.rect(54, 36, 3, 8, rgb(39, 43, 62));
-            t.rect(58, 36, 3, 8, rgb(39, 43, 62));
-            t.rect(53, 43, 5, 2, rgb(208, 208, 215));
-            t.rect(58, 43, 5, 2, rgb(208, 208, 215));
-
-            // Corpo e braços.
-            t.rect(52, 27, 11, 10, roupa);
-            t.rect(52, 28, 2, 8, mix(roupa, rgb(180, 185, 195), 0.2));
-            t.rect(61, 28, 2, 8, mix(roupa, rgb(30, 32, 42), 0.3));
-            t.rect(50, 29, 2, 7, roupa);
-            t.rect(62, 29, 2, 6, roupa);
-            t.rect(50, 35, 2, 2, pele);
-            t.rect(62, 34, 2, 2, pele);
-
-            // Pescoço e rosto.
-            t.rect(55, 24, 5, 4, pele);
-            t.elipse(57.5, 21, 4.2, 5.0, pele);
-
-            // Cabelo cacheado.
-            int[][] cachos = {
-                    {53, 17}, {55, 16}, {57, 16},
-                    {59, 17}, {52, 19}, {60, 19}
-            };
-
-            for (int[] c : cachos) {
-                t.rect(c[0], c[1], 2, 2, cabelo);
-            }
-
-            t.rect(54, 18, 7, 2, cabelo);
-
-            // Olhos e expressão cansada.
-            t.px(56, 21, cabelo);
-            t.px(59, 21, cabelo);
-            t.rect(56, 23, 3, 1, rgb(100, 56, 56));
-
-            // Copo térmico na mão.
-            t.rect(63, 30, 2, 5, rgb(30, 120, 134));
-            t.rect(63, 30, 1, 5, rgb(120, 214, 224));
-            t.rect(63, 29, 2, 1, rgb(30, 28, 40));
-        }
-
-        // A composição final é determinística para todos os quadros.
-        return t;
     }
 }

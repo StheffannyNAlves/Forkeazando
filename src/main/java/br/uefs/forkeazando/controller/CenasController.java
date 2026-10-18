@@ -52,15 +52,15 @@ public class CenasController {
         while (jogando) {
             Cena atual = buscarCenaPorId(estado.getCenaAtualId());
 
-            if (atual.getId() == 0) {
-                Entrada.permitirPausa(true);
-                try {
-                    view.mostrarAprovacao();
-
-                } finally {
-                    Entrada.permitirPausa(false);
-                }
-            }
+//            if (atual.getId() == 0) {
+//                Entrada.permitirPausa(true);
+//                try {
+//                    view.mostrarAprovacao();
+//
+//                } finally {
+//                    Entrada.permitirPausa(false);
+//                }
+//            }
 
             if (view.deveMostrarBencao(atual.getId(), estado.getProtagonista())) {
                 view.mostrarBencaoCaramelo();

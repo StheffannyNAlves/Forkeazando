@@ -18,9 +18,11 @@ import br.uefs.forkeazando.view.widget.MenuInterativo;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.model.Progresso;
 import br.uefs.forkeazando.view.ProgressoView;
+import br.uefs.forkeazando.dao.GerenciadorSave;
+
 
 import java.time.LocalDateTime;
-
+import java.nio.file.Files;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -90,24 +92,155 @@ public class MenuPrincipalController {
             opcoes.add(new MenuInterativo.Opcao(slot));
         }
 
+        int indiceAutosave = opcoes.size();
+        opcoes.add(new MenuInterativo.Opcao("Carregar autosave"));
+
+        int indiceExcluir = opcoes.size();
+        opcoes.add(new MenuInterativo.Opcao("Excluir save"));
+
+        int indiceCancelar = opcoes.size();
         opcoes.add(new MenuInterativo.Opcao("Cancelar"));
 
         MenuInterativo.Resposta resposta =
                 MenuInterativo.abrir(opcoes, "Carregar partida");
 
-        if (resposta.resultado == MenuInterativo.Resultado.CANCELADO
-                || resposta.indiceOpcao == opcoes.size() - 1) {
+        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
             return;
         }
 
-        int numeroSlot = resposta.indiceOpcao + 1;
+        int indice = resposta.indiceOpcao;
+
+        if (indice == indiceCancelar) {
+            return;
+        }
+
+        if (indice == indiceAutosave) {
+            carregarAutosave();
+            return;
+        }
+
+        if (indice == indiceExcluir) {
+            excluirSave();
+            return;
+        }
+
+        if (indice < 0 || indice >= slots.size()) {
+            return;
+        }
+
+        // A lista de slots precisa manter a ordem Slot 1, Slot 2, Slot 3.
+        int numeroSlot = indice + 1;
 
         try {
-            partidaAtual = GerenciadorSlots.carregar(PASTA_SAVES, numeroSlot);
+            partidaAtual = GerenciadorSlots.carregar(
+                    PASTA_SAVES,
+                    numeroSlot
+            );
+
             executarPartida();
         } catch (CarregamentoException | DadosInvalidosException e) {
             view.mostrarMensagem(
                     Cores.VERMELHO + "Erro ao carregar: "
+                            + e.getMessage() + Cores.RESET
+            );
+        }
+    }
+
+    private void carregarAutosave() {
+        Path caminhoAutosave =
+                PASTA_SAVES.resolve("autosave.json");
+
+        if (!Files.exists(caminhoAutosave)) {
+            view.mostrarMensagem("Ainda não existe um autosave.");
+            return;
+        }
+
+        try {
+            Estado estadoCarregado =
+                    GerenciadorSave.carregar(caminhoAutosave);
+
+            if (estadoCarregado == null
+                    || estadoCarregado.getProtagonista() == null) {
+                view.mostrarMensagem(
+                        Cores.VERMELHO
+                                + "O autosave não contém uma partida válida."
+                                + Cores.RESET
+                );
+                return;
+            }
+
+            partidaAtual = estadoCarregado;
+            executarPartida();
+
+        } catch (CarregamentoException | DadosInvalidosException e) {
+            view.mostrarMensagem(
+                    Cores.VERMELHO
+                            + "Erro ao carregar autosave: "
+                            + e.getMessage()
+                            + Cores.RESET
+            );
+        }
+    }
+    private void excluirSave() {
+        List<String> slots = GerenciadorSlots.listar(PASTA_SAVES);
+        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
+
+        for (String slot : slots) {
+            opcoes.add(new MenuInterativo.Opcao(slot));
+        }
+
+        int indiceCancelar = opcoes.size();
+
+        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
+
+        MenuInterativo.Resposta resposta =
+                MenuInterativo.abrir(opcoes, "Excluir save");
+
+        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
+            return;
+        }
+
+        int indice = resposta.indiceOpcao;
+
+        if (indice == indiceCancelar
+                || indice < 0
+                || indice >= slots.size()) {
+            return;
+        }
+
+        if (slots.get(indice).contains(" - Vazio")) {
+            view.mostrarMensagem("Esse slot já está vazio.");
+            return;
+        }
+
+        int numeroSlot = indice + 1;
+
+        List<MenuInterativo.Opcao> confirmacoes = List.of(
+                new MenuInterativo.Opcao("Sim, excluir"),
+                new MenuInterativo.Opcao("Não")
+        );
+
+        MenuInterativo.Resposta confirmacao =
+                MenuInterativo.abrir(
+                        confirmacoes,
+                        "Excluir permanentemente o Slot "
+                                + numeroSlot + "?"
+                );
+
+        if (confirmacao.resultado != MenuInterativo.Resultado.SELECIONADO
+                || confirmacao.indiceOpcao != 0) {
+            return;
+        }
+
+        try {
+            GerenciadorSlots.excluir(PASTA_SAVES, numeroSlot);
+            view.mostrarMensagem(
+                    Cores.VERDE + "Slot " + numeroSlot
+                            + " excluído." + Cores.RESET
+            );
+        } catch (SaveException e) {
+            view.mostrarMensagem(
+                    Cores.VERMELHO + "Erro ao excluir save: "
                             + e.getMessage() + Cores.RESET
             );
         }

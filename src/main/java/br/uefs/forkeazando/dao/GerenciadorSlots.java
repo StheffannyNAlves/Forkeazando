@@ -66,6 +66,18 @@ public class GerenciadorSlots {
         return GerenciadorSave.carregar(origem);
     }
 
+
+    public static void excluir(Path pasta, int numSlot) throws SaveException{
+        Path arquivo = caminhoDoSlot(pasta, numSlot);
+        try{
+            if (!Files.deleteIfExists(arquivo)){
+                throw new SaveException("O slot" + numSlot + "já está vazio");
+            }
+        } catch (IOException e){
+            throw new SaveException("Não foi possivel excluir o slot" + numSlot, e);
+        }
+    }
+
     public static List<String> listar(Path pasta) {
         List<String> linhas = new ArrayList<>();
 

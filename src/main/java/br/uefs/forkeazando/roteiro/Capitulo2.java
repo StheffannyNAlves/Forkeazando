@@ -268,16 +268,22 @@ public class Capitulo2 {
         Cena cena123 = new Cena(123, "Capítulo 2", "Narrador",
                 "A Liga de Jogos montou um pequeno fliperama no estande: " +
                         "um notebook, um controle de SNES e um jogo de plataforma.\n\n" +
-                        "As pessoas se revezam no jogo. Um rapaz de camiseta de estúdio indie te olha.\n\n" +
+                        "Um rapaz de camiseta de estúdio indie entrega uma folha de teste. " +
+                        "Ela tem campos para anotar controles que não respondem, colisões estranhas, " +
+                        "trechos confusos e o que você fez antes de o erro aparecer.\n\n" +
                         "'Você joga? Estou fazendo um projeto de jogo narrativo " +
-                        "para a disciplina de Jogos Digitais. Preciso de gente para testar.'");
+                        "para a disciplina de Jogos Digitais. Preciso de gente para testar.'\n\n" +
+                        "Outra estudante senta ao seu lado. Vocês vão jogar a mesma fase, comparar " +
+                        "o que perceberam e separar um bug reproduzível de uma preferência pessoal. " +
+                        "Não basta dizer que o jogo ficou bom ou ruim: alguém precisa explicar por quê.");
         cena123.adicionarEscolha(new Escolha.Builder(
                 "Anotar o contato dele. Você quer testar.", 118)
                 .comParticipacaoGanha(4).comCustoEnergia(5)
                 .comFlagConcedida("liga_jogos_contato").build());
         cena123.adicionarEscolha(new Escolha.Builder(
-                "Jogar uma partida rápida. Só isso.", 118)
-                .comCustoEnergia(10)
+                "Testar uma partida em dupla e anotar os problemas encontrados.", 118)
+                .comParticipacaoGanha(3).comCustoEnergia(10)
+                .comFlagConcedida("cap2_trabalhou_em_equipe")
                 .comAtributo("sanidade", 3).build());
         cena123.adicionarEscolha(new Escolha.Builder(
                 "Agradecer e sair do estande.", 118)

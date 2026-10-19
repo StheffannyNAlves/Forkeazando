@@ -205,9 +205,9 @@ public final class AberturaMenu {
         t.rect(0, 44, LARGURA, 4, rgb(14, 12, 30));
 
         int tinta = rgb(66, 60, 84);
-        t.texto(5, 9, "UEFS  Universidade", tinta);
-        t.texto(33, 9, "Estadual de Feira de Santana", tinta);
-        t.texto(53, 15, "UEFS", rgb(30, 52, 122));
+        t.texto(5, 9, "UEFP  Universidade", tinta);
+        t.texto(33, 9, "Estadual do Fork Perdido", tinta);
+        t.texto(53, 15, "UEFP", rgb(30, 52, 122));
         t.texto(2, 22, "Algumas portas não se abrem", rgb(226, 222, 238));
         t.texto(2, 23, "com uma chave, mas com coragem.", rgb(226, 222, 238));
 

@@ -173,9 +173,7 @@ final class RetratosGenericos {
         }
     }
 
-    // ------------------------------------------------------------------
     //  Sistema Acadêmico (ÁGATA): um monitor amarelo com cara
-    // ------------------------------------------------------------------
     static Tela sistema(String expressao) {
         Tela t = new Tela(24, 12);
         int amarelo = rgb(250, 200, 60);

@@ -63,6 +63,10 @@ public class Capitulo7 {
                 .comFlagRequerida("perfil_perfeccionista")
                 .comCustoEnergia(20)
                 .comAtributo("confianca", 2).build());
+        cena600.adicionarEscolha(new Escolha.Builder(
+                "Definir o escopo e registrar as limitações antes de escrever os resultados.", 599)
+                .comCustoEnergia(20).comScoreGanho(3)
+                .comFlagConcedida("cap7_documentou_limitacoes").build());
         cena600.adicionarEscolha(new Escolha.Builder("Escrever na véspera.", 599)
                 .comFlagRequerida("perfil_pratico")
                 .comCustoEnergia(35)

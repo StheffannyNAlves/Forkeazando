@@ -16,9 +16,7 @@ final class CenasCap5a8 {
 
     private CenasCap5a8() {}
 
-    // ------------------------------------------------------------------
     //  Cenas 451 / 460 — greve: o RU fechado sob chuva, faixa balançando.
-    // ------------------------------------------------------------------
     static Tela greve(int q) {
         Tela t = new Tela(L, A);
         for (int y = 0; y < 36; y++) t.rect(0, y, L, 1, gradiente(y, new int[]{0, 35}, new int[][]{{104, 112, 128}, {160, 166, 178}}));
@@ -48,9 +46,7 @@ final class CenasCap5a8 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 500–505 — freela: o site pronto, o cliente "visualizou" e sumiu.
-    // ------------------------------------------------------------------
     static Tela freela(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(40, 28, 36), rgb(66, 44, 44));
@@ -86,9 +82,7 @@ final class CenasCap5a8 {
         return t;
     }
 
-    // ------------------------------------------------------------------
-    //  Cenas 550–554 — quarto fechado: o sol atravessa a parede e some.
-    // ------------------------------------------------------------------
+    //  Cenas 550–554 — quarto fechado: o sol atravessa a parede e some
     static Tela quarto(int q) {
         double k = q / (double) (N_QUARTO - 1);   // 0 = tarde, 1 = noite
         Tela t = new Tela(L, A);
@@ -122,9 +116,7 @@ final class CenasCap5a8 {
         return t;
     }
 
-    // ------------------------------------------------------------------
-    //  Cenas 555–559 — RU: o frango esfria, Bia senta do lado sem perguntar.
-    // ------------------------------------------------------------------
+    //  Cenas 555–559 — RU: o frango esfria, Bia senta do lado sem perguntar
     static Tela ru6(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 28, rgb(204, 216, 212), rgb(184, 198, 196));
@@ -149,9 +141,7 @@ final class CenasCap5a8 {
         return t;
     }
 
-    // ------------------------------------------------------------------
-    //  Cena 600 — último semestre, documento em branco, cansaço de cinco anos.
-    // ------------------------------------------------------------------
+    //  Cena 600 — último semestre, documento em branco, cansaço de cinco anos
     static Tela tcc(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(24, 28, 54), rgb(46, 50, 80));
@@ -177,9 +167,7 @@ final class CenasCap5a8 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cena 605 — defesa do TCC: o projetor falha na primeira tentativa.
-    // ------------------------------------------------------------------
     static Tela defesa(int q) {
         boolean[] liga = {false, false, true, false, false, false, true, true, true, true, true, true};
         boolean on = liga[q];
@@ -211,9 +199,7 @@ final class CenasCap5a8 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 650–653 — formatura: becas, flash da mãe, gorros no ar.
-    // ------------------------------------------------------------------
     static Tela formatura(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 14, rgb(120, 24, 40), rgb(170, 40, 56));
@@ -254,9 +240,8 @@ final class CenasCap5a8 {
         return t;
     }
 
-    // ------------------------------------------------------------------
-    //  Cena 655 — o portão ao anoitecer: "Daqui pra frente é outra coisa."
-    // ------------------------------------------------------------------
+    //  Cena 655  o portão ao anoitecer: "Daqui pra frente é outra coisa."
+
     static Tela portao(int q) {
         Tela t = new Tela(L, A);
         for (int y = 0; y < 38; y++) t.rect(0, y, L, 1, gradiente(y, new int[]{0, 20, 37}, new int[][]{{10, 8, 38}, {40, 22, 84}, {112, 46, 110}}));
@@ -274,7 +259,7 @@ final class CenasCap5a8 {
         t.rect(51, 19, 7, 19, rgb(205, 95, 35));
         t.rect(56, 19, 2, 19, rgb(160, 65, 25));
         t.rect(52, 22, 5, 6, rgb(244, 242, 248));
-        t.texto(52, 11, "UEFS", rgb(30, 52, 122));
+        t.texto(52, 11, "UEFP", rgb(30, 52, 122));
         for (int y = 38; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(52, 40, 70), rgb(24, 20, 36), (y - 38) / 10.0));
         int[] lx = {22, 33, 44};
         for (int i = 0; i < 3; i++) {

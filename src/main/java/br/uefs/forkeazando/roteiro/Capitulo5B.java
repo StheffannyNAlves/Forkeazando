@@ -35,8 +35,9 @@ public class Capitulo5B {
                 "Perguntar quem já sabe o básico.", 452)
                 .comAtributo("carisma", 2).build());
         cena450.adicionarEscolha(new Escolha.Builder(
-                "Passar um exercício e deixar a turma tentar.", 452)
-                .comCustoEnergia(10).build());
+                "Preparar um exercício em etapas e pedir que expliquem cada passo.", 452)
+                .comCustoEnergia(10).comScoreGanho(3)
+                .comFlagConcedida("cap5b_preparou_exercicio").build());
         cenas.add(cena450);
 
         Cena cena452 = new Cena(452, "Capítulo 5B", "Narrador",

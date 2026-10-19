@@ -43,7 +43,7 @@ public final class Icones {
     private static final Map<String, String[]> BITMAPS = new HashMap<>();
 
     static {
-        // ------------ habilidades ------------
+        // habilidades
         BITMAPS.put("hab_olho_edital", new String[]{
                 ".......", ".kkkkk.", "kwwbwwk", "kwbkbwk", "kwwbwwk", ".kkkkk.", ".......", "......."});
         BITMAPS.put("hab_estomago_ferro", new String[]{

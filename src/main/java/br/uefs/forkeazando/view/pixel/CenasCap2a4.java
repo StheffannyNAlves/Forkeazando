@@ -23,9 +23,8 @@ final class CenasCap2a4 {
     private static final int[] CABELOS = {
             rgb(60, 40, 30), rgb(24, 20, 28), rgb(26, 20, 40), rgb(120, 80, 40), rgb(40, 30, 30)};
 
-    // ------------------------------------------------------------------
+
     //  Cena 101 — mural do módulo 1: cartazes presos com fita crepe.
-    // ------------------------------------------------------------------
     static Tela mural(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, rgb(214, 208, 196), rgb(190, 184, 172));
@@ -55,9 +54,7 @@ final class CenasCap2a4 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 105 / 106 — assembleia no pátio: faixas, megafone, quarenta pessoas.
-    // ------------------------------------------------------------------
     static Tela assembleia(int q) {
         Tela t = new Tela(L, A);
         for (int y = 0; y < 22; y++) t.rect(0, y, L, 1, gradiente(y, new int[]{0, 21}, new int[][]{{150, 170, 198}, {214, 220, 228}}));
@@ -104,9 +101,7 @@ final class CenasCap2a4 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 116–123 — Feira de Graduação: estandes, bandeirolas, balões.
-    // ------------------------------------------------------------------
     static Tela feira(int q) {
         int f = N_FEIRA - 1 - q;
         Tela t = new Tela(L, A);
@@ -147,9 +142,8 @@ final class CenasCap2a4 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 200–207 — prova de Cálculo I: o relógio não anda, a sala sim.
-    // ------------------------------------------------------------------
+
     static Tela prova(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(150, 164, 150), rgb(126, 142, 130));
@@ -186,9 +180,7 @@ final class CenasCap2a4 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 210 / 211 — resultado no mural: a nota ao lado da sua.
-    // ------------------------------------------------------------------
     static Tela notas(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 38, rgb(190, 200, 214), rgb(160, 172, 190));
@@ -216,9 +208,8 @@ final class CenasCap2a4 {
         return t;
     }
 
-    // ------------------------------------------------------------------
-    //  Cenas 300 / 301 — dois editais colados um sobre o outro.
-    // ------------------------------------------------------------------
+
+    //  Cenas 300 / 301 dois editais colados um sobre o outro.
     static Tela editais(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 38, rgb(70, 80, 120), rgb(150, 150, 170));
@@ -247,9 +238,7 @@ final class CenasCap2a4 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 3045–3050 — o ÁGATA pede um perfil e diz "Processando...".
-    // ------------------------------------------------------------------
     static Tela agata(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 48, rgb(10, 12, 30), rgb(26, 22, 56));
@@ -275,9 +264,7 @@ final class CenasCap2a4 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cenas 306 / 371–374 — 23h58, IC ou DTEC, "preciso escolher AGORA".
-    // ------------------------------------------------------------------
     static Tela prazo(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(16, 12, 34), rgb(30, 22, 52));

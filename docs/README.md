@@ -1,13 +1,7 @@
 # Forkeazando 
 
 **Entre o que era certo e o que ainda pode ser.**
-<p align="center">
-  <img
-    src="/docs/images/menu-principal.png"
-    alt="Menu principal de Forkeazando, jogo narrativo interativo em Java"
-    width="750"
-  />
-</p>
+![Menu principal de Forkeazando, jogo narrativo interativo em Java](/docs/images/fork-versao1.3.0.gif)
 Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina MI-Programação, que segue a metadologia PBL(Problem-Based Learning), da Universidade Estadual de Feira de Santana (UEFS).
 
 A história acompanha uma estudante de Engenharia de Computação ao longo de sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada escolha pode abrir caminhos, limitar possibilidades e produzir consequências que se refletem nos capítulos seguintes.

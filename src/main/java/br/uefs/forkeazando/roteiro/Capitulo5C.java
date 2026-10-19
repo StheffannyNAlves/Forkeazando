@@ -109,9 +109,10 @@ public class Capitulo5C {
                 .comAtributo("confianca", -5)
                 .comPermiteEnergiaInsuficiente().build());
         cena503.adicionarEscolha(new Escolha.Builder(
-                "Falar com ele sem ameaçar: mostrar que você tem como comprovar a entrega.", 506)
+                "Conferir a entrega com o cliente e registrar por escrito o que foi entregue.", 506)
                 .comCarismaMinima(5)
-                .comAtributo("confianca", 2).build());
+                .comAtributo("confianca", 2)
+                .comFlagConcedida("cap5c_validou_entrega").build());
         cenas.add(cena503);
 
         Cena cena505 = new Cena(505, "Capítulo 5C", "Narrador",

@@ -107,11 +107,9 @@ public final class Ilustracoes {
 
     public static java.util.Set<String> chaves() { return REGISTRO.chaves(); }
 
-    // =====================================================================
     //  Cap. 1 / cenas 3, 4, 71, 72, 73 — pátio da SIECOMP
     //  Caramelo passa; Cáio olha com o copo térmico amassado.
     //  Paleta de meio-dia: céu saturado, sombra dura, concreto.
-    // =====================================================================
     static Tela cap1Patio(int quadro) {
         int faltam = QUADROS_PATIO - 1 - quadro;   // 0 no quadro final
         Tela t = new Tela(LARGURA, LINHAS);
@@ -204,12 +202,10 @@ public final class Ilustracoes {
         return t;
     }
 
-    // =====================================================================
     //  Abertura / cena 700 — "Cinco anos depois." sala de entrevista
     //  Paleta fria (azul-aço + vidro), oposta ao entardecer do menu.
     //  Animação: a luz fluorescente pisca até estabilizar; depois a caneta
     //  do candidato bate na mesa (nervosismo).
-    // =====================================================================
     static Tela abertura(int quadro) {
         double[] luzes = {0.15, 1.0, 0.25, 1.0, 0.45, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         double luz = luzes[Math.min(quadro, luzes.length - 1)];
@@ -337,13 +333,11 @@ public final class Ilustracoes {
         return t;
     }
 
-    // =====================================================================
     //  Cap. 1 / cena 0 — 5h47, SISU, "Nossa."
     //  Quarto às escuras com UMA fonte de luz: a tela.
     //  Animação: a tela liga (brilho sobe e a luz invade o quarto), o banner
     //  APROVADO(A) aparece e só então ela reage (sobrancelha, boca aberta).
     //  O ":" do relógio pisca durante tudo.
-    // =====================================================================
     static Tela cap1Matricula(int quadro) {
         double b = quadro < 2 ? 0.0 : Math.min(1.0, (quadro - 1) / 5.0);   // brilho da tela
         boolean banner = quadro >= 7;

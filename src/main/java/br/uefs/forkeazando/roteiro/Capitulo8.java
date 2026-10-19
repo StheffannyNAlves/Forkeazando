@@ -173,6 +173,16 @@ public class Capitulo8 {
                 .comFlagRequerida("cap7_questionou_autoria")
                 .comAtributo("confianca", 3)
                 .comFlagConcedida("cap8_resposta_verdadeira").build());
+        cena654.adicionarEscolha(new Escolha.Builder(
+                "Você explica como investigou uma falha no circuito: mediu, formulou hipótese e testou a correção.", 655)
+                .comFlagRequerida("cap1_depurou_circuito")
+                .comAtributo("confianca", 3)
+                .comFlagConcedida("cap8_resposta_verdadeira").build());
+        cena654.adicionarEscolha(new Escolha.Builder(
+                "Você fala sobre registrar método e limitações para que outra pessoa consiga entender o trabalho.", 655)
+                .comFlagRequerida("cap7_documentou_limitacoes")
+                .comAtributo("confianca", 3)
+                .comFlagConcedida("cap8_resposta_verdadeira").build());
         cenas.add(cena654);
 
         Cena cena655 = new Cena(655, "Capítulo 8", "Narrador",

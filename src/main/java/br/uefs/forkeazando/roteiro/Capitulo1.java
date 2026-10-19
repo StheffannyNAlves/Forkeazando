@@ -211,13 +211,20 @@ public class Capitulo1 {
                         "não for limitada, o componente pode queimar antes de vocês entenderem qualquer coisa.");
 
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Ler o datasheet. Sozinha. Com calma.", 16)
+                "Separar LED, resistor e diodo; conferir polaridade e identificação antes de montar.", 16)
+                .comScoreGanho(4).comCustoEnergia(10)
+                .comFlagConcedida("cap1_identificou_componentes")
+                .comAtributo("confianca", 1).build());
+        cena5.adicionarEscolha(new Escolha.Builder(
+                "Ler o datasheet e cruzar os valores com o esquema do roteiro.", 16)
                 .comScoreGanho(5).comCustoEnergia(15)
+                .comFlagConcedida("cap1_interpretou_esquema")
                 .comFlagConcedida("hab_foco_total")
                 .comAtributo("confianca", 2).build());
         cena5.adicionarEscolha(new Escolha.Builder(
-                "Ajudar o pessoal do lado. Já queimaram dois.", 16)
+                "Ajudar o pessoal do lado a conferir polaridade e resistor antes de ligar a fonte.", 16)
                 .comScoreGanho(3).comCustoEnergia(20)
+                .comFlagConcedida("cap1_identificou_componentes")
                 .comRelacionamento(PersonagemSecundario.DANDARA, 2f).build());
         cena5.adicionarEscolha(new Escolha.Builder(
                 "Ficar no celular. Alguém vai resolver.", 16)
@@ -351,8 +358,10 @@ public class Capitulo1 {
                         "Você não sabe ainda se o problema está na montagem, nas referências dos canais ou " +
                         "na configuração do instrumento. Pela primeira vez, entende por que o roteiro manda " +
                         "conferir cada etapa antes de interpretar a tela.");
-        cena8.adicionarEscolha(new Escolha.Builder("Continuar tentando.", 9)
-                .comCustoEnergia(15).comAtributo("confianca", 2).build());
+        cena8.adicionarEscolha(new Escolha.Builder(
+                "Medir a tensão no resistor e comparar a leitura com o valor esperado.", 9)
+                .comCustoEnergia(15).comAtributo("confianca", 2)
+                .comFlagConcedida("cap1_mediu_circuito").build());
         cena8.adicionarEscolha(new Escolha.Builder(
                 "Ir embora.", 14)
                 .comCustoEnergia(0)
@@ -379,6 +388,7 @@ public class Capitulo1 {
                 "Encerrar a semana e seguir para o próximo capítulo.",
                 Estado.CENA_ENCERRAR)
                 .comAtributo("confianca", 3)
+                .comFlagConcedida("cap1_depurou_circuito")
                 .comFlagConcedida("cap1_oficina_tentada").build());
         cenas.add(cena9);
 

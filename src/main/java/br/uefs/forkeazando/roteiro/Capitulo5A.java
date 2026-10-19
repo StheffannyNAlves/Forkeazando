@@ -121,6 +121,10 @@ public class Capitulo5A {
                 "Perguntar quem vai revisar. O grupo fica em silêncio.", 410)
                 .comFlagConcedida("cap5a_perguntou_revisao").build());
         cena405.adicionarEscolha(new Escolha.Builder(
+                "Registrar método, condições do experimento e resultados antes de redigir a seção.", 410)
+                .comScoreGanho(4).comCustoEnergia(10)
+                .comFlagConcedida("cap5a_registrou_experimento").build());
+        cena405.adicionarEscolha(new Escolha.Builder(
                 "Enfrentar tudo. Café e ódio.", 410)
                 .comEnergiaAbaixoDe(20)
                 .comCustoEnergia(30)

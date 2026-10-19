@@ -153,9 +153,11 @@ public class Capitulo6 {
                         "Tem gente esperando uma resposta sua.\n\n" +
                         "Você não precisa resolver tudo hoje, mas precisa decidir se tenta " +
                         "continuar neste calendário ou se pede o trancamento.");
-        cena554.adicionarEscolha(new Escolha.Builder("Continuar.", 557)
+        cena554.adicionarEscolha(new Escolha.Builder(
+                "Continuar, mas reorganizar a rotina e escolher prioridades realistas.", 557)
                 .comAtributo("confianca", 1)
-                .comFlagConcedida("cap6_continuou").build());
+                .comFlagConcedida("cap6_continuou")
+                .comFlagConcedida("cap6_reorganizou_rotina").build());
         cena554.adicionarEscolha(new Escolha.Builder("Trancar o semestre.", 557)
                 .comAtributo("confianca", 1)
                 .comAtributo("vidaSocial", 1)

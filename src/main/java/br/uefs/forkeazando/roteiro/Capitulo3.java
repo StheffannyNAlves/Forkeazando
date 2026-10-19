@@ -103,7 +103,9 @@ public class Capitulo3 {
                         "Entrega com 1h30 de prova.");
         cena202.adicionarEscolha(new Escolha.Builder("Sair sem olhar.", 210)
                 .comCustoEnergia(10).build());
-        cena202.adicionarEscolha(new Escolha.Builder("Esperar os colegas.", 210)
+        cena202.adicionarEscolha(new Escolha.Builder(
+                "Anotar onde travou para revisar os erros depois, sem tentar adivinhar a nota dos outros.", 210)
+                .comFlagConcedida("cap3_revisou_erros")
                 .comRelacionamento(PersonagemSecundario.DANDARA, 1f).build());
         cenas.add(cena202);
 

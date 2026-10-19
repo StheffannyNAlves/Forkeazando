@@ -30,6 +30,7 @@ public class Escolha  {
     private final int logicaMaxima;
     private final int sanidadeMinima;
     private final int sanidadeMaxima;
+    private final Map<PersonagemSecundario, Float> relacionamentoMinimo;
     private final PersonagemSecundario.Interesse interesseAlvo;
     private final Map<PersonagemSecundario, Float> impactoRelacionamento;
     private final Map<String, Integer> atributosAlterados;
@@ -57,15 +58,16 @@ public class Escolha  {
         this.sanidadeMinima        = b.sanidadeMinima;
         this.sanidadeMaxima        = b.sanidadeMaxima;
         this.interesseAlvo         = b.interesseAlvo;
+        this.relacionamentoMinimo = b.relacionamentoMinimo;
         this.impactoRelacionamento = b.impactoRelacionamento;
         this.atributosAlterados    = b.atributosAlterados;
         this.permiteEnergiaInsuficiente = b.permiteEnergiaInsuficiente;
     }
 
-    public boolean estaDisponivel(Protagonista p) {
+    private boolean atende(Protagonista p, boolean ignorarEnergia) {
         return p.atingiuRequisito(scoreMinimo, participacaoMinima)
                 && ((participacaoMaxima <= 0) || p.getParticipacao() <= participacaoMaxima)
-                && (permiteEnergiaInsuficiente
+                && (ignorarEnergia || permiteEnergiaInsuficiente
                 || p.getEnergia() >= Math.abs(custoEnergia))
                 && ((flagRequerida == null) || p.temFlag(flagRequerida))
                 && ((energiaAbaixoDe <= 0) || p.getEnergia() < energiaAbaixoDe)
@@ -78,7 +80,26 @@ public class Escolha  {
                 && ((logicaMinima <= 0) || p.getLogica() >= logicaMinima)
                 && ((logicaMaxima <= 0) || p.getLogica() <= logicaMaxima)
                 && ((sanidadeMinima <= 0) || p.getSanidade() >= sanidadeMinima)
-                && ((sanidadeMaxima <= 0) || p.getSanidade() <= sanidadeMaxima);
+                && ((sanidadeMaxima <= 0) || p.getSanidade() <= sanidadeMaxima)
+                && atendeRelacionamentos(p);
+    }
+
+    private boolean atendeRelacionamentos(Protagonista p) {
+        for (Map.Entry<PersonagemSecundario, Float> exigido : relacionamentoMinimo.entrySet()) {
+            if (p.getRelacionamento(exigido.getKey()) < exigido.getValue()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean estaDisponivel(Protagonista p) { /** para não quebrar quem já usava esse método antes*/
+        return atende(p, false);
+    }
+
+    /** Disponível se a energia fosse suficiente -> serve para saber se só a energia trava a cena */
+    public boolean estaDisponivelIgnorandoEnergia(Protagonista p) {
+        return atende(p, true);
     }
 
     public String getTextoAlternativa() { return textoAlternativa; }
@@ -96,6 +117,7 @@ public class Escolha  {
         private final String textoAlternativa;
         private final int cenaDestinoId;
         private final List<String> flagsConcedidas = new ArrayList<>();
+        public Map<PersonagemSecundario, Float> relacionamentoMinimo = new HashMap<>();
         private boolean permiteEnergiaInsuficiente = false;
         private String flagRequerida = null;
         private int scoreMinimo = 0, participacaoMinima = 0, participacaoMaxima = 0;
@@ -169,6 +191,10 @@ public class Escolha  {
 
         public Builder comRelacionamento(PersonagemSecundario p, float v) {
             impactoRelacionamento.put(p, v); return this;
+        }
+        public Builder comRelacionamentoMinimo(PersonagemSecundario p, float v){ /** A escolha só aparece se a relação com o personagem for ALIADO=3*/
+            relacionamentoMinimo.put(p, v);
+            return this;
         }
         public Builder comAtributo(String nome, int delta) {
             atributosAlterados.merge(nome, delta, Integer::sum); return this;

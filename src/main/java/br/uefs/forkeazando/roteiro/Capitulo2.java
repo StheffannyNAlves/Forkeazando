@@ -113,10 +113,14 @@ public class Capitulo2 {
 
         Cena cena109 = new Cena(109, "Capítulo 2", "Narrador",
                 "Quatro etapas.\n\n" +
-                        "A primeira é um desafio de código que você não sabe fazer.\n\n" +
-                        "A segunda é uma entrevista com alguém que fala 'fit cultural' " +
-                        "quatro vezes em sete minutos.\n\n" +
-                        "Você tenta imaginar como responder sem fingir que entendeu o que isso quer dizer.");
+                        "A primeira é um desafio de código que você não sabe fazer. O enunciado parece simples: " +
+                        "receber uma sequência de valores e encontrar um resultado. Você começa a escrever a solução, " +
+                        "mas um caso pequeno quebra sua lógica.\n\n" +
+                        "Você relê o código. O erro não está na sintaxe: sua condição ignora justamente o primeiro " +
+                        "elemento da sequência. Corrigir isso resolve o exemplo, mas você ainda precisa pensar em " +
+                        "listas vazias, valores repetidos e no que acontece quando a entrada cresce.\n\n" +
+                        "A segunda etapa é uma entrevista com alguém que fala 'fit cultural' quatro vezes em sete minutos. " +
+                        "Você tenta imaginar como explicar o que aprendeu sem fingir que já sabe tudo.");
         cena109.adicionarEscolha(new Escolha.Builder("Fazer mesmo assim.", 112)
                 .comScoreGanho(4).comCustoEnergia(20).build());
         cena109.adicionarEscolha(new Escolha.Builder("Só assistir.", 112).build());
@@ -201,11 +205,14 @@ public class Capitulo2 {
 
 // RAS
         Cena cena120 = new Cena(120, "Capítulo 2", "Narrador",
-                "O estande do RAS tem dois carrinhos de robô e um Arduino " +
-                        "que não funciona há dois semestres.\n\n" +
-                        "Uma menina com cabelo preso te olha.\n\n" +
-                        "'Sabe soldar?'\n\n" +
-                        "Você não sabe. Ou acha que não sabe. Nunca tentou.");
+                "O estande do RAS tem um robô sobre a mesa, fios de jumper espalhados e um " +
+                        "caderno cheio de diagramas. O robô liga, mas o sensor não responde.\n\n" +
+                        "Uma integrante aponta para a protoboard: alimentação, GND e sinal estão " +
+                        "marcados com cores diferentes — só que alguém trocou dois fios.\n\n" +
+                        "'A gente pode sair trocando tudo até funcionar', ela diz. 'Ou medir e " +
+                        "descobrir onde o sinal parou.'\n\n" +
+                        "Ela te olha. 'Você sabe soldar?'\n\n" +
+                        "Você não sabe. Mas talvez isso nem seja o primeiro problema a resolver.");
         cena120.adicionarEscolha(new Escolha.Builder(
                 "Não sei. Mas quero aprender.", 118)
                 .comParticipacaoGanha(4).comCustoEnergia(15)
@@ -218,12 +225,15 @@ public class Capitulo2 {
 
 // WIE
         Cena cena121 = new Cena(121, "Capítulo 2", "Narrador",
-                "O estande do WIE tem uma toalha rosa e um banner " +
-                        "escrito 'Women in Engineering'.\n\n" +
-                        "Duas veteranas te cumprimentam. Contam sobre um projeto " +
-                        "de extensão numa escola pública, com atividades de lógica " +
-                        "para meninas de doze anos.\n\n" +
-                        "Você escuta, tentando entender como é participar de um grupo assim durante o semestre.");
+                "No estande do WIE, duas veteranas contam sobre ações de extensão e acolhimento " +
+                        "de mulheres na engenharia. Uma fala da importância de ter gente com quem " +
+                        "conversar quando o curso parece feito para testar a sua resistência; a outra " +
+                        "mostra o calendário de atividades.\n\n" +
+                        "Tem reunião, organização de evento e trabalho de extensão. Nada parece " +
+                        "impossível isoladamente. O desafio é encaixar tudo entre aulas, transporte, " +
+                        "provas e descanso.\n\n" +
+                        "'Você não precisa prometer que vai dar conta de tudo hoje', uma delas diz. " +
+                        "'Pode perguntar como funciona antes de decidir.'");
         cena121.adicionarEscolha(new Escolha.Builder(
                 "Assinar a lista de interesse.", 118)
                 .comParticipacaoGanha(4).comCustoEnergia(5)
@@ -231,7 +241,7 @@ public class Capitulo2 {
         cena121.adicionarEscolha(new Escolha.Builder(
                 "Perguntar como é a rotina do grupo.", 118)
                 .comAtributo("confianca", 10).comCustoEnergia(5)
-               .build());
+                .build());
         cena121.adicionarEscolha(new Escolha.Builder(
                 "Agradecer e seguir. Hoje, você não vai assumir outro compromisso.", 118)
                 .comCustoEnergia(0).build());

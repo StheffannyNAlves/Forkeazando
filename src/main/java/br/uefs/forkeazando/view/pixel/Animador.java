@@ -9,7 +9,7 @@ import java.util.function.LongConsumer;
  * topo da arte e reescrevem SÓ as linhas que mudaram. Ao terminar o cursor
  * está logo abaixo da imagem, exatamente como depois de imprimir uma arte estática.
  *
- * O tempo entre quadros vem de fora ({@code dormir}), para respeitar a pausa
+ * O tempo entre quadros vem de fora, para respeitar a pausa
  * do jogo e para os testes não esperarem de verdade.
  */
 public final class Animador {

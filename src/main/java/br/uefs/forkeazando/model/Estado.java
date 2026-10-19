@@ -15,16 +15,42 @@ public class Estado  {
     private int semestresExtras = 0;
     public static final int CENA_ENCERRAR = 999;
     private transient boolean alterado;
+    public static final int CENA_RETOMAR = 998;  // sai do apagão e retoma o caminho original
+    public static final int CENA_APAGAO = 970;   // 970, 971 e 972
+    private int destinoPendente = -1;
 
     public void iniciar(Protagonista protagonista) {
         if (protagonista == null) {
             throw new IllegalArgumentException("O protagonista não pode ser null.");
         }
         this.protagonista = protagonista;
-        // Migração simples para partidas antigas que guardavam a flag, mas não o contador.
+        // Migração para partidas antigas que guardavam a flag, mas não o contador.
         if (semestresExtras == 0 && protagonista.temFlag("cap6_trancou")) {
             semestresExtras = 1;
         }
+    }
+
+    public static boolean ehCenaDeApagao(int cenaId) {
+        return cenaId >= CENA_APAGAO && cenaId <= CENA_APAGAO + 2;
+    }
+
+    public boolean temDestinoPendente() {
+        return destinoPendente >= 0;
+    }
+
+    public void guardarDestinoPendente(int destino) {
+        destinoPendente = destino;
+        marcarAlterado();
+    }
+
+    public int consumirDestinoPendente() {
+        if (destinoPendente < 0) {
+            throw new IllegalStateException("Não há destino pendente depois do apagão.");
+        }
+        int destino = destinoPendente;
+        destinoPendente = -1;
+        marcarAlterado();
+        return destino;
     }
 
     public void avancarCapitulo() {

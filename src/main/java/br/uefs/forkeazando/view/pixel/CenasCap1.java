@@ -5,7 +5,6 @@ import static br.uefs.forkeazando.view.pixel.Cor.mix;
 import static br.uefs.forkeazando.view.pixel.Cor.rgb;
 import static br.uefs.forkeazando.view.pixel.Elementos.*;
 
-/** Ilustrações restantes do Capítulo 1 (reaproveitadas em capítulos seguintes quando o cenário se repete). */
 final class CenasCap1 {
 
     static final int N_RU = 12, N_OFICINA = 12, N_PBL = 12, N_GRUPO = 12;
@@ -14,9 +13,7 @@ final class CenasCap1 {
 
     private CenasCap1() {}
 
-    // ------------------------------------------------------------------
     //  Cena 2 / 107 / 455 — RU: a fila avança. Paleta: azulejo verde + bege.
-    // ------------------------------------------------------------------
     static Tela ru(int q) {
         int f = N_RU - 1 - q;
         Tela t = new Tela(L, A);
@@ -57,9 +54,7 @@ final class CenasCap1 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cena 5 / 304 / 562 — oficina de eletrônica: LEDs piscando, fumaça.
-    // ------------------------------------------------------------------
     static Tela oficina(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 30, rgb(70, 86, 108), rgb(96, 112, 134));
@@ -108,9 +103,7 @@ final class CenasCap1 {
         return x + ((q + k * 3) % 3) - 1;
     }
 
-    // ------------------------------------------------------------------
     //  Cena 6 / 16 — PBL, sala 203: o tutor cola o Problema 2 no quadro.
-    // ------------------------------------------------------------------
     static Tela pbl(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(206, 210, 200), rgb(186, 192, 184));
@@ -141,9 +134,7 @@ final class CenasCap1 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cena 11/12 (Cap.1), 303 (Cap.4), 400-415 (Cap.5) — sala do grupo.
-    // ------------------------------------------------------------------
     static Tela salaGrupo(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 30, rgb(238, 224, 194), rgb(218, 198, 160));
@@ -174,9 +165,7 @@ final class CenasCap1 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cena 8 / 9 — oficina vazia à tarde; o LED acende; Cáio na porta.
-    // ------------------------------------------------------------------
     static Tela oficinaVazia(int q) {
         return oficinaTarde(q, 0.0, false);
     }
@@ -231,9 +220,7 @@ final class CenasCap1 {
         return t;
     }
 
-    // ------------------------------------------------------------------
     //  Cena 13 / 15 — Módulo 8: dominó, cerveja gelada, ninguém fala de prova.
-    // ------------------------------------------------------------------
     static Tela modulo8(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(40, 24, 52), rgb(78, 40, 60));
@@ -269,9 +256,9 @@ final class CenasCap1 {
         return t;
     }
 
-    // ------------------------------------------------------------------
-    //  Cena 14 — ônibus: o vidro embaçado, "UER" escrito com o dedo, depois apagado.
-    // ------------------------------------------------------------------
+
+    //  Cena 14 — ônibus: o vidro embaçado, "UEFP" escrito com o dedo, depois apagado.
+
     static Tela onibus(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, rgb(20, 24, 56), rgb(44, 34, 72));
@@ -281,7 +268,7 @@ final class CenasCap1 {
             t.elipse(bokeh[i][0], bokeh[i][1], bokeh[i][2], bokeh[i][2], mix(rgb(30, 30, 60), cores[i % 4], 0.85));
         }
         boolean[][] limpo = new boolean[48][L];
-        char[] letras = {'U', 'E', 'R'};
+        char[] letras = {'U', 'E', 'F', 'P'};
         int[] x0 = {14, 27, 40};
         for (int i = 0; i < 3; i++) {
             int colunas = Math.max(0, Math.min(5, (q - (1 + i * 3)) * 2));

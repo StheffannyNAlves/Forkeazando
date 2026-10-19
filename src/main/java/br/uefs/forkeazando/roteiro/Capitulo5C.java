@@ -19,12 +19,14 @@ public class Capitulo5C {
                         "um site.\n\n" +
                         "O orçamento oferecido é de mil reais. A mensagem termina com uma palavra:\n\n" +
                         "'Simples.'\n\n" +
-                        "Você olha para a tela. Não há lista de páginas, prazo definido nem " +
-                        "explicação sobre manutenção. Só o preço e a promessa de que não deve " +
-                        "dar muito trabalho.\n\n" +
+                        "Você olha para a tela. Não há lista de páginas, prazo definido, conteúdo, " +
+                        "hospedagem nem explicação sobre manutenção. Só o preço e a promessa de que " +
+                        "não deve dar muito trabalho.\n\n" +
+                        "Você já viu esse tipo de problema em trabalho de disciplina: quando os requisitos " +
+                        "ficam implícitos, cada pessoa imagina uma entrega diferente. Código funcionando " +
+                        "não resolve sozinho uma expectativa mal combinada.\n\n" +
                         "(Simples.)\n\n" +
-                        "(Ele não explicou o que quer.)\n\n" +
-                        "(Eu nunca fiz um site assim.)");
+                        "(Simples pra quem?)");
         cena500.adicionarEscolha(new Escolha.Builder("Aceitar.", 501)
                 .comFlagConcedida("cap5c_aceitou").build());
         cena500.adicionarEscolha(new Escolha.Builder("Pesquisar preços antes de responder.", 501)

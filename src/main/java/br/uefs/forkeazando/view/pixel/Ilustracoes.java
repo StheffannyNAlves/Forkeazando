@@ -43,6 +43,9 @@ public final class Ilustracoes {
     public static final String CAP7_DEFESA = "cap7_defesa";
     public static final String CAP8_FORMATURA = "cap8_formatura";
     public static final String CAP8_PORTAO = "cap8_portao";
+    public static final String FINAL_IC = "final_ic";
+    public static final String FINAL_DTEC = "final_dtec";
+    public static final String FINAL_INDEPENDENTE = "final_independente";
 
     /** Quadros de cada animação de entrada. O ÚLTIMO quadro é sempre a arte final (estática). */
     static final int QUADROS_ENTREVISTA = 12;
@@ -86,6 +89,9 @@ public final class Ilustracoes {
         reg(CAP7_DEFESA, CenasCap5a8.N_DEFESA, 120, CenasCap5a8::defesa);
         reg(CAP8_FORMATURA, CenasCap5a8.N_FORMATURA, 110, CenasCap5a8::formatura);
         reg(CAP8_PORTAO, CenasCap5a8.N_PORTAO, 110, CenasCap5a8::portao);
+        reg(FINAL_IC, CenasFinais.N_IC, 120, CenasFinais::ic);
+        reg(FINAL_DTEC, CenasFinais.N_DTEC, 120, CenasFinais::dtec);
+        reg(FINAL_INDEPENDENTE, CenasFinais.N_INDEP, 120, CenasFinais::independente);
     }
 
     /** Animação de entrada da ilustração, se ela tiver uma. */

@@ -15,16 +15,16 @@ public class Capitulo3 {
 
         Cena cena200 = new Cena(200, "Capítulo 3 — A Primeira Prova Real", "Narrador",
                 "Cálculo I. Segunda-feira, 7h.\n\n" +
-                        "Você saiu de casa às 5h20. Pegou dois ônibus. O segundo atrasou. " +
-                        "Chegou 6h55. A sala tá com quarenta pessoas e pelo menos trinta " +
-                        "tão com a cara de quem passou a noite estudando.\n\n" +
-                        "O professor entra 7h20 porque 'o trânsito na Getúlio Vargas tá horrível'.\n\n" +
-                        "(Todo semestre é isso.)\n\n" +
-                        "(TODO semestre.)\n\n" +
-                        "Atrás dele, entra o Meira, o da oficina. Fiscal hoje.\n\n" +
-                        "Ele te vê. Ele não reage.\n\n" +
-                        "(Ele lembra de mim?)\n\n" +
-                        "(Ele me viu montar o LED. Ou me viu copiar o esquema?)\n\n" +
+                        "Você saiu de casa antes do sol, pegou dois ônibus e chegou com a sensação " +
+                        "de que já teve um dia inteiro antes da prova. A sala está cheia; tem gente " +
+                        "refazendo exercícios no verso de listas antigas e gente encarando o nada.\n\n" +
+                        "Você revisou limites, tentou entender de verdade o que cada passagem algébrica " +
+                        "estava fazendo e resolveu exercícios sem olhar a resposta antes. Mesmo assim, " +
+                        "alguns passos ainda parecem mágicos quando aparecem na solução pronta.\n\n" +
+                        "A prova começa. Uma questão pede justificativa, não só o resultado. Você lembra " +
+                        "que decorar o procedimento ajuda até a primeira variação do enunciado.\n\n" +
+                        "Atrás da turma, o Prof. Meira entra como fiscal. Ele te reconhece da oficina, " +
+                        "mas não dá pista nenhuma.\n\n" +
                         "Cinco questões. A primeira é uma integral.");
         cena200.adicionarEscolha(new Escolha.Builder("Revisar as fórmulas.", 201)
                 .comCustoEnergia(5).build());

@@ -92,11 +92,16 @@ public class Capitulo4 {
 
         // CENA 304 — PROF. MEIRA
         Cena cena304 = new Cena(304, "Capítulo 4", "Prof. Rafael Meira",
-                "Ele te recebe no laboratório. Protoboard numa mão, multímetro no " +
-                        "bolso da calça. Não senta. Você também não senta.\n\n" +
-                        "'Monitoria não é aula de reforço. É você ensinar quem sabe menos.'\n\n" +
-                        "Pausa. Ele te olha fixo.\n\n" +
-                        "'Você aguenta explicar a mesma coisa cinco vezes sem perder a paciência?'");
+                "Ele te recebe no laboratório. Tem uma protoboard montada na bancada, um multímetro " +
+                        "e uma folha com medições de tensão. Não senta. Você também não senta.\n\n" +
+                        "'Monitoria não é resolver a lista pelo aluno', ele diz. 'É descobrir onde a " +
+                        "pessoa se perdeu e ajudar a construir o raciocínio.'\n\n" +
+                        "Ele aponta para o circuito. 'Se o LED não acende, você começa trocando " +
+                        "componente ou pergunta o que já foi medido? E se o aluno insistir que a " +
+                        "corrente é igual à tensão?'\n\n" +
+                        "Pausa.\n\n" +
+                        "'Você consegue explicar a mesma ideia de três jeitos diferentes — e admitir " +
+                        "quando precisa conferir a resposta antes de ensinar?'");
         cena304.adicionarEscolha(new Escolha.Builder(
                 "Aguento. Já ensinei colega antes, na escola.", 3045)
                 .comRelacionamento(PersonagemSecundario.PROFESSOR_DTEC, 3f)

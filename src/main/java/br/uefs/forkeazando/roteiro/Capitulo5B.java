@@ -15,15 +15,17 @@ public class Capitulo5B {
 
         Cena cena450 = new Cena(450, "Capítulo 5B — DTEC", "Narrador",
                 "Primeiro dia de monitoria. Sala 112.\n\n" +
-                        "Doze alunos. Dois sabem exatamente por que estão ali. Os outros dez " +
-                        "vieram porque a disciplina é obrigatória e o horário encaixou.\n\n" +
-                        "Você escreve no quadro a primeira coisa que o professor te pediu. " +
-                        "O giz range. Você tenta lembrar como o próprio Meira explicaria aquilo.\n\n" +
-                        "Alguém no fundo pergunta:\n\n" +
-                        "'Vai cair na prova?'\n\n" +
-                        "(Eu não sei.)\n\n" +
+                        "Doze alunos. Dois já abriram a lista; os outros ainda estão tentando descobrir " +
+                        "qual parte da aula precisam rever. Você escreve no quadro a relação entre tensão, " +
+                        "resistência e corrente.\n\n" +
+                        "Um aluno substitui os valores na fórmula, mas usa a resistência em quilohms como " +
+                        "se fosse ohms. O resultado sai mil vezes maior. Você percebe que apontar o erro " +
+                        "não basta: precisa fazer a pessoa enxergar de onde veio.\n\n" +
+                        "Outra pessoa pergunta se o LED pode ser ligado direto à fonte. Você respira e " +
+                        "volta à ideia de limitar a corrente.\n\n" +
+                        "Alguém no fundo pergunta: 'Mas isso vai cair na prova?'\n\n" +
                         "(Eu não sou o professor.)\n\n" +
-                        "(Eu tenho vinte anos.)");
+                        "(Mas eu preciso conseguir explicar por que isso importa.)");
         cena450.adicionarEscolha(new Escolha.Builder(
                 "Explicar do começo, devagar.", 452)
                 .comScoreGanho(4).comCustoEnergia(20)

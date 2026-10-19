@@ -25,11 +25,16 @@ public class Cena {
                 .filter(e -> e.estaDisponivel(p))
                 .toList();
      }
-    public List<Escolha> getEscolhas() {
+     public List<Escolha> getEscolhas() {
         return List.copyOf(escolhas);
     }
      public int getId(){ return id; }
      public String getCapitulo() { return capitulo;}
      public String getPersonagemFalando() { return personagemFalando;}
      public String getTextoNarrativo() {return textoNarrativo; }
+
+    public boolean temEscolhaBloqueadaSoPorEnergia(Protagonista p){
+        return escolhas.stream()
+                .anyMatch(e -> !e.estaDisponivel(p) && e.estaDisponivel(p));
+    }
 }

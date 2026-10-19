@@ -66,7 +66,7 @@ public class MenuPrincipalController {
             MenuInterativo.Resposta resposta =
                     MenuInterativo.abrir(
                             opcoes, "FORKEAZANDO", view::mostrarMenu);
-
+            view.pararAnimacao(); // interrompe a animacao antes de processarpcao() executar a proxima acao
             if (resposta.resultado
                     == MenuInterativo.Resultado.CANCELADO) {
                 continue;
@@ -424,6 +424,7 @@ public class MenuPrincipalController {
         cenas.addAll(Capitulo6.criarCenas());
         cenas.addAll(Capitulo7.criarCenas());
         cenas.addAll(Capitulo8.criarCenas());
+        cenas.addAll(Apagao.criarCenas());
         return cenas;
     }
 

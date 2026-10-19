@@ -28,10 +28,8 @@ public final class VisuaisDeCena {
     }
 
     static {
-        // ---------------- Prólogo ----------------
         arte("abertura_entrevista", 700, 701);
 
-        // ---------------- Capítulo 1 ----------------
         arte("cap1_matricula", 0);
         arte("cap1_ru", 2);
         arte("cap1_patio", 3);
@@ -50,7 +48,6 @@ public final class VisuaisDeCena {
         arte("cap1_onibus", 14);
         fala(15, "cap1_modulo8", "ze", "feliz");
 
-        // ---------------- Capítulo 2 ----------------
         arte("cap2_mural", 101);
         arte("cap2_assembleia", 105, 106);
         arte("cap1_ru", 107);
@@ -59,14 +56,12 @@ public final class VisuaisDeCena {
         fala(114, "cap1_patio", "caio", "neutra");
         arte("cap2_feira", 116, 118, 120, 121, 122, 123);
 
-        // ---------------- Capítulo 3 ----------------
         arte("cap3_prova", 200, 201, 202, 204, 205, 207);
         fala(208, null, "caio", "neutra");
         arte("cap3_notas", 210);
         fala(211, "cap3_notas", "dandara", "triste");
         fala(213, null, "rafael", "seria");
 
-        // ---------------- Capítulo 4 ----------------
         arte("cap4_editais", 300);
         fala(301, "cap4_editais", "caio", "neutra");
         fala(303, "sala_grupo", "sergio", "neutra");
@@ -75,7 +70,6 @@ public final class VisuaisDeCena {
         fala(3050, "cap4_agata", "sistema", "processando");
         arte("cap4_prazo", 306, 371, 372, 373);
 
-        // ---------------- Capítulo 5 ----------------
         arte("sala_grupo", 400, 402);
         fala(403, "sala_grupo", "bia", "neutra");
         fala(415, "sala_grupo", "sergio", "neutra");
@@ -85,7 +79,6 @@ public final class VisuaisDeCena {
         arte("cap5_freela", 500, 501, 503, 505);
         fala(502, "cap5_freela", "bia", "neutra");
 
-        // ---------------- Capítulo 6 ----------------
         arte("cap6_quarto", 550, 551, 552, 554);
         fala(553, "cap6_quarto", "caio", "neutra");
         fala(555, "cap6_ru", "bia", "neutra");
@@ -97,12 +90,10 @@ public final class VisuaisDeCena {
         fala(562, "cap1_oficina", "rafael", "neutra");
         fala(563, null, "ze", "feliz");
 
-        // ---------------- Capítulo 7 ----------------
         arte("cap7_tcc", 600);
         fala(601, null, "sergio", "neutra");
         arte("cap7_defesa", 605);
 
-        // ---------------- Capítulo 8 ----------------
         arte("cap8_formatura", 650, 653);
         fala(651, "cap8_formatura", "caio", "torto");
         fala(652, "cap8_formatura", "dandara", "feliz");

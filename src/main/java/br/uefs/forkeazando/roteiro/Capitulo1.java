@@ -197,18 +197,18 @@ public class Capitulo1 {
 
         Cena cena5 = new Cena(5, "Capítulo 1", "Prof. Rafael Meira",
                 "O professor escreve no quadro sem olhar pra turma:\n\n" +
-                        "'LED piscando. Se sair fumaça, desliga a fonte. Volto em duas horas.'\n\n" +
-                        "Ele sai.\n\n" +
-                        "A porta fecha.\n\n" +
-                        "Silêncio por três segundos.\n\n" +
-                        "(Ele foi mesmo?)\n\n" +
-                        "(Ele tá voltando?)\n\n" +
-                        "(Ele vai explicar alguma coisa?)\n\n" +
-                        "Aí alguém do fundo grita:\n\n" +
-                        "'PEGA O DATASHEET'\n\n" +
-                        "E a sala explode. Em trinta segundos, três pessoas já queimaram LED. " +
-                        "O cheiro é o mesmo do corredor do bloco C: plástico derretido " +
-                        "e arrependimento.");
+                        "'Hoje vocês vão montar um circuito simples e descobrir por que ele funciona — ou não.'\n\n" +
+                        "Ele deixa sobre a bancada protoboards, resistores, diodos e LEDs. Ao lado, " +
+                        "uma fonte, um gerador de funções e um osciloscópio que parece mais caro que a sala inteira.\n\n" +
+                        "'Antes de ligar qualquer coisa: leiam o roteiro, confiram os componentes e " +
+                        "não tratem o datasheet como decoração. Volto em duas horas.'\n\n" +
+                        "A porta fecha. Silêncio por três segundos.\n\n" +
+                        "(Eu sei o que é um diodo no papel. Isso não significa que eu saiba reconhecer " +
+                        "o que ele está fazendo no circuito.)\n\n" +
+                        "Aí alguém do fundo grita: 'PEGA O DATASHEET'. A sala se agita. Uma dupla " +
+                        "quer ligar a fonte imediatamente; outra tenta descobrir a polaridade do LED. " +
+                        "Você percebe que montar é só o começo: se a ligação estiver errada ou a corrente " +
+                        "não for limitada, o componente pode queimar antes de vocês entenderem qualquer coisa.");
 
         cena5.adicionarEscolha(new Escolha.Builder(
                 "Ler o datasheet. Sozinha. Com calma.", 16)
@@ -338,13 +338,19 @@ public class Capitulo1 {
 
         Cena cena8 = new Cena(8, "Capítulo 1", "Narrador",
                 "A oficina tá vazia.\n\n" +
-                        "Só você e o zumbido do osciloscópio.\n\n" +
-                        "O circuito que não funcionou de manhã continua lá. Montado torto. " +
-                        "Um fio amarelo saindo pela beirada.\n\n" +
-                        "Você senta. Liga a fonte.\n\n" +
-                        "Nada.\n\n" +
-                        "Mexe num fio. Nada.\n\n" +
-                        "Mexe em outro. Nada.");
+                        "Só você e o zumbido do osciloscópio. O circuito da manhã continua na protoboard, " +
+                        "com um fio amarelo saindo pela beirada.\n\n" +
+                        "Você não liga a fonte de imediato. Confere a orientação do diodo no datasheet, " +
+                        "segue as conexões linha por linha e percebe que não tem certeza se a montagem " +
+                        "corresponde ao esquema. Corrige um jumper e só então energiza o circuito.\n\n" +
+                        "O LED continua apagado.\n\n" +
+                        "Você pega o multímetro. Depois olha para o gerador de funções e o osciloscópio. " +
+                        "O roteiro pede para observar o comportamento do diodo e comparar a curva tensão-corrente. " +
+                        "Não basta ver uma luz: você precisa descobrir o que está acontecendo eletricamente.\n\n" +
+                        "Ajusta o sinal, verifica as escalas e tenta usar o modo X-Y. A curva aparece deslocada. " +
+                        "Você não sabe ainda se o problema está na montagem, nas referências dos canais ou " +
+                        "na configuração do instrumento. Pela primeira vez, entende por que o roteiro manda " +
+                        "conferir cada etapa antes de interpretar a tela.");
         cena8.adicionarEscolha(new Escolha.Builder("Continuar tentando.", 9)
                 .comCustoEnergia(15).comAtributo("confianca", 2).build());
         cena8.adicionarEscolha(new Escolha.Builder(
@@ -356,10 +362,18 @@ public class Capitulo1 {
 
         Cena cena9 = new Cena(9, "Capítulo 1", "Narrador",
                 "O LED acende. Uma luz vermelha minúscula. Tremendo de leve.\n\n" +
-                        "(Eu consegui.)\n\n" +
-                        "Caio aparece na porta. Sem falar nada, ele olha pro LED, olha " +
-                        "pra você, assente uma vez — bem devagar — e vai embora.\n\n" +
-                        "Você fica olhando pra porta por uns cinco segundos.\n\n" +
+                        "Você quase comemora, mas volta para o roteiro. A prática não termina quando o componente acende. " +
+                        "Você mede a tensão no resistor, estima a corrente pela Lei de Ohm e compara o resultado com " +
+                        "o que esperava. Depois observa a curva do diodo e tenta identificar a região em que a corrente " +
+                        "cresce de forma mais acentuada.\n\n" +
+                        "O diodo de silício e o LED não se comportam de forma idêntica; quando você considera os dois " +
+                        "no circuito, a leitura muda outra vez. Você anota valores, confere unidades e discute com " +
+                        "suas próprias anotações antes de concluir qualquer coisa. Ainda há diferença entre a previsão " +
+                        "e a medida — e agora você tem dados para investigar, não só um palpite.\n\n" +
+                        "(Eu consegui fazer funcionar. Entender por que funcionou é outra etapa.)\n\n" +
+                        "Caio aparece na porta. Sem falar nada, olha para a bancada e depois para você. Assente uma vez — " +
+                        "bem devagar — e vai embora.\n\n" +
+                        "Você fica olhando para a porta por uns cinco segundos.\n\n" +
                         "(Ele assentiu. Eu acho.)");
         cena9.adicionarEscolha(new Escolha.Builder(
                 "Encerrar a semana e seguir para o próximo capítulo.",
@@ -370,7 +384,7 @@ public class Capitulo1 {
 
         Cena cena14 = new Cena(14, "Capítulo 1", "Narrador",
                 "Você vai embora.\n\n" +
-                        "No ônibus, o vidro tá embaçado e você desenha um 'UEFS' com o " +
+                        "No ônibus, o vidro tá embaçado e você desenha um 'UEFP' com o " +
                         "dedo sem perceber.\n\n" +
                         "Depois apaga.\n\n" +
                         "(Talvez eu tenha escolhido o curso errado.)\n\n" +

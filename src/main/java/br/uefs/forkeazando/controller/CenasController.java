@@ -28,6 +28,7 @@ public class CenasController {
     private final GerenciadorConquistas gerenciadorConquistas;
     private final GerenciadorProgresso gerenciadorProgresso;
     private final Progresso progresso;
+    private static final double RECUPERAR_ENERGIA = 0.4; /** energia máxima devolvida */
 
     public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso) {
         this.estado = estado;
@@ -80,6 +81,11 @@ public class CenasController {
             List<Escolha> disponiveis = atual.getEscolhasDisponiveis(estado.getProtagonista());
 
             if (disponiveis.isEmpty()) {
+                if (podeApagar(atual)
+                    && atual.temEscolhaBloqueadaSoPorEnergia(estado.getProtagonista())){
+                    entrarEmApagao(atual.getId());
+                    continue;
+                }
                 view.mostrarMensagem("Fim do Jogo");
                 jogando = false;
                 continue;
@@ -122,8 +128,31 @@ public class CenasController {
 
             Escolha escolhida = disponiveis.get(indice);
             aplicarEscolha(escolhida);
+            int destino = escolhida.getCenaDestinoId();
 
-            if (escolhida.getCenaDestinoId() == Estado.CENA_ENCERRAR) {
+
+            if (destino == Estado.CENA_RETOMAR) {
+                // Retoma o caminho original após o apagão.
+                destino = estado.consumirDestinoPendente();
+
+                Protagonista protagonista = estado.getProtagonista();
+                protagonista.recuperarEnergia(
+                        (int) Math.round(
+                                protagonista.getEnergiaMaxima()
+                                        * RECUPERAR_ENERGIA
+                        )
+                );
+
+            } else if (podeApagar(atual)
+                    && estado.getProtagonista().getEnergia() == 0) {
+
+                entrarEmApagao(destino);
+                continue;
+            }
+
+
+
+            if (destino == Estado.CENA_ENCERRAR) {
                 ResultadoAvancoCapitulo resultadoAvanco =
                         tentarAvancarCapitulo();
 
@@ -140,10 +169,22 @@ public class CenasController {
                 return ResultadoPartida.ERRO_DE_ROTA;
             }
 
-            estado.setCenaAtualId(escolhida.getCenaDestinoId());
+            estado.setCenaAtualId(destino);
         }
         return ResultadoPartida.FIM_DE_JOGO;
     }
+    private boolean podeApagar(Cena atual) { // esse metódo evita que o apagão dispare dentro do próprio apagão, que dispare com um destino pendente e que dispare no ultimo capitulo
+        return !Estado.ehCenaDeApagao(atual.getId())
+                && !estado.temDestinoPendente()
+                && Roteador.temProximoCapitulo(estado.getCapituloAtual());
+    }
+
+    private void entrarEmApagao(int destinoOriginal) {
+        estado.guardarDestinoPendente(destinoOriginal);
+        estado.setCenaAtualId(Estado.CENA_APAGAO);
+        estado.marcarAlterado();
+    }
+
 
 
     private ResultadoAvancoCapitulo tentarAvancarCapitulo() {

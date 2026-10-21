@@ -1,14 +1,16 @@
-# Forkeazando 
+# Forkeazando
 
 **Entre o que era certo e o que ainda pode ser.**
+
 ![Menu principal de Forkeazando, jogo narrativo interativo em Java](/docs/images/fork-versao1.3.0.gif)
-Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina MI-Programação, que segue a metadologia PBL(Problem-Based Learning), da Universidade Estadual de Feira de Santana (UEFS).
+
+Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina MI-Programação, que segue a metodologia PBL (*Problem-Based Learning*), da Universidade Estadual de Feira de Santana (UEFS).
 
 A história acompanha uma estudante de Engenharia de Computação ao longo de sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada escolha pode abrir caminhos, limitar possibilidades e produzir consequências que se refletem nos capítulos seguintes.
 
 A universidade é mais do que o cenário da história: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa descobrir como lidar com suas próprias características, administrar recursos limitados e construir uma trajetória em um sistema que nem sempre reconhece o esforço da maneira esperada.
 
-O resultado é uma experiência narrativa em que **não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.**
+O resultado é uma experiência narrativa em que não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.
 
 ---
 
@@ -63,7 +65,7 @@ Essa dimensão dá ao jogo um conflito particular: a diferença entre aprender d
 
 A protagonista possui recursos e características que influenciam a experiência de jogo.
 
-- **Energia:** representa um recurso limitado, consumido por responsabilidades e atividades. Administrá-la é importante para decidir quais compromissos assumir.
+- **Energia:** representa um recurso limitado, consumido por responsabilidades e atividades. Administrá-la é importante para decidir quais compromissos assumir. Quando chega a zero, a protagonista passa por um episódio de **esgotamento** (cenas 970 a 972). O jogo considera os vínculos e a vida social construídos até aquele momento para determinar se alguém percebe a situação e oferece ajuda ou se a protagonista enfrenta o episódio sozinha. Depois, a narrativa retoma o caminho que estava sendo seguido.
 - **Score:** representa o desempenho acumulado segundo as regras do jogo e pode participar das condições de progressão e dos desfechos.
 - **Participação:** representa o envolvimento da protagonista nas atividades e discussões acadêmicas, podendo influenciar as possibilidades disponíveis.
 - **Características e habilidades:** registram aspectos da protagonista que podem habilitar alternativas específicas.
@@ -78,7 +80,7 @@ A narrativa é organizada em uma abertura e capítulos compostos por cenas e alt
 
 Durante a experiência, o jogador lê os acontecimentos, avalia as opções disponíveis e escolhe como a protagonista reage às situações. As consequências podem afetar o estado da partida e as condições de acesso a acontecimentos posteriores.
 
-As escolhas são processadas pelo sistema do jogo, que mantém os atributos, as decisões e os demais dados necessários para dar continuidade à narrativa.
+As escolhas são processadas pelo sistema do jogo, que mantém os atributos, as decisões e os demais dados necessários para dar continuidade à narrativa. Algumas opções exigem recursos ou condições específicas; por isso, nem todas estarão necessariamente disponíveis em todos os momentos.
 
 ### Finais e progressão
 
@@ -96,19 +98,11 @@ Forkeazando conta com sistemas de progressão que incentivam a exploração da e
 
 As conquistas são desbloqueadas quando condições específicas são atendidas durante a jornada. O sistema registra os desbloqueios e permite consultar o progresso, incluindo conquistas ainda não obtidas.
 
-Exemplo de apresentação:
-
-```text
-CONQUISTA DESBLOQUEADA 🏆
-
-Primeiro Passo
-
-Você sobreviveu ao primeiro semestre.
-```
+O painel de conquistas apresenta o total e a porcentagem de conquistas desbloqueadas, além de indicar visualmente as conquistas obtidas e as ainda bloqueadas. Quando disponível, também exibe a descrição e a data de desbloqueio.
 
 ### Galeria de colecionáveis
 
-O catálogo de colecionáveis permite acompanhar habilidades e itens adquiridos durante as partidas.
+O catálogo de colecionáveis permite acompanhar habilidades e itens adquiridos durante as partidas. A galeria usa slots ilustrados em pixel art para representar os conteúdos e diferencia visualmente o que já foi desbloqueado. Os nomes dos colecionáveis obtidos também são apresentados em texto.
 
 A galeria registra os conteúdos obtidos e ajuda o jogador a visualizar o que já descobriu ao longo de suas jornadas.
 
@@ -174,7 +168,21 @@ PersistenciaException
 
 Forkeazando é executado inteiramente no terminal, com navegação interativa por meio do JLine.
 
-A interface reúne o menu principal, as cenas narrativas, os menus de configuração e salvamento e as telas de consulta de progresso.
+A interface reúne o menu principal, as cenas narrativas, os menus de configuração e salvamento e as telas de consulta de progresso. Os componentes de apresentação foram organizados para separar os dados do jogo de sua representação visual.
+
+### HUD e informações da protagonista
+
+Durante as cenas, o HUD apresenta o rank da protagonista, o indicador de pausa e barras visuais para energia, score e participação. As barras são atualizadas a partir do estado atual da personagem e agrupam informações relevantes sem substituir as regras que controlam a disponibilidade das escolhas.
+
+### Ilustrações, retratos e animações
+
+As cenas importantes têm ilustrações em pixel art, e os personagens que falam aparecem com retrato e expressão (neutra, feliz, séria ou triste). Tudo é desenhado no próprio terminal, com o caractere `▀` — cada caractere representa dois pixels — e cores de 24 bits, sem depender de arquivos de imagem externos para desenhar as artes.
+
+- Cada ilustração ocupa 66 colunas por 24 linhas, a mesma largura da caixa de cena, e a maioria é animada em 12 quadros. O último quadro é a arte estática.
+- A arte só aparece em terminais com pelo menos 66 colunas e 30 linhas; em terminais menores, o jogo segue normalmente, mas sem ilustrações e retratos.
+- Os finais de carreira possuem ilustrações próprias, exibidas no início dos epílogos.
+- Para desligar as animações — por exemplo, em terminais lentos, gravações de tela ou por acessibilidade — defina `FORKEAZANDO_SEM_ANIMACAO=1` antes de executar o jogo. As ilustrações passam a aparecer diretamente no quadro final.
+- A associação entre cenas, ilustrações e retratos é definida em `roteiro/VisuaisDeCena` e `roteiro/VisuaisDeFinal`. Os desenhos ficam em `view/pixel`.
 
 ### Controles
 
@@ -191,7 +199,7 @@ A entrada por setas depende de um terminal compatível com JLine. Em cenas ou me
 
 ### Terminal compatível
 
-Para a navegação por teclado funcionar adequadamente, recomenda-se executar o jogo em um terminal real, como o Terminal do Linux ou macOS ou o Windows Terminal, em vez do console de execução da IDE.
+Para a navegação por teclado funcionar adequadamente, recomenda-se executar o jogo em um terminal real, como o Terminal do Linux ou macOS ou o Windows Terminal, em vez do console de execução da IDE. As ilustrações exigem suporte a cores de 24 bits (*truecolor*), além do espaço mínimo descrito acima.
 
 ---
 
@@ -223,6 +231,7 @@ src/
 │   │       ├── resources/     # Recursos do jogo
 │   │       ├── roteiro/       # Abertura, capítulos, cenas e escolhas
 │   │       ├── view/          # Telas e entrada do teclado
+│   │       │   └── pixel/     # HUD, ícones, ilustrações, retratos e animações
 │   │       └── Main.java      # Ponto de entrada
 │   └── resources/             # Recursos da aplicação
 └── test/
@@ -230,7 +239,9 @@ src/
         └── br/uefs/forkeazando/
             ├── controller/
             ├── dao/
-            └── model/
+            ├── model/
+            ├── roteiro/
+            └── view/
 ```
 
 Os testes ficam em `src/test/java`. Os dados persistentes são armazenados em `saves/`, criada no diretório de execução do jogo.
@@ -243,7 +254,7 @@ Os testes ficam em `src/test/java`. Os dados persistentes são armazenados em `s
 
 - Java 21 ou superior.
 - Maven 3.8 ou superior para execução a partir do código-fonte.
-- Terminal compatível com JLine.
+- Terminal compatível com JLine; para exibir as artes, é necessário suporte a cores de 24 bits (*truecolor*).
 
 ### Executar o jogo
 
@@ -262,11 +273,13 @@ java -jar forkeazando.jar
 
 ### Executar os testes
 
+Na raiz do projeto, execute:
+
 ```bash
 mvn test
 ```
 
-Os testes automatizados verificam componentes do projeto, incluindo a persistência e a validação dos dados de progressão.
+A suíte automatizada cobre componentes de persistência e progressão, regras de disponibilidade das escolhas, o fluxo alternativo de esgotamento de energia e associações entre cenas e recursos visuais. Entre as verificações visuais estão a existência de artes para os finais, o uso das ilustrações cadastradas e o preenchimento dos pixels em todos os quadros das animações.
 
 ---
 
@@ -274,27 +287,34 @@ Os testes automatizados verificam componentes do projeto, incluindo a persistên
 
 A segunda fase amplia o jogo com recursos de continuidade, persistência, progressão permanente e gerenciamento das partidas.
 
-- [x] Criação e continuação de partidas
-- [x] Três slots de salvamento
-- [x] Metadados das partidas salvas
-- [x] Salvamento manual
-- [x] Salvamento automático
-- [x] Carregamento de partidas
-- [x] Confirmação antes de sobrescrever um salvamento
-- [x] Confirmação antes de excluir um salvamento
-- [x] Configurações persistentes
-- [x] Registro permanente de finais
-- [x] Conquistas e conteúdos desbloqueáveis
-- [x] Persistência de colecionáveis e conquistas
-- [x] Exceções personalizadas de persistência
-- [x] Testes automatizados de persistência e validação do progresso
+- [x] Criação e continuação de partidas.
+- [x] Três slots de salvamento.
+- [x] Metadados das partidas salvas.
+- [x] Salvamento manual.
+- [x] Salvamento automático.
+- [x] Carregamento de partidas.
+- [x] Confirmação antes de sobrescrever um salvamento.
+- [x] Confirmação antes de excluir um salvamento.
+- [x] Configurações persistentes.
+- [x] Registro permanente de finais.
+- [x] Conquistas e conteúdos desbloqueáveis.
+- [x] Persistência de colecionáveis e conquistas.
+- [x] Exceções personalizadas de persistência.
+- [x] Testes automatizados de persistência e validação do progresso.
+- [x] HUD com indicadores visuais de estado da protagonista.
+- [x] Galeria pixel art de habilidades e itens.
+- [x] Painel pixel art de conquistas.
+- [x] Ilustrações, retratos e animações para cenas e finais.
+- [x] Testes de regras do apagão e integridade dos recursos visuais.
 
 ### Limitações conhecidas
 
 - A configuração de volume ainda não tem efeito, pois o áudio não foi implementado.
-- A escolha automática do slot de destino pode selecionar outro slot livre ao salvar uma partida carregada, em vez de atualizar necessariamente o slot de origem.
+- Ao salvar uma partida carregada, a escolha automática do slot de destino pode selecionar outro slot livre, em vez de atualizar necessariamente o slot de origem.
 - O uso das setas depende de um terminal compatível com JLine.
-- O caminho alternativo de gravação, usado quando não há suporte à movimentação atômica de arquivos, não possui cobertura específica nos testes automatizados.
+- Em terminais com menos de 66 colunas ou 30 linhas, as ilustrações e os retratos não aparecem.
+- As animações não podem ser puladas durante a exibição; podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.
+- O caminho alternativo de gravação, utilizado quando não há suporte à movimentação atômica de arquivos, não possui cobertura específica nos testes automatizados.
 
 ---
 
@@ -303,7 +323,7 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - `v1.0.0` — Fase 1.
 - `v1.1.0` — Fase 2, sessão 1: salvamento em JSON e exceções personalizadas.
 - `v1.2.0` — Fase 2, sessão 2: progressão, conquistas e colecionáveis.
-- `1.3.0` - Fase 2, sessão 3
+- `v1.3.0` — Fase 2, sessão 3: ilustrações, retratos e animações em pixel art, menu animado, finais ilustrados e esgotamento quando a energia chega a zero.
 
 ---
 

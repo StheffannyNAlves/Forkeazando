@@ -35,6 +35,6 @@ public class Cena {
 
     public boolean temEscolhaBloqueadaSoPorEnergia(Protagonista p){
         return escolhas.stream()
-                .anyMatch(e -> !e.estaDisponivel(p) && e.estaDisponivel(p));
+                .anyMatch(e -> !e.estaDisponivel(p) && e.estaDisponivelIgnorandoEnergia(p)); // consegue reconhecer quando a falta de energia é o motivo do bloqueio das escolhas
     }
 }

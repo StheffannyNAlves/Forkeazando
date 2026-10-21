@@ -3,12 +3,13 @@ package br.uefs.forkeazando.roteiro;
 import br.uefs.forkeazando.model.Cena;
 import br.uefs.forkeazando.view.pixel.Ilustracoes;
 import br.uefs.forkeazando.view.pixel.Retratos;
+import br.uefs.forkeazando.model.Final;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+// todos passam
 import static org.junit.jupiter.api.Assertions.*;
 
 class VisuaisDeCenaTest {
@@ -88,6 +89,10 @@ class VisuaisDeCenaTest {
         for (ApresentacaoDeCena v : VisuaisDeCena.todas().values()) {
             if (v.ilustracao() != null) usadas.add(v.ilustracao());
         }
+        for (Final f: Final.values()){
+            usadas.add(VisuaisDeFinal.ilustracaoDe(f));
+        }
+        usadas.add(VisuaisDeFinal.ILUSTRACAO_PADRAO);
         for (String chave : Ilustracoes.chaves()) {
             assertTrue(usadas.contains(chave), "ilustração '" + chave + "' nunca é usada");
         }

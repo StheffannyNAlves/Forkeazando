@@ -46,6 +46,11 @@ public final class Ilustracoes {
     public static final String FINAL_IC = "final_ic";
     public static final String FINAL_DTEC = "final_dtec";
     public static final String FINAL_INDEPENDENTE = "final_independente";
+    public static final String FUTURO_PESQUISA_BRASIL = "futuro_pesquisa_brasil";
+    public static final String FUTURO_TECNOLOGIA = "futuro_tecnologia";
+    public static final String FUTURO_INTERNACIONAL = "futuro_internacional";
+    public static final String FUTURO_INDEPENDENTE = "futuro_independente";
+    public static final String FUTURO_TRANSICAO = "futuro_transicao";
 
     /** Quadros de cada animação de entrada. O ÚLTIMO quadro é sempre a arte final (estática). */
     static final int QUADROS_ENTREVISTA = 12;
@@ -92,6 +97,11 @@ public final class Ilustracoes {
         reg(FINAL_IC, CenasFinais.N_IC, 120, CenasFinais::ic);
         reg(FINAL_DTEC, CenasFinais.N_DTEC, 120, CenasFinais::dtec);
         reg(FINAL_INDEPENDENTE, CenasFinais.N_INDEP, 120, CenasFinais::independente);
+        reg(FUTURO_PESQUISA_BRASIL, CenasFuturos.N_PESQUISA, 120, CenasFuturos::pesquisa);
+        reg(FUTURO_TECNOLOGIA, CenasFuturos.N_TECNOLOGIA, 120, CenasFuturos::tecnologia);
+        reg(FUTURO_INTERNACIONAL, CenasFuturos.N_INTERNACIONAL, 110, CenasFuturos::internacional);
+        reg(FUTURO_INDEPENDENTE, CenasFuturos.N_INDEPENDENTE, 120, CenasFuturos::independente);
+        reg(FUTURO_TRANSICAO, CenasFuturos.N_TRANSICAO, 120, CenasFuturos::transicao);
     }
 
     /** Animação de entrada da ilustração, se ela tiver uma. */

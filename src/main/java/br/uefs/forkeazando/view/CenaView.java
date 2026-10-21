@@ -5,11 +5,10 @@ import br.uefs.forkeazando.model.*;
 import java.util.ArrayList;
 import java.util.List;
 import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
-import br.uefs.forkeazando.view.pixel.Animacao;
-import br.uefs.forkeazando.view.pixel.Animador;
-import br.uefs.forkeazando.view.pixel.Ilustracoes;
-import br.uefs.forkeazando.view.pixel.Retratos;
+import br.uefs.forkeazando.roteiro.VisuaisDeFinal;
+import br.uefs.forkeazando.view.pixel.*;
 import java.util.Optional;
+import java.time.format.DateTimeFormatter;
 
 public class CenaView {
 
@@ -57,37 +56,37 @@ public class CenaView {
     public void mostrarGaleria(Protagonista protagonista) {
         List<String> flags = protagonista.getHistoricoFlags();
 
-        System.out.println("\n========== GALERIA ==========");
-        System.out.println("\n--- HABILIDADES ---");
+        System.out.println();
+
+        // Desenha o painel pixel art com todos os slots.
+        for (String linha : Galeria.linhas(flags)) {
+            System.out.println(linha);
+        }
+
+        System.out.println();
 
         boolean encontrou = false;
 
-        for (String flag : flags) {
-            if (flag.startsWith("hab_")) {
-                mostrarHabilidade(flag);
-                encontrou = true;
+        for (Colecionavel c : Colecionavel.values()) {
+            if (flags.contains(c.getFlag())) {
+                if (!encontrou) {
+                    System.out.println("COLECIONÁVEIS DESBLOQUEADOS:");
+                    encontrou = true;
+                }
+
+                String tipo = c.getTipo() == Colecionavel.Tipo.HABILIDADE
+                        ? "Habilidade"
+                        : "Item";
+
+                System.out.println("  [✓] " + tipo + ": " + c.getNome());
             }
         }
 
         if (!encontrou) {
-            System.out.println("Nenhuma habilidade desbloqueada ainda.");
+            System.out.println("Você ainda não desbloqueou nenhum colecionável.");
         }
 
-        System.out.println("\n--- ITENS ---");
-        encontrou = false;
-
-        for (String flag : flags) {
-            if (flag.startsWith("item_")) {
-                mostrarItem(flag);
-                encontrou = true;
-            }
-        }
-
-        if (!encontrou) {
-            System.out.println("Nenhum item conquistado ainda.");
-        }
-
-        System.out.println("\n=============================");
+        System.out.println();
         System.out.println("Pressione ENTER para voltar...");
     }
 
@@ -108,9 +107,18 @@ public class CenaView {
             System.out.println();
             mostrarIlustracao(visual);
             imprimirLinha(cena.getCapitulo().toUpperCase(), Cores.BRANCO);
-            imprimirLinha(cabecalhoStatus(p), Cores.CINZA);   // <- usar BRANCO se não tiver CINZA
-            System.out.println(Cores.CIANO + "╠" + "═".repeat(LARGURA) + "╣" + Cores.RESET);
+            imprimirLinhaHud(cabecalhoStatus(p));
 
+            imprimirLinhaHud(Hud.barras(
+                    p.getEnergia(),
+                    p.getEnergiaMaxima(),
+                    p.getScore(),
+                    p.getParticipacao()
+            ));
+
+            System.out.println(
+                    Cores.CIANO + "╠" + "═".repeat(LARGURA) + "╣" + Cores.RESET
+            );
             if (!cena.getPersonagemFalando().equalsIgnoreCase("Narrador")) {
                 if (!mostrarRetrato(cena.getPersonagemFalando(), corTexto, visual)) {
                     imprimirLinha(cena.getPersonagemFalando().toUpperCase(), corTexto);
@@ -183,20 +191,41 @@ public class CenaView {
     }
 
 
-    private String cabecalhoStatus(Protagonista p) {
-        String rank = p.getRank();
-        int energia = p.getEnergia();
-        int maxima = p.getEnergiaMaxima();
-        String barra = barraEnergia(energia, maxima);
-        return "RANK: " + rank + "  •  ENERGIA: " + barra + " " + energia + "/" + maxima + " " + indicadorPause();
+    private Hud.Linha cabecalhoStatus(Protagonista p) {
+        return Hud.status(
+                p.getRank(),
+                indicadorPause(),
+                LARGURA - 2
+        );
     }
 
-    private String barraEnergia(int atual, int maxima) {
-        if (maxima <= 0) return "";
-        int blocos = 10;
-        int cheios = (int) Math.round((double) atual / maxima * blocos);
-        cheios = Math.max(0, Math.min(blocos, cheios));
-        return "▓".repeat(cheios) + "░".repeat(blocos - cheios);
+    private void imprimirLinhaHud(Hud.Linha linha) {
+        int espacos = Math.max(0, LARGURA - 2 - linha.visivel());
+
+        System.out.println(
+                Cores.CIANO + "║" + Cores.RESET
+                        + "  "
+                        + linha.ansi()
+                        + " ".repeat(espacos)
+                        + Cores.CIANO + "║" + Cores.RESET
+        );
+    }
+
+    public void mostrarConquistas(Progresso progresso) {
+        DateTimeFormatter formatoData =
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        System.out.println();
+
+        for (String linha : ConquistasPainel.linhas(
+                progresso,
+                data -> data.format(formatoData)
+        )) {
+            System.out.println(linha);
+        }
+
+        System.out.println();
+        System.out.println("Pressione ENTER para voltar...");
     }
 
 
@@ -358,6 +387,7 @@ public class CenaView {
     public void mostrarEpilogos(Protagonista p) {
         System.out.println();
         System.out.println(Cores.MAGENTA + "══════ O QUE FICOU ══════" + Cores.RESET);
+        mostrarIlustracaoDoFinal(p);
         DesempenhoAcademico desempenho = avaliarDesempenhoAcademico(p);
         System.out.println();
 
@@ -699,7 +729,60 @@ public class CenaView {
         renderizarEpilogo("A PERGUNTA DO COMEÇO", texto);
     }
 
+    /**
+     * Arte do final alcançado, logo acima do "SEU CAMINHO". Quem acabou de ver a animação na cena
+     * 662-666 recebe só o quadro final; partida antiga (sem essas cenas) ainda vê a animação.
+     */
+
+
+
+    private void mostrarIlustracao(ApresentacaoDeCena visual) {
+        if (visual == null || visual.ilustracao() == null) {
+            return;
+        }
+
+        String chave = visual.ilustracao();
+
+        if (chave.equals(ultimaIlustracao)) {
+            return;
+        }
+
+        desenharIlustracao(chave);
+    }
+
+    private void desenharIlustracao(String chave) {
+        if (!Ilustracoes.existe(chave) || !terminalComporta()) {
+            return;
+        }
+
+        Optional<Animacao> animacao = Ilustracoes.animacao(chave);
+
+        if (animacao.isPresent() && Animador.habilitada()) {
+            Animador.tocar(animacao.get(), System.out, this::dormir);
+        } else {
+            for (String linha : Ilustracoes.linhas(chave)) {
+                System.out.println(linha + Cores.RESET);
+            }
+        }
+
+        ultimaIlustracao = chave;
+    }
+
+    private void mostrarIlustracaoDoFinal(Protagonista p) {
+        String chave = VisuaisDeFinal.ilustracaoDe(p);
+
+        System.out.println(Cores.AMARELO + "  FINAL — "
+                + VisuaisDeFinal.tituloDe(p).toUpperCase()
+                + Cores.RESET);
+
+        desenharIlustracao(chave);
+        System.out.println();
+    }
+
+
+
     private void mostrarFuturoEscolhido(Protagonista p) {
+        mostrarIlustracaoDoFinal(p);
         String titulo;
         StringBuilder texto = new StringBuilder();
 
@@ -816,28 +899,6 @@ public class CenaView {
         }
     }
 
-    /**
-     * Imprime a ilustração acima da caixa da cena. Só desenha quando a chave
-     * muda: cenas seguidas no mesmo lugar não repetem 24 linhas de imagem.
-     */
-    private void mostrarIlustracao(ApresentacaoDeCena visual) {
-        if (visual == null || visual.ilustracao() == null) {
-            return;
-        }
-        String chave = visual.ilustracao();
-        if (chave.equals(ultimaIlustracao) || !Ilustracoes.existe(chave) || !terminalComporta()) {
-            return;
-        }
-        Optional<Animacao> animacao = Ilustracoes.animacao(chave);
-        if (animacao.isPresent() && Animador.habilitada()) {
-            Animador.tocar(animacao.get(), System.out, this::dormir);   // respeita a pausa do jogo
-        } else {
-            for (String linha : Ilustracoes.linhas(chave)) {
-                System.out.println(linha + Cores.RESET);
-            }
-        }
-        ultimaIlustracao = chave;
-    }
 
     /**
      * Retrato à esquerda, nome do falante ao lado (centralizado na altura).
@@ -1067,7 +1128,7 @@ public class CenaView {
         return DesempenhoAcademico.RECUPERACAO;
     }
 
-    private BemEstarFinal avaliarBemEstar(Protagonista p) {
+    private BemEstarFinal avaliarBemEstar(Protagonista p) { // Ver como vai utilizar esse metódo
         int atributosBaixos = 0;
 
         if (p.getConfianca() <= 2) atributosBaixos++;

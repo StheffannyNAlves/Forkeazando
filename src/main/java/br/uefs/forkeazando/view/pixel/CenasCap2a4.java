@@ -146,7 +146,7 @@ final class CenasCap2a4 {
 
     static Tela prova(int q) {
         Tela t = new Tela(L, A);
-        gradV(t, 0, 0, L, 34, rgb(150, 164, 150), rgb(126, 142, 130));
+        gradV(t, 0, 0, L, 38, rgb(150, 164, 150), rgb(126, 142, 130));
         t.rect(6, 0, 54, 2, rgb(240, 250, 244));
         glow(t, 33, 2, 34, 12, rgb(230, 250, 235), 0.2);
         t.rect(4, 5, 22, 10, rgb(34, 54, 44));

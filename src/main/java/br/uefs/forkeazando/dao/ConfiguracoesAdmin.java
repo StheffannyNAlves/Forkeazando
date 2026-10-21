@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+// persiste as configurações personalizaveis
 public class ConfiguracoesAdmin {
     private static final String PASTA = "saves";
     private static final String ARQUIVO = PASTA + "/configuracao.json";

@@ -40,10 +40,10 @@ public final class VisuaisDeCena {
         fala(5, "cap1_oficina", "rafael", "seria");
         arte("cap1_pbl", 6, 16);
         arte("cap1_oficina_vazia", 8);
-        arte("cap1_oficina_led", 9);                // o LED acende; Cáio aparece na porta
-        fala(10, null, "sergio", "neutra");
-        arte("sala_grupo", 11);
-        fala(12, "sala_grupo", "sergio", "seria");
+        arte("cap1_oficina_led", 9);
+//        fala(10, null, "sergio", "neutra");
+//        arte("sala_grupo", 11);
+//        fala(12, "sala_grupo", "sergio", "seria");
         arte("cap1_modulo8", 13);
         arte("cap1_onibus", 14);
         fala(15, "cap1_modulo8", "ze", "feliz");

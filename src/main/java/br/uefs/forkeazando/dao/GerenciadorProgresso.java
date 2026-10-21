@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 
-
+// gerencia o progresso global
 public class GerenciadorProgresso {
 
      private static final Gson gson = new GsonBuilder()

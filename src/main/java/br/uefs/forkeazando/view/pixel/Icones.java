@@ -58,7 +58,7 @@ public final class Icones {
                 ".......", ".ll.ll.", "llllll.", ".llLll.", "..lL...", "..nn...", "..nn...", ".nnnn.."});
         BITMAPS.put("hab_contrato_assinado", new String[]{
                 ".wwwww.", ".wgggw.", ".wwwww.", ".wgggw.", ".wwwww.", ".wbbwrw", ".wwwwrw", "......."});
-        // ------------ itens ------------
+        // itens
         BITMAPS.put("item_cartao_ru", new String[]{
                 ".......", "ooooooo", "ooooooo", "kkkkkkk", "ooooooo", "owwoyyo", "ooooooo", "......."});
         BITMAPS.put("item_esquema_copiado", new String[]{
@@ -85,7 +85,6 @@ public final class Icones {
         return java.util.Collections.unmodifiableSet(BITMAPS.keySet());
     }
 
-    /** Ícone 7x8 px sobre fundo de slot. desbloqueado=false vira silhueta cinza-azulada. */
     public static Tela desenhar(String flag, boolean desbloqueado) {
         String[] bmp = BITMAPS.get(flag);
         if (bmp == null) throw new IllegalArgumentException("Ícone inexistente: " + flag);

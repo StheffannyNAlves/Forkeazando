@@ -86,7 +86,7 @@ final class CenasCap5a8 {
     static Tela quarto(int q) {
         double k = q / (double) (N_QUARTO - 1);   // 0 = tarde, 1 = noite
         Tela t = new Tela(L, A);
-        gradV(t, 0, 0, L, 34, rgb(226, 204, 170), rgb(206, 182, 148));
+        gradV(t, 0, 0, L, 40, rgb(226, 204, 170), rgb(206, 182, 148));
         t.rect(6, 4, 14, 14, rgb(96, 76, 60));
         t.rect(7, 5, 12, 12, rgb(250, 226, 160));
         t.rect(12, 5, 1, 12, rgb(96, 76, 60));
@@ -144,7 +144,7 @@ final class CenasCap5a8 {
     //  Cena 600 — último semestre, documento em branco, cansaço de cinco anos
     static Tela tcc(int q) {
         Tela t = new Tela(L, A);
-        gradV(t, 0, 0, L, 34, rgb(24, 28, 54), rgb(46, 50, 80));
+        gradV(t, 0, 0, L, 38, rgb(24, 28, 54), rgb(46, 50, 80));
         t.rect(48, 4, 14, 14, rgb(14, 16, 32));
         for (int i = 0; i < 9; i++) t.px(49 + (i * 5) % 12, 5 + (i * 7) % 12, i % 2 == 0 ? rgb(255, 214, 120) : rgb(150, 190, 255));
         for (int i = 0; i < 6; i++) t.rect(4 + i * 5, 3 + (i % 2) * 3, 4, 4, new int[]{rgb(250, 220, 90), rgb(250, 140, 170), rgb(130, 220, 250)}[i % 3]);
@@ -173,7 +173,7 @@ final class CenasCap5a8 {
         boolean on = liga[q];
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 30, rgb(176, 184, 196), rgb(150, 158, 172));
-        t.rect(0, 20, L, 10, rgb(120, 92, 70));
+        t.rect(0, 20, L, 17, rgb(120, 92, 70));
         t.rect(0, 20, L, 1, rgb(160, 126, 96));
         t.rect(18, 3, 30, 17, rgb(70, 74, 86));
         if (on) {

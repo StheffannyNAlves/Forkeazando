@@ -5,6 +5,7 @@ package br.uefs.forkeazando.view.pixel;
  * (energia, score, participação). Cada linha devolve o texto com ANSI e o tamanho VISÍVEL,
  * porque a caixa do CenaView precisa do tamanho sem os códigos de cor para alinhar a borda.
  */
+
 public final class Hud {
 
     public record Linha(String ansi, int visivel) {}

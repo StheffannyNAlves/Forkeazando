@@ -52,17 +52,6 @@ public class CenasController {
         boolean jogando = true;
         while (jogando) {
             Cena atual = buscarCenaPorId(estado.getCenaAtualId());
-
-//            if (atual.getId() == 0) {
-//                Entrada.permitirPausa(true);
-//                try {
-//                    view.mostrarAprovacao();
-//
-//                } finally {
-//                    Entrada.permitirPausa(false);
-//                }
-//            }
-
             if (view.deveMostrarBencao(atual.getId(), estado.getProtagonista())) {
                 view.mostrarBencaoCaramelo();
             }
@@ -100,7 +89,7 @@ public class CenasController {
                     opcoes.add(new MenuInterativo.Opcao(escolha.getTextoAlternativa()));
                 }
 
-                // Ações extras também ficam disponíveis pelo teclado.
+                // Ações extras também ficam disponíveis pelo teclado
                 opcoes.add(new MenuInterativo.Opcao("Abrir galeria"));
                 opcoes.add(new MenuInterativo.Opcao("Voltar ao menu principal"));
 
@@ -197,19 +186,11 @@ public class CenasController {
 
         int proximoCapitulo = capituloAtual + 1;
 
-        // Determina a rota antes de alterar o estado da partida.
-        int primeiraCena = Roteador.proximaCena(
-                proximoCapitulo,
-                estado
-        );
+        // Determina a rota antes de alterar o estado da partida
+        int primeiraCena = Roteador.proximaCena(proximoCapitulo, estado);
 
         if (primeiraCena < 0) {
-            view.mostrarMensagem(
-                    "Não foi possível determinar a próxima rota. "
-                            + "A partida foi mantida na memória, "
-                            + "mas a rota precisa ser corrigida."
-            );
-
+            view.mostrarMensagem("Não foi possível determinar a próxima rota. " + "A partida foi mantida na memória, " + "mas a rota precisa ser corrigida.");
             return ResultadoAvancoCapitulo.ERRO_DE_ROTA;
         }
 
@@ -221,14 +202,14 @@ public class CenasController {
         return ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
     }
 
-
-    private Escolha lerEscolha(List<Escolha> disponiveis) {
-        int indice = Entrada.lerInteiro(1, disponiveis.size());
-        if (indice == 0) {
-            return null;
-        }
-        return disponiveis.get(indice - 1);
-    }
+//
+//    private Escolha lerEscolha(List<Escolha> disponiveis) {
+//        int indice = Entrada.lerInteiro(1, disponiveis.size());
+//        if (indice == 0) {
+//            return null;
+//        }
+//        return disponiveis.get(indice - 1);
+//    }
 
     private void salvarColecao(Protagonista protagonista) {
         boolean novaColecao = progresso.sincronizarColecao(
@@ -246,29 +227,21 @@ public class CenasController {
             view.mostrarMensagem("Erro ao salvar a coleção: " + e.getMessage());
         }
     }
-    private void registrarTrilhaConcedida(
-            List<String> flagsConcedidas,
-            Protagonista protagonista) {
+    private void registrarTrilhaConcedida(List<String> flagsConcedidas, Protagonista protagonista) {
 
-        Estado.Trilha trilhaDaEscolha =
-                identificarTrilhaNasFlags(flagsConcedidas);
+        Estado.Trilha trilhaDaEscolha = identificarTrilhaNasFlags(flagsConcedidas);
 
-        Estado.Trilha trilhaDoHistorico =
-                identificarTrilhaNasFlags(protagonista.getHistoricoFlags());
+        Estado.Trilha trilhaDoHistorico = identificarTrilhaNasFlags(protagonista.getHistoricoFlags());
 
         Estado.Trilha trilhaDoEstado = estado.getTrilha();
 
         // O Estado e o histórico precisam concordar.
-        if (trilhaDoEstado != null
-                && trilhaDoHistorico != null
-                && trilhaDoEstado != trilhaDoHistorico) {
-
+        if (trilhaDoEstado != null && trilhaDoHistorico != null && trilhaDoEstado != trilhaDoHistorico) {
             throw new IllegalStateException(
                     "A trilha do Estado diverge das flags da protagonista."
             );
         }
-
-        // Um Estado com trilha definida não pode perder sua flag correspondente.
+        // Um Estado com trilha definida não pode perder sua flag correspondente
         if (trilhaDoEstado != null && trilhaDoHistorico == null) {
             throw new IllegalStateException(
                     "O Estado possui uma trilha, mas a protagonista não possui "
@@ -276,15 +249,10 @@ public class CenasController {
             );
         }
 
-        Estado.Trilha trilhaAtual =
-                trilhaDoEstado != null
-                        ? trilhaDoEstado
-                        : trilhaDoHistorico;
+        Estado.Trilha trilhaAtual = trilhaDoEstado != null ? trilhaDoEstado : trilhaDoHistorico;
 
         // Uma escolha posterior não pode substituir a trilha.
-        if (trilhaDaEscolha != null
-                && trilhaAtual != null
-                && trilhaDaEscolha != trilhaAtual) {
+        if (trilhaDaEscolha != null && trilhaAtual != null && trilhaDaEscolha != trilhaAtual) {
 
             throw new IllegalStateException(
                     "Não é permitido trocar a trilha acadêmica escolhida."
@@ -305,10 +273,7 @@ public class CenasController {
         boolean dtec = flags.contains("trilha_dtec");
         boolean indep = flags.contains("trilha_indep");
 
-        int quantidade =
-                (ic ? 1 : 0)
-                        + (dtec ? 1 : 0)
-                        + (indep ? 1 : 0);
+        int quantidade = (ic ? 1 : 0) + (dtec ? 1 : 0) + (indep ? 1 : 0);
 
         if (quantidade > 1) {
             throw new IllegalStateException(

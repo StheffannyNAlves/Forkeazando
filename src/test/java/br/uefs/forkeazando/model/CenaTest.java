@@ -22,6 +22,13 @@ class CenaTest {
         return new Cena(0, "Capítulo 1", "Narrador", "teste teste");
     }
 
+    private static  Protagonista comEnergia(int energia){
+        Protagonista p = protagonista();
+        p.gastarEnergia(p.getEnergiaMaxima() - energia);
+        assertEquals(energia, p.getEnergia());
+        return p;
+    }
+
     @Test
     void guardaOQueFoiPassadoNoConstrutor() {
         Cena cena = new Cena(42, "Capítulo 3", "Dandara Oliveira", "texto da cena");
@@ -126,4 +133,73 @@ class CenaTest {
 
         assertEquals(2, cena.getEscolhas().size());
     }
+
+
+    @Test
+    void identificaEscolhaBloqueadaSomentePorEnergia() { // garante que o apagao seja reconhecido quando falta energia
+        Cena cena = cena();
+        Protagonista p = protagonista();
+
+        cena.adicionarEscolha(
+                new Escolha.Builder("opção cara", 1)
+                        .comCustoEnergia(p.getEnergia() + 1)
+                        .build()
+        );
+
+        assertTrue(cena.getEscolhasDisponiveis(p).isEmpty());
+        assertTrue(cena.temEscolhaBloqueadaSoPorEnergia(p));
+    }
+
+    @Test
+    void naoIdentificaEscolhaBloqueadaPorOutroRequisito() { // garante que o jogo nao confunda falta de score com falta de energia
+        Cena cena = cena();
+        Protagonista p = protagonista();
+
+        cena.adicionarEscolha(
+                new Escolha.Builder("opção bloqueada", 1)
+                        .comScoreMinimo(10)
+                        .build()
+        );
+
+        assertTrue(cena.getEscolhasDisponiveis(p).isEmpty());
+        assertFalse(cena.temEscolhaBloqueadaSoPorEnergia(p));
+    }
+
+
+    @Test
+    void reconheceQuandoTodasAsEscolhasSoFicamBloqueadasPorEnergia(){
+        Cena cena = cena();
+        cena.adicionarEscolha(new Escolha.Builder("só olhar e ir embora", 1).comCustoEnergia(5).build());
+        cena.adicionarEscolha(new Escolha.Builder("perguntar", 2).comCustoEnergia(10).build());
+
+        Protagonista p = comEnergia(2);
+        assertTrue(cena.getEscolhasDisponiveis(p).isEmpty());
+        assertTrue(cena.temEscolhaBloqueadaSoPorEnergia(p));
+
+    }
+
+    @Test
+    void bloqueioPorOutroRequisitoNaoContaComoFaltaDeEnergia() {
+        Cena cena = cena();
+        cena.adicionarEscolha(new Escolha.Builder("exige score", 1).comScoreMinimo(50).build());
+        cena.adicionarEscolha(new Escolha.Builder("exige flag", 2).comFlagRequerida("inexistente").build());
+        assertTrue(cena.getEscolhasDisponiveis(comEnergia(0)).isEmpty());
+        assertFalse(cena.temEscolhaBloqueadaSoPorEnergia(comEnergia(0)));
+    }
+
+    @Test
+    void escolhaQueAceitaEnergiaInsuficienteNaoEstaBloqueada() {Cena cena = cena();
+        cena.adicionarEscolha(new Escolha.Builder("seguir no limite", 1).comCustoEnergia(5).comPermiteEnergiaInsuficiente().build());
+        Protagonista p = comEnergia(0);
+        assertEquals(1, cena.getEscolhasDisponiveis(p).size());
+        assertFalse(cena.temEscolhaBloqueadaSoPorEnergia(p));
+    }
+
+    @Test
+    void comEnergiaSuficienteNadaEstaBloqueadoPorEnergia() {
+        Cena cena = cena();
+        cena.adicionarEscolha(new Escolha.Builder("custa 5", 1).comCustoEnergia(5).build());
+        assertFalse(cena.temEscolhaBloqueadaSoPorEnergia(comEnergia(5)));
+    }
+
 }

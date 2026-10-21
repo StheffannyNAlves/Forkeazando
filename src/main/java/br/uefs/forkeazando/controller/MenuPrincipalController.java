@@ -1,5 +1,5 @@
 package br.uefs.forkeazando.controller;
-
+// Aqui nao trata nada do dao(LEMBRA DISSO)
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
@@ -19,11 +19,8 @@ import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.model.Progresso;
 import br.uefs.forkeazando.view.ProgressoView;
 import br.uefs.forkeazando.dao.GerenciadorSave;
-
-
 import java.time.LocalDateTime;
 import java.nio.file.Files;
-
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +63,7 @@ public class MenuPrincipalController {
             MenuInterativo.Resposta resposta =
                     MenuInterativo.abrir(
                             opcoes, "FORKEAZANDO", view::mostrarMenu);
-            view.pararAnimacao(); // interrompe a animacao antes de processarpcao() executar a proxima acao
+            view.pararAnimacao(); // interrompe a animacao antes de processaropcao() executar a proxima acao
             if (resposta.resultado
                     == MenuInterativo.Resultado.CANCELADO) {
                 continue;
@@ -531,7 +528,5 @@ public class MenuPrincipalController {
         }
     }
 
-//    public boolean salvarPartidaemNCenas(){
-//
-//    }
+
 }

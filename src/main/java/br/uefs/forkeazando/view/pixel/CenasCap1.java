@@ -107,6 +107,7 @@ final class CenasCap1 {
     static Tela pbl(int q) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(206, 210, 200), rgb(186, 192, 184));
+        gradV(t, 0, 34, L, 14, rgb(124, 106, 96), rgb(78, 66, 64));       // piso
         t.rect(0, 0, L, 1, rgb(244, 246, 240));
         t.rect(18, 3, 36, 17, rgb(130, 136, 150));
         t.rect(19, 4, 34, 15, rgb(246, 248, 250));
@@ -137,7 +138,7 @@ final class CenasCap1 {
     //  Cena 11/12 (Cap.1), 303 (Cap.4), 400-415 (Cap.5) — sala do grupo.
     static Tela salaGrupo(int q) {
         Tela t = new Tela(L, A);
-        gradV(t, 0, 0, L, 30, rgb(238, 224, 194), rgb(218, 198, 160));
+        gradV(t, 0, 0, L, 33, rgb(238, 224, 194), rgb(218, 198, 160));
         glow(t, 33, 0, 36, 18, rgb(255, 236, 190), 0.30);
         int[] xs = {3, 24, 45};
         for (int b = 0; b < 3; b++) {
@@ -150,7 +151,7 @@ final class CenasCap1 {
                 t.rect(xs[b] + 3, 7 + i * 2, len, 1, cor);
             }
         }
-        t.texto(47, 4, "ciclomática", rgb(40, 60, 140));
+        t.texto(47, 4, "ACO", rgb(40, 60, 140));
         pessoa(t, 58, 34, rgb(200, 150, 120), rgb(40, 30, 30), rgb(60, 90, 120), rgb(40, 44, 70), q < N_GRUPO - 1 ? 1 : 0);
         t.rect(0, 33, L, 4, rgb(120, 84, 58));
         for (int y = 37; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(150, 108, 74), rgb(96, 68, 50), (y - 37) / 11.0));

@@ -34,7 +34,7 @@ public final class Retratos {
 
     /** Início do nome (como aparece em Cena.getPersonagemFalando) de quem cada retrato representa. */
     private static final java.util.Map<String, String> NOMES = java.util.Map.of(
-            CAIO, "Cáio", SERGIO, "Prof. Dr. Sérgio", RAFAEL, "Prof. Rafael", BIA, "Beatriz",
+            CAIO, "Caio", SERGIO, "Prof. Dr. Sérgio", RAFAEL, "Prof. Rafael", BIA, "Beatriz",
             DANDARA, "Dandara", ZE, "Zé do", SISTEMA, "Sistema");
 
     public static String nomeDe(String personagem) { return NOMES.get(personagem); }

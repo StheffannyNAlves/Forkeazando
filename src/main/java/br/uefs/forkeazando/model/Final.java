@@ -32,7 +32,6 @@ public enum Final {
     public String getCodigo() { return codigo; }
     public String getTitulo() { return titulo; }
 
-    /** Mantém o nome do getter para compatibilidade; retorna a flag que identifica o final. */
     public String getTrilha() { return flagDesbloqueio; }
 
     public static Optional<Final> porCodigo(String codigo) {

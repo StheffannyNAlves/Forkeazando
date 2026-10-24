@@ -122,4 +122,20 @@ public class Estado  {
     public void marcarSalvo() {
         alterado = false;
     }
+
+    public void concluir(String codigoFinal){
+        if (codigoFinal == null || Final.porCodigo(codigoFinal).isEmpty())
+            throw new IllegalArgumentException("Final inválido");
+        this.codigoFinal = codigoFinal;
+        this.partidaConcluida = true;
+        marcarAlterado();
+    }
+
+    public boolean isPartidaConcluida() {
+        return partidaConcluida;
+    }
+
+    public String getCodigoFinal() {
+        return codigoFinal;
+    }
 }

@@ -2,24 +2,19 @@
 package br.uefs.forkeazando.controller;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.excecao.SaveException;
-import br.uefs.forkeazando.model.Cena;
-import br.uefs.forkeazando.model.Escolha;
-import br.uefs.forkeazando.model.Estado;
-import br.uefs.forkeazando.model.PersonagemSecundario;
-import br.uefs.forkeazando.model.Protagonista;
+import br.uefs.forkeazando.model.*;
+import br.uefs.forkeazando.roteiro.CenasDeChefe;
 import br.uefs.forkeazando.roteiro.Roteador;
+import br.uefs.forkeazando.roteiro.ResultadoCalculo;
+import br.uefs.forkeazando.roteiro.ResolucaoDeFuturo;
+import br.uefs.forkeazando.roteiro.SistemaAcademico;
 import br.uefs.forkeazando.roteiro.VisuaisDeCena;
 import br.uefs.forkeazando.view.CenaView;
-import br.uefs.forkeazando.view.Entrada;
-import br.uefs.forkeazando.model.Progresso;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 
 
-import java.util.ArrayList;
+import java.util.*;
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
 public class CenasController {
     private final Estado estado;

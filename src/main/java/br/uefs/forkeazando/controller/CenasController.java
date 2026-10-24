@@ -369,17 +369,22 @@ public class CenasController {
 
     private void notificaNovasFlags(Protagonista p, int tamanhoAntes) {
         List<String> flags = p.getHistoricoFlags();
-
         for (int i = tamanhoAntes; i < flags.size(); i++) {
             String flag = flags.get(i);
-
             if (flag.startsWith("hab_")) {
                 view.mostrarHabilidade(flag);
             } else if (flag.startsWith("item_")) {
                 view.mostrarItem(flag);
+            } else if (flag.equals("trilha_ic")
+                    || flag.equals("trilha_dtec")
+                    || flag.equals("trilha_indep")) {
+                // FIX (Bug 6): notifica a trilha escolhida.
+                // Sem isso, o jogador só descobre no Cap 5 que escolheu uma trilha.
+                String nomeTrilha = flag.equals("trilha_ic")   ? "Iniciação Científica (IC)"
+                        : flag.equals("trilha_dtec") ? "Monitoria (DTEC)"
+                        :                              "Caminho Independente";
+                view.mostrarMensagem("Sua trilha foi definida: " + nomeTrilha);
             }
-
-            // ‘flags’ comuns (traco_*, cap*, final_*, etc.) não notificam
         }
     }
 

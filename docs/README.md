@@ -156,7 +156,7 @@ O jogo oferece três slots independentes de salvamento, com suporte a:
 - Continuação da partida mantida em memória.
 - Carregamento de uma partida salva.
 - Salvamento manual.
-- Salvamento automático durante a progressão.
+- Salvamento automático  a cada 5 cenas concluídas e ao concluir a partida (arquivo `saves/autosave.json`, acessível por "Carregar autosave").
 - Confirmação antes de sobrescrever ou excluir um salvamento.
 - Visualização de metadados, como capítulo, data e hora e informações da partida.
 
@@ -168,9 +168,9 @@ As preferências do jogador são armazenadas separadamente dos slots de partida.
 
 Entre as configurações disponíveis estão:
 
-- Velocidade de exibição do texto.
+- Velocidade de exibição do texto (Lento, Normal ou Rápido: pausa entre as linhas de diálogo).
 - Volume.
-- Confirmação de saída.
+- Confirmação de saída (quando desligada, o jogo não pergunta se deseja salvar ao sair, iniciar ou carregar outra partida).
 - Exibição de dicas de atalhos.
 
 > **Observação:** a configuração de volume está persistida, mas seu efeito depende da implementação atual do sistema de áudio.

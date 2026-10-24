@@ -24,15 +24,19 @@ public class CenasController {
     private final GerenciadorProgresso gerenciadorProgresso;
     private final Progresso progresso;
     private static final double RECUPERAR_ENERGIA = 0.4; /** energia máxima devolvida */
+    private static final int CENAS_POR_AUTOSAVE = 5;
+    private final Autosave autosave;
+    private int cenasConcluidasDesde;
     private String ultimocapExibido;
 
-    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso) {
+    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave) {
         this.estado = estado;
         this.cenas = cenas;
         this.view = view;
         this.progresso = progresso;
         this.gerenciadorConquistas = new GerenciadorConquistas(gerenciadorProgresso, view::mostrarMensagem);
         this.gerenciadorProgresso = gerenciadorProgresso;
+        this.autosave = Objects.requireNonNull(autosave);
         gerenciadorConquistas.carregarDesbloqueadas(progresso);
 
     }
@@ -48,6 +52,10 @@ public class CenasController {
         view.resetarCacheVisual();
         boolean jogando = true;
         while (jogando) {
+            if (cenasConcluidasDesde >= CENAS_POR_AUTOSAVE){
+                registrarAutosave();
+                cenasConcluidasDesde = 0;
+            }
             Cena atual = buscarCenaPorId(estado.getCenaAtualId());
 
             // A resolução do futuro é uma transição automática, não uma escolha de carreira.
@@ -142,6 +150,7 @@ public class CenasController {
 
             Escolha escolhida = disponiveis.get(indice);
             aplicarEscolha(escolhida);
+            cenasConcluidasDesde++;
             int destino = escolhida.getCenaDestinoId();
 
 
@@ -188,6 +197,14 @@ public class CenasController {
             estado.setCenaAtualId(destino);
         }
         return ResultadoPartida.FIM_DE_JOGO;
+    }
+    private void registrarAutosave(){
+        try {
+            autosave.salvar(estado);
+            view.mostrarMensagem("Progresso salvo automaticamente.");
+        } catch (SaveException e){
+            view.mostrarMensagem("Não foi possível salvar automaticamente: " + e.getMessage());
+        }
     }
     private boolean podeApagar(Cena atual) { // esse metódo evita que o apagão dispare dentro do próprio apagão, que dispare com um destino pendente e que dispare no ultimo capitulo
         return !Estado.ehCenaDeApagao(atual.getId())
@@ -402,7 +419,7 @@ public class CenasController {
 
     // FIX (Bug 3): calcularChute agora é DETERMINÍSTICO.
     // O sorteio ponderado original fazia dois jogadores com as mesmas 4 respostas
-    // receberem chutes diferentes — o que contradizia o epílogo (mostrarPerfilAcademico),
+    // receberem chutes diferentes, o que contradizia o epílogo (mostrarPerfilAcademico),
     // que lê as respostas cruas. Determinístico mantém a coerência:
     // o Sistema é burro, mas é BURRO DE UM JEITO EXPLICÁVEL.
     //

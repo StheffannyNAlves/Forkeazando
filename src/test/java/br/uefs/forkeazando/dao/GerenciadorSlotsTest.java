@@ -6,7 +6,7 @@ import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Protagonista;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
-
+import br.uefs.forkeazando.model.ResumoSlot;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -407,15 +407,15 @@ class GerenciadorSlotsTest {
     void deveListarTodosOsSlotsComoVaziosQuandoPastaNaoExiste() {
         Path pasta = pastaTemp.resolve("saves");
 
-        List<String> linhas = GerenciadorSlots.listar(pasta);
+        List<ResumoSlot> slots = GerenciadorSlots.listar(pasta);
 
-        assertEquals(GerenciadorSlots.TOTAL_SLOTS, linhas.size());
+        assertEquals(GerenciadorSlots.TOTAL_SLOTS, slots.size());
 
         for (int i = 1; i <= GerenciadorSlots.TOTAL_SLOTS; i++) {
-            String linha = linhas.get(i - 1);
+            ResumoSlot slot = slots.get(i - 1);
 
-            assertTrue(linha.contains("Slot " + i));
-            assertTrue(linha.toLowerCase().contains("vazio"));
+            assertEquals(i, slot.numero());
+            assertEquals(ResumoSlot.Status.VAZIO, slot.status());
         }
     }
 
@@ -436,16 +436,16 @@ class GerenciadorSlotsTest {
 
         GerenciadorSlots.salvar(estado, pasta, 1);
 
-        List<String> linhas = GerenciadorSlots.listar(pasta);
+        List<ResumoSlot> slots = GerenciadorSlots.listar(pasta);
 
-        assertEquals(GerenciadorSlots.TOTAL_SLOTS, linhas.size());
+        assertEquals(GerenciadorSlots.TOTAL_SLOTS, slots.size());
 
-        String linha = linhas.get(0);
+        ResumoSlot slot = slots.get(0);
 
-        assertTrue(linha.contains("Slot 1"));
-        assertTrue(linha.toLowerCase().contains("ocupado"));
-        assertTrue(linha.contains("Stheffanny"));
-        assertTrue(linha.contains("Capítulo 1"));
+        assertEquals(1, slot.numero());
+        assertEquals(ResumoSlot.Status.OCUPADO, slot.status());
+        assertEquals("Stheffanny", slot.nome());
+        assertEquals(1, slot.capitulo());
     }
 
     @Test
@@ -465,14 +465,14 @@ class GerenciadorSlotsTest {
 
         GerenciadorSlots.salvar(estado, pasta, 2);
 
-        List<String> linhas = GerenciadorSlots.listar(pasta);
+        List<ResumoSlot> slots = GerenciadorSlots.listar(pasta);
 
-        assertEquals(GerenciadorSlots.TOTAL_SLOTS, linhas.size());
+        assertEquals(GerenciadorSlots.TOTAL_SLOTS, slots.size());
 
-        assertTrue(linhas.get(0).toLowerCase().contains("vazio"));
-        assertTrue(linhas.get(1).toLowerCase().contains("ocupado"));
-        assertTrue(linhas.get(1).contains("Stheffanny"));
-        assertTrue(linhas.get(2).toLowerCase().contains("vazio"));
+        assertEquals(ResumoSlot.Status.VAZIO, slots.get(0).status());
+        assertEquals(ResumoSlot.Status.OCUPADO, slots.get(1).status());
+        assertEquals("Stheffanny", slots.get(1).nome());
+        assertEquals(ResumoSlot.Status.VAZIO, slots.get(2).status());
     }
 
     @Test
@@ -496,14 +496,75 @@ class GerenciadorSlotsTest {
 
         GerenciadorSlots.salvar(estado, pasta, 2);
 
-        List<String> linhas = GerenciadorSlots.listar(pasta);
+        List<ResumoSlot> slots = GerenciadorSlots.listar(pasta);
 
-        assertEquals(GerenciadorSlots.TOTAL_SLOTS, linhas.size());
+        assertEquals(GerenciadorSlots.TOTAL_SLOTS, slots.size());
 
-        assertTrue(linhas.get(0).toLowerCase().contains("corrompido"));
-        assertTrue(linhas.get(1).toLowerCase().contains("ocupado"));
-        assertTrue(linhas.get(1).contains("Stheffanny"));
-        assertTrue(linhas.get(2).toLowerCase().contains("vazio"));
+        assertEquals(ResumoSlot.Status.CORROMPIDO, slots.get(0).status());
+        assertEquals(ResumoSlot.Status.OCUPADO, slots.get(1).status());
+        assertEquals("Stheffanny", slots.get(1).nome());
+        assertEquals(ResumoSlot.Status.VAZIO, slots.get(2).status());
     }
 
+    @Test
+    void autosaveDeveCriarArquivoSemOcuparSlotENemMarcarSalvo() throws Exception {
+        Path pasta = pastaTemp.resolve("saves");
+        Estado estado = estadoValido();
+        estado.marcarAlterado();
+
+        GerenciadorSlots.salvarAutosave(estado, pasta);
+
+        assertTrue(Files.exists(GerenciadorSlots.caminhoDoAutosave(pasta)));
+        assertEquals(OptionalInt.of(1), GerenciadorSlots.primeiroSlotLivre(pasta));
+        assertTrue(estado.temAlteracoes());
+    }
+
+    @Test
+    void salvarEmSlotDeveMarcarComoSalvo() throws Exception {
+        Estado estado = estadoValido();
+        estado.marcarAlterado();
+
+        GerenciadorSlots.salvar(estado, pastaTemp, 1);
+
+        assertFalse(estado.temAlteracoes());
+    }
+
+    @Test
+    void autosaveDeveRejeitarEstadoSemProtagonista() {
+        assertThrows(SaveException.class,
+                () -> GerenciadorSlots.salvarAutosave(new Estado(), pastaTemp));
+    }
+
+    @Test
+    void excluirDeveRemoverOArquivoDoSlot() throws Exception {
+        Path pasta = pastaTemp.resolve("saves");
+        GerenciadorSlots.salvar(estadoValido(), pasta, 2);
+        assertTrue(Files.exists(GerenciadorSlots.caminhoDoSlot(pasta, 2)));
+
+        GerenciadorSlots.excluir(pasta, 2);
+
+        assertFalse(Files.exists(GerenciadorSlots.caminhoDoSlot(pasta, 2)));
+        assertEquals(OptionalInt.of(1), GerenciadorSlots.primeiroSlotLivre(pasta));
+    }
+
+    @Test
+    void excluirSlotVazioDeveLancarSaveException() {
+        Path pasta = pastaTemp.resolve("saves");
+
+        SaveException e = assertThrows(SaveException.class,
+                () -> GerenciadorSlots.excluir(pasta, 1));
+
+        assertTrue(e.getMessage().contains("O slot 1 já está vazio"));
+    }
+
+    @Test
+    void excluirNaoDeveAfetarOutrosSlots() throws Exception {
+        Path pasta = pastaTemp.resolve("saves");
+        GerenciadorSlots.salvar(estadoValido("A"), pasta, 1);
+        GerenciadorSlots.salvar(estadoValido("B"), pasta, 2);
+
+        GerenciadorSlots.excluir(pasta, 1);
+
+        assertTrue(Files.exists(GerenciadorSlots.caminhoDoSlot(pasta, 2)));
+    }
 }

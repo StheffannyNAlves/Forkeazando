@@ -1,4 +1,8 @@
 package br.uefs.forkeazando.dao;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.time.Instant;
 
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
@@ -295,4 +299,113 @@ class GerenciadorSaveTest {
         assertTrue(Files.exists(arquivo));
         assertFalse(Files.exists(temporario));
     }
+
+    @Test
+    void novoSaveDevePersistirVersaoDataEEstado()
+            throws IOException, SaveException,
+            CarregamentoException, DadosInvalidosException {
+
+        Protagonista protagonista = new Protagonista(
+                "Stheffanny",
+                false,
+                true,
+                true,
+                Protagonista.NivelVidaSocial.EQUILIBRADO,
+                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
+                Protagonista.SituacaoEconomica.ESTAVEL
+        );
+
+        Estado estado = new Estado();
+        estado.iniciar(protagonista);
+
+        Path arquivo = diretorioTemporario.resolve("save-metadados.json");
+
+        GerenciadorSave.salvar(estado, arquivo);
+
+        JsonObject raiz = JsonParser
+                .parseString(Files.readString(arquivo))
+                .getAsJsonObject();
+
+        assertEquals(1, raiz.get("versao").getAsInt());
+        assertTrue(raiz.has("dataSalvamento"));
+        assertDoesNotThrow(
+                () -> Instant.parse(raiz.get("dataSalvamento").getAsString())
+        );
+        assertTrue(raiz.get("estado").isJsonObject());
+
+        GerenciadorSave.SaveCarregado carregado =
+                GerenciadorSave.carregarComMetadados(arquivo);
+
+        assertTrue(carregado.dataSalvamento().isPresent());
+        assertEquals(
+                "Stheffanny",
+                carregado.estado().getProtagonista().getNome()
+        );
+    }
+
+    @Test
+    void deveCarregarSaveAntigoSemMetadados()
+            throws IOException, CarregamentoException,
+            DadosInvalidosException {
+
+        Protagonista protagonista = new Protagonista(
+                "Stheffanny",
+                false,
+                true,
+                true,
+                Protagonista.NivelVidaSocial.EQUILIBRADO,
+                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
+                Protagonista.SituacaoEconomica.ESTAVEL
+        );
+
+        Estado estadoOriginal = new Estado();
+        estadoOriginal.iniciar(protagonista);
+        estadoOriginal.setCenaAtualId(3050);
+
+        // Simula o formato antigo: o próprio Estado na raiz do JSON.
+        Path arquivo = diretorioTemporario.resolve("save-antigo.json");
+        Files.writeString(arquivo, new Gson().toJson(estadoOriginal));
+
+        GerenciadorSave.SaveCarregado carregado =
+                GerenciadorSave.carregarComMetadados(arquivo);
+
+        assertTrue(carregado.dataSalvamento().isEmpty());
+        assertEquals(
+                "Stheffanny",
+                carregado.estado().getProtagonista().getNome()
+        );
+        assertEquals(3050, carregado.estado().getCenaAtualId());
+    }
+
+    @Test
+    void deveRejeitarVersaoDeSaveNaoSuportada()
+            throws IOException, SaveException {
+
+        Protagonista protagonista = new Protagonista(
+                "Stheffanny",
+                false,
+                true,
+                true,
+                Protagonista.NivelVidaSocial.EQUILIBRADO,
+                Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
+                Protagonista.SituacaoEconomica.ESTAVEL
+        );
+
+        Estado estado = new Estado();
+        estado.iniciar(protagonista);
+
+        JsonObject raiz = new JsonObject();
+        raiz.addProperty("versao", 999);
+        raiz.addProperty("dataSalvamento", Instant.now().toString());
+        raiz.add("estado", new Gson().toJsonTree(estado));
+
+        Path arquivo = diretorioTemporario.resolve("save-versao-futura.json");
+        Files.writeString(arquivo, raiz.toString());
+
+        assertThrows(
+                DadosInvalidosException.class,
+                () -> GerenciadorSave.carregar(arquivo)
+        );
+    }
+
 }

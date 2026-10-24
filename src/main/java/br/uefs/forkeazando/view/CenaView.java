@@ -26,6 +26,19 @@ public class CenaView {
     private volatile Protagonista protagonistaAtual;
     private String ultimaIlustracao;
     private boolean avisouArteOculta;
+    private final boolean dicasAtalho;
+    private final int velocidadeTexto;
+    private static final long[] PAUSA_LINHA_MS = {80, 30, 0};
+    private static final long[] PAUSA_PENSAMENTO_MS = {600, 400, 150};
+
+
+    private void pausarAposLinha(boolean ehPensamento, String linha) {
+        dormir(PAUSA_LINHA_MS[velocidadeTexto]);
+
+        if (ehPensamento && linha.length() < 25) {
+            dormir(PAUSA_PENSAMENTO_MS[velocidadeTexto]);
+        }
+    }
 
     static int larguraDaCaixa(int colunas) {
         return Math.max(LARGURA_MINIMA, Math.min(LARGURA_PADRAO, colunas - 2));
@@ -197,7 +210,6 @@ public class CenaView {
                 if (paragrafo.equals("{{FINAL_INDEPENDENTE}}"))   { mostrarFinalIndependente(p, corTexto);   continue; }
                 if (paragrafo.equals("{{FINAL_TRANSICAO}}"))      { mostrarFinalTransicao(p, corTexto);      continue; }
 
-                // ─── texto comum ───
                 if (paragrafo.isBlank()) {
                     imprimirLinha("", corTexto);
                     continue;
@@ -209,7 +221,7 @@ public class CenaView {
 
                 for (String linhaQuebrada : quebrarLinha(paragrafo, larg - 4)) {
                     imprimirLinha(linhaQuebrada, corLinha);
-                    if (ehPensamento && linhaQuebrada.length() < 25) dormir(400);
+                    pausarAposLinha(ehPensamento, linhaQuebrada);
                 }
             }
             System.out.println(Cores.CIANO + "╚" + "═".repeat(larg) + "╝" + Cores.RESET);
@@ -633,7 +645,7 @@ public class CenaView {
         String corLinha = ehPensamento ? Cores.CINZA : corTexto;
         for (String linhaQuebrada : quebrarLinha(paragrafo, larg - 4)) {
             imprimirLinha(linhaQuebrada, corLinha);
-            if (ehPensamento && linhaQuebrada.length() < 25) dormir(400);
+            pausarAposLinha(ehPensamento, linhaQuebrada);
         }
     }
 
@@ -672,9 +684,9 @@ public class CenaView {
         if (!atual.isEmpty()) linhas.add(atual.toString());
         return linhas;
     }
-    private final boolean dicasAtalho;
-    public CenaView(boolean dicasAtalho) {
+    public CenaView(boolean dicasAtalho, int velocidadeTexto) {
         this.dicasAtalho = dicasAtalho;
+        this.velocidadeTexto = velocidadeTexto;
     }
 
     public void exibirEscolhas(List<Escolha> disponiveis) {

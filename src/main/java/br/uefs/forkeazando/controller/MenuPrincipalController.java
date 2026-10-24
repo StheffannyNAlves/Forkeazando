@@ -12,6 +12,8 @@ import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.CenaView;
 import br.uefs.forkeazando.view.Cores;
+import br.uefs.forkeazando.model.ResumoSlot;
+import java.time.format.DateTimeFormatter;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.TelaCaracteristicas;
@@ -40,6 +42,8 @@ public class MenuPrincipalController {
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;
     }
+    private static final DateTimeFormatter FORMATO_DATA_SLOT =
+            DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 
     public void iniciar() throws CarregamentoException, DadosInvalidosException {
         try {
@@ -93,11 +97,11 @@ public class MenuPrincipalController {
 
 
     private void carregarPartida() {
-        List<String> slots = GerenciadorSlots.listar(PASTA_SAVES);
+        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
         List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
 
-        for (String slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(slot));
+        for (ResumoSlot slot : slots) {
+            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
         }
 
         int indiceAutosave = opcoes.size();
@@ -136,7 +140,7 @@ public class MenuPrincipalController {
             return;}
 
         // A lista de slots precisa manter a ordem Slot 1, Slot 2, Slot 3.
-        int numeroSlot = indice + 1;
+        int numeroSlot = slots.get(indice).numero();
 
         try {
             partidaAtual = GerenciadorSlots.carregar(PASTA_SAVES, numeroSlot);
@@ -151,8 +155,7 @@ public class MenuPrincipalController {
     }
 
     private void carregarAutosave() {
-        Path caminhoAutosave = PASTA_SAVES.resolve("autosave.json");
-
+        Path caminhoAutosave = GerenciadorSlots.caminhoDoAutosave(PASTA_SAVES);
         if (!Files.exists(caminhoAutosave)) {
             view.mostrarMensagem("Ainda não existe um autosave.");
             return;
@@ -184,11 +187,11 @@ public class MenuPrincipalController {
         }
     }
     private void excluirSave() {
-        List<String> slots = GerenciadorSlots.listar(PASTA_SAVES);
+        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
         List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
 
-        for (String slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(slot));
+        for (ResumoSlot slot : slots) {
+            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
         }
 
         int indiceCancelar = opcoes.size();
@@ -210,13 +213,12 @@ public class MenuPrincipalController {
             return;
         }
 
-        if (slots.get(indice).contains(" - Vazio")) {
+        if (slots.get(indice).status() == ResumoSlot.Status.VAZIO) {
             view.mostrarMensagem("Esse slot já está vazio.");
             return;
         }
 
-        int numeroSlot = indice + 1;
-
+        int numeroSlot = slots.get(indice).numero();
         List<MenuInterativo.Opcao> confirmacoes = List.of(
                 new MenuInterativo.Opcao("Sim, excluir"),
                 new MenuInterativo.Opcao("Não")
@@ -307,7 +309,7 @@ public class MenuPrincipalController {
         boolean temSlotLivre = GerenciadorSlots
                 .primeiroSlotLivre(PASTA_SAVES)
                 .isPresent();
-        DecisaoSaida decisao = DecisaoSaida.decidir(temAlteracoes, temSlotLivre);
+        DecisaoSaida decisao = DecisaoSaida.decidir(temAlteracoes, temSlotLivre, deveConfirmarSaida());
         return switch (decisao) {
             case SAIR -> true;
             case PERGUNTAR_SALVAR -> perguntarSalvar();
@@ -353,9 +355,11 @@ public class MenuPrincipalController {
 
         Progresso emUso = (progresso != null) ? progresso : new Progresso(); // evita que o construtor de CenasController receba null, sem apagar ou sobrescrever automaticamente os dados inválidos.
 
-        boolean dicasAtalho = ConfiguracoesAdmin.get().isDicasAtalho();
+        var config = ConfiguracoesAdmin.get();
+        CenaView cenaView = new CenaView(config.isDicasAtalho(), config.getVelocidadeTexto());
 
-        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView(dicasAtalho), emUso, gerenciadorProgresso).iniciar();
+        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, cenaView, emUso, gerenciadorProgresso,
+                estado -> GerenciadorSlots.salvarAutosave(estado, PASTA_SAVES)).iniciar();
         if (resultado == ResultadoPartida.FIM_DE_JOGO
                 || resultado == ResultadoPartida.VOLTAR_AO_MENU) {
 
@@ -363,10 +367,7 @@ public class MenuPrincipalController {
             if (resultado == ResultadoPartida.FIM_DE_JOGO) {
                 if (partidaAtual.isPartidaConcluida()) {
                     try {
-                        GerenciadorSave.salvar(
-                                partidaAtual,
-                                PASTA_SAVES.resolve("autosave.json")
-                        );
+                        GerenciadorSlots.salvarAutosave(partidaAtual, PASTA_SAVES);
 
                         if (slotAtual != null) {
                             GerenciadorSlots.salvar(
@@ -447,9 +448,11 @@ public class MenuPrincipalController {
     }
 
     private boolean escolherSobrescrita(boolean permitirSairSemSalvar) {
+        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
         List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
-        for (String slot : GerenciadorSlots.listar(PASTA_SAVES)) {
-            opcoes.add(new MenuInterativo.Opcao(slot));
+
+        for (ResumoSlot slot : slots) {
+            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
         }
 
         int indiceSairSemSalvar = -1;
@@ -471,7 +474,33 @@ public class MenuPrincipalController {
         if (resposta.indiceOpcao == indiceSairSemSalvar) {
             return true;
         }
-        return confirmarSobrescrita(resposta.indiceOpcao + 1);
+        if (resposta.indiceOpcao < 0
+                || resposta.indiceOpcao >= slots.size()) {
+            return false;
+        }
+
+        return confirmarSobrescrita(
+                slots.get(resposta.indiceOpcao).numero()
+        );
+    }
+
+    private String formatarSlot(ResumoSlot slot) {
+        if (slot.status() == ResumoSlot.Status.VAZIO) {
+            return "Slot " + slot.numero() + " - Vazio";
+        }
+
+        if (slot.status() == ResumoSlot.Status.CORROMPIDO) {
+            return "Slot " + slot.numero() + " - Corrompido";
+        }
+
+        return "Slot " + slot.numero() + " - Ocupado"
+                + " | " + slot.nome() + " | Capítulo " + slot.capitulo()
+                + " | " + slot.data().format(FORMATO_DATA_SLOT)
+                + "   Score: " + slot.score() + "/100"
+                + " | Participação: " + slot.participacao() + "/100"
+                + " | Rank: " + slot.rank()
+                + " | Energia: " + slot.energia()
+                + "/" + slot.energiaMaxima();
     }
 
     private boolean confirmarSobrescrita(int numeroSlot) {
@@ -537,6 +566,14 @@ public class MenuPrincipalController {
             );
             return false;
         }
+    }
+
+    private boolean deveConfirmarSaida(){
+        try{
+            return  ConfiguracoesAdmin.get().isConfirmarSaida();
+        } catch (CarregamentoException | DadosInvalidosException e){
+            return  true;}
+
     }
 
 

@@ -38,5 +38,23 @@ class DecisaoSaidaTest {
         );
     }
 
+    @Test
+    void comConfirmacaoDesligadaSaiDiretoMesmoComAlteracoesESlotLivre() {
+         assertEquals(
+                 DecisaoSaida.SAIR,
+                 DecisaoSaida.decidir(true, true, false));
+    }
+
+    @Test
+    void comConfirmacaoDesligadaSaiDiretoMesmoSemSlotLivre() {
+        assertEquals(DecisaoSaida.SAIR, DecisaoSaida.decidir(true, false, false));
+    }
+
+    @Test
+    void comConfirmacaoLigadaMantemORegraOriginal() {
+        assertEquals(DecisaoSaida.PERGUNTAR_SALVAR, DecisaoSaida.decidir(true, true, true));
+        assertEquals(DecisaoSaida.ESCOLHER_SLOT, DecisaoSaida.decidir(true, false, true));
+    }
+
 
 }

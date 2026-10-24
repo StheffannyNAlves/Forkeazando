@@ -5,11 +5,13 @@ public enum DecisaoSaida {
     PERGUNTAR_SALVAR,
     ESCOLHER_SLOT;
 
-    public static DecisaoSaida decidir(
-            boolean temAlteracoes,
-            boolean temSlotLivre) {
+    public static DecisaoSaida decidir(boolean temAlteracoes, boolean temSlotLivre) {
+        return decidir(temAlteracoes, temSlotLivre, true);
+    }
 
-        if (!temAlteracoes) {
+    /** Com confirmarSaida desligado, sai direto sem perguntar sobre salvar. */
+    public static DecisaoSaida decidir(boolean temAlteracoes, boolean temSlotLivre, boolean confirmarSaida) {
+        if (!temAlteracoes || !confirmarSaida) {
             return SAIR;
         }
 

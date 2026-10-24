@@ -13,6 +13,9 @@ import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.time.Instant;
+import java.time.format.DateTimeParseException;
+import java.util.Optional;
 
 public class GerenciadorSave {
 
@@ -20,14 +23,30 @@ public class GerenciadorSave {
             .setPrettyPrinting()
             .create();
 
-    public static void salvar(Estado estado, Path destino) throws SaveException {
+    private static final int VERSAO_ATUAL = 1;
+
+    public record SaveCarregado(
+            Estado estado,
+            Optional<Instant> dataSalvamento
+    ) {}
+
+    public static void salvar(Estado estado, Path destino)
+            throws SaveException {
 
         Path temporario = destino.resolveSibling(
                 destino.getFileName() + ".tmp"
         );
 
+        JsonObject envelope = new JsonObject();
+        envelope.addProperty("versao", VERSAO_ATUAL);
+        envelope.addProperty(
+                "dataSalvamento",
+                Instant.now().toString()
+        );
+        envelope.add("estado", gson.toJsonTree(estado));
+
         try (Writer w = Files.newBufferedWriter(temporario)) {
-            gson.toJson(estado, w);
+            gson.toJson(envelope, w);
 
         } catch (IOException | JsonIOException e) {
             apagarTemporario(temporario);
@@ -37,7 +56,8 @@ public class GerenciadorSave {
                     e
             );
         }
-        try{
+
+        try {
             try {
                 Files.move(
                         temporario,
@@ -46,13 +66,20 @@ public class GerenciadorSave {
                         StandardCopyOption.ATOMIC_MOVE
                 );
             } catch (AtomicMoveNotSupportedException e) {
-                Files.move(temporario, destino, StandardCopyOption.REPLACE_EXISTING);
+                Files.move(
+                        temporario,
+                        destino,
+                        StandardCopyOption.REPLACE_EXISTING
+                );
             }
         } catch (IOException e) {
             apagarTemporario(temporario);
 
             throw new SaveException(
-                    "Não foi possível substituir o arquivo: " + destino, e);
+                    "Não foi possível substituir o arquivo: "
+                            + destino,
+                    e
+            );
         }
     }
 
@@ -100,7 +127,96 @@ public class GerenciadorSave {
         }
     }
 
+    private static SaveCarregado interpretar(
+            JsonObject raiz
+    ) throws DadosInvalidosException {
+
+        // Sem "estado" na raiz: considera o formato antigo.
+        if (!raiz.has("estado")) {
+            validar(raiz);
+
+            return new SaveCarregado(
+                    gson.fromJson(raiz, Estado.class),
+                    Optional.empty()
+            );
+        }
+
+        // Com "estado" na raiz: espera o novo envelope.
+        if (!raiz.has("versao")
+                || !raiz.get("versao").isJsonPrimitive()
+                || !raiz.getAsJsonPrimitive("versao").isNumber()) {
+
+            throw new DadosInvalidosException(
+                    "Save inválido: versão ausente ou inválida"
+            );
+        }
+
+        int versao;
+
+        try {
+            versao = Integer.parseInt(
+                    raiz.get("versao").getAsString()
+            );
+        } catch (NumberFormatException e) {
+            throw new DadosInvalidosException(
+                    "Save inválido: versão deve ser um inteiro"
+            );
+        }
+
+        if (versao != VERSAO_ATUAL) {
+            throw new DadosInvalidosException(
+                    "Versão de save não suportada: " + versao
+            );
+        }
+
+        if (!raiz.has("dataSalvamento")
+                || !raiz.get("dataSalvamento").isJsonPrimitive()
+                || !raiz.getAsJsonPrimitive("dataSalvamento").isString()) {
+
+            throw new DadosInvalidosException(
+                    "Save inválido: data de salvamento ausente ou inválida"
+            );
+        }
+
+        Instant dataSalvamento;
+
+        try {
+            dataSalvamento = Instant.parse(
+                    raiz.get("dataSalvamento").getAsString()
+            );
+        } catch (DateTimeParseException e) {
+            throw new DadosInvalidosException(
+                    "Save inválido: data de salvamento malformada"
+            );
+        }
+
+        if (raiz.get("estado").isJsonNull()
+                || !raiz.get("estado").isJsonObject()) {
+
+            throw new DadosInvalidosException(
+                    "Save inválido: estado ausente ou inválido"
+            );
+        }
+
+        JsonObject jsonEstado = raiz.getAsJsonObject("estado");
+
+        validar(jsonEstado);
+
+        Estado estado = gson.fromJson(jsonEstado, Estado.class);
+
+        return new SaveCarregado(
+                estado,
+                Optional.of(dataSalvamento)
+        );
+    }
+
     public static Estado carregar(Path origem)
+            throws CarregamentoException, DadosInvalidosException {
+
+        return carregarComMetadados(origem).estado();
+    }
+
+    public static SaveCarregado carregarComMetadados(Path origem)
             throws CarregamentoException, DadosInvalidosException {
 
         try (Reader r = Files.newBufferedReader(origem)) {
@@ -119,11 +235,7 @@ public class GerenciadorSave {
                 );
             }
 
-            JsonObject json = elemento.getAsJsonObject();
-
-            validar(json);
-
-            return gson.fromJson(json, Estado.class);
+            return interpretar(elemento.getAsJsonObject());
 
         } catch (IOException | JsonParseException e) {
             throw new CarregamentoException(

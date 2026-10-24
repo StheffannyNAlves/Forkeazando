@@ -67,21 +67,26 @@ public class ConfiguracoesAdmin {
         try {
             json = Files.readString(arquivo);
         } catch (IOException e) {
-            throw new CarregamentoException("Falha ao ler config.json", e);
+            throw new CarregamentoException("Falha ao ler " + ARQUIVO, e);
         }
 
         Configuracoes lida;
         try {
             lida = gson.fromJson(json, Configuracoes.class);
         } catch (JsonSyntaxException e) {
-            throw new CarregamentoException(ARQUIVO + "inválido", e);
+            throw new CarregamentoException(ARQUIVO + " inválido", e);
         }
 
         if (lida == null) {
-            throw new DadosInvalidosException(ARQUIVO + "vazio ou nulo");
+            throw new DadosInvalidosException(ARQUIVO + " vazio ou nulo");
         }
 
-        return lida;
+        Configuracoes normalizada = new Configuracoes();
+        normalizada.setVelocidadeTexto(lida.getVelocidadeTexto());
+        normalizada.setConfirmarSaida(normalizada.isConfirmarSaida());
+        normalizada.setVolume(lida.getVolume());
+        normalizada.setDicasAtalho(lida.isDicasAtalho());
+        return normalizada;
     }
 
 

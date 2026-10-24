@@ -7,16 +7,24 @@ import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.MenuPrincipal;
 import org.jline.terminal.Terminal;
-// SEM MUDANÇAS
+import br.uefs.forkeazando.model.Configuracoes;
 
 public class Main {
     public static void main(String[] args) throws CarregamentoException, DadosInvalidosException {
         if (Terminal.TYPE_DUMB.equals(Entrada.terminal().getType())) {
-            System.out.println(
-                    "Execute este jogo em um terminal (não no console da IDE).");
+            System.out.println("Execute este jogo em um terminal (não no console da IDE).");
             return;
         }
-        MenuPrincipal view = new MenuPrincipal(ConfiguracoesAdmin.get().isDicasAtalho());
+        Configuracoes config;
+        try {
+            config = ConfiguracoesAdmin.get();
+        } catch (CarregamentoException | DadosInvalidosException e) {
+            System.out.println("Configurações inválidas (" + e.getMessage() + "). Usando valores padrão.");
+            System.out.print("Pressione ENTER para continuar...");
+            Entrada.lerLinha();
+            config = ConfiguracoesAdmin.restaurarPadrao();
+        }
+        MenuPrincipal view = new MenuPrincipal(config.isDicasAtalho());
         MenuPrincipalController controller = new MenuPrincipalController(view);
         controller.iniciar();
     }

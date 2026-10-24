@@ -135,6 +135,10 @@ public class ConfiguracoesAdmin {
         return normalizada;
     }
 
-
+    // Usa os valores padrão na memória quando o arquivo está inválido
+    public static Configuracoes restaurarPadrao() {
+        instancia = new Configuracoes();
+        return instancia;
+    }
 
 }

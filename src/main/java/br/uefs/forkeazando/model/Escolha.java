@@ -31,6 +31,7 @@ public class Escolha  {
     private final int sanidadeMinima;
     private final int sanidadeMaxima;
     private final Map<PersonagemSecundario, Float> relacionamentoMinimo;
+    private final Map<PersonagemSecundario, Float> relacionamentoMaximo;
     private final PersonagemSecundario.Interesse interesseAlvo;
     private final Map<PersonagemSecundario, Float> impactoRelacionamento;
     private final Map<String, Integer> atributosAlterados;
@@ -58,10 +59,11 @@ public class Escolha  {
         this.sanidadeMinima        = b.sanidadeMinima;
         this.sanidadeMaxima        = b.sanidadeMaxima;
         this.interesseAlvo         = b.interesseAlvo;
-        this.relacionamentoMinimo = b.relacionamentoMinimo;
-        this.impactoRelacionamento = b.impactoRelacionamento;
-        this.atributosAlterados    = b.atributosAlterados;
+        this.relacionamentoMinimo = Map.copyOf(b.relacionamentoMinimo);
+        this.impactoRelacionamento  = Map.copyOf(b.impactoRelacionamento);
+        this.atributosAlterados     = Map.copyOf(b.atributosAlterados);
         this.permiteEnergiaInsuficiente = b.permiteEnergiaInsuficiente;
+        this.relacionamentoMaximo = Map.copyOf(b.relacionamentoMaximo);
     }
 
     private boolean atende(Protagonista p, boolean ignorarEnergia) {
@@ -87,6 +89,11 @@ public class Escolha  {
     private boolean atendeRelacionamentos(Protagonista p) {
         for (Map.Entry<PersonagemSecundario, Float> exigido : relacionamentoMinimo.entrySet()) {
             if (p.getRelacionamento(exigido.getKey()) < exigido.getValue()) {
+                return false;
+            }
+        }
+        for (Map.Entry<PersonagemSecundario, Float> exigido : relacionamentoMaximo.entrySet()) {
+            if (p.getRelacionamento(exigido.getKey()) > exigido.getValue()) {
                 return false;
             }
         }
@@ -118,6 +125,7 @@ public class Escolha  {
         private final int cenaDestinoId;
         private final List<String> flagsConcedidas = new ArrayList<>();
         public Map<PersonagemSecundario, Float> relacionamentoMinimo = new HashMap<>();
+        private Map<PersonagemSecundario, Float> relacionamentoMaximo = new HashMap<>();
         private boolean permiteEnergiaInsuficiente = false;
         private String flagRequerida = null;
         private int scoreMinimo = 0, participacaoMinima = 0, participacaoMaxima = 0;
@@ -194,6 +202,10 @@ public class Escolha  {
         }
         public Builder comRelacionamentoMinimo(PersonagemSecundario p, float v){ /** A escolha só aparece se a relação com o personagem for ALIADO=3*/
             relacionamentoMinimo.put(p, v);
+            return this;
+        }
+        public Builder comRelacionamentoMaximo(PersonagemSecundario p, float v) {
+            relacionamentoMaximo.put(p, v);
             return this;
         }
         public Builder comAtributo(String nome, int delta) {

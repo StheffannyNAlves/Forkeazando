@@ -164,7 +164,9 @@ public class CenasController {
                 continue;
             }
 
-
+            Protagonista p = estado.getProtagonista();
+            Optional<Final> f = Final.identificar(p.getHistoricoFlags());
+            f.ifPresent(aFinal -> estado.concluir(aFinal.getCodigo()));
 
             if (destino == Estado.CENA_ENCERRAR) {
                 ResultadoAvancoCapitulo resultadoAvanco =

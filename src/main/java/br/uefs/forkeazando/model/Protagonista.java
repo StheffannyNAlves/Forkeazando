@@ -33,7 +33,7 @@ public class Protagonista {
 
     private final List<String> historicoFlags = new ArrayList<>();
     private final Map<String, Float> relacionamentos = new HashMap<>();
-//    public boolean dadosInternosValidos() {
+    //    public boolean dadosInternosValidos() {
 //        return true;
 //    }
     public Protagonista(String nome, boolean perfeccionista, boolean sociavel,
@@ -194,6 +194,11 @@ public class Protagonista {
         if (!historicoFlags.contains(flag)) historicoFlags.add(flag);
     }
     public boolean temFlag(String flag) { return historicoFlags.contains(flag); }
+
+    /** Remove uma marca de estado que deixou de representar a trajetória atual. */
+    public void removerFlag(String flag) {
+        historicoFlags.removeIf(flag::equals);
+    }
     public boolean atingiuRequisito(int scoreMin, int participacaoMin) {
         return score >= scoreMin && participacao >= participacaoMin;
     }
@@ -202,6 +207,13 @@ public class Protagonista {
         return relacionamentos.values().stream()
                 .filter(pontos -> categorizarRelacionamento(pontos) == nivel)
                 .count();
+    }
+    public boolean temAlgumaFlagComPrefixo(String prefixo){
+        for (String f : getHistoricoFlags()){
+            if (f.startsWith(prefixo))
+                return true;
+        }
+        return false;
     }
 
     public String getRank() {

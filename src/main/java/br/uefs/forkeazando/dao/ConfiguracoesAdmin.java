@@ -6,11 +6,13 @@ import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Configuracoes;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-
+import java.nio.file.AtomicMoveNotSupportedException;
+import java.nio.file.StandardCopyOption;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 // persiste as configurações personalizaveis
 public class ConfiguracoesAdmin {
     private static final String PASTA = "saves";
@@ -35,16 +37,41 @@ public class ConfiguracoesAdmin {
             throw new DadosInvalidosException("Configurações nulas");
         }
 
+        Path arquivo = Paths.get(ARQUIVO);
+        Path temporario = arquivo.resolveSibling(
+                arquivo.getFileName() + ".tmp"
+        );
+
         String json = gson.toJson(c);
 
         try {
-            Files.createDirectories(Paths.get(PASTA));
-            Files.writeString(Paths.get(ARQUIVO), json);
+            Files.createDirectories(arquivo.getParent());
+            Files.writeString(temporario, json);
+
+            try {
+                Files.move(
+                        temporario,
+                        arquivo,
+                        StandardCopyOption.REPLACE_EXISTING,
+                        StandardCopyOption.ATOMIC_MOVE
+                );
+            } catch (AtomicMoveNotSupportedException e) {
+                Files.move(temporario, arquivo, StandardCopyOption.REPLACE_EXISTING);
+            }
         } catch (IOException e) {
+            apagarTemporario(temporario);
+
             throw new SaveException("Falha ao salvar " + ARQUIVO, e);
         }
 
         instancia = c;
+    }
+
+    private static void apagarTemporario(Path temporario) {
+        try {
+            Files.deleteIfExists(temporario);
+        } catch (IOException ignored) {
+        }
     }
 
     public static Configuracoes get() throws CarregamentoException, DadosInvalidosException {
@@ -83,7 +110,7 @@ public class ConfiguracoesAdmin {
 
         Configuracoes normalizada = new Configuracoes();
         normalizada.setVelocidadeTexto(lida.getVelocidadeTexto());
-        normalizada.setConfirmarSaida(normalizada.isConfirmarSaida());
+        normalizada.setConfirmarSaida(lida.isConfirmarSaida());
         normalizada.setVolume(lida.getVolume());
         normalizada.setDicasAtalho(lida.isDicasAtalho());
         return normalizada;

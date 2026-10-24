@@ -27,7 +27,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
+
+
+
+
 
 public class MenuPrincipalController {
 
@@ -545,13 +548,34 @@ public class MenuPrincipalController {
     }
 
     private boolean salvarPartida() {
-        OptionalInt slotLivre = GerenciadorSlots.primeiroSlotLivre(PASTA_SAVES);
+        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
+        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
 
-        if (slotLivre.isEmpty()) {
-            return escolherSobrescrita(false);
+        for (ResumoSlot slot : slots) {
+            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
         }
 
-        return salvarPartida(slotLivre.getAsInt());
+        int indiceCancelar = opcoes.size();
+        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
+
+        MenuInterativo.Resposta resposta = MenuInterativo.abrir(
+                opcoes,
+                "Escolha onde salvar a partida"
+        );
+
+        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO
+                || resposta.indiceOpcao < 0
+                || resposta.indiceOpcao >= slots.size()) {
+            return false;
+        }
+
+        ResumoSlot slotSelecionado = slots.get(resposta.indiceOpcao);
+
+        if (slotSelecionado.status() != ResumoSlot.Status.VAZIO) {
+            return confirmarSobrescrita(slotSelecionado.numero());
+        }
+
+        return salvarPartida(slotSelecionado.numero());
     }
 
     private boolean salvarPartida(int numeroSlot) {

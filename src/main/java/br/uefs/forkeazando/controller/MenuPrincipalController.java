@@ -3,7 +3,6 @@ package br.uefs.forkeazando.controller;
 import br.uefs.forkeazando.audio.GerenciadorAudio;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
-import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Cena;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Protagonista;
@@ -12,7 +11,6 @@ import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.CenaView;
 import br.uefs.forkeazando.view.Cores;
-import br.uefs.forkeazando.model.ResumoSlot;
 import java.time.format.DateTimeFormatter;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.MenuPrincipal;
@@ -46,7 +44,6 @@ public class MenuPrincipalController {
         this.progressoController = new ProgressoController(view, this.gerenciadorProgresso);
         this.savesController = new GerenciadorSavesController(view, PASTA_SAVES);
     }
-    private static final DateTimeFormatter FORMATO_DATA_SLOT = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 
     public void iniciar() throws CarregamentoException, DadosInvalidosException {
         try {
@@ -92,8 +89,8 @@ public class MenuPrincipalController {
     private void iniciarAudio() {
         try{
             gerenciadorAudio.setVolume(ConfiguracoesAdmin.get().getVolume());
-        } catch (CarregamentoException | DadosInvalidosException e){
-
+        } catch (CarregamentoException | DadosInvalidosException e) {
+            view.mostrarMensagem("Não foi possível ler o volume salvo; usando o padrão.");
         }
         gerenciadorAudio.iniciar();
     }
@@ -209,9 +206,7 @@ public class MenuPrincipalController {
 
         boolean cenaExiste = cenas.stream().anyMatch(c -> c.getId() == cenaId);
         if (!cenaExiste) {
-            view.mostrarMensagem(Cores.VERMELHO
-                    + "Save inválido: a cena " + cenaId + " não existe."
-                    + Cores.RESET);
+            view.mostrarMensagem(Cores.VERMELHO + "Save inválido: a cena " + cenaId + " não existe." + Cores.RESET);
             partidaAtual = null;
             return;
         }
@@ -223,36 +218,15 @@ public class MenuPrincipalController {
 
         ResultadoPartida resultado = new CenasController(partidaAtual, cenas, cenaView, emUso, gerenciadorProgresso,
                 savesController::salvarAutosave).iniciar();
-        if (resultado == ResultadoPartida.FIM_DE_JOGO
-                || resultado == ResultadoPartida.VOLTAR_AO_MENU) {
-
-            progressoController.registrar(progresso, partidaAtual);
-            if (resultado == ResultadoPartida.FIM_DE_JOGO) {
-                if (partidaAtual.isPartidaConcluida()) {
-                    try {
-                        GerenciadorSlots.salvarAutosave(partidaAtual, PASTA_SAVES);
-
-                        if (slotAtual != null) {
-                            GerenciadorSlots.salvar(
-                                    partidaAtual, PASTA_SAVES, slotAtual
-                            );
-                        }
-                    } catch (SaveException e) {
-                        view.mostrarMensagem(
-                                "Erro ao salvar a conclusão: " + e.getMessage()
-                        );
-                    }
-                }
-
-                partidaAtual = null;
-                slotAtual = null;
+        if (resultado == ResultadoPartida.FIM_DE_JOGO) {
+            if (partidaAtual.isPartidaConcluida()) {
+                savesController.salvarConclusao(partidaAtual, slotAtual);
             }
-
+            partidaAtual = null;
+            slotAtual = null;
         } else if (resultado == ResultadoPartida.ERRO_DE_ROTA) {
-
             view.mostrarMensagem("A partida foi mantida na memória. " + "Corrija a rota antes de continuar. "
-                            + "O estado atual ainda não foi salvo automaticamente."
-            );
+                            + "O estado atual ainda não foi salvo automaticamente.");
         }
     }
 

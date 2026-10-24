@@ -39,25 +39,16 @@ public class GerenciadorSavesController {
 
     public Optional<PartidaSelecionada> carregarPartida() {
         List<ResumoSlot> slots = GerenciadorSlots.listar(pastaSaves);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
 
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
-
-        int indiceAutosave = opcoes.size();
-        opcoes.add(new MenuInterativo.Opcao("Carregar autosave"));
-
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
-
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(opcoes, "Carregar partida");
+        MenuInterativo.Resposta resposta = abrirMenuDeSlots(
+                "Carregar partida", slots, "Carregar autosave", "Cancelar");
 
         if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
             return Optional.empty();
         }
 
         int indice = resposta.indiceOpcao;
+        int indiceAutosave = slots.size();
 
         if (indice == indiceAutosave) {
             return carregarAutosave();
@@ -80,13 +71,8 @@ public class GerenciadorSavesController {
         }
 
         try {
-            Estado estado = GerenciadorSlots.carregar(
-                    pastaSaves, slot.numero()
-            );
-
-            return Optional.of(
-                    new PartidaSelecionada(estado, slot.numero())
-            );
+            Estado estado = GerenciadorSlots.carregar(pastaSaves, slot.numero());
+            return Optional.of(new PartidaSelecionada(estado, slot.numero()));
 
         } catch (CarregamentoException | DadosInvalidosException e) {
             view.mostrarMensagem(
@@ -96,6 +82,7 @@ public class GerenciadorSavesController {
             return Optional.empty();
         }
     }
+
 
     private Optional<PartidaSelecionada> carregarAutosave() {
         Path caminho = GerenciadorSlots.caminhoDoAutosave(pastaSaves);
@@ -145,16 +132,9 @@ public class GerenciadorSavesController {
 
     private void excluirSave() {
         List<ResumoSlot> slots = GerenciadorSlots.listar(pastaSaves);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
-
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
-
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
 
         MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(opcoes, "Excluir save");
+                abrirMenuDeSlots("Excluir save", slots, "Cancelar");
 
         if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO
                 || resposta.indiceOpcao < 0
@@ -174,12 +154,10 @@ public class GerenciadorSavesController {
                 new MenuInterativo.Opcao("Não")
         );
 
-        MenuInterativo.Resposta confirmacao =
-                MenuInterativo.abrir(
-                        confirmacoes,
-                        "Excluir permanentemente o Slot "
-                                + slot.numero() + "?"
-                );
+        MenuInterativo.Resposta confirmacao = MenuInterativo.abrir(
+                confirmacoes,
+                "Excluir permanentemente o Slot " + slot.numero() + "?"
+        );
 
         if (confirmacao.resultado != MenuInterativo.Resultado.SELECIONADO
                 || confirmacao.indiceOpcao != 0) {
@@ -190,8 +168,7 @@ public class GerenciadorSavesController {
             GerenciadorSlots.excluir(pastaSaves, slot.numero());
 
             view.mostrarMensagem(
-                    Cores.VERDE + "Slot " + slot.numero()
-                            + " excluído." + Cores.RESET
+                    Cores.VERDE + "Slot " + slot.numero() + " excluído." + Cores.RESET
             );
 
         } catch (SaveException e) {
@@ -201,21 +178,11 @@ public class GerenciadorSavesController {
             );
         }
     }
-
     public OptionalInt salvarPartida(Estado estado) {
         List<ResumoSlot> slots = GerenciadorSlots.listar(pastaSaves);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
 
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
-
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
-
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(
-                        opcoes, "Escolha onde salvar a partida"
-                );
+        MenuInterativo.Resposta resposta = abrirMenuDeSlots(
+                "Escolha onde salvar a partida", slots, "Cancelar");
 
         if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO
                 || resposta.indiceOpcao < 0
@@ -238,31 +205,18 @@ public class GerenciadorSavesController {
     }
 
     public boolean escolherSobrescrita(
-            Estado estado,
-            boolean permitirProsseguirSemSalvar) {
+            Estado estado, boolean permitirProsseguirSemSalvar) {
 
         List<ResumoSlot> slots = GerenciadorSlots.listar(pastaSaves);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
 
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
+        int indiceProsseguir = permitirProsseguirSemSalvar ? slots.size() : -1;
+        int indiceCancelar = slots.size() + (permitirProsseguirSemSalvar ? 1 : 0);
 
-        int indiceProsseguir = -1;
-
-        if (permitirProsseguirSemSalvar) {
-            indiceProsseguir = opcoes.size();
-            opcoes.add(new MenuInterativo.Opcao("Prosseguir sem salvar"));
-        }
-
-        int indiceCancelar = opcoes.size();
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
-
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(
-                        opcoes,
-                        "Escolha um slot para sobrescrever"
-                );
+        MenuInterativo.Resposta resposta = permitirProsseguirSemSalvar
+                ? abrirMenuDeSlots("Escolha um slot para sobrescrever", slots,
+                "Prosseguir sem salvar", "Cancelar")
+                : abrirMenuDeSlots("Escolha um slot para sobrescrever", slots,
+                "Cancelar");
 
         if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
             return false;
@@ -276,8 +230,7 @@ public class GerenciadorSavesController {
             return true;
         }
 
-        if (resposta.indiceOpcao < 0
-                || resposta.indiceOpcao >= slots.size()) {
+        if (resposta.indiceOpcao < 0 || resposta.indiceOpcao >= slots.size()) {
             return false;
         }
 
@@ -342,6 +295,18 @@ public class GerenciadorSavesController {
                     "Erro ao salvar a conclusão: " + e.getMessage()
             );
         }
+    }
+
+    private MenuInterativo.Resposta abrirMenuDeSlots(
+            String titulo, List<ResumoSlot> slots, String... extras) {
+        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
+        for (ResumoSlot slot : slots) {
+            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
+        }
+        for (String extra : extras) {
+            opcoes.add(new MenuInterativo.Opcao(extra));
+        }
+        return MenuInterativo.abrir(opcoes, titulo);
     }
 
     private String formatarSlot(ResumoSlot slot) {

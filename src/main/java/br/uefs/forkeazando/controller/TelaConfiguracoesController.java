@@ -5,6 +5,7 @@ import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Configuracoes;
 import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.view.Cores;
+import br.uefs.forkeazando.audio.GerenciadorAudio;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 import br.uefs.forkeazando.view.widget.MenuInterativo.Opcao;
@@ -17,10 +18,12 @@ public class TelaConfiguracoesController {
 
     private final Configuracoes original;
     private Configuracoes buffer;
+    private final GerenciadorAudio gerenciadorAudio;
 
-    public TelaConfiguracoesController(Configuracoes original){
+    public TelaConfiguracoesController(Configuracoes original, GerenciadorAudio gerenciadorAudio){
         this.original = original;
         this.buffer = copiar(original);
+        this.gerenciadorAudio = gerenciadorAudio;
     }
 
     private Configuracoes copiar(Configuracoes c){
@@ -28,21 +31,32 @@ public class TelaConfiguracoesController {
     }
 
     public void iniciar(){
-        while (true){
-            List<Opcao> opcoes = montarOpcoes();
-            Resposta r = MenuInterativo.abrir(opcoes, "CONFIGURACOES", true);
+       try {
+           while (true) {
+               List<Opcao> opcoes = montarOpcoes();
+               Resposta r = MenuInterativo.abrir(opcoes, "CONFIGURACOES", true,
+                       indice -> {
+                            if (indice == 1 && gerenciadorAudio != null){
+                                int vol = opcoes.get(1).indiceValor*10;
+                                gerenciadorAudio.setVolume(vol);
+                            }
+                       });
 
-            if (r.resultado == MenuInterativo.Resultado.CANCELADO)
-                return;
-            aplicarValoresNasOpcoes(r.valoresEscolhidos);
-            String labelConfirmado = opcoes.get(r.indiceOpcao).label;
-            if (labelConfirmado.equals("Salvar")){
-                salvar();
-            } else if (labelConfirmado.equals("Sair")){
-                if (sair())
-                    return;
-            }
-        }
+               if (r.resultado == MenuInterativo.Resultado.CANCELADO)
+                   return;
+               aplicarValoresNasOpcoes(r.valoresEscolhidos);
+               String labelConfirmado = opcoes.get(r.indiceOpcao).label;
+               if (labelConfirmado.equals("Salvar")) {
+                   salvar();
+               } else if (labelConfirmado.equals("Sair")) {
+                   if (sair())
+                       return;
+               }
+           }
+       } finally {
+           if (gerenciadorAudio != null)
+               gerenciadorAudio.setVolume(original.getVolume());
+       }
     }
 
     private List<Opcao> montarOpcoes() {
@@ -91,6 +105,8 @@ public class TelaConfiguracoesController {
         buffer.setVolume(valores[1] * 10);
         buffer.setConfirmarSaida(valores[2] == 0);
         buffer.setDicasAtalho(valores[3] == 0);
+        if (gerenciadorAudio != null)
+            gerenciadorAudio.setVolume(buffer.getVolume());
 
     }
 
@@ -130,6 +146,8 @@ public class TelaConfiguracoesController {
             Entrada.lerLinha();
         }
 
+        if (gerenciadorAudio != null)
+            gerenciadorAudio.setVolume(original.getVolume());
         buffer = new Configuracoes(original);
     }
 }

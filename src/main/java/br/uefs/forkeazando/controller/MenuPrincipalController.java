@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.controller;
-// Aqui nao trata nada do dao(LEMBRA DISSO)
+// Trata DAO
+import br.uefs.forkeazando.audio.GerenciadorAudio;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
@@ -35,18 +36,19 @@ public class MenuPrincipalController {
     private final GerenciadorProgresso gerenciadorProgresso = new GerenciadorProgresso(PASTA_SAVES);
     private Progresso progresso;
 
+    private final GerenciadorAudio gerenciadorAudio = new GerenciadorAudio();
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;
     }
 
-    public void iniciar() {
+    public void iniciar() throws CarregamentoException, DadosInvalidosException {
         try {
             progresso = gerenciadorProgresso.carregar();
         } catch (CarregamentoException | DadosInvalidosException e) {
             view.mostrarMensagem(Cores.VERMELHO + "Erro ao carregar progresso global" + e.getMessage() + Cores.RESET);
             progresso = null;
         }
-
+        iniciarAudio();
         while (rodando) {
             List<MenuInterativo.Opcao> opcoes = List.of(
                     new MenuInterativo.Opcao("Nova Partida"),
@@ -77,7 +79,16 @@ public class MenuPrincipalController {
 
             processarOpcao(codigos[indice]);
         }
+        gerenciadorAudio.fechar();
 
+    }
+    private void iniciarAudio() throws CarregamentoException, DadosInvalidosException {
+        try{
+            gerenciadorAudio.setVolume(ConfiguracoesAdmin.get().getVolume());
+        } catch (CarregamentoException | DadosInvalidosException e){
+
+        }
+        gerenciadorAudio.iniciar();
     }
 
 
@@ -313,7 +324,7 @@ public class MenuPrincipalController {
     private void abrirConfiguracoes() {
         try {
             var config = ConfiguracoesAdmin.get();
-            new TelaConfiguracoesController(config).iniciar();
+            new TelaConfiguracoesController(config, gerenciadorAudio).iniciar();
 
         } catch (CarregamentoException e) {
             view.mostrarMensagem(

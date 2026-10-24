@@ -31,6 +31,10 @@ public class CenaView {
     private static final long[] PAUSA_LINHA_MS = {80, 30, 0};
     private static final long[] PAUSA_PENSAMENTO_MS = {600, 400, 150};
 
+    public CenaView(boolean dicasAtalho, int velocidadeTexto) {
+        this.dicasAtalho = dicasAtalho;
+        this.velocidadeTexto = Math.max(0, Math.min(2, velocidadeTexto));
+    }
 
     private void pausarAposLinha(boolean ehPensamento, String linha) {
         dormir(PAUSA_LINHA_MS[velocidadeTexto]);
@@ -142,7 +146,6 @@ public class CenaView {
             for (String paragrafo : cena.getTextoNarrativo().split("\n")) {
                 Entrada.aguardarPause();
 
-                // ─── placeholders ───
                 if (paragrafo.equals("{{APROVACAO}}")) {
                     mostrarAprovacao();
                     continue;
@@ -684,26 +687,5 @@ public class CenaView {
         if (!atual.isEmpty()) linhas.add(atual.toString());
         return linhas;
     }
-    public CenaView(boolean dicasAtalho, int velocidadeTexto) {
-        this.dicasAtalho = dicasAtalho;
-        this.velocidadeTexto = velocidadeTexto;
-    }
 
-    public void exibirEscolhas(List<Escolha> disponiveis) {
-        atualizarLargura();
-        System.out.println();
-        System.out.println(Cores.CIANO + "╔" + "═".repeat(larg) + "╗" + Cores.RESET);
-        imprimirLinha("O QUE VOCÊ VAI FAZER?", Cores.VERDE);
-        System.out.println(Cores.CIANO + "╠" + "═".repeat(larg) + "╣" + Cores.RESET);
-        for (int i = 0; i < disponiveis.size(); i++) {
-            String escolha = "[" + (i + 1) + "] " + disponiveis.get(i).getTextoAlternativa();
-            for (String linhaQuebrada : quebrarLinha(escolha, larg - 4)) {
-                imprimirLinha(linhaQuebrada, Cores.VERDE);
-            }
-        }
-        System.out.println(Cores.CIANO + "╚" + "═".repeat(larg) + "╝" + Cores.RESET);
-        if (dicasAtalho) {
-            System.out.println("[0] Menu principal");
-        }
-    }
 }

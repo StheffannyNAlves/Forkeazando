@@ -35,7 +35,7 @@ public class MenuPrincipalController {
     private Estado partidaAtual;
     private final GerenciadorProgresso gerenciadorProgresso = new GerenciadorProgresso(PASTA_SAVES);
     private Progresso progresso;
-
+    private Integer slotAtual;
     private final GerenciadorAudio gerenciadorAudio = new GerenciadorAudio();
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;
@@ -133,18 +133,14 @@ public class MenuPrincipalController {
         }
 
         if (indice < 0 || indice >= slots.size()) {
-            return;
-        }
+            return;}
 
         // A lista de slots precisa manter a ordem Slot 1, Slot 2, Slot 3.
         int numeroSlot = indice + 1;
 
         try {
-            partidaAtual = GerenciadorSlots.carregar(
-                    PASTA_SAVES,
-                    numeroSlot
-            );
-
+            partidaAtual = GerenciadorSlots.carregar(PASTA_SAVES, numeroSlot);
+            slotAtual = numeroSlot;
             executarPartida();
         } catch (CarregamentoException | DadosInvalidosException e) {
             view.mostrarMensagem(
@@ -155,8 +151,7 @@ public class MenuPrincipalController {
     }
 
     private void carregarAutosave() {
-        Path caminhoAutosave =
-                PASTA_SAVES.resolve("autosave.json");
+        Path caminhoAutosave = PASTA_SAVES.resolve("autosave.json");
 
         if (!Files.exists(caminhoAutosave)) {
             view.mostrarMensagem("Ainda não existe um autosave.");
@@ -164,9 +159,8 @@ public class MenuPrincipalController {
         }
 
         try {
-            Estado estadoCarregado =
-                    GerenciadorSave.carregar(caminhoAutosave);
-
+            Estado estadoCarregado = GerenciadorSave.carregar(caminhoAutosave);
+            slotAtual = null;
             if (estadoCarregado == null
                     || estadoCarregado.getProtagonista() == null) {
                 view.mostrarMensagem(
@@ -365,9 +359,28 @@ public class MenuPrincipalController {
                 || resultado == ResultadoPartida.VOLTAR_AO_MENU) {
 
             registrarProgresso();
-
             if (resultado == ResultadoPartida.FIM_DE_JOGO) {
+                if (partidaAtual.isPartidaConcluida()) {
+                    try {
+                        GerenciadorSave.salvar(
+                                partidaAtual,
+                                PASTA_SAVES.resolve("autosave.json")
+                        );
+
+                        if (slotAtual != null) {
+                            GerenciadorSlots.salvar(
+                                    partidaAtual, PASTA_SAVES, slotAtual
+                            );
+                        }
+                    } catch (SaveException e) {
+                        view.mostrarMensagem(
+                                "Erro ao salvar a conclusão: " + e.getMessage()
+                        );
+                    }
+                }
+
                 partidaAtual = null;
+                slotAtual = null;
             }
 
         } else if (resultado == ResultadoPartida.ERRO_DE_ROTA) {
@@ -423,9 +436,8 @@ public class MenuPrincipalController {
     }
 
     private void novaPartida() {
-        Protagonista protagonista =
-                new TelaCaracteristicasController(new TelaCaracteristicas()).iniciar();
-
+        Protagonista protagonista = new TelaCaracteristicasController(new TelaCaracteristicas()).iniciar();
+        slotAtual = null;
         partidaAtual = new Estado();
         partidaAtual.iniciar(protagonista);
         partidaAtual.setCenaAtualId(700);
@@ -515,6 +527,7 @@ public class MenuPrincipalController {
     private boolean salvarPartida(int numeroSlot) {
         try {
             GerenciadorSlots.salvar(partidaAtual, PASTA_SAVES, numeroSlot);
+            slotAtual = numeroSlot;
             view.mostrarMensagem("Partida salva no Slot " + numeroSlot + "!");
             return true;
         } catch (SaveException e) {

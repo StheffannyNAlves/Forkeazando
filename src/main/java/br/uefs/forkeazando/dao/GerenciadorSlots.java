@@ -5,6 +5,7 @@ import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Protagonista;
+import br.uefs.forkeazando.model.Final;
 
 import java.io.IOException;
 import java.nio.file.Files;

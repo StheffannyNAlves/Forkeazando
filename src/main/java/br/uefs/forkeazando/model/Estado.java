@@ -18,7 +18,8 @@ public class Estado  {
     public static final int CENA_RETOMAR = 998;  // sai do apagão e retoma o caminho original
     public static final int CENA_APAGAO = 970;   // 970, 971 e 972
     private int destinoPendente = -1;
-
+    private boolean partidaConcluida; // lembra que aqui começa como false
+    private String codigoFinal;
     public void iniciar(Protagonista protagonista) {
         if (protagonista == null) {
             throw new IllegalArgumentException("O protagonista não pode ser null.");

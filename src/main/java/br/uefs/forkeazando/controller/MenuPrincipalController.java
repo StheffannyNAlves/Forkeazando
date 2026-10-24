@@ -61,6 +61,7 @@ public class MenuPrincipalController {
                     new MenuInterativo.Opcao("Nova Partida"),
                     new MenuInterativo.Opcao("Continuar"),
                     new MenuInterativo.Opcao("Carregar"),
+                    new MenuInterativo.Opcao("Gerenciar saves"),
                     new MenuInterativo.Opcao("Instruções"),
                     new MenuInterativo.Opcao("Opções de Estilo"),
                     new MenuInterativo.Opcao("Salvar"),
@@ -81,9 +82,8 @@ public class MenuPrincipalController {
             int indice = resposta.indiceOpcao;
             String[] codigos = {
                     "1", "2", "3", "4", "5",
-                    "6", "7", "8", "0"
+                    "6", "7", "8", "9", "0"
             };
-
             processarOpcao(codigos[indice]);
         }
         gerenciadorAudio.fechar();
@@ -110,8 +110,6 @@ public class MenuPrincipalController {
         int indiceAutosave = opcoes.size();
         opcoes.add(new MenuInterativo.Opcao("Carregar autosave"));
 
-        int indiceExcluir = opcoes.size();
-        opcoes.add(new MenuInterativo.Opcao("Excluir save"));
 
         int indiceCancelar = opcoes.size();
         opcoes.add(new MenuInterativo.Opcao("Cancelar"));
@@ -131,11 +129,6 @@ public class MenuPrincipalController {
 
         if (indice == indiceAutosave) {
             carregarAutosave();
-            return;
-        }
-
-        if (indice == indiceExcluir) {
-            excluirSave();
             return;
         }
 
@@ -263,13 +256,30 @@ public class MenuPrincipalController {
         progressoView.mostrarProgresso(progresso);
         progressoView.mostrarConquistas(progresso);
     }
+    private void gerenciarSaves() {
+        List<MenuInterativo.Opcao> opcoes = List.of(
+                new MenuInterativo.Opcao("Excluir save"),
+                new MenuInterativo.Opcao("Voltar")
+        );
+
+        MenuInterativo.Resposta resposta =
+                MenuInterativo.abrir(opcoes, "Gerenciar saves");
+
+        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
+            return;
+        }
+
+        if (resposta.indiceOpcao == 0) {
+            excluirSave();
+        }
+    }
 
     private void processarOpcao(String opcao) throws CarregamentoException, DadosInvalidosException {
         switch (opcao) {
             case "1" -> {
-                if (confirmarDescarte())
+                if (confirmarDescarte()) {
                     novaPartida();
-
+                }
             }
             case "2" -> {
                 if (partidaAtual == null) {
@@ -283,25 +293,26 @@ public class MenuPrincipalController {
                     carregarPartida();
                 }
             }
-            case "4" -> view.mostrarInstrucoes();
-            case "5" -> abrirConfiguracoes();
-            case "7" -> {
+            case "4" -> gerenciarSaves();
+            case "5" -> view.mostrarInstrucoes();
+            case "6" -> abrirConfiguracoes();
+            case "7" -> salvarPartidaManual();
+            case "8" -> {
                 view.mostrarCreditos();
                 System.out.print("Pressione ENTER para voltar...");
                 Entrada.lerLinha();
             }
-            case "6" -> salvarPartidaManual();
-            case "8" -> visualizarProgresso();
+            case "9" -> visualizarProgresso();
             case "0" -> {
                 if (confirmarDescarte()) {
                     rodando = false;
                     view.mostrarMensagem("Saindo...");
                 }
             }
-
             default -> view.mostrarMensagem("Opção inválida!");
         }
     }
+
 
     private boolean confirmarDescarte() {
         if (partidaAtual == null) {

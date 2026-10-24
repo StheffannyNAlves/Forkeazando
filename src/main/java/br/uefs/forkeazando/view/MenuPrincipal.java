@@ -33,11 +33,12 @@ public class MenuPrincipal {
             "[1] Nova Partida",
             "[2] Continuar",
             "[3] Carregar",
-            "[4] Instruções",
-            "[5] Opções de Estilo",
-            "[6] Salvar",
-            "[7] Créditos",
-            "[8] Meu progresso",
+            "[4] Gerenciar saves",
+            "[5] Instruções",
+            "[6] Opções de Estilo",
+            "[7] Salvar",
+            "[8] Créditos",
+            "[9] Meu progresso",
             "[0] Sair"
     };
 

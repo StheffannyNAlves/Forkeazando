@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 // persiste as configurações personalizaveis
+// agora os metodos de leitura e gravação não muda a API pública usada pelo resto do jogo
 public class ConfiguracoesAdmin {
     private static final String PASTA = "saves";
     private static final String ARQUIVO = PASTA + "/configuracao.json";
@@ -37,16 +38,25 @@ public class ConfiguracoesAdmin {
             throw new DadosInvalidosException("Configurações nulas");
         }
 
-        Path arquivo = Paths.get(ARQUIVO);
+        salvarConfigPersonalizadas(c, Paths.get(ARQUIVO));
+        instancia = c;
+    }
+    static void salvarConfigPersonalizadas(Configuracoes c, Path arquivo)
+            throws SaveException, DadosInvalidosException {
+        if (c == null) {
+            throw new DadosInvalidosException("Configurações nulas");
+        }
+
         Path temporario = arquivo.resolveSibling(
                 arquivo.getFileName() + ".tmp"
         );
 
-        String json = gson.toJson(c);
-
         try {
-            Files.createDirectories(arquivo.getParent());
-            Files.writeString(temporario, json);
+            if (arquivo.getParent() != null) {
+                Files.createDirectories(arquivo.getParent());
+            }
+
+            Files.writeString(temporario, gson.toJson(c));
 
             try {
                 Files.move(
@@ -56,15 +66,16 @@ public class ConfiguracoesAdmin {
                         StandardCopyOption.ATOMIC_MOVE
                 );
             } catch (AtomicMoveNotSupportedException e) {
-                Files.move(temporario, arquivo, StandardCopyOption.REPLACE_EXISTING);
+                Files.move(
+                        temporario,
+                        arquivo,
+                        StandardCopyOption.REPLACE_EXISTING
+                );
             }
         } catch (IOException e) {
             apagarTemporario(temporario);
-
-            throw new SaveException("Falha ao salvar " + ARQUIVO, e);
+            throw new SaveException("Falha ao salvar " + arquivo, e);
         }
-
-        instancia = c;
     }
 
     private static void apagarTemporario(Path temporario) {
@@ -83,29 +94,36 @@ public class ConfiguracoesAdmin {
 
     private static Configuracoes carregar()
             throws CarregamentoException, DadosInvalidosException {
+        return carregar(Paths.get(ARQUIVO));
+    }
 
-        Path arquivo = Paths.get(ARQUIVO);
+    static Configuracoes carregar(Path arquivo)
+            throws CarregamentoException, DadosInvalidosException {
 
         if (!Files.exists(arquivo)) {
             return new Configuracoes();
         }
 
         String json;
+
         try {
             json = Files.readString(arquivo);
         } catch (IOException e) {
-            throw new CarregamentoException("Falha ao ler " + ARQUIVO, e);
+            throw new CarregamentoException(
+                    "Falha ao ler " + arquivo, e
+            );
         }
 
         Configuracoes lida;
+
         try {
             lida = gson.fromJson(json, Configuracoes.class);
         } catch (JsonSyntaxException e) {
-            throw new CarregamentoException(ARQUIVO + " inválido", e);
+            throw new CarregamentoException(arquivo + " inválido", e);
         }
 
         if (lida == null) {
-            throw new DadosInvalidosException(ARQUIVO + " vazio ou nulo");
+            throw new DadosInvalidosException(arquivo + " vazio ou nulo");
         }
 
         Configuracoes normalizada = new Configuracoes();
@@ -113,9 +131,9 @@ public class ConfiguracoesAdmin {
         normalizada.setConfirmarSaida(lida.isConfirmarSaida());
         normalizada.setVolume(lida.getVolume());
         normalizada.setDicasAtalho(lida.isDicasAtalho());
+
         return normalizada;
     }
-
 
 
 

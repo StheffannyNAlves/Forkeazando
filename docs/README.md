@@ -156,7 +156,7 @@ O jogo oferece três slots independentes de salvamento, com suporte a:
 - Continuação da partida mantida em memória.
 - Carregamento de uma partida salva.
 - Salvamento manual.
-- Salvamento automático  a cada 5 cenas concluídas e ao concluir a partida (arquivo `saves/autosave.json`, acessível por "Carregar autosave").
+- Salvamento automático a cada 5 cenas concluídas e ao concluir a partida (arquivo `saves/autosave.json`, acessível por "Carregar autosave").
 - Confirmação antes de sobrescrever ou excluir um salvamento.
 - Visualização de metadados, como capítulo, data e hora e informações da partida.
 
@@ -343,7 +343,6 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 ### Limitações conhecidas
 
 - A configuração de volume ainda não tem efeito caso o sistema de áudio não esteja integrado.
-- Ao salvar uma partida carregada, a escolha automática do slot de destino pode selecionar outro slot livre, em vez de atualizar necessariamente o slot de origem.
 - O uso das setas depende de um terminal compatível com JLine.
 - Em terminais com menos de 66 colunas ou 30 linhas, as ilustrações e os retratos não aparecem.
 - As animações não podem ser puladas durante a exibição. Podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.

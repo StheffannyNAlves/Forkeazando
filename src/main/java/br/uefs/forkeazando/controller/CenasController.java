@@ -49,15 +49,44 @@ public class CenasController {
 
 
     public ResultadoPartida iniciar() {
+        view.resetarCacheVisual();
         boolean jogando = true;
         while (jogando) {
             Cena atual = buscarCenaPorId(estado.getCenaAtualId());
-            if (view.deveMostrarBencao(atual.getId(), estado.getProtagonista())) {
+
+            // A resolução do futuro é uma transição automática, não uma escolha de carreira.
+            if (atual.getId() == ResolucaoDeFuturo.CENA_RESOLVER_FUTURO) {
+                int cenaFinal = ResolucaoDeFuturo.resolverCena(estado.getProtagonista());
+                estado.setCenaAtualId(cenaFinal);
+                estado.marcarAlterado();
+                continue;
+            }
+
+            String capituloAtual = atual.getCapitulo();
+            if (!capituloAtual.equals(ultimocapExibido)){
+                view.mostrarTransicao(capituloAtual);
+                ultimocapExibido = capituloAtual;
+            }
+            if (CenasDeChefe.recebeBencaoDoCaramelo(atual.getId(), estado.getProtagonista())) {
                 view.mostrarBencaoCaramelo();
             }
 
-            if (atual.getId() == 3050) {
+            if (atual.getId() == 3050 && !estado.getProtagonista().temFlag("viu_chute_sistema")) {
                 view.mostrarChuteDoSistema(estado.getProtagonista());
+                estado.getProtagonista().adicionarFlag("viu_chute_sistema");
+                estado.marcarAlterado();
+            }
+
+            if (atual.getId() == 654
+                    && !estado.getProtagonista().temFlag("viu_curriculo_cap8")) {
+                view.mostrarCurriculo(estado.getProtagonista());
+                estado.getProtagonista().adicionarFlag("viu_curriculo_cap8");
+                estado.marcarAlterado();
+            }
+
+            if ((ResultadoCalculo.ehCenaDeResultado(atual.getId()) || atual.getId() == 212)
+                    && ResultadoCalculo.assegurarNota(estado.getProtagonista(), atual.getId())) {
+                estado.marcarAlterado();
             }
 
             view.renderizar(atual, estado.getProtagonista(),
@@ -333,12 +362,8 @@ public class CenasController {
         }
 
         // Sistema faz o chute depois da última resposta do Akinator
-        if (escolhida.getCenaDestinoId() == 3050
-                && !p.temFlag("sistema_chutou_ic")
-                && !p.temFlag("sistema_chutou_dtec")
-                && !p.temFlag("sistema_chutou_indep")) {
-            String chute = calcularChute(p);
-            p.adicionarFlag("sistema_chutou_" + chute);
+        if (escolhida.getCenaDestinoId() == 3050){
+            SistemaAcademico.chute(p);
         }
 
         notificaNovasFlags(p, tamanhoListaAntes);
@@ -372,65 +397,48 @@ public class CenasController {
         throw new IllegalStateException("Cena não encontrada: " + id);
     }
 
+    // FIX (Bug 3): calcularChute agora é DETERMINÍSTICO.
+    // O sorteio ponderado original fazia dois jogadores com as mesmas 4 respostas
+    // receberem chutes diferentes — o que contradizia o epílogo (mostrarPerfilAcademico),
+    // que lê as respostas cruas. Determinístico mantém a coerência:
+    // o Sistema é burro, mas é BURRO DE UM JEITO EXPLICÁVEL.
+    //
+    // Se você preferir manter o caos original, é só reintroduzir o sorteio:
+    //   int total = pontosIC + pontosDTEC + pontosIndep;
+    //   int sorteio = new Random().nextInt(total);
+    //   if (sorteio < pontosIC) return "ic";
+    //   if (sorteio < pontosIC + pontosDTEC) return "dtec";
+    //   return "indep";
     private static String calcularChute(Protagonista p) {
         int pontosIC = 0, pontosDTEC = 0, pontosIndep = 0;
 
-        //  estudar vs mexer
         if (p.temFlag("sistema_q1_estudar")) {
-            pontosIC += 3;
-            pontosDTEC += 1;
-            pontosIndep += 1;
+            pontosIC += 3; pontosDTEC += 1; pontosIndep += 1;
         } else {
-            pontosIC += 1;
-            pontosDTEC += 3;
-            pontosIndep += 1;
+            pontosIC += 1; pontosDTEC += 3; pontosIndep += 1;
         }
 
-        // sozinha vs grupo
         if (p.temFlag("sistema_q2_sozinha")) {
-            pontosIC += 1;
-            pontosDTEC += 1;
-            pontosIndep += 3;
+            pontosIC += 1; pontosDTEC += 1; pontosIndep += 3;
         } else {
-            pontosIC += 3;
-            pontosDTEC += 2;
-            pontosIndep += 1;
+            pontosIC += 3; pontosDTEC += 2; pontosIndep += 1;
         }
 
-        //  visível vs invisível
         if (p.temFlag("sistema_q3_visivel")) {
-            pontosIC += 4;
-            pontosDTEC += 1;
-            pontosIndep += 1;
+            pontosIC += 4; pontosDTEC += 1; pontosIndep += 1;
         } else {
-            pontosIC += 1;
-            pontosDTEC += 2;
-            pontosIndep += 3;
+            pontosIC += 1; pontosDTEC += 2; pontosIndep += 3;
         }
 
-        // planejar vs improvisar
         if (p.temFlag("sistema_q4_planejar")) {
-            pontosIC += 3;
-            pontosDTEC += 2;
-            pontosIndep += 1;
+            pontosIC += 3; pontosDTEC += 2; pontosIndep += 1;
         } else {
-            pontosIC += 1;
-            pontosDTEC += 2;
-            pontosIndep += 4;
+            pontosIC += 1; pontosDTEC += 2; pontosIndep += 4;
         }
 
-        //  Sorteio ponderado
-        int total = pontosIC + pontosDTEC + pontosIndep;
-        int sorteio = new Random().nextInt(total);
-
-        if (sorteio < pontosIC) {
-            return "ic";
-        }
-
-        if (sorteio < pontosIC + pontosDTEC) {
-            return "dtec";
-        }
-
+        int max = Math.max(pontosIC, Math.max(pontosDTEC, pontosIndep));
+        if (pontosIC == max) return "ic";       // empate → IC vence (burro de propósito)
+        if (pontosDTEC == max) return "dtec";
         return "indep";
     }
 }

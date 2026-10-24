@@ -24,6 +24,7 @@ public class CenasController {
     private final GerenciadorProgresso gerenciadorProgresso;
     private final Progresso progresso;
     private static final double RECUPERAR_ENERGIA = 0.4; /** energia máxima devolvida */
+    private String ultimocapExibido;
 
     public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso) {
         this.estado = estado;

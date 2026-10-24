@@ -145,13 +145,18 @@ public class MenuInterativo {
         }
         return valores;
     }
-
     public static Resposta abrir(List<Opcao> opcoes, String titulo) {
         return abrir(opcoes, titulo, false);
     }
 
-
     public static Resposta abrir(List<Opcao> opcoes, String titulo, boolean estiloConfigs) {
+        return abrir(opcoes, titulo, estiloConfigs, null);
+    }
+
+    private static void notificar(IntConsumer callback, int indice) {
+        if (callback != null) callback.accept(indice);
+    }
+    public static Resposta abrir(List<Opcao> opcoes, String titulo, boolean estiloConfigs, IntConsumer aoMudarValor) {
         if (opcoes == null || opcoes.isEmpty()) {
             return new Resposta(Resultado.CANCELADO, -1, null);
         }
@@ -173,8 +178,14 @@ public class MenuInterativo {
                 switch (tecla) {
                     case "UP"    -> selecionado = moverCima(selecionado, colunas);
                     case "DOWN"  -> selecionado = moverBaixo(selecionado, total, colunas);
-                    case "LEFT"  -> moverEsquerda(opcoes.get(selecionado));
-                    case "RIGHT" -> moverDireita(opcoes.get(selecionado));
+                    case "LEFT"  -> {
+                        moverEsquerda(opcoes.get(selecionado));
+                        notificar(aoMudarValor, selecionado);
+                    }
+                    case "RIGHT" -> {
+                        moverDireita(opcoes.get(selecionado));
+                        notificar(aoMudarValor, selecionado);
+                    }
                     case "ENTER" -> {
                         terminal.writer().print("\033[" + (total + 2) + "A");
                         terminal.writer().print("\033[J");
@@ -205,7 +216,6 @@ public class MenuInterativo {
             return new Resposta(Resultado.CANCELADO, -1, null);
         }
     }
-
     public static Resposta abrir(List<Opcao> opcoes, String titulo, IntConsumer renderizador) {
 
         if (opcoes == null || opcoes.isEmpty()) {
@@ -215,7 +225,6 @@ public class MenuInterativo {
         int total = opcoes.size();
         int colunas = 1;
         int selecionado = 0;
-        Terminal terminal = Entrada.terminal();
         Entrada.TECLAS.clear();
 
         try {
@@ -225,11 +234,9 @@ public class MenuInterativo {
                 String tecla = Entrada.TECLAS.take();
 
                 switch (tecla) {
-                    case "UP" -> selecionado =
-                            moverCima(selecionado, colunas);
-                    case "DOWN" -> selecionado =
-                            moverBaixo(selecionado, total, colunas);
-                    case "LEFT" -> moverEsquerda(opcoes.get(selecionado));
+                    case "UP"    -> selecionado = moverCima(selecionado, colunas);
+                    case "DOWN"  -> selecionado = moverBaixo(selecionado, total, colunas);
+                    case "LEFT"  -> moverEsquerda(opcoes.get(selecionado));
                     case "RIGHT" -> moverDireita(opcoes.get(selecionado));
                     case "ENTER" -> {
                         return new Resposta(
@@ -247,4 +254,5 @@ public class MenuInterativo {
             return new Resposta(Resultado.CANCELADO, -1, null);
         }
     }
+
 }

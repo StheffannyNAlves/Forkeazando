@@ -259,7 +259,7 @@ public class MenuPrincipalController {
         progressoView.mostrarConquistas(progresso);
     }
 
-    private void processarOpcao(String opcao) {
+    private void processarOpcao(String opcao) throws CarregamentoException, DadosInvalidosException {
         switch (opcao) {
             case "1" -> {
                 if (confirmarDescarte())
@@ -338,7 +338,7 @@ public class MenuPrincipalController {
         }
     }
 
-    private void executarPartida() {
+    private void executarPartida() throws CarregamentoException, DadosInvalidosException {
         List<Cena> cenas = criarCenas();
         int cenaId = partidaAtual.getCenaAtualId();
 
@@ -353,8 +353,9 @@ public class MenuPrincipalController {
 
         Progresso emUso = (progresso != null) ? progresso : new Progresso(); // evita que o construtor de CenasController receba null, sem apagar ou sobrescrever automaticamente os dados inválidos.
 
-        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView(), emUso, gerenciadorProgresso).iniciar();
+        boolean dicasAtalho = ConfiguracoesAdmin.get().isDicasAtalho();
 
+        ResultadoPartida resultado = new CenasController(partidaAtual, cenas, new CenaView(dicasAtalho), emUso, gerenciadorProgresso).iniciar();
         if (resultado == ResultadoPartida.FIM_DE_JOGO
                 || resultado == ResultadoPartida.VOLTAR_AO_MENU) {
 
@@ -435,7 +436,7 @@ public class MenuPrincipalController {
         return Roteiro.todasAsCenas();
     }
 
-    private void novaPartida() {
+    private void novaPartida() throws CarregamentoException, DadosInvalidosException {
         Protagonista protagonista = new TelaCaracteristicasController(new TelaCaracteristicas()).iniciar();
         slotAtual = null;
         partidaAtual = new Estado();

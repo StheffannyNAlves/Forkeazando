@@ -1,16 +1,48 @@
 # Forkeazando
 
-**Entre o que era certo e o que ainda pode ser.**
+<p align="center">
+  <img src="docs/images/fork-versao1.3.0.gif" alt="Menu principal de Forkeazando" width="700">
+</p>
 
-![Menu principal de Forkeazando, jogo narrativo interativo em Java](/docs/images/fork-versao1.3.0.gif)
+<p align="center">
+  <strong>Entre o que era certo e o que ainda pode ser.</strong>
+</p>
 
-Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina MI-Programação, que segue a metodologia PBL (*Problem-Based Learning*), da Universidade Estadual de Feira de Santana (UEFS).
+<p align="center">
+  Um jogo narrativo interativo sobre a vida universitária, as escolhas que fazemos e as consequências que carregamos.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white" alt="Java 21">
+  <img src="https://img.shields.io/badge/Maven-build-blue?logo=apachemaven&logoColor=white" alt="Maven">
+  <img src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white" alt="JUnit 5">
+  <img src="https://img.shields.io/badge/Interface-Terminal-555555" alt="Interface de terminal">
+</p>
+
+---
+
+Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina **MI-Programação**, que segue a metodologia PBL (*Problem-Based Learning*), da Universidade Estadual de Feira de Santana (UEFS).
 
 A história acompanha uma estudante de Engenharia de Computação ao longo de sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada escolha pode abrir caminhos, limitar possibilidades e produzir consequências que se refletem nos capítulos seguintes.
 
 A universidade é mais do que o cenário da história: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa descobrir como lidar com suas próprias características, administrar recursos limitados e construir uma trajetória em um sistema que nem sempre reconhece o esforço da maneira esperada.
 
-O resultado é uma experiência narrativa em que não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.
+**Não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.**
+
+## Navegação
+
+- [Sobre o jogo](#sobre-o-jogo)
+- [Sistemas de jogo](#-sistemas-de-jogo)
+- [Conquistas e colecionáveis](#-conquistas-e-colecionáveis)
+- [Salvamento e continuidade](#-salvamento-e-continuidade)
+- [Interface e controles](#-interface-e-controles)
+- [Tecnologias](#-tecnologias)
+- [Estrutura do projeto](#-estrutura-do-projeto)
+- [Como executar](#-como-executar)
+- [Fase 2](#-fase-2)
+- [Limitações conhecidas](#limitações-conhecidas)
+- [Versões](#versões)
+- [Autoria](#autoria)
 
 ---
 
@@ -31,7 +63,7 @@ Ao longo da história, o jogador precisa equilibrar diferentes dimensões da vid
 
 Essas dimensões se relacionam. Uma escolha que favorece determinado aspecto da trajetória pode trazer custos em outro. O jogador precisa decidir quais oportunidades aproveitar, quais responsabilidades assumir e quais consequências está disposto a enfrentar.
 
-## Uma trajetória moldada por escolhas
+### Uma trajetória moldada por escolhas
 
 As escolhas não servem apenas para alterar o texto de uma cena. Elas podem modificar o estado da partida e influenciar as possibilidades narrativas posteriores.
 
@@ -141,7 +173,7 @@ Entre as configurações disponíveis estão:
 - Confirmação de saída.
 - Exibição de dicas de atalhos.
 
-A opção de volume está persistida, mas ainda não controla áudio, pois o sistema de áudio não foi implementado.
+> **Observação:** a configuração de volume está persistida, mas seu efeito depende da implementação atual do sistema de áudio.
 
 ### Progresso permanente
 
@@ -176,12 +208,12 @@ Durante as cenas, o HUD apresenta o rank da protagonista, o indicador de pausa e
 
 ### Ilustrações, retratos e animações
 
-As cenas importantes têm ilustrações em pixel art, e os personagens que falam aparecem com retrato e expressão (neutra, feliz, séria ou triste). Tudo é desenhado no próprio terminal, com o caractere `▀` — cada caractere representa dois pixels — e cores de 24 bits, sem depender de arquivos de imagem externos para desenhar as artes.
+As cenas importantes têm ilustrações em pixel art, e os personagens que falam aparecem com retrato e expressão (neutra, feliz, séria ou triste). Tudo é desenhado no próprio terminal, com o caractere `▀`. Cada caractere representa dois pixels, com cores de 24 bits, sem depender de arquivos de imagem externos para desenhar as artes.
 
 - Cada ilustração ocupa 66 colunas por 24 linhas, a mesma largura da caixa de cena, e a maioria é animada em 12 quadros. O último quadro é a arte estática.
-- A arte só aparece em terminais com pelo menos 66 colunas e 30 linhas; em terminais menores, o jogo segue normalmente, mas sem ilustrações e retratos.
+- A arte só aparece em terminais com pelo menos 66 colunas e 30 linhas. Em terminais menores, o jogo segue normalmente, mas sem ilustrações e retratos.
 - Os finais de carreira possuem ilustrações próprias, exibidas no início dos epílogos.
-- Para desligar as animações — por exemplo, em terminais lentos, gravações de tela ou por acessibilidade — defina `FORKEAZANDO_SEM_ANIMACAO=1` antes de executar o jogo. As ilustrações passam a aparecer diretamente no quadro final.
+- Para desligar as animações, por exemplo, em terminais lentos, gravações de tela ou por acessibilidade, defina `FORKEAZANDO_SEM_ANIMACAO=1` antes de executar o jogo. As ilustrações passam a aparecer diretamente no quadro final.
 - A associação entre cenas, ilustrações e retratos é definida em `roteiro/VisuaisDeCena` e `roteiro/VisuaisDeFinal`. Os desenhos ficam em `view/pixel`.
 
 ### Controles
@@ -228,10 +260,9 @@ src/
 │   │       ├── dao/           # Persistência de partidas e progresso
 │   │       ├── excecao/       # Exceções personalizadas
 │   │       ├── model/         # Entidades e estado do jogo
-│   │       ├── resources/     # Recursos do jogo
 │   │       ├── roteiro/       # Abertura, capítulos, cenas e escolhas
 │   │       ├── view/          # Telas e entrada do teclado
-│   │       │   └── pixel/     # HUD, ícones, ilustrações, retratos e animações
+│   │       │   └── pixel/     # HUD, ícones, ilustrações e animações
 │   │       └── Main.java      # Ponto de entrada
 │   └── resources/             # Recursos da aplicação
 └── test/
@@ -254,7 +285,7 @@ Os testes ficam em `src/test/java`. Os dados persistentes são armazenados em `s
 
 - Java 21 ou superior.
 - Maven 3.8 ou superior para execução a partir do código-fonte.
-- Terminal compatível com JLine; para exibir as artes, é necessário suporte a cores de 24 bits (*truecolor*).
+- Terminal compatível com JLine. Para exibir as artes, é necessário suporte a cores de 24 bits (*truecolor*).
 
 ### Executar o jogo
 
@@ -270,6 +301,8 @@ Se o arquivo JAR executável estiver disponível:
 ```bash
 java -jar forkeazando.jar
 ```
+
+> O comando com JAR pressupõe que o arquivo `forkeazando.jar` tenha sido gerado e esteja no diretório atual.
 
 ### Executar os testes
 
@@ -305,25 +338,27 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - [x] Galeria pixel art de habilidades e itens.
 - [x] Painel pixel art de conquistas.
 - [x] Ilustrações, retratos e animações para cenas e finais.
-- [x] Testes de regras do apagão e integridade dos recursos visuais.
+- [x] Testes de regras do esgotamento e integridade dos recursos visuais.
 
 ### Limitações conhecidas
 
-- A configuração de volume ainda não tem efeito, pois o áudio não foi implementado.
+- A configuração de volume ainda não tem efeito caso o sistema de áudio não esteja integrado.
 - Ao salvar uma partida carregada, a escolha automática do slot de destino pode selecionar outro slot livre, em vez de atualizar necessariamente o slot de origem.
 - O uso das setas depende de um terminal compatível com JLine.
 - Em terminais com menos de 66 colunas ou 30 linhas, as ilustrações e os retratos não aparecem.
-- As animações não podem ser puladas durante a exibição; podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.
+- As animações não podem ser puladas durante a exibição. Podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.
 - O caminho alternativo de gravação, utilizado quando não há suporte à movimentação atômica de arquivos, não possui cobertura específica nos testes automatizados.
 
 ---
 
 ## Versões
 
-- `v1.0.0` — Fase 1.
-- `v1.1.0` — Fase 2, sessão 1: salvamento em JSON e exceções personalizadas.
-- `v1.2.0` — Fase 2, sessão 2: progressão, conquistas e colecionáveis.
-- `v1.3.0` — Fase 2, sessão 3: ilustrações, retratos e animações em pixel art, menu animado, finais ilustrados e esgotamento quando a energia chega a zero.
+| Versão | Principais mudanças |
+|---|---|
+| `v1.0.0` | Fase 1 |
+| `v1.1.0` | Fase 2, sessão 1: salvamento em JSON e exceções personalizadas |
+| `v1.2.0` | Fase 2, sessão 2: progressão, conquistas e colecionáveis |
+| `v1.3.0` | Fase 2, sessão 3: ilustrações, retratos e animações em pixel art, menu animado, finais ilustrados e esgotamento quando a energia chega a zero |
 
 ---
 

@@ -73,10 +73,6 @@ public class CenaView {
         return Entrada.estaPausado() ? "[C] Continuar" : "[P] Pausar";
     }
 
-    // ═══════════════════════════════════════════════════════════
-    //  Galeria
-    // ═══════════════════════════════════════════════════════════
-
     public void mostrarGaleria(Protagonista protagonista) {
         List<String> flags = protagonista.getHistoricoFlags();
         System.out.println();
@@ -102,9 +98,6 @@ public class CenaView {
         System.out.println("Pressione ENTER para voltar...");
     }
 
-    // ═══════════════════════════════════════════════════════════
-    //  Renderização principal
-    // ═══════════════════════════════════════════════════════════
 
     public void renderizar(Cena cena, Protagonista p) {
         renderizar(cena, p, p.temFlag("cap6_trancou") ? 1 : 0, null);
@@ -679,6 +672,10 @@ public class CenaView {
         if (!atual.isEmpty()) linhas.add(atual.toString());
         return linhas;
     }
+    private final boolean dicasAtalho;
+    public CenaView(boolean dicasAtalho) {
+        this.dicasAtalho = dicasAtalho;
+    }
 
     public void exibirEscolhas(List<Escolha> disponiveis) {
         atualizarLargura();
@@ -693,6 +690,8 @@ public class CenaView {
             }
         }
         System.out.println(Cores.CIANO + "╚" + "═".repeat(larg) + "╝" + Cores.RESET);
-        System.out.println("0 - Menu principal");
+        if (dicasAtalho) {
+            System.out.println("[0] Menu principal");
+        }
     }
 }

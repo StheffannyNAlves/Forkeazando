@@ -16,8 +16,8 @@ cp.txt
 saves/slot*.json
 saves/*.tmp
 
-
-
+/out/
+/saves/
 
 ### Mac OS ###
 .DS_Storecp.txt

@@ -11,7 +11,6 @@ import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.CenaView;
 import br.uefs.forkeazando.view.Cores;
-import java.time.format.DateTimeFormatter;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.TelaCaracteristicas;
@@ -142,11 +141,7 @@ public class MenuPrincipalController {
             case "5" -> view.mostrarInstrucoes();
             case "6" -> abrirConfiguracoes();
             case "7" -> salvarPartidaManual();
-            case "8" -> {
-                view.mostrarCreditos();
-                System.out.print("Pressione ENTER para voltar...");
-                Entrada.lerLinha();
-            }
+            case "8" -> view.mostrarCreditos();
             case "9" -> progressoController.visualizar(progresso);
             case "0" -> {
                 if (confirmarDescarte()) {

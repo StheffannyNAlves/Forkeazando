@@ -24,7 +24,7 @@ public class CenasController {
     private final GerenciadorProgresso gerenciadorProgresso;
     private final Progresso progresso;
     private static final double RECUPERAR_ENERGIA = 0.4; /** energia máxima devolvida */
-    private static final int CENAS_POR_AUTOSAVE = 5;
+    private final GatilhoAutosave gatilhoAutosave  = new GatilhoAutosave(5) ;
     private final Autosave autosave;
     private int cenasConcluidasDesde;
     private String ultimocapExibido;
@@ -52,9 +52,8 @@ public class CenasController {
         view.resetarCacheVisual();
         boolean jogando = true;
         while (jogando) {
-            if (cenasConcluidasDesde >= CENAS_POR_AUTOSAVE){
+            if (gatilhoAutosave.deveSalvar()){
                 registrarAutosave();
-                cenasConcluidasDesde = 0;
             }
             Cena atual = buscarCenaPorId(estado.getCenaAtualId());
 
@@ -108,9 +107,8 @@ public class CenasController {
                     entrarEmApagao(atual.getId());
                     continue;
                 }
-                view.mostrarMensagem("Fim do Jogo");
-                jogando = false;
-                continue;
+                view.mostrarMensagem("Nenhuma escolha disponível nesta cena (erro de rota).");
+                return ResultadoPartida.ERRO_DE_ROTA;
             }
 
             int indice;
@@ -150,7 +148,7 @@ public class CenasController {
 
             Escolha escolhida = disponiveis.get(indice);
             aplicarEscolha(escolhida);
-            cenasConcluidasDesde++;
+            gatilhoAutosave.registrarCenaConcluida();
             int destino = escolhida.getCenaDestinoId();
 
 

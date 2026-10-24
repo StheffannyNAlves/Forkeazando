@@ -220,9 +220,6 @@ public class MenuPrincipal {
         }
     }
 
-    boolean estaAnimando() {
-        return animando;
-    }
 
     private List<String> montarMenu(int selecionado) {
         int interno = MENU_L - 2;
@@ -345,6 +342,8 @@ public class MenuPrincipal {
         System.out.println(Cores.CIANO + "║         FORKEAZANDO          ║" + Cores.RESET);
         System.out.println(Cores.CIANO + "║             2026             ║" + Cores.RESET);
         System.out.println(Cores.CIANO + "╚══════════════════════════════╝" + Cores.RESET);
+        System.out.print("Pressione ENTER para voltar...");
+        Entrada.lerLinha();
     }
 
     public void mostrarMensagem(String msg) {

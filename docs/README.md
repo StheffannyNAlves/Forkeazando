@@ -155,12 +155,14 @@ O jogo oferece três slots independentes de salvamento, com suporte a:
 - Criação de uma nova partida.
 - Continuação da partida mantida em memória.
 - Carregamento de uma partida salva.
-- Salvamento manual.
-- Salvamento automático a cada 5 cenas concluídas e ao concluir a partida (arquivo `saves/autosave.json`, acessível por "Carregar autosave").
-- Confirmação antes de sobrescrever ou excluir um salvamento.
-- Visualização de metadados, como capítulo, data e hora e informações da partida.
+- Salvamento manual, com escolha do slot de destino.
+- Salvamento automático a cada 5 cenas concluídas e ao concluir a partida (arquivo `saves/autosave.json`, acessível por "Carregar autosave"). O autosave não substitui o salvamento manual: ao sair, o jogo ainda pergunta se deseja salvar em um slot.
+- Confirmação antes de sobrescrever um slot ocupado.
+- Menu "Gerenciar saves", com exclusão de saves mediante confirmação.
+- Visualização de metadados de cada slot: nome da protagonista, capítulo, data e hora do salvamento, score, participação, rank e energia.
+- Slots com arquivo danificado aparecem como "Corrompido" na lista, sem impedir o uso dos demais.
 
-Os dados persistidos incluem o estado necessário para continuar a jornada, como cena atual, atributos, relacionamentos, inventário, missões, decisões e desbloqueios, conforme o modelo de estado do jogo.
+Os dados persistidos incluem o estado necessário para continuar a jornada, como capítulo e cena atuais, atributos, relacionamentos, habilidades e itens, decisões registradas (*flags*) e o final alcançado, conforme o modelo de estado do jogo. Os desbloqueios permanentes (finais, conquistas e colecionáveis) ficam no progresso permanente, descrito abaixo.
 
 ### Configurações persistentes
 
@@ -168,10 +170,12 @@ As preferências do jogador são armazenadas separadamente dos slots de partida.
 
 Entre as configurações disponíveis estão:
 
-- Velocidade de exibição do texto (Lento, Normal ou Rápido: pausa entre as linhas de diálogo).
+- Velocidade de exibição do texto (Lento, Normal ou Rápido): define a pausa entre as linhas de diálogo.
 - Volume.
-- Confirmação de saída (quando desligada, o jogo não pergunta se deseja salvar ao sair, iniciar ou carregar outra partida).
+- Confirmação de saída: quando desligada, o jogo não pergunta se deseja salvar ao sair, iniciar ou carregar outra partida.
 - Exibição de dicas de atalhos.
+
+Se o arquivo `saves/configuracao.json` estiver inválido, o jogo avisa e inicia com os valores padrão em vez de encerrar. Ao alterar as configurações, o arquivo é sobrescrito com valores válidos. Os valores lidos do arquivo passam pelos mesmos limites aplicados na tela de configurações.
 
 > **Observação:** a configuração de volume está persistida, mas seu efeito depende da implementação atual do sistema de áudio.
 
@@ -183,7 +187,7 @@ Essa separação permite preservar o histórico de progressão mesmo quando uma 
 
 ### Integridade dos dados
 
-O sistema de persistência utiliza Gson para serialização e desserialização dos dados. Também contempla validação dos arquivos, exceções específicas para falhas de gravação e carregamento e o uso de arquivos temporários antes da substituição do destino.
+O sistema de persistência utiliza Gson para serialização e desserialização dos dados. Cada save é gravado em um envelope com a versão do formato e a data de salvamento, e saves antigos, sem esse envelope, continuam sendo lidos. Também contempla validação dos arquivos, exceções específicas para falhas de gravação e carregamento e o uso de arquivos temporários antes da substituição do destino, tanto nos saves quanto nas configurações.
 
 As exceções personalizadas incluem:
 
@@ -312,7 +316,7 @@ Na raiz do projeto, execute:
 mvn test
 ```
 
-A suíte automatizada cobre componentes de persistência e progressão, regras de disponibilidade das escolhas, o fluxo alternativo de esgotamento de energia e associações entre cenas e recursos visuais. Entre as verificações visuais estão a existência de artes para os finais, o uso das ilustrações cadastradas e o preenchimento dos pixels em todos os quadros das animações.
+A suíte automatizada cobre componentes de persistência e progressão (slots, autosave, exclusão, metadados e envelope dos saves, configurações), a decisão de saída, regras de disponibilidade das escolhas, o fluxo alternativo de esgotamento de energia e associações entre cenas e recursos visuais. Entre as verificações visuais estão a existência de artes para os finais, o uso das ilustrações cadastradas e o preenchimento dos pixels em todos os quadros das animações.
 
 ---
 
@@ -325,6 +329,10 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - [x] Metadados das partidas salvas.
 - [x] Salvamento manual.
 - [x] Salvamento automático.
+- [x] Salvamento automático por progressão (a cada 5 cenas) e na conclusão da partida.
+- [x] Escolha do slot ao salvar.
+- [x] Menu de gerenciamento de saves.
+- [x] Configurações que alteram o comportamento do jogo.
 - [x] Carregamento de partidas.
 - [x] Confirmação antes de sobrescrever um salvamento.
 - [x] Confirmação antes de excluir um salvamento.
@@ -347,6 +355,8 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - Em terminais com menos de 66 colunas ou 30 linhas, as ilustrações e os retratos não aparecem.
 - As animações não podem ser puladas durante a exibição. Podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.
 - O caminho alternativo de gravação, utilizado quando não há suporte à movimentação atômica de arquivos, não possui cobertura específica nos testes automatizados.
+- O gatilho do autosave por cenas fica no laço da interface de terminal e não possui teste automatizado; o salvamento em si (`GerenciadorSlots.salvarAutosave`) é coberto por testes.
+- O autosave é um único arquivo, sem histórico: cada novo autosave substitui o anterior.
 
 ---
 
@@ -358,6 +368,8 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 | `v1.1.0` | Fase 2, sessão 1: salvamento em JSON e exceções personalizadas |
 | `v1.2.0` | Fase 2, sessão 2: progressão, conquistas e colecionáveis |
 | `v1.3.0` | Fase 2, sessão 3: ilustrações, retratos e animações em pixel art, menu animado, finais ilustrados e esgotamento quando a energia chega a zero |
+| `v1.3.1` | Dicas de atalhos durante o jogo e atualização da documentação |
+| `v1.4.0` | Fase 2, sessão 4: autosave por cenas, escolha de slot, gerenciamento de saves, configurações com efeito e tratamento de configuração inválida |
 
 ---
 

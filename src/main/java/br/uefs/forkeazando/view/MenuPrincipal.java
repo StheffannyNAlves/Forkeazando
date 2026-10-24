@@ -276,9 +276,9 @@ public class MenuPrincipal {
 
     public void mostrarInstrucoes() {
         System.out.println(Cores.CIANO
-                + "\n╔══════════════════════════════════════════════════════╗");
-        System.out.println("║               GUIA DE SOBREVIVÊNCIA                 ║");
-        System.out.println("║          ENGENHARIA DE COMPUTAÇÃO · UEFS            ║");
+                +        "\n╔══════════════════════════════════════════════════════╗");
+        System.out.println("║               GUIA DE SOBREVIVÊNCIA                  ║");
+        System.out.println("║          ENGENHARIA DE COMPUTAÇÃO · UEFP             ║");
         System.out.println("╚══════════════════════════════════════════════════════╝"
                 + Cores.RESET);
 

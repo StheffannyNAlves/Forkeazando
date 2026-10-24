@@ -16,12 +16,8 @@ class VisuaisDeCenaTest {
 
     private static Map<Integer, Cena> cenasPorId() {
         Map<Integer, Cena> m = new HashMap<>();
-        List<List<Cena>> capitulos = List.of(
-                Abertura.criarCenas(), Capitulo1.criarCenas(), Capitulo2.criarCenas(), Capitulo3.criarCenas(),
-                Capitulo4.criarCenas(), Capitulo5A.criarCenas(), Capitulo5B.criarCenas(), Capitulo5C.criarCenas(),
-                Capitulo6.criarCenas(), Capitulo7.criarCenas(), Capitulo8.criarCenas());
-        for (List<Cena> cap : capitulos) {
-            for (Cena c : cap) m.put(c.getId(), c);
+        for (Cena c: Roteiro.cenasDosCapitulos()) {
+             m.put(c.getId(), c);
         }
         return m;
     }

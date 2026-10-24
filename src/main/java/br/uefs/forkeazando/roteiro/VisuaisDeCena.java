@@ -54,7 +54,7 @@ public final class VisuaisDeCena {
         fala(112, "cap1_patio", "caio", "neutra");
         fala(113, "cap1_patio", "caio", "lado");
         fala(114, "cap1_patio", "caio", "neutra");
-        arte("cap2_feira", 116, 118, 120, 121, 122, 123);
+        arte("cap2_feira", 116, 120, 121, 122, 123);
 
         arte("cap3_prova", 200, 201, 202, 204, 205, 207);
         fala(208, null, "caio", "neutra");
@@ -76,6 +76,7 @@ public final class VisuaisDeCena {
         arte("cap5_greve", 451, 460);
         fala(453, null, "bia", "seria");
         fala(455, "cap1_ru", "dandara", "triste");
+        fala(470, "cap1_oficina", "rafael", "neutra");
         arte("cap5_freela", 500, 501, 503, 505);
         fala(502, "cap5_freela", "bia", "neutra");
 
@@ -94,7 +95,7 @@ public final class VisuaisDeCena {
         fala(601, null, "sergio", "neutra");
         arte("cap7_defesa", 605);
 
-        arte("cap8_formatura", 650, 653);
+        arte("cap8_formatura", 650, 653, 656);
         fala(651, "cap8_formatura", "caio", "torto");
         fala(652, "cap8_formatura", "dandara", "feliz");
         arte("abertura_entrevista", 654);           // "A mesma sala. Mesa de vidro."

@@ -18,7 +18,7 @@ class ApagaoTest {
     }
 
     private static Cena cena(int id){
-        return Apagao.criarCenas().stream().filter(c -> c.getId() == id).findFirst().orElseThrow();
+        return Roteiro.todasAsCenas().stream().filter(c -> c.getId() == id).findFirst().orElseThrow();
     }
 
     private static void definirVidaSocial(Protagonista p, int valor){
@@ -27,24 +27,15 @@ class ApagaoTest {
     }
 
     private static List<Cena> cenasDosCapitulos() {
-        List<Cena> cenas = new ArrayList<>();
-        cenas.addAll(Abertura.criarCenas());
-        cenas.addAll(Capitulo1.criarCenas());
-        cenas.addAll(Capitulo2.criarCenas());
-        cenas.addAll(Capitulo3.criarCenas());
-        cenas.addAll(Capitulo4.criarCenas());
-        cenas.addAll(Capitulo5A.criarCenas());
-        cenas.addAll(Capitulo5B.criarCenas());
-        cenas.addAll(Capitulo5C.criarCenas());
-        cenas.addAll(Capitulo6.criarCenas());
-        cenas.addAll(Capitulo7.criarCenas());
-        cenas.addAll(Capitulo8.criarCenas());
-        return cenas;
+        return Roteiro.cenasDosCapitulos();
     }
 
     @Test
     void sao3CenasDentroDaFaixaReservadaEsemColisaoComOsCapitulos(){
-        List<Cena> apagao = Apagao.criarCenas();
+        List<Cena> apagao = Roteiro.todasAsCenas()
+                .stream()
+                .filter(c-> Estado.ehCenaDeApagao(c.getId()))
+                .toList();
         assertEquals(3, apagao.size());
 
         Set<Integer> usados = new HashSet<>();

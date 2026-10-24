@@ -419,21 +419,7 @@ public class MenuPrincipalController {
     }
 
     private List<Cena> criarCenas() {
-        List<Cena> cenas = new ArrayList<>();
-
-        cenas.addAll(Abertura.criarCenas());
-        cenas.addAll(Capitulo1.criarCenas());
-        cenas.addAll(Capitulo2.criarCenas());
-        cenas.addAll(Capitulo3.criarCenas());
-        cenas.addAll(Capitulo4.criarCenas());
-        cenas.addAll(Capitulo5A.criarCenas());
-        cenas.addAll(Capitulo5B.criarCenas());
-        cenas.addAll(Capitulo5C.criarCenas());
-        cenas.addAll(Capitulo6.criarCenas());
-        cenas.addAll(Capitulo7.criarCenas());
-        cenas.addAll(Capitulo8.criarCenas());
-        cenas.addAll(Apagao.criarCenas());
-        return cenas;
+        return Roteiro.todasAsCenas();
     }
 
     private void novaPartida() {

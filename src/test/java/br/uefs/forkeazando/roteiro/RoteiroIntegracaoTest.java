@@ -18,23 +18,25 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class RoteiroIntegracaoTest {
 
-    private static final Set<String> RESERVADAS = Set.of();
-
-
+    private static final Set<String> FLAGS_CONCEDIDAS_POR_JAVA = Set.of(
+            "cap3_nota_alta_colando",
+            "cap3_nota_alta_honesta",
+            "cap3_nota_insuficiente",
+            "cap3_nota_suficiente_colando",
+            "cap3_nota_suficiente_honesta",
+            "futuro_pesquisa_brasil",
+            "futuro_tecnologia",
+            "futuro_internacional",
+            "futuro_independente",
+            "futuro_transicao"
+    );
+    private static Set<String> flagsConcedidasOuGeradasPorJava() {
+        Set<String> todas = flagsConcedidas();
+        todas.addAll(FLAGS_CONCEDIDAS_POR_JAVA);
+        return todas;
+    }
     private static List<Cena> todasAsCenas() {
-        List<Cena> cenas = new ArrayList<>();
-        cenas.addAll(Abertura.criarCenas());
-        cenas.addAll(Capitulo1.criarCenas());
-        cenas.addAll(Capitulo2.criarCenas());
-        cenas.addAll(Capitulo3.criarCenas());
-        cenas.addAll(Capitulo4.criarCenas());
-        cenas.addAll(Capitulo5A.criarCenas());
-        cenas.addAll(Capitulo5B.criarCenas());
-        cenas.addAll(Capitulo5C.criarCenas());
-        cenas.addAll(Capitulo6.criarCenas());
-        cenas.addAll(Capitulo7.criarCenas());
-        cenas.addAll(Capitulo8.criarCenas());
-        return cenas;
+        return Roteiro.cenasDosCapitulos();
     }
 
     private static Set<Integer> idsDasCenas() {
@@ -47,11 +49,13 @@ class RoteiroIntegracaoTest {
 
     private static Set<String> flagsConcedidas() {
         Set<String> concedidas = new HashSet<>();
-        for (Cena c : todasAsCenas()) {
-            for (Escolha e : c.getEscolhas()) {
-                concedidas.addAll(e.getFlagsConcedidas());
+
+        for (Cena cena : todasAsCenas()) {
+            for (Escolha escolha : cena.getEscolhas()) {
+                concedidas.addAll(escolha.getFlagsConcedidas());
             }
         }
+
         return concedidas;
     }
 
@@ -138,6 +142,11 @@ class RoteiroIntegracaoTest {
             if (cena == null || !visitadas.add(id)) {
                 continue;
             }
+            // A cena 667 é resolvida pelo controlador, não por uma escolha JSON.
+            if (id == ResolucaoDeFuturo.CENA_RESOLVER_FUTURO) {
+                fila.addAll(List.of(662, 663, 664, 665, 666));
+            }
+
             for (Escolha e : cena.getEscolhas()) {
                 if (e.getCenaDestinoId() != Estado.CENA_ENCERRAR) {
                     fila.add(e.getCenaDestinoId());
@@ -154,7 +163,7 @@ class RoteiroIntegracaoTest {
 
     @Test
     void todoFinalTemAsFlagsConcedidasNoRoteiro() {
-        Set<String> concedidas = flagsConcedidas();
+        Set<String> concedidas = flagsConcedidasOuGeradasPorJava();
 
         List<String> faltando = new ArrayList<>();
         if (!concedidas.contains(Final.FLAG_CONCLUSAO)) {
@@ -171,7 +180,7 @@ class RoteiroIntegracaoTest {
 
     @Test
     void todaFlagRequeridaEConcedidaEmAlgumLugar() {
-        Set<String> concedidas = flagsConcedidas();
+        Set<String> concedidas = flagsConcedidasOuGeradasPorJava();
         Set<String> requeridas = new TreeSet<>();
 
         for (Cena c : todasAsCenas()) {
@@ -183,7 +192,6 @@ class RoteiroIntegracaoTest {
         }
 
         requeridas.removeAll(concedidas);
-        requeridas.removeAll(RESERVADAS);
         // concedidas pelo próprio Protagonista, e não por escolhas
         requeridas.removeIf(f -> f.startsWith("perfil_") || f.startsWith("origem_"));
 
@@ -191,17 +199,27 @@ class RoteiroIntegracaoTest {
     }
 
     @Test
-    void flagReservadaQueJaFoiImplementadaSaiDaLista() {
-        Set<String> jaConcedidas = new TreeSet<>(RESERVADAS);
-        jaConcedidas.retainAll(flagsConcedidas());
+    void flagsGeradasPorJavaNaoEstaoDuplicadasNoJson() {
+        Set<String> duplicadas = new TreeSet<>();
 
-        assertTrue(jaConcedidas.isEmpty(), "tire da lista RESERVADAS: " + jaConcedidas);
+        for (String flag : flagsConcedidas()) {
+            if (flag.startsWith("cap3_nota_")
+                    || flag.startsWith("futuro_")) {
+                duplicadas.add(flag);
+            }
+        }
+
+        assertTrue(
+                duplicadas.isEmpty(),
+                "Flags dinâmicas também concedidas no JSON: " + duplicadas
+        );
     }
+
 
     @Test
     void todaConquistaEAtingivelComAsFlagsDoRoteiro() {
         Protagonista p = protagonistaComTrilha(null);
-        for (String flag : flagsConcedidas()) {
+        for (String flag : flagsConcedidasOuGeradasPorJava()) {
             p.adicionarFlag(flag);
         }
         p.alterarRelacionamento(PersonagemSecundario.VETERANO, 3f);
@@ -220,22 +238,47 @@ class RoteiroIntegracaoTest {
 
     @Test
     void cadaTrilhaSaiDaPonteDoCapitulo7ParaASuaEntrada() {
-        Map<String, Integer> esperado = Map.of(
-                "trilha_ic", 601,
-                "trilha_dtec", 602,
-                "trilha_indep", 603);
-
         Cena ponte = todasAsCenas().stream()
-                .filter(c -> c.getId() == 599)      // troque pelo id que você escolheu
-                .findFirst().orElseThrow();
+                .filter(c -> c.getId() == 599)
+                .findFirst()
+                .orElseThrow();
 
-        for (Map.Entry<String, Integer> e : esperado.entrySet()) {
-            List<Escolha> saidas = ponte.getEscolhasDisponiveis(
-                    protagonistaComTrilha(e.getKey()));
+        Protagonista ic = protagonistaComTrilha("trilha_ic");
+        assertDestinoUnico(ponte, ic, 601, "trilha IC");
 
-            assertTrue(saidas.size() == 1
-                            && saidas.get(0).getCenaDestinoId() == e.getValue(),
-                    "trilha " + e.getKey() + " deveria sair para " + e.getValue());
-        }
+        Protagonista dtecAprendeu = protagonistaComTrilha("trilha_dtec");
+        dtecAprendeu.adicionarFlag("teo_aprendeu");
+        assertDestinoUnico(ponte, dtecAprendeu, 602, "DTEC: Téo aprendeu");
+
+        Protagonista dtecNaoAprendeu = protagonistaComTrilha("trilha_dtec");
+        dtecNaoAprendeu.adicionarFlag("teo_nao_aprendeu");
+        assertDestinoUnico(ponte, dtecNaoAprendeu, 6022, "DTEC: Téo não aprendeu");
+
+        Protagonista dtecEncaminhado = protagonistaComTrilha("trilha_dtec");
+        dtecEncaminhado.adicionarFlag("teo_encaminhado");
+        assertDestinoUnico(ponte, dtecEncaminhado, 6022, "DTEC: Téo foi encaminhado");
+
+        Protagonista independente = protagonistaComTrilha("trilha_indep");
+        assertDestinoUnico(ponte, independente, 603, "trilha independente");
+    }
+
+    private static void assertDestinoUnico(
+            Cena cena,
+            Protagonista protagonista,
+            int destinoEsperado,
+            String contexto) {
+
+        List<Escolha> saidas =
+                cena.getEscolhasDisponiveis(protagonista);
+
+        assertTrue(
+                saidas.size() == 1
+                        && saidas.get(0).getCenaDestinoId() == destinoEsperado,
+                contexto + ": esperado destino " + destinoEsperado
+                        + ", mas foram encontrados "
+                        + saidas.stream()
+                        .map(Escolha::getCenaDestinoId)
+                        .toList()
+        );
     }
 }

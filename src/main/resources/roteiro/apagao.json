@@ -1,0 +1,258 @@
+{
+  "schemaVersion": 2,
+  "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
+  "arquivo": "apagao.json",
+  "totalCenasArquivo": 3,
+  "cenas": [
+    {
+      "ordemGlobal": 160,
+      "id": 970,
+      "capitulo": "Esgotamento",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "A energia chegou a zero.\n\nNão é dramático. Você só percebe que leu a mesma linha três vezes, que o barulho da sala ficou longe e que o celular está escorregando da sua mão.\n\n(Acho que eu preciso parar.)",
+      "escolhas": [
+        {
+          "textoAlternativa": "Caio aparece do seu lado com um copo de café. Não pergunta nada.",
+          "cenaDestinoId": 971,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {
+            "VETERANO": 3.0
+          },
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {
+            "VETERANO": 1.0
+          },
+          "atributosAlterados": {}
+        },
+        {
+          "textoAlternativa": "Malu percebe antes de você. Pega suas anotações e fala com o professor.",
+          "cenaDestinoId": 971,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {
+            "MALU": 3.0
+          },
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {
+            "MALU": 1.0
+          },
+          "atributosAlterados": {}
+        },
+        {
+          "textoAlternativa": "Dandara te segura pelo braço antes de você levantar rápido demais.",
+          "cenaDestinoId": 971,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {
+            "DANDARA": 3.0
+          },
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {
+            "DANDARA": 1.0
+          },
+          "atributosAlterados": {}
+        },
+        {
+          "textoAlternativa": "Alguém do seu grupo percebe e avisa o professor por você.",
+          "cenaDestinoId": 971,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 5,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        },
+        {
+          "textoAlternativa": "Ninguém percebe. Você fica sentada até a sala esvaziar.",
+          "cenaDestinoId": 972,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 4,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 161,
+      "id": 971,
+      "capitulo": "Esgotamento",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você apaga por alguns minutos. Quando volta, alguém ficou.\n\nNão resolve o semestre. Mas o dia não foi perdido.\n\nVocê aceita o que não dá para fazer hoje e deixa para depois.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Descansar um pouco e voltar.",
+          "cenaDestinoId": 998,
+          "flagsConcedidas": [
+            "apagao_com_apoio"
+          ],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {
+            "sanidade": 1
+          }
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 162,
+      "id": 972,
+      "capitulo": "Esgotamento",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Quando você levanta, a aula já acabou. A porta está aberta, o quadro apagado, e o aviso do prazo passou sem você ver.\n\nNão é falta de esforço. Você só chegou ao fim do que tinha.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Recolher suas coisas e seguir.",
+          "cenaDestinoId": 998,
+          "flagsConcedidas": [
+            "apagao_sozinha"
+          ],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": -3,
+          "participacaoGanha": -2,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {
+            "confianca": -1
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -20,12 +20,8 @@ import br.uefs.forkeazando.view.TelaCaracteristicas;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.model.Progresso;
-import br.uefs.forkeazando.view.ProgressoView;
-import br.uefs.forkeazando.dao.GerenciadorSave;
-import java.time.LocalDateTime;
-import java.nio.file.Files;
+
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -41,12 +37,16 @@ public class MenuPrincipalController {
     private final GerenciadorProgresso gerenciadorProgresso = new GerenciadorProgresso(PASTA_SAVES);
     private Progresso progresso;
     private Integer slotAtual;
+    private final ProgressoController progressoController;
     private final GerenciadorAudio gerenciadorAudio = new GerenciadorAudio();
+    private final GerenciadorSavesController savesController;
+
     public MenuPrincipalController(MenuPrincipal view) {
         this.view = view;
+        this.progressoController = new ProgressoController(view, this.gerenciadorProgresso);
+        this.savesController = new GerenciadorSavesController(view, PASTA_SAVES);
     }
-    private static final DateTimeFormatter FORMATO_DATA_SLOT =
-            DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
+    private static final DateTimeFormatter FORMATO_DATA_SLOT = DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 
     public void iniciar() throws CarregamentoException, DadosInvalidosException {
         try {
@@ -89,7 +89,7 @@ public class MenuPrincipalController {
         gerenciadorAudio.fechar();
 
     }
-    private void iniciarAudio() throws CarregamentoException, DadosInvalidosException {
+    private void iniciarAudio() {
         try{
             gerenciadorAudio.setVolume(ConfiguracoesAdmin.get().getVolume());
         } catch (CarregamentoException | DadosInvalidosException e){
@@ -100,177 +100,25 @@ public class MenuPrincipalController {
 
 
     private void carregarPartida() {
-        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
+        var selecao = savesController.carregarPartida();
 
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
-
-        int indiceAutosave = opcoes.size();
-        opcoes.add(new MenuInterativo.Opcao("Carregar autosave"));
-
-
-        int indiceCancelar = opcoes.size();
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
-
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(opcoes, "Carregar partida");
-
-        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
+        if (selecao.isEmpty()) {
             return;
         }
 
-        int indice = resposta.indiceOpcao;
+        GerenciadorSavesController.PartidaSelecionada selecionada =
+                selecao.get();
 
-        if (indice == indiceCancelar) {
-            return;
-        }
-
-        if (indice == indiceAutosave) {
-            carregarAutosave();
-            return;
-        }
-
-        if (indice < 0 || indice >= slots.size()) {
-            return;}
-
-        // A lista de slots precisa manter a ordem Slot 1, Slot 2, Slot 3.
-        int numeroSlot = slots.get(indice).numero();
+        partidaAtual = selecionada.estado();
+        slotAtual = selecionada.numeroSlot();
 
         try {
-            partidaAtual = GerenciadorSlots.carregar(PASTA_SAVES, numeroSlot);
-            slotAtual = numeroSlot;
             executarPartida();
         } catch (CarregamentoException | DadosInvalidosException e) {
             view.mostrarMensagem(
                     Cores.VERMELHO + "Erro ao carregar: "
                             + e.getMessage() + Cores.RESET
             );
-        }
-    }
-
-    private void carregarAutosave() {
-        Path caminhoAutosave = GerenciadorSlots.caminhoDoAutosave(PASTA_SAVES);
-        if (!Files.exists(caminhoAutosave)) {
-            view.mostrarMensagem("Ainda não existe um autosave.");
-            return;
-        }
-
-        try {
-            Estado estadoCarregado = GerenciadorSave.carregar(caminhoAutosave);
-            slotAtual = null;
-            if (estadoCarregado == null
-                    || estadoCarregado.getProtagonista() == null) {
-                view.mostrarMensagem(
-                        Cores.VERMELHO
-                                + "O autosave não contém uma partida válida."
-                                + Cores.RESET
-                );
-                return;
-            }
-
-            partidaAtual = estadoCarregado;
-            executarPartida();
-
-        } catch (CarregamentoException | DadosInvalidosException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO
-                            + "Erro ao carregar autosave: "
-                            + e.getMessage()
-                            + Cores.RESET
-            );
-        }
-    }
-    private void excluirSave() {
-        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
-
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
-
-        int indiceCancelar = opcoes.size();
-
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
-
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(opcoes, "Excluir save");
-
-        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
-            return;
-        }
-
-        int indice = resposta.indiceOpcao;
-
-        if (indice == indiceCancelar
-                || indice < 0
-                || indice >= slots.size()) {
-            return;
-        }
-
-        if (slots.get(indice).status() == ResumoSlot.Status.VAZIO) {
-            view.mostrarMensagem("Esse slot já está vazio.");
-            return;
-        }
-
-        int numeroSlot = slots.get(indice).numero();
-        List<MenuInterativo.Opcao> confirmacoes = List.of(
-                new MenuInterativo.Opcao("Sim, excluir"),
-                new MenuInterativo.Opcao("Não")
-        );
-
-        MenuInterativo.Resposta confirmacao =
-                MenuInterativo.abrir(
-                        confirmacoes,
-                        "Excluir permanentemente o Slot "
-                                + numeroSlot + "?"
-                );
-
-        if (confirmacao.resultado != MenuInterativo.Resultado.SELECIONADO
-                || confirmacao.indiceOpcao != 0) {
-            return;
-        }
-
-        try {
-            GerenciadorSlots.excluir(PASTA_SAVES, numeroSlot);
-            view.mostrarMensagem(
-                    Cores.VERDE + "Slot " + numeroSlot
-                            + " excluído." + Cores.RESET
-            );
-        } catch (SaveException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO + "Erro ao excluir save: "
-                            + e.getMessage() + Cores.RESET
-            );
-        }
-    }
-
-    private void visualizarProgresso() {
-        if (progresso == null) {
-            view.mostrarMensagem(Cores.VERMELHO + "Progresso indisponível. Verifique o arquivo saves/progresso.json." + Cores.RESET);
-            return;
-        }
-
-        ProgressoView progressoView = new ProgressoView();
-        progressoView.mostrarProgresso(progresso);
-        progressoView.mostrarConquistas(progresso);
-    }
-    private void gerenciarSaves() {
-        List<MenuInterativo.Opcao> opcoes = List.of(
-                new MenuInterativo.Opcao("Excluir save"),
-                new MenuInterativo.Opcao("Voltar")
-        );
-
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(opcoes, "Gerenciar saves");
-
-        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
-            return;
-        }
-
-        if (resposta.indiceOpcao == 0) {
-            excluirSave();
         }
     }
 
@@ -293,7 +141,7 @@ public class MenuPrincipalController {
                     carregarPartida();
                 }
             }
-            case "4" -> gerenciarSaves();
+            case "4" -> savesController.gerenciarSaves();
             case "5" -> view.mostrarInstrucoes();
             case "6" -> abrirConfiguracoes();
             case "7" -> salvarPartidaManual();
@@ -302,7 +150,7 @@ public class MenuPrincipalController {
                 System.out.print("Pressione ENTER para voltar...");
                 Entrada.lerLinha();
             }
-            case "9" -> visualizarProgresso();
+            case "9" -> progressoController.visualizar(progresso);
             case "0" -> {
                 if (confirmarDescarte()) {
                     rodando = false;
@@ -327,7 +175,8 @@ public class MenuPrincipalController {
         return switch (decisao) {
             case SAIR -> true;
             case PERGUNTAR_SALVAR -> perguntarSalvar();
-            case ESCOLHER_SLOT -> escolherSobrescrita(true);
+            case ESCOLHER_SLOT -> savesController.escolherSobrescrita(partidaAtual
+            ,true);
         };
     }
 
@@ -373,11 +222,11 @@ public class MenuPrincipalController {
         CenaView cenaView = new CenaView(config.isDicasAtalho(), config.getVelocidadeTexto());
 
         ResultadoPartida resultado = new CenasController(partidaAtual, cenas, cenaView, emUso, gerenciadorProgresso,
-                estado -> GerenciadorSlots.salvarAutosave(estado, PASTA_SAVES)).iniciar();
+                savesController::salvarAutosave).iniciar();
         if (resultado == ResultadoPartida.FIM_DE_JOGO
                 || resultado == ResultadoPartida.VOLTAR_AO_MENU) {
 
-            registrarProgresso();
+            progressoController.registrar(progresso, partidaAtual);
             if (resultado == ResultadoPartida.FIM_DE_JOGO) {
                 if (partidaAtual.isPartidaConcluida()) {
                     try {
@@ -407,44 +256,20 @@ public class MenuPrincipalController {
         }
     }
 
-    private void registrarProgresso() {
-        if (progresso == null || partidaAtual == null) {
-            view.mostrarMensagem(Cores.VERMELHO + "Progresso indisponível. Verifique o arquivo saves/progresso.json." + Cores.RESET);
-            return;
-        }
-
-        Protagonista protagonista = partidaAtual.getProtagonista();
-        LocalDateTime agora = LocalDateTime.now();
-
-        boolean novoFinal = progresso.sincronizarFinais(protagonista, agora);
-        boolean novaColecao = progresso.sincronizarColecao(protagonista, agora);
-
-        try {
-            gerenciadorProgresso.salvar(progresso);
-
-            if (novoFinal) {
-                view.mostrarMensagem(Cores.VERDE + "Novo final desbloqueado!" + Cores.RESET);
-            }
-
-            if (novaColecao) {
-                view.mostrarMensagem(Cores.VERDE + "Coleção atualizada!" + Cores.RESET);
-            }
-        } catch (SaveException e) {
-            view.mostrarMensagem(Cores.VERMELHO + "Não foi possível salvar o progresso global: " + e.getMessage() + Cores.RESET);
-        }
-    }
-
 
     private void salvarPartidaManual() {
         if (partidaAtual == null) {
             view.mostrarMensagem("Não há partida para salvar.");
             return;
         }
+
         if (!partidaAtual.temAlteracoes()) {
             view.mostrarMensagem("Nada novo para salvar.");
             return;
         }
-        salvarPartida();
+
+        savesController.salvarPartida(partidaAtual)
+                .ifPresent(numeroSlot -> slotAtual = numeroSlot);
     }
 
     private List<Cena> criarCenas() {
@@ -461,80 +286,6 @@ public class MenuPrincipalController {
         executarPartida();
     }
 
-    private boolean escolherSobrescrita(boolean permitirSairSemSalvar) {
-        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
-
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
-
-        int indiceSairSemSalvar = -1;
-        if (permitirSairSemSalvar) {
-            indiceSairSemSalvar = opcoes.size();
-            opcoes.add(new MenuInterativo.Opcao("Sair sem salvar"));
-        }
-
-        int indiceCancelar = opcoes.size();
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
-
-        MenuInterativo.Resposta resposta = MenuInterativo.abrir(
-                opcoes, "Slots cheios: o slot escolhido será sobrescrito.");
-
-        if (resposta.resultado == MenuInterativo.Resultado.CANCELADO
-                || resposta.indiceOpcao == indiceCancelar) {
-            return false;
-        }
-        if (resposta.indiceOpcao == indiceSairSemSalvar) {
-            return true;
-        }
-        if (resposta.indiceOpcao < 0
-                || resposta.indiceOpcao >= slots.size()) {
-            return false;
-        }
-
-        return confirmarSobrescrita(
-                slots.get(resposta.indiceOpcao).numero()
-        );
-    }
-
-    private String formatarSlot(ResumoSlot slot) {
-        if (slot.status() == ResumoSlot.Status.VAZIO) {
-            return "Slot " + slot.numero() + " - Vazio";
-        }
-
-        if (slot.status() == ResumoSlot.Status.CORROMPIDO) {
-            return "Slot " + slot.numero() + " - Corrompido";
-        }
-
-        return "Slot " + slot.numero() + " - Ocupado"
-                + " | " + slot.nome() + " | Capítulo " + slot.capitulo()
-                + " | " + slot.data().format(FORMATO_DATA_SLOT)
-                + "   Score: " + slot.score() + "/100"
-                + " | Participação: " + slot.participacao() + "/100"
-                + " | Rank: " + slot.rank()
-                + " | Energia: " + slot.energia()
-                + "/" + slot.energiaMaxima();
-    }
-
-    private boolean confirmarSobrescrita(int numeroSlot) {
-        List<MenuInterativo.Opcao> opcoes = List.of(
-                new MenuInterativo.Opcao("Sim, sobrescrever"),
-                new MenuInterativo.Opcao("Não")
-        );
-
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(
-                        opcoes,
-                        "Sobrescrever Slot " + numeroSlot + "?"
-                );
-
-        if (resposta.resultado == MenuInterativo.Resultado.CANCELADO) {
-            return false;
-        }
-
-        return resposta.indiceOpcao == 0 && salvarPartida(numeroSlot);
-    }
 
 
     private boolean perguntarSalvar() {
@@ -552,56 +303,12 @@ public class MenuPrincipalController {
         }
 
         return switch (resposta.indiceOpcao) {
-            case 0 -> salvarPartida();
+            case 0 -> savesController.salvarPartida(partidaAtual).isPresent();
             case 1 -> true;
             default -> false;
         };
     }
 
-    private boolean salvarPartida() {
-        List<ResumoSlot> slots = GerenciadorSlots.listar(PASTA_SAVES);
-        List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
-
-        for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
-        }
-
-        int indiceCancelar = opcoes.size();
-        opcoes.add(new MenuInterativo.Opcao("Cancelar"));
-
-        MenuInterativo.Resposta resposta = MenuInterativo.abrir(
-                opcoes,
-                "Escolha onde salvar a partida"
-        );
-
-        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO
-                || resposta.indiceOpcao < 0
-                || resposta.indiceOpcao >= slots.size()) {
-            return false;
-        }
-
-        ResumoSlot slotSelecionado = slots.get(resposta.indiceOpcao);
-
-        if (slotSelecionado.status() != ResumoSlot.Status.VAZIO) {
-            return confirmarSobrescrita(slotSelecionado.numero());
-        }
-
-        return salvarPartida(slotSelecionado.numero());
-    }
-
-    private boolean salvarPartida(int numeroSlot) {
-        try {
-            GerenciadorSlots.salvar(partidaAtual, PASTA_SAVES, numeroSlot);
-            slotAtual = numeroSlot;
-            view.mostrarMensagem("Partida salva no Slot " + numeroSlot + "!");
-            return true;
-        } catch (SaveException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO + "Erro ao salvar: " + e.getMessage() + Cores.RESET
-            );
-            return false;
-        }
-    }
 
     private boolean deveConfirmarSaida(){
         try{

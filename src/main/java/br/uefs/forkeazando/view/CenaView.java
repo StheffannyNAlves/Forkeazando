@@ -6,7 +6,7 @@ import br.uefs.forkeazando.roteiro.Epilogos;
 import br.uefs.forkeazando.roteiro.SistemaAcademico;
 import br.uefs.forkeazando.roteiro.VisuaisDeFinal;
 import br.uefs.forkeazando.view.pixel.*;
-
+import br.uefs.forkeazando.roteiro.ResultadoCalculo;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -152,6 +152,11 @@ public class CenaView {
 
             for (String paragrafo : cena.getTextoNarrativo().split("\n")) {
                 Entrada.aguardarPause();
+                paragrafo = paragrafo.replace("{{NOTA_CALCULO}}", ResultadoCalculo.notaFormatada(p));
+                if (paragrafo.equals("{{COMENTARIO_NOTA_CALCULO}}")) {
+                    imprimirBloco(ResultadoCalculo.comentario(p, cena.getId()), corTexto);
+                    continue;
+                }
 
                 if (paragrafo.equals("{{APROVACAO}}")) {
                     mostrarAprovacao();

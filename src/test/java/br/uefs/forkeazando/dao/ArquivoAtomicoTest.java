@@ -9,8 +9,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /*
- * O fallback sem ATOMIC_MOVE não é coberto por testes automatizados.
- * Sua execução depende de o sistema de arquivos não suportar a movimentação solicitada.
+ * O fallback(o plano B) sem ATOMIC_MOVE não é coberto por testes automatizados
+ * Sua execução depende de o sistema de arquivos não suportar a movimentação solicitada
  */
 
 class ArquivoAtomicoTest {

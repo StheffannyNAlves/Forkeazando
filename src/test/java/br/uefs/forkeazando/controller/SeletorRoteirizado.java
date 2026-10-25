@@ -1,9 +1,7 @@
 package br.uefs.forkeazando.controller;
 
-import br.uefs.forkeazando.view.widget.MenuInterativo;
-import br.uefs.forkeazando.view.widget.MenuInterativo.Opcao;
-import br.uefs.forkeazando.view.widget.MenuInterativo.Resposta;
-import br.uefs.forkeazando.view.widget.MenuInterativo.Resultado;
+import br.uefs.forkeazando.view.widget.MenuInterativo.*;
+
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -22,7 +20,6 @@ class SeletorRoteirizado implements SeletorDeOpcoes {
     final List<String> titulosVistos = new ArrayList<>();
     final List<List<String>> menusVistos = new ArrayList<>();
 
-    /** Escolhe a opção cujo texto é exatamente {@code texto}. */
     SeletorRoteirizado escolhe(String texto) {
         respostas.add(opcoes -> {
             for (int i = 0; i < opcoes.size(); i++) {
@@ -35,19 +32,19 @@ class SeletorRoteirizado implements SeletorDeOpcoes {
         return this;
     }
 
-    /** Escolhe a opção pelo índice (0 = primeira). */
+    // Escolhe a opção pelo índice
     SeletorRoteirizado indice(int indice) {
         respostas.add(opcoes -> new Resposta(Resultado.SELECIONADO, indice, null));
         return this;
     }
 
-    /** Escolhe a última opção do menu. */
+    // Escolhe a última opção do menu
     SeletorRoteirizado ultima() {
         respostas.add(opcoes -> new Resposta(Resultado.SELECIONADO, opcoes.size() - 1, null));
         return this;
     }
 
-    /** Simula o jogador apertando Esc. */
+    // Simula o jogador apertando Esc
     SeletorRoteirizado cancela() {
         respostas.add(opcoes -> new Resposta(Resultado.CANCELADO, -1, null));
         return this;

@@ -62,7 +62,6 @@ class GerenciadorSavesControllerTest {
         return GerenciadorSlots.listar(pasta).get(numero - 1).status();
     }
 
-    // ---------- salvar ----------
 
     @Test
     void salvarEmSlotVazioGravaOArquivoEDevolveONumeroDoSlot() throws Exception {
@@ -152,7 +151,6 @@ class GerenciadorSavesControllerTest {
         assertTrue(mensagens.erros.get(0).startsWith("Erro ao salvar"));
     }
 
-    // ---------- carregar ----------
 
     @Test
     void carregarSlotOcupadoDevolveAPartidaEOnumeroDoSlot() throws Exception {
@@ -212,7 +210,6 @@ class GerenciadorSavesControllerTest {
         assertTrue(mensagens.erros.isEmpty());
     }
 
-    // ---------- excluir ----------
 
     @Test
     void excluirSaveConfirmadoApagaOSlot() throws Exception {
@@ -344,7 +341,6 @@ class GerenciadorSavesControllerTest {
         assertFalse(controller.escolherSobrescrita(partida("Ana"), true));
     }
 
-    // ---------- salvar conclusão ----------
 
     @Test
     void salvarConclusaoGravaAutosaveESlotQuandoHaSlot() throws Exception {

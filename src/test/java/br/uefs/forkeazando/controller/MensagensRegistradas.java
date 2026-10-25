@@ -3,7 +3,7 @@ package br.uefs.forkeazando.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Guarda as mensagens que o controller mandaria para a tela. */
+// Guarda as mensagens que o controller mandaria para a tela
 class MensagensRegistradas implements MensagensDeTela {
 
     final List<String> informacoes = new ArrayList<>();

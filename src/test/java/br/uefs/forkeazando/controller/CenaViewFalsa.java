@@ -10,7 +10,7 @@ import br.uefs.forkeazando.view.CenaView;
 import java.util.ArrayList;
 import java.util.List;
 
-/** CenaView que não escreve no terminal: só registra o que o controller mandou exibir. */
+// CenaView que não escreve no terminal: só registra o que o controller mandou exibir
 class CenaViewFalsa extends CenaView {
 
     final List<Integer> cenasRenderizadas = new ArrayList<>();

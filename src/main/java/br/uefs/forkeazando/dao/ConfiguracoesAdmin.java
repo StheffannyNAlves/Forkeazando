@@ -9,7 +9,6 @@ import com.google.gson.JsonSyntaxException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 // Persiste as configurações personalizáveis
 // Agora os metodos de leitura e gravação não muda a API pública usada pelo resto do jogo

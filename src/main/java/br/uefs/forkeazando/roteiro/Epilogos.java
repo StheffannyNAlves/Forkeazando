@@ -407,14 +407,14 @@ public final class Epilogos {
                             + "A frase que vocês trocaram no primeiro semestre continua verdadeira. "
                             + "Só não tem mais ninguém segurando.";
                 } else {
-                    t = "Cáio tá terminando o curso. Ainda atrasado, mas terminando. "
+                    t = "Caio tá terminando o curso. Ainda atrasado, mas terminando. "
                             + "Ele te mandou mensagem semana passada. Disse que finalmente entendeu "
                             + "o que você quis dizer no primeiro semestre.\n\n"
                             + "Você respondeu que também demorou pra entender algumas coisas. "
                             + "Ele mandou um áudio de três minutos. Você ouviu até o fim.";
                 }
             } else {
-                t = "Cáio não se formou. Trabalha numa empresa de hardware em Salvador, "
+                t = "Caio não se formou. Trabalha numa empresa de hardware em Salvador, "
                         + "ganha menos do que merecia. O copo amassado continua com ele. Ou com você.\n\n"
                         + "Vocês não conseguiram resolver tudo um pelo outro. Mas, em algum momento, "
                         + "isso deixou de ser o que importava.";

@@ -166,7 +166,7 @@ final class CenasCap1 {
         return t;
     }
 
-    //  Cena 8 / 9 — oficina vazia à tarde; o LED acende; Cáio na porta.
+    //  Cena 8 / 9 — oficina vazia à tarde; o LED acende; Caio na porta.
     static Tela oficinaVazia(int q) {
         return oficinaTarde(q, 0.0, false);
     }
@@ -211,7 +211,7 @@ final class CenasCap1 {
         t.rect(16, 24, 2, 14, rgb(26, 20, 40));
         t.rect(5, 29, 12, 3, mix(rgb(92, 62, 112), rgb(250, 150, 80), 0.25));
         if (led > 0.5) t.rect(15, 28, 2, 8, mix(rgb(92, 62, 112), rgb(255, 80, 80), 0.3));
-        // Cáio aparece na porta (contraluz do corredor)
+        // Caio aparece na porta (contraluz do corredor)
         if (caio) {
             t.rect(56, 14, 9, 25, rgb(250, 214, 150));
             pessoa(t, 60, 39, rgb(176, 120, 92), rgb(24, 20, 28), rgb(76, 84, 94), rgb(40, 44, 70), 0);

@@ -5,7 +5,6 @@ import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Progresso;
 import br.uefs.forkeazando.model.Protagonista;
-import br.uefs.forkeazando.view.Cores;
 import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.ProgressoView;
 

@@ -118,7 +118,7 @@ public final class Ilustracoes {
     public static java.util.Set<String> chaves() { return REGISTRO.chaves(); }
 
     //  Cap. 1 / cenas 3, 4, 71, 72, 73 — pátio da SIECOMP
-    //  Caramelo passa; Cáio olha com o copo térmico amassado.
+    //  Caramelo passa; Caio olha com o copo térmico amassado.
     //  Paleta de meio-dia: céu saturado, sombra dura, concreto.
     static Tela cap1Patio(int quadro) {
         int faltam = QUADROS_PATIO - 1 - quadro;   // 0 no quadro final
@@ -207,7 +207,7 @@ public final class Ilustracoes {
         }
 
         caio(t);
-        // Caramelo atravessa o pátio andando até parar perto do Cáio
+        // Caramelo atravessa o pátio andando até parar perto do Caio
         caramelo(t, 20 - faltam * 2, faltam % 2);
         return t;
     }
@@ -508,7 +508,7 @@ public final class Ilustracoes {
         return t;
     }
 
-    /** Cáio: corpo inteiro, de frente, copo térmico amassado na mão. */
+    /** Caio: corpo inteiro, de frente, copo térmico amassado na mão. */
     private static void caio(Tela t) {
         int pele = rgb(176, 120, 92), peleS = rgb(140, 92, 72);
         int cab = rgb(24, 20, 28);

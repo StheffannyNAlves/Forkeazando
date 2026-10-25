@@ -96,7 +96,7 @@ public final class Retratos {
     public static java.util.Set<String> chaves() { return REGISTRO.chaves(); }
 
     // ------------------------------------------------------------------
-    //  Cáio Andrade — veterano cínico, olheiras, copo térmico amassado
+    //  Caio Andrade — veterano cínico, olheiras, copo térmico amassado
     // ------------------------------------------------------------------
     private static final int PELE = rgb(184, 126, 96);
     private static final int PELE_L = rgb(204, 148, 114);

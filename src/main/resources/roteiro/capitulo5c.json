@@ -9,7 +9,7 @@
       "id": 500,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O contato do cartaz finalmente responde. Não precisa de ajuda no projeto agora, mas indica um cliente: um restaurante a duas quadras do Módulo 8 que quer um site. O Zé conhece o dono, e jura que ele é gente boa.\n\nO orçamento é mil reais. A mensagem termina com uma palavra:\n\n'Simples.'\n\nVocê olha a tela. Não há lista de páginas, prazo, conteúdo, hospedagem nem explicação sobre manutenção. Só o preço e a promessa de que não deve dar muito trabalho.\n\nVocê já viu esse tipo de problema em trabalho de disciplina: quando os requisitos ficam implícitos, cada pessoa imagina uma entrega diferente.\n\n(Simples.)\n\n(Simples pra quem?)",
+      "textoNarrativo": "O contato do cartaz finalmente responde. Não precisa de ajuda no projeto agora, mas indica um cliente: um restaurante a duas quadras do Módulo 8 que quer um site. O Zé, do Módulo 8, conhece o dono, e jura que ele é gente boa.\n\nO orçamento é mil reais. A mensagem termina com uma palavra:\n\n'Simples.'\n\nVocê olha a tela. Não há lista de páginas, prazo, conteúdo, hospedagem nem explicação sobre manutenção. Só o preço e a promessa de que não deve dar muito trabalho.\n\nVocê já viu esse tipo de problema em trabalho de disciplina: quando os requisitos ficam implícitos, cada pessoa imagina uma entrega diferente.\n\n(Simples.)\n\n(Simples pra quem?)",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",

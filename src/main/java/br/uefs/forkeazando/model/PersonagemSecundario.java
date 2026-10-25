@@ -91,7 +91,7 @@ public class PersonagemSecundario {
 
     public static final PersonagemSecundario VETERANO =
             new PersonagemSecundario(
-                    "VETERANO", "Cáio Andrade", Interesse.ESTABILIDADE);
+                    "VETERANO", "Caio Andrade", Interesse.ESTABILIDADE);
 
     public static final PersonagemSecundario ORIENTADOR_IC =
             new PersonagemSecundario(

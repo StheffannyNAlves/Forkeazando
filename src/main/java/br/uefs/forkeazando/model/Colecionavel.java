@@ -17,7 +17,7 @@ public enum Colecionavel {
     CONTATO_FREELA("item_contato_freela", Tipo.ITEM, "Contato de freela"),
     VAGA_ESTAGIO("item_vaga_estagio", Tipo.ITEM, "QR code de vaga de estágio"),
     PROVA_EMAIL("item_prova_email", Tipo.ITEM, "Foto do e-mail comprometedor"),
-    COPO_CAIO("item_copo_caio", Tipo.ITEM, "Copo térmico do Cáio"),
+    COPO_CAIO("item_copo_caio", Tipo.ITEM, "Copo térmico do Caio"),
     CONTATO_BIA("item_contato_bia", Tipo.ITEM, "Contato da Bia");
 
     public enum Tipo { HABILIDADE, ITEM }

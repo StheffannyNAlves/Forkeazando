@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuPrincipal {
+public class MenuPrincipal implements br.uefs.forkeazando.controller.MensagensDeTela {
 
 
     private static final int ARTE_L = AberturaMenu.LARGURA;
@@ -344,13 +344,16 @@ public class MenuPrincipal {
         Entrada.lerLinha();
     }
 
+    @Override
     public void mostrarMensagem(String msg) {
         System.out.println(msg);
     }
+    @Override
     public void mostrarErro(String msg) {
         System.out.println(Cores.VERMELHO + msg + Cores.RESET);
     }
 
+    @Override
     public void mostrarSucesso(String msg) {
         System.out.println(Cores.VERDE + msg + Cores.RESET);
     }

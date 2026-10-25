@@ -25,6 +25,7 @@ public class CenasController {
     private static final double RECUPERAR_ENERGIA = 0.4; /** energia máxima devolvida */
     private final GatilhoAutosave gatilhoAutosave;
     private final Runnable salvarManual;
+    private final SeletorDeOpcoes seletor;
     private final Autosave autosave;
     private String ultimocapExibido;
     private static final int CENA_CHUTE_SISTEMA = 3050;
@@ -33,6 +34,10 @@ public class CenasController {
     private static final int CENA_RESULTADO_LEGADO = 212;
 
     public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual) {
+        this(estado, cenas, view, progresso, gerenciadorProgresso, autosave, gatilhoAutosave, salvarManual, SeletorDeOpcoes.terminal());
+    }
+
+    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual, SeletorDeOpcoes seletor) {
         this.estado = estado;
         this.cenas = cenas;
         this.view = view;
@@ -42,6 +47,7 @@ public class CenasController {
         this.autosave = Objects.requireNonNull(autosave);
         this.gatilhoAutosave = Objects.requireNonNull(gatilhoAutosave);
         this.salvarManual = Objects.requireNonNull(salvarManual);
+        this.seletor = Objects.requireNonNull(seletor);
         gerenciadorConquistas.carregarDesbloqueadas(progresso);
 
     }
@@ -133,7 +139,7 @@ public class CenasController {
 
 
                 MenuInterativo.Resposta resposta =
-                        MenuInterativo.abrir(opcoes, "O QUE VOCÊ VAI FAZER?");
+                        seletor.escolher(opcoes, "O QUE VOCÊ VAI FAZER?");
 
                 if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
                     // Esc: retorna ao menu principal.

@@ -319,7 +319,7 @@ Na raiz do projeto, execute:
 mvn test
 ```
 
-A suíte automatizada cobre componentes de persistência e progressão (slots, autosave, exclusão, metadados e envelope dos saves, configurações), a decisão de saída, regras de disponibilidade das escolhas, o fluxo alternativo de esgotamento de energia e associações entre cenas e recursos visuais. Entre as verificações visuais estão a existência de artes para os finais, o uso das ilustrações cadastradas e o preenchimento dos pixels em todos os quadros das animações.
+A suíte automatizada cobre o model (estado, protagonista, escolhas, finais, progresso), o fluxo dos controllers de cenas e de saves (escolha de opções, salvamento manual, autosave, apagão, sobrescrita e exclusão com confirmação) — nos testes, o menu do terminal é substituído por respostas prontas (`SeletorDeOpcoes`) —, componentes de persistência e progressão (slots, autosave, exclusão, metadados e envelope dos saves, configurações), a decisão de saída, regras de disponibilidade das escolhas, o fluxo alternativo de esgotamento de energia e associações entre cenas e recursos visuais. Entre as verificações visuais estão a existência de artes para os finais, o uso das ilustrações cadastradas e o preenchimento dos pixels em todos os quadros das animações.
 
 ---
 
@@ -352,6 +352,7 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - [x] Painel pixel art de conquistas.
 - [x] Ilustrações, retratos e animações para cenas e finais.
 - [x] Testes de regras do esgotamento e integridade dos recursos visuais.
+- [x] Testes de fluxo dos controllers de cenas e de saves, sem depender do terminal.
 
 ### Limitações conhecidas
 
@@ -360,6 +361,7 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - As animações não podem ser puladas durante a exibição. Podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.
 - O caminho alternativo de gravação, utilizado quando não há suporte à movimentação atômica de arquivos, não possui cobertura específica nos testes automatizados.
 - O autosave é um único arquivo, sem histórico: cada novo autosave substitui o anterior.
+- Os controllers do menu principal, das configurações, do progresso e da tela de características ainda não têm testes de fluxo; os de cenas e de saves têm.
 
 ---
 

@@ -8,7 +8,6 @@ import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.ResumoSlot;
-import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 import br.uefs.forkeazando.view.ResumoSlotView;
 import java.nio.file.Path;
@@ -19,12 +18,18 @@ import java.util.OptionalInt;
 
 public class GerenciadorSavesController {
 
-    private final MenuPrincipal view;
+    private final MensagensDeTela view;
     private final Path pastaSaves;
+    private final SeletorDeOpcoes seletor;
 
-    public GerenciadorSavesController(MenuPrincipal view, Path pastaSaves) {
+    public GerenciadorSavesController(MensagensDeTela view, Path pastaSaves) {
+        this(view, pastaSaves, SeletorDeOpcoes.terminal());
+    }
+
+    public GerenciadorSavesController(MensagensDeTela view, Path pastaSaves, SeletorDeOpcoes seletor) {
         this.view = view;
         this.pastaSaves = pastaSaves;
+        this.seletor = seletor;
     }
 
     public record PartidaSelecionada(Estado estado, Integer numeroSlot) {
@@ -107,7 +112,7 @@ public class GerenciadorSavesController {
         );
 
         MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(opcoes, "Gerenciar saves");
+                seletor.escolher(opcoes, "Gerenciar saves");
 
         if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
             return;
@@ -126,7 +131,7 @@ public class GerenciadorSavesController {
                 new MenuInterativo.Opcao("Não")
         );
 
-        MenuInterativo.Resposta confirmacao = MenuInterativo.abrir(confirmacoes, "Excluir permanentemente " + descricao + "?");
+        MenuInterativo.Resposta confirmacao = seletor.escolher(confirmacoes, "Excluir permanentemente " + descricao + "?");
 
         return confirmacao.resultado == MenuInterativo.Resultado.SELECIONADO && confirmacao.indiceOpcao == 0;
     }
@@ -174,7 +179,7 @@ public class GerenciadorSavesController {
             view.mostrarSucesso("Slot " + slot.numero() + " excluído.");
 
         } catch (SaveException e) {
-            view.mostrarErro("Erro ao salvar: " + e.getMessage());
+            view.mostrarErro("Erro ao excluir: " + e.getMessage());
         }
     }
     public OptionalInt salvarPartida(Estado estado) {
@@ -192,7 +197,7 @@ public class GerenciadorSavesController {
         ResumoSlot slot = slots.get(resposta.indiceOpcao);
 
         if (slot.status() != ResumoSlot.Status.VAZIO
-                && confirmarSobrescrita(slot.numero())) {
+                && sobrescritaRecusada(slot.numero())) {
             return OptionalInt.empty();
         }
 
@@ -236,20 +241,20 @@ public class GerenciadorSavesController {
         ResumoSlot slot = slots.get(resposta.indiceOpcao);
 
         if (slot.status() != ResumoSlot.Status.VAZIO
-                && confirmarSobrescrita(slot.numero())) {
+                && sobrescritaRecusada(slot.numero())) {
             return false;
         }
 
         return salvarNoSlot(estado, slot.numero());
     }
 
-    private boolean confirmarSobrescrita(int numeroSlot) {
+    private boolean sobrescritaRecusada(int numeroSlot) {
         List<MenuInterativo.Opcao> opcoes = List.of(
                 new MenuInterativo.Opcao("Sim, sobrescrever"),
                 new MenuInterativo.Opcao("Não")
         );
 
-        MenuInterativo.Resposta resposta = MenuInterativo.abrir(opcoes, "Sobrescrever Slot " + numeroSlot + "?");
+        MenuInterativo.Resposta resposta = seletor.escolher(opcoes, "Sobrescrever Slot " + numeroSlot + "?");
 
         return resposta.resultado != MenuInterativo.Resultado.SELECIONADO
                 || resposta.indiceOpcao != 0;
@@ -263,7 +268,7 @@ public class GerenciadorSavesController {
 
             return true;
         } catch (SaveException e) {
-            view.mostrarErro("Erro ao salvar a conclusão: " + e.getMessage());
+            view.mostrarErro("Erro ao salvar: " + e.getMessage());
             return false;
         }
     }
@@ -294,7 +299,7 @@ public class GerenciadorSavesController {
         for (String extra : extras) {
             opcoes.add(new MenuInterativo.Opcao(extra));
         }
-        return MenuInterativo.abrir(opcoes, titulo);
+        return seletor.escolher(opcoes, titulo);
     }
 
 

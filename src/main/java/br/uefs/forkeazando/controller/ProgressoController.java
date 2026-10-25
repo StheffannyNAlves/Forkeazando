@@ -16,21 +16,14 @@ public class ProgressoController {
     private final MenuPrincipal view;
     private final GerenciadorProgresso gerenciadorProgresso;
 
-    public ProgressoController(
-            MenuPrincipal view,
-            GerenciadorProgresso gerenciadorProgresso) {
+    public ProgressoController(MenuPrincipal view, GerenciadorProgresso gerenciadorProgresso) {
         this.view = view;
         this.gerenciadorProgresso = gerenciadorProgresso;
     }
 
     public void visualizar(Progresso progresso) {
         if (progresso == null) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO
-                            + "Progresso indisponível. Verifique o arquivo "
-                            + "saves/progresso.json."
-                            + Cores.RESET
-            );
+            view.mostrarErro("Progresso indisponível. Verifique o arquivo saves/progresso.json.");
             return;
         }
 
@@ -41,12 +34,7 @@ public class ProgressoController {
 
     public void registrar(Progresso progresso, Estado partidaAtual) {
         if (progresso == null || partidaAtual == null) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO
-                            + "Progresso indisponível. Verifique o arquivo "
-                            + "saves/progresso.json."
-                            + Cores.RESET
-            );
+            view.mostrarErro("Progresso indisponível. Verifique o arquivo saves/progresso.json.");
             return;
         }
 
@@ -62,25 +50,14 @@ public class ProgressoController {
             gerenciadorProgresso.salvar(progresso);
 
             if (novoFinal) {
-                view.mostrarMensagem(
-                        Cores.VERDE + "Novo final desbloqueado!"
-                                + Cores.RESET
-                );
+                view.mostrarSucesso("Novo final desbloqueado!");
             }
 
             if (novaColecao) {
-                view.mostrarMensagem(
-                        Cores.VERDE + "Coleção atualizada!"
-                                + Cores.RESET
-                );
+                view.mostrarSucesso("Coleção atualizada!");
             }
         } catch (SaveException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO
-                            + "Não foi possível salvar o progresso global: "
-                            + e.getMessage()
-                            + Cores.RESET
-            );
+            view.mostrarErro("Não foi possível salvar o progresso global: " + e.getMessage());
         }
     }
 }

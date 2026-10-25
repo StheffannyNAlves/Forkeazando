@@ -5,7 +5,7 @@ import br.uefs.forkeazando.model.Protagonista;
 
 public class Roteador {
 
-    public static final int CAPITULO_FINAL = 8;
+    public static final int CAPITULO_FINAL = Estado.CAPITULO_FINAL;
 
     private Roteador() {}
 
@@ -50,9 +50,8 @@ public class Roteador {
         };
     }
 
-    // FIX: fallback por sistema_chutou_* quando nenhuma flag trilha_* existe.
-    // Caso aconteça (save corrompido, partida legada, ou o jogador contestar
-    // o Sistema e não se inscrever), o chute do ÁGATA é a última rota válida.
+    // Sem nenhuma flag trilha_* (save corrompido, partida legada ou jogador que
+    // contestou o Sistema e não se inscreveu), o chute do Sistema é a última rota válida
     private static int identificarTrilha(Protagonista p) {
         boolean ic = p.temFlag("trilha_ic");
         boolean dtec = p.temFlag("trilha_dtec");
@@ -64,7 +63,6 @@ public class Roteador {
         if (dtec) return 2;
         if (indep) return 3;
 
-        // nenhuma trilha explícita → usa o chute do Sistema
         if (p.temFlag("sistema_chutou_ic"))   return 1;
         if (p.temFlag("sistema_chutou_dtec")) return 2;
         if (p.temFlag("sistema_chutou_indep")) return 3;

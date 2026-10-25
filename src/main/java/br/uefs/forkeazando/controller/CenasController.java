@@ -1,4 +1,3 @@
-// Executa os efeitos das escolhas
 package br.uefs.forkeazando.controller;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.excecao.SaveException;
@@ -24,12 +23,16 @@ public class CenasController {
     private final GerenciadorProgresso gerenciadorProgresso;
     private final Progresso progresso;
     private static final double RECUPERAR_ENERGIA = 0.4; /** energia máxima devolvida */
-    private final GatilhoAutosave gatilhoAutosave  = new GatilhoAutosave(5) ;
+    private final GatilhoAutosave gatilhoAutosave;
+    private final Runnable salvarManual;
     private final Autosave autosave;
-    private int cenasConcluidasDesde;
     private String ultimocapExibido;
+    private static final int CENA_CHUTE_SISTEMA = 3050;
+    private static final int CENA_CURRICULO = 654;
+    private static final int CENA_EPILOGOS = 660;
+    private static final int CENA_RESULTADO_LEGADO = 212;
 
-    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave) {
+    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual) {
         this.estado = estado;
         this.cenas = cenas;
         this.view = view;
@@ -37,6 +40,8 @@ public class CenasController {
         this.gerenciadorConquistas = new GerenciadorConquistas(gerenciadorProgresso, view::mostrarMensagem);
         this.gerenciadorProgresso = gerenciadorProgresso;
         this.autosave = Objects.requireNonNull(autosave);
+        this.gatilhoAutosave = Objects.requireNonNull(gatilhoAutosave);
+        this.salvarManual = Objects.requireNonNull(salvarManual);
         gerenciadorConquistas.carregarDesbloqueadas(progresso);
 
     }
@@ -74,20 +79,20 @@ public class CenasController {
                 view.mostrarBencaoCaramelo();
             }
 
-            if (atual.getId() == 3050 && !estado.getProtagonista().temFlag("viu_chute_sistema")) {
+            if (atual.getId() == CENA_CHUTE_SISTEMA && !estado.getProtagonista().temFlag("viu_chute_sistema")) {
                 view.mostrarChuteDoSistema(estado.getProtagonista());
                 estado.getProtagonista().adicionarFlag("viu_chute_sistema");
                 estado.marcarAlterado();
             }
 
-            if (atual.getId() == 654
+            if (atual.getId() == CENA_CURRICULO
                     && !estado.getProtagonista().temFlag("viu_curriculo_cap8")) {
                 view.mostrarCurriculo(estado.getProtagonista());
                 estado.getProtagonista().adicionarFlag("viu_curriculo_cap8");
                 estado.marcarAlterado();
             }
 
-            if ((ResultadoCalculo.ehCenaDeResultado(atual.getId()) || atual.getId() == 212)
+            if ((ResultadoCalculo.ehCenaDeResultado(atual.getId()) || atual.getId() == CENA_RESULTADO_LEGADO)
                     && ResultadoCalculo.assegurarNota(estado.getProtagonista(), atual.getId())) {
                 estado.marcarAlterado();
             }
@@ -95,7 +100,7 @@ public class CenasController {
             view.renderizar(atual, estado.getProtagonista(),
                     estado.getSemestresExtras(),
                     VisuaisDeCena.paraCena(atual.getId()).orElse(null));
-            if (atual.getId() == 660) {
+            if (atual.getId() == CENA_EPILOGOS) {
                 view.mostrarEpilogos(estado.getProtagonista());
             }
 
@@ -122,7 +127,10 @@ public class CenasController {
 
                 // Ações extras também ficam disponíveis pelo teclado
                 opcoes.add(new MenuInterativo.Opcao("Abrir galeria"));
+                opcoes.add(new MenuInterativo.Opcao("Salvar partida"));
                 opcoes.add(new MenuInterativo.Opcao("Voltar ao menu principal"));
+
+
 
                 MenuInterativo.Resposta resposta =
                         MenuInterativo.abrir(opcoes, "O QUE VOCÊ VAI FAZER?");
@@ -140,8 +148,15 @@ public class CenasController {
                 }
 
                 if (indice == disponiveis.size() + 1) {
+                    salvarManual.run();
+                    continue;
+                }
+
+                if (indice == disponiveis.size() + 2) {
                     return ResultadoPartida.VOLTAR_AO_MENU;
                 }
+
+
 
                 break;
             }
@@ -244,14 +259,6 @@ public class CenasController {
         return ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
     }
 
-//
-//    private Escolha lerEscolha(List<Escolha> disponiveis) {
-//        int indice = Entrada.lerInteiro(1, disponiveis.size());
-//        if (indice == 0) {
-//            return null;
-//        }
-//        return disponiveis.get(indice - 1);
-//    }
 
     private void salvarColecao(Protagonista protagonista) {
         boolean novaColecao = progresso.sincronizarColecao(
@@ -337,45 +344,16 @@ public class CenasController {
 
         return null;
     }
-
     private void aplicarEscolha(Escolha escolhida) {
         Protagonista p = estado.getProtagonista();
-        boolean trancamentoJaRegistrado = p.temFlag("cap6_trancou");
         int tamanhoListaAntes = p.getHistoricoFlags().size();
 
-        registrarTrilhaConcedida(escolhida.getFlagsConcedidas(), p);
-        estado.marcarAlterado();
-
-        for (String flag : escolhida.getFlagsConcedidas()) {
-            p.adicionarFlag(flag);
-        }
-        if (!trancamentoJaRegistrado && p.temFlag("cap6_trancou")) {
-            estado.adicionarSemestreExtra();
+        for (Estado.ImpactoRelacionamento impacto : estado.aplicarEscolha(escolhida)) {
+            view.mostrarImpactoRelacionamento(impacto.personagem(), impacto.valor(), impacto.nivel());
         }
 
-        p.ganharScore(escolhida.getScoreGanho());
-        p.ganharParticipacao(escolhida.getParticipacaoGanha());
-        p.gastarEnergia(escolhida.getCustoEnergia());
-
-        for (Map.Entry<PersonagemSecundario, Float> impacto : escolhida.getImpactosRelacionamento().entrySet()) {
-            PersonagemSecundario npc = impacto.getKey();
-            float valor = impacto.getValue();
-
-            if (escolhida.getInteresseAlvo() != null && escolhida.getInteresseAlvo() == npc.getInteresse()) {
-                valor += Math.signum(valor);
-            }
-
-            p.alterarRelacionamento(npc, valor);
-            Protagonista.NivelRelacionamento nivel = Protagonista.categorizarRelacionamento(p.getRelacionamento(npc));
-            view.mostrarImpactoRelacionamento(npc, valor, nivel);
-        }
-
-        for (Map.Entry<String, Integer> entry : escolhida.getAtributosAlterados().entrySet()) {
-            p.alterarAtributo(entry.getKey(), entry.getValue());
-        }
-
-        // Sistema faz o chute depois da última resposta do Akinator
-        if (escolhida.getCenaDestinoId() == 3050){
+        // O Sistema faz o chute depois da última resposta do Akinator.
+        if (escolhida.getCenaDestinoId() == CENA_CHUTE_SISTEMA) {
             SistemaAcademico.chute(p);
         }
 
@@ -384,6 +362,7 @@ public class CenasController {
         gerenciadorConquistas.verificar(p, progresso, view::mostrarConquista);
     }
 
+    // Avisa a trilha na hora; senão o jogador só descobre no Cap 5
     private void notificaNovasFlags(Protagonista p, int tamanhoAntes) {
         List<String> flags = p.getHistoricoFlags();
         for (int i = tamanhoAntes; i < flags.size(); i++) {
@@ -395,8 +374,7 @@ public class CenasController {
             } else if (flag.equals("trilha_ic")
                     || flag.equals("trilha_dtec")
                     || flag.equals("trilha_indep")) {
-                // FIX (Bug 6): notifica a trilha escolhida.
-                // Sem isso, o jogador só descobre no Cap 5 que escolheu uma trilha.
+
                 String nomeTrilha = flag.equals("trilha_ic")   ? "Iniciação Científica (IC)"
                         : flag.equals("trilha_dtec") ? "Monitoria (DTEC)"
                         :                              "Caminho Independente";
@@ -415,48 +393,4 @@ public class CenasController {
         throw new IllegalStateException("Cena não encontrada: " + id);
     }
 
-    // FIX (Bug 3): calcularChute agora é DETERMINÍSTICO.
-    // O sorteio ponderado original fazia dois jogadores com as mesmas 4 respostas
-    // receberem chutes diferentes, o que contradizia o epílogo (mostrarPerfilAcademico),
-    // que lê as respostas cruas. Determinístico mantém a coerência:
-    // o Sistema é burro, mas é BURRO DE UM JEITO EXPLICÁVEL.
-    //
-    // Se você preferir manter o caos original, é só reintroduzir o sorteio:
-    //   int total = pontosIC + pontosDTEC + pontosIndep;
-    //   int sorteio = new Random().nextInt(total);
-    //   if (sorteio < pontosIC) return "ic";
-    //   if (sorteio < pontosIC + pontosDTEC) return "dtec";
-    //   return "indep";
-    private static String calcularChute(Protagonista p) {
-        int pontosIC = 0, pontosDTEC = 0, pontosIndep = 0;
-
-        if (p.temFlag("sistema_q1_estudar")) {
-            pontosIC += 3; pontosDTEC += 1; pontosIndep += 1;
-        } else {
-            pontosIC += 1; pontosDTEC += 3; pontosIndep += 1;
-        }
-
-        if (p.temFlag("sistema_q2_sozinha")) {
-            pontosIC += 1; pontosDTEC += 1; pontosIndep += 3;
-        } else {
-            pontosIC += 3; pontosDTEC += 2; pontosIndep += 1;
-        }
-
-        if (p.temFlag("sistema_q3_visivel")) {
-            pontosIC += 4; pontosDTEC += 1; pontosIndep += 1;
-        } else {
-            pontosIC += 1; pontosDTEC += 2; pontosIndep += 3;
-        }
-
-        if (p.temFlag("sistema_q4_planejar")) {
-            pontosIC += 3; pontosDTEC += 2; pontosIndep += 1;
-        } else {
-            pontosIC += 1; pontosDTEC += 2; pontosIndep += 4;
-        }
-
-        int max = Math.max(pontosIC, Math.max(pontosDTEC, pontosIndep));
-        if (pontosIC == max) return "ic";       // empate → IC vence (burro de propósito)
-        if (pontosDTEC == max) return "dtec";
-        return "indep";
-    }
 }

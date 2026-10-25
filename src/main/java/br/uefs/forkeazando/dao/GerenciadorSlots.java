@@ -13,7 +13,6 @@ import java.nio.file.Path;
 import java.nio.file.attribute.FileTime;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalInt;
@@ -22,6 +21,7 @@ public class GerenciadorSlots {
 
     public static final int TOTAL_SLOTS = 3;
     private static final String ARQUIVO_AUTOSAVE = "autosave.json";
+    public static final Path PASTA_PADRAO = Path.of("saves");
 
     public static OptionalInt primeiroSlotLivre(Path pasta) {
         for (int i = 1; i <= TOTAL_SLOTS; i++) {
@@ -108,6 +108,20 @@ public class GerenciadorSlots {
             throw new SaveException(
                     "Não foi possível excluir o slot " + numSlot, e
             );
+        }
+    }
+
+    public static boolean existeAutosave(Path pasta) {
+        return Files.exists(caminhoDoAutosave(pasta));
+    }
+
+    public static void excluirAutosave(Path pasta) throws SaveException {
+        try {
+            if (!Files.deleteIfExists(caminhoDoAutosave(pasta))) {
+                throw new SaveException("Não existe autosave para excluir");
+            }
+        } catch (IOException e) {
+            throw new SaveException("Não foi possível excluir o autosave", e);
         }
     }
 

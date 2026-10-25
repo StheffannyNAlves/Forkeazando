@@ -6,18 +6,17 @@ import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Configuracoes;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import java.nio.file.AtomicMoveNotSupportedException;
-import java.nio.file.StandardCopyOption;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-// persiste as configurações personalizaveis
-// agora os metodos de leitura e gravação não muda a API pública usada pelo resto do jogo
+// Persiste as configurações personalizáveis
+// Agora os metodos de leitura e gravação não muda a API pública usada pelo resto do jogo
+/** Lê e grava as preferências do jogador em saves/configuracao.json */
+
 public class ConfiguracoesAdmin {
-    private static final String PASTA = "saves";
-    private static final String ARQUIVO = PASTA + "/configuracao.json";
+    private static final Path ARQUIVO = GerenciadorSlots.PASTA_PADRAO.resolve("configuracao.json");
     private static final Gson gson = new Gson();
     private static Configuracoes instancia;
     private ConfiguracoesAdmin(){
@@ -32,50 +31,24 @@ public class ConfiguracoesAdmin {
         salvarConfigPersonalizadas(instancia);
     }
 
-    public static void salvarConfigPersonalizadas(Configuracoes c)
-            throws SaveException, DadosInvalidosException {
+    public static void salvarConfigPersonalizadas(Configuracoes c) throws SaveException, DadosInvalidosException {
         if (c == null) {
             throw new DadosInvalidosException("Configurações nulas");
         }
 
-        salvarConfigPersonalizadas(c, Paths.get(ARQUIVO));
+        salvarConfigPersonalizadas(c, ARQUIVO);
         instancia = c;
     }
-    static void salvarConfigPersonalizadas(Configuracoes c, Path arquivo)
-            throws SaveException, DadosInvalidosException {
-        if (c == null) {
-            throw new DadosInvalidosException("Configurações nulas");
-        }
-
-        Path temporario = arquivo.resolveSibling(
-                arquivo.getFileName() + ".tmp"
-        );
-
+    static void salvarConfigPersonalizadas(Configuracoes c, Path arquivo) throws SaveException, DadosInvalidosException {
         try {
             if (arquivo.getParent() != null) {
                 Files.createDirectories(arquivo.getParent());
             }
-
-            Files.writeString(temporario, gson.toJson(c));
-
-            try {
-                Files.move(
-                        temporario,
-                        arquivo,
-                        StandardCopyOption.REPLACE_EXISTING,
-                        StandardCopyOption.ATOMIC_MOVE
-                );
-            } catch (AtomicMoveNotSupportedException e) {
-                Files.move(
-                        temporario,
-                        arquivo,
-                        StandardCopyOption.REPLACE_EXISTING
-                );
-            }
         } catch (IOException e) {
-            apagarTemporario(temporario);
             throw new SaveException("Falha ao salvar " + arquivo, e);
         }
+
+        ArquivoAtomico.gravar(arquivo, gson.toJson(c));
     }
 
     private static void apagarTemporario(Path temporario) {
@@ -94,7 +67,7 @@ public class ConfiguracoesAdmin {
 
     private static Configuracoes carregar()
             throws CarregamentoException, DadosInvalidosException {
-        return carregar(Paths.get(ARQUIVO));
+        return carregar(ARQUIVO);
     }
 
     static Configuracoes carregar(Path arquivo)

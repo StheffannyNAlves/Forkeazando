@@ -3,7 +3,6 @@ package br.uefs.forkeazando.view.widget;
 import br.uefs.forkeazando.view.Entrada;
 
 import org.jline.terminal.Terminal;
-import org.jline.utils.InfoCmp;
 import java.util.function.IntConsumer;
 
 import java.util.List;

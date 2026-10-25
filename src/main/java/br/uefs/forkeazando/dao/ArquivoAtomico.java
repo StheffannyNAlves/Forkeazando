@@ -5,8 +5,11 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
-// Só se preocupa em gravar o conteudo num arquivo temporário, tentar a substituição e lidar com falha de escrita e movimentação
-// Revisar essa classe, será que é realmente necessária? <- meus lembretes
+/**
+ * Único ponto de gravação em disco do jogo: escreve o conteúdo num arquivo
+ * temporário e o move para o destino, de forma atômica quando o sistema de
+ * arquivos permite. Um erro no meio da gravação nunca deixa o destino pela metade.
+ */
 public class ArquivoAtomico {
 
     private ArquivoAtomico(){}

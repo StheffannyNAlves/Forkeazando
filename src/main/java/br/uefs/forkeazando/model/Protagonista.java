@@ -33,9 +33,7 @@ public class Protagonista {
 
     private final List<String> historicoFlags = new ArrayList<>();
     private final Map<String, Float> relacionamentos = new HashMap<>();
-    //    public boolean dadosInternosValidos() {
-//        return true;
-//    }
+
     public Protagonista(String nome, boolean perfeccionista, boolean sociavel,
                         boolean estudoTeorico, NivelVidaSocial nivelVidaSocial,
                         ExperienciaEmocionalEnsinoMedio experienciaEmocional,
@@ -195,7 +193,7 @@ public class Protagonista {
     }
     public boolean temFlag(String flag) { return historicoFlags.contains(flag); }
 
-    /** Remove uma marca de estado que deixou de representar a trajetória atual. */
+    // Remove uma marca de estado que deixou de representar a trajetória atual. */
     public void removerFlag(String flag) {
         historicoFlags.removeIf(flag::equals);
     }
@@ -226,12 +224,6 @@ public class Protagonista {
 
 
     public String getNome()                          { return nome; }
-//    public boolean isPerfeccionista()                { return perfeccionista; }
-//    public boolean isSociavel()                      { return sociavel; }
-//    public boolean isEstudoTeorico()                 { return estudoTeorico; }
-//    public SituacaoEconomica getSituacaoEconomica()  { return situacaoEconomica; }
-//    public ExperienciaEmocionalEnsinoMedio getExperienciaEmocional() { return experienciaEmocional; }
-//    public NivelVidaSocial getNivelVidaSocial()      { return nivelVidaSocial; }
 
     public int getScore()         { return score; }
     public int getParticipacao()  { return participacao; }
@@ -243,11 +235,59 @@ public class Protagonista {
     public int getEnergia()       { return energia; }
     public int getEnergiaMaxima() { return energiaMaxima; }
 
-//    public Map<String, Float> getRelacionamentos() {
-//        return relacionamentos;
-//    }
-
     public List<String> getHistoricoFlags() {
         return Collections.unmodifiableList(historicoFlags);
+    }
+
+    /**
+     * Confere se os dados da protagonista, possivelmente lidos de um arquivo
+     * editado ou corrompido, respeitam as regras do jogo. O Gson preenche os
+     * campos sem passar pelo construtor nem pelos limites dos métodos, então
+     * essa verificação é a única barreira contra valores impossíveis.
+     *
+     * @return descrição de cada problema encontrado; lista vazia se estiver íntegra
+     */
+    public List<String> problemasDeIntegridade() {
+        List<String> problemas = new ArrayList<>();
+
+        if (nome == null || nome.isBlank()) {
+            problemas.add("nome da protagonista ausente");
+        }
+        if (energiaMaxima <= 0) {
+            problemas.add("energia máxima deve ser positiva");
+        }
+        verificarFaixa(problemas, "energia", energia, 0, energiaMaxima);
+        verificarFaixa(problemas, "score", score, 0, 100);
+        verificarFaixa(problemas, "participacao", participacao, 0, 100);
+        verificarFaixa(problemas, "confianca", confianca, 0, 10);
+        verificarFaixa(problemas, "vidaSocial", vidaSocial, 0, 10);
+        verificarFaixa(problemas, "carisma", carisma, 0, 10);
+        verificarFaixa(problemas, "logica", logica, 0, 10);
+        verificarFaixa(problemas, "sanidade", sanidade, 0, 10);
+
+        if (historicoFlags.stream().anyMatch(f -> f == null || f.isBlank())) {
+            problemas.add("histórico contém flag nula ou vazia");
+        }
+
+        for (Map.Entry<String, Float> entrada : relacionamentos.entrySet()) {
+            try {
+                PersonagemSecundario.porCodigo(entrada.getKey());
+            } catch (IllegalArgumentException e) {
+                problemas.add("relacionamento com personagem desconhecido: " + entrada.getKey());
+            }
+            Float valor = entrada.getValue();
+            if (valor == null || valor.isNaN() || valor.isInfinite()) {
+                problemas.add("relacionamento com valor inválido: " + entrada.getKey());
+            }
+        }
+
+        return problemas;
+    }
+
+    private static void verificarFaixa(List<String> problemas, String campo,
+                                       int valor, int minimo, int maximo) {
+        if (valor < minimo || valor > maximo) {
+            problemas.add(campo + " fora da faixa (" + minimo + " a " + maximo + "): " + valor);
+        }
     }
 }

@@ -1,7 +1,7 @@
 # Forkeazando
 
 <p align="center">
-  <img src="docs/images/fork-versao1.3.0.gif" alt="Menu principal de Forkeazando" width="700">
+  <img src="docs/images/fork-versao1.4.0.gif" alt="Menu principal de Forkeazando" width="700">
 </p>
 
 <p align="center">
@@ -155,10 +155,10 @@ O jogo oferece três slots independentes de salvamento, com suporte a:
 - Criação de uma nova partida.
 - Continuação da partida mantida em memória.
 - Carregamento de uma partida salva.
-- Salvamento manual, com escolha do slot de destino.
+- Salvamento manual, com escolha do slot de destino e salvamento em toda em partida.
 - Salvamento automático a cada 5 cenas concluídas e ao concluir a partida (arquivo `saves/autosave.json`, acessível por "Carregar autosave"). O autosave não substitui o salvamento manual: ao sair, o jogo ainda pergunta se deseja salvar em um slot.
 - Confirmação antes de sobrescrever um slot ocupado.
-- Menu "Gerenciar saves", com exclusão de saves mediante confirmação.
+- Menu "Gerenciar saves", com exclusão de saves e autosave mediante confirmação.
 - Visualização de metadados de cada slot: nome da protagonista, capítulo, data e hora do salvamento, score, participação, rank e energia.
 - Slots com arquivo danificado aparecem como "Corrompido" na lista, sem impedir o uso dos demais.
 
@@ -266,6 +266,7 @@ src/
 │   │       ├── model/         # Entidades e estado do jogo
 │   │       ├── roteiro/       # Abertura, capítulos, cenas e escolhas
 │   │       ├── view/          # Telas e entrada do teclado
+│   │       │   └── widget/
 │   │       │   └── pixel/     # HUD, ícones, ilustrações e animações
 │   │       └── Main.java      # Ponto de entrada
 │   └── resources/             # Recursos da aplicação
@@ -299,11 +300,13 @@ Na raiz do repositório:
 chmod +x rodar.sh
 ./rodar.sh
 ```
-
+```bash
+mvn package
+```
 Se o arquivo JAR executável estiver disponível:
 
 ```bash
-java -jar forkeazando.jar
+java -jar target/forkeazando.jar
 ```
 
 > O comando com JAR pressupõe que o arquivo `forkeazando.jar` tenha sido gerado e esteja no diretório atual.
@@ -327,11 +330,12 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - [x] Criação e continuação de partidas.
 - [x] Três slots de salvamento.
 - [x] Metadados das partidas salvas.
-- [x] Salvamento manual.
+- [x] Salvamento manual na cena.
 - [x] Salvamento automático.
 - [x] Salvamento automático por progressão (a cada 5 cenas) e na conclusão da partida.
 - [x] Escolha do slot ao salvar.
-- [x] Menu de gerenciamento de saves.
+- [x] Exclusão do autosave.
+- [x] Menu de gerenciamento de saves: 
 - [x] Configurações que alteram o comportamento do jogo.
 - [x] Carregamento de partidas.
 - [x] Confirmação antes de sobrescrever um salvamento.
@@ -342,6 +346,7 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 - [x] Persistência de colecionáveis e conquistas.
 - [x] Exceções personalizadas de persistência.
 - [x] Testes automatizados de persistência e validação do progresso.
+- [x] Validação de integridade.
 - [x] HUD com indicadores visuais de estado da protagonista.
 - [x] Galeria pixel art de habilidades e itens.
 - [x] Painel pixel art de conquistas.
@@ -350,12 +355,10 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 
 ### Limitações conhecidas
 
-- A configuração de volume ainda não tem efeito caso o sistema de áudio não esteja integrado.
 - O uso das setas depende de um terminal compatível com JLine.
 - Em terminais com menos de 66 colunas ou 30 linhas, as ilustrações e os retratos não aparecem.
 - As animações não podem ser puladas durante a exibição. Podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.
 - O caminho alternativo de gravação, utilizado quando não há suporte à movimentação atômica de arquivos, não possui cobertura específica nos testes automatizados.
-- O gatilho do autosave por cenas fica no laço da interface de terminal e não possui teste automatizado; o salvamento em si (`GerenciadorSlots.salvarAutosave`) é coberto por testes.
 - O autosave é um único arquivo, sem histórico: cada novo autosave substitui o anterior.
 
 ---

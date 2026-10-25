@@ -1,5 +1,4 @@
 package br.uefs.forkeazando.controller;
-// Trata DAO
 import br.uefs.forkeazando.audio.GerenciadorAudio;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
@@ -10,8 +9,7 @@ import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.CenaView;
-import br.uefs.forkeazando.view.Cores;
-import br.uefs.forkeazando.view.Entrada;
+import br.uefs.forkeazando.view.TelaConfiguracoes;
 import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.TelaCaracteristicas;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
@@ -24,12 +22,14 @@ import java.util.List;
 
 
 
-
+/** Coordena o menu principal, o ciclo de vida da partida e o acesso a saves e configurações */
 public class MenuPrincipalController {
 
+    private static final Path PASTA_SAVES = GerenciadorSlots.PASTA_PADRAO;
+    private static final int CENAS_POR_AUTOSAVE = 5;
+    private GatilhoAutosave gatilhoAutosave = new GatilhoAutosave(CENAS_POR_AUTOSAVE);
     private final MenuPrincipal view;
     private boolean rodando = true;
-    private static final Path PASTA_SAVES = Path.of("saves");
     private Estado partidaAtual;
     private final GerenciadorProgresso gerenciadorProgresso = new GerenciadorProgresso(PASTA_SAVES);
     private Progresso progresso;
@@ -48,7 +48,7 @@ public class MenuPrincipalController {
         try {
             progresso = gerenciadorProgresso.carregar();
         } catch (CarregamentoException | DadosInvalidosException e) {
-            view.mostrarMensagem(Cores.VERMELHO + "Erro ao carregar progresso global" + e.getMessage() + Cores.RESET);
+            view.mostrarErro("Erro ao carregar progresso global" + e.getMessage());
             progresso = null;
         }
         iniciarAudio();
@@ -107,14 +107,11 @@ public class MenuPrincipalController {
 
         partidaAtual = selecionada.estado();
         slotAtual = selecionada.numeroSlot();
-
+        gatilhoAutosave = new GatilhoAutosave(CENAS_POR_AUTOSAVE);
         try {
             executarPartida();
         } catch (CarregamentoException | DadosInvalidosException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO + "Erro ao carregar: "
-                            + e.getMessage() + Cores.RESET
-            );
+            view.mostrarErro("Erro ao carregar: " + e.getMessage());
         }
     }
 
@@ -175,23 +172,13 @@ public class MenuPrincipalController {
     private void abrirConfiguracoes() {
         try {
             var config = ConfiguracoesAdmin.get();
-            new TelaConfiguracoesController(config, gerenciadorAudio).iniciar();
+            new TelaConfiguracoesController(config, gerenciadorAudio, new TelaConfiguracoes()).iniciar();
 
         } catch (CarregamentoException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO
-                            + "Erro ao carregar config: "
-                            + e.getMessage()
-                            + Cores.RESET
-            );
+            view.mostrarErro( "Erro ao carregar config: " + e.getMessage());
 
         } catch (DadosInvalidosException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO
-                            + "Config inválida: "
-                            + e.getMessage()
-                            + Cores.RESET
-            );
+            view.mostrarErro( "Config inválida: " + e.getMessage());
         }
     }
 
@@ -201,7 +188,7 @@ public class MenuPrincipalController {
 
         boolean cenaExiste = cenas.stream().anyMatch(c -> c.getId() == cenaId);
         if (!cenaExiste) {
-            view.mostrarMensagem(Cores.VERMELHO + "Save inválido: a cena " + cenaId + " não existe." + Cores.RESET);
+            view.mostrarErro("Save inválido: a cena " + cenaId + " não existe.");
             partidaAtual = null;
             return;
         }
@@ -212,7 +199,7 @@ public class MenuPrincipalController {
         CenaView cenaView = new CenaView(config.isDicasAtalho(), config.getVelocidadeTexto());
 
         ResultadoPartida resultado = new CenasController(partidaAtual, cenas, cenaView, emUso, gerenciadorProgresso,
-                savesController::salvarAutosave).iniciar();
+                savesController::salvarAutosave, gatilhoAutosave, this::salvarPartidaManual).iniciar();
         if (resultado == ResultadoPartida.FIM_DE_JOGO) {
             if (partidaAtual.isPartidaConcluida()) {
                 savesController.salvarConclusao(partidaAtual, slotAtual);
@@ -249,6 +236,7 @@ public class MenuPrincipalController {
         Protagonista protagonista = new TelaCaracteristicasController(new TelaCaracteristicas()).iniciar();
         slotAtual = null;
         partidaAtual = new Estado();
+        gatilhoAutosave = new GatilhoAutosave(CENAS_POR_AUTOSAVE);
         partidaAtual.iniciar(protagonista);
         partidaAtual.setCenaAtualId(700);
 

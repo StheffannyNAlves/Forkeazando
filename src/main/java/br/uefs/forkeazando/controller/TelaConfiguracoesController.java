@@ -4,9 +4,8 @@ import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Configuracoes;
 import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
-import br.uefs.forkeazando.view.Cores;
 import br.uefs.forkeazando.audio.GerenciadorAudio;
-import br.uefs.forkeazando.view.Entrada;
+import br.uefs.forkeazando.view.TelaConfiguracoes;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 import br.uefs.forkeazando.view.widget.MenuInterativo.Opcao;
 import br.uefs.forkeazando.view.widget.MenuInterativo.Resposta;
@@ -19,11 +18,16 @@ public class TelaConfiguracoesController {
     private final Configuracoes original;
     private Configuracoes buffer;
     private final GerenciadorAudio gerenciadorAudio;
+    private final TelaConfiguracoes view;
 
-    public TelaConfiguracoesController(Configuracoes original, GerenciadorAudio gerenciadorAudio){
+
+
+    public TelaConfiguracoesController(Configuracoes original, GerenciadorAudio gerenciadorAudio,
+                                       TelaConfiguracoes view){
         this.original = original;
         this.buffer = copiar(original);
         this.gerenciadorAudio = gerenciadorAudio;
+        this.view = view;
     }
 
     private Configuracoes copiar(Configuracoes c){
@@ -131,19 +135,11 @@ public class TelaConfiguracoesController {
         original.setVolume(buffer.getVolume());
         original.setConfirmarSaida(buffer.isConfirmarSaida());
 
-
-
         try {
             ConfiguracoesAdmin.salvarConfigPersonalizadas(original);
-            System.out.println();
-            System.out.println(Cores.VERDE + "  Configurações salvas." + Cores.RESET);
-            System.out.println(Cores.CIANO + "  [ ENTER para continuar ]" + Cores.RESET);
-            Entrada.lerLinha();
+            view.mostrarSalvo();
         } catch (SaveException | DadosInvalidosException e) {
-            System.out.println();
-            System.out.println(Cores.VERMELHO + "  Erro ao salvar: " + e.getMessage() + Cores.RESET);
-            System.out.println(Cores.CIANO + "  [ ENTER para continuar ]" + Cores.RESET);
-            Entrada.lerLinha();
+            view.mostrarErro(e.getMessage());
         }
 
         if (gerenciadorAudio != null)

@@ -178,7 +178,7 @@ public class MenuPrincipal {
         }
     }
 
-    /** Chamado dentro de `trava`. */
+    // Chamado dentro de `trava`
     private void avancarQuadro() {
         Terminal terminal = Entrada.terminal();
         if (terminal.getWidth() != ultimaLargura || terminal.getHeight() != ultimaAltura) {
@@ -203,10 +203,8 @@ public class MenuPrincipal {
         if (t != null) t.interrupt();
     }
 
-    /**
-     * Para a animação. Chamar sempre que o menu fechar (opção escolhida ou Esc), antes de a tela
-     * ser usada por outra coisa: sem isso o laço continuaria pintando a arte por cima do jogo.
-     */
+    // Para a animação. Chamar sempre que o menu fechar (opção escolhida ou Esc), antes de a tela ser usada por outra coisa: sem isso o laço continuaria pintando a arte por cima do jogo.
+
     public void pararAnimacao() {
         synchronized (trava) {
             boolean estavaAnimando = animando;
@@ -348,5 +346,12 @@ public class MenuPrincipal {
 
     public void mostrarMensagem(String msg) {
         System.out.println(msg);
+    }
+    public void mostrarErro(String msg) {
+        System.out.println(Cores.VERMELHO + msg + Cores.RESET);
+    }
+
+    public void mostrarSucesso(String msg) {
+        System.out.println(Cores.VERDE + msg + Cores.RESET);
     }
 }

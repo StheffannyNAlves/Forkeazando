@@ -8,23 +8,16 @@ import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.ResumoSlot;
-import br.uefs.forkeazando.view.Cores;
 import br.uefs.forkeazando.view.MenuPrincipal;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
-
-import java.io.IOException;
-import java.nio.file.Files;
+import br.uefs.forkeazando.view.ResumoSlotView;
 import java.nio.file.Path;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
 
 public class GerenciadorSavesController {
-
-    private static final DateTimeFormatter FORMATO_DATA_SLOT =
-            DateTimeFormatter.ofPattern("dd/MM/yy HH:mm");
 
     private final MenuPrincipal view;
     private final Path pastaSaves;
@@ -75,10 +68,7 @@ public class GerenciadorSavesController {
             return Optional.of(new PartidaSelecionada(estado, slot.numero()));
 
         } catch (CarregamentoException | DadosInvalidosException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO + "Erro ao carregar: "
-                            + e.getMessage() + Cores.RESET
-            );
+            view.mostrarErro("Erro ao carregar: " + e.getMessage());
             return Optional.empty();
         }
     }
@@ -87,7 +77,7 @@ public class GerenciadorSavesController {
     private Optional<PartidaSelecionada> carregarAutosave() {
         Path caminho = GerenciadorSlots.caminhoDoAutosave(pastaSaves);
 
-        if (!Files.exists(caminho)) {
+        if (!GerenciadorSlots.existeAutosave(pastaSaves)) {
             view.mostrarMensagem("Ainda não existe um autosave.");
             return Optional.empty();
         }
@@ -96,21 +86,15 @@ public class GerenciadorSavesController {
             Estado estado = GerenciadorSave.carregar(caminho);
 
             if (estado.getProtagonista() == null) {
-                view.mostrarMensagem(
-                        Cores.VERMELHO
-                                + "O autosave não contém uma partida válida."
-                                + Cores.RESET
-                );
+                view.mostrarErro("O autosave não contém uma partida válida.");
                 return Optional.empty();
             }
 
             return Optional.of(new PartidaSelecionada(estado, null));
 
         } catch (CarregamentoException | DadosInvalidosException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO + "Erro ao carregar autosave: "
-                            + e.getMessage() + Cores.RESET
-            );
+            view.mostrarErro("Erro ao carregar autosave: " + e.getMessage());
+
             return Optional.empty();
         }
     }
@@ -118,27 +102,59 @@ public class GerenciadorSavesController {
     public void gerenciarSaves() {
         List<MenuInterativo.Opcao> opcoes = List.of(
                 new MenuInterativo.Opcao("Excluir save"),
+                new MenuInterativo.Opcao("Excluir autosave"),
                 new MenuInterativo.Opcao("Voltar")
         );
 
         MenuInterativo.Resposta resposta =
                 MenuInterativo.abrir(opcoes, "Gerenciar saves");
 
-        if (resposta.resultado == MenuInterativo.Resultado.SELECIONADO
-                && resposta.indiceOpcao == 0) {
-            excluirSave();
+        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
+            return;
+        }
+
+        switch (resposta.indiceOpcao) {
+            case 0 -> excluirSave();
+            case 1 -> excluirAutosave();
+            default -> { }
+        }
+    }
+
+    private boolean confirmarExclusao(String descricao) {
+        List<MenuInterativo.Opcao> confirmacoes = List.of(
+                new MenuInterativo.Opcao("Sim, excluir"),
+                new MenuInterativo.Opcao("Não")
+        );
+
+        MenuInterativo.Resposta confirmacao = MenuInterativo.abrir(confirmacoes, "Excluir permanentemente " + descricao + "?");
+
+        return confirmacao.resultado == MenuInterativo.Resultado.SELECIONADO && confirmacao.indiceOpcao == 0;
+    }
+
+    private void excluirAutosave() {
+        if (!GerenciadorSlots.existeAutosave(pastaSaves)) {
+            view.mostrarMensagem("Ainda não existe um autosave.");
+            return;
+        }
+
+        if (!confirmarExclusao("o autosave")) {
+            return;
+        }
+
+        try {
+            GerenciadorSlots.excluirAutosave(pastaSaves);
+            view.mostrarSucesso("Autosave excluído.");
+        } catch (SaveException e) {
+            view.mostrarErro("Erro ao excluir autosave: " + e.getMessage());
         }
     }
 
     private void excluirSave() {
         List<ResumoSlot> slots = GerenciadorSlots.listar(pastaSaves);
 
-        MenuInterativo.Resposta resposta =
-                abrirMenuDeSlots("Excluir save", slots, "Cancelar");
+        MenuInterativo.Resposta resposta = abrirMenuDeSlots("Excluir save", slots, "Cancelar");
 
-        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO
-                || resposta.indiceOpcao < 0
-                || resposta.indiceOpcao >= slots.size()) {
+        if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO || resposta.indiceOpcao < 0 || resposta.indiceOpcao >= slots.size()) {
             return;
         }
 
@@ -149,33 +165,16 @@ public class GerenciadorSavesController {
             return;
         }
 
-        List<MenuInterativo.Opcao> confirmacoes = List.of(
-                new MenuInterativo.Opcao("Sim, excluir"),
-                new MenuInterativo.Opcao("Não")
-        );
-
-        MenuInterativo.Resposta confirmacao = MenuInterativo.abrir(
-                confirmacoes,
-                "Excluir permanentemente o Slot " + slot.numero() + "?"
-        );
-
-        if (confirmacao.resultado != MenuInterativo.Resultado.SELECIONADO
-                || confirmacao.indiceOpcao != 0) {
+        if (!confirmarExclusao("o Slot " + slot.numero())) {
             return;
         }
 
         try {
             GerenciadorSlots.excluir(pastaSaves, slot.numero());
-
-            view.mostrarMensagem(
-                    Cores.VERDE + "Slot " + slot.numero() + " excluído." + Cores.RESET
-            );
+            view.mostrarSucesso("Slot " + slot.numero() + " excluído.");
 
         } catch (SaveException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO + "Erro ao excluir save: "
-                            + e.getMessage() + Cores.RESET
-            );
+            view.mostrarErro("Erro ao salvar: " + e.getMessage());
         }
     }
     public OptionalInt salvarPartida(Estado estado) {
@@ -193,7 +192,7 @@ public class GerenciadorSavesController {
         ResumoSlot slot = slots.get(resposta.indiceOpcao);
 
         if (slot.status() != ResumoSlot.Status.VAZIO
-                && !confirmarSobrescrita(slot.numero())) {
+                && confirmarSobrescrita(slot.numero())) {
             return OptionalInt.empty();
         }
 
@@ -237,7 +236,7 @@ public class GerenciadorSavesController {
         ResumoSlot slot = slots.get(resposta.indiceOpcao);
 
         if (slot.status() != ResumoSlot.Status.VAZIO
-                && !confirmarSobrescrita(slot.numero())) {
+                && confirmarSobrescrita(slot.numero())) {
             return false;
         }
 
@@ -250,30 +249,21 @@ public class GerenciadorSavesController {
                 new MenuInterativo.Opcao("Não")
         );
 
-        MenuInterativo.Resposta resposta =
-                MenuInterativo.abrir(
-                        opcoes, "Sobrescrever Slot " + numeroSlot + "?"
-                );
+        MenuInterativo.Resposta resposta = MenuInterativo.abrir(opcoes, "Sobrescrever Slot " + numeroSlot + "?");
 
-        return resposta.resultado == MenuInterativo.Resultado.SELECIONADO
-                && resposta.indiceOpcao == 0;
+        return resposta.resultado != MenuInterativo.Resultado.SELECIONADO
+                || resposta.indiceOpcao != 0;
     }
 
     private boolean salvarNoSlot(Estado estado, int numeroSlot) {
         try {
             GerenciadorSlots.salvar(estado, pastaSaves, numeroSlot);
 
-            view.mostrarMensagem(
-                    "Partida salva no Slot " + numeroSlot + "!"
-            );
+            view.mostrarMensagem("Partida salva no Slot " + numeroSlot + "!");
 
             return true;
-
         } catch (SaveException e) {
-            view.mostrarMensagem(
-                    Cores.VERMELHO + "Erro ao salvar: "
-                            + e.getMessage() + Cores.RESET
-            );
+            view.mostrarErro("Erro ao salvar a conclusão: " + e.getMessage());
             return false;
         }
     }
@@ -291,9 +281,7 @@ public class GerenciadorSavesController {
             }
 
         } catch (SaveException e) {
-            view.mostrarMensagem(
-                    "Erro ao salvar a conclusão: " + e.getMessage()
-            );
+            view.mostrarErro("Erro ao salvar a conclusão: " + e.getMessage());
         }
     }
 
@@ -301,7 +289,7 @@ public class GerenciadorSavesController {
             String titulo, List<ResumoSlot> slots, String... extras) {
         List<MenuInterativo.Opcao> opcoes = new ArrayList<>();
         for (ResumoSlot slot : slots) {
-            opcoes.add(new MenuInterativo.Opcao(formatarSlot(slot)));
+            opcoes.add(new MenuInterativo.Opcao(ResumoSlotView.formatar(slot)));
         }
         for (String extra : extras) {
             opcoes.add(new MenuInterativo.Opcao(extra));
@@ -309,23 +297,5 @@ public class GerenciadorSavesController {
         return MenuInterativo.abrir(opcoes, titulo);
     }
 
-    private String formatarSlot(ResumoSlot slot) {
-        if (slot.status() == ResumoSlot.Status.VAZIO) {
-            return "Slot " + slot.numero() + " - Vazio";
-        }
 
-        if (slot.status() == ResumoSlot.Status.CORROMPIDO) {
-            return "Slot " + slot.numero() + " - Corrompido";
-        }
-
-        return "Slot " + slot.numero() + " - Ocupado"
-                + " | " + slot.nome()
-                + " | Capítulo " + slot.capitulo()
-                + " | " + slot.data().format(FORMATO_DATA_SLOT)
-                + "   Score: " + slot.score() + "/100"
-                + " | Participação: " + slot.participacao() + "/100"
-                + " | Rank: " + slot.rank()
-                + " | Energia: " + slot.energia()
-                + "/" + slot.energiaMaxima();
-    }
 }

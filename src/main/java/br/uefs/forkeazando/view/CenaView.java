@@ -87,7 +87,13 @@ public class CenaView {
     }
 
     private String indicadorPause() {
-        return Entrada.estaPausado() ? "[C] Continuar" : "[P] Pausar";
+        return Entrada.estaPausado() ? "PAUSADO" : "";
+    }
+
+    private void mostrarDicasAtalho() {
+        if (!dicasAtalho) return;
+
+        imprimirLinha("[P] pausar  •  [C] continuar", Cores.CINZA);
     }
 
     public void mostrarGaleria(Protagonista protagonista) {
@@ -134,6 +140,7 @@ public class CenaView {
             imprimirLinhaHud(Hud.barras(
                     p.getEnergia(), p.getEnergiaMaxima(),
                     p.getScore(), p.getParticipacao()));
+            mostrarDicasAtalho();
             System.out.println(Cores.CIANO + "╠" + "═".repeat(larg) + "╣" + Cores.RESET);
 
             if (!cena.getPersonagemFalando().equalsIgnoreCase("Narrador")) {
@@ -282,7 +289,6 @@ public class CenaView {
         System.out.println(Cores.AMARELO + mensagem + Cores.RESET);
     }
 
-    //  Aprovação (animação)
 
     private void imprimirLinhaAprovacao(String linha, int margem) {
         System.out.print("║");

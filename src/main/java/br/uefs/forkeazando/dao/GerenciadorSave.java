@@ -8,11 +8,10 @@ import com.google.gson.*;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.io.Writer;
-import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
+import java.util.Arrays;
+import java.util.List;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.Optional;
@@ -33,62 +32,14 @@ public class GerenciadorSave {
     public static void salvar(Estado estado, Path destino)
             throws SaveException {
 
-        Path temporario = destino.resolveSibling(
-                destino.getFileName() + ".tmp"
-        );
-
         JsonObject envelope = new JsonObject();
         envelope.addProperty("versao", VERSAO_ATUAL);
-        envelope.addProperty(
-                "dataSalvamento",
-                Instant.now().toString()
-        );
+        envelope.addProperty("dataSalvamento", Instant.now().toString());
         envelope.add("estado", gson.toJsonTree(estado));
 
-        try (Writer w = Files.newBufferedWriter(temporario)) {
-            gson.toJson(envelope, w);
-
-        } catch (IOException | JsonIOException e) {
-            apagarTemporario(temporario);
-
-            throw new SaveException(
-                    "Não foi possível salvar o arquivo: " + destino,
-                    e
-            );
-        }
-
-        try {
-            try {
-                Files.move(
-                        temporario,
-                        destino,
-                        StandardCopyOption.REPLACE_EXISTING,
-                        StandardCopyOption.ATOMIC_MOVE
-                );
-            } catch (AtomicMoveNotSupportedException e) {
-                Files.move(
-                        temporario,
-                        destino,
-                        StandardCopyOption.REPLACE_EXISTING
-                );
-            }
-        } catch (IOException e) {
-            apagarTemporario(temporario);
-
-            throw new SaveException(
-                    "Não foi possível substituir o arquivo: "
-                            + destino,
-                    e
-            );
-        }
+        ArquivoAtomico.gravar(destino, gson.toJson(envelope));
     }
 
-    private static void apagarTemporario(Path temporario) {
-        try {
-            Files.deleteIfExists(temporario);
-        } catch (IOException ignored) {
-        }
-    }
 
     private static void validar(JsonObject json)
             throws DadosInvalidosException {
@@ -125,18 +76,14 @@ public class GerenciadorSave {
                     "Save inválido: relacionamentos ausente"
             );
         }
+        validarTrilha(json);
     }
 
-    private static SaveCarregado interpretar(
-            JsonObject raiz
-    ) throws DadosInvalidosException {
+    private static SaveCarregado interpretar(JsonObject raiz) throws DadosInvalidosException {
 
         // Sem "estado" na raiz: considera o formato antigo.
         if (!raiz.has("estado")) {
-            validar(raiz);
-
-            return new SaveCarregado(
-                    gson.fromJson(raiz, Estado.class),
+            return new SaveCarregado(converter(raiz),
                     Optional.empty()
             );
         }
@@ -154,60 +101,35 @@ public class GerenciadorSave {
         int versao;
 
         try {
-            versao = Integer.parseInt(
-                    raiz.get("versao").getAsString()
-            );
+            versao = Integer.parseInt(raiz.get("versao").getAsString());
         } catch (NumberFormatException e) {
-            throw new DadosInvalidosException(
-                    "Save inválido: versão deve ser um inteiro"
-            );
+            throw new DadosInvalidosException("Save inválido: versão deve ser um inteiro");
         }
 
         if (versao != VERSAO_ATUAL) {
-            throw new DadosInvalidosException(
-                    "Versão de save não suportada: " + versao
-            );
+            throw new DadosInvalidosException("Versão de save não suportada: " + versao);
         }
 
-        if (!raiz.has("dataSalvamento")
-                || !raiz.get("dataSalvamento").isJsonPrimitive()
-                || !raiz.getAsJsonPrimitive("dataSalvamento").isString()) {
+        if (!raiz.has("dataSalvamento") || !raiz.get("dataSalvamento").isJsonPrimitive() || !raiz.getAsJsonPrimitive("dataSalvamento").isString()) {
 
-            throw new DadosInvalidosException(
-                    "Save inválido: data de salvamento ausente ou inválida"
-            );
+            throw new DadosInvalidosException("Save inválido: data de salvamento ausente ou inválida");
         }
 
         Instant dataSalvamento;
 
         try {
-            dataSalvamento = Instant.parse(
-                    raiz.get("dataSalvamento").getAsString()
-            );
+            dataSalvamento = Instant.parse(raiz.get("dataSalvamento").getAsString());
         } catch (DateTimeParseException e) {
-            throw new DadosInvalidosException(
-                    "Save inválido: data de salvamento malformada"
-            );
+            throw new DadosInvalidosException("Save inválido: data de salvamento malformada");
         }
 
-        if (raiz.get("estado").isJsonNull()
-                || !raiz.get("estado").isJsonObject()) {
-
-            throw new DadosInvalidosException(
-                    "Save inválido: estado ausente ou inválido"
-            );
+        if (raiz.get("estado").isJsonNull() || !raiz.get("estado").isJsonObject()) {
+            throw new DadosInvalidosException("Save inválido: estado ausente ou inválido");
         }
 
         JsonObject jsonEstado = raiz.getAsJsonObject("estado");
 
-        validar(jsonEstado);
-
-        Estado estado = gson.fromJson(jsonEstado, Estado.class);
-
-        return new SaveCarregado(
-                estado,
-                Optional.of(dataSalvamento)
-        );
+        return new SaveCarregado(converter(jsonEstado), Optional.of(dataSalvamento));
     }
 
     public static Estado carregar(Path origem)
@@ -224,24 +146,45 @@ public class GerenciadorSave {
             JsonElement elemento = JsonParser.parseReader(r);
 
             if (elemento == null || elemento.isJsonNull()) {
-                throw new CarregamentoException(
-                        "Arquivo de save vazio: " + origem
-                );
+                throw new CarregamentoException("Arquivo de save vazio: " + origem);
             }
 
             if (!elemento.isJsonObject()) {
-                throw new DadosInvalidosException(
-                        "Save inválido: estrutura JSON deve ser um objeto"
-                );
+                throw new DadosInvalidosException("Save inválido: estrutura JSON deve ser um objeto");
             }
 
             return interpretar(elemento.getAsJsonObject());
 
         } catch (IOException | JsonParseException e) {
-            throw new CarregamentoException(
-                    "Não foi possível carregar o arquivo: " + origem,
-                    e
-            );
+            throw new CarregamentoException("Não foi possível carregar o arquivo: " + origem, e);
         }
+    }
+
+    // O Gson converte um nome de enum desconhecido em null sem avisar.
+    private static void validarTrilha(JsonObject json) throws DadosInvalidosException {
+        JsonElement trilha = json.get("trilha");
+        if (trilha == null || trilha.isJsonNull()) {
+            return;
+        }
+
+        boolean valida = trilha.isJsonPrimitive()
+                && trilha.getAsJsonPrimitive().isString()
+                && Arrays.stream(Estado.Trilha.values())
+                .anyMatch(t -> t.name().equals(trilha.getAsString()));
+
+        if (!valida) {
+            throw new DadosInvalidosException("Save inválido: trilha desconhecida: " + trilha);
+        }
+    }
+
+    private static Estado converter(JsonObject json) throws DadosInvalidosException {
+
+        validar(json);
+        Estado estado = gson.fromJson(json, Estado.class);
+        List<String> problemas = estado.verificarIntegridade();
+        if (!problemas.isEmpty()) {
+            throw new DadosInvalidosException("Save inválido: " + String.join("; ", problemas));
+        }
+        return estado;
     }
 }

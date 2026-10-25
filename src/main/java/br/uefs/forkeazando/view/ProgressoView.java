@@ -1,12 +1,10 @@
 package br.uefs.forkeazando.view;
 
-import br.uefs.forkeazando.model.Conquista;
 import br.uefs.forkeazando.model.Final;
 import br.uefs.forkeazando.model.Progresso;
 import br.uefs.forkeazando.view.pixel.ConquistasPainel;
 
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ProgressoView {

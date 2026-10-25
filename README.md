@@ -177,7 +177,6 @@ Entre as configurações disponíveis estão:
 
 Se o arquivo `saves/configuracao.json` estiver inválido, o jogo avisa e inicia com os valores padrão em vez de encerrar. Ao alterar as configurações, o arquivo é sobrescrito com valores válidos. Os valores lidos do arquivo passam pelos mesmos limites aplicados na tela de configurações.
 
-> **Observação:** a configuração de volume está persistida, mas seu efeito depende da implementação atual do sistema de áudio.
 
 ### Progresso permanente
 

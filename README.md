@@ -283,7 +283,7 @@ Os testes ficam em `src/test/java`. Os dados persistentes são armazenados em `s
 
 ---
 
-## 🚀 Como executar
+## Como executar
 
 ### Requisitos
 
@@ -299,12 +299,11 @@ Na raiz do repositório:
 chmod +x rodar.sh
 ./rodar.sh
 ```
-```bash
-mvn package
-```
-Se o arquivo JAR executável estiver disponível:
+
+### Gerar o JAR executável
 
 ```bash
+mvn package
 java -jar target/forkeazando.jar
 ```
 

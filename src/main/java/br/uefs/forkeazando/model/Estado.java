@@ -199,7 +199,7 @@ public class Estado  {
 
         protagonista.ganharScore(escolha.getScoreGanho());
         protagonista.ganharParticipacao(escolha.getParticipacaoGanha());
-        protagonista.gastarEnergia(escolha.getCustoEnergia());
+        protagonista.gastarEnergia(Math.abs(escolha.getCustoEnergia()));
 
         List<ImpactoRelacionamento> impactos = new ArrayList<>();
         for (var entrada : escolha.getImpactosRelacionamento().entrySet()) {

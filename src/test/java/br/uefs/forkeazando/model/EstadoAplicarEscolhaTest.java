@@ -26,6 +26,19 @@ class EstadoAplicarEscolhaTest {
         return new Escolha.Builder("x", 1);
     }
 
+
+    @Test
+    void custoNegativoTbmDeveConsumirEnergia(){
+        int energiaAnterior = p.getEnergia();
+        Escolha decisao = escolha()
+                .comCustoEnergia(-10)
+                .build();
+        assertTrue(decisao.estaDisponivel(p));
+        estado.aplicarEscolha(decisao);
+        assertEquals(energiaAnterior -10, p.getEnergia());
+    }
+
+
     @Test
     void aplicaScoreParticipacaoEnergiaEMarcaAlterado() {
         int energiaAntes = p.getEnergia();

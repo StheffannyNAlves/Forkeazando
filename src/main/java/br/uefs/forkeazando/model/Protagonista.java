@@ -1,9 +1,293 @@
 package br.uefs.forkeazando.model;
 
-public class Protagonista {
-    private Caracteristicas caracteristicas;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    public Protagonista(Caracteristicas caracteristicas) {
-        this.caracteristicas = caracteristicas;
+public class Protagonista {
+
+    public enum SituacaoEconomica { APERTADA, ESTAVEL, CONFORTAVEL, ELITE }
+    public enum ExperienciaEmocionalEnsinoMedio { NEGATIVA, NEUTRA, POSITIVA }
+    public enum NivelVidaSocial { ISOLADO, EQUILIBRADO, AMIGUEIRO }
+    public enum NivelRelacionamento { ALIADO, COLEGA, RIVAL }
+
+    private final String nome;
+    private final boolean perfeccionista;
+    private final boolean sociavel;
+    private final boolean estudoTeorico;
+    private final SituacaoEconomica situacaoEconomica;
+    private final ExperienciaEmocionalEnsinoMedio experienciaEmocional;
+    private final NivelVidaSocial nivelVidaSocial;
+
+    private int score = 0;
+    private int participacao = 0;
+    private int vidaSocial;
+    private int confianca;
+    private int carisma;
+    private int logica;
+    private int sanidade;
+    private int energia;
+    private final int energiaMaxima;
+
+    private final List<String> historicoFlags = new ArrayList<>();
+    private final Map<String, Float> relacionamentos = new HashMap<>();
+
+    public Protagonista(String nome, boolean perfeccionista, boolean sociavel,
+                        boolean estudoTeorico, NivelVidaSocial nivelVidaSocial,
+                        ExperienciaEmocionalEnsinoMedio experienciaEmocional,
+                        SituacaoEconomica situacaoEconomica) {
+        this.nome = (nome == null || nome.isBlank()) ? "Calouro" : nome.trim();
+        this.perfeccionista = perfeccionista;
+        this.sociavel = sociavel;
+        this.estudoTeorico = estudoTeorico;
+        this.nivelVidaSocial = nivelVidaSocial;
+        this.experienciaEmocional = experienciaEmocional;
+        this.situacaoEconomica = situacaoEconomica;
+
+        this.confianca = calcularConfiancaInicial();
+        this.vidaSocial = calcularSocialInicial();
+        this.carisma = sociavel ? 5 : 3;
+        this.logica = estudoTeorico ? 7 : 3;
+        this.sanidade = calcularSanidadeInicial();
+        this.energiaMaxima = calcularEnergiaMaximaInicial();
+        this.energia = energiaMaxima;
+        gerarFlagsDeOrigem();
+    }
+
+    private int limitar(int valor, int minimo, int maximo){
+        return Math.clamp(valor, minimo, maximo);
+    }
+    private int calcularConfiancaInicial() {
+        return switch (experienciaEmocional) {
+            case NEGATIVA -> 1; case NEUTRA -> 3; case POSITIVA -> 5; };
+    }
+    private int calcularSocialInicial() {
+        return switch (nivelVidaSocial) {
+            case ISOLADO -> 1; case EQUILIBRADO -> 3; case AMIGUEIRO -> 5; };
+    }
+    private int calcularSanidadeInicial() {
+        return switch (experienciaEmocional) {
+            case NEGATIVA -> 3; case NEUTRA -> 5; case POSITIVA -> 7; };
+    }
+    private int calcularEnergiaMaximaInicial() {
+        int base = switch (situacaoEconomica) {
+            case ELITE -> 90; case CONFORTAVEL -> 75; case ESTAVEL -> 60; case APERTADA -> 45; };
+        int ajuste = switch (experienciaEmocional) {
+            case POSITIVA -> 10; case NEUTRA -> 0; case NEGATIVA -> -10; };
+        return base + ajuste;
+    }
+
+    private void gerarFlagsDeOrigem() {
+        adicionarFlag(perfeccionista ? "perfil_perfeccionista" : "perfil_relaxado");
+        adicionarFlag(sociavel ? "perfil_sociavel" : "perfil_reservado");
+        adicionarFlag(estudoTeorico ? "perfil_teorico" : "perfil_pratico");
+        switch (situacaoEconomica) {
+            case APERTADA -> adicionarFlag("origem_apertada");
+            case ESTAVEL -> adicionarFlag("origem_estavel");
+            case CONFORTAVEL -> adicionarFlag("origem_confortavel");
+            case ELITE -> adicionarFlag("origem_elite");
+        }
+        switch (experienciaEmocional) {
+            case NEGATIVA -> adicionarFlag("origem_em_negativa");
+            case NEUTRA -> adicionarFlag("origem_em_neutra");
+            case POSITIVA -> adicionarFlag("origem_em_positiva");
+        }
+        switch (nivelVidaSocial) {
+            case ISOLADO -> adicionarFlag("origem_isolado");
+            case EQUILIBRADO -> adicionarFlag("origem_equilibrado");
+            case AMIGUEIRO -> adicionarFlag("origem_amigueiro");
+        }
+    }
+
+    public static NivelRelacionamento categorizarRelacionamento(float valor) {
+        if (valor >= 3) return NivelRelacionamento.ALIADO;
+        if (valor <= -3) return NivelRelacionamento.RIVAL;
+        return NivelRelacionamento.COLEGA;
+    }
+    public void alterarRelacionamento(PersonagemSecundario personagem, float delta) {
+        relacionamentos.merge(personagem.getCodigo(), delta, Float::sum);
+    }
+    public float getRelacionamento(PersonagemSecundario personagem) {
+        return relacionamentos.getOrDefault(personagem.getCodigo(), 0f);
+    }
+
+
+
+    public void ganharScore(int valor) {
+        score += valor;
+        limitarAtributos(); }
+    public void ganharParticipacao(int valor) {
+        participacao += valor;
+        limitarAtributos(); }
+
+    public void gastarEnergia(int quantidade) {
+        if (quantidade < 0)
+            throw new IllegalArgumentException("A quantidade não pode ser negativa");
+        energia = Math.max(0, energia - quantidade);
+    }
+
+    public void recuperarEnergia(int quantidade){
+        if (quantidade < 0)
+            throw new IllegalArgumentException("A quantidade nao pode ser negativa");
+        energia = Math.min(energiaMaxima, energia + quantidade);
+    }
+
+    public void limitarAtributos(){
+        confianca = limitar(confianca, 0, 10);
+        vidaSocial = limitar(vidaSocial, 0, 10);
+        carisma = limitar(carisma, 0, 10);
+        logica = limitar(logica, 0, 10);
+        sanidade = limitar(sanidade, 0, 10);
+
+        energia = limitar(energia, 0, energiaMaxima);
+
+        score = limitar(score, 0, 100);
+        participacao = limitar(participacao, 0, 100);
+    }
+
+    public void alterarConfianca(int valor)  {
+        confianca += valor;
+        limitarAtributos();
+    }
+
+    public void alterarVidaSocial(int valor) {
+        vidaSocial += valor;
+        limitarAtributos();
+    }
+    public void alterarCarisma(int valor) {
+        carisma = Math.max(0, carisma + valor);
+        limitarAtributos();
+    }
+    public void alterarLogica(int valor)     {
+        logica = Math.max(0, logica + valor);
+        limitarAtributos();
+    }
+    public void alterarSanidade(int valor)   {
+        sanidade = Math.max(0, sanidade + valor);
+        limitarAtributos();
+    }
+
+    public void alterarAtributo(String chave, int delta) {
+        switch (chave) {
+            case "confianca"    -> alterarConfianca(delta);
+            case "vidaSocial"   -> alterarVidaSocial(delta);
+            case "carisma"      -> alterarCarisma(delta);
+            case "logica"       -> alterarLogica(delta);
+            case "sanidade"     -> alterarSanidade(delta);
+            case "score"        -> ganharScore(delta);
+            case "participacao" -> ganharParticipacao(delta);
+            case "energia"      -> {
+                if (delta < 0)
+                    gastarEnergia(-delta);
+                else
+                    recuperarEnergia(delta);
+            }
+            default -> throw new IllegalArgumentException("Atributo desconhecido: " + chave);
+        }
+    }
+
+    public void adicionarFlag(String flag) {
+        if (!historicoFlags.contains(flag)) historicoFlags.add(flag);
+    }
+    public boolean temFlag(String flag) { return historicoFlags.contains(flag); }
+
+    // Remove uma marca de estado que deixou de representar a trajetória atual. */
+    public void removerFlag(String flag) {
+        historicoFlags.removeIf(flag::equals);
+    }
+    public boolean atingiuRequisito(int scoreMin, int participacaoMin) {
+        return score >= scoreMin && participacao >= participacaoMin;
+    }
+
+    public long contarRelacionamentos(NivelRelacionamento nivel){
+        return relacionamentos.values().stream()
+                .filter(pontos -> categorizarRelacionamento(pontos) == nivel)
+                .count();
+    }
+    public boolean temAlgumaFlagComPrefixo(String prefixo){
+        for (String f : getHistoricoFlags()){
+            if (f.startsWith(prefixo))
+                return true;
+        }
+        return false;
+    }
+
+    public String getRank() {
+        if (score < 10) return "Calouro Perdido";
+        if (score < 25) return "Estagiário do Caos";
+        if (score < 50) return "Sobrevivente do 1º Semestre";
+        if (score < 75) return "Veterano Casca Grossa";
+        return "Lenda do Campus";
+    }
+
+
+    public String getNome()                          { return nome; }
+
+    public int getScore()         { return score; }
+    public int getParticipacao()  { return participacao; }
+    public int getConfianca()     { return confianca; }
+    public int getVidaSocial()    { return vidaSocial; }
+    public int getCarisma()       { return carisma; }
+    public int getLogica()        { return logica; }
+    public int getSanidade()      { return sanidade; }
+    public int getEnergia()       { return energia; }
+    public int getEnergiaMaxima() { return energiaMaxima; }
+
+    public List<String> getHistoricoFlags() {
+        return Collections.unmodifiableList(historicoFlags);
+    }
+
+    /**
+     * Confere se os dados da protagonista, possivelmente lidos de um arquivo
+     * editado ou corrompido, respeitam as regras do jogo. O Gson preenche os
+     * campos sem passar pelo construtor nem pelos limites dos métodos, então
+     * essa verificação é a única barreira contra valores impossíveis.
+     *
+     * @return descrição de cada problema encontrado; lista vazia se estiver íntegra
+     */
+    public List<String> problemasDeIntegridade() {
+        List<String> problemas = new ArrayList<>();
+
+        if (nome == null || nome.isBlank()) {
+            problemas.add("nome da protagonista ausente");
+        }
+        if (energiaMaxima <= 0) {
+            problemas.add("energia máxima deve ser positiva");
+        }
+        verificarFaixa(problemas, "energia", energia, 0, energiaMaxima);
+        verificarFaixa(problemas, "score", score, 0, 100);
+        verificarFaixa(problemas, "participacao", participacao, 0, 100);
+        verificarFaixa(problemas, "confianca", confianca, 0, 10);
+        verificarFaixa(problemas, "vidaSocial", vidaSocial, 0, 10);
+        verificarFaixa(problemas, "carisma", carisma, 0, 10);
+        verificarFaixa(problemas, "logica", logica, 0, 10);
+        verificarFaixa(problemas, "sanidade", sanidade, 0, 10);
+
+        if (historicoFlags.stream().anyMatch(f -> f == null || f.isBlank())) {
+            problemas.add("histórico contém flag nula ou vazia");
+        }
+
+        for (Map.Entry<String, Float> entrada : relacionamentos.entrySet()) {
+            try {
+                PersonagemSecundario.porCodigo(entrada.getKey());
+            } catch (IllegalArgumentException e) {
+                problemas.add("relacionamento com personagem desconhecido: " + entrada.getKey());
+            }
+            Float valor = entrada.getValue();
+            if (valor == null || valor.isNaN() || valor.isInfinite()) {
+                problemas.add("relacionamento com valor inválido: " + entrada.getKey());
+            }
+        }
+
+        return problemas;
+    }
+
+    private static void verificarFaixa(List<String> problemas, String campo,
+                                       int valor, int minimo, int maximo) {
+        if (valor < minimo || valor > maximo) {
+            problemas.add(campo + " fora da faixa (" + minimo + " a " + maximo + "): " + valor);
+        }
     }
 }

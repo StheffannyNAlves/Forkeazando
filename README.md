@@ -375,6 +375,41 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 | `v1.4.0` | Fase 2, sessão 4: autosave por cenas, escolha de slot, gerenciamento de saves, configurações com efeito e tratamento de configuração inválida |
 
 ---
+## 🎨 Fase 3 — Interface gráfica com JavaFX
+
+A terceira fase do Forkeazando está em desenvolvimento e introduz uma interface gráfica em JavaFX, mantendo a proposta narrativa e a arquitetura MVC do projeto.
+
+### Implementado até o momento
+
+- [x] Configuração do JavaFX com Maven.
+- [x] Tela inicial com identidade visual em pixel art.
+- [x] Cenário inspirado na UEFP — Universidade Estadual do Fork Perdido.
+- [x] Menu principal com as dez opções originais.
+- [x] Navegação visual com mouse e teclado.
+- [x] Efeitos visuais e animações de apresentação.
+
+### Em desenvolvimento
+
+- [ ] Integração completa das ações do menu.
+- [ ] Tela de criação e configuração do protagonista.
+- [ ] Interface gráfica para cenas e escolhas narrativas.
+- [ ] Integração completa com o gerenciamento de saves.
+- [ ] Telas de status, conquistas e progresso.
+- [ ] Implementação e justificativa de três padrões GoF.
+
+### Execução da interface gráfica
+
+Com Java 21 e Maven configurados, execute na raiz do projeto:
+
+```bash
+mvn javafx:run
+```
+
+A versão de terminal permanece disponível.
+
+### Uso de inteligência artificial
+
+Recursos artísticos e animações da interface foram desenvolvidos com apoio de inteligência artificial generativa, conforme autorização comunicada pelo professor durante a sessão tutorial. A implementação, integração e validação do projeto permanecem sob responsabilidade da autoria.
 
 ## Autoria
 

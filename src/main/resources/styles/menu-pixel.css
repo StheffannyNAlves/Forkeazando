@@ -1,0 +1,178 @@
+.tela-jogo {
+    -fx-background-color: #241342;
+    -fx-font-family: "DejaVu Sans Mono";
+}
+.paisagem {
+    -fx-background-color: #32204c;
+    -fx-border-color: #ffca70;
+    -fx-border-width: 0 5 0 0;
+}
+.painel-menu {
+    -fx-background-color: linear-gradient(to bottom, #67478c 0%, #4b255f 35%, #281333 100%);
+    -fx-padding: 22 39 14 39;
+    -fx-border-color: #ffb35f;
+    -fx-border-width: 0 0 0 4;
+}
+.marca-universidade {
+    -fx-font-size: 10px;
+    -fx-text-fill: #8df2de;
+    -fx-font-weight: bold;
+}
+.titulo-jogo {
+    -fx-font-size: 46px;
+    -fx-font-weight: 900;
+    -fx-text-fill: #ffe5a0;
+    -fx-effect: dropshadow(gaussian, #e86b9b, 4, 0.85, 3, 4);
+    -fx-padding: 5 0 0 0;
+}
+.subtitulo-jogo {
+    -fx-text-fill: #fff0cf;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 0 0 4 0;
+}
+.separador {
+    -fx-font-size: 11px;
+    -fx-text-fill: #f5b876;
+    -fx-font-weight: bold;
+    -fx-padding: 4 0 6 0;
+}
+.lista-botoes {
+    -fx-padding: 0 18 0 18;
+}
+/* Bordas retas, relevo e seleção dourada: menu de RPG, não formulário. */
+.botao-menu {
+    -fx-pref-width: 470;
+    -fx-max-width: 470;
+    -fx-min-height: 42;
+    -fx-pref-height: 42;
+    -fx-background-color: #54295d;
+    -fx-background-radius: 0;
+    -fx-border-color: #da9ab0 #da9ab0 #241429 #da9ab0;
+    -fx-border-width: 2 2 4 2;
+    -fx-border-radius: 0;
+    -fx-text-fill: #ffe5c7;
+    -fx-font-family: "DejaVu Sans Mono";
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0 16 0 21;
+    -fx-graphic-text-gap: 16;
+    -fx-cursor: hand;
+}
+.botao-menu:hover, .botao-menu.selecionado {
+    -fx-background-color: linear-gradient(to right, #ffe38d, #ffa36e);
+    -fx-border-color: #fff5c0 #fff5c0 #c15b50 #fff5c0;
+    -fx-text-fill: #381d46;
+    -fx-effect: dropshadow(gaussian, rgba(255, 201, 95, 0.65), 13, 0.40, 0, 0);
+}
+.botao-menu:pressed {
+    -fx-background-color: #e68460;
+    -fx-translate-y: 2;
+}
+.mensagem-status {
+    -fx-font-size: 11px;
+    -fx-text-fill: #8df2de;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+    -fx-padding: 14 0 0 0;
+}
+.dica-teclado {
+    -fx-text-fill: #ceafca;
+    -fx-font-size: 10px;
+    -fx-padding: 0 0 0 0;
+}
+.sombra-modal {
+    -fx-background-color: rgba(18, 8, 32, 0.87);
+}
+.janela-modal {
+    -fx-background-color: #39204f;
+    -fx-background-radius: 0;
+    -fx-border-color: #ffd477;
+    -fx-border-width: 5;
+    -fx-padding: 32 38 32 38;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.6), 18, 0.3, 5, 7);
+}
+.titulo-modal {
+    -fx-text-fill: #ffe097;
+    -fx-font-weight: bold;
+    -fx-font-size: 22px;
+}
+.texto-modal {
+    -fx-text-fill: #fff4d9;
+    -fx-font-size: 14px;
+    -fx-line-spacing: 5px;
+    -fx-text-alignment: CENTER;
+}
+.botao-voltar {
+    -fx-background-color: #ffcc6d;
+    -fx-background-radius: 0;
+    -fx-border-color: #fff4c0 #fff4c0 #a84d68 #fff4c0;
+    -fx-border-width: 2 2 4 2;
+    -fx-font-family: "DejaVu Sans Mono";
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: #33153e;
+    -fx-padding: 10 18;
+    -fx-cursor: hand;
+}
+.botao-voltar:hover { -fx-background-color: #f7946d; }
+
+/* Ícones gráficos continuam independentes do texto dos botões. */
+.icone-pixel {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fbc477;
+    -fx-min-width: 28px;
+    -fx-alignment: CENTER;
+}
+.botao-menu:hover .icone-pixel, .botao-menu.selecionado .icone-pixel {
+    -fx-text-fill: #54214d;
+}
+
+.painel-interno {
+    -fx-background-color: linear-gradient(to bottom, #5f3676, #32193f);
+    -fx-border-color: #ffd18b;
+    -fx-border-width: 4;
+    -fx-padding: 24;
+    -fx-spacing: 12;
+}
+.rolagem-pixel, .rolagem-pixel > .viewport {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+.rolagem-pixel {
+    -fx-border-color: transparent;
+}
+.rotulo-pixel {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffe2a5;
+}
+.texto-ajuda {
+    -fx-font-size: 12px;
+    -fx-text-fill: #b7ffe4;
+}
+.texto-narrativa {
+    -fx-text-fill: #fff4e7;
+    -fx-font-size: 15px;
+    -fx-line-spacing: 5px;
+}
+.check-pixel {
+    -fx-text-fill: #fff0d8;
+    -fx-font-family: "DejaVu Sans Mono";
+    -fx-font-size: 12px;
+}
+.campo-pixel, .combo-pixel {
+    -fx-background-color: #26132f;
+    -fx-border-color: #d28eab;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-text-fill: #fff2ce;
+    -fx-font-family: "DejaVu Sans Mono";
+    -fx-font-size: 13px;
+    -fx-padding: 8;
+}
+.combo-pixel .list-cell { -fx-text-fill: #fff2ce; -fx-background-color: #342044; }
+.combo-pixel .arrow-button { -fx-background-color: #e89e7b; }
+.combo-pixel .arrow { -fx-background-color: #31153f; }

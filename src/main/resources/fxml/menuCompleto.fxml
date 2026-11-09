@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<StackPane xmlns:fx="http://javafx.com/fxml/1"
+           fx:id="raiz"
+           fx:controller="br.uefs.forkeazando.view.javafx.ControllerInterface"
+           prefWidth="1280" prefHeight="760" focusTraversable="true"
+           stylesheets="@../styles/menu-pixel.css">
+    <children>
+        <HBox prefWidth="1280" prefHeight="760" styleClass="tela-jogo">
+            <children>
+                <StackPane fx:id="painelArte" prefWidth="625" minWidth="625"
+                           maxWidth="625" prefHeight="760" styleClass="paisagem">
+                    <children>
+                        <ImageView fx:id="arte" fitWidth="805" fitHeight="760"
+                                   preserveRatio="false" smooth="false" />
+                    </children>
+                </StackPane>
+                <VBox fx:id="colunaMenu" prefWidth="655" minWidth="655"
+                      alignment="TOP_CENTER" spacing="8" styleClass="painel-menu">
+                    <children>
+                        <Label text="✦  UEFP  •  UNIVERSIDADE ESTADUAL DO FORK PERDIDO"
+                               styleClass="marca-universidade" />
+                        <Label fx:id="tituloJogo" text="FORKEAZANDO" styleClass="titulo-jogo" />
+                        <Label text="Entre o que era certo e o que ainda pode ser."
+                               styleClass="subtitulo-jogo" />
+                        <Label text="◆  ESCOLHA SEU CAMINHO  ◆" styleClass="separador" />
+                        <VBox fx:id="listaBotoes" spacing="5" alignment="CENTER" styleClass="lista-botoes">
+                            <children>
+                                <Button text="Nova Partida" userData="novaPartida" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Continuar" userData="continuar" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Carregar" userData="carregar" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Gerenciar saves" userData="gerenciarSaves" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Instruções" userData="instrucoes" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Opções de Estilo" userData="estilo" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Salvar" userData="salvar" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Créditos" userData="creditos" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Meu progresso" userData="progresso" onAction="#aoClicar" styleClass="botao-menu" />
+                                <Button text="Sair" userData="sair" onAction="#aoClicar" styleClass="botao-menu" />
+                            </children>
+                        </VBox>
+                        <Label fx:id="status" text="✦ SUA HISTÓRIA COMEÇA AQUI"
+                               styleClass="mensagem-status" wrapText="true" />
+                        <Label text="↑ ↓ NAVEGAR  •  ENTER SELECIONAR  •  ESC VOLTAR"
+                               styleClass="dica-teclado" />
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <StackPane fx:id="telaSecundaria" visible="false" managed="false"
+                   styleClass="sombra-modal" />
+
+        <StackPane fx:id="modal" visible="false" managed="false"
+                   styleClass="sombra-modal">
+            <children>
+                <VBox alignment="CENTER" spacing="20" maxWidth="580"
+                      maxHeight="430" styleClass="janela-modal">
+                    <children>
+                        <Label fx:id="tituloModal" text="TÍTULO" styleClass="titulo-modal" />
+                        <Label fx:id="textoModal" text="Conteúdo" wrapText="true" styleClass="texto-modal" />
+                        <Button fx:id="botaoFechar" text="VOLTAR AO MENU"
+                                onAction="#fecharModal" styleClass="botao-voltar" />
+                    </children>
+                </VBox>
+            </children>
+        </StackPane>
+    </children>
+</StackPane>

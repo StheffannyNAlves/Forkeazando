@@ -201,6 +201,7 @@ public class Estado  {
         protagonista.ganharParticipacao(escolha.getParticipacaoGanha());
         protagonista.gastarEnergia(Math.abs(escolha.getCustoEnergia()));
 
+
         List<ImpactoRelacionamento> impactos = new ArrayList<>();
         for (var entrada : escolha.getImpactosRelacionamento().entrySet()) {
             PersonagemSecundario personagem = entrada.getKey();

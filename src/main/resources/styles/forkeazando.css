@@ -1,86 +1,176 @@
-/* Identidade do menu ANSI da Fase 2: fundo #0e0c28, violeta, dourado. */
-.tela-principal {
-    -fx-background-color: linear-gradient(to bottom right, #161039, #0e0c28 65%, #241342);
-    -fx-font-family: "Monospaced";
+.tela-jogo {
+    -fx-background-color: linear-gradient(to bottom right, #43176f 0%, #7b2c81 38%, #2c286f 73%, #111d48 100%);
+    -fx-font-family: "DejaVu Sans Mono";
 }
-.moldura-arte {
-    -fx-background-color: #0e0c28;
-    -fx-border-color: #7666d7;
-    -fx-border-width: 2;
-    -fx-effect: dropshadow(gaussian, rgba(12, 8, 32, 0.75), 26, 0.35, 0, 8);
+
+.faixa-superior {
+    -fx-padding: 21 53 15 53;
+    -fx-background-color: rgba(21, 12, 57, 0.40);
+    -fx-border-color: transparent transparent rgba(255, 204, 116, 0.48) transparent;
+    -fx-border-width: 0 0 2 0;
 }
-.inscricao-arte {
-    -fx-text-fill: #423c54;
-    -fx-font-family: "Monospaced";
-    -fx-font-size: 11px;
+.cabecalho-marca {
+    -fx-text-fill: #ffdd86;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
-.inscricao-placa {
-    -fx-text-fill: #1e347a;
-    -fx-font-family: "Monospaced";
+.cabecalho-aux {
+    -fx-text-fill: #eee0ff;
     -fx-font-size: 11px;
+}
+
+.conteudo-jogo { -fx-padding: 15 36 15 36; }
+
+.coluna-menu {
+    -fx-padding: 19 18 19 18;
+    -fx-background-color: linear-gradient(to bottom, rgba(37, 18, 78, 0.93), rgba(22, 18, 67, 0.90));
+    -fx-background-radius: 18;
+    -fx-border-color: rgba(255, 203, 116, 0.65);
+    -fx-border-radius: 18;
+    -fx-border-width: 1.5;
+    -fx-effect: dropshadow(gaussian, rgba(17, 6, 37, 0.42), 23, 0.19, 0, 9);
+}
+.titulo-jogo {
+    -fx-font-family: "DejaVu Sans Mono";
+    -fx-font-size: 39px;
     -fx-font-weight: bold;
+    -fx-text-fill: #ffe187;
+    -fx-effect: dropshadow(gaussian, rgba(255, 100, 118, 0.75), 18, 0.27, 0, 2);
 }
-.frase-arte {
-    -fx-text-fill: #e2deee;
-    -fx-font-family: "Monospaced";
-    -fx-font-size: 11px;
-    -fx-line-spacing: -1px;
-}
-.legenda-arte {
-    -fx-text-fill: #b6aee2;
+.frase-jogo {
     -fx-font-size: 12px;
+    -fx-text-fill: #f3ddff;
+    -fx-padding: 0 0 10 0;
 }
-.painel-menu {
-    -fx-background-color: rgba(14, 12, 40, 0.96);
-    -fx-border-color: #7864f0;
-    -fx-border-width: 2;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.48), 24, 0.2, 0, 8);
-}
-.titulo-menu {
-    -fx-text-fill: #ffd666;
-    -fx-font-size: 27px;
-    -fx-font-weight: bold;
-}
-.subtitulo-menu {
-    -fx-text-fill: #c4baff;
-    -fx-font-size: 12px;
-    -fx-padding: 0 0 9 0;
-}
-.separador-menu {
-    -fx-text-fill: #ffe096;
+.rotulo-principal {
     -fx-font-size: 10px;
-    -fx-padding: 0 0 4 0;
+    -fx-text-fill: #ffae8a;
+    -fx-padding: 0 0 6 0;
+    -fx-font-weight: bold;
 }
-.botao-menu {
-    -fx-background-color: #252044;
-    -fx-border-color: #473e79;
-    -fx-border-radius: 5;
-    -fx-background-radius: 5;
-    -fx-text-fill: #cdd2ff;
+.grupo-opcoes { -fx-padding: 3 0 1 0; }
+.rotulo-grupo {
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #74ecd8;
+    -fx-padding: 0 0 4 11;
+}
+
+.opcao-menu {
+    -fx-background-color: rgba(126, 80, 168, 0.20);
+    -fx-background-radius: 7;
+    -fx-border-color: transparent;
+    -fx-border-radius: 7;
+    -fx-border-width: 0 0 0 4;
+    -fx-font-family: "DejaVu Sans Mono";
     -fx-font-size: 13px;
-    -fx-font-family: "Monospaced";
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff2fc;
     -fx-alignment: CENTER_LEFT;
-    -fx-padding: 7 13;
+    -fx-padding: 6 12 6 14;
+    -fx-min-height: 34px;
+    -fx-pref-height: 34px;
     -fx-cursor: hand;
 }
-.botao-menu:hover, .botao-menu:focused {
-    -fx-background-color: #4c38d7;
-    -fx-border-color: #9e8aff;
-    -fx-text-fill: white;
-    -fx-effect: dropshadow(gaussian, rgba(114, 80, 255, 0.35), 10, 0.25, 0, 1);
+.opcao-menu:hover, .opcao-menu.selecionado, .opcao-menu:focused {
+    -fx-background-color: linear-gradient(to right, #fc786b, #bd4db5 78%, rgba(123, 69, 163, 0.50));
+    -fx-background-radius: 7;
+    -fx-border-color: #ffe292;
+    -fx-border-radius: 7;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(255, 120, 131, 0.50), 13, 0.20, 0, 1);
 }
-.botao-menu:pressed {
-    -fx-background-color: #31279f;
+.opcao-menu:pressed { -fx-background-color: #a63d9b; }
+.opcao-sair { -fx-text-fill: #ffbcbc; }
+
+.coluna-arte { -fx-padding: 8 0 0 0; }
+.legenda-cenario { -fx-padding: 2 3 1 3; }
+.tag-cenario {
+    -fx-text-fill: #9af8d1;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
 }
-.botao-sair {
-    -fx-border-color: #6c475e;
-}
-.status-menu {
-    -fx-text-fill: #ffce54;
+.tag-cenario-direita {
+    -fx-text-fill: #ffe2ba;
     -fx-font-size: 10px;
-    -fx-padding: 7 0 0 0;
-    -fx-min-height: 24px;
 }
+.moldura-cenario {
+    -fx-background-color: #241544;
+    -fx-background-radius: 16;
+    -fx-border-color: #ffd485;
+    -fx-border-radius: 16;
+    -fx-border-width: 3;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, rgba(255, 105, 144, 0.36), 27, 0.20, 0, 9);
+}
+.viewport-pixelart { -fx-background-color: #241544; }
+.inscricao-universidade {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #423c54;
+}
+.inscricao-placa {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e347a;
+}
+.inscricao-frase {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff5e3;
+    -fx-effect: dropshadow(gaussian, rgba(25, 13, 43, 0.70), 5, 0.25, 0, 2);
+}
+.descricao-cenario { -fx-padding: 9 4 0 4; }
+.legenda-destaque {
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffe394;
+}
+.descricao-tecnica { -fx-font-size: 10px; -fx-text-fill: #e1c7ff; }
+.status-jogo {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #a0ffe1;
+    -fx-padding: 8 0 0 0;
+}
+
+.faixa-inferior {
+    -fx-padding: 15 53 19 53;
+    -fx-background-color: rgba(21, 12, 57, 0.44);
+    -fx-border-color: rgba(255, 204, 116, 0.43) transparent transparent transparent;
+    -fx-border-width: 2 0 0 0;
+}
+.controles { -fx-text-fill: #f3e7ff; -fx-font-size: 11px; }
+.versao { -fx-text-fill: #cdb5e5; -fx-font-size: 10px; }
+
+.fundo-dialogo { -fx-background-color: rgba(11, 5, 34, 0.87); }
+.dialogo-jogo {
+    -fx-background-color: linear-gradient(to bottom right, #39206a, #20154f);
+    -fx-background-radius: 16;
+    -fx-border-color: #ffc77b;
+    -fx-border-width: 2;
+    -fx-border-radius: 16;
+    -fx-padding: 35 45 35 45;
+    -fx-effect: dropshadow(gaussian, rgba(9, 4, 29, 0.67), 30, 0.25, 0, 11);
+}
+.selo-dialogo { -fx-text-fill: #8df0d6; -fx-font-size: 11px; }
+.titulo-dialogo {
+    -fx-text-fill: #ffdd85;
+    -fx-font-size: 29px;
+    -fx-font-weight: bold;
+}
+.texto-dialogo {
+    -fx-text-fill: #f6eaff;
+    -fx-font-size: 15px;
+    -fx-line-spacing: 6px;
+}
+.fechar-dialogo {
+    -fx-background-color: linear-gradient(to right, #ed6f70, #a94bb1);
+    -fx-background-radius: 8;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 12 18;
+    -fx-cursor: hand;
+}
+.fechar-dialogo:hover, .fechar-dialogo:focused { -fx-background-color: #fc897c; }

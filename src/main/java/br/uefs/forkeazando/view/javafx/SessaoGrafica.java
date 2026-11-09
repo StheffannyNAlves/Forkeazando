@@ -4,7 +4,6 @@ import br.uefs.forkeazando.model.Cena;
 import br.uefs.forkeazando.model.Escolha;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Protagonista;
-import br.uefs.forkeazando.roteiro.Roteador;
 import br.uefs.forkeazando.roteiro.Roteiro;
 
 import java.util.List;
@@ -13,23 +12,22 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
- * Adapta o modelo e o roteiro existentes para as primeiras cenas no JavaFX.
+ * Adapta o modelo e o roteiro existentes para as primeiras cenas para a versão beta
  * Não substitui CenasController (versão completa de terminal): progressão,
- * autosave, conquistas e eventos especiais serão migrados separadamente.
+ * autosave, conquistas e eventos especiais serão migrados separadamente
  */
 public final class SessaoGrafica {
     private final Map<Integer, Cena> cenas;
     private Estado estado;
 
     public SessaoGrafica() {
-        this.cenas = Roteiro.todasAsCenas().stream()
-                .collect(Collectors.toMap(Cena::getId, Function.identity()));
+        this.cenas = Roteiro.todasAsCenas().stream().collect(Collectors.toMap(Cena::getId, Function.identity()));
     }
 
     public void novaPartida(Protagonista protagonista) {
         Estado novo = new Estado();
         novo.iniciar(protagonista);
-        novo.setCenaAtualId(700); // A mesma abertura usada no controller do terminal.
+        novo.setCenaAtualId(700);
         estado = novo;
     }
 
@@ -54,7 +52,7 @@ public final class SessaoGrafica {
     }
 
     /**
-     * Prévia gráfica: avança pelo roteiro real até concluir o capítulo 1.
+     * Prévia do jogo: avança pelo roteiro real até concluir o capítulo 1.
      * Não avança para os capítulos seguintes, que têm eventos especiais próprios.
      */
     public boolean escolher(Escolha escolha) {
@@ -70,13 +68,13 @@ public final class SessaoGrafica {
             throw new IllegalStateException("Evento de apagão ainda não disponível na interface gráfica.");
         }
         if (destino == Estado.CENA_ENCERRAR) {
-            // Evita iniciar o próximo capítulo sem a lógica completa de CenasController.
+            // Evita iniciar o próximo capítulo sem a lógica completa de CenasController
             return false;
         }
         if (!cenas.containsKey(destino)) {
             throw new IllegalStateException("Cena de destino não encontrada: " + destino);
         }
-        atual.aplicarEscolha(escolha); // Reutiliza consequências e flags do modelo real.
+        atual.aplicarEscolha(escolha); // Reutiliza consequências e flags do modelo do terminal
         atual.setCenaAtualId(destino);
         return true;
     }

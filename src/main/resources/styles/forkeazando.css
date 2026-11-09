@@ -1,0 +1,86 @@
+/* Identidade do menu ANSI da Fase 2: fundo #0e0c28, violeta, dourado. */
+.tela-principal {
+    -fx-background-color: linear-gradient(to bottom right, #161039, #0e0c28 65%, #241342);
+    -fx-font-family: "Monospaced";
+}
+.moldura-arte {
+    -fx-background-color: #0e0c28;
+    -fx-border-color: #7666d7;
+    -fx-border-width: 2;
+    -fx-effect: dropshadow(gaussian, rgba(12, 8, 32, 0.75), 26, 0.35, 0, 8);
+}
+.inscricao-arte {
+    -fx-text-fill: #423c54;
+    -fx-font-family: "Monospaced";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+.inscricao-placa {
+    -fx-text-fill: #1e347a;
+    -fx-font-family: "Monospaced";
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+.frase-arte {
+    -fx-text-fill: #e2deee;
+    -fx-font-family: "Monospaced";
+    -fx-font-size: 11px;
+    -fx-line-spacing: -1px;
+}
+.legenda-arte {
+    -fx-text-fill: #b6aee2;
+    -fx-font-size: 12px;
+}
+.painel-menu {
+    -fx-background-color: rgba(14, 12, 40, 0.96);
+    -fx-border-color: #7864f0;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.48), 24, 0.2, 0, 8);
+}
+.titulo-menu {
+    -fx-text-fill: #ffd666;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
+}
+.subtitulo-menu {
+    -fx-text-fill: #c4baff;
+    -fx-font-size: 12px;
+    -fx-padding: 0 0 9 0;
+}
+.separador-menu {
+    -fx-text-fill: #ffe096;
+    -fx-font-size: 10px;
+    -fx-padding: 0 0 4 0;
+}
+.botao-menu {
+    -fx-background-color: #252044;
+    -fx-border-color: #473e79;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: #cdd2ff;
+    -fx-font-size: 13px;
+    -fx-font-family: "Monospaced";
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 7 13;
+    -fx-cursor: hand;
+}
+.botao-menu:hover, .botao-menu:focused {
+    -fx-background-color: #4c38d7;
+    -fx-border-color: #9e8aff;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(gaussian, rgba(114, 80, 255, 0.35), 10, 0.25, 0, 1);
+}
+.botao-menu:pressed {
+    -fx-background-color: #31279f;
+}
+.botao-sair {
+    -fx-border-color: #6c475e;
+}
+.status-menu {
+    -fx-text-fill: #ffce54;
+    -fx-font-size: 10px;
+    -fx-padding: 7 0 0 0;
+    -fx-min-height: 24px;
+}

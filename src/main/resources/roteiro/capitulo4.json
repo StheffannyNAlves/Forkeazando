@@ -9,7 +9,7 @@
       "id": 300,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Segundo semestre, primeira semana. Segunda-feira, 8h. Mural do Módulo 1.\n\nDois editais novos, colados lado a lado com fita crepe por cima da fita crepe do semestre passado. Ninguém tirou o de antes. Ninguém vai tirar o de agora.\n\nO primeiro: PIBIC. Iniciação Científica. R$ 700 se for CNPq, R$ 500 se for FAPESB. Vinte e duas páginas. Exige Lattes.\n\nO segundo: Monitoria de DTEC. R$ 600. Exige CR acima de 7.\n\nAs inscrições fecham no mesmo dia.\n\n(Isso não é coincidência.)",
+      "textoNarrativo": "Segundo semestre, primeira semana. No mural do Módulo 1, dois editais disputam o mesmo prazo.\n\nPIBIC: iniciação científica, bolsa de R$ 700 pelo CNPq ou R$ 500 pela FAPESB, inscrição com Lattes e histórico de participação.\n\nDTEC: monitoria, R$ 600, CR acima de 7 e entrevista.\n\nNo primeiro semestre, a grade da turma veio pronta. Agora você precisa acompanhar oferta, pré-requisitos e horários enquanto decide se tenta uma das bolsas. As inscrições fecham no mesmo dia.\n\n(Isso não é coincidência.)",
       "escolhas": [
         {
           "textoAlternativa": "Ler os dois editais inteiros.",
@@ -173,7 +173,7 @@
       "id": 3001,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A prova de Cálculo aparece entre os dois editais na tela do celular.\n\nVocê não precisa abandonar a IC ou a monitoria para reconhecer uma lacuna. Precisa, isso sim, descobrir quantas horas cabem na semana e qual ajuda existe de verdade.",
+      "textoNarrativo": "Você cruza o fluxograma com a oferta de turmas. Uma seta de pré-requisito fecha uma possibilidade; o horário de outra disciplina bate com o ônibus de volta.\n\nNo rascunho, você marca três versões: a ideal, a viável e a que depende de ajuste. A diferença entre elas ocupa quase uma página.\n\nVocê manda a dúvida para o grupo, mas as respostas se contradizem. Antes de montar o resto da grade, precisa confirmar qual turma realmente conta para o próximo período.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar por um plantão de dúvidas e reservar um horário fixo.",
@@ -246,7 +246,7 @@
       "id": 3002,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Dandara mostra um exercício de limite que você reconhece. Você explica como começou, onde precisou fatorar e por que a resposta não era só decorar uma regra.\n\nEnsinar a primeira etapa é fácil. Quando ela pergunta por que a simplificação funciona, você precisa pensar de novo. A nota ajudou a abrir aquela conversa; a relação de vocês é que tornou possível começá-la.",
+      "textoNarrativo": "Dandara abre uma lista de limites e pede que você explique a fatoração. Você começa confiante; no terceiro passo, percebe que vinha repetindo um procedimento sem saber por que funcionava.\n\n— Espera. Eu acho que pulei uma justificativa.\n\nDandara confere o rascunho e encontra um erro de sinal. Você volta ao começo, agora explicando cada transformação. Ela discorda de uma etapa e vocês consultam o material da disciplina.\n\nO exercício termina mais devagar. A conversa, pela primeira vez, não vira competição por quem entendeu primeiro.",
       "escolhas": [
         {
           "textoAlternativa": "Desenhar os passos e admitir o que ainda precisa conferir.",
@@ -321,7 +321,7 @@
       "id": 301,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Mesmo lugar. Mesmo copo. Mesma cara de quem dormiu quatro horas e não lembra a última vez que comeu algo que não fosse salgado de cantina.\n\n'Os dois editais são de propósito. Eles querem que você escolha.'\n\n'E se você não escolher, fica sem os dois. É assim todo semestre.'\n\nDá um gole.\n\n'IC é política. DTEC é greve. Os dois são bons. Nenhum é fácil.'",
+      "textoNarrativo": "Caio está no mesmo lugar, com o mesmo copo e a cara de quem dormiu quatro horas.\n\n— Os editais são assim de propósito. Querem que você escolha. Se você não escolhe, pode ficar sem os dois.\n\nEle distingue os caminhos: PIBIC é pesquisa; DTEC é monitoria, com aula e greve no meio. Ambos podem ensinar muito. Nenhum vem sem custo.\n\nVocê pode perguntar qual ele escolheria, se existe terceira opção ou resolver por conta própria. Também pode perguntar sobre a chamada internacional no rodapé do edital.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar qual ele escolheria.",
@@ -456,7 +456,7 @@
       "id": 3013,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "No rodapé do edital, uma chamada para projetos em colaboração com grupos de fora do país. Não promete bolsa integral nem vaga garantida: pede histórico, uma proposta e comprovação de idioma. A candidatura também tem prazo e custo.\n\nCaio não vende aquilo como saída mágica.\n\n'Pode abrir uma porta. Mas primeiro vê o que pedem e o que você consegue sustentar sem abandonar o resto.'",
+      "textoNarrativo": "No rodapé do edital, uma chamada para projetos em colaboração com grupos de fora do país. Não promete bolsa integral nem vaga garantida; pede histórico, proposta, idioma e dinheiro para a candidatura.\n\nCaio não vende aquilo como saída mágica.\n\n— Pode abrir uma porta. Primeiro vê o que pedem e o que você consegue sustentar sem abandonar o resto.\n\nVocê pode salvar o edital e montar um plano de idioma e portfólio, ou guardar o link sem assumir outro prazo agora.",
       "escolhas": [
         {
           "textoAlternativa": "Salvar o edital e montar um plano de idioma e portfólio.",
@@ -529,7 +529,7 @@
       "id": 3011,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele demora mais do que você esperava.\n\n'Eu escolheria a que não precisa de ninguém me dizendo que eu sou bom.'\n\nOlha o copo.\n\n'Mas eu não sou você. Eu errei a conta de quem eu era umas três vezes.'",
+      "textoNarrativo": "Caio lê os dois editais e não escolhe por você.\n\n— Eu iria na pesquisa porque gosto de ficar preso numa pergunta até ela parar de parecer óbvia.\n\nEle olha para o valor da bolsa de monitoria.\n\n— Mas eu não pago suas contas. Seiscentos reais mudam a decisão de um jeito que meu gosto não muda.\n\nEle devolve o celular.\n\n— O que você precisa agora? E o que quer aprender? Talvez dê a mesma resposta. Talvez não.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -567,7 +567,7 @@
       "id": 3012,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "'Tem.'\n\n'Se chama não escolher. Ninguém te impede. Só custa mais caro.'\n\nEle bebe e acrescenta, como nota de rodapé:\n\n'E ninguém põe isso no edital.'",
+      "textoNarrativo": "— E se eu não escolher nenhum? — você pergunta.\n\nCaio dá de ombros.\n\n— Pode ser a decisão mais sensata ou o medo assinando por você. O formulário não vai saber a diferença.\n\nEle conta que fez pesquisa voluntária por um tempo. Aprendeu bastante; também precisou negociar escopo para não transformar boa vontade em trabalho sem limite.\n\n— Se for ficar, combina o que será feito e quando termina. Ciência não paga passagem automaticamente.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -605,7 +605,7 @@
       "id": 302,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Colegiado.\n\nVocê pergunta sobre os editais. A funcionária responde com quatro siglas. Duas você nunca ouviu.\n\nDepois diz:\n\n'Tá no ÁGATA.'\n\nO ÁGATA está fora do ar.\n\n(Claro.)",
+      "textoNarrativo": "No colegiado, você pergunta sobre os editais. A funcionária responde com quatro siglas; duas você nunca ouviu.\n\n— Está tudo no ÁGATA.\n\nO ÁGATA está fora do ar.\n\n(Claro.)\n\nVocê pode insistir por uma orientação concreta ou agradecer e sair para consultar o edital quando o sistema voltar.",
       "escolhas": [
         {
           "textoAlternativa": "Insistir.",
@@ -674,7 +674,7 @@
       "id": 303,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "A sala do grupo cheira a café velho. Três quadros brancos com anotações de semestres atrás. Ninguém apagou. Ninguém vai apagar.\n\nO orientador te olha por cima dos óculos e depois olha o celular, e depois você de novo.\n\n'Então. A gente tá abrindo vaga. Me diz, em poucas palavras, por que você quer IC?'\n\nNão é pergunta de educação. Ele está medindo se você sabe responder sob pressão, e se você sabe quando parar de falar.",
+      "textoNarrativo": "A sala do grupo de pesquisa cheira a café velho. Três quadros brancos guardam anotações de semestres anteriores.\n\nSérgio Viana olha para você e pergunta, sem introdução:\n\n— Estamos abrindo vaga. Em poucas palavras: por que você quer IC?\n\nEle espera uma resposta. Você pode falar que quer aprender a pesquisar, que precisa da bolsa e também quer aprender, ou que gostaria de mudar o mundo com tecnologia.",
       "escolhas": [
         {
           "textoAlternativa": "Porque quero aprender a pesquisar. Mesmo que dê trabalho.",
@@ -780,7 +780,7 @@
       "id": 304,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Ele te recebe no laboratório. Tem uma protoboard montada na bancada, um multímetro e uma folha com medições de tensão. Não senta. Você também não.\n\n'Monitoria não é resolver a lista pelo aluno. É descobrir onde a pessoa se perdeu e ajudar a construir o raciocínio.'\n\nAponta o circuito.\n\n'Se o LED não acende, você começa trocando componente ou perguntando o que já foi medido? E se o aluno insistir que corrente e tensão são a mesma coisa?'\n\n'Você consegue explicar a mesma ideia de três jeitos diferentes? E admitir, quando precisar, que vai conferir a resposta antes de ensinar?'",
+      "textoNarrativo": "Meira te recebe no laboratório. Há uma protoboard, um multímetro e uma folha de medições sobre a bancada.\n\n— Monitoria não é resolver a lista pelo aluno. É descobrir onde a pessoa se perdeu e ajudar a construir o raciocínio.\n\nEle aponta para o LED apagado e pergunta se você começaria trocando o componente ou perguntando o que já foi medido. Pergunta também se conseguiria explicar a mesma ideia de três jeitos e admitir quando precisasse conferir uma resposta.\n\nVocê pode dizer que já explicou para colegas, que ainda não sabe mas quer tentar, ou que paciência também conta.",
       "escolhas": [
         {
           "textoAlternativa": "Consigo. Já expliquei coisas pra colegas antes.",
@@ -884,7 +884,7 @@
       "id": 3045,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "Você está voltando pra casa quando o celular apita. Não é WhatsApp. Não é e-mail.\n\nÉ uma notificação do ÁGATA.\n\n'Prezada discente: foi gerada, em seu nome, uma Avaliação de Perfil Acadêmico. Quatro (4) perguntas. Caráter obrigatório. Tempo estimado: 20 segundos.'\n\n'Esta avaliação não possui valor decisório.'\n\nBotão único: 'Começar'.\n\n(Obrigatório.)\n\n(Eu estou na rua.)",
+      "textoNarrativo": "Você está voltando para casa quando o celular apita. Não é WhatsApp nem e-mail: é uma notificação do ÁGATA.\n\n'Prezada discente: foi gerada, em seu nome, uma Avaliação de Perfil Acadêmico. Quatro perguntas. Caráter obrigatório. Tempo estimado: 20 segundos.'\n\n'Esta avaliação não possui valor decisório.'\n\nBotão único: 'Começar'.\n\n(Obrigatório.)\n\n(Eu estou na rua.)",
       "escolhas": [
         {
           "textoAlternativa": "Começar.",
@@ -922,7 +922,7 @@
       "id": 3046,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Pergunta 1 de 4.'\n\n'Você tem um problema novo para resolver. Existem duas opções: passar um mês estudando o assunto a fundo antes de tocar em qualquer coisa, ou começar a mexer por tentativa e erro até descobrir o que funciona.'\n\n'Qual delas descreve melhor a discente?'\n\n(Isso é avaliação de perfil?)\n\n(Pra que isso serve?)",
+      "textoNarrativo": "'Pergunta 1 de 4.'\n\n'Você tem um problema novo para resolver. Pode passar um mês estudando o assunto a fundo antes de tocar em qualquer coisa, ou começar por tentativa e erro até descobrir o que funciona. Qual delas descreve melhor a discente?'\n\n(Vinte segundos para decidir como você aprende.)",
       "escolhas": [
         {
           "textoAlternativa": "Estudar primeiro. Sem entender, eu não mexo.",
@@ -993,7 +993,7 @@
       "id": 3047,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Pergunta 2 de 4.'\n\n'A discente prefere trabalhar sozinha ou em grupo?'\n\n(Nenhuma das duas.)\n\n(Depende.)\n\nO formulário não tem campo pra 'depende'. Só duas bolinhas.",
+      "textoNarrativo": "'Pergunta 2 de 4.'\n\n'A discente prefere trabalhar sozinha ou em grupo?'\n\nVocê pensa em Dandara, Alan e nos momentos em que precisou estudar em silêncio. Nenhuma resposta vale para todas as situações.\n\nO formulário oferece duas bolinhas. A palavra 'depende' não está entre elas.",
       "escolhas": [
         {
           "textoAlternativa": "Sozinha. Cada um por si.",
@@ -1064,7 +1064,7 @@
       "id": 3048,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Pergunta 3 de 4.'\n\n'Seu nome em um artigo científico. Em uma banca de TCC. Em uma placa de laboratório.'\n\n'Isso é desejável?'\n\n(Uma placa de laboratório?)\n\n(Essa é específica demais pra ser neutra.)",
+      "textoNarrativo": "'Pergunta 3 de 4.'\n\n'Seu nome em um artigo científico. Em uma banca de TCC. Em uma placa de laboratório. Isso é desejável?'\n\n(Uma placa de laboratório?)\n\nA pergunta parece específica demais para ser neutra. Ainda assim, você só pode marcar sim ou não.",
       "escolhas": [
         {
           "textoAlternativa": "Sim. Quero ver meu nome em algum lugar.",
@@ -1135,7 +1135,7 @@
       "id": 3049,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Última pergunta.'\n\n'A discente prefere saber exatamente o que fará amanhã, ou descobrir na hora?'\n\n(O que isso tem a ver com edital?)\n\nO Sistema não explica.",
+      "textoNarrativo": "'Última pergunta.'\n\n'A discente prefere saber exatamente o que fará amanhã ou descobrir na hora?'\n\n(O que isso tem a ver com edital?)\n\nO Sistema não explica. Você escolhe entre planejamento e improviso porque a tela exige uma resposta.",
       "escolhas": [
         {
           "textoAlternativa": "Saber. Preciso de plano.",
@@ -1206,7 +1206,7 @@
       "id": 3050,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Perfil registrado. Obrigado pela participação. Esta mensagem foi gerada automaticamente.'\n\nA tela volta ao normal. Sem animação. Sem som. Como se nada tivesse acontecido.\n\nVocê abre o WhatsApp. Nenhuma mensagem.\n\n(Vinte segundos.)\n\n(Vinte segundos e ele decidiu o que eu sou.)\n\nEmbaixo do veredito, um botão pequeno que você nunca tinha visto: 'Discordar da classificação?'",
+      "textoNarrativo": "'Perfil registrado. Obrigado pela participação. Esta mensagem foi gerada automaticamente.'\n\nA tela volta ao normal sem animação nem som, como se nada tivesse acontecido.\n\n(Vinte segundos. E ele decidiu o que eu sou.)\n\nEmbaixo do resultado, aparece um botão pequeno que você nunca tinha visto: 'Discordar da classificação?'",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
@@ -1277,7 +1277,7 @@
       "id": 3051,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aceita.\n\nA tela some sem confirmação. Sem 'obrigado'. Sem nada.\n\n(Aceitei.)\n\n(De qualquer jeito eu ia escolher isso.)\n\n(Não ia?)",
+      "textoNarrativo": "Você aceita. A tela some sem confirmação, sem agradecimento e sem explicar o que aquela classificação recomenda.\n\n(Aceitei.)\n\n(De qualquer jeito eu ia escolher isso.)\n\n(Não ia?)",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -1315,7 +1315,7 @@
       "id": 3052,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você clica em discordar.\n\n'Recurso aberto. Processo nº 2026-IC-4471. Será analisado por um humano em até quinze (15) dias úteis.'\n\n(Quinze dias.)\n\n(A inscrição fecha em três.)\n\nVocê guarda o celular.\n\n(Não tem humano. Eu sei que não tem humano.)",
+      "textoNarrativo": "Você clica em discordar.\n\n'Recurso aberto. Processo nº 2026-IC-4471. Será analisado por um humano em até quinze dias úteis.'\n\nQuinze dias. A inscrição fecha em três.\n\nVocê guarda o celular. Não sabe se existe alguém do outro lado do protocolo; sabe que não haverá resposta a tempo de decidir por você.\n\n# Capítulo 5 — Greve",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -1353,7 +1353,7 @@
       "id": 305,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║            — O PRAZO DUPLO —             ║\n║     Uma escolha. Só uma. Sem volta.      ║\n╚══════════════════════════════════════════╝\n\nSexta à noite, em casa. Os dois editais abertos no ÁGATA. Prazo: amanhã, 23h59.\n\nO ÁGATA caiu às 20h. Você já tentou dez vezes. (Eu contei.)\n\nNas letras miúdas, os requisitos de cada vaga:\n\nPIBIC: Lattes e histórico de participação comprovada (grupos, extensão, eventos).\n\nMonitoria: CR acima de 7 e aprovação em entrevista.\n\nO ÁGATA só mostra as opções para as quais você está habilitada. O resto some da tela, sem explicação.",
+      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║            — O PRAZO DUPLO —             ║\n║     Uma escolha. Só uma. Sem volta.      ║\n╚══════════════════════════════════════════╝\n\nSexta à noite. Os editais estão abertos no ÁGATA; o prazo termina amanhã às 23h59. O sistema caiu às 20h e você já tentou dez vezes.\n\nPIBIC pede Lattes e histórico de participação comprovada. DTEC exige CR acima de 7 e aprovação em entrevista. O ÁGATA só mostra as opções para as quais você está habilitada; o resto some da tela, sem explicação.\n\nVocê quer pesquisar, ensinar, fazer freela ou dormir antes de decidir. A tela não oferece um botão para criar mais horas na semana.",
       "escolhas": [
         {
           "textoAlternativa": "PIBIC. Quero aprender a pesquisar. E R$ 700 é R$ 700.",
@@ -1539,7 +1539,7 @@
       "id": 306,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sábado, 23h58.\n\nVocê abre o ÁGATA de novo. Clica em IC. Volta. Clica em DTEC. Volta. Clica em IC de novo. Fecha a aba. Abre outra vez.\n\n23h59.\n\n(Eu preciso escolher agora.)",
+      "textoNarrativo": "Sábado, 23h58. Você abre o ÁGATA de novo. Clica em IC, volta, clica em DTEC, volta. Fecha a aba e abre outra.\n\n23h59.\n\n(Eu preciso escolher agora.)\n\nVocê pode se inscrever na IC, escolher DTEC, não concorrer a nenhum dos dois ou deixar o prazo passar.",
       "escolhas": [
         {
           "textoAlternativa": "IC.",
@@ -1664,7 +1664,7 @@
       "id": 371,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você preenche o formulário de IC.\n\n'Tem certeza? Esta escolha é definitiva.'\n\nVocê clica em sim. O ÁGATA pensa. O círculo gira.\n\n'Inscrição registrada às 23h59min57s.'\n\nTrês segundos de folga. Pela primeira vez, a vantagem é sua.\n\nVocê fecha o notebook e fica olhando o teto por uns dez minutos. O ventilador faz um barulho que você nunca tinha notado.",
+      "textoNarrativo": "O protocolo da IC chega ao e-mail. Você salva o número e o prazo de resposta.\n\nNo caderno, desenha uma pergunta e três coisas que precisaria medir. Uma delas depende de um equipamento que o laboratório não tem.\n\nVocê circula o obstáculo e escreve ao orientador perguntando se existe alternativa. A pesquisa começa antes da bolsa, antes do artigo e antes de qualquer certeza.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",
@@ -1705,7 +1705,7 @@
       "id": 372,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você preenche o formulário de DTEC.\n\nMesma pergunta de sempre. Você clica em sim. O círculo gira. 'Inscrição registrada às 23h59min57s.'\n\nVocê pensa na Dandara. Não sabe se ela também se inscreveu. Se a vaga for uma só, alguém vai ler um nome antes do outro.\n\nVocê não vai perguntar.",
+      "textoNarrativo": "Você preenche o formulário de DTEC. A mesma confirmação aparece: 'Inscrição registrada às 23h59min57s.'\n\nVocê pensa em Dandara. Não sabe se ela também se inscreveu. Se a vaga for uma só, alguém vai ler um nome antes do outro.\n\nVocê não vai perguntar.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",
@@ -1746,7 +1746,7 @@
       "id": 373,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fecha o notebook e vai tomar banho. Não se inscreve em nada.\n\nNo dia seguinte, tem um terceiro cartaz no mural, de alguém montando um projeto e precisando de ajuda. Só um nome e um número.\n\nVocê anota.",
+      "textoNarrativo": "Você fecha o notebook e vai tomar banho. Não se inscreve em nenhum dos dois editais.\n\nNo dia seguinte, encontra um terceiro cartaz: alguém está montando um projeto e precisa de ajuda. Há só um nome e um número.\n\nVocê anota o contato. Freela não é bolsa, mas é um caminho que pode escolher com outras condições.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",
@@ -1788,7 +1788,7 @@
       "id": 374,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você perdeu o prazo.\n\nSegunda-feira o mural está sem os editais. Alguém tirou. Ninguém colou nada no lugar.\n\nVocê fica olhando o retângulo de fita crepe velha onde os dois papéis estavam.\n\n(Quem entrou?)\n\n(Não sei.)\n\n(Eu não pergunto.)",
+      "textoNarrativo": "O prazo passou. Na segunda-feira, os editais foram retirados do mural. Ninguém colou nada no lugar.\n\nVocê fica olhando o retângulo de fita crepe onde os dois papéis estavam.\n\n(Quem entrou?)\n\n(Não sei.)\n\n(Eu não pergunto.)",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",

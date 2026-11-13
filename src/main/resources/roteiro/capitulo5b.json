@@ -9,7 +9,7 @@
       "id": 450,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Primeiro dia de monitoria. Sala 112.\n\nDoze alunos. Dois já abriram a lista; os outros ainda tentam descobrir qual parte da aula precisam rever. Você escreve no quadro a relação entre tensão, resistência e corrente.\n\nUm aluno usa a resistência em quilohms como se fosse ohm. O resultado sai mil vezes maior. Você percebe que apontar o erro não basta: precisa fazer a pessoa enxergar de onde veio.\n\nOutro pergunta se o LED pode ser ligado direto na fonte. Você respira e volta à ideia de limitar a corrente.\n\nNo fundo, um garoto de moletom, Téo, levanta a mão sem muita esperança:\n\n'Mas isso vai cair na prova?'\n\n(Eu não sou o professor.)\n\n(Mas preciso conseguir explicar por que isso importa.)",
+      "textoNarrativo": "Primeiro dia de monitoria. Sala 112. Doze alunos. Um usa um resistor em quilohms como se fosse ohm; outro pergunta se o LED pode ser ligado direto na fonte.\n\nVocê escreve a relação entre tensão, resistência e corrente. Apontar o erro não basta: precisa ajudar cada pessoa a enxergar de onde ele veio.\n\nNo fundo, Téo, um garoto de moletom, levanta a mão sem muita esperança.\n\n— Mas isso vai cair na prova?\n\nVocê não é o professor. Ainda assim, precisa conseguir explicar por que o conteúdo importa. Pode começar do zero, perguntar quem já sabe o básico ou preparar um exercício em etapas para que a turma explique cada passo.",
       "escolhas": [
         {
           "textoAlternativa": "Explicar do começo, devagar.",
@@ -114,7 +114,7 @@
       "id": 452,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia está na porta quando você sai.\n\n'Você escolheu DTEC.'\n\nOlha o quadro, ainda cheio de fórmula, pela janela.\n\n'Boa sorte com a greve.'\n\nFala como quem já sabe de alguma coisa. Ela sempre fala assim: como se a conversa tivesse começado antes de você chegar.",
+      "textoNarrativo": "Bia está na porta quando você sai.\n\n— Você escolheu DTEC.\n\nEla olha para o quadro, ainda cheio de fórmulas, pela janela.\n\n— Boa sorte com a greve.\n\nFala como quem já sabe de alguma coisa. Você pode perguntar o que ela sabe ou dizer que não está preocupada.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar o que ela sabe.",
@@ -187,7 +187,7 @@
       "id": 453,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "'Greve de professor é bonita no jornal.'\n\nGuarda o celular no bolso.\n\n'Na prática, a aula para, o RU pode fechar, a bolsa fica suspensa. E ninguém coloca isso em destaque no cartaz da assembleia.'\n\nNão espera resposta. Vai embora, deixando o aviso no ar.",
+      "textoNarrativo": "— Greve de professor é bonita no jornal — diz Bia.\n\nEla guarda o celular no bolso.\n\n— Na prática, a aula para, o RU pode fechar e a bolsa fica suspensa. Ninguém coloca isso em destaque no cartaz da assembleia.\n\nBia não espera resposta. Você pode anotar o aviso ou ignorá-lo antes de seguir para a próxima cena.\n\n# Capítulo 5C — Independente",
       "escolhas": [
         {
           "textoAlternativa": "Anotar o aviso.",
@@ -256,7 +256,7 @@
       "id": 470,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Meira te encontra no corredor do Módulo 5.\n\n'Todo mundo voltando. O calendário foi remanejado pra janeiro.'\n\n'A monitoria volta no próximo semestre. Se você ainda quiser.'\n\n(Eu ainda quero?)\n\n(Não sei. Mas alguma coisa em mim ainda quer.)",
+      "textoNarrativo": "Meira te encontra no corredor do Módulo 5.\n\n— Todo mundo está voltando. O calendário foi remanejado para janeiro. A monitoria volta no próximo semestre, se você ainda quiser.\n\nVocê ainda quer? Não sabe. Mas alguma coisa em você quer.\n\nPode aceitar agora ou pedir alguns dias antes de confirmar.",
       "escolhas": [
         {
           "textoAlternativa": "Ainda quero.",
@@ -329,7 +329,7 @@
       "id": 471,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Início do semestre seguinte. A sala 112 está lotada de novo, e o ar-condicionado continua quebrado.\n\nTéo, o do moletom, levanta a mão. O circuito dele não funciona. Em cima da protoboard, um fio amarelo sai pela beirada do furo, solto, como se tivesse desistido.\n\nVocê conhece esse fio. Conhece esse tipo de problema. Sabe onde está o erro antes de ele terminar de explicar.\n\nMeira, na porta, cruza os braços e não diz nada.",
+      "textoNarrativo": "Início do semestre seguinte. A sala 112 está lotada de novo; o ar-condicionado continua quebrado.\n\nTéo, o do moletom, levanta a mão. O circuito não funciona. Um fio amarelo sai pela beirada da protoboard, solto, como se tivesse desistido.\n\nVocê reconhece o erro antes que ele termine de explicar. Meira está à porta, de braços cruzados, sem dizer nada.\n\nVocê pode resolver por ele, devolver perguntas sobre o que já mediu e o que esperava medir, ou chamar Meira porque ainda não tem certeza de como ensinar.",
       "escolhas": [
         {
           "textoAlternativa": "Resolver pra ele. Você sabe onde está o erro.",

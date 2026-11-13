@@ -9,7 +9,7 @@
       "id": 0,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "5h47 da manhã.\n\nA aba do SISU está aberta há trinta e sete minutos. Você já atualizou dezenove vezes, e o F5 do teclado passou a fazer um barulho novo, meio de quem pede socorro.\n\nA tela pisca.\n\n{{APROVACAO}}\n\nVocê olha a parede. O teto. A tela de novo. Continua lá.\n\n(Nossa.)\n\nDo outro lado da parede, sua mãe dorme. Você fecha o notebook devagar, bem devagar, como se o clique pudesse desfazer tudo.",
+      "textoNarrativo": "5h47 da manhã. A aba do SISU está aberta há trinta e sete minutos. Você atualizou tantas vezes que o F5 começou a fazer um barulho novo.\n\nA tela pisca.\n\n{{APROVACAO}}\n\nVocê confere o nome. Depois o curso. Depois confere os dois outra vez.\n\nDo outro lado da parede, sua mãe dorme. O notebook continua aberto. Você pode acordá-la agora ou guardar a notícia por alguns minutos, só para ter certeza de que a tela não vai mudar.",
       "escolhas": [
         {
           "textoAlternativa": "Acordar ela. Você precisa ver a cara dela.",
@@ -80,7 +80,7 @@
       "id": 1,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Segunda-feira, 6h. O alarme toca uma música que você nem lembra de ter escolhido. Hoje é matrícula.\n\n6h01. ÁGATA fora do ar.\n\n(O ÁGATA é o sistema acadêmico da universidade. Todo mundo fala dele como se fala do tempo: ninguém controla, todo mundo comenta.)\n\n7h. Fora. 8h. Fora. Você abre o grupo dos calouros pra ver se alguém sabe de algo. Trezentas e quarenta mensagens. Trezentas e trinta e nove são 'alguém sabe o que é isso?'. A outra é um bom-dia.\n\n14h. Fora. 17h48: você já escreveu pro suporte, pra coordenação, pro DCE e pra uma amiga do Direito que não tem nada a ver com isso. Ninguém respondeu.\n\n17h52. O sistema volta.\n\nA vaga de Introdução à Engenharia foi preenchida às 17h49. O ÁGATA estava fora do ar às 17h49. Você lê isso três vezes.\n\nTrês minutos.\n\nSobrou Cálculo I, com o professor que todo mundo chama de 'o pesadelo'. Você nem sabe quem é.",
+      "textoNarrativo": "Segunda-feira, 6h. Dia de matrícula. A grade do primeiro semestre da turma ingressante já vem definida; você não escolhe livremente as disciplinas. Hoje precisa conferir documentos, horários e onde deve se apresentar.\n\n6h01. O ÁGATA está fora do ar. No grupo dos calouros, chegam centenas de mensagens: alguém pergunta pelo edital, outra pessoa não sabe se precisa levar cópia do histórico, e ninguém confirma se o protocolo foi recebido.\n\nVocê abre o edital no celular, mas a página demora. Às 17h52, o sistema volta. A grade continua a mesma; o que falta é entender o procedimento e descobrir como começar sem perder nenhuma informação importante.\n\nVocê pode ler as instruções, pedir ajuda no grupo ou aceitar o caos e resolver o que der quando chegar.",
       "escolhas": [
         {
           "textoAlternativa": "Ler o edital inteiro. Nunca mais.",
@@ -184,7 +184,7 @@
       "id": 2,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você entrega o Termo de Compromisso. O funcionário olha o papel, carimba, assina, arquiva.\n\n'Pronto.'\n\nTrinta segundos. (Anos de estudo. Trinta segundos.)\n\nO RU está com a fila dando a volta no bloco. Cardápio: frango com quiabo. Você não sabe se é frango com quiabo ou frango E quiabo. Talvez os dois.\n\nR$ 2,00 com cartão. R$ 17,18 sem. Você ainda não tem cartão.\n\nNa fila, uma menina de cabelo cacheado te olha. Hesita. Fala:\n\n'Ei. Você é caloura também? Eu não conheço NINGUÉM aqui. Tipo, ninguém. Ontem eu falei bom dia pra uma planta achando que era uma pessoa.'",
+      "textoNarrativo": "O funcionário carimba seu protocolo e chama a próxima pessoa. Trinta segundos de balcão encerram meses de matrícula, documentos e ansiedade.\n\nNo RU, a fila dobra o corredor. Sem cartão, o almoço custa R$ 17,18; com ele, R$ 2,00. O cardápio é frango com quiabo, e você calcula se ainda dá tempo de resolver o cadastro antes de a fila andar.\n\nÀ sua frente, uma estudante de cabelo crespo curto, faixa amarela e brincos diferentes consulta um mapa no celular. A mochila está presa ao encosto da cadeira de rodas.\n\n— O GPS me colocou dentro de uma farmácia. Acho que desistiu da universidade antes de mim.\n\nEla se apresenta como Malu e mostra a rota. A entrada indicada não tem degraus, mas está trancada. Malu verifica a placa, escolhe o corredor principal e segue por ele sem cerimônia. O caminho é mais longo; vocês vão conversando enquanto a fila avança.\n\n— Você já conseguiu o cartão? — ela pergunta. — Porque eu achei a sala do cadastro. Agora só falta descobrir em qual dos prédios chamados 'anexo' ela fica.",
       "escolhas": [
         {
           "textoAlternativa": "Puxar conversa. Ela parece tão perdida quanto você.",
@@ -323,7 +323,7 @@
       "id": 3,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No pátio, um caramelo atravessa com a calma de quem tem apê ali.\n\n'Esse é o Caramelo', alguém avisa. 'Ele é do DCE.'\n\nNa SIECOMP, um cara de copo térmico amassado te olha. O copo está tão amassado que parece ter caído do terceiro andar e ele ter descido pra buscar. Segura como se fosse troféu.\n\nEle não sorri. Não fala. Só olha.\n\n(Ele tá me julgando? Me avaliando? Com sono?)",
+      "textoNarrativo": "No pátio, o Caramelo atravessa como se tivesse apartamento ali.\n\n— Esse é o Caramelo. Ele é do DCE — alguém avisa.\n\nNa SIECOMP, um cara de copo térmico amassado acompanha o movimento sem sorrir. O copo parece ter caído do terceiro andar; ele segura como troféu.\n\nVocê pode puxar conversa com o veterano, oferecer um salgado ao cachorro, observar de longe ou passar reto. O campus ainda é novo; medir o terreno antes de entrar também conta como plano.",
       "escolhas": [
         {
           "textoAlternativa": "Falar com ele.",
@@ -493,7 +493,7 @@
       "id": 4,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele não espera você falar.\n\n'Primeiro semestre?'\n\nVocê confirma com a cabeça. Ele dá um gole e fala como quem receita:\n\n'Não compra livro. Ninguém usa. Todo mundo compra no primeiro semestre e se arrepende em outubro. Se precisar, tem PDF no drive.'\n\nO copo gira meia volta na mão dele.\n\n'Pronto. Foi a última coisa que eu falei de graça.'",
+      "textoNarrativo": "— Primeiro semestre? — Caio pergunta. Você confirma.\n\n— Não compra livro agora. Ninguém usa todos. Se precisar, tem PDF no drive da turma.\n\nEle gira o copo amassado na mão.\n\n— Pronto. Foi a última coisa que eu falei de graça.\n\nVocê pode perguntar o que tem no drive, explicar por que veio para Engenharia de Computação ou devolver a pergunta e descobrir há quanto tempo ele está ali.",
       "escolhas": [
         {
           "textoAlternativa": "Vim pra dominar o código e mudar o mundo.",
@@ -635,7 +635,7 @@
       "id": 71,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele te olha por cima do copo.\n\n'Mudar o mundo.'\n\nEle não está rindo de você. Isso é o pior.\n\n'Leva bomba e chiclete pra final de Cálculo. Três horas de prova.'\n\nOutro gole.\n\n'Não é exagero.'",
+      "textoNarrativo": "— Mudar o mundo, é? — Caio repete.\n\nVocê espera a piada, mas ele acompanha um grupo montando um cartaz no pátio.\n\n— Eu dizia isso também. Depois passei um semestre tentando consertar tudo ao mesmo tempo e quase larguei o curso. O mundo não percebeu; meu corpo percebeu.\n\nEle volta a olhar para você.\n\n— Continua sendo um motivo bom. Só não precisa provar que acredita nisso aceitando cada tarefa que aparece.\n\nAntes de ir, empurra uma garrafa de água na sua direção.\n\n— Cálculo começa cedo. Essa parte eu aprendi do jeito burro.",
       "escolhas": [
         {
           "textoAlternativa": "Onde é a sala?",
@@ -673,7 +673,7 @@
       "id": 72,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "'Finalmente alguém com senso.'\n\nEle sorri torto. É o primeiro sorriso que você vê nele, e dura menos que um carregamento de página.\n\n'O mercado não quer herói. Quer quem entrega na sexta às 18h sem derrubar o servidor.'",
+      "textoNarrativo": "— Diploma e emprego — Caio diz. — Resposta honesta. Já é melhor que aquele cartaz ali prometendo 'transformar o futuro' com uma foto de banco de imagens.\n\nVocê ri. Ele aponta para uma vaga impressa no mural: três anos de experiência numa ferramenta lançada há seis meses.\n\n— O mercado às vezes quer uma pessoa e uma máquina do tempo. Mas estabilidade não é motivo menor. Eu só tentaria descobrir que tipo de trabalho você toparia fazer mesmo num dia ruim.\n\nO ônibus de Caio aparece no aplicativo. Ele fecha a conversa antes que vire palestra.\n\n— Se descobrir, me avisa. Eu ainda estou fazendo a conta.",
       "escolhas": [
         {
           "textoAlternativa": "Onde é a sala?",
@@ -713,7 +713,7 @@
       "id": 73,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele para. O copo fica suspenso no meio do caminho.\n\n'Cinco anos.'\n\n'Entrei aos 18. Reprovei Cálculo duas vezes. Perdi a bolsa. Tô aqui por teimosia.'\n\n(Ele olhou pro copo quando disse 'reprovei'.)\n\nBebe. Volta a ser o cara cínico em menos de um segundo.",
+      "textoNarrativo": "Caio para. O copo fica suspenso no meio do caminho.\n\n— Cinco anos. Entrei aos dezoito, reprovei Cálculo duas vezes, perdi a bolsa. Tô aqui por teimosia.\n\nEle olha para o copo ao dizer 'reprovei'. Bebe e volta ao jeito cínico quase no mesmo segundo.\n\nVocê pode dizer que entende ou perguntar se ele quer ajuda para estudar. Caio não parece acostumado a receber nenhuma das duas coisas.",
       "escolhas": [
         {
           "textoAlternativa": "Digo que entendo.",
@@ -788,7 +788,7 @@
       "id": 5,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "A oficina cheira a estanho e a café requentado. Bancadas compridas, protoboards empilhadas, um osciloscópio que parece mais caro que a sala inteira.\n\nO professor escreve no quadro sem olhar pra turma:\n\n'Hoje vocês vão montar um circuito simples e descobrir por que ele funciona. Ou não.'\n\nDeixa sobre a bancada resistores, diodos, LEDs, uma fonte e um gerador de funções.\n\n'Antes de ligar qualquer coisa: leiam o roteiro, confiram os componentes e não tratem o datasheet como decoração. Volto em duas horas.'\n\nA porta fecha. Silêncio de uns três segundos.\n\n(Eu sei o que é um diodo no papel. Isso não quer dizer que eu reconheça um quando ele estiver fazendo besteira na minha frente.)\n\nAí alguém no fundo grita: 'PEGA O DATASHEET.' A sala se agita. Uma dupla já quer ligar a fonte; outra discute a polaridade do LED. Na bancada ao lado, uma menina de tranças presas com um lápis lê o datasheet com o dedo, linha por linha, mexendo os lábios. Na etiqueta da mochila: Dandara.\n\nMontar é só a primeira metade. A segunda é impedir que o componente queime antes de você entender qualquer coisa.",
+      "textoNarrativo": "A oficina cheira a café requentado e metal quente. Na lousa, o professor Rafael Meira escreve: 'Não é fazer acender. É explicar por que acendeu.'\n\nNa bancada há resistores, diodos, LEDs, uma fonte e um multímetro. Você reconhece tudo no desenho do roteiro; ao vivo, os componentes são pequenos e os códigos de cor parecem uma pegadinha.\n\nNa bancada ao lado, Dandara confere as peças uma por uma. Usa tranças presas num coque alto, mangas arregaçadas e um caderno cheio de anotações nas margens.\n\n— O resistor do esquema não bate com o que entregaram — ela diz. — Se a gente seguir a figura, pode queimar o LED.\n\nMeira não entrega a resposta. Pede que vocês mostrem como chegaram à hipótese. Dandara já está procurando o código de cores; você tem o multímetro em mãos.\n\nA primeira decisão do laboratório é simples: ligar logo ou descobrir o que de fato está na bancada?",
       "escolhas": [
         {
           "textoAlternativa": "Separar LED, resistor e diodo; conferir polaridade e identificação antes de montar.",
@@ -1019,7 +1019,7 @@
       "id": 16,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sala 203. O tutor entra e cola uma folha no quadro antes de distribuir o Problema 2.\n\n'Na SIECOMP vocês viram como funciona.'\n\nDois minutos, três tarefas: resumir o que funcionou na oficina, anotar as observações, organizar a ordem das ideias. As pessoas se entreolham. A tarefa é simples. O difícil é decidir quem vai fazer o quê.\n\n(Você pode tomar a frente ou deixar outra pessoa conduzir.)",
+      "textoNarrativo": "Na sala 203, o tutor divide a turma em equipes e propõe uma tarefa curta: explicar o que aconteceu na oficina e transformar dúvidas em questões de estudo. A mesa fica cercada por cadeiras que ninguém lembra de ter arrastado.\n\nDuas pessoas falam ao mesmo tempo. Outra abre o documento compartilhado e digita 'VERSÃO FINAL' antes de existir uma primeira versão.\n\nAlan, na ponta, espera a conversa respirar. Quando alguém diz que o circuito falhou por causa do resistor, ele aponta para as medidas.\n\n— A corrente quase não passou. A gente ainda não testou o resistor.\n\nA frase fica no ar. O tutor observa; não vai escolher quem conduz a discussão.\n\nVocê percebe que o grupo precisa de uma hipótese melhor, mas também de espaço para quem não disputa volume. O relógio já começou a contar.",
       "escolhas": [
         {
           "textoAlternativa": "Assumir a coordenação e distribuir as tarefas.",
@@ -1150,7 +1150,7 @@
       "id": 6,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sala 203. Mesa redonda, quadro branco, seis pessoas. Entre elas, o Alan, que tira e põe a tampa da caneta num ritmo que alguém, um dia, vai chamar de método.\n\nO tutor cola uma folha impressa no quadro sem olhar pra ninguém.\n\n'Problema 2 — Jogo Narrativo. Fase 1: modelagem de classes, esboço do Model, menu inicial e tela de características. Vocês têm quarenta minutos.'\n\n'Estrutura de sempre: Ideias, Fatos, Questões. Quadro anota. Mesa transcreve. Coordenador conduz.'\n\nEle senta no canto com um tablet e não fala mais nada.\n\nTodo mundo olha pra todo mundo. Alguém tem que começar.",
+      "textoNarrativo": "Problema 2 — Jogo Narrativo. Fase 1.\n\nNa folha: modelar as classes e desenhar o fluxo do menu inicial. No grupo, seis pessoas já têm sete opiniões sobre por onde começar.\n\n— Se separarmos regra do jogo e tela, uma mudança no menu não quebra a lógica inteira — Alan diz. Ele desenha dois blocos e uma seta no quadro. É um esquema simples; muda o rumo da conversa.\n\nUma colega quer abrir a IDE agora. Outra pede uma lista de atributos. A pessoa com o documento compartilhado anuncia que vai registrar 'o que o grupo decidir', embora ninguém esteja coordenando.\n\nAlan sabe explicar o desenho se tiver espaço. Você pode organizar esse espaço, assumir uma função, contribuir sem cargo ou deixar o grupo se resolver sozinho.\n\nO prazo não vai esperar vocês decidirem quem tem permissão para falar.",
       "escolhas": [
         {
           "textoAlternativa": "Assumir a Coordenação. Alguém tem que conduzir isso.",
@@ -1353,7 +1353,7 @@
       "id": 7,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. A última atividade da semana acabou.\n\nA tarde inteira está na sua frente. Pela primeira vez em cinco dias, ninguém está te pedindo nada.\n\n(E agora?)",
+      "textoNarrativo": "Sexta-feira. O ônibus que você precisa pegar passa em vinte minutos.\n\nNa sala do PBL, o grupo ainda discute se o menu vem antes das regras. Alan tenta mostrar que a separação entre lógica e interface evita retrabalho; alguém interrompe para falar do nome das classes. O documento compartilhado tem três versões e nenhuma pessoa responsável por juntar as mudanças.\n\nSeu caderno ainda está aberto na oficina. O LED acendeu; a dúvida sobre o circuito, não.\n\nO celular vibra: 'A gente fica mais um pouco?'. Você olha o horário, a bancada iluminada e o ponto de ônibus no mapa. Nenhuma opção dá conta de tudo que você queria fazer hoje.",
       "escolhas": [
         {
           "textoAlternativa": "Voltar pra oficina. Ainda quero entender aquele circuito.",
@@ -1482,7 +1482,7 @@
       "id": 8,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A oficina está vazia. Só você e o zumbido do osciloscópio. O circuito da manhã continua na protoboard, com um fio amarelo saindo pela beirada, como se tivesse desistido.\n\nVocê não liga a fonte de cara. Confere a orientação do diodo no datasheet, segue as conexões linha por linha, corrige um jumper e só então energiza.\n\nO LED continua apagado.\n\nPega o multímetro. Em volta, tudo o que o roteiro mandou usar: gerador de funções, osciloscópio, o modo X-Y que você nunca tinha tocado. A tarefa não é fazer uma luz acender. É descobrir o que está acontecendo eletricamente.\n\nVocê liga o X-Y e a curva aparece espelhada, como uma letra escrita de trás pra frente. Pode ser a montagem. Pode ser a referência dos canais. Pode ser você.\n\nPela primeira vez, entende por que o professor mandou conferir cada etapa antes de interpretar a tela.",
+      "textoNarrativo": "A oficina está vazia. O circuito da manhã continua na protoboard; um fio amarelo escapa pela beirada.\n\nVocê não liga a fonte de cara. Confere a orientação do diodo no datasheet, segue as conexões linha por linha e corrige um jumper. O LED continua apagado.\n\nO multímetro está na bancada. Você pode medir a tensão no resistor e comparar com o esperado, ou ir embora e retomar depois. O osciloscópio e o modo X-Y continuam esperando, mas não precisam ser resolvidos nesta noite.",
       "escolhas": [
         {
           "textoAlternativa": "Medir a tensão no resistor e comparar com o valor esperado.",
@@ -1555,7 +1555,7 @@
       "id": 9,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Zero volt no resistor. Nenhuma corrente passando. Você olha o LED: a perninha mais curta está do lado errado.\n\nInverte. A luz vermelha acende, minúscula, tremendo de leve.\n\nVocê quase comemora, mas volta ao roteiro: a prática não termina quando o componente acende. Estima a corrente pela Lei de Ohm, anota, compara com a medida. Depois lembra da curva espelhada: o resistor precisa ficar do lado do terra, senão o osciloscópio enxerga a corrente de cabeça pra baixo.\n\nTroca de lado. A curva endireita. O joelho do diodo de silício aparece perto de 0,7 V. O do LED, bem mais à direita. Sempre foi assim. Você só nunca precisou olhar.\n\n(Eu consegui fazer funcionar. Entender por que funcionou é outra etapa. Mas hoje a etapa de entender tem dados, e não só um palpite.)\n\nCaio, o veterano da turma de cima, aparece na porta. Olha a bancada, olha você. Assente uma vez, bem devagar, e vai embora.\n\nVocê fica uns cinco segundos olhando pra porta.\n\n(Ele assentiu. Eu acho.)",
+      "textoNarrativo": "Zero volt no resistor. Nenhuma corrente passa. A perna curta do LED está do lado errado.\n\nVocê inverte a peça. A luz vermelha acende, minúscula e tremendo.\n\nEm vez de parar ali, estima a corrente pela Lei de Ohm, anota o valor e compara com a medida. Depois refaz o traçado X-Y: o resistor precisa ficar no lado de referência do terra para a corrente aparecer com a orientação esperada. O joelho do diodo de silício surge perto de 0,7 V; o do LED, mais à direita.\n\nCaio aparece à porta, olha a bancada e assente uma vez. Você fica alguns segundos olhando para a porta, tentando decidir se aquilo foi elogio.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar a semana e seguir pro próximo capítulo.",
@@ -1598,7 +1598,7 @@
       "id": 14,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você vai embora.\n\nNo ônibus, o vidro está embaçado e você escreve 'UEFP' com o dedo sem perceber. Depois apaga com a manga.\n\n(Talvez eu tenha escolhido o curso errado.)\n\n(Talvez não.)",
+      "textoNarrativo": "Você pega o ônibus. Não resolve a dúvida do circuito nem termina o PBL. Resolve uma coisa mais imediata: chega em casa antes de o último horário desaparecer.\n\nNa viagem, o grupo manda uma foto do quadro. A seta que Alan desenhou ainda está lá; alguém escreveu 'verificar' embaixo. Você salva a imagem e guarda o celular.\n\nEm casa, sua mãe pergunta se a aula foi boa. Você diz que o LED não acendeu. Ela pergunta se isso é bom.\n\n— Ainda não sei.\n\nVocê come, toma banho e dorme antes de descobrir. Amanhã a resposta continua disponível.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar a semana e seguir pro próximo capítulo.",
@@ -1638,7 +1638,7 @@
       "id": 13,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Módulo 8. Dominó batendo, cerveja gelada, um cheiro de espetinho que ninguém sabe de onde vem. Ninguém falando de prova, de CR, de edital.\n\nVocê percebe que não pensa em faculdade há quarenta minutos.\n\n(Quarenta minutos.)",
+      "textoNarrativo": "No Módulo 8, dominó bate na mesa e alguém defende que Cálculo deveria ser tombado como patrimônio imaterial. Zé atravessa o salão com uma bandeja e chama duas pessoas pelo nome antes de chegar à mesa.\n\nVocê se senta com um grupo que discute uma apresentação desastrosa. Uma estudante conta que o projetor falhou; outra, que esqueceu a própria fala. As duas riem agora, embora nenhuma tenha achado graça na hora.\n\nPor alguns minutos, ninguém pergunta sua nota nem que linguagem você sabe. O celular vibra com mensagens do PBL. Você deixa a tela virada para baixo.\n\nZé encosta a bandeja na mesa.\n\n— Vai pedir alguma coisa ou veio só assistir a gente resolver o ensino superior no dominó?",
       "escolhas": [
         {
           "textoAlternativa": "Puxar conversa e conhecer melhor o pessoal.",
@@ -1779,7 +1779,7 @@
       "id": 15,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Zé do Módulo 8",
-      "textoNarrativo": "Alguém conta uma história absurda da semana. Outra pessoa reclama do ÁGATA. Por alguns minutos, ninguém tenta transformar a noite em oportunidade.\n\nO Zé passa com a bandeja, olha você uma vez e decide:\n\n'Aqui ninguém pergunta seu CR, caloura. Pergunta se vai querer mais gelo.'\n\nVocê não resolveu a faculdade. Só passou um tempo com outras pessoas. Por hoje, bastou.",
+      "textoNarrativo": "Você pede um espetinho. A conversa muda de uma prova para uma música, daí para um jogo que ninguém terminou e para o cachorro caramelo que, segundo alguém, já participou de três assembleias.\n\nQuando percebe, está contando a história do LED apagado com detalhes demais. A mesa ri no momento certo, principalmente quando você descreve o componente como 'pequeno e pessoalmente ofendido'.\n\nVocê não saiu dali com um plano para o semestre. Saiu com dois contatos novos e uma mensagem de Malu perguntando se o cartão do RU finalmente funcionou.\n\nNo ônibus de volta, responde: 'Funcionou. O GPS ainda está em recuperação'.\n\n# Capítulo 2 — As primeiras sereias",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar a semana e seguir pro próximo capítulo.",

@@ -9,7 +9,7 @@
       "id": 700,
       "capitulo": "Prólogo",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Cinco anos depois.\n\nSala de entrevista, 14h07. A banca atrasou sete minutos e você já contou os azulejos da parede duas vezes. Dá quarenta e dois, se o rodapé entrar.\n\nMesa de vidro. Uma cadeira que parece ter sido projetada para ninguém querer ficar. Do outro lado, um notebook aberto com um adesivo de time de futebol, virado só o bastante para você não conseguir ler a tela.\n\nA pessoa da banca passa os olhos pelo seu currículo. Desce. Desce. Para numa linha.\n\nNão é a primeira nem a última: uma entre as quarenta. Mesmo assim ela lê duas vezes, e você percebe.\n\nAí levanta os olhos.\n\n'Por que você quer trabalhar aqui?'\n\n(Eu ensaiei essa resposta. No ônibus. No banho. Numa fila de padaria.)",
+      "textoNarrativo": "Cinco anos depois. A sala de entrevista está sete minutos atrasada. Você já contou os azulejos, leu o próprio currículo de cabeça para baixo e desistiu de entender a cadeira.\n\nA pessoa da banca passa os olhos pelo seu portfólio e para numa linha. Não é a primeira nem a última candidata; mesmo assim, lê duas vezes.\n\n— Por que você quer trabalhar aqui?\n\nVocê ensaiou a resposta no ônibus, no banho e numa fila de padaria. As três versões ainda disputam espaço: você precisa do emprego, escolheu essa área, e nem sempre sabe o que vem depois.\n\nA pergunta fica suspensa. Cinco anos antes, você ainda tentava descobrir por que tinha escolhido Engenharia de Computação.",
       "escolhas": [
         {
           "textoAlternativa": "Porque eu preciso. Simples assim.",
@@ -111,7 +111,7 @@
       "id": 701,
       "capitulo": "Prólogo",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A pessoa assente devagar, sem entregar nada. Anota alguma coisa. Você tenta ler de cabeça pra baixo, depois de lado, e desiste.\n\n'Certo.' Ela fecha o notebook pela metade. 'Vamos voltar um pouco. Cinco anos atrás. Por que Engenharia de Computação?'\n\nA pergunta é mais simples que a primeira. É por isso que é pior.\n\n(Cinco anos atrás. Eu lembro. Lembro até do horário.)\n\n5h47 da manhã.",
+      "textoNarrativo": "A pessoa assente, sem revelar se gostou da resposta. Anota algo e fecha o notebook pela metade.\n\n— Certo. Então vamos voltar um pouco. Cinco anos atrás, por que Engenharia de Computação?\n\nA pergunta parece mais simples. Você lembra do horário, do celular aberto e de uma aba do SISU que não queria carregar.\n\nCinco anos antes. 5h47 da manhã.\n\n# Capítulo 1 — Matrícula",
       "escolhas": [
         {
           "textoAlternativa": "Voltar pro começo.",

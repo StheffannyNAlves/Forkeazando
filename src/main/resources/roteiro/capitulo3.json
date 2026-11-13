@@ -9,7 +9,7 @@
       "id": 200,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Cálculo I. Segunda-feira, 7h.\n\nVocê saiu de casa antes do sol, pegou dois ônibus e chegou com a sensação de que já viveu um dia inteiro antes da prova. A sala está cheia: gente refazendo exercício no verso de lista velha, gente encarando o nada.\n\nNa primeira fila, Dandara escreve sem levantar a cabeça, a mão esquerda segurando o pulso da direita pra não tremer. No fundo, a menina dos resumos do mural, de fichário aberto, organizada como quem faz isso há mais tempo que todo mundo.\n\nVocê revisou limites. Tentou entender o que cada passagem algébrica estava fazendo e resolveu exercício sem olhar a resposta. Mesmo assim, alguns passos ainda parecem mágica quando aparecem na solução pronta.\n\nO Prof. Meira entra como fiscal. Reconhece você da oficina e não dá pista nenhuma.\n\nCinco questões. A primeira é um limite.",
+      "textoNarrativo": "Cálculo I. Segunda-feira, 7h. Você chegou depois de dois ônibus e uma revisão de fórmulas no corredor.\n\nDandara está na primeira fila, refazendo uma questão. Bia, a estudante dos resumos do mural, organizou o fichário ao lado. Você pode rever as fórmulas, procurar Bia, tentar respirar ou olhar para Meira, que entrou como fiscal e não vai dar pista.\n\nCinco questões. A primeira é um limite. A segunda parece familiar até esconder uma fatoração atrás de uma raiz.\n\nVocê estudou. Mesmo assim, algumas passagens ainda parecem magia quando aparecem na solução pronta.",
       "escolhas": [
         {
           "textoAlternativa": "Revisar as fórmulas.",
@@ -171,7 +171,7 @@
       "id": 213,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Ele passa perto da sua mesa. Baixo. Sem parar de andar.\n\n'Aquele esquema que você copiou na oficina.'\n\n'O do grupo da frente ligava o LED sem resistor em série. Você copiou o desenho inteiro e não perguntou por quê.'\n\n'Se o LED tivesse queimado, eu ia saber pelo cheiro.'\n\nContinua andando.\n\n(Ele viu.)\n\n(Ele sempre vê.)",
+      "textoNarrativo": "Meira passa ao lado da sua carteira e fala baixo, sem parar:\n\n— Aquele esquema que você copiou na oficina. O grupo da frente ligava o LED sem resistor em série. Você copiou o desenho inteiro e não perguntou por quê.\n\nEle continua andando.\n\n— Se tivesse queimado, você ia saber pelo cheiro.\n\nVocê percebe que ele viu. A questão de Cálculo continua na folha; a prova também.",
       "escolhas": [
         {
           "textoAlternativa": "Terminar a prova.",
@@ -211,7 +211,7 @@
       "id": 201,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║      — O LIMITE QUE NÃO CONVERGE —       ║\n╚══════════════════════════════════════════╝\n\nVocê olha a primeira questão: um limite com cara de inocente. A segunda é o mesmo limite, só que escondendo a fatoração atrás de uma raiz. A terceira você decide não olhar mais.\n\n(Eu não vou passar.)\n\n(Eu SEI que não vou passar.)\n\nSó que tem uma coisa estranha: você não está com medo. Está cansada. E cansada é diferente de com medo.",
+      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║      O LIMITE QUE NÃO CONVERGE           ║\n╚══════════════════════════════════════════╝\n\nA primeira questão tem cara de inocente. A segunda esconde uma fatoração atrás de uma raiz. Você decide não olhar a terceira até terminar as duas primeiras.\n\nO resumo de Bia avisava sobre uma armadilha parecida. Você se lembra do aviso, do relógio e da folha ao lado.\n\n(Eu não vou passar.)\n\nVocê pode tentar o que sabe, procurar uma resposta de lado ou entregar em branco. Ainda há tempo para escolher como vai atravessar os próximos minutos.",
       "escolhas": [
         {
           "textoAlternativa": "Fazer o que sabe.",
@@ -488,7 +488,7 @@
       "id": 202,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você resolve a primeira.\n\nA segunda você tenta por vinte minutos. Erra.\n\nA terceira sai pela metade. As duas últimas ficam em branco.\n\nEntrega com 1h30 de prova.",
+      "textoNarrativo": "Você começa pela questão que reconhece. Uma substituição funciona; a seguinte te leva a um resultado estranho. Você confere o sinal, encontra o erro e segue.\n\nO tempo termina antes de você alcançar tudo. Ao entregar, fica uma questão pela metade e duas em branco. Não é a prova que queria, mas há passos ali que você consegue explicar.\n\nNo corredor, Dandara pergunta como foi. Você responde: 'tem uma questão que eu quero refazer'. Ela entende que não é hora de perguntar o resto.",
       "escolhas": [
         {
           "textoAlternativa": "Sair sem olhar.",
@@ -561,7 +561,7 @@
       "id": 204,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia, a das pastas de resumo, olha pra você. Entende o que você quer sem que você diga. Desliza um papel por cima da mesa, sem uma palavra.\n\nSão dez respostas, em letra miúda.\n\nNa primeira fila, Dandara ainda escreve, os ombros duros. Você sabe de que bolsa ela precisa e quanto a bolsa paga.\n\n(Eu não devia estar olhando pra esse papel.)\n\nVocê olha pro papel.\n\nVocê olha pra Dandara.",
+      "textoNarrativo": "Bia percebe seu rascunho parado. Sem olhar para você, empurra um papel dobrado entre as carteiras.\n\n— Eu não devia fazer isso — sussurra. — Mas eu também tô com medo dessa nota.\n\nO papel tem respostas. O relógio marca pouco mais de meia hora. Você sente o impulso de abrir e o desconforto de saber que a decisão ainda é sua.\n\nBia não parece orgulhosa do que fez. Isso não transforma a oferta em acidente. Você precisa escolher o que fará com ela.",
       "escolhas": [
         {
           "textoAlternativa": "Copiar.",
@@ -641,7 +641,7 @@
       "id": 205,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você copia.\n\nNão olha pra Dandara. Entrega antes dela e sai.\n\nNo corredor, fica com uma sensação estranha: a de ter ganhado alguma coisa que não era sua.\n\n(Eu vou esquecer isso.)\n\n(Um dia.)",
+      "textoNarrativo": "Você copia. Não olha para Dandara. Entrega antes dela e sai.\n\nNo corredor, a sensação não é de alívio; é de ter ganhado algo que não era seu. Bia te alcança e admite que também estava com medo da nota quando passou o papel.\n\nDandara ainda está dentro da sala. Você pode ir embora ou esperar por ela.\n\n(Eu vou esquecer isso.)\n\n(Um dia.)",
       "escolhas": [
         {
           "textoAlternativa": "Ir pra casa.",
@@ -712,7 +712,7 @@
       "id": 207,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você levanta.\n\nEntrega com nome e matrícula e mais nada.\n\nO professor não diz nada. Alguém no fundo ri. Você não sabe se é de você ou de outra coisa.",
+      "textoNarrativo": "Você entrega a prova quase em branco. No corredor, o barulho da turma parece vir de outra sala.\n\nUma colega pergunta se você quer ir ao RU. Você diz que não sabe e fica parada junto à porta enquanto todo mundo se afasta.\n\nA primeira ideia é sumir até a nota sair. A segunda é fotografar a questão que te travou antes de esquecê-la.\n\nSeu celular está na mão. Você decide o que guardar para depois.",
       "escolhas": [
         {
           "textoAlternativa": "Sentar no pátio.",
@@ -779,7 +779,7 @@
       "id": 208,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Caio senta do seu lado. Não fala. Cinco minutos de silêncio, o copo equilibrado no joelho.\n\nAí ele fala, sem olhar pra você:\n\n'Também entreguei em branco a minha primeira prova.'\n\n'Fiquei com 1,2. Reprovei. Refiz.'\n\n'Não é o fim do mundo. É só um semestre.'",
+      "textoNarrativo": "Caio te encontra no pátio com a prova dobrada ao meio.\n\n— Na minha primeira prova, tirei 1,2 — diz. — Na segunda, fui pior porque passei semanas tentando provar que a primeira não tinha acontecido.\n\nVocê pergunta o que ele fez.\n\n— Um dia, mostrei a prova para alguém que sabia mais. A pessoa apontou que eu nem entendia o enunciado direito. Foi humilhante e útil.\n\nEle não oferece uma frase para você se sentir melhor. Pergunta se quer olhar a questão junto ou ficar quieta por uns minutos.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar como ele fez.",
@@ -850,7 +850,7 @@
       "id": 209,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você dorme no ônibus. Alguém ouve funk sem fone. Você quase perde a parada.",
+      "textoNarrativo": "No ônibus, uma curva joga sua mochila para o corredor. Você se abaixa para pegá-la e quase perde o ponto.\n\nA prova continua aberta na cabeça, embora esteja fechada na mochila. Você passa o dedo pela borda do papel e tenta lembrar onde deixou de entender.\n\nA cidade passa na janela. Você anota uma palavra no celular: 'fatoração'. É pouco, mas já não é só 'sou péssima em cálculo'.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -888,7 +888,7 @@
       "id": 210,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. Resultado no mural.\n\nVocê procura seu nome. A nota está do lado: {{NOTA_CALCULO}}.\n\nNão pretendia olhar a nota dos outros, mas a da Dandara está logo abaixo: 8,5.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nMeira passa no corredor, te vê olhando. Para.\n\n'Cálculo é filtro. Não é o curso.'\n\nVai embora antes de você responder.",
+      "textoNarrativo": "Sexta-feira. O mural de notas está cercado. Você encontra seu nome.\n\n{{NOTA_CALCULO}}\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nDandara tirou 8,5. Ela fecha o caderno antes de comemorar; está tentando descobrir se a nota garante a classificação na monitoria.\n\nVocê compara o resultado com as questões que lembra. Uma delas ainda não faz sentido.\n\nMeira aparece atrás da turma, carregando outras provas. Alguém pergunta se haverá revisão. Ele diz que sim e marca o horário no quadro.",
       "escolhas": [
         {
           "textoAlternativa": "Ela mereceu.",
@@ -992,7 +992,7 @@
       "id": 2105,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. Resultado no mural.\n\nSeu nome. Ao lado: {{NOTA_CALCULO}}.\n\nLogo abaixo, Dandara: 8,5. Você passou o dia sem lembrar de quem estava sentada na frente.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nMeira passa no corredor, olha o mural, olha você.\n\n'Cálculo é filtro. Não é o curso.'\n\nPela primeira vez a frase parece uma pergunta.",
+      "textoNarrativo": "Sexta-feira. A nota aparece ao lado do seu nome: {{NOTA_CALCULO}}.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nVocê sabe que entregou respostas copiadas. O número no mural não mostra isso; também não mostra as questões que você ainda precisa aprender.\n\nBia está alguns passos adiante. Ela vê você, hesita e vai embora sem falar. Meira anuncia a revisão da prova para a semana seguinte.\n\nA decisão de colar acabou. O que você faz com o que aconteceu ainda não.",
       "escolhas": [
         {
           "textoAlternativa": "Não pensar nisso.",
@@ -1064,7 +1064,7 @@
       "id": 2107,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. Resultado no mural.\n\nSeu nome. Ao lado: {{NOTA_CALCULO}}. Um número que parece menor que o espaço que ocupa.\n\nDandara, logo abaixo: 8,5.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nMeira passa no corredor. Você se prepara pra qualquer coisa.\n\n'Cálculo é filtro. Não é o curso.'\n\nVai embora. Você fica com a sensação de que ele falou com alguém que não estava ali.",
+      "textoNarrativo": "Sexta-feira. O mural está cheio de gente tentando descobrir se a nota conta com arredondamento.\n\nSeu resultado aparece: {{NOTA_CALCULO}}.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nVocê não copiou. Isso não significa que entendeu tudo. Na questão três, repetiu a mesma troca de sinal que já tinha feito no exercício da semana passada.\n\nMeira prende um aviso de revisão no mural. Você tira uma foto da questão e guarda para perguntar depois.",
       "escolhas": [
         {
           "textoAlternativa": "Ela mereceu.",
@@ -1137,7 +1137,7 @@
       "id": 211,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Dandara Oliveira",
-      "textoNarrativo": "Dandara te para no corredor do Módulo 2, cartão do RU na mão.\n\n'Saiu o edital de Monitoria. Seiscentos reais.'\n\nFala rápido, como quem ensaiou e não quer perder o timing.\n\n'Meu auxílio moradia não saiu. A PRAE não me deu nem resposta. Se eu passar, pago o aluguel de março. Se não passar, eu penso em março em abril.'\n\nEla não espera você responder. Vai embora.",
+      "textoNarrativo": "Dandara te para no corredor do Módulo 2, com o cartão do RU na mão.\n\n— Saiu o edital de monitoria. Seiscentos reais.\n\nEla fala rápido: o auxílio-moradia não saiu, a PRAE ainda não respondeu e o aluguel vence em março. A bolsa ajudaria a pagar. Ela também gostou de explicar Cálculo para a turma.\n\n— Se eu passar, pago março. Se não, penso em março em abril.\n\nEla não espera consolo nem pede que você desista da vaga. Você pode não se inscrever, concorrer também ou perguntar sobre a PRAE.",
       "escolhas": [
         {
           "textoAlternativa": "Não se inscrever.",
@@ -1243,7 +1243,7 @@
       "id": 214,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No ônibus, voltando pra casa, o celular apita. LinkedIn.\n\nAlguém viu seu post da primeira semana de oficina, aquele com a foto da bancada e uma legenda que você já nem lembra de ter escrito.\n\nÉ {{REMENTENTE_LINKEDIN}}.\n\n'Oi! Vi seu post. Você mexe com eletrônica? Tô montando uma sociedade técnica de embarcados, Industry Electronics. Já tem professor conselheiro. Topa fazer parte?'",
+      "textoNarrativo": "No ônibus, voltando para casa, o celular apita. LinkedIn.\n\nA pessoa viu seu post da primeira semana de oficina, com a foto da bancada.\n\n{{REMENTENTE_LINKEDIN}}\n\n'Oi! Vi seu post. Você mexe com eletrônica? Estou montando uma sociedade técnica de embarcados, Industry Electronics. Já temos professor conselheiro. Topa fazer parte?'\n\nVocê quer voltar ao laboratório. Ainda não sabe quantas horas o grupo pede por semana.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar. Você nem sabe o que é direito, mas quer.",
@@ -1347,7 +1347,7 @@
       "id": 212,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Primeira prova. Primeiro resultado.\n\nVocê ainda está no jogo. Mas já sabe uma coisa que não sabia na segunda-feira: a faculdade não é difícil só por causa do conteúdo.\n\nÉ difícil por causa de quem senta na sua frente, de quem senta atrás, do que cada nota custa e a quem.\n\nO resultado não encerra a história. Muda o que faz sentido tentar agora.",
+      "textoNarrativo": "A primeira prova não encerra o semestre. Também não é um número que possa explicar sozinho o que aconteceu.\n\nNa mochila estão a lista de limites e a mensagem do grupo técnico. No celular, Dandara pergunta se você vai tentar a monitoria. Há escolhas competindo por horas, dinheiro e atenção.\n\nO próximo passo não precisa resolver sua vida. Precisa responder a uma pergunta real: o que vale a pena tentar agora?",
       "escolhas": [
         {
           "textoAlternativa": "A média não veio. Procurar ajuda antes da próxima avaliação.",
@@ -1501,7 +1501,7 @@
       "id": 215,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você dobra a prova e guarda na mochila. A média não veio.\n\nA vontade é deixar para pensar nisso quando a próxima avaliação aparecer. Só que os limites que você não entendeu hoje provavelmente não vão desaparecer até lá.",
+      "textoNarrativo": "A média não veio. Você tira a prova da mochila e marca duas questões que não consegue refazer sem consultar a solução.\n\nA revisão do professor será na terça. O horário coincide com a reunião do grupo técnico.\n\nVocê escreve para Dandara perguntando se ela pode estudar com você antes da aula. A resposta chega rápido: 'posso, mas traz a questão que te travou, não só o gabarito'.",
       "escolhas": [
         {
           "textoAlternativa": "Levar a prova à monitoria e começar pelos erros marcados.",
@@ -1615,7 +1615,7 @@
       "id": 216,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A média veio, mas você consegue apontar duas questões em que repetiu o mesmo erro.\n\nPassar não é o mesmo que dominar. Não passar também não seria prova de que você não consegue.",
+      "textoNarrativo": "Você alcançou a média. Na saída, Dandara comemora a classificação para a monitoria; logo depois pergunta se você entendeu a questão da raiz.\n\nVocê diz que passou, mas ainda não sabe justificar uma etapa. Ela abre o caderno no meio do corredor.\n\nO ônibus de vocês chega em dez minutos. Dá para começar a refazer ou guardar a dúvida para outro dia.",
       "escolhas": [
         {
           "textoAlternativa": "Refazer as questões sem olhar a solução pronta.",
@@ -1721,7 +1721,7 @@
       "id": 217,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A nota foi boa. Por alguns minutos, você sente que finalmente entendeu como estudar para a prova.\n\nDepois lembra das duas questões que quase deixou passar. Você pode usar a nota como evidência de que algo funcionou — ou como desculpa para não olhar o que falta.",
+      "textoNarrativo": "A nota foi boa. Você guarda a prova e por alguns minutos acredita que tudo está sob controle.\n\nNo ônibus, tenta explicar para si mesma uma passagem algébrica. A justificativa não vem. Você abre a foto da prova, circula a linha e envia para o grupo de estudos.\n\nAlan responde: 'também travei aí. amanhã no quadro?'",
       "escolhas": [
         {
           "textoAlternativa": "Compartilhar um método de resolução, sem entregar respostas prontas.",
@@ -1829,7 +1829,7 @@
       "id": 219,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você olha para o número e sabe que ele não veio do que conseguiu resolver sozinha.\n\nUma nota pode abrir uma porta. Não consegue, por si só, ensinar o conteúdo que ficou para trás nem apagar a decisão que levou até ela.",
+      "textoNarrativo": "O número no mural não conta que você abriu o papel de Bia. Também não conta que decidiu refazer a questão antes de aceitar qualquer nova responsabilidade.\n\nVocê pode falar sobre o que aconteceu com alguém de confiança, estudar a lacuna ou fingir que a nota encerrou o assunto.\n\nO semestre segue; agora a prova também faz parte da história que você está escolhendo contar.",
       "escolhas": [
         {
           "textoAlternativa": "Pedir ajuda para aprender o conteúdo que não aprendeu na prova.",
@@ -1906,7 +1906,7 @@
       "id": 218,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No fim da semana, você não tem uma solução para tudo. Tem uma próxima ação — ou sabe qual ação está adiando.\n\nO semestre continua. A nota e as relações que você construiu continuam com você também.",
+      "textoNarrativo": "No fim da semana, sua agenda tem uma revisão marcada, um prazo de inscrição e uma questão de limite circulada em vermelho.\n\nVocê não resolveu tudo. Pelo menos sabe qual é a próxima coisa que precisa fazer e a quem pode perguntar.\n\nNo ponto, Caio segura a porta do ônibus para você subir. A conversa fica para o caminho.\n\n# Capítulo 4 — Segunda matrícula e os editais",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 3.",

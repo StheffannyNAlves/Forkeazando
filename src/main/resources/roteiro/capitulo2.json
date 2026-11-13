@@ -9,7 +9,7 @@
       "id": 100,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Segunda, 7h14. Você está no ônibus, encostada no vidro, quando o celular vibra.\n\n'ÁGATA — Bem-vinda ao semestre 2026.2.'\n\nO e-mail tem doze links. Onze terminam em 'consulte o edital'. O último deseja um bom semestre.\n\nVocê abre o primeiro. A página demora. O ônibus pega um buraco, o sinal some, e o aviso fica ali, esperando que você descubra sozinha por onde começar.",
+      "textoNarrativo": "Segunda-feira, 7h14. Você está no ônibus, encostada no vidro, quando o celular vibra.\n\n'ÁGATA — Bem-vinda ao semestre 2026.2.'\n\nO e-mail tem doze links. Onze terminam em 'consulte o edital'. O último deseja um bom semestre.\n\nA conexão cai quando você abre a primeira página. Os avisos continuam ali, esperando que você descubra por onde começar. Você pode tentar ler tudo agora, com o sinal falhando, ou deixar a mensagem como não lida e encarar o problema depois.",
       "escolhas": [
         {
           "textoAlternativa": "Abrir os onze agora, com o sinal caindo.",
@@ -78,7 +78,7 @@
       "id": 101,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Mural do Módulo 1. Quatro cartazes novos, presos com fita crepe sobre a fita crepe do semestre passado.\n\nCA de Computação: reunião quarta, 17h, sala 12.\n\nDCE: assembleia sobre o RU, quinta, 14h, pátio.\n\nUm grupo de software com nome feito de quatro siglas.\n\nE um quadradinho de sulfite com um QR code e três linhas: 'Resumos de Cálculo I. R$ 15. Pix. Não é cola, é atalho.'\n\nVocê lê os quatro. Todo mundo parece já saber onde quer estar. Você ainda tenta entender o que cada lugar faz.",
+      "textoNarrativo": "O mural do Módulo 1 parece um feed que alguém imprimiu: assembleia do RU, seleção de software, Feira de Graduação, oficinas, resumos por Pix. Um cartaz está colado sobre outro; a data de baixo aparece como uma profecia vencida.\n\nMalu chega com a mochila presa à cadeira e um papel no colo. O papel tem cinco grupos circulados.\n\n— Vou conhecer dois. Três se o café estiver bom.\n\n— Ontem eram cinco — você lembra.\n\n— Ontem eu tinha menos informação.\n\nAlan passa carregando um notebook e cabos. Diz que está trabalhando num projeto, mas não conta qual.\n\n— Se eu falar antes de compilar, dá azar.\n\nAs opções parecem convites. Também parecem horas da semana que ainda não existem.",
       "escolhas": [
         {
           "textoAlternativa": "Ir no CA.",
@@ -263,7 +263,7 @@
       "id": 102,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A reunião do CA é numa sala emprestada. Sete pessoas, duas pizzas e um crachá de 'Diretora' escrito à mão em fita crepe.\n\nO assunto é um projeto de extensão numa escola pública. Você acompanha tentando calcular se aquilo cabe na sua rotina, e a conta não fecha em lugar nenhum.",
+      "textoNarrativo": "A reunião do CA acontece numa sala emprestada. Sete pessoas, duas pizzas e um crachá de 'Diretora' escrito à mão em fita crepe.\n\nO projeto é levar oficinas de Scratch a uma escola pública. No cartaz, a atividade parece simples; na planilha, faltam custos de transporte, material e horas de preparação.\n\nVocê pode assinar a lista, perguntar quanto tempo por semana vão precisar ou só observar enquanto ainda decide se isso cabe na sua rotina.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista.",
@@ -359,7 +359,7 @@
       "id": 103,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na sexta acontece a primeira reunião de verdade.\n\nO projeto significa ir a uma escola pública às terças, ensinar Scratch a vinte crianças de onze anos e voltar pra casa às 19h com dor de cabeça.\n\nParece simples até você encaixar isso entre aulas, trabalhos e as duas horas de ônibus.",
+      "textoNarrativo": "Na terça, a oficina acontece. Vinte crianças, computadores lentos e uma pergunta repetida: o gato do Scratch pode soltar fogo?\n\nAs mesas foram empurradas para perto e bloquearam metade do corredor. Malu aponta o gargalo; vocês deslocam uma mesa antes de começar. Ela assume uma dupla que criou um jogo em que a galinha vence todo mundo.\n\n— Equilíbrio perfeito — ela decreta. — Ninguém quer jogar com o gato agora.\n\nUma criança pergunta se vocês voltam na semana seguinte. Ninguém responde de imediato. O transporte ainda não está resolvido, e a escola está contando com a continuidade.\n\nNa volta, você e Malu conversam sobre a diferença entre fazer uma visita e assumir um compromisso. O ônibus sacode; nenhuma das respostas fica simples.",
       "escolhas": [
         {
           "textoAlternativa": "Aguentar.",
@@ -430,7 +430,7 @@
       "id": 105,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A assembleia é no pátio. Uns quarenta estudantes, um megafone e duas faixas contra a terceirização do RU.\n\nA proposta em discussão: a empresa quer subir a refeição de R$ 2 pra R$ 4. Você acompanha as falas tentando entender como uma decisão dessas chega até o prato de quem está na fila.",
+      "textoNarrativo": "A assembleia acontece no pátio. Uns quarenta estudantes, um megafone que falha e duas faixas contra a terceirização do RU.\n\nA proposta em discussão é subir a refeição de R$ 2 para R$ 4. Uma lista de presença e apoio circula entre as pessoas. Você acompanha as falas, tentando entender como uma decisão de orçamento chega até o prato de quem depende do restaurante.\n\nPode assinar e ficar, assinar e ir para a aula, ou não assinar.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar e ficar.",
@@ -530,7 +530,7 @@
       "id": 106,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A assembleia vira discussão sobre orçamento da universidade.\n\nVocê entende metade. O preço do RU depende de subsídio; o subsídio, de verba pública; a verba, de decisões que ninguém ali tomou.\n\nNa volta, você pensa que até o frango com quiabo acaba entrando nessa conversa.",
+      "textoNarrativo": "A conversa sobre o RU vira uma discussão sobre o orçamento da universidade. O preço depende de subsídio; o subsídio, de verba pública; a verba, de decisões que ninguém no pátio tomou sozinho.\n\nUma estudante tenta resumir os encaminhamentos antes de a assembleia terminar. Dandara anota as perguntas que ficaram sem resposta.\n\nVocê pode continuar acompanhando as reuniões ou ir uma vez e deixar o assunto ali. No caminho de volta, até o frango com quiabo parece ter entrado na conversa.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar indo.",
@@ -599,7 +599,7 @@
       "id": 107,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você passa no RU no caminho. A fila está curta.\n\nFrango com quiabo. De novo.",
+      "textoNarrativo": "No RU, a fila finalmente anda. O cardápio anuncia frango com quiabo.\n\nMalu manda: 'Confirmei com três fontes. É o mesmo frango da semana passada.'\n\nVocê responde com um emoji de auditoria. Ela envia outro: 'Caso encerrado.'\n\nA bandeja chega. Ainda há um edital para ler e uma aula começando.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir pro grupo de software.",
@@ -637,7 +637,7 @@
       "id": 108,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Auditório emprestado. Slide. Pausa dramática. Um cara de camisa social diz 'disruptivo' três vezes em dois minutos.\n\nVocê pensa em ir embora. Aí ele menciona um processo seletivo de estágio. Você fica.",
+      "textoNarrativo": "Auditório emprestado. Slide. Pausa dramática. Um cara de camisa social diz 'disruptivo' três vezes em dois minutos.\n\nVocê pensa em ir embora. Aí ele apresenta um processo seletivo para estágio e projeta um QR code. A vaga não informa se é remunerada.\n\nVocê pode pegar o código, perguntar em voz alta sobre o pagamento ou sair antes do fim.",
       "escolhas": [
         {
           "textoAlternativa": "Pegar o QR code.",
@@ -739,7 +739,7 @@
       "id": 109,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Quatro etapas.\n\nA primeira é um desafio de código: receber uma sequência de valores e achar um resultado. Você escreve a solução, roda um caso pequeno e ela quebra.\n\nReleitura. O erro não é de sintaxe: sua condição pula justamente o primeiro elemento. Corrige, o exemplo passa, e você ainda precisa pensar em lista vazia, valor repetido e no que acontece quando a entrada cresce.\n\nA segunda é uma entrevista com alguém que diz 'fit cultural' quatro vezes em sete minutos. Você tenta explicar o que aprendeu sem fingir que já sabe tudo.",
+      "textoNarrativo": "O desafio de seleção tem uma entrada que você não tinha previsto. Seu código passa nos exemplos e falha no caso de borda.\n\nNa mesa ao lado, Alan também erra. Ele identifica o problema, corrige a lógica e depois trava quando pedem que explique o que fez.\n\n— Eu sei mostrar no código — ele diz. — Só não sei vender isso em dois minutos.\n\nA avaliadora pede que vocês descrevam o raciocínio, não que finjam ter terminado. Você tenta explicar onde sua hipótese quebrou. O código ainda falha, mas agora a falha está localizada.\n\nA seleção continua. Saber programar, colaborar e falar sob pressão são provas diferentes.",
       "escolhas": [
         {
           "textoAlternativa": "Fazer mesmo assim.",
@@ -808,7 +808,7 @@
       "id": 111,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A semana passa. Você não foi a nenhuma das atividades.\n\nNão foi erro. Foi uma semana em que você ainda não conseguiu escolher, e talvez precisasse justamente dela pra descobrir o que queria.",
+      "textoNarrativo": "A semana termina. No mural, os cartazes continuam se acumulando. Você participou de algumas atividades, recusou outras e ainda não escolheu nenhum grupo.\n\nMalu manda uma foto de um banco vazio debaixo de uma árvore: 'Consegui vaga na atividade mais concorrida: sentar sem prazo.'\n\nVocê ri. Depois apaga um lembrete que tinha criado só por medo de perder uma oportunidade. O espaço livre na agenda parece estranho, mas não vazio.",
       "escolhas": [
         {
           "textoAlternativa": "Ir pra casa.",
@@ -848,7 +848,7 @@
       "id": 124,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Você mal tirou a foto e alguém já está do seu lado, fita crepe no pulso, colando outro quadradinho de sulfite.\n\n'Resumo de Cálculo I. Vinte e duas páginas, limites até derivada, com os erros que o professor adora. Quinze reais.'\n\nEla fala rápido, sem olhar pra você, olhando o mural como quem confere estoque. Na capa da pasta: Beatriz. Ela vê você lendo e corrige sem esperar a pergunta: 'Bia. Beatriz é só pra pasta.'\n\n'Não é cola. Cola é outra tabela de preço.'",
+      "textoNarrativo": "Uma estudante de cabelo castanho-avermelhado prende um anúncio no mural. O papel diz: 'Resumo de Introdução ao Cálculo — R$ 15 — erros comuns marcados'.\n\n— Você fez? — pergunta alguém.\n\n— Fiz, revisei e testei. Beatriz Menezes, para fins de recibo. Bia, para fins de conversa.\n\nVocê folheia. Há exemplos resolvidos e anotações nas margens, mas também um aviso: o resumo não prevê a prova.\n\n— Se o professor inventar uma questão nova, a culpa é da realidade — ela diz. — Não da diagramação.\n\nBia precisa vender; você percebe isso antes de decidir se compra.",
       "escolhas": [
         {
           "textoAlternativa": "Comprar o resumo. Quinze reais, pix.",
@@ -952,7 +952,7 @@
       "id": 112,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Caio, o veterano, está no pátio, comendo um salgado com uma mão e rolando o celular com a outra. Quando te vê, guarda o aparelho.\n\n'Tá indo em tudo, né?'\n\nNão parece pergunta. Parece conclusão a que ele já chegou.\n\n'Eu fiz isso no primeiro semestre. Três grupos, dois projetos, um campeonato. No segundo eu não ia a nada. Porque estava reprovando em tudo.'\n\n(Ele tá me assustando ou me avisando?)\n\nOs dois.",
+      "textoNarrativo": "Caio está no pátio com um salgado numa mão e o celular na outra. Quando te vê, guarda o aparelho.\n\n— Tá indo em tudo, né?\n\nNão parece pergunta. Ele conta que no primeiro semestre entrou em três grupos, dois projetos e um campeonato; no seguinte, já não ia a nada porque estava reprovando em tudo.\n\n— Eu achei que cada convite era uma chance que não voltava.\n\nVocê pode perguntar como ele saiu daquela rotina, dizer que com você será diferente ou ficar quieta. Caio espera sem decidir por você.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar como ele saiu disso.",
@@ -1054,7 +1054,7 @@
       "id": 113,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele pensa antes de responder. Mastiga devagar, como se a resposta estivesse no salgado.\n\n'Cortei tudo. Fiquei só no que eu não conseguia parar de pensar.'\n\n'O problema não é fazer muito. É fazer muito do que você não quer.'",
+      "textoNarrativo": "Caio pensa antes de responder, mastigando devagar.\n\n— Cortei tudo. Fiquei só no que eu não conseguia parar de pensar.\n\nEle abre a lista no celular. Há tarefas riscadas, um projeto ainda ativo e dois horários que agora estão livres.\n\n— O problema não é fazer muito. É fazer muito do que você não quer.\n\nVocê pode perguntar o que ele cortou primeiro ou agradecer. O salgado termina antes da conversa.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar o que ele cortou primeiro.",
@@ -1127,7 +1127,7 @@
       "id": 114,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele te olha por um instante.\n\n'Tá bom.'\n\nVolta pro celular. A conversa acabou ali, mas ele não vai embora.",
+      "textoNarrativo": "— Eu dou conta — você diz.\n\nCaio olha para você como se reconhecesse a frase. Não tenta desmontá-la.\n\n— Tomara. Se mudar de ideia, não precisa esperar dar ruim para falar.\n\nO ônibus chega. Ele sobe, mas antes de a porta fechar aponta para a lista no seu celular.\n\n— Só confere se tem horário de comer aí no meio.\n\nVocê ri depois que ele vai. A pergunta fica.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -1165,7 +1165,7 @@
       "id": 117,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Fim de tarde. Os dois ainda estão nos degraus do Módulo 1, sem combinar. O café dele esfriou faz tempo e ele continua segurando.\n\n'Cinco anos nisso.'\n\nFala pro copo, não pra você.\n\n'Tem dia que eu me pergunto por que eu ainda tô aqui.'",
+      "textoNarrativo": "Fim de tarde. Vocês continuam nos degraus do Módulo 1. O café de Caio esfriou, mas ele ainda segura o copo.\n\n— Cinco anos nisso. Tem dia que eu me pergunto por que ainda tô aqui.\n\nEle fala para o copo, não para você. Você pode lembrar que, se ele ainda está ali, alguma coisa deve valer; devolver a palavra 'teimosia'; ou ficar ao lado sem tentar consertar a frase.\n\nCaio espera. O ônibus ainda demora.",
       "escolhas": [
         {
           "textoAlternativa": "Se você ainda tá aqui, alguma coisa valia.",
@@ -1274,7 +1274,7 @@
       "id": 118,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Dandara Oliveira",
-      "textoNarrativo": "Fila do RU, de novo. Na sua frente, Dandara conta moedas na palma da mão, depois conta de novo, como se o resultado pudesse mudar por insistência.\n\n'Oi. Você é da bancada ao lado, né? Da oficina.'\n\nEla guarda as moedas no bolso da frente.\n\n'Preciso de oito em Cálculo. Não é vaidade. A bolsa de monitoria do semestre que vem pede CR acima de sete, e seiscentos reais pagam o aluguel de março.'\n\nFala como quem lê uma conta de luz: com precisão, sem esperar consolo.",
+      "textoNarrativo": "Na fila do RU, Dandara confere o saldo do cartão e guarda o celular quando percebe você.\n\n— Você é da bancada do LED. Vi que conferiu a polaridade antes de ligar.\n\nEla está estudando limites no intervalo. Quer tentar a monitoria no semestre seguinte: gostou de explicar uma questão para outra caloura e precisa da bolsa para ajudar no aluguel.\n\n— Não quero fingir que é só vocação — ela diz. — Eu gosto de ensinar. Também preciso da renda.\n\nEla mostra uma conta que não fechou. Você identifica um erro de sinal; ela confere e encontra uma lacuna no seu próprio rascunho.\n\n— Estudar junto? — pergunta.\n\nA fila anda. A resposta precisa esperar até vocês pegarem o almoço.",
       "escolhas": [
         {
           "textoAlternativa": "Propor estudar juntas.",
@@ -1376,7 +1376,7 @@
       "id": 115,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "À noite, no ônibus, você abre o calendário do celular.\n\nReunião, assembleia, estágio, resumo, oficina, lista de exercícios. Os blocos se sobrepõem como camadas de tinta, e a semana tem os mesmos sete dias de sempre.\n\nO semestre está só começando, e já tem mais coisa chamando do que horas no dia.\n\n(O tempo é o único recurso que ninguém me avisou que era finito.)",
+      "textoNarrativo": "No ônibus de volta, você abre a agenda. Aula, lista, seleção, extensão, reunião. Os compromissos parecem componentes ligados em paralelo sem verificar a corrente total.\n\nMalu manda uma foto: 'Bloqueei um horário de descanso. Se alguém tentar marcar reunião, o sistema retorna erro.'\n\nVocê ri e abre sua própria agenda. Um dos compromissos não tem prazo, tarefa nem motivo claro. Você apaga o lembrete e decide esperar antes de assumir outro.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 2.",
@@ -1416,7 +1416,7 @@
       "id": 116,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A universidade está em Feira de Graduação. Estandes no pátio, caravanas de escolas da região, estudantes do ensino médio andando em bloco e tentando imaginar como seria estudar ali.\n\nUm corredor inteiro tem bandeiras azuis: IEEE, RAS, WIE, TISP, Liga de Jogos, Industry Electronics. Em cada estande, alguém tenta explicar o grupo e convencer os visitantes a ficar.",
+      "textoNarrativo": "A Feira de Graduação ocupa o pátio. Um projetor falha, um robô tenta virar a cabeça e uma turma de escola pergunta se pode tocar em tudo.\n\nVocê passa pelo WIE, por um estande de redes, pela Liga de Jogos e pelo grupo de robótica. Malu está com três panfletos no colo.\n\n— Eu vim olhar. Saio com duas reuniões e uma sacola.\n\nAlan atravessa o pátio com um cabo USB enrolado no braço. O robô funcionou de manhã, informa ele, como se estivesse registrando um evento histórico.\n\nUm estande chama sua atenção. Você tem tempo para escolher um, talvez dois. O último ônibus da tarde segue no horário de sempre.",
       "escolhas": [
         {
           "textoAlternativa": "Ir no RAS. Robô é mais legal.",
@@ -1599,7 +1599,7 @@
       "id": 120,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O estande do RAS tem um robô sobre a mesa, fios de jumper espalhados e um caderno cheio de diagramas. O robô liga, mas o sensor não responde.\n\nUma integrante aponta pra protoboard: alimentação, GND e sinal estão em cores diferentes, só que alguém trocou dois fios.\n\n'A gente pode sair trocando tudo até funcionar', ela diz. 'Ou medir e descobrir onde o sinal parou.'\n\nEla te olha. 'Você sabe soldar?'\n\nVocê não sabe. Mas talvez isso nem seja o primeiro problema.",
+      "textoNarrativo": "O estande do RAS tem um robô, fios de jumper e um caderno cheio de diagramas. O robô liga, mas o sensor não responde.\n\nNoa, pessoa não binária do grupo, aponta para a protoboard. Elu já conferiu alimentação, GND e sinal; alguém trocou dois fios.\n\n— A gente pode sair trocando tudo até funcionar — diz Noa. — Ou medir e descobrir onde o sinal parou.\n\nElu pergunta se você sabe soldar. Você não sabe. Noa mostra o ferro desligado e explica que ninguém precisa começar por ele: primeiro dá para aprender a reconhecer uma ligação e seguir o sinal.\n\nVocê decide se quer aprender agora ou se prefere não assumir isso hoje.",
       "escolhas": [
         {
           "textoAlternativa": "Não sei. Mas quero aprender.",
@@ -1670,7 +1670,7 @@
       "id": 121,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No estande do WIE, duas veteranas falam de extensão e acolhimento de mulheres na engenharia. Uma explica por que é bom ter com quem conversar quando o curso parece feito pra testar resistência. A outra mostra o calendário.\n\nTem reunião, evento e extensão. Nada parece impossível sozinho. O desafio é encaixar tudo entre aula, transporte, prova e descanso.\n\n'Você não precisa prometer que vai dar conta de tudo hoje', uma delas diz. 'Pode perguntar como funciona antes de decidir.'",
+      "textoNarrativo": "No estande do WIE, duas veteranas falam de extensão, acolhimento e mulheres na engenharia. Uma conta como ajuda ter com quem conversar quando o curso parece testar resistência; a outra mostra o calendário.\n\nHá reuniões, eventos e projetos. Nenhuma atividade parece impossível sozinha; o desafio é encaixar tudo entre aula, transporte, prova e descanso.\n\nUma delas aponta a lista de interesse.\n\n— Você pode assinar, perguntar sobre a rotina ou seguir sem assumir mais nada hoje.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista de interesse.",
@@ -1770,7 +1770,7 @@
       "id": 122,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "TISP: Teacher In-Service Program.\n\nNo estande, uma maquete de ponte feita de palito e um pôster ensinando a construir uma catapulta com material de escritório.\n\nO grupo ajuda professores de escola pública a ensinar engenharia às crianças. Você nunca tinha ouvido falar disso, e agora não consegue parar de pensar na catapulta.",
+      "textoNarrativo": "TISP — Teacher In-Service Program.\n\nNo estande, uma maquete de ponte feita de palitos e um pôster ensinam a construir uma catapulta com material de escritório. O grupo ajuda professores de escolas públicas a levar engenharia para as crianças.\n\nVocê nunca tinha ouvido falar do programa. A catapulta chama atenção; a lista de interesse está ao lado.\n\nPode assinar para saber mais ou só olhar e ir embora.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista.",
@@ -1839,7 +1839,7 @@
       "id": 123,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A Liga de Jogos montou um fliperama de improviso: um notebook, um controle de SNES e um jogo de plataforma.\n\nUm rapaz de camiseta de estúdio indie entrega uma folha de teste, com campos para anotar controle que não responde, colisão estranha e o que você fez antes de o erro aparecer.\n\n'Você joga? Tô fazendo um jogo narrativo pra disciplina de Jogos Digitais. Preciso de gente pra testar.'\n\nOutra estudante senta ao seu lado. Vocês vão jogar a mesma fase e comparar o que viram. Não basta dizer que ficou bom ou ruim: alguém precisa explicar por quê.",
+      "textoNarrativo": "A Liga de Jogos montou um fliperama improvisado: notebook, controle de SNES e um jogo de plataforma feito por uma equipe da disciplina de Jogos Digitais.\n\nUm dos estudantes entrega uma folha de teste. Há campos para anotar quando o controle não responde, onde a colisão parece estranha e o que você fez antes de o erro aparecer.\n\nOutra estudante se senta ao seu lado para testar a mesma fase. Você pode anotar o contato de quem desenvolve o jogo, comparar os problemas em dupla ou agradecer e sair do estande.\n\n# Capítulo 3 — O limite que não converge",
       "escolhas": [
         {
           "textoAlternativa": "Anotar o contato dele. Você quer testar.",

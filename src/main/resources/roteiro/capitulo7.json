@@ -9,7 +9,7 @@
       "id": 600,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Semestre 10. A reta final chegou.\n\n{{CALENDARIO_CAP7}}\n\nO ÁGATA mostra seu histórico escolar numa tabela de duas cores. Aprovada, aprovada, aprovada. Uma greve de sessenta e cinco dias, que o sistema registra como 'período não computado'. Frequência: regular. Horas de sono: não consta.\n\nCinco anos cabem numa tela. Não foi isso que você sentiu enquanto vivia.\n\nTCC.\n\nVocê está cansada. Não é o cansaço de dormir mal, é o de cinco anos.\n\nAbre o notebook. Documento em branco. O cursor pisca no ritmo do seu pulso.\n\n(Eu preciso escrever o título.)\n\n(Por onde se começa isso?)",
+      "textoNarrativo": "Semestre 10. A reta final chegou.\n\n{{CALENDARIO_CAP7}}\n\nO ÁGATA mostra o histórico em duas cores: aprovada, aprovada, aprovada. Uma greve de 65 dias aparece como 'período não computado'. Frequência: regular. Horas de sono: não consta.\n\nCinco anos cabem numa tela. Não foi isso que você sentiu enquanto vivia.\n\nTCC. Você está cansada — não só de dormir mal, mas de cinco anos de prazos e recomeços.\n\nAbre o notebook. Documento em branco. O cursor pisca no ritmo do seu pulso. Por onde começar?",
       "escolhas": [
         {
           "textoAlternativa": "Dividir em capítulos. Um por semana. Você sabe revisar erro.",
@@ -363,7 +363,7 @@
       "id": 599,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O TCC avança aos poucos. Entre um capítulo e outro, você percebe que o trabalho técnico é só metade do problema.\n\nA outra metade chega em forma de pergunta que ninguém colocou na ementa.",
+      "textoNarrativo": "O TCC avança aos poucos. Entre um capítulo e outro, você descobre que o trabalho técnico é só metade do problema.\n\nA outra metade chega em forma de pergunta que ninguém colocou na ementa: quem recebe crédito, como ajudar sem falsificar um resultado, e que obrigações cabem num contrato?\n\nVocê pode continuar pela rota da pesquisa, da monitoria ou do trabalho independente. Cada caminho põe uma decisão diferente na sua frente.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar.",
@@ -517,7 +517,7 @@
       "id": 601,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Você escreveu o TCC e dele saiu um artigo de doze páginas. Boa parte das figuras, das tabelas e da discussão é sua.\n\nO orientador te chama à sala e lê o rascunho em silêncio, lábios mexendo na parte dos resultados.\n\n'Ficou ótimo. Vou submeter agora.'\n\nVira a tela. Na linha de autores, o nome dele vem primeiro. O seu, em segundo. Os mestrandos aparecem nos agradecimentos.\n\n'Faz sentido, né? Quem coordena o grupo assina na frente. É assim que funciona.'",
+      "textoNarrativo": "— O TCC virou um artigo de doze páginas — diz Sérgio, passando o rascunho pela mesa. — Boa parte das figuras, tabelas e da discussão é sua.\n\nEle abre o arquivo.\n\n— Ficou ótimo. Vou submeter agora.\n\nNa linha de autores, o nome dele vem primeiro. O seu, em segundo. Os mestrandos aparecem nos agradecimentos.\n\n— Faz sentido, né? Quem coordena o grupo assina na frente. É assim que funciona.\n\nVocê precisa decidir se aceita, pergunta como a ordem foi decidida ou mostra o e-mail em que ele próprio dividiu as partes.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar. Segunda autora já é muito.",
@@ -627,7 +627,7 @@
       "id": 6011,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Ele fica um tempo com o dedo parado sobre a tecla.\n\n'A gente vê isso depois. Eu preciso submeter antes do prazo.'\n\nVocê sabe o que 'depois' costuma querer dizer. Ele também sabe.\n\nMas ouviu a pergunta. Isso, a partir de agora, não dá pra desfazer.",
+      "textoNarrativo": "Sérgio fica com o dedo parado sobre a tecla.\n\n— A gente vê isso depois. Eu preciso submeter antes do prazo.\n\nVocê sabe o que 'depois' costuma querer dizer. Ele também sabe.\n\nMas ouviu a pergunta. Isso, a partir de agora, não dá para desfazer.",
       "escolhas": [
         {
           "textoAlternativa": "Sair da sala.",
@@ -665,7 +665,7 @@
       "id": 6012,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Ele lê o e-mail. Lê de novo. Você vê o momento exato em que ele reconhece o próprio texto.\n\n'Eu tinha esquecido que eu mesmo escrevi isso.'\n\nTira os óculos, esfrega os olhos.\n\n'Primeira autora é você. Eu fico como orientador e segundo nome.'\n\nNão pede desculpa. Mas muda a linha, e a mudança fica visível na tela antes de você sair.",
+      "textoNarrativo": "Sérgio lê o e-mail. Lê de novo. Você vê o momento em que reconhece o próprio texto.\n\n— Eu tinha esquecido que eu mesmo escrevi isso.\n\nEle tira os óculos e esfrega os olhos.\n\n— Primeira autora é você. Eu fico como orientador e segundo nome.\n\nNão pede desculpa. Mas muda a linha, e a mudança fica visível na tela antes de você sair.",
       "escolhas": [
         {
           "textoAlternativa": "Agradecer e sair.",
@@ -705,7 +705,7 @@
       "id": 602,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Téo aparece na porta da sala 112 com um notebook embaixo do braço. Sem moletom, pela primeira vez.\n\n'Monitor. Monitora. Sei lá. Olha isso.'\n\nÉ um circuito que ele montou sozinho, um sequenciador de LEDs, com dois fios amarelos bem organizados e um erro que ele mesmo achou antes de mostrar.\n\n'Eu perguntei pra mim o que eu já tinha medido. Funcionou.'\n\nEle não está pedindo nada. Só quer que alguém veja.",
+      "textoNarrativo": "Téo aparece com um notebook e uma protoboard. Antes de ligar, explica o que espera medir e onde vai conectar o terra.\n\n— Vim mostrar que eu entendi.\n\nVocê pede que ele faça o teste e registre o resultado. Ele erra a primeira conexão, percebe, corrige e completa a explicação.\n\nVocê reconhece o jeito como costumava olhar para a bancada. Téo não precisa que você conte a história toda; pergunta se pode usar o procedimento no relatório.\n\nA monitoria terminou no sistema. O que ele aprendeu continua circulando.",
       "escolhas": [
         {
           "textoAlternativa": "Dizer que ele está pronto pra ser monitor.",
@@ -782,7 +782,7 @@
       "id": 6022,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Téo aparece na porta da sala 112 com a pasta de relatórios debaixo do braço.\n\n'Monitor. Faltam quatro relatórios de laboratório. Eu não fui nas aulas. Se você assinar que eu fiz, o professor nem confere.'\n\nEle fala depressa, como quem treinou. Nos olhos dele não tem malandragem, tem desespero.\n\nVocê sabe que ele tem razão sobre uma coisa: o professor nem confere. É por isso que a decisão é sua.",
+      "textoNarrativo": "Téo aparece na porta da sala 112 com uma pasta de relatórios.\n\n— Monitor, faltam quatro relatórios de laboratório. Eu não fui às aulas. Se você assinar que eu fiz, o professor nem confere.\n\nEle fala depressa, como quem treinou. Nos olhos não há malandragem; há desespero.\n\nVocê sabe que ele tem razão sobre uma coisa: o professor nem confere. É por isso que a decisão é sua. Pode assinar, recusar e ajudar a refazer os relatórios, ou dar uma última aula naquela noite.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar. Ele precisa passar.",
@@ -896,7 +896,7 @@
       "id": 603,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O contrato chega por e-mail: seis páginas, formatação perfeita, o tipo de documento que alguém copiou de um modelo sem ler.\n\nVocê lê tudo. Na cláusula 14, a empresa pede cessão total e irrevogável de propriedade intelectual, inclusive de código preexistente: tudo que você já escreveu, em qualquer projeto, antes de qualquer contrato.\n\nO valor é bom. O prazo para assinar é amanhã.\n\n(Código preexistente.)\n\n(Isso inclui meus projetos pessoais?)",
+      "textoNarrativo": "O contrato chega por e-mail: seis páginas, formatação perfeita, o tipo de documento que alguém copiou de um modelo sem ler.\n\nVocê lê tudo. Na cláusula 14, a empresa pede cessão total e irrevogável de propriedade intelectual, inclusive de código preexistente: tudo que você já escreveu em qualquer projeto antes do contrato.\n\nO valor é bom. O prazo para assinar é amanhã.\n\n(Código preexistente.)\n\n(Isso inclui meus projetos pessoais?)\n\nVocê pode assinar, procurar um advogado, negociar a cláusula por escrito ou recusar.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar. É o primeiro contrato de verdade.",
@@ -1037,7 +1037,7 @@
       "id": 605,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você entregou o TCC.\n\nA defesa foi numa sala com três professores e um projetor que não funcionou na primeira tentativa. Você explicou a primeira lâmina com o papel na mão e a segunda de memória.\n\nVocê passou.\n\nA sensação não chega como nos filmes. Primeiro vem o alívio. Depois, o silêncio de não ter mais uma entrega pra fazer amanhã.\n\n(Era isso?)\n\n(Cinco anos, e tudo o que coube dentro deles.)",
+      "textoNarrativo": "Você entregou o TCC.\n\nA defesa foi numa sala com três professores e um projetor que não funcionou na primeira tentativa. Você explicou a primeira lâmina com o papel na mão e a segunda de memória.\n\nVocê passou.\n\nA sensação não chega como nos filmes. Primeiro vem o alívio. Depois, o silêncio de não ter mais uma entrega para fazer amanhã.\n\n(Era isso?)\n\n(Cinco anos, e tudo o que coube dentro deles.)\n\n# Capítulo 8 — Formatura e futuros",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 7.",

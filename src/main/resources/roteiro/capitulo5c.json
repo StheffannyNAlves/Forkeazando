@@ -9,7 +9,7 @@
       "id": 500,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O contato do cartaz finalmente responde. Não precisa de ajuda no projeto agora, mas indica um cliente: um restaurante a duas quadras do Módulo 8 que quer um site. O Zé, do Módulo 8, conhece o dono, e jura que ele é gente boa.\n\nO orçamento é mil reais. A mensagem termina com uma palavra:\n\n'Simples.'\n\nVocê olha a tela. Não há lista de páginas, prazo, conteúdo, hospedagem nem explicação sobre manutenção. Só o preço e a promessa de que não deve dar muito trabalho.\n\nVocê já viu esse tipo de problema em trabalho de disciplina: quando os requisitos ficam implícitos, cada pessoa imagina uma entrega diferente.\n\n(Simples.)\n\n(Simples pra quem?)",
+      "textoNarrativo": "O contato do cartaz responde. Não precisa de ajuda no projeto agora, mas indica um cliente: um restaurante perto do Módulo 8 quer um site. Zé conhece o dono e jura que ele é gente boa.\n\nO orçamento é de mil reais. A mensagem termina com uma palavra: 'Simples.'\n\nNão há lista de páginas, prazo, conteúdo, hospedagem nem explicação sobre manutenção. Você já viu em trabalhos da disciplina o que acontece quando os requisitos ficam implícitos.\n\n(Simples.)\n\n(Simples pra quem?)\n\nVocê pode aceitar, pesquisar preços, pedir um valor maior ou comparar três referências de orçamento antes de responder.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
@@ -142,7 +142,7 @@
       "id": 501,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Três semanas depois, o site está entregue. O cliente respondeu 'tá bom' e prometeu pagar na semana seguinte.\n\nA semana passou. O dinheiro não caiu. Você encara a conversa no celular, tentando decidir se cobra de novo ou se espera mais um pouco.\n\nMil reais pareciam uma oportunidade. Agora cada dia sem pagamento parece uma aula que você não pediu.",
+      "textoNarrativo": "Três semanas depois, o site está pronto. Antes de entregar, Lia testa a navegação só pelo teclado e encontra um problema: o foco some no menu.\n\n— Com o mouse você chega aqui. Pelo teclado, ninguém sabe onde está — diz.\n\nVocê ajusta o foco visível, os nomes dos botões e os fluxos principais; Lia testa outra vez. O cliente responde 'tá bom' e promete pagar na semana seguinte.\n\nA semana passa. O dinheiro não cai. Você encara a conversa no celular e decide se cobra agora ou espera mais uma semana.",
       "escolhas": [
         {
           "textoAlternativa": "Cobrar agora.",
@@ -213,7 +213,7 @@
       "id": 502,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Bia te encontra num café perto do campus. Você mal terminou de contar o que aconteceu e ela já entendeu.\n\n'Você tá fazendo freela.'\n\nNão é pergunta.\n\n'Eu vivo disso desde o segundo semestre. Bolsa não paga aluguel. Freela paga, quando pagam.'\n\nPega um pedaço de papel e escreve um contato.\n\n'Se o cliente te enrolar, me chama. Eu conheço os nomes.'\n\nEmpurra o papel pela mesa, mas não solta de imediato.\n\n'Não entrega tudo sem deixar combinado o que acontece depois.'",
+      "textoNarrativo": "Bia te encontra num café perto do campus. Você mal terminou de contar o que aconteceu e ela já entendeu.\n\n— Você está fazendo freela. Eu vivo disso desde o segundo semestre. Bolsa não paga aluguel; freela paga, quando pagam.\n\nEla escreve um contato num papel.\n\n— Se o cliente te enrolar, me chama. Eu conheço os nomes.\n\nBia empurra o papel pela mesa, mas não solta de imediato.\n\n— Não entrega tudo sem deixar combinado o que acontece depois.\n\nVocê pode aceitar o contato ou tentar resolver sozinha.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar o contato.",
@@ -325,7 +325,7 @@
       "id": 503,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Mais algumas semanas passam. O pagamento continua pendente.\n\nA primeira mensagem fica sem resposta. Quando você insiste, o cliente escreve: 'tô vendo aqui'. A terceira nem chega a ser visualizada.\n\nVocê já não sabe se está negociando um pagamento ou pedindo que alguém reconheça que o seu trabalho existiu.\n\n(Tá vendo.)\n\n(Claro que tá.)",
+      "textoNarrativo": "Mais algumas semanas passam. O pagamento continua pendente.\n\nA primeira mensagem fica sem resposta. Quando você insiste, o cliente escreve 'tô vendo aqui'. A terceira nem chega a ser visualizada.\n\nVocê já não sabe se está negociando um pagamento ou pedindo que alguém reconheça que seu trabalho existiu.\n\nPode ir ao restaurante, desistir, aprender a fazer contrato, mandar mensagem para Bia ou conferir a entrega e registrar por escrito o que foi enviado.",
       "escolhas": [
         {
           "textoAlternativa": "Ir ao restaurante pessoalmente.",
@@ -526,7 +526,7 @@
       "id": 505,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O dinheiro não chegou. Você fecha a conversa sem data de pagamento e guarda os arquivos do projeto.\n\nA raiva vem primeiro. Depois, uma vergonha que você sabe que não deveria sentir: fez o trabalho, entregou no prazo e ainda precisa correr atrás do que foi combinado.\n\nMas alguma coisa mudou. Agora você sabe o que precisa aprender além de escrever código: registrar escopo, prazo, forma de pagamento e o que fazer quando o cliente desaparece.\n\n(Sozinha.)\n\n(Ou com a Bia.)\n\n(Provavelmente com a Bia.)",
+      "textoNarrativo": "O dinheiro não chegou. Você fecha a conversa sem uma data de pagamento e guarda os arquivos do projeto.\n\nA raiva vem primeiro. Depois, uma vergonha que você sabe que não deveria sentir: fez o trabalho, entregou no prazo e ainda precisa correr atrás do combinado.\n\nAgora sabe o que precisa aprender além de escrever código: registrar escopo, prazo, forma de pagamento e o que fazer quando o cliente desaparece.\n\n(Sozinha.)\n\n(Ou com a Bia.)\n\n(Provavelmente com a Bia.)",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5C.",
@@ -567,7 +567,7 @@
       "id": 506,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Dois dias depois, o pagamento cai.\n\nNão foi por gentileza. Você registrou o que tinha combinado, cobrou com clareza e mostrou que podia comprovar a entrega. Pela primeira vez desde que começou, a conversa deixou de ser uma promessa vaga.\n\nO dinheiro não apaga as semanas de ansiedade, mas paga o trabalho. Você salva os registros e decide que, no próximo freela, vai combinar escopo, prazo e forma de pagamento antes de abrir o editor.",
+      "textoNarrativo": "Dois dias depois, o pagamento cai.\n\nNão foi por gentileza. Você registrou o combinado, cobrou com clareza e mostrou que podia comprovar a entrega. Pela primeira vez, a conversa deixou de ser uma promessa vaga.\n\nO dinheiro não apaga as semanas de ansiedade, mas paga o trabalho. Você salva os registros e decide que, no próximo freela, vai combinar escopo, prazo e forma de pagamento antes de abrir o editor.\n\n# Capítulo 6 — O quarto fechado",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5C.",

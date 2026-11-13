@@ -9,7 +9,7 @@
       "id": 451,
       "capitulo": "Capítulo 5 — A Greve",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║       — O CALENDÁRIO REMANEJADO —        ║\n╚══════════════════════════════════════════╝\n\nQuatro semanas depois, os professores entram em greve. Não é um departamento: é a universidade inteira.\n\nOs avisos chegam fragmentados, cada um por um canal:\n\n— As aulas estão suspensas.\n— O RU continua funcionando por um período reduzido, mas já há data para fechar.\n— A bolsa de monitoria fica suspensa.\n— O auxílio moradia continua em análise.\n— O calendário será remanejado para janeiro.\n\n(Janeiro.)\n\n(EU TÔ DE FÉRIAS EM JANEIRO.)\n\nA assembleia do DCE é segunda, 14h, no pátio. Ninguém consegue dizer por quanto tempo isso vai durar.",
+      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║       — O CALENDÁRIO REMANEJADO —        ║\n╚══════════════════════════════════════════╝\n\nQuatro semanas depois, os professores entram em greve. Os avisos chegam por canais diferentes e se contradizem:\n\n— As aulas estão suspensas.\n— O RU continua aberto por horário reduzido, mas já há data para fechar.\n— A bolsa de monitoria está suspensa.\n— O auxílio-moradia continua em análise.\n— O calendário será remanejado para janeiro.\n\n(Janeiro. Eu tinha planejado descansar.)\n\nA assembleia do DCE é segunda, às 14h, no pátio. Ninguém sabe quanto tempo a greve vai durar. Você decide se vai à assembleia, mantém uma atividade, trabalha, espera ou continua o que já estava fazendo.",
       "escolhas": [
         {
           "textoAlternativa": "Ir na assembleia.",
@@ -241,7 +241,7 @@
       "id": 455,
       "capitulo": "Capítulo 5 — A Greve",
       "personagemFalando": "Dandara Oliveira",
-      "textoNarrativo": "Três semanas de greve. Você encontra Dandara na fila do RU, uma das últimas antes do fechamento anunciado. Ela segura uma marmita com as duas mãos.\n\n'Já são três semanas. Minha bolsa tá suspensa.'\n\n'Minha mãe mandou comida de Feira de Santana. Porque, quando o RU fechar, eu não tenho oito reais pra gastar na cantina todo dia.'\n\nAbre a marmita. Arroz com ovo. O cheiro se mistura ao barulho da fila, que avança devagar.\n\nDandara olha a comida, depois olha você. Não pede nada. Isso torna a situação mais difícil, não menos.",
+      "textoNarrativo": "Três semanas de greve. Dandara está na fila do RU, uma das últimas antes do fechamento anunciado. Segura uma marmita com as duas mãos.\n\n— Minha bolsa está suspensa. Minha mãe mandou comida de Feira, porque quando o RU fechar eu não tenho oito reais para gastar na cantina todo dia.\n\nEla abre a marmita: arroz com ovo. O cheiro se mistura ao barulho da fila.\n\nDandara olha a comida, depois olha para você. Não pede nada. A marmita está entre vocês; você pode oferecer para dividir, dizer que a greve é justa ou ficar em silêncio.",
       "escolhas": [
         {
           "textoAlternativa": "Oferecer pra dividir.",
@@ -392,7 +392,7 @@
       "id": 460,
       "capitulo": "Capítulo 5 — A Greve",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A greve termina sessenta e cinco dias depois de começar. O calendário oficial é publicado de novo, com aulas e avaliações remanejadas para janeiro.\n\nVocê abre o calendário, fecha, abre outra vez. As datas mudaram. Os compromissos não sumiram: só foram empurrados pra outro mês.\n\nVocê não sabe se ganhou ou perdeu. Sabe que precisou reorganizar a vida em torno de uma decisão que nunca esteve nas suas mãos.",
+      "textoNarrativo": "A greve termina sessenta e cinco dias depois. O calendário oficial é publicado outra vez, com aulas e avaliações remanejadas para janeiro.\n\nVocê abre o calendário, fecha e abre de novo. As datas mudaram; as pendências não sumiram. O cliente pode ter pago ou não. O artigo continua no laboratório. A monitoria talvez volte no semestre seguinte.\n\nVocê não sabe se ganhou ou perdeu. Sabe que precisou reorganizar a vida em torno de uma decisão que nunca esteve nas suas mãos. Agora escolhe qual pendência vai encarar primeiro.",
       "escolhas": [
         {
           "textoAlternativa": "Ver o que aconteceu com o cliente.",

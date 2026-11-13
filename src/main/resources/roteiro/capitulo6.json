@@ -9,7 +9,7 @@
       "id": 540,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Janeiro. Semestre 4.\n\nA universidade 'recuperou o calendário'. Isso significa que o ÁGATA publicou uma tabela em que dois semestres cabem em seis semanas.\n\nTrês provas em quatro dias. Dois trabalhos finais com a mesma data. Uma entrega em 'data a definir', que o sistema, por segurança, definiu como ontem.\n\nVocê olha a tabela. Os números não mudam por insistência.\n\n(Eu sobrevivi à greve. Ninguém avisou que sobreviver tem prestação.)",
+      "textoNarrativo": "Janeiro. Semestre 4. A universidade diz que recuperou o calendário; o ÁGATA publica uma tabela em que dois semestres cabem em seis semanas.\n\nTrês provas em quatro dias. Dois trabalhos finais com a mesma data. Uma entrega em 'data a definir' que o sistema, por segurança, marcou como ontem.\n\nVocê olha a tabela. Os números não mudam por insistência.\n\n(Eu sobrevivi à greve. Ninguém avisou que sobreviver tem prestação.)",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -105,7 +105,7 @@
       "id": 541,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Mensagem do orientador, 22h40:\n\n'Preciso do relatório final do grupo até quinta. Mando o modelo amanhã.'\n\nO modelo não vem. Quarta chega. Você escreve o relatório do zero, com metade das referências na memória e a outra metade num PDF que o servidor se recusa a abrir.\n\nNa terça, 3h07, Bia manda uma planilha sem comentário. Está certa. É a planilha que faltava.",
+      "textoNarrativo": "Mensagem do orientador, 22h40:\n\n'Preciso do relatório final do grupo até quinta. Mando o modelo amanhã.'\n\nO modelo não vem. Quarta chega. Você começa o relatório do zero; metade das referências está na memória e o PDF do servidor se recusa a abrir.\n\nÀs 3h07, Bia manda uma planilha sem comentário. Está certa. É a planilha que faltava.\n\nVocê pode entregar de madrugada, pedir prorrogação ou não entregar um relatório que talvez ninguém leia.",
       "escolhas": [
         {
           "textoAlternativa": "Entregar às três da manhã. Pronto é melhor que perfeito.",
@@ -210,7 +210,7 @@
       "id": 542,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A bolsa de monitoria continua suspensa. Os alunos, não.\n\nOs e-mails chegam sem pedir licença: dúvida de lista, dúvida de prova, dúvida de dúvida. Às 23h14, Téo escreve:\n\n'Monitor, a prova é amanhã e eu não entendi nada.'\n\nVocê não é pago pra isso. Também não consegue ignorar.",
+      "textoNarrativo": "A bolsa da monitoria continua suspensa. Os alunos, não.\n\nOs e-mails chegam sem pedir licença: dúvida de lista, dúvida de prova, dúvida de dúvida. Às 23h14, Téo escreve:\n\n'Monitor, a prova é amanhã e eu não entendi nada.'\n\nVocê não é paga para isso. Também não consegue ignorar. Pode responder a madrugada inteira, marcar atendimento às 9h na sala 112 ou silenciar o celular e responder amanhã.",
       "escolhas": [
         {
           "textoAlternativa": "Responder a madrugada inteira.",
@@ -314,7 +314,7 @@
       "id": 543,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O cliente manda mensagem na semana das provas:\n\n'Só um ajustezinho. É urgente. Pra ontem.'\n\nAjustezinho, no vocabulário dele, é uma tela nova. Pagamento não foi mencionado.",
+      "textoNarrativo": "O cliente manda mensagem na semana das provas:\n\n'Só um ajustezinho. É urgente. Pra ontem.'\n\nAjustezinho, no vocabulário dele, é uma tela nova. Pagamento não foi mencionado.\n\nVocê pode fazer de graça para não perder o cliente, dizer não e mandar orçamento, ou negociar prazo e valor por escrito.",
       "escolhas": [
         {
           "textoAlternativa": "Fazer de graça. Você não quer perder o cliente.",
@@ -416,7 +416,7 @@
       "id": 550,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║           — O QUARTO FECHADO —           ║\n║        Sem antagonista. Só você.         ║\n╚══════════════════════════════════════════╝\n\nQuarta-feira, 14h.\n\nVocê não foi à aula. Não foi à monitoria, ao laboratório ou ao que quer que fosse hoje. Não respondeu mensagem. Não abriu o notebook em cinco dias.\n\nEstá no quarto, celular no silencioso, olhando o teto.\n\n(Quando foi que eu parei?)\n\n(Semana passada eu estava bem.)\n\n(Eu acho.)",
+      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║           — O QUARTO FECHADO —           ║\n║        Sem antagonista. Só você.         ║\n╚══════════════════════════════════════════╝\n\nQuarta-feira, 14h.\n\nVocê não foi à aula, à monitoria, ao laboratório nem ao que quer que fosse hoje. Não respondeu às mensagens. Não abriu o notebook em cinco dias.\n\nEstá no quarto, celular no silencioso, olhando o teto. A tela tem mensagens não lidas; você não consegue decidir qual abrir primeiro.\n\n(Quando foi que eu parei?)\n\n(Semana passada eu estava bem.)\n\n(Eu acho.)\n\nUma mensagem chega. Pode ser de alguém que percebeu sua ausência; pode não haver mensagem nenhuma. Você escolhe o próximo gesto possível.",
       "escolhas": [
         {
           "textoAlternativa": "Malu manda mensagem: 'Lembra que eu falei bom dia pra uma planta? Era mentira.'",
@@ -841,7 +841,7 @@
       "id": 551,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você levanta.\n\nO banho ajuda. O arroz que você faz ajuda mais.\n\nAbre o notebook pela primeira vez em cinco dias. Quarenta e sete e-mails. Você lê três.\n\nUm é da PRAE: 'acompanhamento pedagógico', com um endereço de atendimento no final.\n\n(É o primeiro e-mail da PRAE em seis meses.)",
+      "textoNarrativo": "Você levanta. O banho ajuda. O arroz que faz ajuda mais.\n\nAbre o notebook pela primeira vez em cinco dias. Quarenta e sete e-mails. Você lê três.\n\nUm é da PRAE: 'acompanhamento pedagógico', com um endereço de atendimento no final. É o primeiro e-mail da PRAE em seis meses.\n\nVocê pode responder e pedir ajuda ou arquivar a mensagem acreditando que vai resolver sozinha.",
       "escolhas": [
         {
           "textoAlternativa": "Responder. Pedir ajuda.",
@@ -914,7 +914,7 @@
       "id": 552,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fica deitada. O dia passa. O sol bate na parede. Depois some.\n\nNo dia seguinte, alguém bate na porta.\n\n{{DEPOIS_DA_PORTA}}",
+      "textoNarrativo": "Você fica deitada. O dia passa. O sol bate na parede e depois some.\n\nNo dia seguinte, alguém bate à porta.\n\n{{DEPOIS_DA_PORTA}}\n\nVocê pode falar e contar tudo, ficar em silêncio enquanto a pessoa permanece, ou não abrir e continuar no quarto até a noite.",
       "escolhas": [
         {
           "textoAlternativa": "Falar. Contar tudo.",
@@ -1024,7 +1024,7 @@
       "id": 553,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele atende no terceiro toque.\n\n'Oi.'\n\n'Tá tudo bem?'\n\nVocê não responde. Ele não insiste.\n\nVocê escuta ele respirar do outro lado. Uma cadeira arrastando. Um copo batendo na mesa.\n\n'Tô indo aí.'\n\nDesliga.",
+      "textoNarrativo": "— Oi. Tá tudo bem?\n\nVocê não responde. Caio não insiste. Do outro lado, uma cadeira arrasta e um copo bate na mesa.\n\n— Tô indo aí.\n\nEle desliga.\n\nVocê não precisa resolver nada pelo telefone agora. Só esperar.",
       "escolhas": [
         {
           "textoAlternativa": "Esperar.",
@@ -1066,7 +1066,7 @@
       "id": 555,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Mais tarde, algo (a fome, uma vibração do celular, o simples cansaço de ficar) te tira do quarto. Você chega ao RU sem lembrar do caminho. O frango com quiabo esfria no prato enquanto você tenta descobrir se está com fome.\n\nBia senta do seu lado com a marmita dela. Não pergunta nada. Abre a marmita.\n\nArroz com ovo. De novo.\n\nFica em silêncio uns cinco minutos. Depois fala, sem olhar pra você:\n\n'Eu já passei por isso. No terceiro semestre.'\n\n'Ninguém me falou nada. Eu só fiquei.'",
+      "textoNarrativo": "Mais tarde, algo — fome, uma vibração do celular, o cansaço de ficar — te tira do quarto. Você chega ao RU sem lembrar do caminho. O frango com quiabo esfria no prato.\n\nBia senta ao seu lado com a marmita. Arroz com ovo, de novo. Ela não pergunta nada. Abre a tampa e come em silêncio por cinco minutos.\n\n— Eu já passei por isso. No terceiro semestre. Ninguém me falou nada. Eu só fiquei.\n\nVocê pode perguntar como ela saiu ou ficar quieta.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar como ela saiu.",
@@ -1137,7 +1137,7 @@
       "id": 556,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Ela pensa antes de responder, como quem escolhe as palavras pelo preço.\n\n'Eu não saí. Eu só aprendi a andar devagar.'\n\n'Você vai aprender também.'\n\nOferece metade do pão. Você aceita.",
+      "textoNarrativo": "Bia pensa antes de responder, como quem escolhe as palavras pelo preço.\n\n— Eu não saí. Só aprendi a andar devagar.\n\nEla oferece metade do pão. Você aceita.\n\n— Você vai aprender também. Mas não precisa aprender hoje, nem sozinha.\n\nVocês ficam juntas até terminarem de comer.",
       "escolhas": [
         {
           "textoAlternativa": "Ficar com ela até terminar.",
@@ -1179,7 +1179,7 @@
       "id": 554,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você está de pé de novo. Não 100%, mas de pé.\n\nO semestre não acabou. Tem prova em três semanas e trabalho pra entregar. Tem gente esperando uma resposta sua.\n\nVocê não precisa resolver tudo hoje. Mas precisa decidir se tenta continuar neste calendário ou se pede o trancamento.",
+      "textoNarrativo": "Você está de pé de novo. Não cem por cento, mas de pé.\n\nO semestre não acabou. Tem prova em três semanas, trabalho para entregar e gente esperando uma resposta sua.\n\nVocê não precisa resolver tudo hoje. Precisa decidir se tenta continuar neste calendário ou se pede trancamento. Pode reorganizar a rotina, trancar por enquanto ou tentar cumprir tudo como antes.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar, mas reorganizar a rotina e escolher prioridades realistas.",
@@ -1288,7 +1288,7 @@
       "id": 557,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Você sai do RU e encontra o Caio na porta. Copo térmico amassado, como sempre.\n\nEle está parado, olhando a rua como quem espera alguém. Te vê. Hesita.\n\n'Eu preciso te contar uma coisa.'",
+      "textoNarrativo": "Você sai do RU e encontra Caio na porta. Copo térmico amassado, como sempre. Ele olha a rua como quem espera alguém; quando te vê, hesita.\n\n— Eu preciso te contar uma coisa.\n\nCaio não explica ainda. Você pode deixar que conte ou dizer que não precisa.",
       "escolhas": [
         {
           "textoAlternativa": "Deixar ele contar.",
@@ -1359,7 +1359,7 @@
       "id": 5576,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "'Tá.'\n\nEle olha o copo, depois a rua. Alivia e se decepciona na mesma respiração.\n\n'Fica pra outro dia, então.'\n\nVocê tem a sensação de que acabou de fechar uma porta que não sabia que estava aberta.",
+      "textoNarrativo": "— Tá. Fica para outro dia, então.\n\nCaio olha o copo, depois a rua. O alívio e a decepção aparecem na mesma respiração.\n\nVocê tem a sensação de que acabou de fechar uma porta que não sabia que estava aberta.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -1397,7 +1397,7 @@
       "id": 558,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele olha pro copo. Não bebe.\n\n'Eu não reprovei Cálculo duas vezes.'\n\n'Eu desisti.'\n\n'Na segunda tentativa, saí no meio da prova. Ninguém sabe.'\n\n'Deixo todo mundo achar que reprovei, porque é mais fácil. Reprovado todo mundo entende. Desistiu, ninguém entende.'\n\n(Cinco anos.)\n\n(Ele está aqui há cinco anos.)",
+      "textoNarrativo": "Caio olha para o copo. Não bebe.\n\n— Eu não reprovei Cálculo duas vezes. Eu desisti. Na segunda tentativa, saí no meio da prova. Ninguém sabe.\n\nEle deixa o silêncio durar antes de continuar.\n\n— Deixo todo mundo achar que reprovei porque é mais fácil. Reprovado todo mundo entende. Desistiu, ninguém entende.\n\nCinco anos. Ele ainda está aqui.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar por que ele voltou.",
@@ -1600,7 +1600,7 @@
       "id": 559,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele dá um gole. Dessa vez, bebe. Um gole longo.\n\n'Voltei porque não sei fazer outra coisa.'\n\n'E porque uma menina me disse uma vez que, se eu ainda estava aqui, era porque alguma coisa valia.'\n\n'Esqueci o nome dela. Lembro da frase.'\n\nEle te olha.\n\n(Eu disse essa frase.)\n\n(No primeiro semestre. Nos degraus do Módulo 1. Eu nem lembrava mais.)",
+      "textoNarrativo": "Caio dá um gole longo.\n\n— Voltei porque não sei fazer outra coisa. E porque uma menina me disse uma vez que, se eu ainda estava aqui, era porque alguma coisa valia.\n\nEle te olha.\n\n— Esqueci o nome dela. Lembro da frase.\n\nVocê lembra de ter dito aquilo nos degraus do Módulo 1. Pode contar que foi você ou não dizer nada.",
       "escolhas": [
         {
           "textoAlternativa": "Fui eu.",
@@ -1673,7 +1673,7 @@
       "id": 5591,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele dá um gole. Dessa vez, bebe. Um gole longo.\n\n'Voltei porque não sei fazer outra coisa.'\n\n'E porque, no primeiro semestre, uma caloura sentou do meu lado nos degraus e não pediu nada. Nem resposta. Só ficou.'\n\nEle te olha, e você percebe que ele sabe quem foi.",
+      "textoNarrativo": "Caio dá um gole longo.\n\n— Voltei porque não sei fazer outra coisa. E porque, no primeiro semestre, uma caloura sentou do meu lado nos degraus e não pediu resposta. Só ficou.\n\nEle te olha; você percebe que ele sabe quem foi.\n\n— Ainda estou aqui — você pode dizer. Ou pode deixar o silêncio responder.",
       "escolhas": [
         {
           "textoAlternativa": "Ainda tô aqui.",
@@ -1744,7 +1744,7 @@
       "id": 5592,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele dá um gole. Dessa vez, bebe. Um gole longo.\n\n'Voltei porque não sei fazer outra coisa.'\n\n'E porque, de vez em quando, aparece alguém no meio do pátio e fala comigo como se eu não fosse um aviso.'\n\nEle não diz seu nome. Não precisa.",
+      "textoNarrativo": "Caio dá um gole longo.\n\n— Voltei porque não sei fazer outra coisa. De vez em quando aparece alguém no pátio e fala comigo como se eu não fosse um aviso.\n\nEle não diz seu nome. Não precisa.\n\nVocê pode dizer que também não sabe fazer outra coisa ou não falar nada.\n\n# Capítulo 7 — TCC",
       "escolhas": [
         {
           "textoAlternativa": "Eu também não sei fazer outra coisa.",
@@ -1813,7 +1813,7 @@
       "id": 560,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A conversa com Caio não resolve o semestre por você.\n\nMas muda uma coisa: pela primeira vez em dias, você não precisa fingir que só existe uma maneira de continuar.\n\nA decisão que você tomou ainda está ali. Agora você entende melhor o que ela vai exigir e o que não precisa carregar sozinha.",
+      "textoNarrativo": "A conversa com Caio não resolve o semestre por você.\n\nMas muda uma coisa: pela primeira vez em dias, você não precisa fingir que só existe uma maneira de continuar.\n\nA decisão ainda está ali. Agora você entende melhor o que vai exigir e o que não precisa carregar sozinha. Pode seguir uma etapa de cada vez ou trancar e retomar em outro calendário.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar. Uma etapa de cada vez.",
@@ -1880,7 +1880,7 @@
       "id": 567,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você volta a olhar o caminho que vinha construindo.\n\nNão precisa decidir os próximos cinco anos hoje. Só precisa decidir qual é o próximo passo possível.",
+      "textoNarrativo": "Você volta a olhar o caminho que vinha construindo. Não precisa decidir os próximos cinco anos hoje. Só qual é o próximo passo possível.\n\nPesquisa, monitoria de DTEC e projetos independentes ainda estão na mesa. Você escolhe qual deles consegue retomar primeiro, sem assumir que precisa voltar a todos ao mesmo tempo.",
       "escolhas": [
         {
           "textoAlternativa": "Voltar para a IC.",
@@ -2005,7 +2005,7 @@
       "id": 561,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Você volta ao laboratório. Ele também está cansado, como todo mundo nessa época.\n\n'Tem uma proposta nova. Projeto menor. Sem empresa, sem verba paralela. Só pesquisa.'\n\n'Honesta.'",
+      "textoNarrativo": "Sérgio te recebe no laboratório. Ele também está cansado, como todo mundo nesta época.\n\n— Tenho uma proposta nova. Projeto menor. Sem empresa, sem verba paralela. Só pesquisa.\n\nEle coloca uma folha na bancada: pergunta, prazo e recursos disponíveis.\n\n— Honesta.\n\nVocê pode aceitar e recomeçar com esse escopo, ou recusar.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar. Recomeçar limpo.",
@@ -2078,7 +2078,7 @@
       "id": 562,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Meira ensina um aluno do primeiro semestre a segurar o multímetro direito. O menino está com a mão tremendo.\n\nTe vê.\n\n'Você sumiu.'\n\n'A greve acabou. O semestre recomeçou. Tem vaga de monitor no próximo. Você quer?'",
+      "textoNarrativo": "Meira está ensinando um aluno do primeiro semestre a segurar o multímetro. O menino está com a mão tremendo.\n\n— Você sumiu — diz Meira. — A greve acabou, o calendário recomeçou. Tem vaga de monitor no próximo semestre. Você quer?\n\nVocê ainda quer? Não sabe. Mas alguma coisa em você quer.\n\nPode aceitar ou pedir um tempo.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
@@ -2151,7 +2151,7 @@
       "id": 563,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Zé do Módulo 8",
-      "textoNarrativo": "O celular apita. É o Zé.\n\n'Aquele cliente que te enrolou voltou.'\n\n'Diz que quer fechar projeto novo. Maior. Pagando metade adiantado.'\n\n'Eu não sei se é furada. Você decide.'",
+      "textoNarrativo": "O celular apita. É uma mensagem do Zé.\n\n— Aquele cliente que te enrolou voltou. Disse que quer fechar um projeto maior e pagar metade adiantado.\n\nZé manda outra mensagem:\n\n— Não sei se é furada. Você decide.\n\nVocê pode aceitar ou recusar.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
@@ -2222,7 +2222,7 @@
       "id": 5631,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Zé do Módulo 8",
-      "textoNarrativo": "O celular apita. É o Zé.\n\n'Aquele cliente que te pagou direitinho falou de você pra um amigo. Projeto maior. Metade adiantado.'\n\n'Dessa vez ninguém te enrolou, né? Então deve ser bom.'",
+      "textoNarrativo": "O celular apita. É uma mensagem do Zé.\n\n— Aquele cliente que te pagou direitinho falou de você para um amigo. Projeto maior, metade adiantado.\n\nEle acrescenta:\n\n— Dessa vez ninguém te enrolou, né? Então deve ser bom.\n\nVocê pode aceitar ou recusar.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
@@ -2333,7 +2333,7 @@
       "id": 565,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O pedido de trancamento é confirmado.\n\nO ÁGATA registra a data, atualiza sua situação acadêmica e encerra o semestre no papel. Não registra o que custou chegar até essa decisão.\n\nVocê vai precisar reorganizar o calendário, conversar com quem depende da sua rotina e voltar quando estiver pronta. Isso tem consequências. Também é uma decisão.",
+      "textoNarrativo": "O pedido de trancamento é confirmado.\n\nO ÁGATA registra a data, atualiza sua situação acadêmica e encerra o semestre no papel. Não registra o que custou chegar a essa decisão.\n\nVocê vai precisar reorganizar o calendário, conversar com quem depende da sua rotina e voltar quando estiver pronta. Isso tem consequências. Também é uma decisão.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir. O tempo passa de qualquer jeito.",

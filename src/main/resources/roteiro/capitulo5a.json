@@ -9,7 +9,7 @@
       "id": 400,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Reunião do grupo. Terça, 14h, sala 204. Cinco pessoas: quatro mestrandos e você.\n\nO orientador te apresenta como 'a nova'. Ninguém pergunta seu nome. Você procura um lugar à mesa sem interromper a conversa.\n\nA reunião dura quarenta minutos. Ele fala de prazo, cronograma e artigo atrasado. Você entende metade e anota até o que não entende.\n\nQuando acaba, todo mundo parece saber o que fazer. Você fecha o caderno e espera descobrir por onde começar.",
+      "textoNarrativo": "Terça, 14h, sala 204. Cinco pessoas: quatro mestrandos e você.\n\nO orientador te apresenta como 'a nova'. Ninguém pergunta seu nome. Você procura um lugar à mesa sem interromper a conversa.\n\nA reunião dura quarenta minutos. Ele fala de prazo, cronograma e artigo atrasado. Você entende metade e anota até o que não entende.\n\nQuando acaba, todo mundo parece saber o que fazer. Você pode dizer seu nome e explicar o que sabe fazer, ficar quieta e provar pelo trabalho, ou sentar no canto e esperar que alguém note que chegou.",
       "escolhas": [
         {
           "textoAlternativa": "Falar meu nome e explicar o que eu sei fazer.",
@@ -109,7 +109,7 @@
       "id": 402,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No laboratório, Bia está com o fichário de sempre e um Excel aberto.\n\n'Achei que você fosse pra DTEC. Ainda bem que não.'\n\nAponta a planilha: dados de um experimento cujo nome não te diz nada. As colunas estão preenchidas, mas ninguém parece ter explicado o que aqueles números significam.",
+      "textoNarrativo": "No laboratório, Bia está com o fichário de sempre e um Excel aberto.\n\n— Achei que você fosse para DTEC. Ainda bem que não.\n\nEla aponta para os dados de um experimento cujo nome não te diz nada. As colunas estão preenchidas, mas ninguém explicou o que aqueles números significam.\n\nVocê pode perguntar o que ela está fazendo ali, perguntar se ela ainda vende respostas ou não dizer nada. Bia gira o notebook para que você veja a planilha.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar o que ela está fazendo ali.",
@@ -213,7 +213,7 @@
       "id": 403,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "'Eu não faço pesquisa. Eu faço o trabalho que ninguém quer.'\n\nGira o notebook na sua direção.\n\n'Planilha, transcrição, revisão de referência. Dois semestres nisso.'\n\nEla não está reclamando pra ganhar consolo. Está avisando alguém que ainda pode decidir se quer entrar nessa.\n\n'Você vai acabar fazendo também. Todo mundo faz.'",
+      "textoNarrativo": "— Eu não faço pesquisa. Eu faço o trabalho que ninguém quer.\n\nBia gira o notebook na sua direção.\n\n— Planilha, transcrição, revisão de referência. Dois semestres nisso.\n\nEla não está pedindo consolo. Está avisando alguém que ainda pode decidir se quer entrar nessa.\n\n— Você vai acabar fazendo também. Todo mundo faz.\n\nVocê pode dizer que entende ou que não foi por isso que veio.",
       "escolhas": [
         {
           "textoAlternativa": "Dizer que entendo.",
@@ -284,7 +284,7 @@
       "id": 401,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Três semanas depois.\n\nA reunião de terça foi cancelada. A de quarta também. Na sexta, o orientador manda uma mensagem no grupo: 'Semana que vem a gente retoma. Tô com prazo de artigo.'\n\nNinguém responde. Você abre o calendário e conta quantas reuniões foram adiadas. É a terceira vez no mês.\n\n{{ORIENTADOR_RECURSO}}\n\nO grupo continua existindo. O trabalho, por enquanto, parece não sair do lugar.",
+      "textoNarrativo": "Três semanas depois, a reunião de terça é cancelada. A de quarta também. Na sexta, o orientador manda uma mensagem no grupo: 'Semana que vem a gente retoma. Estou com prazo de artigo.'\n\nNinguém responde. Você abre o calendário e conta as reuniões adiadas: três no mês.\n\n{{ORIENTADOR_RECURSO}}\n\nO grupo continua existindo. O trabalho, por enquanto, não sai do lugar. Você pode perguntar o que deve fazer, esperar, perguntar a Bia se é sempre assim ou procurar o cronograma no drive — a última atualização é de quatro meses atrás.",
       "escolhas": [
         {
           "textoAlternativa": "Mandar mensagem perguntando o que devo fazer enquanto isso.",
@@ -421,7 +421,7 @@
       "id": 405,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na sexta, o orientador aparece. Vinte minutos de reunião: distribui tarefas, marca prazos e, na última frase, muda o tamanho do problema.\n\n'Vocês vão escrever um artigo. Cada um pega uma parte. Eu reviso no fim.'\n\nSai antes que alguém pergunte como as partes devem se encaixar.\n\nOs mestrandos se olham. Ninguém sabe o que fazer primeiro. O prazo, porém, já está no calendário.\n\nNa tela do seu celular, o e-mail dele com a divisão das partes ainda está aberto.",
+      "textoNarrativo": "Na sexta, o orientador aparece. Vinte minutos de reunião: distribui tarefas, marca prazos e, na última frase, muda o tamanho do problema.\n\n— Vocês vão escrever um artigo. Cada um pega uma parte. Eu reviso no fim.\n\nEle sai antes que alguém pergunte como as partes devem se encaixar. O prazo, porém, já está no calendário.\n\nNo celular, o e-mail com a divisão das tarefas continua aberto. Você pode assumir a coordenação, pegar a parte mais simples, perguntar quem vai revisar, registrar método e resultados ou guardar uma cópia da divisão.",
       "escolhas": [
         {
           "textoAlternativa": "Assumir a coordenação. Alguém precisa organizar isso.",
@@ -618,7 +618,7 @@
       "id": 410,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Dois meses depois, o artigo continua sem estar pronto.\n\nVocê escreveu sua parte e entregou. Os mestrandos fizeram o mesmo. O orientador não revisou, não respondeu, não mandou nada no grupo.\n\nO prazo da revista passou na semana anterior. Ninguém avisou.\n\nVocê abre o arquivo mais uma vez. O texto está lá. O retorno que você precisava, não.",
+      "textoNarrativo": "Dois meses depois, o artigo continua sem estar pronto.\n\nVocê escreveu sua parte e entregou. Os mestrandos fizeram o mesmo. O orientador não revisou nem respondeu. O prazo da revista passou na semana anterior; ninguém avisou.\n\nO texto está lá. O retorno que você precisava, não.\n\nVocê pode aguentar porque fez sua parte, pedir para sair do grupo, aceitar que pesquisa também produz resultados que não avançam ou pensar em desistir de tudo.",
       "escolhas": [
         {
           "textoAlternativa": "Aguentar. Fiz a minha parte.",
@@ -751,7 +751,7 @@
       "id": 4101,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Você escreve o pedido de saída. Ele assina sem ler, como assina tudo.\n\n'Sem problema. A gente continua se vendo por aí.'\n\nNão vai continuar. Vocês dois sabem.\n\nNa porta da sala, Bia levanta os olhos da planilha e não diz nada. É a forma mais gentil que ela tem de se despedir.",
+      "textoNarrativo": "— Pedido de saída — você diz.\n\nSérgio assina sem ler, como assina tudo.\n\n— Sem problema. A gente continua se vendo por aí.\n\nNão vai continuar. Vocês dois sabem.\n\nNa porta, Bia levanta os olhos da planilha e não diz nada. É a forma mais gentil que ela tem de se despedir.\n\n# Capítulo 5B — Monitoria",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5A.",
@@ -792,7 +792,7 @@
       "id": 415,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Fim do semestre.\n\nO orientador te chama à sala em que, meses atrás, você tentou explicar por que queria pesquisar.\n\n'Você entrou como voluntária. Foram meses de reunião, planilha e tarefa sem remuneração. Eu vi.'\n\nFecha uma pasta.\n\n'Tem uma vaga de bolsista pro próximo semestre. É concorrida. Depende do relatório e da minha avaliação.'\n\n'Tem alguma coisa que você queira me dizer antes de eu decidir?'",
+      "textoNarrativo": "Sérgio fecha uma pasta e te chama para conversar no fim do semestre.\n\n— Você entrou como voluntária. Foram meses de reunião, planilha e tarefa sem remuneração. Eu vi.\n\nEle explica que há uma vaga de bolsista para o próximo semestre. A seleção é concorrida e depende do relatório e da avaliação dele.\n\n— Tem alguma coisa que você queira me dizer antes de eu decidir?",
       "escolhas": [
         {
           "textoAlternativa": "Falar do projeto, do tema e do que quero pesquisar.",
@@ -933,7 +933,7 @@
       "id": 416,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Ele faz uma anotação no papel. Você tenta descobrir, pelo rosto dele, se aquela conversa mudou alguma coisa. Não consegue.\n\n'Eu vejo semana que vem.'\n\nVocê sai da sala com uma resposta que não é resposta.\n\n(Uma semana.)\n\n(Eu não vou conseguir dormir.)",
+      "textoNarrativo": "Ele faz uma anotação no papel. Você tenta descobrir pelo rosto se a conversa mudou alguma coisa. Não consegue.\n\n— Eu vejo semana que vem.\n\nVocê sai com uma resposta que não é resposta.\n\n(Uma semana.)\n\n(Eu não vou conseguir dormir.)",
       "escolhas": [
         {
           "textoAlternativa": "Esperar a resposta.",
@@ -1004,7 +1004,7 @@
       "id": 417,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na semana seguinte, chega o e-mail do orientador.\n\n'Aprovada. Bolsa FAPESB. R$ 500 por mês. Começa no próximo semestre.'\n\nVocê lê uma vez. Depois outra. A palavra 'aprovada' parece ter sido escrita pra outra pessoa e enviada por engano pra você.\n\nVocê mostra o e-mail pra sua mãe. Ela não entende bem o que é IC, mas entende o que uma renda mensal pode representar.\n\nR$ 500 não pagam o tempo que você investiu. Ainda assim, ajudam com as passagens e com parte das despesas. Pela primeira vez em meses, o esforço tem uma consequência concreta.",
+      "textoNarrativo": "Na semana seguinte, chega o e-mail do orientador.\n\n'Aprovada. Bolsa FAPESB. R$ 500 por mês. Começa no próximo semestre.'\n\nVocê lê uma vez, depois outra. Mostra o e-mail à sua mãe. Ela não entende bem o que é IC, mas entende o que uma renda mensal representa.\n\nR$ 500 não pagam o tempo que você investiu. Ainda assim, ajudam com as passagens e parte das despesas. Pela primeira vez em meses, o esforço tem uma consequência concreta.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5A.",

@@ -9,7 +9,7 @@
       "id": 649,
       "capitulo": "Capítulo 8 — Formatura",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║         CHEFE FINAL                      ║\n║       — O BOLETO DA FORMATURA —          ║\n║                                          ║\n║  Você venceu o curso.                    ║\n║  Não venceu o boleto.                    ║\n╚══════════════════════════════════════════╝\n\nO pacote completo da formatura custa R$ 1.200.\n\nBeca alugada. Convite. Jantar. Foto. A taxa da empresa que organiza.\n\nVocê tem R$ 400 na conta.\n\nVocê já tinha reservado um convite individual quando o valor parecia possível. Só depois descobriu que ele não cobria a beca, o jantar nem as fotos. Ainda dá para transferi-lo a outra pessoa e recuperar parte do dinheiro.\n\nSua mãe ofereceu o cartão dela.\n\nDois colegas seus não vão na cerimônia.\n\nUm deles disse que 'formatura é pra quem tem dinheiro'.\n\n(Ele tá certo.)\n\n{{CALENDARIO_CAP8}}",
+      "textoNarrativo": "╔══════════════════════════════════════════╗\n║         CHEFE FINAL                      ║\n║       — O BOLETO DA FORMATURA —          ║\n║                                          ║\n║  Você venceu o curso.                    ║\n║  Não venceu o boleto.                    ║\n╚══════════════════════════════════════════╝\n\nO pacote completo custa R$ 1.200. Beca, convite, jantar, fotos e a taxa da empresa. Você tem R$ 400 na conta.\n\nVocê já tinha reservado um convite individual quando o valor parecia possível. Depois descobriu que não cobria a beca nem o jantar. Ainda dá para transferi-lo e recuperar parte do dinheiro.\n\nSua mãe ofereceu o cartão dela. Dois colegas não vão à cerimônia. Um disse: 'formatura é pra quem tem dinheiro'.\n\n(Ele tá certo.)\n\n{{CALENDARIO_CAP8}}\n\nVocê pode aceitar o cartão, fazer uma comemoração em casa, transferir o convite ou assumir o custo para estar lá.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar o cartão.",
@@ -278,7 +278,7 @@
       "id": 650,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Auditório com ar-condicionado quebrado.\n\nVocê tá com a beca alugada. O gorro não cabe direito.\n\nSua mãe tá na terceira fila, chorando, tirando foto com um celular de lente trincada.\n\nA cerimônia acaba rápido. Você não vai ver todo mundo depois.",
+      "textoNarrativo": "O auditório está com o ar-condicionado quebrado. A beca é alugada e o gorro não cabe direito.\n\nSua mãe está na terceira fila, chorando e tirando foto com um celular de lente trincada. A cerimônia acaba rápido; você não vai ver todo mundo depois.\n\nMalu comenta que não se perdeu no campus, só no estacionamento. Caio está no fundo, sem beca. Dandara está com a família.\n\nVocê pode procurar Caio, procurar Dandara ou olhar para o teto enquanto a sala esvazia.",
       "escolhas": [
         {
           "textoAlternativa": "Procurar Caio.",
@@ -376,7 +376,7 @@
       "id": 651,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele tá no fundo do auditório. Sem beca. Não se formou.\n\nMas ele veio.\n\nDepois da cerimônia, ele te encontra na porta.\n\nSem falar nada, ele te estende o copo térmico amassado.\n\n'Toma. Já passou por muita coisa. Vai passar por mais.'",
+      "textoNarrativo": "Caio está no fundo do auditório. Sem beca. Não se formou.\n\nMas veio.\n\nDepois da cerimônia, ele te encontra na porta e estende o copo térmico amassado.\n\n— Toma. Já passou por muita coisa. Vai passar por mais.\n\nVocê pode aceitar, recusar ou devolver a frase que disse a ele no primeiro semestre: 'Se você ainda tá aqui, alguma coisa valia.'",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
@@ -480,7 +480,7 @@
       "id": 652,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Dandara Oliveira",
-      "textoNarrativo": "Dandara se formou também.\n\nEla tá com a beca do lado da família.\n\nEla te vê.\n\nHesita.\n\nDepois vem.",
+      "textoNarrativo": "Dandara também se formou. Está de beca ao lado da família.\n\nEla te vê. Hesita. Depois vem.\n\nVocês lembram da fila do RU, do edital e da monitoria. Agora ela conta que aceitou uma vaga de trabalho na área; não sabe ainda se vai gostar, mas está feliz por poder ajudar em casa.\n\nVocê pode elogiar, dizer apenas 'parabéns' ou perguntar onde ela vai trabalhar.",
       "escolhas": [
         {
           "textoAlternativa": "Elogiar.",
@@ -580,7 +580,7 @@
       "id": 653,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O paraninfo fala por quinze minutos.\n\nEle diz 'o futuro é de vocês' quatro vezes.\n\nEle diz 'mercado de trabalho' seis vezes.\n\nEle não diz o nome de nenhum aluno.\n\nNo fim, todo mundo bate palma e vai tirar foto.",
+      "textoNarrativo": "O paraninfo fala por quinze minutos. Diz 'o futuro é de vocês' quatro vezes e 'mercado de trabalho' seis. Não diz o nome de nenhum aluno.\n\nNo fim, todo mundo bate palma e corre para tirar foto. Sua mãe tenta levantar o celular por cima das cabeças.\n\nVocê pode ir tirar foto ou sair antes do fim. Ninguém vai notar — talvez.",
       "escolhas": [
         {
           "textoAlternativa": "Ir tirar foto.",
@@ -680,7 +680,7 @@
       "id": 656,
       "capitulo": "Capítulo 8 — Uma comemoração diferente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A comemoração acontece em casa. Sem beca, sem pacote de fotos e sem o auditório lotado. Tem comida na mesa, mensagens chegando no celular e sua mãe perguntando se você vai sentir falta da cerimônia.\n\nTalvez sinta. Talvez não. O dinheiro pesou na decisão, mas não foi o dinheiro que tornou seus cinco anos reais. Você concluiu o curso. A cerimônia era uma forma de marcar isso, não a única forma possível.",
+      "textoNarrativo": "A comemoração é em casa. Há comida, fotografias e três versões diferentes da resposta para 'o que faz uma engenheira de computação?'.\n\nMalu aparece por chamada de vídeo e envia uma foto antiga da fila do RU. A imagem está tremida; vocês duas estão rindo de alguma coisa fora do quadro.\n\nVocê não alugou beca para a festa. Sua mãe pendurou o diploma na parede mesmo assim.\n\nA noite termina quando alguém pergunta se pode guardar o bolo para amanhã.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir para o que vem depois.",
@@ -718,7 +718,7 @@
       "id": 654,
       "capitulo": "Capítulo 8 — Inserção",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "[UM ANO DEPOIS]\n\nA mesma sala. Mesa de vidro.\n\nA pessoa da banca pergunta:\n\n'Por que você quer trabalhar aqui?'\n\nSó que agora você não ensaiou.\n\nVocê não sabe o que vai sair da sua boca.",
+      "textoNarrativo": "A mesma sala de vidro da entrevista do prólogo. A pessoa da banca faz a mesma pergunta:\n\n— Por que você quer trabalhar aqui?\n\nDesta vez você tem histórias para escolher. Pode falar da necessidade, da escolha, da dúvida; da greve, da PRAE ou de ter pedido ajuda; do artigo e da autoria; de uma falha técnica que mediu e corrigiu; de método, limites ou de uma candidatura internacional que ainda está calculando.\n\nTambém pode contar a verdade sobre uma prova em que colou. Não há uma resposta única no portfólio — só a trajetória que você decide explicar.",
       "escolhas": [
         {
           "textoAlternativa": "Porque eu preciso. Simples.",
@@ -1115,7 +1115,7 @@
       "id": 655,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você para na calçada. O prédio fica para trás, mas não leva tudo com ele.\n\nVocê carrega o que aprendeu, o que perdeu, as pessoas que ficaram e as perguntas que ainda não sabe responder.\n\nO diploma não prova que tudo dependeu só de você. Também não apaga o que você fez para chegar até aqui.\n\nA próxima etapa não vem com edital — e você não precisa atravessá-la fingindo que chegou aqui sozinha.",
+      "textoNarrativo": "A entrevista termina sem promessa. Você sai para a calçada e não sabe se será contratada.\n\nNo celular, há uma mensagem de Dandara perguntando como foi, um áudio de Caio sobre uma prova e uma foto antiga do laboratório. Na imagem, uma tela OLED está apagada.\n\nVocê quase responde 'deu certo'. Em vez disso, escreve: 'ainda não sei, mas consegui explicar o que aprendi'.\n\nA resposta chega: 'isso já é alguma coisa'. Você guarda o celular e segue para o ponto.",
       "escolhas": [
         {
           "textoAlternativa": "Decidir o próximo passo, sem fingir que ele é definitivo.",
@@ -1153,7 +1153,7 @@
       "id": 661,
       "capitulo": "Capítulo 8 — Depois daqui",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Um ano depois, você não tem a vida resolvida. Tem um diploma, experiências que deram certo e outras que ainda incomodam. Algumas portas abriram por causa do que você fez; outras, porque alguém te indicou, te ensinou ou te deu uma chance. Houve também oportunidades que você recusou — e algumas que não estavam ao seu alcance.\n\nA trilha inicial ajudou a abrir algumas portas, mas não é uma sentença. O que você fez, as oportunidades que conseguiu sustentar, as pessoas com quem trabalhou e os limites que aprendeu a reconhecer deixaram pistas. Você não vai escolher um rótulo para o futuro nesta tela. Vai descobrir que caminho se tornou possível com a história que viveu.",
+      "textoNarrativo": "A graduação não produziu uma única versão de futuro. Algumas pessoas foram para pesquisa, outras para indústria, ensino, desenvolvimento independente ou áreas que ainda não existiam quando entraram.\n\nVocê também mudou de ideia algumas vezes. O diploma não eliminou as barreiras que encontrou, mas deixou ferramentas, registros e relações que ainda usa.\n\nO próximo trabalho não precisa provar que todas as escolhas anteriores foram perfeitas. Precisa fazer sentido agora.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar. Ver o que a sua trajetória abriu — e o que ainda exige trabalho.",
@@ -1191,7 +1191,7 @@
       "id": 667,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A trajetória está sendo organizada.",
+      "textoNarrativo": "A trajetória está sendo organizada.\n\nAs escolhas feitas ao longo do curso ajudam a revelar quais portas se abriram e quais futuros ficaram possíveis.\n\n# Cenas especiais — Esgotamento",
       "escolhas": []
     },
     {
@@ -1199,7 +1199,7 @@
       "id": 662,
       "capitulo": "Final — Pesquisa no Brasil",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "{{FINAL_PESQUISA}}\n\nVocê procura um grupo de pesquisa no Brasil e começa a formular uma pergunta que seja possível investigar com os recursos disponíveis.\n\nA bolsa não é garantida, o primeiro projeto talvez mude de forma e nem todo resultado confirma a hipótese inicial. Você aprende a documentar o que não funcionou, a dividir autoria com clareza e a pedir revisão.\n\nFicar no Brasil não transforma seu trabalho em uma versão menor de outro futuro. O valor estará nas perguntas que você consegue sustentar e no conhecimento que outras pessoas poderão usar.",
+      "textoNarrativo": "{{FINAL_PESQUISA}}\n\nVocê volta ao laboratório com uma pergunta menor e um caderno novo. Antes de abrir o software, define os dados necessários, as condições de teste e o que faria a hipótese falhar.\n\nO artigo sai com as contribuições descritas e os limites à vista. Bia revisa a tabela; Sérgio pede mais uma repetição.\n\nVocê suspira, configura o experimento e aperta iniciar. O resultado não aparece de imediato.",
       "escolhas": [
         {
           "textoAlternativa": "Levar esse caminho para o resto da história.",
@@ -1237,7 +1237,7 @@
       "id": 663,
       "capitulo": "Final — Tecnologia aplicada",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "{{FINAL_TECNOLOGIA}}\n\nVocê entra numa equipe que transforma ideias em sistemas que precisam funcionar fora da apresentação. Pode ser firmware, hardware, sistemas embarcados, segurança ou uma combinação que ainda está aprendendo a nomear.\n\nO protótipo passa no teste e falha no ambiente real. Um defeito simples consome uma semana. Você registra hipóteses, mede, testa e pede outra opinião.\n\nO trabalho não parece épico todos os dias. Às vezes é revisar uma solda, corrigir um erro de integração ou explicar por que a solução precisa de mais tempo. Ainda assim, algo que você construiu passa a funcionar para alguém.",
+      "textoNarrativo": "{{FINAL_TECNOLOGIA}}\n\nNa equipe de desenvolvimento, uma placa chega com um componente diferente do especificado. O firmware não inicializa; o prazo de integração é amanhã.\n\nVocê confere o datasheet, reproduz o problema e registra a diferença para o resto da equipe. Alguém pergunta se dá para improvisar uma correção.\n\n— Dá para testar. Ainda não dá para prometer.\n\nA bancada continua ocupada depois do horário. Desta vez, há mais gente trabalhando no diagnóstico.",
       "escolhas": [
         {
           "textoAlternativa": "Levar esse caminho para o resto da história.",
@@ -1275,7 +1275,7 @@
       "id": 664,
       "capitulo": "Final — Além das fronteiras",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "{{FINAL_INTERNACIONAL}}\n\nVocê prepara uma candidatura internacional. O processo pede idioma, portfólio, cartas, recursos e paciência. Chegam respostas negativas; uma oportunidade precisa ser adiada porque o orçamento não fecha.\n\nCom o tempo, surge uma possibilidade concreta: estudar fora, trabalhar com uma equipe de outro país ou participar de uma colaboração sem se mudar. Você avalia o custo e a rede de apoio antes de decidir.\n\nO mundo ficou maior, mas não virou uma escala de valor. Você não precisa apagar de onde veio para aprender com outras pessoas nem precisa sair do país para fazer um trabalho relevante.",
+      "textoNarrativo": "{{FINAL_INTERNACIONAL}}\n\nVocê prepara uma candidatura internacional. A lista inclui idioma, histórico, projeto, documentos e custos. Duas bolsas não cobrem a passagem; outra exige uma carta que ainda precisa pedir.\n\nVocê reúne os materiais e consulta quem já participou. A candidatura não garante viagem, mas o processo deixa de ser uma ideia distante e vira um conjunto de tarefas.\n\nSeu futuro não depende de sair do país. O desejo de tentar também não precisa ser descartado.",
       "escolhas": [
         {
           "textoAlternativa": "Levar esse caminho para o resto da história.",
@@ -1313,7 +1313,7 @@
       "id": 665,
       "capitulo": "Final — Caminho próprio",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "{{FINAL_INDEPENDENTE}}\n\nVocê passa a escolher projetos por contrato e aprende que liberdade também tem planilhas, proposta, imposto, cobrança e semanas sem resposta.\n\nNo começo, aceita mais do que deveria para não perder cliente. Depois começa a registrar escopo, prazo, pagamento e o que fica fora do combinado. Nem toda negociação termina bem, mas você reconhece mais cedo quando uma promessa está vaga demais.\n\nVocê não precisa fazer tudo só. A autonomia cresce quando aprende a procurar parcerias e a dizer não a um trabalho que custa mais do que oferece.",
+      "textoNarrativo": "{{FINAL_INDEPENDENTE}}\n\nVocê escolhe projetos por contrato. Antes de começar, pergunta quem usará o produto, como será mantido, quais critérios definem a entrega e quando cada parcela será paga.\n\nUm cliente pede para acrescentar uma função sem mudar o prazo.\n\nVocê abre o orçamento e envia uma estimativa nova. A resposta demora. Você não começa o trabalho enquanto o acordo não estiver claro.\n\nLiberdade continua significando escolher. Agora também significa sustentar o próprio limite.",
       "escolhas": [
         {
           "textoAlternativa": "Levar esse caminho para o resto da história.",
@@ -1351,7 +1351,7 @@
       "id": 666,
       "capitulo": "Final — Recomeçar sem apagar o passado",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "{{FINAL_TRANSICAO}}\n\nVocê muda de direção. Há fundamentos da graduação que continuam úteis, mas eles não substituem tudo o que a nova área exige. Você identifica lacunas, monta projetos, estuda e talvez aceite começar numa posição menos confortável.\n\nAlgumas tentativas não dão em nada. Você ajusta o plano sem transformar cada mudança numa acusação contra a pessoa que era antes.\n\nOs anos anteriores não foram uma promessa que você quebrou. Foram parte da formação que trouxe até aqui — e que não precisa decidir sozinha o que vem depois.",
+      "textoNarrativo": "{{FINAL_TRANSICAO}}\n\nVocê muda de direção. Parte da graduação continua útil; outra parte vira um caminho que não pretende seguir.\n\nNa primeira semana da nova área, não entende o vocabulário nem conhece as pessoas. O caderno velho ainda tem o esquema do LED e uma lista de dúvidas.\n\nMalu escreve: 'plot twist: a vida não tinha pré-requisito para mudar de área'.\n\nVocê ri, abre uma página em branco e pergunta por onde começar.",
       "escolhas": [
         {
           "textoAlternativa": "Levar esse caminho para o resto da história.",
@@ -1389,7 +1389,7 @@
       "id": 660,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "FIM.",
+      "textoNarrativo": "FIM.\n\nNa tela, os caminhos que você percorreu não formam uma linha reta. Há disciplinas, projetos, conversas, pausas e escolhas que custaram coisas diferentes.\n\nO campus não virou perfeito porque você se formou. Você também não virou uma pessoa sem dúvidas.\n\nO LED da primeira oficina continua aceso na memória — não como símbolo de que tudo deu certo, mas como a primeira vez em que você parou de adivinhar e começou a medir.\n\nO próximo fork está aberto.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar o jogo.",

@@ -2,17 +2,17 @@
   "schemaVersion": 2,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo6.json",
-  "totalCenasArquivo": 25,
+  "totalCenasArquivo": 58,
   "cenas": [
     {
       "ordemGlobal": 110,
       "id": 540,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Janeiro. Semestre 4.\n\nA universidade 'recuperou o calendário'. Isso significa que o ÁGATA publicou uma tabela em que dois semestres cabem em seis semanas.\n\nTrês provas em quatro dias. Dois trabalhos finais com a mesma data. Uma entrega em 'data a definir', que o sistema, por segurança, definiu como ontem.\n\nVocê olha a tabela. Os números não mudam por insistência.\n\n(Eu sobrevivi à greve. Ninguém avisou que sobreviver tem prestação.)",
+      "textoNarrativo": "Janeiro. O calendário remanejado parece um circuito fechado: prova, reposição, reunião, prazo. A matrícula seguinte ainda depende de nota e oferta de turma; nada está confirmado só porque você montou uma planilha.\n\nMalu manda uma captura da agenda: cinco cores e um quadrado vazio no meio.\n\n— Esse espaço é para respirar — diz. — Se alguém marcar alguma coisa, vou pedir documentação.\n\nNo meio das notificações, há uma mensagem de {{NOME_OUTRO_PROTAGONISTA}}.\n\n{{OUTRO_CENA}}\n\nVocê ri, mas não consegue responder. Há mensagens do laboratório, da monitoria e do cliente. Seu corpo está cansado há semanas; hoje até abrir o calendário parece uma tarefa inteira.",
       "escolhas": [
         {
-          "textoAlternativa": "Seguir.",
+          "textoAlternativa": "Encarar as exigências do caminho da IC.",
           "cenaDestinoId": 541,
           "flagsConcedidas": [],
           "flagRequerida": "trilha_ic",
@@ -41,7 +41,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Seguir.",
+          "textoAlternativa": "Organizar a retomada da monitoria.",
           "cenaDestinoId": 542,
           "flagsConcedidas": [],
           "flagRequerida": "trilha_dtec",
@@ -70,7 +70,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Seguir.",
+          "textoAlternativa": "Responder às demandas do trabalho independente.",
           "cenaDestinoId": 543,
           "flagsConcedidas": [],
           "flagRequerida": "trilha_indep",
@@ -105,11 +105,11 @@
       "id": 541,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Mensagem do orientador, 22h40:\n\n'Preciso do relatório final do grupo até quinta. Mando o modelo amanhã.'\n\nO modelo não vem. Quarta chega. Você escreve o relatório do zero, com metade das referências na memória e a outra metade num PDF que o servidor se recusa a abrir.\n\nNa terça, 3h07, Bia manda uma planilha sem comentário. Está certa. É a planilha que faltava.",
+      "textoNarrativo": "Às 22h40, chega uma mensagem do orientador: o relatório precisa estar pronto até quinta. O modelo prometido não chegou.\n\nVocê tenta reproduzir um resultado e encontra um parâmetro ausente. Bia responde à sua pergunta com uma planilha completa e uma nota: 'não completa o dado que falta com palpite'.\n\nVocê escreve o que sabe, o que falta e o que não pode concluir. O documento fica menor do que o esperado. A madrugada fica mais longa.",
       "escolhas": [
         {
-          "textoAlternativa": "Entregar às três da manhã. Pronto é melhor que perfeito.",
-          "cenaDestinoId": 550,
+          "textoAlternativa": "Entregar o que está pronto às três da manhã.",
+          "cenaDestinoId": 10177,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -139,8 +139,8 @@
           }
         },
         {
-          "textoAlternativa": "Pedir prorrogação. Ele responde em onze dias.",
-          "cenaDestinoId": 550,
+          "textoAlternativa": "Pedir prorrogação, mesmo sem garantia de resposta rápida.",
+          "cenaDestinoId": 10178,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -172,7 +172,7 @@
         },
         {
           "textoAlternativa": "Não entregar. Você não aguenta mais um prazo que ninguém lê.",
-          "cenaDestinoId": 550,
+          "cenaDestinoId": 10179,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -210,11 +210,11 @@
       "id": 542,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A bolsa de monitoria continua suspensa. Os alunos, não.\n\nOs e-mails chegam sem pedir licença: dúvida de lista, dúvida de prova, dúvida de dúvida. Às 23h14, Téo escreve:\n\n'Monitor, a prova é amanhã e eu não entendi nada.'\n\nVocê não é pago pra isso. Também não consegue ignorar.",
+      "textoNarrativo": "A bolsa está suspensa, mas as dúvidas de monitoria continuam chegando. Às 23h14, Téo envia uma foto de uma protoboard e pergunta se você pode conferir antes da entrega.\n\nVocê reconhece um fio solto. Também percebe que não combinou horário de atendimento para as semanas de greve.\n\nSua mão já está no teclado. Você pode responder agora, marcar um horário ou explicar que não está de plantão. A culpa chega antes da mensagem.",
       "escolhas": [
         {
           "textoAlternativa": "Responder a madrugada inteira.",
-          "cenaDestinoId": 550,
+          "cenaDestinoId": 10180,
           "flagsConcedidas": [
             "monitor_noite"
           ],
@@ -247,7 +247,7 @@
         },
         {
           "textoAlternativa": "Marcar um horário: 9h, sala 112. Sem culpa.",
-          "cenaDestinoId": 550,
+          "cenaDestinoId": 10181,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -278,7 +278,7 @@
         },
         {
           "textoAlternativa": "Silenciar o celular. Amanhã você responde.",
-          "cenaDestinoId": 550,
+          "cenaDestinoId": 10182,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -314,11 +314,11 @@
       "id": 543,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O cliente manda mensagem na semana das provas:\n\n'Só um ajustezinho. É urgente. Pra ontem.'\n\nAjustezinho, no vocabulário dele, é uma tela nova. Pagamento não foi mencionado.",
+      "textoNarrativo": "O cliente manda 'só mais um ajuste' durante a semana de provas. O pedido exige uma tela nova e testes em dois navegadores.\n\nVocê abre o contrato. O que foi combinado está claro; a nova tela, não.\n\nBia manda um áudio: 'Se você chamar isso de ajuste, vai acabar fazendo a próxima página inteira de graça também.'\n\nO cliente espera resposta. Você precisa negociar escopo, prazo e valor, ou decidir que não pode aceitar a alteração.",
       "escolhas": [
         {
           "textoAlternativa": "Fazer de graça. Você não quer perder o cliente.",
-          "cenaDestinoId": 550,
+          "cenaDestinoId": 10183,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -349,7 +349,7 @@
         },
         {
           "textoAlternativa": "Dizer não. Mandar o orçamento.",
-          "cenaDestinoId": 550,
+          "cenaDestinoId": 10184,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -380,7 +380,7 @@
         },
         {
           "textoAlternativa": "Negociar prazo e valor, por escrito.",
-          "cenaDestinoId": 550,
+          "cenaDestinoId": 10185,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -416,10 +416,10 @@
       "id": 550,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║           — O QUARTO FECHADO —           ║\n║        Sem antagonista. Só você.         ║\n╚══════════════════════════════════════════╝\n\nQuarta-feira, 14h.\n\nVocê não foi à aula. Não foi à monitoria, ao laboratório ou ao que quer que fosse hoje. Não respondeu mensagem. Não abriu o notebook em cinco dias.\n\nEstá no quarto, celular no silencioso, olhando o teto.\n\n(Quando foi que eu parei?)\n\n(Semana passada eu estava bem.)\n\n(Eu acho.)",
+      "textoNarrativo": "CHEFE DO SISTEMA — O QUARTO FECHADO\n\nQuarta-feira, 14h. O notebook está fechado há cinco dias. Você faltou às aulas e deixou mensagens sem abrir. O celular, na tomada, mostra uma fila de notificações que você ainda não tem energia para ler.\n\nNão houve uma grande cena. Houve tarefas pequenas ficando pesadas, uma depois da outra, até o quarto parecer o único lugar onde ninguém cobra resposta.\n\nHá água na mesa e alguém no corredor. A maçaneta mexe; a pessoa para antes de entrar.\n\n(Se eu levantar, vou ter de explicar tudo.)\n\nNão precisa resolver o semestre nesta tela. Precisa decidir o que fazer com os próximos minutos.",
       "escolhas": [
         {
-          "textoAlternativa": "Malu manda mensagem: 'Lembra que eu falei bom dia pra uma planta? Era mentira.'",
+          "textoAlternativa": "Ler a mensagem absurda de Malu e responder com uma figurinha.",
           "cenaDestinoId": 555,
           "flagsConcedidas": [
             "malu_reconectou"
@@ -455,7 +455,7 @@
           }
         },
         {
-          "textoAlternativa": "Dandara manda um áudio: 'Tô na porta do RU com duas marmitas. Não precisa descer. Eu subo.'",
+          "textoAlternativa": "Ouvir o áudio de Dandara e aceitar a comida que ela trouxe.",
           "cenaDestinoId": 555,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -552,7 +552,7 @@
           }
         },
         {
-          "textoAlternativa": "Continuar deitada.",
+          "textoAlternativa": "Continuar na cama e evitar responder por enquanto.",
           "cenaDestinoId": 552,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -614,7 +614,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Você já passou por isso antes.",
+          "textoAlternativa": "Lembrar de outra semana difícil e temer que tudo se repita.",
           "cenaDestinoId": 552,
           "flagsConcedidas": [
             "cap6_afundou"
@@ -647,7 +647,7 @@
           }
         },
         {
-          "textoAlternativa": "Uma mensagem chega: 'Você tá bem?'",
+          "textoAlternativa": "Abrir a mensagem que acabou de chegar: 'Você tá bem?'",
           "cenaDestinoId": 555,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -678,7 +678,7 @@
           }
         },
         {
-          "textoAlternativa": "Você levanta. Sem drama.",
+          "textoAlternativa": "Levantar, beber água e avaliar o próximo passo.",
           "cenaDestinoId": 551,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -709,7 +709,7 @@
           }
         },
         {
-          "textoAlternativa": "Você não levanta. Você só quer ficar.",
+          "textoAlternativa": "Não levantar; até responder a uma mensagem parece impossível.",
           "cenaDestinoId": 552,
           "flagsConcedidas": [
             "cap6_crise_profunda"
@@ -742,7 +742,7 @@
           }
         },
         {
-          "textoAlternativa": "Você levanta. Você já passou por isso.",
+          "textoAlternativa": "Levantar e pedir ajuda antes de tentar resolver o semestre.",
           "cenaDestinoId": 551,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -773,7 +773,7 @@
           }
         },
         {
-          "textoAlternativa": "Ninguém mandou mensagem. Ninguém notou.",
+          "textoAlternativa": "Não abrir nenhuma mensagem; esperar sem conseguir pedir ajuda.",
           "cenaDestinoId": 552,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -841,11 +841,11 @@
       "id": 551,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você levanta.\n\nO banho ajuda. O arroz que você faz ajuda mais.\n\nAbre o notebook pela primeira vez em cinco dias. Quarenta e sete e-mails. Você lê três.\n\nUm é da PRAE: 'acompanhamento pedagógico', com um endereço de atendimento no final.\n\n(É o primeiro e-mail da PRAE em seis meses.)",
+      "textoNarrativo": "Você levanta para beber água. O banho demora; depois, come alguma coisa perto da pia.\n\nQuando liga o notebook, há quarenta e sete e-mails. Um é da assistência estudantil, com canais de atendimento; outro é do laboratório perguntando se o prazo precisa mudar.\n\nVocê abre as duas mensagens. A caixa de resposta está vazia. Dá para pedir ajuda ou arquivar tudo mais uma vez; o resto da caixa pode esperar.",
       "escolhas": [
         {
-          "textoAlternativa": "Responder. Pedir ajuda.",
-          "cenaDestinoId": 555,
+          "textoAlternativa": "Responder à assistência e ao laboratório pedindo ajuda com prazos.",
+          "cenaDestinoId": 10186,
           "flagsConcedidas": [
             "cap6_pediu_ajuda"
           ],
@@ -877,8 +877,8 @@
           }
         },
         {
-          "textoAlternativa": "Arquivar. Você vai resolver sozinha.",
-          "cenaDestinoId": 555,
+          "textoAlternativa": "Arquivar as mensagens; tentar resolver tudo sem falar com ninguém.",
+          "cenaDestinoId": 10187,
           "flagsConcedidas": [
             "cap6_sozinha"
           ],
@@ -914,11 +914,11 @@
       "id": 552,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fica deitada. O dia passa. O sol bate na parede. Depois some.\n\nNo dia seguinte, alguém bate na porta.\n\n{{DEPOIS_DA_PORTA}}",
+      "textoNarrativo": "Alguém bate à porta no fim da tarde.\n\nA pessoa pergunta se pode deixar comida do lado de fora, entrar ou voltar outro dia. Você não precisa explicar tudo agora.\n\nVocê escolhe se abre para conversar, aceita companhia em silêncio ou pede espaço. Amanhã ainda poderá procurar apoio.\n\nPela primeira vez em dias, a próxima decisão cabe em uma frase curta.",
       "escolhas": [
         {
-          "textoAlternativa": "Falar. Contar tudo.",
-          "cenaDestinoId": 555,
+          "textoAlternativa": "Abrir a porta e conversar no seu tempo.",
+          "cenaDestinoId": 10188,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -952,8 +952,8 @@
           }
         },
         {
-          "textoAlternativa": "Ficar em silêncio. Deixar ele ficar.",
-          "cenaDestinoId": 555,
+          "textoAlternativa": "Abrir a porta e pedir companhia em silêncio.",
+          "cenaDestinoId": 10189,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -985,8 +985,8 @@
           }
         },
         {
-          "textoAlternativa": "Não abrir. Ficar deitada até a noite.",
-          "cenaDestinoId": 555,
+          "textoAlternativa": "Não abrir a porta e ficar em silêncio até a noite.",
+          "cenaDestinoId": 10190,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1024,10 +1024,10 @@
       "id": 553,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele atende no terceiro toque.\n\n'Oi.'\n\n'Tá tudo bem?'\n\nVocê não responde. Ele não insiste.\n\nVocê escuta ele respirar do outro lado. Uma cadeira arrastando. Um copo batendo na mesa.\n\n'Tô indo aí.'\n\nDesliga.",
+      "textoNarrativo": "Caio atende depois do terceiro toque. Ao fundo, uma cadeira arrasta e o copo dele bate na mesa.\n\n— Oi. Não precisa me contar tudo.\n\nVocê diz que não consegue abrir o notebook.\n\n— Posso ficar na ligação enquanto você pensa no que precisa.\n\nVocê aceita a companhia. Caio não tenta consertar sua vida pelo telefone.\n\n— Quando eu fiquei assim, achei que precisava voltar já funcionando. Não precisava. Só precisava não ficar sozinho com a decisão.",
       "escolhas": [
         {
-          "textoAlternativa": "Esperar.",
+          "textoAlternativa": "Permanecer na ligação até conseguir dizer o que precisa.",
           "cenaDestinoId": 555,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1066,11 +1066,11 @@
       "id": 555,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Mais tarde, algo (a fome, uma vibração do celular, o simples cansaço de ficar) te tira do quarto. Você chega ao RU sem lembrar do caminho. O frango com quiabo esfria no prato enquanto você tenta descobrir se está com fome.\n\nBia senta do seu lado com a marmita dela. Não pergunta nada. Abre a marmita.\n\nArroz com ovo. De novo.\n\nFica em silêncio uns cinco minutos. Depois fala, sem olhar pra você:\n\n'Eu já passei por isso. No terceiro semestre.'\n\n'Ninguém me falou nada. Eu só fiquei.'",
+      "textoNarrativo": "Alguns dias depois, você consegue ir ao RU. Bia senta ao seu lado com uma marmita e não pergunta por prazo nem nota.\n\nVocê abre o assunto quando o barulho dos talheres cobre a mesa.\n\n— Faz dias que eu não consigo retomar.\n\n— Eu passei uma semana sem abrir meu projeto — conta ela. — Na seguinte, fingi que tinha trabalhado. A mentira me cansou mais.\n\nBia não chama aquilo de preguiça. Divide a sobremesa, espera e pergunta se você quer ouvir o que fez ou só terminar o almoço.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar como ela saiu.",
-          "cenaDestinoId": 556,
+          "cenaDestinoId": 10191,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1100,8 +1100,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Ficar quieta.",
-          "cenaDestinoId": 556,
+          "textoAlternativa": "Ficar em silêncio.",
+          "cenaDestinoId": 10192,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1137,10 +1137,10 @@
       "id": 556,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Ela pensa antes de responder, como quem escolhe as palavras pelo preço.\n\n'Eu não saí. Eu só aprendi a andar devagar.'\n\n'Você vai aprender também.'\n\nOferece metade do pão. Você aceita.",
+      "textoNarrativo": "Bia pega o calendário e cobre com a mão tudo que não vence nesta semana.\n\n— Primeiro prazo real. Depois, o que pode ser renegociado. O resto não entra nesta página.\n\nVocês chegam a três tarefas. A última é mandar uma mensagem pedindo atendimento; não existe coluna para 'voltar a ser a pessoa de antes'.\n\nBia larga a caneta e empurra a folha. Você pode ficar até o fim do almoço e guardar aquele papel. As coisas que ficaram de fora continuam existindo, mas não cabem todas na mesma terça-feira.",
       "escolhas": [
         {
-          "textoAlternativa": "Ficar com ela até terminar.",
+          "textoAlternativa": "Guardar a lista e terminar o almoço com Bia.",
           "cenaDestinoId": 554,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1179,11 +1179,11 @@
       "id": 554,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você está de pé de novo. Não 100%, mas de pé.\n\nO semestre não acabou. Tem prova em três semanas e trabalho pra entregar. Tem gente esperando uma resposta sua.\n\nVocê não precisa resolver tudo hoje. Mas precisa decidir se tenta continuar neste calendário ou se pede o trancamento.",
+      "textoNarrativo": "Você ainda está se recuperando. O semestre também não parou de existir.\n\nA coordenação explica três possibilidades: continuar com uma carga reorganizada, solicitar trancamento ou procurar orientação e apoio antes de decidir. Cada opção tem efeitos sobre matrícula, bolsa e prazos.\n\nVocê confere o fluxograma e percebe que um atraso muda a sequência, mas não apaga as disciplinas já concluídas.\n\nNão precisa escolher pela versão da história que pareceria mais bonita. Precisa considerar saúde, dinheiro, transporte e o que consegue sustentar.",
       "escolhas": [
         {
-          "textoAlternativa": "Continuar, mas reorganizar a rotina e escolher prioridades realistas.",
-          "cenaDestinoId": 557,
+          "textoAlternativa": "Continuar, reduzindo a carga e organizando prioridades.",
+          "cenaDestinoId": 10193,
           "flagsConcedidas": [
             "cap6_continuou",
             "cap6_reorganizou_rotina"
@@ -1216,8 +1216,8 @@
           }
         },
         {
-          "textoAlternativa": "Trancar. Não é desistir: é admitir que agora não dá pra seguir neste calendário.",
-          "cenaDestinoId": 557,
+          "textoAlternativa": "Solicitar trancamento e planejar um retorno possível.",
+          "cenaDestinoId": 10194,
           "flagsConcedidas": [
             "cap6_trancou"
           ],
@@ -1249,8 +1249,8 @@
           }
         },
         {
-          "textoAlternativa": "Enfrentar tudo. Café e ódio.",
-          "cenaDestinoId": 557,
+          "textoAlternativa": "Insistir no ritmo atual, mesmo reconhecendo o desgaste.",
+          "cenaDestinoId": 10195,
           "flagsConcedidas": [
             "cap6_continuou"
           ],
@@ -1288,7 +1288,7 @@
       "id": 557,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Você sai do RU e encontra o Caio na porta. Copo térmico amassado, como sempre.\n\nEle está parado, olhando a rua como quem espera alguém. Te vê. Hesita.\n\n'Eu preciso te contar uma coisa.'",
+      "textoNarrativo": "Caio te vê perto da saída do RU e para no meio do caminho.\n\n— Posso te contar uma coisa que eu nunca contei direito?\n\nVocê percebe que ele está segurando o copo com as duas mãos.\n\n— Não precisa ser agora — acrescenta.\n\nEle parece ter ensaiado para falar e ensaiado também para não falar. Você pode escutar, pedir outro momento ou dizer que hoje não consegue.",
       "escolhas": [
         {
           "textoAlternativa": "Deixar ele contar.",
@@ -1359,7 +1359,7 @@
       "id": 5576,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "'Tá.'\n\nEle olha o copo, depois a rua. Alivia e se decepciona na mesma respiração.\n\n'Fica pra outro dia, então.'\n\nVocê tem a sensação de que acabou de fechar uma porta que não sabia que estava aberta.",
+      "textoNarrativo": "— Hoje eu não consigo escutar uma coisa difícil — você diz.\n\nCaio assente. O alívio e a decepção aparecem juntos no rosto dele.\n\n— Tudo bem. Quer que eu só caminhe contigo até o ponto?\n\nVocê aceita. No caminho, ele fala do ônibus atrasado e da prova de Cálculo. A conversa não vira confissão nem cobrança.\n\nAntes de subir, você diz que podem retomar quando os dois quiserem. Caio guarda o copo na mochila.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -1397,10 +1397,10 @@
       "id": 558,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele olha pro copo. Não bebe.\n\n'Eu não reprovei Cálculo duas vezes.'\n\n'Eu desisti.'\n\n'Na segunda tentativa, saí no meio da prova. Ninguém sabe.'\n\n'Deixo todo mundo achar que reprovei, porque é mais fácil. Reprovado todo mundo entende. Desistiu, ninguém entende.'\n\n(Cinco anos.)\n\n(Ele está aqui há cinco anos.)",
+      "textoNarrativo": "— Eu não reprovei duas vezes — Caio diz. — Na segunda prova, saí no meio. Eu estava tão mal que não consegui continuar. Depois contei que tinha reprovado porque era mais fácil do que dizer o resto.\n\nVocê não pergunta por que ele escondeu. Ele continua:\n\n— Achei que todo mundo ia me ver como uma fraude. Demorei para entender que eu podia precisar de ajuda sem virar uma história de fracasso.\n\nVocê fica com ele em silêncio. A conversa não resolve o passado; muda o que vocês conseguem contar um ao outro.",
       "escolhas": [
         {
-          "textoAlternativa": "Perguntar por que ele voltou.",
+          "textoAlternativa": "Perguntar por que ele voltou aos estudos.",
           "cenaDestinoId": 559,
           "flagsConcedidas": [],
           "flagRequerida": "caio_frase",
@@ -1431,7 +1431,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Perguntar por que ele voltou.",
+          "textoAlternativa": "Perguntar o que mudou para ele conseguir voltar.",
           "cenaDestinoId": 5591,
           "flagsConcedidas": [],
           "flagRequerida": "caio_sem_frase",
@@ -1464,7 +1464,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Perguntar por que ele voltou.",
+          "textoAlternativa": "Perguntar quem o apoiou quando voltou.",
           "cenaDestinoId": 5592,
           "flagsConcedidas": [],
           "flagRequerida": "caio_sem_frase",
@@ -1497,7 +1497,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Não falar nada. Só ficar do lado dele.",
+          "textoAlternativa": "Ficar do lado dele sem pedir uma explicação.",
           "cenaDestinoId": 559,
           "flagsConcedidas": [],
           "flagRequerida": "caio_frase",
@@ -1528,7 +1528,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Não falar nada. Só ficar do lado dele.",
+          "textoAlternativa": "Escutar e dizer que podem conversar outro dia.",
           "cenaDestinoId": 5591,
           "flagsConcedidas": [],
           "flagRequerida": "caio_sem_frase",
@@ -1561,7 +1561,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Não falar nada. Só ficar do lado dele.",
+          "textoAlternativa": "Esperar junto até o ônibus chegar.",
           "cenaDestinoId": 5592,
           "flagsConcedidas": [],
           "flagRequerida": "caio_sem_frase",
@@ -1600,11 +1600,11 @@
       "id": 559,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele dá um gole. Dessa vez, bebe. Um gole longo.\n\n'Voltei porque não sei fazer outra coisa.'\n\n'E porque uma menina me disse uma vez que, se eu ainda estava aqui, era porque alguma coisa valia.'\n\n'Esqueci o nome dela. Lembro da frase.'\n\nEle te olha.\n\n(Eu disse essa frase.)\n\n(No primeiro semestre. Nos degraus do Módulo 1. Eu nem lembrava mais.)",
+      "textoNarrativo": "Caio tira a tampa do copo térmico e a gira entre os dedos.\n\n— Voltei porque ainda queria terminar um projeto. E porque, uma vez, alguém perguntou se eu precisava de ajuda sem pedir justificativa primeiro.\n\nVocê se lembra de uma conversa no ônibus, mas não sabe se ele fala daquela noite ou de outra pessoa.\n\n— Foi isso que ajudou — ele diz. — Não precisar impressionar ninguém por cinco minutos.\n\nO ônibus aparece na esquina. Caio espera sua resposta antes de subir.",
       "escolhas": [
         {
           "textoAlternativa": "Fui eu.",
-          "cenaDestinoId": 560,
+          "cenaDestinoId": 10196,
           "flagsConcedidas": [
             "caio_revelacao"
           ],
@@ -1637,7 +1637,7 @@
         },
         {
           "textoAlternativa": "Não dizer nada.",
-          "cenaDestinoId": 560,
+          "cenaDestinoId": 10197,
           "flagsConcedidas": [
             "caio_nao_soube"
           ],
@@ -1673,11 +1673,11 @@
       "id": 5591,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele dá um gole. Dessa vez, bebe. Um gole longo.\n\n'Voltei porque não sei fazer outra coisa.'\n\n'E porque, no primeiro semestre, uma caloura sentou do meu lado nos degraus e não pediu nada. Nem resposta. Só ficou.'\n\nEle te olha, e você percebe que ele sabe quem foi.",
+      "textoNarrativo": "Caio explica que voltou ao curso depois de uma conversa com a coordenação e de ajustar a carga.\n\n— Eu tinha vergonha de ficar para trás. Depois percebi que as pessoas estavam ocupadas demais cuidando da própria vida para acompanhar meu semestre.\n\nVocê pergunta se ainda sente isso.\n\n— Às vezes. Agora sei com quem falar quando começa.\n\nEle te conta o nome da professora que o ajudou. Você guarda; talvez a informação sirva para alguém depois.",
       "escolhas": [
         {
           "textoAlternativa": "Ainda tô aqui.",
-          "cenaDestinoId": 560,
+          "cenaDestinoId": 10198,
           "flagsConcedidas": [
             "caio_estudo_oferta"
           ],
@@ -1710,7 +1710,7 @@
         },
         {
           "textoAlternativa": "Não dizer nada.",
-          "cenaDestinoId": 560,
+          "cenaDestinoId": 10199,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1744,11 +1744,11 @@
       "id": 5592,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele dá um gole. Dessa vez, bebe. Um gole longo.\n\n'Voltei porque não sei fazer outra coisa.'\n\n'E porque, de vez em quando, aparece alguém no meio do pátio e fala comigo como se eu não fosse um aviso.'\n\nEle não diz seu nome. Não precisa.",
+      "textoNarrativo": "Caio observa o ônibus se aproximar.\n\n— Voltei porque ainda gosto de construir coisas. Quando falham, quero saber por quê. Só parei de usar isso para provar que eu aguentava qualquer coisa.\n\nEle não dá mais detalhes. Você também não pede.\n\nO ônibus chega quase no horário. Vocês sobem rindo da improbabilidade.",
       "escolhas": [
         {
           "textoAlternativa": "Eu também não sei fazer outra coisa.",
-          "cenaDestinoId": 560,
+          "cenaDestinoId": 10200,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1779,7 +1779,7 @@
         },
         {
           "textoAlternativa": "Não dizer nada.",
-          "cenaDestinoId": 560,
+          "cenaDestinoId": 10201,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1813,7 +1813,7 @@
       "id": 560,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A conversa com Caio não resolve o semestre por você.\n\nMas muda uma coisa: pela primeira vez em dias, você não precisa fingir que só existe uma maneira de continuar.\n\nA decisão que você tomou ainda está ali. Agora você entende melhor o que ela vai exigir e o que não precisa carregar sozinha.",
+      "textoNarrativo": "Vocês caminham até o ponto sem tentar transformar a conversa em uma conclusão.\n\nCaio fala de um projeto que ainda quer terminar. Você lembra do LED da primeira oficina: houve uma bancada, uma pergunta e diferentes jeitos de sair dali. Nenhum apagou o que veio depois.\n\nVocê já perguntou à coordenação pelos prazos e encaminhou uma decisão. Mesmo assim, no ponto, as dúvidas voltam.\n\n— Não precisa defender o que decidiu só porque disse em voz alta — Caio fala. — Confere se ainda cabe em você.\n\nQuando o ônibus chega, você decide como registrar o encaminhamento que escolheu.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar. Uma etapa de cada vez.",
@@ -1880,10 +1880,10 @@
       "id": 567,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você volta a olhar o caminho que vinha construindo.\n\nNão precisa decidir os próximos cinco anos hoje. Só precisa decidir qual é o próximo passo possível.",
+      "textoNarrativo": "Você abre a agenda e confere o que ainda é possível neste período. A universidade não vai decidir por você qual caminho vale mais.\n\nMalu manda: 'Só aceita compromisso depois de olhar se o horário existe.' Você consulta o calendário antes de responder ao orientador, ao professor e ao cliente.\n\nHá uma atividade que você quer retomar. Há outras que podem esperar. A escolha não prova que você voltou ao normal; só define seu próximo passo.",
       "escolhas": [
         {
-          "textoAlternativa": "Voltar para a IC.",
+          "textoAlternativa": "Voltar ao projeto de pesquisa, com escopo definido.",
           "cenaDestinoId": 561,
           "flagsConcedidas": [],
           "flagRequerida": "trilha_ic",
@@ -1912,7 +1912,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Voltar para a monitoria de DTEC.",
+          "textoAlternativa": "Retomar a monitoria, com horários claros.",
           "cenaDestinoId": 562,
           "flagsConcedidas": [],
           "flagRequerida": "trilha_dtec",
@@ -1941,7 +1941,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Retomar os projetos independentes.",
+          "textoAlternativa": "Focar nos projetos independentes e nos contratos.",
           "cenaDestinoId": 563,
           "flagsConcedidas": [],
           "flagRequerida": "cap5c_cliente_nao_pagou",
@@ -1970,7 +1970,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Retomar os projetos independentes.",
+          "textoAlternativa": "Priorizar novos clientes com planejamento e documentação.",
           "cenaDestinoId": 5631,
           "flagsConcedidas": [],
           "flagRequerida": "cap5c_cliente_pagou",
@@ -2005,11 +2005,11 @@
       "id": 561,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Você volta ao laboratório. Ele também está cansado, como todo mundo nessa época.\n\n'Tem uma proposta nova. Projeto menor. Sem empresa, sem verba paralela. Só pesquisa.'\n\n'Honesta.'",
+      "textoNarrativo": "O laboratório continua desorganizado. Sérgio oferece uma pergunta menor e um prazo definido.\n\nVocê pergunta quais equipamentos estão disponíveis, que resultado contaria como evidência e como as contribuições serão registradas.\n\n— Você ficou exigente — ele diz.\n\n— Cansei de descobrir as condições depois de aceitar.\n\nEle anota as perguntas e combina uma resposta até sexta. Você ainda quer pesquisar. Agora sabe o que precisa estar combinado antes de voltar.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar. Recomeçar limpo.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10202,
           "flagsConcedidas": [
             "cap6_ic_recomeco"
           ],
@@ -2042,7 +2042,7 @@
         },
         {
           "textoAlternativa": "Recusar.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10203,
           "flagsConcedidas": [
             "cap6_ic_recusou"
           ],
@@ -2078,11 +2078,11 @@
       "id": 562,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Meira ensina um aluno do primeiro semestre a segurar o multímetro direito. O menino está com a mão tremendo.\n\nTe vê.\n\n'Você sumiu.'\n\n'A greve acabou. O semestre recomeçou. Tem vaga de monitor no próximo. Você quer?'",
+      "textoNarrativo": "Meira ajuda um estudante a medir a tensão em relação ao GND. Quando te vê, abre espaço na bancada.\n\n— Quer voltar à monitoria?\n\nVocê pede dois horários fixos e um canal para dúvidas fora deles. Ele confere o calendário da turma antes de responder.\n\n— Dois horários eu consigo. Se alguém mandar foto à meia-noite, fica para o próximo atendimento.\n\nTéo ergue um LED aceso, mas você pergunta onde ele mediu a tensão. Ele procura o multímetro. Há uma vaga para retomar e uma rotina para combinar; você ainda pode aceitar ou pedir tempo.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10204,
           "flagsConcedidas": [
             "cap6_dtec_recomeco"
           ],
@@ -2115,7 +2115,7 @@
         },
         {
           "textoAlternativa": "Pedir um tempo.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10205,
           "flagsConcedidas": [
             "cap6_dtec_tempo"
           ],
@@ -2151,11 +2151,11 @@
       "id": 563,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Zé do Módulo 8",
-      "textoNarrativo": "O celular apita. É o Zé.\n\n'Aquele cliente que te enrolou voltou.'\n\n'Diz que quer fechar projeto novo. Maior. Pagando metade adiantado.'\n\n'Eu não sei se é furada. Você decide.'",
+      "textoNarrativo": "Zé conta que o cliente antigo quer retomar o projeto, agora com um pedido maior.\n\nVocê responde pedindo o novo escopo por escrito, etapas de pagamento e prazo de entrega. Zé lê a mensagem e ri.\n\n— Oxente, agora você cobra pelo planejamento?\n\n— Aprendi a contar o próprio trabalho.\n\nVocê ainda gosta de construir para clientes. Só não precisa provar isso aceitando qualquer condição.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10206,
           "flagsConcedidas": [
             "cap6_indep_recomeco"
           ],
@@ -2186,7 +2186,7 @@
         },
         {
           "textoAlternativa": "Recusar.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10207,
           "flagsConcedidas": [
             "cap6_indep_recusou"
           ],
@@ -2222,11 +2222,11 @@
       "id": 5631,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Zé do Módulo 8",
-      "textoNarrativo": "O celular apita. É o Zé.\n\n'Aquele cliente que te pagou direitinho falou de você pra um amigo. Projeto maior. Metade adiantado.'\n\n'Dessa vez ninguém te enrolou, né? Então deve ser bom.'",
+      "textoNarrativo": "Um cliente satisfeito indica outro. O projeto parece interessante: integração com um serviço que você nunca usou.\n\nVocê estima o tempo, consulta a documentação e inclui horas de teste. Bia revisa o orçamento.\n\n— Está faltando uma coisa.\n\n— Qual?\n\n— Margem para o serviço externo falhar e você precisar dormir.\n\nVocê ajusta o prazo e envia a proposta. O cliente pede confirmação até amanhã. A proposta fica menos impressionante e mais verdadeira; ainda falta decidir se você quer assumir o trabalho.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10208,
           "flagsConcedidas": [
             "cap6_indep_recomeco"
           ],
@@ -2257,7 +2257,7 @@
         },
         {
           "textoAlternativa": "Recusar.",
-          "cenaDestinoId": 564,
+          "cenaDestinoId": 10209,
           "flagsConcedidas": [
             "cap6_indep_recusou"
           ],
@@ -2293,10 +2293,10 @@
       "id": 564,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O semestre acaba.\n\nNão com pompa. Não com nota alta. Acaba só porque o calendário acabou.\n\nVocê está viva.\n\nIsso conta.",
+      "textoNarrativo": "O semestre termina sem uma cena de vitória. Você concluiu parte do que planejou, renegociou alguns prazos e deixou outras coisas para trás.\n\nNo ponto, Malu pergunta se você ainda gosta de Engenharia de Computação.\n\n— Gosto. Só não gosto de tudo que colocam em cima dela.\n\n— Então eu também preciso lembrar disso.\n\nO ônibus chega. A conversa continua no caminho, sem necessidade de uma conclusão perfeita.",
       "escolhas": [
         {
-          "textoAlternativa": "Encerrar Capítulo 6.",
+          "textoAlternativa": "Encerrar o capítulo e seguir para o TCC.",
           "cenaDestinoId": 999,
           "flagsConcedidas": [
             "cap6_concluido"
@@ -2333,7 +2333,7 @@
       "id": 565,
       "capitulo": "Capítulo 6 — A Crise",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O pedido de trancamento é confirmado.\n\nO ÁGATA registra a data, atualiza sua situação acadêmica e encerra o semestre no papel. Não registra o que custou chegar até essa decisão.\n\nVocê vai precisar reorganizar o calendário, conversar com quem depende da sua rotina e voltar quando estiver pronta. Isso tem consequências. Também é uma decisão.",
+      "textoNarrativo": "O trancamento é registrado. Você confere no sistema quais prazos precisa acompanhar e pergunta como retomar a matrícula depois.\n\nA linha do histórico muda. Não aparece nela o tempo gasto conversando com a assistência, explicando a situação ou decidindo parar.\n\nMalu manda: 'Café continua permitido sem matrícula ativa.'\n\nVocê salva a mensagem e fecha o portal. O semestre não terminou como planejava. A próxima decisão, porém, já tem uma data.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir. O tempo passa de qualquer jeito.",
@@ -2342,6 +2342,1260 @@
             "cap6_concluido"
           ],
           "flagRequerida": "cap6_trancou",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1177,
+      "id": 10177,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Às três da manhã, você envia o relatório com a lacuna marcada. O recibo automático chega; a pergunta sobre o parâmetro continua sem resposta.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1178,
+      "id": 10178,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pede um prazo que permita conferir o parâmetro. Recebe apenas a confirmação automática de leitura; os próximos dias passam sem orientação.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1179,
+      "id": 10179,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você não envia a versão incompleta. Bia pergunta se registrou o motivo, e você encontra o e-mail ainda aberto, sem resposta.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1180,
+      "id": 10180,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você responde foto por foto até o relógio mudar de dia. Téo agradece; outro estudante envia uma montagem antes de você dormir.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1181,
+      "id": 10181,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você combina as 9h na sala 112. Téo confirma e pergunta o que deve medir antes de chegar.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1182,
+      "id": 10182,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você silencia o celular e escreve no caderno a resposta para amanhã. A notificação não desaparece, mas a noite acaba.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1183,
+      "id": 10183,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você começa a tela extra sem atualizar o orçamento. No fim da noite, o cliente pede que mude também o formulário.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1184,
+      "id": 10184,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você envia um não com o trecho do contrato e um orçamento para a nova tela. O cliente visualiza; nenhuma resposta chega hoje.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1185,
+      "id": 10185,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você propõe novo valor e prazo em duas etapas. O cliente pede desconto, e a negociação fica registrada em vez de virar promessa de corredor.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Voltar à quarta-feira.",
+          "cenaDestinoId": 550,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1186,
+      "id": 10186,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você envia duas respostas curtas: 'preciso de atendimento' e 'preciso renegociar o prazo'. Não escreve uma defesa da própria ausência.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Bia alguns dias depois.",
+          "cenaDestinoId": 555,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1187,
+      "id": 10187,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você arquiva as mensagens. A caixa fica limpa por fora; o prazo do laboratório permanece na agenda.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Bia alguns dias depois.",
+          "cenaDestinoId": 555,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1188,
+      "id": 10188,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você abre. É Caio com uma sacola de comida; ele espera sua primeira frase sem olhar para o notebook fechado.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Bia alguns dias depois.",
+          "cenaDestinoId": 555,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1189,
+      "id": 10189,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "A pessoa deixa comida na mesa e se senta no chão. Vocês passam alguns minutos sem transformar silêncio em diagnóstico.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Bia alguns dias depois.",
+          "cenaDestinoId": 555,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1190,
+      "id": 10190,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pede que deixem a comida do lado de fora. Há espaço para não abrir hoje; o prato ainda estará ali quando a porta se fechar.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Bia alguns dias depois.",
+          "cenaDestinoId": 555,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1191,
+      "id": 10191,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Bia mostra a página em que riscou todos os prazos que não eram daquela semana. Você pede uma folha para tentar o mesmo.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Olhar a semana com Bia.",
+          "cenaDestinoId": 556,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1192,
+      "id": 10192,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você continua em silêncio. Bia não exige resposta; vira o calendário para você ver uma semana de cada vez.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Olhar a semana com Bia.",
+          "cenaDestinoId": 556,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1193,
+      "id": 10193,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você solicita redução da carga e pergunta o que acontece com cada bolsa. A coordenação marca os prazos de ajuste no seu protocolo.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Caio na saída.",
+          "cenaDestinoId": 557,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1194,
+      "id": 10194,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pede o formulário de trancamento e confirma como será o retorno. A pausa passa a ter um registro, não uma porta batida.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Caio na saída.",
+          "cenaDestinoId": 557,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1195,
+      "id": 10195,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você mantém a carga como está. O calendário confirma o que seu corpo já suspeitava: haverá choque de prazos logo na primeira semana.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encontrar Caio na saída.",
+          "cenaDestinoId": 557,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1196,
+      "id": 10196,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Caio confirma com um aceno. — Aquela frase no ônibus ficou comigo. Ele não transforma o favor em dívida entre vocês.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Caminhar até o ponto.",
+          "cenaDestinoId": 560,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1197,
+      "id": 10197,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você não pergunta a quem ele se referia. Caio fecha o copo, e o ônibus encosta antes de a conversa virar interrogatório.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Caminhar até o ponto.",
+          "cenaDestinoId": 560,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1198,
+      "id": 10198,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "— Ainda tô aqui — você diz. Caio anota no celular a data da próxima prova; desta vez, não quer estudar em segredo.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Caminhar até o ponto.",
+          "cenaDestinoId": 560,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1199,
+      "id": 10199,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você caminha ao lado dele. A professora que o ajudou tem nome e horário anotados, mesmo sem uma promessa sua.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Caminhar até o ponto.",
+          "cenaDestinoId": 560,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1200,
+      "id": 10200,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "— Eu também gosto de construir — você diz. Caio mostra a foto de uma placa que pretende testar, sem chamar isso de destino.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Caminhar até o ponto.",
+          "cenaDestinoId": 560,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1201,
+      "id": 10201,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você chega ao ônibus sem responder. Ele guarda a conversa sem pedir que a complete hoje.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Caminhar até o ponto.",
+          "cenaDestinoId": 560,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1202,
+      "id": 10202,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você aceita um teste com escopo e data definidos. Sérgio envia por escrito quem revisará os dados antes de o trabalho recomeçar.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1203,
+      "id": 10203,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você agradece e recusa o retorno. Entrega o registro das medições para que ninguém precise inventar o que foi feito.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1204,
+      "id": 10204,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você confirma os dois horários. Meira avisa a turma; a próxima dúvida de Téo chegará durante atendimento, não à meia-noite.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1205,
+      "id": 10205,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pede alguns dias. Meira mantém o canal aberto e avisa Téo sobre outro plantão disponível enquanto isso.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1206,
+      "id": 10206,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você aceita depois de receber o novo escopo por escrito. Zé marca a primeira entrega e não chama a alteração de 'coisinha'.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1207,
+      "id": 10207,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você recusa a proposta atual. Zé encaminha a resposta sem pedir que você trabalhe para justificar o não.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1208,
+      "id": 10208,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você confirma o orçamento e reserva horas para testar a integração. Bia pede que mantenha a margem de falha na versão enviada.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1209,
+      "id": 10209,
+      "capitulo": "Capítulo 6 — A Crise",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você recusa o projeto mesmo com uma proposta boa: este mês não cabe. O cliente pede indicação de outra pessoa, e você só indica com consentimento.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar o semestre.",
+          "cenaDestinoId": 564,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
           "scoreMinimo": 0,
           "participacaoMinima": 0,
           "participacaoMaxima": 0,

@@ -2,14 +2,14 @@
   "schemaVersion": 2,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo3.json",
-  "totalCenasArquivo": 20,
+  "totalCenasArquivo": 48,
   "cenas": [
     {
       "ordemGlobal": 41,
       "id": 200,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Cálculo I. Segunda-feira, 7h.\n\nVocê saiu de casa antes do sol, pegou dois ônibus e chegou com a sensação de que já viveu um dia inteiro antes da prova. A sala está cheia: gente refazendo exercício no verso de lista velha, gente encarando o nada.\n\nNa primeira fila, Dandara escreve sem levantar a cabeça, a mão esquerda segurando o pulso da direita pra não tremer. No fundo, a menina dos resumos do mural, de fichário aberto, organizada como quem faz isso há mais tempo que todo mundo.\n\nVocê revisou limites. Tentou entender o que cada passagem algébrica estava fazendo e resolveu exercício sem olhar a resposta. Mesmo assim, alguns passos ainda parecem mágica quando aparecem na solução pronta.\n\nO Prof. Meira entra como fiscal. Reconhece você da oficina e não dá pista nenhuma.\n\nCinco questões. A primeira é um limite.",
+      "textoNarrativo": "Segunda-feira, 7h. Primeira prova de Introdução ao Cálculo. Você chegou depois de dois ônibus e de um café pela metade.\n\nDandara refaz uma questão na primeira fila. Bia alinha o fichário com a borda da mesa. Alan gira a caneta até o professor pedir que a guarde.\n\n{{NOME_OUTRO_PROTAGONISTA}} está duas fileiras adiante, com o próprio caderno aberto.\n\n{{OUTRO_CENA}}\n\nMeira distribui cinco questões: cento e vinte minutos. Na primeira página, um limite conhecido; na segunda, uma raiz esconde a fatoração que você só percebe depois de virar a folha. O barulho da caneta de Bia começa antes do seu.\n\nVocê escolhe como entrar na prova. O relógio já entrou.",
       "escolhas": [
         {
           "textoAlternativa": "Revisar as fórmulas.",
@@ -72,7 +72,7 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Procurar a menina dos resumos.",
+          "textoAlternativa": "Procurar Bia, a pessoa que vendeu os resumos.",
           "cenaDestinoId": 204,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -171,7 +171,7 @@
       "id": 213,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Ele passa perto da sua mesa. Baixo. Sem parar de andar.\n\n'Aquele esquema que você copiou na oficina.'\n\n'O do grupo da frente ligava o LED sem resistor em série. Você copiou o desenho inteiro e não perguntou por quê.'\n\n'Se o LED tivesse queimado, eu ia saber pelo cheiro.'\n\nContinua andando.\n\n(Ele viu.)\n\n(Ele sempre vê.)",
+      "textoNarrativo": "Meira passa entre as carteiras. Ao notar seu rascunho cheio de setas, para por um segundo.\n\n— Na oficina, a primeira explicação para o LED não acender estava errada. O que mudou?\n\nVocê quase responde 'medi'. Ele já está seguindo para a próxima fileira.\n\nO limite continua na folha. Você escreve o que sabe, sublinha o ponto em que travou e decide se tenta outra abordagem ou pula para a próxima questão.",
       "escolhas": [
         {
           "textoAlternativa": "Terminar a prova.",
@@ -211,7 +211,7 @@
       "id": 201,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║      — O LIMITE QUE NÃO CONVERGE —       ║\n╚══════════════════════════════════════════╝\n\nVocê olha a primeira questão: um limite com cara de inocente. A segunda é o mesmo limite, só que escondendo a fatoração atrás de uma raiz. A terceira você decide não olhar mais.\n\n(Eu não vou passar.)\n\n(Eu SEI que não vou passar.)\n\nSó que tem uma coisa estranha: você não está com medo. Está cansada. E cansada é diferente de com medo.",
+      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║      O LIMITE QUE NÃO CONVERGE           ║\n╚══════════════════════════════════════════╝\n\nA primeira questão parece familiar. A segunda não. Na terceira, cada linha da resolução que você decorou se recusa a aparecer na ordem certa.\n\nVocê olha o relógio. Metade do tempo já foi. A prova não sabe que você estudou; só vê o que está escrito.\n\nNa carteira ao lado, uma folha dobrada desliza perto do seu braço. Você ainda não sabe o que há dentro. Sabe que, se abrir, não poderá dizer que foi sem perceber.",
       "escolhas": [
         {
           "textoAlternativa": "Fazer o que sabe.",
@@ -248,7 +248,7 @@
           }
         },
         {
-          "textoAlternativa": "Olhar de lado.",
+          "textoAlternativa": "Abrir o papel e copiar a resposta que está ali.",
           "cenaDestinoId": 205,
           "flagsConcedidas": [
             "cap3_colou_de_fato",
@@ -488,11 +488,11 @@
       "id": 202,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você resolve a primeira.\n\nA segunda você tenta por vinte minutos. Erra.\n\nA terceira sai pela metade. As duas últimas ficam em branco.\n\nEntrega com 1h30 de prova.",
+      "textoNarrativo": "Você começa pela questão que reconhece. Uma substituição funciona; a seguinte produz um resultado que não combina com o gráfico. Você volta uma linha, encontra o sinal trocado e segue.\n\nQuando Meira avisa que faltam cinco minutos, algumas respostas estão completas e outras ainda dependem de um passo que você não conseguiu justificar. Você deixa o rascunho visível, inclusive onde mudou de ideia.\n\nNo corredor, Dandara pergunta como foi.\n\n— Tem uma questão que eu quero refazer — você diz.\n\nEla vê que a pergunta é maior do que a nota. Não tenta adivinhar o número.\n\nNo corredor, {{NOME_OUTRO_PROTAGONISTA}} encontra você olhando para a questão que não conseguiu terminar.\n\n{{OUTRO_CENA}}",
       "escolhas": [
         {
           "textoAlternativa": "Sair sem olhar.",
-          "cenaDestinoId": 210,
+          "cenaDestinoId": 10067,
           "flagsConcedidas": [
             "cap3_saiu_sem_revisar"
           ],
@@ -523,7 +523,7 @@
         },
         {
           "textoAlternativa": "Anotar onde travou, pra revisar os erros depois, sem tentar adivinhar a nota dos outros.",
-          "cenaDestinoId": 210,
+          "cenaDestinoId": 10068,
           "flagsConcedidas": [
             "cap3_anotou_erros"
           ],
@@ -561,7 +561,7 @@
       "id": 204,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia, a das pastas de resumo, olha pra você. Entende o que você quer sem que você diga. Desliza um papel por cima da mesa, sem uma palavra.\n\nSão dez respostas, em letra miúda.\n\nNa primeira fila, Dandara ainda escreve, os ombros duros. Você sabe de que bolsa ela precisa e quanto a bolsa paga.\n\n(Eu não devia estar olhando pra esse papel.)\n\nVocê olha pro papel.\n\nVocê olha pra Dandara.",
+      "textoNarrativo": "Bia percebe seu rascunho parado. Sem olhar para você, empurra um papel dobrado entre as carteiras.\n\n— Eu não devia fazer isso — sussurra. — Mas eu também tô com medo dessa nota.\n\nO papel tem respostas. O relógio marca pouco mais de meia hora. Você sente o impulso de abrir e o desconforto de saber que a decisão ainda é sua.\n\nBia não parece orgulhosa do que fez. Isso não transforma a oferta em acidente. Você precisa escolher o que fará com ela.",
       "escolhas": [
         {
           "textoAlternativa": "Copiar.",
@@ -641,11 +641,11 @@
       "id": 205,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você copia.\n\nNão olha pra Dandara. Entrega antes dela e sai.\n\nNo corredor, fica com uma sensação estranha: a de ter ganhado alguma coisa que não era sua.\n\n(Eu vou esquecer isso.)\n\n(Um dia.)",
+      "textoNarrativo": "Você copia uma resposta. Depois outra. O papel volta para Bia; a prova vai para o professor.\n\nNo corredor, o alívio dura até você ouvir alguém falando sobre a questão que acabou de copiar. Você não sabe explicar nem o primeiro passo.\n\nBia te alcança.\n\n— Eu te passei porque fiquei com medo e tentei dividir o risco. Foi errado. Não vou fingir que fiz por você.\n\nVocê guarda a prova. A nota pode subir ou não; a lacuna continua. E, se alguém perguntar o que aconteceu, vocês terão de decidir se sustentam a mentira.",
       "escolhas": [
         {
           "textoAlternativa": "Ir pra casa.",
-          "cenaDestinoId": 2105,
+          "cenaDestinoId": 10069,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -676,7 +676,7 @@
         },
         {
           "textoAlternativa": "Esperar Dandara.",
-          "cenaDestinoId": 2105,
+          "cenaDestinoId": 10070,
           "flagsConcedidas": [
             "cap3_encarou_dandara"
           ],
@@ -712,7 +712,7 @@
       "id": 207,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você levanta.\n\nEntrega com nome e matrícula e mais nada.\n\nO professor não diz nada. Alguém no fundo ri. Você não sabe se é de você ou de outra coisa.",
+      "textoNarrativo": "Você entrega a prova quase em branco. No corredor, o barulho da turma parece vir de outra sala.\n\nUma colega pergunta se você quer ir ao RU. Você diz que não sabe e fica junto à porta enquanto todo mundo se afasta.\n\nA primeira ideia é sumir até a nota sair. A segunda é fotografar a questão que te travou antes de esquecê-la.\n\nSeu celular está na mão. Você decide o que guardar para depois.",
       "escolhas": [
         {
           "textoAlternativa": "Sentar no pátio.",
@@ -779,10 +779,10 @@
       "id": 208,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Caio senta do seu lado. Não fala. Cinco minutos de silêncio, o copo equilibrado no joelho.\n\nAí ele fala, sem olhar pra você:\n\n'Também entreguei em branco a minha primeira prova.'\n\n'Fiquei com 1,2. Reprovei. Refiz.'\n\n'Não é o fim do mundo. É só um semestre.'",
+      "textoNarrativo": "Caio te encontra no pátio com a prova dobrada ao meio.\n\n— Na minha primeira prova, tirei 1,2 — diz. — Na segunda, fui pior porque passei semanas tentando provar que a primeira não tinha acontecido.\n\nVocê pergunta o que ele fez.\n\n— Um dia, mostrei a prova para alguém que sabia mais. A pessoa apontou que eu nem entendia o enunciado direito. Foi humilhante e útil.\n\nEle não oferece uma frase para você se sentir melhor. Pergunta se quer guardar a questão para a revisão ou deixar o assunto descansar por hoje.",
       "escolhas": [
         {
-          "textoAlternativa": "Perguntar como ele fez.",
+          "textoAlternativa": "Guardar a questão para discutir na revisão com ajuda de Caio.",
           "cenaDestinoId": 2107,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -850,7 +850,7 @@
       "id": 209,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você dorme no ônibus. Alguém ouve funk sem fone. Você quase perde a parada.",
+      "textoNarrativo": "No ônibus, uma curva joga sua mochila para o corredor. Você se abaixa para pegá-la e quase perde o ponto.\n\nA prova continua aberta na cabeça, embora esteja fechada na mochila. Você passa o dedo pela borda do papel e tenta lembrar onde deixou de entender.\n\nA cidade passa na janela. Você anota uma palavra no celular: 'fatoração'. É pouco, mas a dificuldade já não cabe inteira em 'não sei fazer cálculo'.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -888,11 +888,11 @@
       "id": 210,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. Resultado no mural.\n\nVocê procura seu nome. A nota está do lado: {{NOTA_CALCULO}}.\n\nNão pretendia olhar a nota dos outros, mas a da Dandara está logo abaixo: 8,5.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nMeira passa no corredor, te vê olhando. Para.\n\n'Cálculo é filtro. Não é o curso.'\n\nVai embora antes de você responder.",
+      "textoNarrativo": "Sexta-feira. O mural de notas está cercado. Você encontra seu nome.\n\n{{NOTA_CALCULO}}\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nDandara tirou 8,5. Ela fecha o caderno antes de comemorar; está tentando descobrir se a nota garante a classificação na monitoria.\n\nVocê compara o resultado com as questões que lembra. Uma delas ainda não faz sentido.\n\nMeira aparece atrás da turma, carregando outras provas. Alguém pergunta se haverá revisão. Ele diz que sim e marca o horário no quadro.",
       "escolhas": [
         {
           "textoAlternativa": "Ela mereceu.",
-          "cenaDestinoId": 211,
+          "cenaDestinoId": 10071,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -924,8 +924,8 @@
           }
         },
         {
-          "textoAlternativa": "Ela tirou 8,5 e eu com 5.",
-          "cenaDestinoId": 211,
+          "textoAlternativa": "Me comparar com Dandara antes de entender minha própria prova.",
+          "cenaDestinoId": 10072,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -956,7 +956,7 @@
         },
         {
           "textoAlternativa": "Não olhar.",
-          "cenaDestinoId": 211,
+          "cenaDestinoId": 10073,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -992,11 +992,11 @@
       "id": 2105,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. Resultado no mural.\n\nSeu nome. Ao lado: {{NOTA_CALCULO}}.\n\nLogo abaixo, Dandara: 8,5. Você passou o dia sem lembrar de quem estava sentada na frente.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nMeira passa no corredor, olha o mural, olha você.\n\n'Cálculo é filtro. Não é o curso.'\n\nPela primeira vez a frase parece uma pergunta.",
+      "textoNarrativo": "Sexta-feira. A nota aparece ao lado do seu nome: {{NOTA_CALCULO}}.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nVocê sabe que entregou respostas copiadas. O número no mural não mostra isso; também não mostra as questões que você ainda precisa aprender.\n\nBia está alguns passos adiante. Ela vê você, hesita e vai embora sem falar. Meira anuncia a revisão da prova para a semana seguinte.\n\nA decisão de colar acabou. O que você faz com o que aconteceu ainda não.",
       "escolhas": [
         {
           "textoAlternativa": "Não pensar nisso.",
-          "cenaDestinoId": 211,
+          "cenaDestinoId": 10074,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1027,7 +1027,7 @@
         },
         {
           "textoAlternativa": "Pensar nisso até o fim do dia.",
-          "cenaDestinoId": 211,
+          "cenaDestinoId": 10075,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1064,11 +1064,11 @@
       "id": 2107,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. Resultado no mural.\n\nSeu nome. Ao lado: {{NOTA_CALCULO}}. Um número que parece menor que o espaço que ocupa.\n\nDandara, logo abaixo: 8,5.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nMeira passa no corredor. Você se prepara pra qualquer coisa.\n\n'Cálculo é filtro. Não é o curso.'\n\nVai embora. Você fica com a sensação de que ele falou com alguém que não estava ali.",
+      "textoNarrativo": "Sexta-feira. O mural está cheio de gente tentando descobrir se a nota conta com arredondamento.\n\nSeu resultado aparece: {{NOTA_CALCULO}}.\n\n{{COMENTARIO_NOTA_CALCULO}}\n\nVocê não copiou. Isso não significa que entendeu tudo. Na questão três, repetiu a mesma troca de sinal que já tinha feito no exercício da semana passada.\n\nDandara, ao lado, encontra o próprio 8,5 e respira aliviada. Meira prende um aviso de revisão no mural. Você tira uma foto da questão e guarda para perguntar depois.",
       "escolhas": [
         {
           "textoAlternativa": "Ela mereceu.",
-          "cenaDestinoId": 211,
+          "cenaDestinoId": 10076,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1101,7 +1101,7 @@
         },
         {
           "textoAlternativa": "Não olhar mais pro mural.",
-          "cenaDestinoId": 211,
+          "cenaDestinoId": 10077,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1137,11 +1137,11 @@
       "id": 211,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Dandara Oliveira",
-      "textoNarrativo": "Dandara te para no corredor do Módulo 2, cartão do RU na mão.\n\n'Saiu o edital de Monitoria. Seiscentos reais.'\n\nFala rápido, como quem ensaiou e não quer perder o timing.\n\n'Meu auxílio moradia não saiu. A PRAE não me deu nem resposta. Se eu passar, pago o aluguel de março. Se não passar, eu penso em março em abril.'\n\nEla não espera você responder. Vai embora.",
+      "textoNarrativo": "Dandara te alcança no corredor com o edital de monitoria dobrado no bolso.\n\n— Abriu. São seiscentos reais. Eu gostei de explicar para a turma, mas também preciso ajudar no aluguel. As duas coisas contam.\n\nEla pergunta se você vai se inscrever. É uma conversa, não um teste de lealdade; há poucas vagas e duas pessoas tentando organizar a vida.\n\nVocê quer a oportunidade. Dandara também. O jeito de lidar com isso pode aproximar vocês ou colocar a disputa no meio.",
       "escolhas": [
         {
-          "textoAlternativa": "Não se inscrever.",
-          "cenaDestinoId": 214,
+          "textoAlternativa": "Não concorrer agora; tenho outras prioridades.",
+          "cenaDestinoId": 10078,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1171,8 +1171,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Se inscrever também.",
-          "cenaDestinoId": 214,
+          "textoAlternativa": "Dizer que também vou me inscrever, sem abrir conversa sobre a disputa.",
+          "cenaDestinoId": 10079,
           "flagsConcedidas": [
             "cap3_vai_disputar"
           ],
@@ -1204,8 +1204,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Perguntar sobre a PRAE.",
-          "cenaDestinoId": 214,
+          "textoAlternativa": "Perguntar sobre o auxílio e como ela pretende se organizar.",
+          "cenaDestinoId": 10080,
           "flagsConcedidas": [
             "cap3_sabe_prae"
           ],
@@ -1243,11 +1243,11 @@
       "id": 214,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No ônibus, voltando pra casa, o celular apita. LinkedIn.\n\nAlguém viu seu post da primeira semana de oficina, aquele com a foto da bancada e uma legenda que você já nem lembra de ter escrito.\n\nÉ {{REMENTENTE_LINKEDIN}}.\n\n'Oi! Vi seu post. Você mexe com eletrônica? Tô montando uma sociedade técnica de embarcados, Industry Electronics. Já tem professor conselheiro. Topa fazer parte?'",
+      "textoNarrativo": "No ônibus, chega uma mensagem pelo LinkedIn de {{REMENTENTE_LINKEDIN}}:\n\n'Vi a foto da oficina que o grupo postou. Estamos montando um grupo técnico e precisamos de gente disposta a testar, documentar e aprender. Quer conhecer?'\n\nVocê abre a foto: várias pessoas ao redor da bancada, um LED aceso e anotações que não dá para ler na tela. A mensagem é mais concreta que os slogans do mural, mas o grupo se reúne no horário do seu ônibus.\n\nO grupo se reúne à noite. Naquele horário, você costuma pegar o ônibus de volta.",
       "escolhas": [
         {
-          "textoAlternativa": "Aceitar. Você nem sabe o que é direito, mas quer.",
-          "cenaDestinoId": 212,
+          "textoAlternativa": "Aceitar o convite e conhecer o grupo.",
+          "cenaDestinoId": 10081,
           "flagsConcedidas": [
             "industry_electronics"
           ],
@@ -1279,8 +1279,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Perguntar quanto tempo consome por semana.",
-          "cenaDestinoId": 212,
+          "textoAlternativa": "Perguntar sobre horários e responsabilidades antes de decidir.",
+          "cenaDestinoId": 10082,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1310,8 +1310,8 @@
           }
         },
         {
-          "textoAlternativa": "Agradecer e recusar. Você já está no limite.",
-          "cenaDestinoId": 212,
+          "textoAlternativa": "Agradecer e recusar, por enquanto.",
+          "cenaDestinoId": 10083,
           "flagsConcedidas": [
             "recusou_industry"
           ],
@@ -1347,7 +1347,7 @@
       "id": 212,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Primeira prova. Primeiro resultado.\n\nVocê ainda está no jogo. Mas já sabe uma coisa que não sabia na segunda-feira: a faculdade não é difícil só por causa do conteúdo.\n\nÉ difícil por causa de quem senta na sua frente, de quem senta atrás, do que cada nota custa e a quem.\n\nO resultado não encerra a história. Muda o que faz sentido tentar agora.",
+      "textoNarrativo": "A primeira prova não encerra o semestre. Também não é um número que possa explicar sozinho o que aconteceu.\n\nNa mochila estão a lista de limites e a mensagem do grupo técnico. No celular, Dandara pergunta se você vai tentar a monitoria. Há escolhas competindo por horas, dinheiro e atenção.\n\nO próximo passo não precisa resolver sua vida. Precisa responder a uma pergunta real: o que vale a pena tentar agora?",
       "escolhas": [
         {
           "textoAlternativa": "A média não veio. Procurar ajuda antes da próxima avaliação.",
@@ -1501,11 +1501,11 @@
       "id": 215,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você dobra a prova e guarda na mochila. A média não veio.\n\nA vontade é deixar para pensar nisso quando a próxima avaliação aparecer. Só que os limites que você não entendeu hoje provavelmente não vão desaparecer até lá.",
+      "textoNarrativo": "A média não veio. Você marca na prova duas questões que não consegue refazer sem consultar a solução.\n\nA revisão com Meira será na terça, no mesmo horário da reunião do grupo técnico. Dandara está on-line; no campo de mensagem, você escreve 'pode estudar comigo?', apaga e abre a foto da questão.\n\nAinda dá para levar o papel à monitoria, pedir a Dandara uma hora de estudo ou esconder a nota. As três decisões cabem antes do próximo ônibus.",
       "escolhas": [
         {
           "textoAlternativa": "Levar a prova à monitoria e começar pelos erros marcados.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10084,
           "flagsConcedidas": [
             "cap3_plano_recuperacao",
             "cap3_buscou_reforco",
@@ -1540,7 +1540,7 @@
         },
         {
           "textoAlternativa": "Perguntar a Dandara se ela pode refazer uma questão com você.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10085,
           "flagsConcedidas": [
             "cap3_plano_recuperacao",
             "cap3_estudo_coletivo",
@@ -1576,8 +1576,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Esconder a nota e torcer para a próxima ser diferente.",
-          "cenaDestinoId": 218,
+          "textoAlternativa": "Guardar a nota e adiar a conversa por enquanto.",
+          "cenaDestinoId": 10086,
           "flagsConcedidas": [
             "cap3_escondeu_nota"
           ],
@@ -1615,11 +1615,11 @@
       "id": 216,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A média veio, mas você consegue apontar duas questões em que repetiu o mesmo erro.\n\nPassar não é o mesmo que dominar. Não passar também não seria prova de que você não consegue.",
+      "textoNarrativo": "Você alcançou a média. Dandara está preparando a inscrição para monitoria; ainda não sabe o resultado da seleção.\n\n— Entendeu a questão da raiz? — pergunta.\n\nVocê passou, mas não consegue justificar uma etapa. Ela abre o caderno no corredor, e a primeira linha que desenha é diferente da sua.\n\nO ônibus chega em dez minutos. Dá para tentar uma explicação agora ou guardar a dúvida para a próxima lista.",
       "escolhas": [
         {
           "textoAlternativa": "Refazer as questões sem olhar a solução pronta.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10087,
           "flagsConcedidas": [
             "cap3_revisou_erros"
           ],
@@ -1652,7 +1652,7 @@
         },
         {
           "textoAlternativa": "Comparar métodos com Dandara antes da próxima lista.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10088,
           "flagsConcedidas": [
             "cap3_estudo_coletivo"
           ],
@@ -1685,7 +1685,7 @@
         },
         {
           "textoAlternativa": "Aceitar a média e priorizar outras urgências desta semana.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10089,
           "flagsConcedidas": [
             "cap3_priorizou_urgencia"
           ],
@@ -1721,11 +1721,11 @@
       "id": 217,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A nota foi boa. Por alguns minutos, você sente que finalmente entendeu como estudar para a prova.\n\nDepois lembra das duas questões que quase deixou passar. Você pode usar a nota como evidência de que algo funcionou — ou como desculpa para não olhar o que falta.",
+      "textoNarrativo": "A nota foi boa. Você guarda a prova e por alguns minutos acredita que tudo está sob controle.\n\nNo ônibus, tenta explicar em voz baixa uma passagem algébrica. A justificativa não vem. Você abre a foto da prova, circula a linha e envia para o grupo de estudos.\n\nAlan responde: 'também travei aí. amanhã no quadro?'",
       "escolhas": [
         {
           "textoAlternativa": "Compartilhar um método de resolução, sem entregar respostas prontas.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10090,
           "flagsConcedidas": [
             "cap3_compartilhou_metodo"
           ],
@@ -1758,7 +1758,7 @@
         },
         {
           "textoAlternativa": "Anotar o que ainda errei e manter a rotina.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10091,
           "flagsConcedidas": [
             "cap3_manteve_humildade"
           ],
@@ -1791,7 +1791,7 @@
         },
         {
           "textoAlternativa": "Concluir que Cálculo está resolvido e gastar o tempo em outra coisa.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10092,
           "flagsConcedidas": [
             "cap3_subestimou_calculo"
           ],
@@ -1829,11 +1829,11 @@
       "id": 219,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você olha para o número e sabe que ele não veio do que conseguiu resolver sozinha.\n\nUma nota pode abrir uma porta. Não consegue, por si só, ensinar o conteúdo que ficou para trás nem apagar a decisão que levou até ela.",
+      "textoNarrativo": "O número no mural não conta que você abriu o papel de Bia. Também não conta o que você ainda não sabe resolver sem aquele papel.\n\nVocê pode falar sobre o que aconteceu com alguém de confiança, estudar a lacuna ou fingir que a nota encerrou o assunto.\n\nO semestre segue; agora a prova também faz parte da história que você está escolhendo contar.",
       "escolhas": [
         {
           "textoAlternativa": "Pedir ajuda para aprender o conteúdo que não aprendeu na prova.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10093,
           "flagsConcedidas": [
             "cap3_reconheceu_falha",
             "cap3_plano_recuperacao",
@@ -1868,7 +1868,7 @@
         },
         {
           "textoAlternativa": "Guardar o segredo e seguir como se a nota provasse domínio.",
-          "cenaDestinoId": 218,
+          "cenaDestinoId": 10094,
           "flagsConcedidas": [
             "cap3_guardou_segredo"
           ],
@@ -1906,7 +1906,7 @@
       "id": 218,
       "capitulo": "Capítulo 3 — A Primeira Prova Real",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No fim da semana, você não tem uma solução para tudo. Tem uma próxima ação — ou sabe qual ação está adiando.\n\nO semestre continua. A nota e as relações que você construiu continuam com você também.",
+      "textoNarrativo": "No fim da semana, há um aviso de revisão, um prazo de inscrição e uma questão de limite circulada em vermelho no seu caderno.\n\nVocê não resolveu tudo. Pelo menos sabe qual é a próxima coisa que precisa fazer e a quem pode perguntar.\n\nNo ponto, Caio segura a porta do ônibus para você subir. A conversa fica para o caminho.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 3.",
@@ -1914,6 +1914,1070 @@
           "flagsConcedidas": [
             "cap3_concluido"
           ],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1067,
+      "id": 10067,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você fecha a prova e deixa a conversa de notas para outro dia. No ônibus, a questão da raiz ainda volta sem pedir licença.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Conferir a nota quando sair.",
+          "cenaDestinoId": 210,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1068,
+      "id": 10068,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Antes de sair, fotografa o passo em que o sinal mudou. A nota virá depois; a pergunta para a revisão já está formulada.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Conferir a nota quando sair.",
+          "cenaDestinoId": 210,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1069,
+      "id": 10069,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você sai antes de encontrar Bia no corredor. A resposta copiada continua na sua prova, mesmo longe da sala.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver a nota que chegou.",
+          "cenaDestinoId": 2105,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1070,
+      "id": 10070,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Dandara aparece com uma questão marcada no caderno. Você quase pede que explique a resposta que copiou; decide escutar primeiro o raciocínio dela.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver a nota que chegou.",
+          "cenaDestinoId": 2105,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1071,
+      "id": 10071,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você parabeniza Dandara sem diminuir sua própria prova. Ela aponta o horário de revisão antes de guardar o edital.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ouvir Dandara.",
+          "cenaDestinoId": 211,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1072,
+      "id": 10072,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "O 8,5 de Dandara ocupa a tela do seu celular por tempo demais. Você percebe que ainda não olhou o comentário da sua prova.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ouvir Dandara.",
+          "cenaDestinoId": 211,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1073,
+      "id": 10073,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você dobra a prova e sai da roda de notas. Meira escreveu o horário de revisão no quadro; a questão difícil continua lá.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ouvir Dandara.",
+          "cenaDestinoId": 211,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1074,
+      "id": 10074,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você tranca a tela. A dúvida sobre a questão copiada volta quando tenta explicar a nota em casa.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ouvir Dandara.",
+          "cenaDestinoId": 211,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1075,
+      "id": 10075,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você abre o caderno na questão que não sabe resolver. Pensar no erro não a resolve, mas impede que a nota faça o papel de explicação.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ouvir Dandara.",
+          "cenaDestinoId": 211,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1076,
+      "id": 10076,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você diz a Dandara que ela mereceu o 8,5. Ela agradece e oferece a página em que justificou a fatoração.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ouvir Dandara.",
+          "cenaDestinoId": 211,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1077,
+      "id": 10077,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você se afasta do mural antes de começar outra comparação. A foto da sua questão fica salva para a revisão.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ouvir Dandara.",
+          "cenaDestinoId": 211,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1078,
+      "id": 10078,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você avisa que não concorrerá agora. Dandara agradece, mas não trata sua decisão como uma concessão que ela pediu.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver a mensagem do grupo técnico.",
+          "cenaDestinoId": 214,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1079,
+      "id": 10079,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "— Também vou tentar — você diz. Dandara assente; por um instante, nenhuma das duas pessoas sabe como voltar ao assunto da prova.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver a mensagem do grupo técnico.",
+          "cenaDestinoId": 214,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1080,
+      "id": 10080,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pergunta pelo auxílio. Dandara mostra os prazos no celular; o edital de monitoria continua aberto ao lado.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver a mensagem do grupo técnico.",
+          "cenaDestinoId": 214,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1081,
+      "id": 10081,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você responde que quer conhecer o grupo. O horário da reunião chega rápido; o ônibus de volta, nem tanto.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Rever o que a nota permite tentar.",
+          "cenaDestinoId": 212,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1082,
+      "id": 10082,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pergunta carga e horário. A resposta vem em tópicos, inclusive sobre uma reunião que termina depois do seu último ônibus.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Rever o que a nota permite tentar.",
+          "cenaDestinoId": 212,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1083,
+      "id": 10083,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você agradece e explica que não pode assumir agora. A pessoa deixa a porta aberta para uma visita futura, sem te inscrever à revelia.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Rever o que a nota permite tentar.",
+          "cenaDestinoId": 212,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1084,
+      "id": 10084,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Na monitoria, você aponta a primeira linha que não entende. A pessoa atendendo marca outra hora para terminar a questão.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1085,
+      "id": 10085,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Dandara responde 'uma hora, depois da aula'. Você envia a foto da questão antes de perder a coragem de pedir.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1086,
+      "id": 10086,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você guarda a prova. O aviso de revisão segue no mural; adiar a conversa não faz a data desaparecer.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1087,
+      "id": 10087,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você cobre a solução e refaz a passagem da raiz. Erra o sinal outra vez, agora num lugar que consegue mostrar a Meira.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1088,
+      "id": 10088,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Dandara desenha outro caminho. Vocês discordam de uma linha e combinam conferir o livro antes da próxima lista.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1089,
+      "id": 10089,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você guarda a dúvida para outra semana e abre a agenda de compromissos. A média está segura; a explicação, ainda não.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1090,
+      "id": 10090,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você manda ao grupo os passos que consegue justificar e marca a linha incerta. Alan responde com uma tentativa diferente.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1091,
+      "id": 10091,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você anota o erro de sinal antes de fechar a prova. Na próxima lista, saberá onde conferir primeiro.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1092,
+      "id": 10092,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você arquiva a foto da prova sem revisar a passagem. A próxima lista chega com a mesma raiz em outra questão.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1093,
+      "id": 10093,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pede que expliquem a questão do começo, sem usar a resposta que copiou como atalho. O primeiro passo leva mais tempo que a cola.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1094,
+      "id": 10094,
+      "capitulo": "Capítulo 3 — A Primeira Prova Real",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você guarda o segredo e encerra a conversa quando alguém pede que explique a questão. O número no mural continua ali; a lacuna também.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Encerrar a semana.",
+          "cenaDestinoId": 218,
+          "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
           "participacaoMinima": 0,

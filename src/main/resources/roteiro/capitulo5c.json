@@ -2,18 +2,18 @@
   "schemaVersion": 2,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo5c.json",
-  "totalCenasArquivo": 6,
+  "totalCenasArquivo": 21,
   "cenas": [
     {
       "ordemGlobal": 104,
       "id": 500,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O contato do cartaz finalmente responde. Não precisa de ajuda no projeto agora, mas indica um cliente: um restaurante a duas quadras do Módulo 8 que quer um site. O Zé, do Módulo 8, conhece o dono, e jura que ele é gente boa.\n\nO orçamento é mil reais. A mensagem termina com uma palavra:\n\n'Simples.'\n\nVocê olha a tela. Não há lista de páginas, prazo, conteúdo, hospedagem nem explicação sobre manutenção. Só o preço e a promessa de que não deve dar muito trabalho.\n\nVocê já viu esse tipo de problema em trabalho de disciplina: quando os requisitos ficam implícitos, cada pessoa imagina uma entrega diferente.\n\n(Simples.)\n\n(Simples pra quem?)",
+      "textoNarrativo": "O cartaz do projeto independente traz o primeiro cliente: um restaurante que quer 'só uma página'. Na conversa, aparecem cardápio, formulário de pedido, horário de funcionamento, manutenção e integração com mensagens.\n\nVocê anota tudo. O cliente chama prazo, hospedagem e critérios de aceite de formalidade.\n\n— Formalidade é descobrir na entrega que 'pedido' significava integrar três serviços — você responde.\n\nLia, da extensão, testa a navegação só pelo teclado. O foco desaparece no menu e ela já não sabe onde está.\n\n— Com mouse funciona. Sem mouse, eu nem consigo chegar ao botão — diz.\n\nVocês registram critérios verificáveis: fluxos principais operáveis pelo teclado, foco visível e nomes claros para controles. O cliente pergunta se isso estava no orçamento.\n\nVocê olha para o caderno. Ainda não estava.\n\n{{NOME_OUTRO_PROTAGONISTA}} revisa o escopo com você.\n\n{{OUTRO_CENA}}",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar.",
-          "cenaDestinoId": 501,
+          "cenaDestinoId": 10162,
           "flagsConcedidas": [
             "cap5c_aceitou"
           ],
@@ -43,8 +43,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Pesquisar preços antes de responder.",
-          "cenaDestinoId": 501,
+          "textoAlternativa": "Pesquisar preços e alinhar os critérios antes de responder.",
+          "cenaDestinoId": 10163,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -75,7 +75,7 @@
         },
         {
           "textoAlternativa": "Pedir um valor maior.",
-          "cenaDestinoId": 501,
+          "cenaDestinoId": 10164,
           "flagsConcedidas": [
             "cap5c_pediu_mais"
           ],
@@ -105,8 +105,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Comparar três referências de orçamento antes de responder.",
-          "cenaDestinoId": 501,
+          "textoAlternativa": "Comparar referências de orçamento antes de responder.",
+          "cenaDestinoId": 10165,
           "flagsConcedidas": [
             "cap5c_pesquisou_preco"
           ],
@@ -142,11 +142,11 @@
       "id": 501,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Três semanas depois, o site está entregue. O cliente respondeu 'tá bom' e prometeu pagar na semana seguinte.\n\nA semana passou. O dinheiro não caiu. Você encara a conversa no celular, tentando decidir se cobra de novo ou se espera mais um pouco.\n\nMil reais pareciam uma oportunidade. Agora cada dia sem pagamento parece uma aula que você não pediu.",
+      "textoNarrativo": "O site funciona. O cliente aprovou a demonstração, mas o pagamento combinado para sexta não chegou.\n\nVocê procura a conversa. O valor está escrito. O escopo também. A data aparece numa mensagem perdida entre pedidos de ajuste.\n\n(Aprendi a versionar código. O combinado ficou num branch sem proteção.)\n\nVocê abre uma nova mensagem para cobrar. Escreve, apaga e tenta outra vez. Cobrar não deveria exigir coragem maior que explicar o próprio projeto.",
       "escolhas": [
         {
           "textoAlternativa": "Cobrar agora.",
-          "cenaDestinoId": 502,
+          "cenaDestinoId": 10166,
           "flagsConcedidas": [
             "cap5c_cobrou"
           ],
@@ -177,7 +177,7 @@
         },
         {
           "textoAlternativa": "Dar mais uma semana.",
-          "cenaDestinoId": 502,
+          "cenaDestinoId": 10167,
           "flagsConcedidas": [
             "cap5c_deixou_rolar"
           ],
@@ -213,11 +213,11 @@
       "id": 502,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Bia te encontra num café perto do campus. Você mal terminou de contar o que aconteceu e ela já entendeu.\n\n'Você tá fazendo freela.'\n\nNão é pergunta.\n\n'Eu vivo disso desde o segundo semestre. Bolsa não paga aluguel. Freela paga, quando pagam.'\n\nPega um pedaço de papel e escreve um contato.\n\n'Se o cliente te enrolar, me chama. Eu conheço os nomes.'\n\nEmpurra o papel pela mesa, mas não solta de imediato.\n\n'Não entrega tudo sem deixar combinado o que acontece depois.'",
+      "textoNarrativo": "Bia ouve a história num café. Não interrompe quando você mostra as mensagens.\n\n— O que foi entregue? O que o cliente aprovou? O que falta pagar?\n\nVocês separam as três coisas numa folha. A aprovação está registrada; o novo pedido de tela, não.\n\n— Guarda prova de cada etapa. Depois cobra com prazo claro. Eu tenho um modelo de orçamento e o contato de alguém que já passou por isso.\n\nBia mostra o grupo de colegas que trocam experiências sobre contratos.\n\n— Já fiz trabalho de graça para não parecer difícil — diz. — O cliente achou que a próxima página vinha de brinde.\n\nVocê pode aceitar os contatos ou conduzir a cobrança sem envolver mais ninguém.",
       "escolhas": [
         {
           "textoAlternativa": "Aceitar o contato.",
-          "cenaDestinoId": 503,
+          "cenaDestinoId": 10168,
           "flagsConcedidas": [
             "item_contato_bia",
             "hab_rede_contatos"
@@ -250,8 +250,8 @@
           "atributosAlterados": {}
         },
         {
-          "textoAlternativa": "Resolver sozinha.",
-          "cenaDestinoId": 503,
+          "textoAlternativa": "Revisar o combinado e tentar resolver por conta própria.",
+          "cenaDestinoId": 10169,
           "flagsConcedidas": [
             "cap5c_sozinha"
           ],
@@ -284,7 +284,7 @@
         },
         {
           "textoAlternativa": "Aceitar. Você já conhece metade dessa gente.",
-          "cenaDestinoId": 503,
+          "cenaDestinoId": 10170,
           "flagsConcedidas": [
             "item_contato_bia",
             "hab_rede_contatos"
@@ -325,11 +325,11 @@
       "id": 503,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Mais algumas semanas passam. O pagamento continua pendente.\n\nA primeira mensagem fica sem resposta. Quando você insiste, o cliente escreve: 'tô vendo aqui'. A terceira nem chega a ser visualizada.\n\nVocê já não sabe se está negociando um pagamento ou pedindo que alguém reconheça que o seu trabalho existiu.\n\n(Tá vendo.)\n\n(Claro que tá.)",
+      "textoNarrativo": "O cliente não responde. Você tem a interface, os testes de teclado e a aprovação da demonstração registrados; o pagamento continua pendente.\n\nNoa manda uma mensagem do laboratório: 'Sem ACK, não considera a comunicação concluída'. Você responde: 'anotado para clientes também'.\n\nVocê pode cobrar de novo, propor uma conversa ou procurar orientação. O prazo de uma nova entrega começa a se aproximar, mas você ainda não aceitou esse trabalho.",
       "escolhas": [
         {
           "textoAlternativa": "Ir ao restaurante pessoalmente.",
-          "cenaDestinoId": 451,
+          "cenaDestinoId": 10171,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -360,7 +360,7 @@
         },
         {
           "textoAlternativa": "Desistir.",
-          "cenaDestinoId": 451,
+          "cenaDestinoId": 10172,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -391,7 +391,7 @@
         },
         {
           "textoAlternativa": "Aprender a fazer contrato.",
-          "cenaDestinoId": 451,
+          "cenaDestinoId": 10173,
           "flagsConcedidas": [
             "hab_contrato_assinado"
           ],
@@ -424,7 +424,7 @@
         },
         {
           "textoAlternativa": "Mandar mensagem pra Bia.",
-          "cenaDestinoId": 451,
+          "cenaDestinoId": 10174,
           "flagsConcedidas": [
             "cap5c_bia_ajudou"
           ],
@@ -457,7 +457,7 @@
         },
         {
           "textoAlternativa": "Enfrentar tudo. Café e ódio.",
-          "cenaDestinoId": 451,
+          "cenaDestinoId": 10175,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -488,7 +488,7 @@
         },
         {
           "textoAlternativa": "Conferir a entrega com o cliente e registrar por escrito o que foi entregue.",
-          "cenaDestinoId": 451,
+          "cenaDestinoId": 10176,
           "flagsConcedidas": [
             "cap5c_validou_entrega"
           ],
@@ -526,7 +526,7 @@
       "id": 505,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O dinheiro não chegou. Você fecha a conversa sem data de pagamento e guarda os arquivos do projeto.\n\nA raiva vem primeiro. Depois, uma vergonha que você sabe que não deveria sentir: fez o trabalho, entregou no prazo e ainda precisa correr atrás do que foi combinado.\n\nMas alguma coisa mudou. Agora você sabe o que precisa aprender além de escrever código: registrar escopo, prazo, forma de pagamento e o que fazer quando o cliente desaparece.\n\n(Sozinha.)\n\n(Ou com a Bia.)\n\n(Provavelmente com a Bia.)",
+      "textoNarrativo": "O pagamento continua pendente. Você salva as conversas, os arquivos entregues e a aprovação do cliente.\n\nBia te ajuda a comparar o orçamento com os pedidos que surgiram depois. Uma tela inteira aparece numa mensagem chamada 'ajustezinho'.\n\n— Isso não é ajuste — ela diz.\n\nVocê separa o que estava no escopo do que precisa de novo orçamento. A raiva não some, mas agora tem uma lista e uma data para a próxima cobrança.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5C.",
@@ -567,7 +567,7 @@
       "id": 506,
       "capitulo": "Capítulo 5C — Independente",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Dois dias depois, o pagamento cai.\n\nNão foi por gentileza. Você registrou o que tinha combinado, cobrou com clareza e mostrou que podia comprovar a entrega. Pela primeira vez desde que começou, a conversa deixou de ser uma promessa vaga.\n\nO dinheiro não apaga as semanas de ansiedade, mas paga o trabalho. Você salva os registros e decide que, no próximo freela, vai combinar escopo, prazo e forma de pagamento antes de abrir o editor.",
+      "textoNarrativo": "O pagamento cai depois da cobrança documentada. Você confere o valor, registra o recebimento e envia o comprovante.\n\nO alívio vem primeiro. Depois, você abre o projeto e escreve a documentação que faltou: requisitos, critérios de aceite, testes, manutenção e itens fora do escopo.\n\nO cliente pede mais uma alteração. Desta vez, você responde com um orçamento separado.\n\nNão ganhou uma fortuna. Ganhou documentação que torna mais difícil apagar seu trabalho sem deixar rastro.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5C.",
@@ -576,6 +576,576 @@
             "cap5c_concluido",
             "cap5c_cliente_pagou"
           ],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1162,
+      "id": 10162,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você aceita o projeto e manda por escrito a lista de telas, inclusive navegação por teclado. O cliente aprova uma primeira versão com prazo menor.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Conferir o pagamento combinado.",
+          "cenaDestinoId": 501,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1163,
+      "id": 10163,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pesquisa preços e envia critérios de aceite antes de prometer data. O cliente corta uma integração e fecha o escopo inicial.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Conferir o pagamento combinado.",
+          "cenaDestinoId": 501,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1164,
+      "id": 10164,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você pede mais pelo trabalho de acessibilidade e manutenção. O cliente recua; vocês negociam uma primeira entrega menor com valor claro.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Conferir o pagamento combinado.",
+          "cenaDestinoId": 501,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1165,
+      "id": 10165,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Uma referência de orçamento mostra a manutenção fora do preço inicial. Você separa as parcelas e o cliente aceita a proposta revisada.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Conferir o pagamento combinado.",
+          "cenaDestinoId": 501,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1166,
+      "id": 10166,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você envia a cobrança com valor, data e comprovante de entrega. O aplicativo marca 'lida'; a conta continua sem crédito.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Mostrar as mensagens a Bia.",
+          "cenaDestinoId": 502,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1167,
+      "id": 10167,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você anota uma nova data e espera. A semana extra acaba sem resposta; então leva o histórico da conversa a Bia.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Mostrar as mensagens a Bia.",
+          "cenaDestinoId": 502,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1168,
+      "id": 10168,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Bia envia o contato e um modelo de cobrança. Você salva os dois antes de escrever a próxima mensagem ao cliente.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver se o cliente respondeu.",
+          "cenaDestinoId": 503,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1169,
+      "id": 10169,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você compara o acordo com a entrega e escreve uma cobrança por conta própria. Bia não insiste; pede só que guarde a resposta.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver se o cliente respondeu.",
+          "cenaDestinoId": 503,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1170,
+      "id": 10170,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "O grupo de colegas reconhece a mesma frase em três contratos diferentes. Você guarda as referências e decide usar o modelo de Bia.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Ver se o cliente respondeu.",
+          "cenaDestinoId": 503,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1171,
+      "id": 10171,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "No restaurante, a pessoa responsável diz que precisa conferir com quem paga. Você pede uma data e anota o nome de quem falou.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Acompanhar a greve.",
+          "cenaDestinoId": 451,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1172,
+      "id": 10172,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você para de cobrar por enquanto. O pagamento não aparece, e a mensagem do próximo cliente fica sem resposta também.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Acompanhar a greve.",
+          "cenaDestinoId": 451,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1173,
+      "id": 10173,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você redige uma cláusula para trabalhos futuros. O contrato novo não cobra retroativamente o dinheiro que falta neste.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Acompanhar a greve.",
+          "cenaDestinoId": 451,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1174,
+      "id": 10174,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Bia lê as mensagens com você e marca o ponto em que o cliente aprovou a entrega. Ainda não há resposta do outro lado.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Acompanhar a greve.",
+          "cenaDestinoId": 451,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1175,
+      "id": 10175,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você escreve três cobranças e apaga duas. Na terceira, pede uma data concreta; o cansaço não faz o saldo mudar.",
+      "escolhas": [
+        {
+          "textoAlternativa": "Acompanhar a greve.",
+          "cenaDestinoId": 451,
+          "flagsConcedidas": [],
+          "flagRequerida": null,
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {}
+        }
+      ]
+    },
+    {
+      "ordemGlobal": 1176,
+      "id": 10176,
+      "capitulo": "Capítulo 5C — Independente",
+      "personagemFalando": "Narrador",
+      "textoNarrativo": "Você envia a lista do que foi entregue e pede confirmação por escrito. A resposta chega curta: 'Recebido. Vou verificar o pagamento.'",
+      "escolhas": [
+        {
+          "textoAlternativa": "Acompanhar a greve.",
+          "cenaDestinoId": 451,
+          "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
           "participacaoMinima": 0,

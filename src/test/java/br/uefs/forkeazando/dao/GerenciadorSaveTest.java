@@ -1,4 +1,5 @@
 package br.uefs.forkeazando.dao;
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -30,6 +31,7 @@ class GerenciadorSaveTest {
     void deveSalvarECarregarEstadoCorretamente() throws IOException, CarregamentoException, SaveException, DadosInvalidosException {
         Protagonista protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -198,6 +200,7 @@ class GerenciadorSaveTest {
 
         Protagonista protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -307,6 +310,7 @@ class GerenciadorSaveTest {
 
         Protagonista protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -350,6 +354,7 @@ class GerenciadorSaveTest {
 
         Protagonista protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -383,6 +388,7 @@ class GerenciadorSaveTest {
 
         Protagonista protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,

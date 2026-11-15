@@ -15,6 +15,7 @@ class ProgressoTest {
     private Protagonista criarProtagonista() {
         return new Protagonista(
                 "Teste",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,

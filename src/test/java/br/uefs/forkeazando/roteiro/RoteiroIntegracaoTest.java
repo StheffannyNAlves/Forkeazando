@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.roteiro;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.model.*;
 import org.junit.jupiter.api.Test;
 
@@ -28,7 +29,9 @@ class RoteiroIntegracaoTest {
             "futuro_tecnologia",
             "futuro_internacional",
             "futuro_independente",
-            "futuro_transicao"
+            "futuro_transicao",
+            "protagonista_stheffanny",
+            "protagonista_masculino"
     );
     private static Set<String> flagsConcedidasOuGeradasPorJava() {
         Set<String> todas = flagsConcedidas();
@@ -61,7 +64,7 @@ class RoteiroIntegracaoTest {
 
     private static Protagonista protagonistaComTrilha(String trilha) {
         Protagonista p = new Protagonista(
-                "Teste", false, true, true,
+                "Teste", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

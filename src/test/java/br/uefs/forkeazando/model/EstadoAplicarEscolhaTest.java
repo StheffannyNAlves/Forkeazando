@@ -14,7 +14,7 @@ class EstadoAplicarEscolhaTest {
 
     @BeforeEach
     void preparar() {
-        p = new Protagonista("Ana", false, true, true,
+        p = new Protagonista("Ana", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

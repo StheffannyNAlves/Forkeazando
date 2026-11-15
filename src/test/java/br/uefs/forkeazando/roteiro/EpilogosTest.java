@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.roteiro;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import static org.junit.jupiter.api.Assertions.*;
 import br.uefs.forkeazando.model.Protagonista;
 import br.uefs.forkeazando.roteiro.Epilogos.*;
@@ -11,7 +12,7 @@ class EpilogosTest {
 
     @BeforeEach
     void setUp() {
-        p = new Protagonista("Teste", false, false, false,
+        p = new Protagonista("Teste", IdentidadeProtagonista.STHEFFANNY, false, false, false,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);
@@ -59,7 +60,7 @@ class EpilogosTest {
                 {"futuro_transicao", "SEU CAMINHO — RECOMEÇAR SEM APAGAR O PASSADO"},
         };
         for (String[] c : casos) {
-            Protagonista q = new Protagonista("x", false, false, false,
+            Protagonista q = new Protagonista("x", IdentidadeProtagonista.STHEFFANNY, false, false, false,
                     Protagonista.NivelVidaSocial.EQUILIBRADO,
                     Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                     Protagonista.SituacaoEconomica.ESTAVEL);

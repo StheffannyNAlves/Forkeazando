@@ -39,6 +39,7 @@ class EstadoTest {
     void iniciarDeveGuardarOProtagonista() {
         Protagonista protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 false,
                 false,
@@ -86,6 +87,7 @@ class EstadoTest {
 
         estado.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,

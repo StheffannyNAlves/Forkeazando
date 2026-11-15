@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.controller;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Cena;
@@ -44,7 +45,7 @@ class CenasControllerTest {
 
     @BeforeEach
     void preparar() {
-        p = new Protagonista("Ana", false, true, true,
+        p = new Protagonista("Ana", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

@@ -1,6 +1,7 @@
 
 package br.uefs.forkeazando.dao;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
@@ -223,6 +224,7 @@ class GerenciadorProgressoTest {
 
         Protagonista protagonista = new Protagonista(
                 "Teste",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,

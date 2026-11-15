@@ -12,6 +12,7 @@ class EscolhaTest {
     private static Protagonista protagonista() {
         return new Protagonista(
                 "Teste",
+                IdentidadeProtagonista.STHEFFANNY,
                 false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Protagonista {
 
@@ -14,6 +15,7 @@ public class Protagonista {
     public enum NivelRelacionamento { ALIADO, COLEGA, RIVAL }
 
     private final String nome;
+    private final IdentidadeProtagonista identidadeProtagonista;
     private final boolean perfeccionista;
     private final boolean sociavel;
     private final boolean estudoTeorico;
@@ -34,11 +36,12 @@ public class Protagonista {
     private final List<String> historicoFlags = new ArrayList<>();
     private final Map<String, Float> relacionamentos = new HashMap<>();
 
-    public Protagonista(String nome, boolean perfeccionista, boolean sociavel,
+    public Protagonista(String nome, IdentidadeProtagonista identidadeProtagonista, boolean perfeccionista, boolean sociavel,
                         boolean estudoTeorico, NivelVidaSocial nivelVidaSocial,
                         ExperienciaEmocionalEnsinoMedio experienciaEmocional,
                         SituacaoEconomica situacaoEconomica) {
         this.nome = (nome == null || nome.isBlank()) ? "Calouro" : nome.trim();
+        this.identidadeProtagonista = Objects.requireNonNull(identidadeProtagonista, "A identidade do protagonista é obrigatória");
         this.perfeccionista = perfeccionista;
         this.sociavel = sociavel;
         this.estudoTeorico = estudoTeorico;
@@ -55,6 +58,8 @@ public class Protagonista {
         this.energia = energiaMaxima;
         gerarFlagsDeOrigem();
     }
+
+
 
     private int limitar(int valor, int minimo, int maximo){
         return Math.clamp(valor, minimo, maximo);
@@ -88,6 +93,11 @@ public class Protagonista {
             case ESTAVEL -> adicionarFlag("origem_estavel");
             case CONFORTAVEL -> adicionarFlag("origem_confortavel");
             case ELITE -> adicionarFlag("origem_elite");
+        }
+        if (identidadeProtagonista == IdentidadeProtagonista.STHEFFANNY) {
+            adicionarFlag("protagonista_stheffanny");
+        } else {
+            adicionarFlag("protagonista_masculino");
         }
         switch (experienciaEmocional) {
             case NEGATIVA -> adicionarFlag("origem_em_negativa");
@@ -243,7 +253,7 @@ public class Protagonista {
      * Confere se os dados da protagonista, possivelmente lidos de um arquivo
      * editado ou corrompido, respeitam as regras do jogo. O Gson preenche os
      * campos sem passar pelo construtor nem pelos limites dos métodos, então
-     * essa verificação é a única barreira contra valores impossíveis.
+     * essa verificação é a única barreira contra valores impossíveis
      *
      * @return descrição de cada problema encontrado; lista vazia se estiver íntegra
      */

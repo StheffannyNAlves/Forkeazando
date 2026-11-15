@@ -1,4 +1,5 @@
 package br.uefs.forkeazando.roteiro;
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.model.*;
 import java.util.HashSet;
 import java.util.List;
@@ -10,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class ApagaoTest {
 
     private static Protagonista protagonista(){
-        return new Protagonista("Teste", false, true, true,
+        return new Protagonista("Teste", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);
@@ -61,9 +62,9 @@ class ApagaoTest {
         Protagonista p = protagonista();
         definirVidaSocial(p, 0);
         Cena c970 = cena(Estado.CENA_APAGAO);
-        long antes = c970.getEscolhasDisponiveis(p).stream().filter(e -> e.getTextoAlternativa().startsWith("Caio")).count();
+        long antes = c970.getEscolhasDisponiveis(p).stream().filter(e -> e.getTextoAlternativa().contains("Caio")).count();
         p.alterarRelacionamento(PersonagemSecundario.VETERANO, 3f);
-        long depois = c970.getEscolhasDisponiveis(p).stream().filter(e -> e.getTextoAlternativa().startsWith("Caio")).count();
+        long depois = c970.getEscolhasDisponiveis(p).stream().filter(e -> e.getTextoAlternativa().contains("Caio")).count();
         assertEquals(0, antes);
         assertEquals(1, depois);
     }

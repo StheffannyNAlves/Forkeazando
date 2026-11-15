@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.view.javafx;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.model.Cena;
 import br.uefs.forkeazando.model.Escolha;
 import br.uefs.forkeazando.model.Protagonista;
@@ -201,9 +202,10 @@ public class ControllerInterface {
     }
 
     private void abrirCriacao() {
-        VBox conteudo = novoPainel("CRIE SUA PERSONAGEM", "Cada escolha muda seus atributos iniciais.");
+        VBox conteudo = novoPainel("CRIE SEU PROTAGONISTA", "Cada escolha muda seus atributos iniciais.");
+        ComboBox<IdentidadeProtagonista> identidade = novoCombo(IdentidadeProtagonista.values());
         TextField nome = new TextField();
-        nome.setPromptText("Nome da personagem");
+        nome.setPromptText("Nome exibido no jogo");
         nome.getStyleClass().add("campo-pixel");
         nome.setMaxWidth(450);
 
@@ -220,6 +222,7 @@ public class ControllerInterface {
         economia.setValue(Protagonista.SituacaoEconomica.ESTAVEL);
 
         conteudo.getChildren().addAll(
+                rotulo("ESCOLHA O PROTAGONISTA"), identidade,
                 rotulo("SEU NOME"), nome,
                 perfeccionista, sociavel, teorico,
                 rotulo("VIDA SOCIAL"), vida,
@@ -231,13 +234,17 @@ public class ControllerInterface {
         dica.getStyleClass().add("texto-ajuda");
         Button comecar = botaoAcao("COMEÇAR A JORNADA");
         comecar.setOnAction(e -> {
+            if (identidade.getValue() == null) {
+                mostrarModal("ESCOLHA O PROTAGONISTA", "Selecione Stheffanny ou Davi.");
+                return;
+            }
             if (nome.getText().isBlank()) {
                 mostrarModal("FALTOU O NOME", "Digite o nome da personagem para continuar.");
                 return;
             }
             try {
                 Protagonista protagonista = new Protagonista(
-                        nome.getText(), perfeccionista.isSelected(), sociavel.isSelected(),
+                        nome.getText(), identidade.getValue(), perfeccionista.isSelected(), sociavel.isSelected(),
                         teorico.isSelected(), vida.getValue(), experiencia.getValue(), economia.getValue());
                 sessao.novaPartida(protagonista);
                 abrirCena();
@@ -256,20 +263,38 @@ public class ControllerInterface {
         try {
             Cena cena = sessao.cenaAtual();
             Protagonista p = sessao.estado().getProtagonista();
-            VBox conteudo = novoPainel("CAPÍTULO " + sessao.estado().getCapituloAtual(),
-                    p.getNome() + " · " + cena.getCapitulo());
-            conteudo.getChildren().add(rotulo(
-                    "ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima()
-                            + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao()));
+            VBox conteudo = novoPainel("CAPÍTULO " + sessao.estado().getCapituloAtual(), p.getNome() + " · " + cena.getCapitulo());
+            conteudo.getChildren().add(rotulo("ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima() + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao()));
             if (cena.getPersonagemFalando() != null && !cena.getPersonagemFalando().isBlank()) {
                 conteudo.getChildren().add(rotulo(cena.getPersonagemFalando().toUpperCase()));
             }
             Label narrativa = new Label(cena.getTextoNarrativo());
             narrativa.getStyleClass().add("texto-narrativa");
             narrativa.setWrapText(true);
-            narrativa.setMaxWidth(650);
-            conteudo.getChildren().add(narrativa);
+            narrativa.setMaxWidth(480);
 
+            var recurso = getClass().getResource(
+                    "/images/personagens/malu/neutra.png"
+            );
+
+            HBox dialogo = new HBox(16);
+            dialogo.setAlignment(Pos.TOP_LEFT);
+
+            if (recurso != null) {
+                Image imagem = new Image(recurso.toExternalForm());
+
+                ImageView retrato = new ImageView(imagem);
+                retrato.setFitWidth(128);
+                retrato.setFitHeight(128);
+                retrato.setPreserveRatio(true);
+                retrato.setSmooth(false);
+
+                dialogo.getChildren().add(retrato);
+            }
+
+            dialogo.getChildren().add(narrativa);
+
+            conteudo.getChildren().add(dialogo);
             List<Escolha> escolhas = sessao.escolhasDisponiveis();
             if (escolhas.isEmpty()) {
                 conteudo.getChildren().add(rotulo("Nenhuma decisão disponível nesta cena."));

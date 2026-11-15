@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.controller;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.model.Conquista;
 import br.uefs.forkeazando.model.Progresso;
@@ -28,7 +29,7 @@ class GerenciadorConquistasTest {
 
     @BeforeEach
     void preparar() {
-        p = new Protagonista("Ana", false, true, true,
+        p = new Protagonista("Ana", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

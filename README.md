@@ -217,7 +217,7 @@ As cenas importantes têm ilustrações em pixel art, e os personagens que falam
 - A arte só aparece em terminais com pelo menos 66 colunas e 30 linhas. Em terminais menores, o jogo segue normalmente, mas sem ilustrações e retratos.
 - Os finais de carreira possuem ilustrações próprias, exibidas no início dos epílogos.
 - Para desligar as animações, por exemplo, em terminais lentos, gravações de tela ou por acessibilidade, defina `FORKEAZANDO_SEM_ANIMACAO=1` antes de executar o jogo. As ilustrações passam a aparecer diretamente no quadro final.
-- A associação entre cenas, ilustrações e retratos é definida em `roteiro/VisuaisDeCena` e `roteiro/VisuaisDeFinal`. Os desenhos ficam em `view/pixel`.
+- A associação entre cenas, ilustrações e retratos é definida em `src/main/resources/roteiro` e `src/main/resources/roteiro`. Os desenhos ficam em `view/pixel`.
 
 ### Controles
 

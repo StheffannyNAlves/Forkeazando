@@ -15,7 +15,7 @@ public class ForkeazandoApp extends Application {
 
         stage.setTitle("FORKEAZANDO • Universidade Estadual do Fork Perdido");
         stage.setScene(new Scene(raiz, 1280, 760));
-        stage.setResizable(false); // Layout pixel art com proporções fixas nesta etapa.
+        stage.setResizable(false); // Layout pixel art com proporções fixas nesta etapa
         stage.setOnCloseRequest(e -> controller.pararAnimacoes());
         stage.show();
     }

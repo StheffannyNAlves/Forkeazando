@@ -30,7 +30,14 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
+import br.uefs.forkeazando.adapter.AcessoPartidas;
+import br.uefs.forkeazando.adapter.CarregamentoAdapter;
+import br.uefs.forkeazando.dao.GerenciadorSlots;
+import br.uefs.forkeazando.model.Estado;
 
+import javafx.fxml.FXMLLoader;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -53,14 +60,14 @@ public class ControllerInterface {
 
     private final List<Button> opcoes = new ArrayList<>();
     private final SessaoGrafica sessao = new SessaoGrafica();
+    private final AcessoPartidas acessoPartidas = new CarregamentoAdapter(GerenciadorSlots.PASTA_PADRAO);
     private int selecionado;
     private TranslateTransition movimentoCenario;
     private Animation animacaoTitulo;
 
     @FXML
-    private void initialize() {
-        Image imagem = new Image(Objects.requireNonNull(
-                getClass().getResourceAsStream("/images/campus_uefp.png")));
+    private void iniciar() {
+        Image imagem = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/campus_uefp.png")));
         arte.setImage(imagem);
         painelArte.setClip(new Rectangle(625, 760));
 
@@ -143,6 +150,50 @@ public class ControllerInterface {
         pulsar.play();
         animacaoTitulo = pulsar;
     }
+    private void abrirTelaSalvamento() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/telaSalvamento.fxml"));
+            VBox painel = loader.load();
+            TelaCarregarController controller = loader.getController();
+            controller.configurar(acessoPartidas, this::receberPartidaCarregada, mensagem -> mostrarModal("ERRO AO CARREGAR", mensagem), this::voltarAoMenu);
+            mostrarTela(painel);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            mostrarModal("ERRO NA INTERFACE", "Não foi possível abrir a tela de salvamento: " + e.getMessage());
+        }
+    }
+
+    private void receberPartidaCarregada(Estado carregado) {
+
+        if (sessao.possuiPartida()
+                && sessao.estado().temAlteracoes()) {
+
+            VBox painel = novoPainel("SUBSTITUIR PARTIDA?", "A partida atual possui alterações não salvas.");
+
+            Button confirmar = botaoAcao("SIM, CARREGAR");
+            confirmar.setOnAction(e -> concluirCarregamento(carregado));
+
+            Button cancelar = botaoAcao("CANCELAR");
+            cancelar.setOnAction(e -> abrirTelaSalvamento());
+
+            painel.getChildren().addAll(confirmar, cancelar);
+            mostrarTela(painel);
+            return;
+        }
+
+        concluirCarregamento(carregado);
+    }
+    private void concluirCarregamento(Estado carregado) {
+        try {
+            sessao.carregarPartida(carregado);
+            abrirCena();
+
+        } catch (IllegalArgumentException e) {
+            mostrarModal("PARTIDA INCOMPATÍVEL", e.getMessage());
+        }
+    }
 
     @FXML
     private void aoClicar(ActionEvent evento) {
@@ -157,13 +208,9 @@ public class ControllerInterface {
                 if (sessao.possuiPartida()) abrirCena();
                 else mostrarModal("CONTINUAR", "Não há partida em memória. Escolha NOVA PARTIDA para começar.");
             }
-            case "instrucoes" -> mostrarModal("GUIA DE SOBREVIVÊNCIA",
-                    "Suas escolhas alteram energia, score, participação e relacionamentos.\n\n"
-                            + "No menu: setas e ENTER. Durante uma cena: clique numa decisão.\n"
-                            + "ESC volta ao menu sem apagar a partida em memória.");
-            case "creditos" -> mostrarModal("CRÉDITOS",
-                    "FORKEAZANDO · 2026\n\nStheffanny Alves\n"
-                            + "Universidade Estadual do Fork Perdido (UEFP)");
+            case "instrucoes" -> mostrarModal("GUIA DE SOBREVIVÊNCIA", "Suas escolhas alteram energia, score, participação e relacionamentos.\n\n" + "No menu: setas e ENTER. Durante uma cena: clique numa decisão.\n" + "ESC volta ao menu sem apagar a partida em memória.");
+            case "carregar" -> abrirTelaSalvamento();
+            case "creditos" -> mostrarModal("CRÉDITOS", "FORKEAZANDO · 2026\n\nStheffanny Alves\n" + "Universidade Estadual do Fork Perdido (UEFP)");
             case "sair" -> {
                 if (sessao.possuiPartida()) confirmarSaida();
                 else encerrar();
@@ -307,8 +354,7 @@ public class ControllerInterface {
                     try {
                         boolean avancou = sessao.escolher(escolha);
                         if (avancou) abrirCena();
-                        else mostrarModal("FIM DA PRÉVIA", "Chegamos à transição de capítulo "
-                                + "A versão completa segue no terminal enquanto migro os eventos especiais");
+                        else mostrarModal("FIM DA PRÉVIA", "Chegamos à transição de capítulo " + "A versão completa segue no terminal enquanto migro os eventos especiais");
                     } catch (RuntimeException ex) {
                         mostrarModal("NÃO FOI POSSÍVEL AVANÇAR", ex.getMessage());
                     }

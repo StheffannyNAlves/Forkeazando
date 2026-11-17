@@ -8,14 +8,10 @@ import br.uefs.forkeazando.roteiro.Roteiro;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * Adapta o modelo e o roteiro existentes para as primeiras cenas para a versão beta
- * Não substitui CenasController (versão completa de terminal): progressão,
- * autosave, conquistas e eventos especiais serão migrados separadamente
- */
 public final class SessaoGrafica {
     private final Map<Integer, Cena> cenas;
     private Estado estado;
@@ -29,6 +25,23 @@ public final class SessaoGrafica {
         novo.iniciar(protagonista);
         novo.setCenaAtualId(700);
         estado = novo;
+    }
+
+    public void carregarPartida(Estado estadoCarregado){
+        Objects.requireNonNull(estadoCarregado, "O estado carregado não pode está nulo");
+        List<String> problemas = estadoCarregado.verificarIntegridade();
+
+        if (!problemas.isEmpty()) {
+            throw new IllegalArgumentException(
+                    String.join("; ", problemas)
+            );
+        }
+
+        if (!cenas.containsKey(estadoCarregado.getCenaAtualId())) {
+            throw new IllegalArgumentException("Cena inexistente no roteiro");
+        }
+
+        this.estado = estadoCarregado;
     }
 
     public boolean possuiPartida() {
@@ -51,10 +64,7 @@ public final class SessaoGrafica {
         return cenaAtual().getEscolhasDisponiveis(estado().getProtagonista());
     }
 
-    /**
-     * Prévia do jogo: avança pelo roteiro real até concluir o capítulo 1.
-     * Não avança para os capítulos seguintes, que têm eventos especiais próprios.
-     */
+
     public boolean escolher(Escolha escolha) {
         if (!escolhasDisponiveis().contains(escolha)) {
             throw new IllegalArgumentException("Escolha indisponível.");
@@ -74,7 +84,7 @@ public final class SessaoGrafica {
         if (!cenas.containsKey(destino)) {
             throw new IllegalStateException("Cena de destino não encontrada: " + destino);
         }
-        atual.aplicarEscolha(escolha); // Reutiliza consequências e flags do modelo do terminal
+        atual.aplicarEscolha(escolha); // Reutiliza consequências e flags do modelo terminal
         atual.setCenaAtualId(destino);
         return true;
     }

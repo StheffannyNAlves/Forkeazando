@@ -1,7 +1,7 @@
 # Forkeazando
 
 <p align="center">
-  <img src="docs/images/fork-versao1.4.0.gif" alt="Menu principal de Forkeazando" width="700">
+  <img src="docs/images/fork-versao1.4.0.gif" alt="Demonstração do menu da versão de terminal do Forkeazando (v1.4.0)" width="700">
 </p>
 
 <p align="center">
@@ -14,20 +14,23 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-21-ED8B00?logo=openjdk&logoColor=white" alt="Java 21">
+  <img src="https://img.shields.io/badge/JavaFX-21-4B9CD3" alt="JavaFX 21">
   <img src="https://img.shields.io/badge/Maven-build-blue?logo=apachemaven&logoColor=white" alt="Maven">
   <img src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white" alt="JUnit 5">
-  <img src="https://img.shields.io/badge/Interface-Terminal-555555" alt="Interface de terminal">
+  <img src="https://img.shields.io/badge/Interface-Terminal%20%2B%20JavaFX%20(beta)-555555" alt="Interfaces terminal e JavaFX beta">
 </p>
 
 ---
 
-Forkeazando é um jogo narrativo interativo desenvolvido em Java para a disciplina **MI-Programação**, que segue a metodologia PBL (*Problem-Based Learning*), da Universidade Estadual de Feira de Santana (UEFS).
+**Forkeazando** é um jogo narrativo interativo desenvolvido em Java para a disciplina **MI-Programação**, da Universidade Estadual de Feira de Santana (UEFS), seguindo a metodologia PBL (*Problem-Based Learning*).
 
-A história acompanha uma estudante de Engenharia de Computação ao longo de sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada escolha pode abrir caminhos, limitar possibilidades e produzir consequências que se refletem nos capítulos seguintes.
+A história acompanha estudantes de Engenharia de Computação na sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada decisão pode abrir caminhos, restringir possibilidades e produzir consequências nos capítulos seguintes.
 
-A universidade é mais do que o cenário da história: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa descobrir como lidar com suas próprias características, administrar recursos limitados e construir uma trajetória em um sistema que nem sempre reconhece o esforço da maneira esperada.
+A universidade não é apenas o cenário: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa de administrar recursos, compreender as suas próprias características e construir uma trajetória num sistema que nem sempre reconhece o esforço da maneira esperada.
 
 **Não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.**
+
+> **Estado do projeto:** a Fase 2 foi desenvolvida para terminal. A Fase 3, na branch `fase3`, está migrando a experiência para JavaFX. O menu principal e a tela de carregamento já possuem implementação inicial; a interface gráfica completa ainda está em desenvolvimento.
 
 ## Navegação
 
@@ -35,11 +38,12 @@ A universidade é mais do que o cenário da história: é um ambiente de aprendi
 - [Sistemas de jogo](#-sistemas-de-jogo)
 - [Conquistas e colecionáveis](#-conquistas-e-colecionáveis)
 - [Salvamento e continuidade](#-salvamento-e-continuidade)
-- [Interface e controles](#-interface-e-controles)
-- [Tecnologias](#-tecnologias)
+- [Interfaces e controles](#-interfaces-e-controles)
+- [Tecnologias e arquitetura](#-tecnologias-e-arquitetura)
 - [Estrutura do projeto](#-estrutura-do-projeto)
-- [Como executar](#-como-executar)
+- [Como executar](#como-executar)
 - [Fase 2](#-fase-2)
+- [Fase 3 — JavaFX](#-fase-3--interface-gráfica-com-javafx)
 - [Limitações conhecidas](#limitações-conhecidas)
 - [Versões](#versões)
 - [Autoria](#autoria)
@@ -48,46 +52,32 @@ A universidade é mais do que o cenário da história: é um ambiente de aprendi
 
 ## Sobre o jogo
 
-Forkeazando transforma a experiência universitária em uma narrativa interativa. A protagonista não chega à universidade como uma personagem sem história: sua formação anterior, sua situação econômica e suas características influenciam as condições iniciais da jornada.
+Forkeazando transforma a experiência universitária em uma narrativa interativa. O contexto anterior ao ingresso, a situação econômica e as características pessoais influenciam o início da jornada. Entretanto, **o passado importa sem determinar sozinho o futuro**: as decisões tomadas durante a graduação também afetam atributos, relacionamentos, oportunidades e desfechos.
 
-O passado importa, mas não determina sozinho o futuro. As decisões tomadas durante a graduação também afetam os atributos da protagonista, suas relações com outros personagens, as possibilidades disponíveis e os desfechos que poderá alcançar.
+### Protagonistas
 
-Ao longo da história, o jogador precisa equilibrar diferentes dimensões da vida universitária:
+A proposta narrativa contempla **dois protagonistas selecionáveis**, com perfis e perspetivas diferentes sobre a universidade. O jogador pode personalizar o nome do personagem escolhido.
 
-- **Desempenho acadêmico:** desenvolver conhecimentos e demonstrar capacidade técnica.
-- **Participação:** envolver-se nas discussões e nas atividades acadêmicas.
-- **Energia:** administrar a disposição disponível para enfrentar as exigências da rotina.
-- **Relacionamentos:** construir vínculos com colegas, veteranos, professores e outras pessoas da universidade.
-- **Decisões e habilidades:** desenvolver características que podem abrir ou restringir opções futuras.
-- **Adaptação institucional:** lidar com regras, procedimentos, prazos e exigências burocráticas.
-
-Essas dimensões se relacionam. Uma escolha que favorece determinado aspecto da trajetória pode trazer custos em outro. O jogador precisa decidir quais oportunidades aproveitar, quais responsabilidades assumir e quais consequências está disposto a enfrentar.
+A diferenciação não deve ficar restrita à aparência: escolhas, condições narrativas e acontecimentos posteriores também precisam de refletir a identidade e as experiências de cada um. A revisão das bifurcações exclusivas e a padronização dos nomes **Tiana e Miles** ainda estão em andamento na Fase 3.
 
 ### Uma trajetória moldada por escolhas
 
-As escolhas não servem apenas para alterar o texto de uma cena. Elas podem modificar o estado da partida e influenciar as possibilidades narrativas posteriores.
+O jogo utiliza atributos, relacionamentos e *flags* para registrar acontecimentos e decisões relevantes. Esses dados condicionam alternativas e situações posteriores, permitindo que uma escolha em determinado capítulo tenha repercussões em outro.
 
-O jogo utiliza atributos, relacionamentos e *flags* para representar características e decisões relevantes da jornada. Esses registros permitem que escolhas anteriores sejam consideradas em situações futuras.
+O jogador precisa de equilibrar:
 
-Dependendo do estado da protagonista, determinadas alternativas podem estar disponíveis, enquanto outras podem exigir condições específicas ou permanecer inacessíveis.
+- **Desempenho acadêmico:** conhecimentos, projetos e resultados.
+- **Participação:** envolvimento em discussões e atividades.
+- **Energia:** disposição limitada diante das exigências da rotina.
+- **Relacionamentos:** vínculos com colegas, veteranos e professores.
+- **Habilidades e decisões:** características que habilitam ou restringem caminhos.
+- **Adaptação institucional:** regras, procedimentos, formulários e prazos.
 
-O objetivo é fazer com que a trajetória construída pelo jogador tenha consequências ao longo da experiência, em vez de tratar cada cena como um episódio completamente isolado.
-
-### A protagonista
-
-A personagem principal é uma estudante de Engenharia de Computação cuja experiência universitária começa antes mesmo de sua primeira aula.
-
-Sua situação econômica, sua experiência no ensino médio e suas características pessoais ajudam a definir seu ponto de partida. A partir daí, suas decisões e experiências constroem uma trajetória própria.
-
-O jogo considera que estudantes diferentes podem chegar à universidade com recursos, expectativas e experiências distintas. Por isso, o contexto inicial faz parte da experiência narrativa, e não é apenas um detalhe de apresentação.
+Uma escolha pode favorecer um desses aspectos e gerar custos em outro. O objetivo é construir uma trajetória coerente, e não apresentar cenas isoladas sem consequências.
 
 ### A universidade como sistema
 
-Em Forkeazando, as dificuldades não vêm somente das disciplinas ou das relações pessoais. Procedimentos, formulários, prazos, regras e comunicações institucionais também fazem parte da experiência.
-
-A burocracia funciona como uma força recorrente na trajetória da protagonista: compreender as regras e aprender a navegar pelo sistema pode ser tão importante quanto desenvolver conhecimento técnico.
-
-Essa dimensão dá ao jogo um conflito particular: a diferença entre aprender de verdade, participar da vida universitária e conseguir demonstrar isso dentro das estruturas que avaliam o estudante.
+Além dos desafios acadêmicos e pessoais, a narrativa explora procedimentos de matrícula, comunicações institucionais, avaliações e outras exigências burocráticas. Aprender a navegar por essas estruturas pode ser tão importante quanto desenvolver capacidade técnica.
 
 ---
 
@@ -95,100 +85,71 @@ Essa dimensão dá ao jogo um conflito particular: a diferença entre aprender d
 
 ### Atributos e recursos
 
-A protagonista possui recursos e características que influenciam a experiência de jogo.
-
-- **Energia:** representa um recurso limitado, consumido por responsabilidades e atividades. Administrá-la é importante para decidir quais compromissos assumir. Quando chega a zero, a protagonista passa por um episódio de **esgotamento** (cenas 970 a 972). O jogo considera os vínculos e a vida social construídos até aquele momento para determinar se alguém percebe a situação e oferece ajuda ou se a protagonista enfrenta o episódio sozinha. Depois, a narrativa retoma o caminho que estava sendo seguido.
-- **Score:** representa o desempenho acumulado segundo as regras do jogo e pode participar das condições de progressão e dos desfechos.
-- **Participação:** representa o envolvimento da protagonista nas atividades e discussões acadêmicas, podendo influenciar as possibilidades disponíveis.
-- **Características e habilidades:** registram aspectos da protagonista que podem habilitar alternativas específicas.
-- **Relacionamentos:** representam os vínculos construídos com outros personagens.
-- **Flags de decisões:** guardam informações sobre acontecimentos e escolhas relevantes para a continuidade narrativa.
-
-Os recursos não devem ser interpretados isoladamente. Uma decisão pode ser vantajosa para um atributo e, ao mesmo tempo, impor custos ou consequências em outras dimensões da vida universitária.
+- **Energia:** recurso consumido por atividades e responsabilidades. Na lógica da versão de terminal, chegar a zero pode desencadear um episódio de esgotamento (cenas 970 a 972), cujo desenrolar considera os vínculos construídos.
+- **Score:** desempenho acumulado, utilizado em regras de progressão e condições narrativas.
+- **Participação:** envolvimento nas atividades e discussões acadêmicas.
+- **Características e habilidades:** aspectos do protagonista que podem habilitar alternativas.
+- **Relacionamentos:** vínculos com personagens secundários.
+- **Flags:** registros de escolhas e acontecimentos que influenciam a continuidade da história.
 
 ### Cenas e escolhas
 
-A narrativa é organizada em uma abertura e capítulos compostos por cenas e alternativas de decisão.
-
-Durante a experiência, o jogador lê os acontecimentos, avalia as opções disponíveis e escolhe como a protagonista reage às situações. As consequências podem afetar o estado da partida e as condições de acesso a acontecimentos posteriores.
-
-As escolhas são processadas pelo sistema do jogo, que mantém os atributos, as decisões e os demais dados necessários para dar continuidade à narrativa. Algumas opções exigem recursos ou condições específicas; por isso, nem todas estarão necessariamente disponíveis em todos os momentos.
+A narrativa é organizada em prólogo, capítulos, cenas e alternativas. As escolhas são processadas pelas regras do jogo, que atualizam o estado da partida e verificam condições de disponibilidade.
 
 ### Finais e progressão
 
-A trajetória pode conduzir a diferentes finais, de acordo com as condições e os acontecimentos registrados durante a partida.
-
-O sistema de progressão permanente permite acompanhar os finais já alcançados, as conquistas desbloqueadas e os colecionáveis registrados. Esses dados ficam separados dos salvamentos individuais, possibilitando acompanhar a evolução do jogador entre diferentes jornadas.
+As trajetórias podem levar a diferentes desfechos. O sistema de progresso permanente registra finais, conquistas e colecionáveis independentemente dos slots de partida.
 
 ---
 
 ## 🏆 Conquistas e colecionáveis
 
-Forkeazando conta com sistemas de progressão que incentivam a exploração da experiência narrativa.
-
 ### Conquistas
 
-As conquistas são desbloqueadas quando condições específicas são atendidas durante a jornada. O sistema registra os desbloqueios e permite consultar o progresso, incluindo conquistas ainda não obtidas.
-
-O painel de conquistas apresenta o total e a porcentagem de conquistas desbloqueadas, além de indicar visualmente as conquistas obtidas e as ainda bloqueadas. Quando disponível, também exibe a descrição e a data de desbloqueio.
+As conquistas são desbloqueadas quando determinadas condições são atendidas. O painel da versão de terminal permite visualizar desbloqueios, total, percentual e, quando aplicável, descrições e datas.
 
 ### Galeria de colecionáveis
 
-O catálogo de colecionáveis permite acompanhar habilidades e itens adquiridos durante as partidas. A galeria usa slots ilustrados em pixel art para representar os conteúdos e diferencia visualmente o que já foi desbloqueado. Os nomes dos colecionáveis obtidos também são apresentados em texto.
-
-A galeria registra os conteúdos obtidos e ajuda o jogador a visualizar o que já descobriu ao longo de suas jornadas.
+A galeria utiliza slots em pixel art para apresentar itens e habilidades obtidos durante as partidas, distinguindo conteúdos desbloqueados e ainda desconhecidos.
 
 ### Histórico de finais
 
-Os finais alcançados são registrados com data e hora. Assim, a conclusão de uma partida contribui para o histórico de progressão sem depender da permanência daquele estado em um slot específico.
+Os finais alcançados são registrados com data e hora no progresso permanente, mesmo que o slot utilizado seja posteriormente sobrescrito.
 
 ---
 
 ## 💾 Salvamento e continuidade
 
-Forkeazando possui um sistema de persistência em JSON que permite continuar partidas, manter configurações e registrar progressos entre execuções.
+A persistência utiliza **JSON e Gson**. Os recursos descritos a seguir foram desenvolvidos na **versão de terminal**; sua integração à interface JavaFX é gradual.
 
 ### Partidas
 
-O jogo oferece três slots independentes de salvamento, com suporte a:
+O sistema oferece:
 
-- Criação de uma nova partida.
-- Continuação da partida mantida em memória.
-- Carregamento de uma partida salva.
-- Salvamento manual, com escolha do slot de destino e salvamento em toda em partida.
-- Salvamento automático a cada 5 cenas concluídas e ao concluir a partida (arquivo `saves/autosave.json`, acessível por "Carregar autosave"). O autosave não substitui o salvamento manual: ao sair, o jogo ainda pergunta se deseja salvar em um slot.
-- Confirmação antes de sobrescrever um slot ocupado.
-- Menu "Gerenciar saves", com exclusão de saves e autosave mediante confirmação.
-- Visualização de metadados de cada slot: nome da protagonista, capítulo, data e hora do salvamento, score, participação, rank e energia.
-- Slots com arquivo danificado aparecem como "Corrompido" na lista, sem impedir o uso dos demais.
+- Três slots independentes de salvamento.
+- Salvamento manual com escolha do slot.
+- Carregamento e continuação de partidas.
+- Autosave a cada cinco cenas concluídas e ao concluir uma partida, em `saves/autosave.json`.
+- Confirmação antes de sobrescrever ou excluir salvamentos.
+- Exclusão de slots e autosave pelo gerenciamento de saves.
+- Metadados dos slots: nome, capítulo, data, score, participação, rank e energia.
+- Identificação de arquivos corrompidos sem comprometer os demais slots.
 
-Os dados persistidos incluem o estado necessário para continuar a jornada, como capítulo e cena atuais, atributos, relacionamentos, habilidades e itens, decisões registradas (*flags*) e o final alcançado, conforme o modelo de estado do jogo. Os desbloqueios permanentes (finais, conquistas e colecionáveis) ficam no progresso permanente, descrito abaixo.
+O autosave é um arquivo único e não substitui o salvamento manual. Os estados persistidos incluem a cena e o capítulo atuais, atributos, relacionamentos e flags relevantes.
+
+**Na Fase 3**, a tela gráfica de carregamento já lista três slots e dispõe de uma opção de autosave, utilizando um **Adapter** para acessar a persistência existente. O carregamento de uma partida ocupada e os demais fluxos de salvamento ainda precisam de validação e integração completas.
 
 ### Configurações persistentes
 
-As preferências do jogador são armazenadas separadamente dos slots de partida.
-
-Entre as configurações disponíveis estão:
-
-- Velocidade de exibição do texto (Lento, Normal ou Rápido): define a pausa entre as linhas de diálogo.
-- Volume.
-- Confirmação de saída: quando desligada, o jogo não pergunta se deseja salvar ao sair, iniciar ou carregar outra partida.
-- Exibição de dicas de atalhos.
-
-Se o arquivo `saves/configuracao.json` estiver inválido, o jogo avisa e inicia com os valores padrão em vez de encerrar. Ao alterar as configurações, o arquivo é sobrescrito com valores válidos. Os valores lidos do arquivo passam pelos mesmos limites aplicados na tela de configurações.
-
+As preferências ficam em `saves/configuracao.json` e incluem velocidade de texto, volume, confirmação de saída e dicas de atalhos. Na versão de terminal, configurações inválidas podem ser tratadas com restauração de valores padrão.
 
 ### Progresso permanente
 
-O arquivo `saves/progresso.json` mantém registros independentes dos slots de partida, incluindo finais, conquistas e colecionáveis.
-
-Essa separação permite preservar o histórico de progressão mesmo quando uma partida é sobrescrita ou uma nova jornada é iniciada.
+O arquivo `saves/progresso.json` armazena finais, conquistas e colecionáveis independentemente dos slots.
 
 ### Integridade dos dados
 
-O sistema de persistência utiliza Gson para serialização e desserialização dos dados. Cada save é gravado em um envelope com a versão do formato e a data de salvamento, e saves antigos, sem esse envelope, continuam sendo lidos. Também contempla validação dos arquivos, exceções específicas para falhas de gravação e carregamento e o uso de arquivos temporários antes da substituição do destino, tanto nos saves quanto nas configurações.
-
-As exceções personalizadas incluem:
+O sistema contempla validação de arquivos, exceções específicas e gravação com arquivos temporários antes da substituição do destino. A persistência das partidas utiliza um envelope com informações de versão e data, mantendo a leitura de determinados saves anteriores.
 
 ```text
 PersistenciaException
@@ -199,56 +160,61 @@ PersistenciaException
 
 ---
 
-## 🖥️ Interface e controles
+## 🖥️ Interfaces e controles
 
-Forkeazando é executado inteiramente no terminal, com navegação interativa por meio do JLine.
+### Terminal — Fase 2
 
-A interface reúne o menu principal, as cenas narrativas, os menus de configuração e salvamento e as telas de consulta de progresso. Os componentes de apresentação foram organizados para separar os dados do jogo de sua representação visual.
+A interface original utiliza **JLine**, com menus, cenas, HUD, ilustrações e retratos em pixel art. As artes são desenhadas no terminal com cores de 24 bits (*truecolor*) e o caractere `▀`, que representa dois pixels.
 
-### HUD e informações da protagonista
-
-Durante as cenas, o HUD apresenta o rank da protagonista, o indicador de pausa e barras visuais para energia, score e participação. As barras são atualizadas a partir do estado atual da personagem e agrupam informações relevantes sem substituir as regras que controlam a disponibilidade das escolhas.
-
-### Ilustrações, retratos e animações
-
-As cenas importantes têm ilustrações em pixel art, e os personagens que falam aparecem com retrato e expressão (neutra, feliz, séria ou triste). Tudo é desenhado no próprio terminal, com o caractere `▀`. Cada caractere representa dois pixels, com cores de 24 bits, sem depender de arquivos de imagem externos para desenhar as artes.
-
-- Cada ilustração ocupa 66 colunas por 24 linhas, a mesma largura da caixa de cena, e a maioria é animada em 12 quadros. O último quadro é a arte estática.
-- A arte só aparece em terminais com pelo menos 66 colunas e 30 linhas. Em terminais menores, o jogo segue normalmente, mas sem ilustrações e retratos.
-- Os finais de carreira possuem ilustrações próprias, exibidas no início dos epílogos.
-- Para desligar as animações, por exemplo, em terminais lentos, gravações de tela ou por acessibilidade, defina `FORKEAZANDO_SEM_ANIMACAO=1` antes de executar o jogo. As ilustrações passam a aparecer diretamente no quadro final.
-- A associação entre cenas, ilustrações e retratos é definida em `src/main/resources/roteiro` e `src/main/resources/roteiro`. Os desenhos ficam em `view/pixel`.
-
-### Controles
+O HUD apresenta indicadores de energia, score, participação e outras informações do protagonista. As ilustrações ocupam 66 colunas por 24 linhas, e várias possuem animações de 12 quadros.
 
 | Tecla | Ação |
 |---|---|
 | `↑` / `↓` | Navegar pelas opções |
 | `←` / `→` | Alterar valores quando disponível |
-| `Enter` | Confirmar uma seleção |
-| `P` | Pausar a exibição do texto de uma cena |
-| `C` | Retomar a exibição do texto pausado |
-| `0` | Retornar ao menu principal nas cenas que oferecem essa opção |
+| `Enter` | Confirmar |
+| `P` | Pausar a exibição do texto |
+| `C` | Retomar a exibição |
+| `0` | Voltar ao menu quando disponível |
 
-A entrada por setas depende de um terminal compatível com JLine. Em cenas ou menus que utilizam entrada numérica, as opções devem ser selecionadas digitando o número correspondente.
+Em terminais com menos de 66 colunas e 30 linhas, o jogo continua, mas as ilustrações e os retratos podem ser ocultados. Para desabilitar animações:
 
-### Terminal compatível
+```bash
+FORKEAZANDO_SEM_ANIMACAO=1 ./rodar.sh
+```
 
-Para a navegação por teclado funcionar adequadamente, recomenda-se executar o jogo em um terminal real, como o Terminal do Linux ou macOS ou o Windows Terminal, em vez do console de execução da IDE. As ilustrações exigem suporte a cores de 24 bits (*truecolor*), além do espaço mínimo descrito acima.
+Recomenda-se um terminal real (Linux, macOS ou Windows Terminal), com suporte a cores de 24 bits.
+
+### JavaFX — Fase 3 (em desenvolvimento)
+
+A nova interface utiliza **JavaFX, FXML e CSS**, com composição visual em pixel art. O menu principal exibe dez opções e oferece navegação por mouse ou teclado.
+
+Atualmente, há implementação inicial de criação de personagem, continuação de partida em memória, apresentação de cenas do capítulo inicial e tela de carregamento. Outras ações do menu ainda exibem avisos de funcionalidade não integrada.
+
+A imagem do campus da UEFP está incluída nos recursos, mas sua exibição na tela inicial ainda está sob investigação. A versão gráfica **não substitui, por enquanto, todos os recursos do terminal**.
 
 ---
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias e arquitetura
 
 | Tecnologia | Utilização |
 |---|---|
-| Java 21 | Implementação da lógica, dos modelos e da interface |
-| JLine | Captura de teclas e interação com o terminal |
-| Gson | Persistência e recuperação de dados em JSON |
-| Maven | Gerenciamento de dependências e ciclo de compilação |
+| Java 21 | Lógica do jogo, modelos e controladores |
+| JavaFX 21 | Interface gráfica em desenvolvimento |
+| FXML e CSS | Estrutura e estilização de telas JavaFX |
+| Scene Builder | Apoio à construção visual das telas FXML |
+| JLine | Navegação e entrada de dados no terminal |
+| Gson | Persistência e leitura de dados JSON |
+| Maven | Dependências, compilação e execução |
 | JUnit 5 | Testes automatizados |
 
-O projeto utiliza a arquitetura MVC para separar as responsabilidades entre modelos, controladores e visualizações. Essa organização ajuda a manter a lógica da narrativa, o fluxo de interação e a apresentação no terminal em componentes distintos.
+O projeto segue **MVC (*Model–View–Controller*)**, separando estado e regras de negócio, fluxo de controle e apresentação. A Fase 3 busca reutilizar a lógica consolidada na versão de terminal, sem replicá-la na interface.
+
+### Padrões de projeto — Fase 3
+
+O **Adapter** está sendo utilizado para conectar os recursos existentes de carregamento de partidas à interface JavaFX, por meio de `AcessoPartidas` e `CarregamentoAdapter`.
+
+A atividade da Fase 3 prevê padrões GoF de categorias distintas (criacional, estrutural e comportamental). **O Adapter contempla a categoria estrutural; os demais padrões ainda não estão concluídos.**
 
 ---
 
@@ -257,29 +223,31 @@ O projeto utiliza a arquitetura MVC para separar as responsabilidades entre mode
 ```text
 src/
 ├── main/
-│   ├── java/
-│   │   └── br/uefs/forkeazando/
-│   │       ├── controller/    # Fluxo do jogo e dos menus
-│   │       ├── dao/           # Persistência de partidas e progresso
-│   │       ├── excecao/       # Exceções personalizadas
-│   │       ├── model/         # Entidades e estado do jogo
-│   │       ├── roteiro/       # Abertura, capítulos, cenas e escolhas
-│   │       ├── view/          # Telas e entrada do teclado
-│   │       │   └── widget/
-│   │       │   └── pixel/     # HUD, ícones, ilustrações e animações
-│   │       └── Main.java      # Ponto de entrada
-│   └── resources/             # Recursos da aplicação
-└── test/
-    └── java/
-        └── br/uefs/forkeazando/
-            ├── controller/
-            ├── dao/
-            ├── model/
-            ├── roteiro/
-            └── view/
+│   ├── java/br/uefs/forkeazando/
+│   │   ├── adapter/       # Integração da persistência com JavaFX
+│   │   ├── controller/    # Fluxo e regras de controle
+│   │   ├── dao/           # Salvamentos, configurações e progresso
+│   │   ├── excecao/       # Exceções personalizadas
+│   │   ├── model/         # Estado, protagonistas, cenas e escolhas
+│   │   ├── roteiro/       # Leitura e progressão do roteiro
+│   │   ├── view/
+│   │   │   ├── javafx/    # Controladores e sessão gráfica
+│   │   │   ├── pixel/     # HUD, artes e animações do terminal
+│   │   │   └── widget/    # Componentes de apresentação
+│   │   └── Main.java      # Entrada da versão de terminal
+│   └── resources/
+│       ├── fxml/          # Telas JavaFX
+│       ├── images/        # Recursos visuais JavaFX
+│       └── roteiro/       # Arquivos JSON de cenas
+└── test/java/br/uefs/forkeazando/
+    ├── controller/
+    ├── dao/
+    ├── model/
+    ├── roteiro/
+    └── view/
 ```
 
-Os testes ficam em `src/test/java`. Os dados persistentes são armazenados em `saves/`, criada no diretório de execução do jogo.
+Os dados persistentes são armazenados em `saves/`, no diretório de execução.
 
 ---
 
@@ -288,10 +256,10 @@ Os testes ficam em `src/test/java`. Os dados persistentes são armazenados em `s
 ### Requisitos
 
 - Java 21 ou superior.
-- Maven 3.8 ou superior para execução a partir do código-fonte.
-- Terminal compatível com JLine. Para exibir as artes, é necessário suporte a cores de 24 bits (*truecolor*).
+- Maven 3.8 ou superior.
+- Terminal com suporte a JLine e *truecolor* para aproveitar a interface original.
 
-### Executar o jogo
+### Versão de terminal
 
 Na raiz do repositório:
 
@@ -300,66 +268,87 @@ chmod +x rodar.sh
 ./rodar.sh
 ```
 
-### Gerar o JAR executável
+### Interface gráfica JavaFX (beta)
 
 ```bash
-mvn package
-java -jar target/forkeazando.jar
+mvn javafx:run
 ```
 
-> O comando com JAR pressupõe que o arquivo `forkeazando.jar` tenha sido gerado e esteja no diretório atual.
-
-### Executar os testes
-
-Na raiz do projeto, execute:
+### Compilação e testes
 
 ```bash
 mvn test
+mvn package
 ```
 
-A suíte automatizada cobre o model (estado, protagonista, escolhas, finais, progresso), o fluxo dos controllers de cenas e de saves (escolha de opções, salvamento manual, autosave, apagão, sobrescrita e exclusão com confirmação) — nos testes, o menu do terminal é substituído por respostas prontas (`SeletorDeOpcoes`) —, componentes de persistência e progressão (slots, autosave, exclusão, metadados e envelope dos saves, configurações), a decisão de saída, regras de disponibilidade das escolhas, o fluxo alternativo de esgotamento de energia e associações entre cenas e recursos visuais. Entre as verificações visuais estão a existência de artes para os finais, o uso das ilustrações cadastradas e o preenchimento dos pixels em todos os quadros das animações.
+A geração do pacote requer que os testes executados pelo Maven passem. Para executar o JAR da versão de terminal, quando gerado com esse nome:
+
+```bash
+java -jar target/forkeazando.jar
+```
+
+> **Nota sobre o roteiro em revisão:** a migração local para JSONs com `schemaVersion: 3` ainda não está consolidada. Nos últimos testes dessa migração, houve duas falhas em `FluxoCompletoTest`, relacionadas à retirada de bifurcações do prólogo. Essas falhas não devem ser tratadas apenas alterando o texto esperado nos testes: é necessário restaurar o comportamento narrativo previsto.
 
 ---
 
-## 📋 Fase 2
+## 📋 Fase 2 — Versão de terminal
 
-A segunda fase amplia o jogo com recursos de continuidade, persistência, progressão permanente e gerenciamento das partidas.
+A Fase 2 expandiu a experiência com persistência, progresso permanente e recursos visuais.
 
 - [x] Criação e continuação de partidas.
-- [x] Três slots de salvamento.
-- [x] Metadados das partidas salvas.
-- [x] Salvamento manual na cena.
-- [x] Salvamento automático.
-- [x] Salvamento automático por progressão (a cada 5 cenas) e na conclusão da partida.
-- [x] Escolha do slot ao salvar.
-- [x] Exclusão do autosave.
-- [x] Menu de gerenciamento de saves: 
-- [x] Configurações que alteram o comportamento do jogo.
-- [x] Carregamento de partidas.
-- [x] Confirmação antes de sobrescrever um salvamento.
-- [x] Confirmação antes de excluir um salvamento.
+- [x] Três slots e metadados de salvamento.
+- [x] Salvamento manual, autosave e confirmação de sobrescrita.
+- [x] Gerenciamento e exclusão de saves e autosave.
 - [x] Configurações persistentes.
-- [x] Registro permanente de finais.
-- [x] Conquistas e conteúdos desbloqueáveis.
-- [x] Persistência de colecionáveis e conquistas.
-- [x] Exceções personalizadas de persistência.
-- [x] Testes automatizados de persistência e validação do progresso.
-- [x] Validação de integridade.
-- [x] HUD com indicadores visuais de estado da protagonista.
-- [x] Galeria pixel art de habilidades e itens.
-- [x] Painel pixel art de conquistas.
-- [x] Ilustrações, retratos e animações para cenas e finais.
-- [x] Testes de regras do esgotamento e integridade dos recursos visuais.
-- [x] Testes de fluxo dos controllers de cenas e de saves, sem depender do terminal.
+- [x] Conquistas, colecionáveis, galeria e registro de finais.
+- [x] Exceções personalizadas e validação de integridade.
+- [x] HUD, retratos, ilustrações e animações em pixel art.
+- [x] Testes de persistência, fluxo de cenas e recursos visuais.
 
-### Limitações conhecidas
+---
 
-- O uso das setas depende de um terminal compatível com JLine.
-- Em terminais com menos de 66 colunas ou 30 linhas, as ilustrações e os retratos não aparecem.
-- As animações não podem ser puladas durante a exibição. Podem ser desligadas por completo com `FORKEAZANDO_SEM_ANIMACAO=1`.
-- O caminho alternativo de gravação, utilizado quando não há suporte à movimentação atômica de arquivos, não possui cobertura específica nos testes automatizados.
-- O autosave é um único arquivo, sem histórico: cada novo autosave substitui o anterior.
-- Os controllers do menu principal, das configurações, do progresso e da tela de características ainda não têm testes de fluxo; os de cenas e de saves têm.
+## 🎨 Fase 3 — Interface gráfica com JavaFX
+
+A Fase 3 migra a apresentação do jogo para JavaFX, **preservando MVC e reutilizando as regras já implementadas**.
+
+### Implementado ou iniciado
+
+- [x] Configuração do JavaFX com Maven.
+- [x] Menu principal com as dez opções.
+- [x] Navegação por mouse e teclado.
+- [x] Estilização em CSS e animações de apresentação.
+- [x] Estrutura de FXML para o menu e a tela de carregamento.
+- [x] Criação inicial de personagem e prévia de cenas em JavaFX.
+- [x] Interface de carregamento com três slots e opção de autosave.
+- [x] Integração inicial com a persistência por meio do padrão **Adapter**.
+
+### Em desenvolvimento
+
+- [ ] Integração funcional de todas as opções do menu.
+- [ ] Teste de carregamento de saves ocupados e integração completa de salvamento.
+- [ ] Progressão gráfica além do capítulo inicial, incluindo eventos especiais.
+- [ ] Exibição correta do cenário do campus na tela inicial.
+- [ ] Telas gráficas de configurações, conquistas, galeria e progresso.
+- [ ] Conclusão dos padrões GoF criacional e comportamental.
+- [ ] Consolidação do roteiro, preservando consequências e bifurcações dos protagonistas.
+- [ ] Integração e validação das expressões e animações dos personagens.
+
+### Uso de inteligência artificial
+
+Recursos artísticos e animações da interface receberam apoio de inteligência artificial generativa, conforme autorização comunicada pelo professor durante a sessão tutorial. A implementação, integração e validação permanecem sob responsabilidade da autoria.
+
+---
+
+## Limitações conhecidas
+
+- A interface JavaFX ainda não oferece todas as funcionalidades disponíveis na versão de terminal.
+- A prévia gráfica das cenas não reproduz, por enquanto, a progressão completa dos capítulos e eventos especiais.
+- A exibição da imagem do campus na tela inicial requer correção.
+- A migração do roteiro para JSON v3 ainda precisa preservar os caminhos exclusivos dos protagonistas e apresentar as consequências textuais das escolhas.
+- Saves apontando para cenas removidas por uma revisão narrativa podem exigir tratamento de compatibilidade.
+- O autosave mantém apenas o registro mais recente.
+- No terminal, ilustrações dependem do tamanho da janela e de suporte a *truecolor*; animações podem ser desativadas, mas não puladas individualmente.
+- Parte dos controladores de interface ainda não possui testes de fluxo.
 
 ---
 
@@ -370,46 +359,13 @@ A segunda fase amplia o jogo com recursos de continuidade, persistência, progre
 | `v1.0.0` | Fase 1 |
 | `v1.1.0` | Fase 2, sessão 1: salvamento em JSON e exceções personalizadas |
 | `v1.2.0` | Fase 2, sessão 2: progressão, conquistas e colecionáveis |
-| `v1.3.0` | Fase 2, sessão 3: ilustrações, retratos e animações em pixel art, menu animado, finais ilustrados e esgotamento quando a energia chega a zero |
-| `v1.3.1` | Dicas de atalhos durante o jogo e atualização da documentação |
-| `v1.4.0` | Fase 2, sessão 4: autosave por cenas, escolha de slot, gerenciamento de saves, configurações com efeito e tratamento de configuração inválida |
+| `v1.3.0` | Fase 2, sessão 3: ilustrações, retratos, animações e esgotamento |
+| `v1.3.1` | Dicas de atalhos e atualização da documentação |
+| `v1.4.0` | Fase 2, sessão 4: autosave, slots, gerenciamento de saves e configurações |
+
+A **Fase 3** segue em desenvolvimento na branch `fase3`, sem nova versão estável declarada neste documento.
 
 ---
-## 🎨 Fase 3 — Interface gráfica com JavaFX
-
-A terceira fase do Forkeazando está em desenvolvimento e introduz uma interface gráfica em JavaFX, mantendo a proposta narrativa e a arquitetura MVC do projeto.
-
-### Implementado até o momento
-
-- [x] Configuração do JavaFX com Maven.
-- [x] Tela inicial com identidade visual em pixel art.
-- [x] Cenário inspirado na UEFP — Universidade Estadual do Fork Perdido.
-- [x] Menu principal com as dez opções originais.
-- [x] Navegação visual com mouse e teclado.
-- [x] Efeitos visuais e animações de apresentação.
-
-### Em desenvolvimento
-
-- [ ] Integração completa das ações do menu.
-- [ ] Tela de criação e configuração do protagonista.
-- [ ] Interface gráfica para cenas e escolhas narrativas.
-- [ ] Integração completa com o gerenciamento de saves.
-- [ ] Telas de status, conquistas e progresso.
-- [ ] Implementação e justificativa de três padrões GoF.
-
-### Execução da interface gráfica
-
-Com Java 21 e Maven configurados, execute na raiz do projeto:
-
-```bash
-mvn javafx:run
-```
-
-A versão de terminal permanece disponível.
-
-### Uso de inteligência artificial
-
-Recursos artísticos e animações da interface foram desenvolvidos com apoio de inteligência artificial generativa, conforme autorização comunicada pelo professor durante a sessão tutorial. A implementação, integração e validação do projeto permanecem sob responsabilidade da autoria.
 
 ## Autoria
 

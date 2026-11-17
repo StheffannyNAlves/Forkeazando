@@ -287,7 +287,7 @@ A geração do pacote requer que os testes executados pelo Maven passem. Para ex
 java -jar target/forkeazando.jar
 ```
 
-> **Nota sobre o roteiro em revisão:** a migração local para JSONs com `schemaVersion: 3` ainda não está consolidada. Nos últimos testes dessa migração, houve duas falhas em `FluxoCompletoTest`, relacionadas à retirada de bifurcações do prólogo. Essas falhas não devem ser tratadas apenas alterando o texto esperado nos testes: é necessário restaurar o comportamento narrativo previsto.
+> **Nota sobre o roteiro em revisão:** a migração para JSONs com `schemaVersion: 3` está sendo preparada para integração à branch. Após restaurar as bifurcações do prólogo e ajustar os testes de regressão, a versão local executou **441 testes com sucesso** (`mvn clean test`). Isso não substitui a validação prática do JavaFX nem garante compatibilidade com saves antigos.
 
 ---
 
@@ -310,6 +310,22 @@ A Fase 2 expandiu a experiência com persistência, progresso permanente e recur
 ## 🎨 Fase 3 — Interface gráfica com JavaFX
 
 A Fase 3 migra a apresentação do jogo para JavaFX, **preservando MVC e reutilizando as regras já implementadas**.
+
+### Por que o roteiro foi reformulado?
+
+A passagem da Fase 2 para a Fase 3 não se limitou à mudança de interface. Uma revisão crítica do roteiro anterior identificou **problemas de ritmo, fragmentação e continuidade narrativa**: muitas cenas intermediárias acrescentavam um clique sem oferecer uma decisão relevante, enquanto algumas consequências e relações entre escolhas de capítulos diferentes não ficavam suficientemente claras para o jogador. Também havia espaço para desenvolver melhor as perspectivas particulares dos dois protagonistas.
+
+Por isso, optou-se por uma **reformulação narrativa e estrutural**, em vez de simplesmente transportar o texto da Fase 2 para o JavaFX. A revisão busca:
+
+- **Melhorar o ritmo:** consolidar cenas de transição redundantes e apresentar a consequência imediata da escolha pelo campo `textoConsequencia`, sem exigir uma nova decisão apenas para avançar.
+- **Fortalecer a causa e consequência:** manter atributos e *flags* que conectam escolhas anteriores a alternativas, acontecimentos e desfechos posteriores.
+- **Diferenciar os protagonistas:** preservar bifurcações e perspectivas próprias de **Tiana e Miles**, permitindo que suas experiências alterem a forma de percorrer situações comuns.
+- **Aprimorar a consistência:** revisar diálogos, acontecimentos universitários e conexões entre capítulos, além de adicionar verificações de regressão para evitar perdas de caminhos narrativos.
+- **Evoluir o formato dos dados:** introduzir o esquema JSON v3 e adaptar a leitura e a apresentação das consequências, sem deslocar as regras de negócio para as *views* e sem abandonar MVC.
+
+A redução da quantidade de cenas **não é um objetivo por si só**: a intenção é retirar passos mecânicos e preservar decisões que realmente mudam a trajetória. Essa revisão é uma evolução do projeto, mas também corrige limitações concretas da narrativa entregue na Fase 2.
+
+> **Compatibilidade:** a reorganização de identificadores e destinos de cenas pode afetar partidas salvas com versões anteriores. A migração de saves antigos precisa ser avaliada separadamente da validação do novo roteiro.
 
 ### Implementado ou iniciado
 
@@ -344,7 +360,7 @@ Recursos artísticos e animações da interface receberam apoio de inteligência
 - A interface JavaFX ainda não oferece todas as funcionalidades disponíveis na versão de terminal.
 - A prévia gráfica das cenas não reproduz, por enquanto, a progressão completa dos capítulos e eventos especiais.
 - A exibição da imagem do campus na tela inicial requer correção.
-- A migração do roteiro para JSON v3 ainda precisa preservar os caminhos exclusivos dos protagonistas e apresentar as consequências textuais das escolhas.
+- A integração do roteiro JSON v3 na interface gráfica ainda precisa de validação prática completa, incluindo as consequências textuais e os caminhos exclusivos dos protagonistas.
 - Saves apontando para cenas removidas por uma revisão narrativa podem exigir tratamento de compatibilidade.
 - O autosave mantém apenas o registro mais recente.
 - No terminal, ilustrações dependem do tamanho da janela e de suporte a *truecolor*; animações podem ser desativadas, mas não puladas individualmente.

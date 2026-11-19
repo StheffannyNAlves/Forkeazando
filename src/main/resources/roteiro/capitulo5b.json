@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo5b.json",
-  "totalCenasArquivo": 17,
+  "totalCenasArquivo": 5,
   "cenas": [
     {
       "ordemGlobal": 96,
@@ -13,7 +13,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Explicar do começo, devagar.",
-          "cenaDestinoId": 10150,
+          "cenaDestinoId": 452,
           "flagsConcedidas": [
             "teo_ouviu"
           ],
@@ -42,11 +42,12 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você redesenha o circuito em etapas. A aluna repete a primeira medida sem você segurar a ponta do multímetro."
         },
         {
           "textoAlternativa": "Perguntar quem já sabe o básico.",
-          "cenaDestinoId": 10151,
+          "cenaDestinoId": 452,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -73,11 +74,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "carisma": 2
-          }
+          },
+          "textoConsequencia": "Você pergunta o que a turma já sabe. Téo admite que decorou a fórmula, mas ainda não sabe onde colocar as pontas de prova."
         },
         {
           "textoAlternativa": "Montar um exercício em etapas e pedir que expliquem cada medida.",
-          "cenaDestinoId": 10152,
+          "cenaDestinoId": 452,
           "flagsConcedidas": [
             "teo_ouviu",
             "cap5b_preparou_exercicio"
@@ -105,7 +107,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você divide o teste em três medidas. A aluna explica a segunda a Téo antes de você voltar ao quadro."
         }
       ]
     },
@@ -118,7 +121,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Perguntar a Bia o que ela sabe sobre a possível suspensão.",
-          "cenaDestinoId": 10153,
+          "cenaDestinoId": 453,
           "flagsConcedidas": [
             "bia_sabe_greve"
           ],
@@ -147,11 +150,12 @@
           "impactoRelacionamento": {
             "BIA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia mostra a mensagem recebida sobre bolsas: sem data de pagamento, só 'aguardem'. Vocês decidem levar a pergunta à assembleia."
         },
         {
           "textoAlternativa": "Desconversar; dizer que a bolsa não me preocupa.",
-          "cenaDestinoId": 10154,
+          "cenaDestinoId": 453,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -178,7 +182,8 @@
           "impactoRelacionamento": {
             "BIA": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Não me preocupa — você diz. Bia olha para a conta de passagem na sua mão e não insiste; o aviso continua no mural."
         }
       ]
     },
@@ -191,7 +196,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Anotar o aviso.",
-          "cenaDestinoId": 10155,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -218,11 +223,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você fotografa o aviso e anota o horário do atendimento. Bia envia a solicitação com seu nome entre as pessoas que cobram resposta."
         },
         {
           "textoAlternativa": "Ignorar.",
-          "cenaDestinoId": 10156,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -247,7 +253,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você não põe o nome. Bia envia a solicitação assim mesmo; quando o calendário mudar, terá de procurar o protocolo por conta própria."
         }
       ]
     },
@@ -260,7 +267,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Ainda quero.",
-          "cenaDestinoId": 10157,
+          "cenaDestinoId": 471,
           "flagsConcedidas": [
             "dtec_greve_incerta"
           ],
@@ -289,11 +296,12 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você confirma os dois horários na agenda. Meira entrega a lista de práticas perdidas; Téo está entre os primeiros nomes."
         },
         {
           "textoAlternativa": "Preciso de uns dias. Mas eu volto.",
-          "cenaDestinoId": 10158,
+          "cenaDestinoId": 471,
           "flagsConcedidas": [
             "dtec_greve_incerta"
           ],
@@ -320,7 +328,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Meira segura a vaga por alguns dias e manda as condições por escrito. Na semana seguinte, você volta para um atendimento com Téo."
         }
       ]
     },
@@ -333,7 +342,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Resolver a ligação para Téo e explicar rapidamente; o prazo está acabando.",
-          "cenaDestinoId": 10159,
+          "cenaDestinoId": 999,
           "flagsConcedidas": [
             "teo_nao_aprendeu",
             "cap5_concluido",
@@ -362,11 +371,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você ajusta a ligação e o LED acende. Téo copia o desenho, mas hesita quando Meira pergunta qual tensão esperava medir."
         },
         {
           "textoAlternativa": "Devolver perguntas: o que você mediu e o que esperava medir?",
-          "cenaDestinoId": 10160,
+          "cenaDestinoId": 999,
           "flagsConcedidas": [
             "teo_aprendeu",
             "cap5_concluido",
@@ -399,11 +409,12 @@
           },
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você devolve o multímetro a Téo. Ele encontra a ligação errada e anota a medida; no relatório, a explicação sai com palavras dele."
         },
         {
           "textoAlternativa": "Chamar o Meira. Você ainda não tem certeza de que o ensina bem.",
-          "cenaDestinoId": 10161,
+          "cenaDestinoId": 999,
           "flagsConcedidas": [
             "teo_encaminhado",
             "cap5_concluido",
@@ -432,463 +443,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1150,
-      "id": 10150,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você redesenha o circuito em etapas. A aluna repete a primeira medida sem você segurar a ponta do multímetro.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encontrar Bia no corredor.",
-          "cenaDestinoId": 452,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1151,
-      "id": 10151,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pergunta o que a turma já sabe. Téo admite que decorou a fórmula, mas ainda não sabe onde colocar as pontas de prova.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encontrar Bia no corredor.",
-          "cenaDestinoId": 452,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1152,
-      "id": 10152,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você divide o teste em três medidas. A aluna explica a segunda a Téo antes de você voltar ao quadro.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encontrar Bia no corredor.",
-          "cenaDestinoId": 452,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1153,
-      "id": 10153,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia mostra a mensagem recebida sobre bolsas: sem data de pagamento, só 'aguardem'. Vocês decidem levar a pergunta à assembleia.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir o aviso da assembleia.",
-          "cenaDestinoId": 453,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1154,
-      "id": 10154,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Não me preocupa — você diz. Bia olha para a conta de passagem na sua mão e não insiste; o aviso continua no mural.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir o aviso da assembleia.",
-          "cenaDestinoId": 453,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1155,
-      "id": 10155,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fotografa o aviso e anota o horário do atendimento. Bia envia a solicitação com seu nome entre as pessoas que cobram resposta.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1156,
-      "id": 10156,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você não põe o nome. Bia envia a solicitação assim mesmo; quando o calendário mudar, terá de procurar o protocolo por conta própria.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1157,
-      "id": 10157,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você confirma os dois horários na agenda. Meira entrega a lista de práticas perdidas; Téo está entre os primeiros nomes.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Atender Téo.",
-          "cenaDestinoId": 471,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1158,
-      "id": 10158,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Meira segura a vaga por alguns dias e manda as condições por escrito. Na semana seguinte, você volta para um atendimento com Téo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Atender Téo.",
-          "cenaDestinoId": 471,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1159,
-      "id": 10159,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você ajusta a ligação e o LED acende. Téo copia o desenho, mas hesita quando Meira pergunta qual tensão esperava medir.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encerrar o capítulo.",
-          "cenaDestinoId": 999,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1160,
-      "id": 10160,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você devolve o multímetro a Téo. Ele encontra a ligação errada e anota a medida; no relatório, a explicação sai com palavras dele.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encerrar o capítulo.",
-          "cenaDestinoId": 999,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1161,
-      "id": 10161,
-      "capitulo": "Capítulo 5B — DTEC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Meira vem à bancada. Você diz o que já percebeu, Téo mostra o que ainda não mediu e os três combinam outro atendimento.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encerrar o capítulo.",
-          "cenaDestinoId": 999,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Meira vem à bancada. Você diz o que já percebeu, Téo mostra o que ainda não mediu e os três combinam outro atendimento."
         }
       ]
     }

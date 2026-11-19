@@ -58,6 +58,35 @@ public class CenasController {
         ERRO_DE_ROTA
     }
 
+    private ResultadoAvancoCapitulo processarDestino(int destino){
+        if (destino != Estado.CENA_ENCERRAR) {
+            estado.setCenaAtualId(destino);
+            return ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
+        }
+
+        ResultadoAvancoCapitulo resultado = tentarAvancarCapitulo();
+
+        return switch (resultado) {
+            case CAPITULO_AVANCADO -> ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
+            case FIM_DE_JOGO -> ResultadoAvancoCapitulo.FIM_DE_JOGO;
+            case ERRO_DE_ROTA -> ResultadoAvancoCapitulo.ERRO_DE_ROTA;
+        };
+    }
+    // A resolução do futuro é uma transição automática, não uma escolha de carreira
+    private boolean resolverTransicaoAutomatica(Cena atual){
+        if (atual.getId() != ResolucaoDeFuturo.CENA_RESOLVER_FUTURO)
+            return false;
+        int cenaFinal = ResolucaoDeFuturo.resolverCena(estado.getProtagonista());
+        estado.setCenaAtualId(cenaFinal);
+        estado.marcarAlterado();
+        return true;
+    }
+    private int aplicarEscolhaEObterDestino(Escolha escolhida){
+        aplicarEscolha(escolhida);
+        gatilhoAutosave.registrarCenaConcluida();
+        return escolhida.getCenaDestinoId();
+    }
+
 
     public ResultadoPartida iniciar() {
         view.resetarCacheVisual();
@@ -68,11 +97,7 @@ public class CenasController {
             }
             Cena atual = buscarCenaPorId(estado.getCenaAtualId());
 
-            // A resolução do futuro é uma transição automática, não uma escolha de carreira.
-            if (atual.getId() == ResolucaoDeFuturo.CENA_RESOLVER_FUTURO) {
-                int cenaFinal = ResolucaoDeFuturo.resolverCena(estado.getProtagonista());
-                estado.setCenaAtualId(cenaFinal);
-                estado.marcarAlterado();
+            if (resolverTransicaoAutomatica(atual)) {
                 continue;
             }
 
@@ -103,9 +128,7 @@ public class CenasController {
                 estado.marcarAlterado();
             }
 
-            view.renderizar(atual, estado.getProtagonista(),
-                    estado.getSemestresExtras(),
-                    VisuaisDeCena.paraCena(atual.getId()).orElse(null));
+            view.renderizar(atual, estado.getProtagonista(), estado.getSemestresExtras(),VisuaisDeCena.paraCena(atual.getId()).orElse(null));
             if (atual.getId() == CENA_EPILOGOS) {
                 view.mostrarEpilogos(estado.getProtagonista());
             }
@@ -138,11 +161,9 @@ public class CenasController {
 
 
 
-                MenuInterativo.Resposta resposta =
-                        seletor.escolher(opcoes, "O QUE VOCÊ VAI FAZER?");
+                MenuInterativo.Resposta resposta = seletor.escolher(opcoes, "O QUE VOCÊ VAI FAZER?");
 
                 if (resposta.resultado != MenuInterativo.Resultado.SELECIONADO) {
-                    // Esc: retorna ao menu principal.
                     return ResultadoPartida.VOLTAR_AO_MENU;
                 }
 
@@ -168,22 +189,15 @@ public class CenasController {
             }
 
             Escolha escolhida = disponiveis.get(indice);
-            aplicarEscolha(escolhida);
-            gatilhoAutosave.registrarCenaConcluida();
-            int destino = escolhida.getCenaDestinoId();
+            int destino = aplicarEscolhaEObterDestino(escolhida);
 
 
             if (destino == Estado.CENA_RETOMAR) {
-                // Retoma o caminho original após o apagão.
+                // Retoma o caminho original após o apagão
                 destino = estado.consumirDestinoPendente();
 
                 Protagonista protagonista = estado.getProtagonista();
-                protagonista.recuperarEnergia(
-                        (int) Math.round(
-                                protagonista.getEnergiaMaxima()
-                                        * RECUPERAR_ENERGIA
-                        )
-                );
+                protagonista.recuperarEnergia((int) Math.round(protagonista.getEnergiaMaxima() * RECUPERAR_ENERGIA));
 
             } else if (podeApagar(atual)
                     && estado.getProtagonista().getEnergia() == 0) {
@@ -197,16 +211,13 @@ public class CenasController {
             f.ifPresent(aFinal -> estado.concluir(aFinal.getCodigo()));
 
             if (destino == Estado.CENA_ENCERRAR) {
-                ResultadoAvancoCapitulo resultadoAvanco =
-                        tentarAvancarCapitulo();
+                ResultadoAvancoCapitulo resultadoAvanco = tentarAvancarCapitulo();
 
-                if (resultadoAvanco
-                        == ResultadoAvancoCapitulo.CAPITULO_AVANCADO) {
+                if (resultadoAvanco == ResultadoAvancoCapitulo.CAPITULO_AVANCADO) {
                     continue;
                 }
 
-                if (resultadoAvanco
-                        == ResultadoAvancoCapitulo.FIM_DE_JOGO) {
+                if (resultadoAvanco == ResultadoAvancoCapitulo.FIM_DE_JOGO) {
                     return ResultadoPartida.FIM_DE_JOGO;
                 }
 
@@ -288,6 +299,11 @@ public class CenasController {
 
         for (Estado.ImpactoRelacionamento impacto : estado.aplicarEscolha(escolhida)) {
             view.mostrarImpactoRelacionamento(impacto.personagem(), impacto.valor(), impacto.nivel());
+        }
+
+        String consequencia = escolhida.getTextoConsequencia();
+        if (consequencia != null && !consequencia.isBlank()) {
+            view.mostrarMensagem("CONSEQUÊNCIA DA ESCOLHA\n" + consequencia);
         }
 
         // O Sistema faz o chute depois da última resposta do Akinator.

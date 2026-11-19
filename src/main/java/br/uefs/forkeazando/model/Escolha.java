@@ -9,6 +9,7 @@ public class Escolha  {
 
 
     private final String textoAlternativa;
+    private final String textoConsequencia;
     private final int cenaDestinoId;
     private final List<String> flagsConcedidas;
     private final String flagRequerida;
@@ -38,6 +39,7 @@ public class Escolha  {
 
     private Escolha(Builder b) {
         this.textoAlternativa      = b.textoAlternativa;
+        this.textoConsequencia = b.textoConsequencia;
         this.cenaDestinoId         = b.cenaDestinoId;
         this.flagsConcedidas       = List.copyOf(b.flagsConcedidas);
         this.flagRequerida         = b.flagRequerida;
@@ -110,6 +112,7 @@ public class Escolha  {
     }
 
     public String getTextoAlternativa() { return textoAlternativa; }
+    public String getTextoConsequencia() { return textoConsequencia; }
     public int getCenaDestinoId()       { return cenaDestinoId; }
     public List<String> getFlagsConcedidas()    { return flagsConcedidas; }
     public String getFlagRequerida() { return flagRequerida; }
@@ -122,6 +125,7 @@ public class Escolha  {
 
     public static class Builder {
         private final String textoAlternativa;
+        private String textoConsequencia;
         private final int cenaDestinoId;
         private final List<String> flagsConcedidas = new ArrayList<>();
         public Map<PersonagemSecundario, Float> relacionamentoMinimo = new HashMap<>();
@@ -141,6 +145,11 @@ public class Escolha  {
         private Map<String, Integer> atributosAlterados = new HashMap<>();
 
         public Builder(String t, int destino) { this.textoAlternativa = t; this.cenaDestinoId = destino; }
+
+        public Builder comTextoConsequencia(String texto) {
+            this.textoConsequencia = texto;
+            return this;
+        }
 
         public Builder comFlagConcedida(String v)  {
             if (v != null)

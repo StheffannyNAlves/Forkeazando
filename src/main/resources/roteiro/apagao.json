@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "apagao.json",
   "totalCenasArquivo": 3,
@@ -42,7 +42,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Aceitar que Malu avise o professor.",
@@ -75,7 +76,8 @@
           "impactoRelacionamento": {
             "MALU": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pedir a Dandara que ajude a chamar alguém.",
@@ -108,7 +110,8 @@
           "impactoRelacionamento": {
             "DANDARA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pedir a alguém do grupo que avise o professor.",
@@ -137,7 +140,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Esperar a sala esvaziar e procurar apoio depois.",
@@ -166,7 +170,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -208,7 +213,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 1
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -250,7 +256,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     }

@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "abertura.json",
-  "totalCenasArquivo": 7,
+  "totalCenasArquivo": 4,
   "cenas": [
     {
       "ordemGlobal": 0,
@@ -13,7 +13,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Tentei entregar o que dava e registrei o que faltou.",
-          "cenaDestinoId": 10000,
+          "cenaDestinoId": 701,
           "flagsConcedidas": [
             "prologo_resposta_pratica"
           ],
@@ -40,11 +40,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você aponta no portfólio a parte que conseguiu entregar e a coluna 'pendente'. A pessoa pergunta quem recebeu esse registro. A resposta começa muito antes dessa sala."
         },
         {
           "textoAlternativa": "Voltei ao circuito. Queria entender por que a hipótese falhou.",
-          "cenaDestinoId": 10001,
+          "cenaDestinoId": 701,
           "flagsConcedidas": [
             "prologo_resposta_conviccao"
           ],
@@ -71,11 +72,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você aponta a anotação de teste no canto da foto. — Minha primeira explicação estava errada. Voltei para descobrir onde. A lembrança puxa você para o primeiro semestre."
         },
         {
           "textoAlternativa": "Na hora não soube. Pedi ajuda e comecei de novo.",
-          "cenaDestinoId": 10002,
+          "cenaDestinoId": 701,
           "flagsConcedidas": [
             "prologo_resposta_aberta"
           ],
@@ -102,7 +104,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Não soube resolver na hora — você admite. A pessoa espera o resto, e você se lembra de quem esteve naquela primeira bancada."
         }
       ]
     },
@@ -140,7 +143,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Relembrar o início pelas ideias que você queria colocar em prática.",
@@ -169,121 +173,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1000,
-      "id": 10000,
-      "capitulo": "Prólogo",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aponta no portfólio a parte que conseguiu entregar e a coluna 'pendente'. A pessoa pergunta quem recebeu esse registro. A resposta começa muito antes dessa sala.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar ao começo.",
-          "cenaDestinoId": 701,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1001,
-      "id": 10001,
-      "capitulo": "Prólogo",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aponta a anotação de teste no canto da foto. — Minha primeira explicação estava errada. Voltei para descobrir onde. A lembrança puxa você para o primeiro semestre.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar ao começo.",
-          "cenaDestinoId": 701,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1002,
-      "id": 10002,
-      "capitulo": "Prólogo",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Não soube resolver na hora — você admite. A pessoa espera o resto, e você se lembra de quem esteve naquela primeira bancada.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar ao começo.",
-          "cenaDestinoId": 701,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -321,7 +212,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -359,7 +251,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

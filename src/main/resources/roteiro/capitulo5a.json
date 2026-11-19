@@ -1,19 +1,19 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo5a.json",
-  "totalCenasArquivo": 33,
+  "totalCenasArquivo": 11,
   "cenas": [
     {
       "ordemGlobal": 85,
       "id": 400,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Terça, 14h. Primeira reunião da IC. Sérgio apresenta os recém-chegados e começa a falar de parâmetros antes que cada pessoa diga o nome.\n\nNo quadro, duas estratégias dividem o espaço de busca. Você reconhece uma delas dos estudos que fez por conta própria. Um doutorando chama os intervalos de 'convenientes'; Sérgio risca a palavra.\n\n— Isso é hipótese, não justificativa.\n\nSeu caderno está aberto na página onde você tinha anotado a mesma dúvida. O grupo passa para o próximo slide. Você pode interromper para se apresentar e fazer a pergunta, guardar a dúvida para depois ou tentar não chamar atenção hoje.",
+      "textoNarrativo": "Terça, 14h. Primeira reunião da IC. Sérgio apresenta os recém-chegados e começa a falar de parâmetros antes que cada pessoa diga o nome.\n\nNo quadro, duas estratégias dividem o espaço de busca. Você reconhece uma delas dos estudos que fez por conta própria. Um doutorando chama os intervalos de 'convenientes'; Sérgio risca a palavra.\n\n— Isso é hipótese, não justificativa.\n\nSeu caderno está aberto na página onde você tinha anotado a mesma dúvida. O grupo passa para o próximo slide. Você pode interromper para se apresentar e fazer a pergunta, guardar a dúvida para depois ou tentar passar despercebido hoje.",
       "escolhas": [
         {
           "textoAlternativa": "Falar meu nome e explicar o que eu sei fazer.",
-          "cenaDestinoId": 10128,
+          "cenaDestinoId": 402,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -42,11 +42,12 @@
           },
           "atributosAlterados": {
             "carisma": 2
-          }
+          },
+          "textoConsequencia": "Você diz seu nome e aponta a palavra riscada no quadro. Sérgio pede que formule a hipótese como uma pergunta testável."
         },
         {
           "textoAlternativa": "Ficar em silêncio e anotar. Vou provar pelo trabalho.",
-          "cenaDestinoId": 10129,
+          "cenaDestinoId": 402,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -71,11 +72,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você anota a dúvida e marca o slide para perguntar depois. Quando olha de novo, Bia já escreveu um número ao lado da curva."
         },
         {
           "textoAlternativa": "Sentar no canto. Talvez ninguém perceba que cheguei.",
-          "cenaDestinoId": 10130,
+          "cenaDestinoId": 402,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -100,7 +102,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você se senta no canto. Sérgio passa a lista de tarefas, e seu nome aparece no grupo de dados antes de você falar com alguém."
         }
       ]
     },
@@ -113,7 +116,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Pedir a Bia que mostre como foi feita a coleta dos dados.",
-          "cenaDestinoId": 10131,
+          "cenaDestinoId": 403,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -140,11 +143,12 @@
           "impactoRelacionamento": {
             "BIA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia mostra o arquivo de coleta. A terceira coluna não tem unidade; vocês anotam a lacuna antes de analisar os números."
         },
         {
           "textoAlternativa": "Perguntar se ela ainda vende respostas.",
-          "cenaDestinoId": 10132,
+          "cenaDestinoId": 403,
           "flagsConcedidas": [
             "bia_ainda_vende"
           ],
@@ -173,11 +177,12 @@
           "impactoRelacionamento": {
             "BIA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia fecha o fichário por um segundo. — Não vendo respostas. O resumo tinha exercícios comentados. Se quiser falar da prova, fala dela."
         },
         {
           "textoAlternativa": "Manter distância enquanto confiro os dados.",
-          "cenaDestinoId": 10133,
+          "cenaDestinoId": 403,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -204,7 +209,8 @@
           "impactoRelacionamento": {
             "BIA": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você copia a planilha e confere as condições sem pedir ajuda. Bia deixa o link da fonte no chat, mesmo depois da distância."
         }
       ]
     },
@@ -217,7 +223,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Dizer que entendo.",
-          "cenaDestinoId": 10134,
+          "cenaDestinoId": 401,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -244,11 +250,12 @@
           "impactoRelacionamento": {
             "BIA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Entendo por que você guardou as versões — você diz. Bia mostra a primeira análise riscada, sem apagar a autoria do erro."
         },
         {
           "textoAlternativa": "Dizer que não foi isso que vim fazer.",
-          "cenaDestinoId": 10135,
+          "cenaDestinoId": 401,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -275,7 +282,8 @@
           "impactoRelacionamento": {
             "BIA": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Eu vim pesquisar, não arbitrar disputa de artigo — você responde. Bia recolhe o caderno e deixa o arquivo original disponível para você conferir."
         }
       ]
     },
@@ -288,7 +296,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Mandar mensagem perguntando o que devo fazer enquanto isso.",
-          "cenaDestinoId": 10136,
+          "cenaDestinoId": 405,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -317,11 +325,12 @@
           },
           "atributosAlterados": {
             "carisma": 1
-          }
+          },
+          "textoConsequencia": "Você envia a Sérgio a pergunta com duas saídas possíveis. A mensagem fica sem resposta, mas a lacuna do método está registrada."
         },
         {
           "textoAlternativa": "Esperar a orientação antes de escolher um parâmetro.",
-          "cenaDestinoId": 10137,
+          "cenaDestinoId": 405,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -348,11 +357,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Você não escolhe um número por palpite. No relatório, deixa em branco a etapa que depende da orientação."
         },
         {
           "textoAlternativa": "Perguntar a Bia como documentar o dado ausente.",
-          "cenaDestinoId": 10138,
+          "cenaDestinoId": 405,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -379,11 +389,12 @@
           "impactoRelacionamento": {
             "BIA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia sugere marcar cada tentativa com o valor usado e escrever por que nenhuma delas valida o resultado. Você abre uma tabela nova."
         },
         {
           "textoAlternativa": "Achar o cronograma no drive. Última atualização: quatro meses atrás.",
-          "cenaDestinoId": 10139,
+          "cenaDestinoId": 405,
           "flagsConcedidas": [
             "ic_sabe_cronograma"
           ],
@@ -412,7 +423,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "O cronograma antigo não responde à dúvida, mas mostra um prazo que ninguém mencionou. Você salva a captura com a data visível."
         }
       ]
     },
@@ -425,7 +437,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assumir a coordenação. Alguém precisa organizar isso.",
-          "cenaDestinoId": 10140,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [
             "cap5a_liderou_artigo"
           ],
@@ -454,11 +466,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você assume a coordenação e pede responsáveis por medida e revisão. Bia exige que o quadro vire um registro compartilhado."
         },
         {
           "textoAlternativa": "Assumir uma tarefa delimitada e pedir revisão.",
-          "cenaDestinoId": 10141,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -483,11 +496,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você aceita só a análise que consegue repetir e pede que outra pessoa revise a tabela. O artigo ganha um limite de escopo."
         },
         {
           "textoAlternativa": "Perguntar quem vai revisar o método e os resultados.",
-          "cenaDestinoId": 10142,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [
             "cap5a_perguntou_revisao"
           ],
@@ -514,11 +528,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Ninguém assume a revisão de primeira. Sua pergunta entra na ata com nome e data, em vez de desaparecer no fim da reunião."
         },
         {
           "textoAlternativa": "Registrar método, condições do experimento e resultados antes de redigir a seção.",
-          "cenaDestinoId": 10143,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [
             "cap5a_registrou_experimento"
           ],
@@ -545,11 +560,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você registra equipamento, parâmetro e resultado antes de redigir. A seção de método fica mais longa que o resumo."
         },
         {
           "textoAlternativa": "Tirar print do e-mail com a divisão das partes. Por precaução.",
-          "cenaDestinoId": 10144,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [
             "item_prova_email"
           ],
@@ -578,11 +594,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você salva o e-mail que dividiu as partes. A captura não resolve a autoria, mas impede que a divisão seja recontada depois sem registro."
         },
         {
           "textoAlternativa": "Enfrentar tudo. Café e ódio.",
-          "cenaDestinoId": 10145,
+          "cenaDestinoId": 451,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -609,7 +626,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -5
-          }
+          },
+          "textoConsequencia": "Você aceita duas tarefas extras e abre uma terceira aba. Bia pergunta em voz baixa qual delas será entregue se o tempo acabar."
         }
       ]
     },
@@ -649,7 +667,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pedir pra sair do grupo.",
@@ -680,7 +699,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Aceitar que um resultado negativo também precisa ser descrito.",
@@ -711,7 +731,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pensar em desistir de tudo.",
@@ -742,7 +763,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -783,7 +805,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -796,7 +819,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Falar do projeto, do tema e do que quero pesquisar.",
-          "cenaDestinoId": 10146,
+          "cenaDestinoId": 416,
           "flagsConcedidas": [
             "entrevista_ic_boa"
           ],
@@ -827,11 +850,12 @@
           },
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você fala da pergunta que ainda quer testar. Sérgio anota o equipamento necessário antes de voltar ao assunto da bolsa."
         },
         {
           "textoAlternativa": "Falar do trabalho que fiz e do quanto me dediquei.",
-          "cenaDestinoId": 10147,
+          "cenaDestinoId": 416,
           "flagsConcedidas": [
             "entrevista_ic_trabalho"
           ],
@@ -860,11 +884,12 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra o registro de trabalho, inclusive as tentativas que falharam. Sérgio confere as datas em vez de contar só páginas escritas."
         },
         {
           "textoAlternativa": "Dizer a verdade: preciso da bolsa.",
-          "cenaDestinoId": 10148,
+          "cenaDestinoId": 416,
           "flagsConcedidas": [
             "entrevista_ic_honesta"
           ],
@@ -895,11 +920,12 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "— Preciso da bolsa — você diz. Sérgio não pede uma justificativa mais bonita; abre a tabela de horas e requisitos."
         },
         {
           "textoAlternativa": "Não saber o que dizer e deixar o silêncio responder.",
-          "cenaDestinoId": 10149,
+          "cenaDestinoId": 416,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -924,7 +950,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "O silêncio dura o suficiente para Sérgio baixar a caneta. Você pede que ele mande as condições por escrito antes de responder."
         }
       ]
     },
@@ -964,7 +991,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Não assumir a vaga agora; negociar uma participação voluntária menor.",
@@ -995,7 +1023,8 @@
           },
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1036,7 +1065,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1077,843 +1107,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1128,
-      "id": 10128,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você diz seu nome e aponta a palavra riscada no quadro. Sérgio pede que formule a hipótese como uma pergunta testável.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conhecer o trabalho de Bia.",
-          "cenaDestinoId": 402,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1129,
-      "id": 10129,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você anota a dúvida e marca o slide para perguntar depois. Quando olha de novo, Bia já escreveu um número ao lado da curva.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conhecer o trabalho de Bia.",
-          "cenaDestinoId": 402,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1130,
-      "id": 10130,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você se senta no canto. Sérgio passa a lista de tarefas, e seu nome aparece no grupo de dados antes de você falar com alguém.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conhecer o trabalho de Bia.",
-          "cenaDestinoId": 402,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1131,
-      "id": 10131,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia mostra o arquivo de coleta. A terceira coluna não tem unidade; vocês anotam a lacuna antes de analisar os números.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ouvir o que Bia registrou.",
-          "cenaDestinoId": 403,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1132,
-      "id": 10132,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia fecha o fichário por um segundo. — Não vendo respostas. O resumo tinha exercícios comentados. Se quiser falar da prova, fala dela.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ouvir o que Bia registrou.",
-          "cenaDestinoId": 403,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1133,
-      "id": 10133,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você copia a planilha e confere as condições sem pedir ajuda. Bia deixa o link da fonte no chat, mesmo depois da distância.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ouvir o que Bia registrou.",
-          "cenaDestinoId": 403,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1134,
-      "id": 10134,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Entendo por que você guardou as versões — você diz. Bia mostra a primeira análise riscada, sem apagar a autoria do erro.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar aos dados do experimento.",
-          "cenaDestinoId": 401,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1135,
-      "id": 10135,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Eu vim pesquisar, não arbitrar disputa de artigo — você responde. Bia recolhe o caderno e deixa o arquivo original disponível para você conferir.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar aos dados do experimento.",
-          "cenaDestinoId": 401,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1136,
-      "id": 10136,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você envia a Sérgio a pergunta com duas saídas possíveis. A mensagem fica sem resposta, mas a lacuna do método está registrada.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar à reunião do artigo.",
-          "cenaDestinoId": 405,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1137,
-      "id": 10137,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você não escolhe um número por palpite. No relatório, deixa em branco a etapa que depende da orientação.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar à reunião do artigo.",
-          "cenaDestinoId": 405,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1138,
-      "id": 10138,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia sugere marcar cada tentativa com o valor usado e escrever por que nenhuma delas valida o resultado. Você abre uma tabela nova.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar à reunião do artigo.",
-          "cenaDestinoId": 405,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1139,
-      "id": 10139,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "O cronograma antigo não responde à dúvida, mas mostra um prazo que ninguém mencionou. Você salva a captura com a data visível.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar à reunião do artigo.",
-          "cenaDestinoId": 405,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1140,
-      "id": 10140,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você assume a coordenação e pede responsáveis por medida e revisão. Bia exige que o quadro vire um registro compartilhado.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1141,
-      "id": 10141,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aceita só a análise que consegue repetir e pede que outra pessoa revise a tabela. O artigo ganha um limite de escopo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1142,
-      "id": 10142,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Ninguém assume a revisão de primeira. Sua pergunta entra na ata com nome e data, em vez de desaparecer no fim da reunião.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1143,
-      "id": 10143,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você registra equipamento, parâmetro e resultado antes de redigir. A seção de método fica mais longa que o resumo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1144,
-      "id": 10144,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você salva o e-mail que dividiu as partes. A captura não resolve a autoria, mas impede que a divisão seja recontada depois sem registro.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1145,
-      "id": 10145,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aceita duas tarefas extras e abre uma terceira aba. Bia pergunta em voz baixa qual delas será entregue se o tempo acabar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a greve.",
-          "cenaDestinoId": 451,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1146,
-      "id": 10146,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fala da pergunta que ainda quer testar. Sérgio anota o equipamento necessário antes de voltar ao assunto da bolsa.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ver as condições da bolsa.",
-          "cenaDestinoId": 416,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1147,
-      "id": 10147,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra o registro de trabalho, inclusive as tentativas que falharam. Sérgio confere as datas em vez de contar só páginas escritas.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ver as condições da bolsa.",
-          "cenaDestinoId": 416,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1148,
-      "id": 10148,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Preciso da bolsa — você diz. Sérgio não pede uma justificativa mais bonita; abre a tabela de horas e requisitos.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ver as condições da bolsa.",
-          "cenaDestinoId": 416,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1149,
-      "id": 10149,
-      "capitulo": "Capítulo 5A — IC",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "O silêncio dura o suficiente para Sérgio baixar a caneta. Você pede que ele mande as condições por escrito antes de responder.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ver as condições da bolsa.",
-          "cenaDestinoId": 416,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

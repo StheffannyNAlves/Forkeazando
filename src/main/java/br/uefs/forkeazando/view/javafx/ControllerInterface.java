@@ -251,10 +251,29 @@ public class ControllerInterface {
     private void abrirCriacao() {
         VBox conteudo = novoPainel("CRIE SEU PROTAGONISTA", "Cada escolha muda seus atributos iniciais.");
         ComboBox<IdentidadeProtagonista> identidade = novoCombo(IdentidadeProtagonista.values());
+        identidade.setConverter(new javafx.util.StringConverter<>() {
+            @Override public String toString(IdentidadeProtagonista valor) {
+                if (valor == null) return "";
+                return valor == IdentidadeProtagonista.STHEFFANNY ? "Tiana" : "Miles";
+            }
+            @Override public IdentidadeProtagonista fromString(String texto) {
+                return "Miles".equalsIgnoreCase(texto)
+                        ? IdentidadeProtagonista.DAVI : IdentidadeProtagonista.STHEFFANNY;
+            }
+        });
         TextField nome = new TextField();
         nome.setPromptText("Nome exibido no jogo");
         nome.getStyleClass().add("campo-pixel");
         nome.setMaxWidth(450);
+        nome.setText("Tiana");
+        identidade.setValue(IdentidadeProtagonista.STHEFFANNY);
+        identidade.valueProperty().addListener((obs, anterior, proximo) -> {
+            if (proximo == null) return;
+            String anteriorPadrao = anterior == IdentidadeProtagonista.DAVI ? "Miles" : "Tiana";
+            if (nome.getText().isBlank() || nome.getText().equals(anteriorPadrao)) {
+                nome.setText(proximo == IdentidadeProtagonista.DAVI ? "Miles" : "Tiana");
+            }
+        });
 
         CheckBox perfeccionista = novoCheck("Sou perfeccionista");
         CheckBox sociavel = novoCheck("Sou sociável");
@@ -282,7 +301,7 @@ public class ControllerInterface {
         Button comecar = botaoAcao("COMEÇAR A JORNADA");
         comecar.setOnAction(e -> {
             if (identidade.getValue() == null) {
-                mostrarModal("ESCOLHA O PROTAGONISTA", "Selecione Stheffanny ou Davi.");
+                mostrarModal("ESCOLHA O PROTAGONISTA", "Selecione Tiana ou Miles.");
                 return;
             }
             if (nome.getText().isBlank()) {
@@ -315,7 +334,7 @@ public class ControllerInterface {
             if (cena.getPersonagemFalando() != null && !cena.getPersonagemFalando().isBlank()) {
                 conteudo.getChildren().add(rotulo(cena.getPersonagemFalando().toUpperCase()));
             }
-            Label narrativa = new Label(cena.getTextoNarrativo());
+            Label narrativa = new Label(br.uefs.forkeazando.roteiro.NarrativaProtagonistas.resolver(cena, p));
             narrativa.getStyleClass().add("texto-narrativa");
             narrativa.setWrapText(true);
             narrativa.setMaxWidth(480);
@@ -353,7 +372,13 @@ public class ControllerInterface {
                 escolhaBotao.setOnAction(e -> {
                     try {
                         boolean avancou = sessao.escolher(escolha);
-                        if (avancou) abrirCena();
+                        if (avancou) {
+                            abrirCena();
+                            String consequencia = escolha.getTextoConsequencia();
+                            if (consequencia != null && !consequencia.isBlank()) {
+                                mostrarModal("CONSEQUÊNCIA", consequencia);
+                            }
+                        }
                         else mostrarModal("FIM DA PRÉVIA", "Chegamos à transição de capítulo " + "A versão completa segue no terminal enquanto migro os eventos especiais");
                     } catch (RuntimeException ex) {
                         mostrarModal("NÃO FOI POSSÍVEL AVANÇAR", ex.getMessage());

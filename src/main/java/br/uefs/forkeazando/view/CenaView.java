@@ -150,7 +150,7 @@ public class CenaView {
                 imprimirLinha("", corTexto);
             }
 
-            for (String paragrafo : cena.getTextoNarrativo().split("\n")) {
+            for (String paragrafo : br.uefs.forkeazando.roteiro.NarrativaProtagonistas.resolver(cena, p).split("\n")) {
                 Entrada.aguardarPause();
                 paragrafo = paragrafo.replace("{{NOTA_CALCULO}}", ResultadoCalculo.notaFormatada(p));
                 if (paragrafo.equals("{{COMENTARIO_NOTA_CALCULO}}")) {

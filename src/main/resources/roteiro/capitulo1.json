@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo1.json",
-  "totalCenasArquivo": 51,
+  "totalCenasArquivo": 17,
   "cenas": [
     {
       "ordemGlobal": 2,
@@ -13,7 +13,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Acordar sua mãe e contar a notícia pessoalmente.",
-          "cenaDestinoId": 10003,
+          "cenaDestinoId": 1,
           "flagsConcedidas": [
             "acordou_mae"
           ],
@@ -40,11 +40,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Sua mãe acorda procurando os óculos. Lê seu nome na tela, volta ao início da linha e só então abraça você. Às seis, ainda falta entender o edital."
         },
         {
           "textoAlternativa": "Deixar sua mãe dormir e guardar a notícia até amanhecer.",
-          "cenaDestinoId": 10004,
+          "cenaDestinoId": 1,
           "flagsConcedidas": [
             "guardou_pra_si"
           ],
@@ -71,7 +72,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você deixa um bilhete ao lado da xícara: 'Entrou. 2024.2.' De manhã, sua mãe encontra o papel antes do café; vocês abrem o edital lado a lado."
         }
       ]
     },
@@ -80,11 +82,11 @@
       "id": 1,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na página da CSA, a convocação de ingresso 2024.2 leva ao edital, ao cronograma e à lista de documentos. A palavra 'matrícula' aparece em todas as abas, mas nenhuma delas significa que o processo terminou.\n\nVocê cria o acesso, preenche a Ficha de Cadastro e o Questionário Socioeconômico, salva a ficha em PDF e separa os comprovantes. A orientação da convocação explica como enviar a documentação para análise. Você confere a categoria em que se inscreveu: validações documentais, de renda ou heteroidentificação só se aplicam às categorias indicadas.\n\nNo grupo de ingressantes, {{NOME_OUTRO_PROTAGONISTA}} pergunta se aparecer na lista significa que a matrícula já foi confirmada.\n\n{{OUTRO_CENA}}\n\nMalu manda uma foto de um corredor e pergunta onde fica o Módulo 1. Ainda não há uma grade para escolher: a turma ingressante recebe o horário do primeiro período. Primeiro, você precisa acompanhar a homologação e a confirmação; depois, consultar o comprovante no Portal Sagres.\n\nVocê põe o cronograma ao lado dos documentos. Uma das páginas pede o documento inteiro, frente e verso. O arquivo na sua pasta tem só a frente. Você volta ao scanner antes de enviar.",
+      "textoNarrativo": "Na página da CSA, a convocação de ingresso 2024.2 leva ao edital, ao cronograma e à lista de documentos. A palavra 'matrícula' aparece em todas as abas, mas nenhuma delas significa que o processo terminou.\n\nVocê cria o acesso, preenche a Ficha de Cadastro e o Questionário Socioeconômico, salva a ficha em PDF e separa os comprovantes. A orientação da convocação explica como enviar a documentação para análise. Você confere a categoria em que se inscreveu: validações documentais, de renda ou heteroidentificação só se aplicam às categorias indicadas.\n\nNo grupo de ingressantes, {{NOME_OUTRO_PROTAGONISTA}} pergunta se estar na lista já é estar matriculado.\n\n{{OUTRO_CENA}}\n\nMalu manda uma foto de um corredor e pergunta onde fica o Módulo 1. Ainda não há uma grade para escolher: a turma ingressante recebe o horário do primeiro período. Primeiro, você precisa acompanhar a homologação e a confirmação; depois, consultar o comprovante no Portal Sagres.\n\nVocê põe o cronograma ao lado dos documentos. Uma das páginas pede o documento inteiro, frente e verso. O arquivo na sua pasta tem só a frente. Você volta ao scanner antes de enviar.",
       "escolhas": [
         {
           "textoAlternativa": "Ler o edital e organizar documentos e prazos.",
-          "cenaDestinoId": 10005,
+          "cenaDestinoId": 2,
           "flagsConcedidas": [
             "hab_olho_edital"
           ],
@@ -111,11 +113,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você risca os documentos já digitalizados e circula o prazo de envio. O verso que faltava entra na pasta antes do upload."
         },
         {
           "textoAlternativa": "Comparar as exigências com o grupo e tirar dúvidas.",
-          "cenaDestinoId": 10006,
+          "cenaDestinoId": 2,
           "flagsConcedidas": [
             "pediu_ajuda_grupo"
           ],
@@ -142,11 +145,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "No grupo, alguém nota que a categoria de inscrição muda a lista de comprovantes. Você confere a sua em vez de copiar a pasta de outra pessoa."
         },
         {
           "textoAlternativa": "Enviar os documentos exigidos e aceitar que não vai revisar tudo uma quarta vez.",
-          "cenaDestinoId": 10007,
+          "cenaDestinoId": 2,
           "flagsConcedidas": [
             "aceitou_caos"
           ],
@@ -175,7 +179,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": "O recibo de envio chega. Você salva o protocolo e fecha a aba antes de conferir o mesmo anexo pela quinta vez; agora é esperar a análise."
         }
       ]
     },
@@ -188,7 +193,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Me apresentar à Malu e conferir com ela o caminho até o Módulo 1.",
-          "cenaDestinoId": 10008,
+          "cenaDestinoId": 3,
           "flagsConcedidas": [
             "conheceu_malu"
           ],
@@ -219,11 +224,12 @@
           },
           "atributosAlterados": {
             "vidaSocial": 2
-          }
+          },
+          "textoConsequencia": "Malu amplia o mapa para que ambos possam ver. A porta indicada segue trancada; vocês anotam a rota pelo corredor principal."
         },
         {
           "textoAlternativa": "Rir da história e conversar enquanto a fila anda.",
-          "cenaDestinoId": 10009,
+          "cenaDestinoId": 3,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -250,11 +256,12 @@
           "impactoRelacionamento": {
             "MALU": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Malu ri da farmácia e mostra a foto da placa que o aplicativo ignorou. A conversa acompanha a fila mais rápido que o relógio."
         },
         {
           "textoAlternativa": "Priorizar o cartão do RU; talvez dê tempo de voltar à fila.",
-          "cenaDestinoId": 10010,
+          "cenaDestinoId": 3,
           "flagsConcedidas": [
             "item_cartao_ru"
           ],
@@ -281,11 +288,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você resolve o cartão. Quando volta, a fila mudou de lugar; Malu acena do corredor e aponta a saída para o módulo."
         },
         {
           "textoAlternativa": "Resolver o cartão agora; a refeição sem desconto pesa no orçamento.",
-          "cenaDestinoId": 10011,
+          "cenaDestinoId": 3,
           "flagsConcedidas": [
             "item_cartao_ru"
           ],
@@ -314,7 +322,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": -2
-          }
+          },
+          "textoConsequencia": "O desconto aparece no cadastro depois de duas tentativas. O almoço de hoje fica no orçamento, mesmo que a fila tenha crescido."
         }
       ]
     },
@@ -354,7 +363,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Dar um salgado pro Caramelo. Ele parece menos assustador.",
@@ -387,7 +397,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Passar reto. Você não precisa de veterano desanimando.",
@@ -420,7 +431,8 @@
           "impactoRelacionamento": {
             "VETERANO": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ir direto e pedir orientação sobre as salas e os laboratórios.",
@@ -453,7 +465,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Observar de longe. Você precisa medir o terreno.",
@@ -484,7 +497,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -526,7 +540,8 @@
           "impactoRelacionamento": {
             "VETERANO": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Só quero o diploma e um emprego remoto.",
@@ -559,7 +574,8 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Desviar da pergunta e perguntar há quanto tempo Caio estuda ali.",
@@ -592,7 +608,8 @@
           "impactoRelacionamento": {
             "VETERANO": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pedir a pasta de projetos e deixar a pergunta para depois.",
@@ -626,7 +643,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -664,7 +682,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -704,7 +723,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -717,7 +737,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Dizer que entendo.",
-          "cenaDestinoId": 10012,
+          "cenaDestinoId": 5,
           "flagsConcedidas": [
             "mentoria_caio"
           ],
@@ -746,11 +766,12 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Caio aceita sua compreensão sem pedir uma explicação parecida em troca. Endireita o copo amassado e indica a sala da oficina."
         },
         {
           "textoAlternativa": "Perguntar se ele quer companhia para estudar.",
-          "cenaDestinoId": 10013,
+          "cenaDestinoId": 5,
           "flagsConcedidas": [
             "mentoria_caio"
           ],
@@ -779,7 +800,8 @@
           "impactoRelacionamento": {
             "VETERANO": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Caio abre a agenda: uma hora de estudo na quinta, sem promessa de resolver o semestre. Você salva o horário antes de entrar na oficina."
         }
       ]
     },
@@ -792,7 +814,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Separar LED, resistor e diodo; conferir polaridade e identificação antes de montar.",
-          "cenaDestinoId": 10014,
+          "cenaDestinoId": 16,
           "flagsConcedidas": [
             "cap1_identificou_componentes"
           ],
@@ -821,11 +843,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você separa as peças e anota a polaridade no roteiro. Dandara compara a marca no LED com seu desenho; a fonte continua desligada."
         },
         {
           "textoAlternativa": "Ler o datasheet e cruzar os valores com o esquema do roteiro.",
-          "cenaDestinoId": 10015,
+          "cenaDestinoId": 16,
           "flagsConcedidas": [
             "cap1_interpretou_esquema",
             "hab_foco_total"
@@ -855,11 +878,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "O datasheet dá uma corrente máxima diferente da que alguém escreveu no quadro. Você assinala a divergência para perguntar a Meira."
         },
         {
           "textoAlternativa": "Ajudar Dandara a conferir os componentes antes de ligar a fonte.",
-          "cenaDestinoId": 10016,
+          "cenaDestinoId": 16,
           "flagsConcedidas": [
             "cap1_identificou_componentes"
           ],
@@ -888,11 +912,12 @@
           "impactoRelacionamento": {
             "DANDARA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Dandara segura o resistor enquanto você lê o código de cores. Ela corrige um número do seu rascunho; você confere uma marca no LED dela."
         },
         {
           "textoAlternativa": "Esperar que outra pessoa resolva e acompanhar pelo celular.",
-          "cenaDestinoId": 10017,
+          "cenaDestinoId": 16,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -917,11 +942,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Outra bancada começa a montagem. Você acompanha pelo celular e perde a primeira medida, mas ouve a pergunta de Meira: qual era o valor esperado?"
         },
         {
           "textoAlternativa": "Copiar a montagem de outra bancada sem investigar os valores.",
-          "cenaDestinoId": 10018,
+          "cenaDestinoId": 16,
           "flagsConcedidas": [
             "item_esquema_copiado"
           ],
@@ -950,11 +976,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": "A montagem copiada parece igual à figura. Quando Dandara pede o valor do resistor, você não sabe dizer de onde ele veio."
         },
         {
           "textoAlternativa": "Registrar cada etapa para conseguir localizar possíveis erros.",
-          "cenaDestinoId": 10019,
+          "cenaDestinoId": 16,
           "flagsConcedidas": [],
           "flagRequerida": "perfil_perfeccionista",
           "scoreMinimo": 0,
@@ -981,11 +1008,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Seu registro já tem duas linhas: valor esperado e valor medido. Ainda não há resultado; há um lugar preciso para procurar se algo falhar."
         },
         {
           "textoAlternativa": "Ler o datasheet em diagonal e arriscar uma hipótese para a falha.",
-          "cenaDestinoId": 10020,
+          "cenaDestinoId": 16,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1010,7 +1038,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A leitura rápida sugere polaridade invertida. Você diz 'acho', e Meira pede a medida que distinguiria essa hipótese de um resistor errado."
         }
       ]
     },
@@ -1023,7 +1052,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assumir a coordenação e distribuir as tarefas.",
-          "cenaDestinoId": 10021,
+          "cenaDestinoId": 6,
           "flagsConcedidas": [
             "ja_foi_coordenador"
           ],
@@ -1050,11 +1079,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você divide o quadro em hipótese, medida e responsável. Alan finalmente consegue mostrar sua leitura; falta decidir quem consolida as notas."
         },
         {
           "textoAlternativa": "Anotar as observações enquanto outra pessoa organiza o grupo.",
-          "cenaDestinoId": 10022,
+          "cenaDestinoId": 6,
           "flagsConcedidas": [
             "led_anotou_observacoes"
           ],
@@ -1081,11 +1111,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você registra a objeção de Alan com um ponto de interrogação em vez de transformá-la em resposta. O grupo terá de voltar à bancada."
         },
         {
           "textoAlternativa": "Ajudar com as ideias, sem assumir a liderança.",
-          "cenaDestinoId": 10023,
+          "cenaDestinoId": 6,
           "flagsConcedidas": [
             "led_contribuiu_ideias"
           ],
@@ -1112,11 +1143,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você propõe um teste curto sem tomar a caneta de ninguém. Alan acrescenta o valor esperado ao lado da sua ideia."
         },
         {
           "textoAlternativa": "Esperar que alguém tome a iniciativa.",
-          "cenaDestinoId": 10024,
+          "cenaDestinoId": 6,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1141,7 +1173,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A discussão se resolve sem você por alguns minutos. Quando o tutor pergunta o que foi medido, ninguém acha a anotação."
         }
       ]
     },
@@ -1154,7 +1187,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assumir a coordenação e organizar a ordem das tarefas.",
-          "cenaDestinoId": 10025,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_coordenador"
           ],
@@ -1183,11 +1216,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você distribui tarefas com horários de revisão. Alan aceita desenhar o fluxo; duas pessoas ainda editam versões diferentes do documento."
         },
         {
           "textoAlternativa": "Ficar no quadro e registrar ideias, fatos e questões.",
-          "cenaDestinoId": 10026,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_quadro"
           ],
@@ -1214,11 +1248,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "No quadro, sua lista separa regra, tela e dúvida. A equipe vota antes de apagar uma seta de Alan, mas ninguém juntou os arquivos ainda."
         },
         {
           "textoAlternativa": "Assumir a mesa e estruturar o documento compartilhado.",
-          "cenaDestinoId": 10027,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_mesa"
           ],
@@ -1245,11 +1280,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você cria o documento compartilhado e nomeia as seções. A sexta opinião chega como comentário na margem, depois do prazo combinado."
         },
         {
           "textoAlternativa": "Contribuir com a modelagem sem ocupar uma função central.",
-          "cenaDestinoId": 10028,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_contribuiu"
           ],
@@ -1278,11 +1314,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você testa com Alan um caminho do menu que volta ao início. O grupo ganha um exemplo; a coordenação ainda está aberta."
         },
         {
           "textoAlternativa": "Ceder a coordenação a Alan e ajudar a sustentar a discussão.",
-          "cenaDestinoId": 10029,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_cedeu_vez"
           ],
@@ -1311,11 +1348,12 @@
           "impactoRelacionamento": {
             "ALAN": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Alan assume a fala. Você impede que interrompam a explicação na primeira seta e registra a pergunta que ficou sem resposta."
         },
         {
           "textoAlternativa": "Não participar da discussão e esperar o prazo terminar.",
-          "cenaDestinoId": 10030,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_passivo"
           ],
@@ -1344,11 +1382,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": "A reunião termina sem sua contribuição. No grupo, chegam três versões do arquivo e a pergunta: quem vai reuni-las?"
         },
         {
           "textoAlternativa": "Definir critérios de navegação e combinar com a equipe quem vai tentar quebrar o menu.",
-          "cenaDestinoId": 10302,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "cap1_pbl_planejou_testes"
           ],
@@ -1377,11 +1416,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você propõe três situações para verificar: entrar no menu, voltar sem perder o estado e escolher uma opção inválida. {{NOME_OUTRO_PROTAGONISTA}} monta uma versão pequena enquanto Alan desenha as transições.\n\nNo teste, a opção \"voltar\" retorna à tela errada. O grupo não ganha a solução pronta; ganha um defeito reproduzível e uma divisão clara: alguém corrige, outra pessoa testa de novo. Você percebe que uma lista de critérios não substitui o teste real."
         },
         {
           "textoAlternativa": "Prototipar um caminho do menu e pedir uma revisão antes de apresentá-lo ao tutor.",
-          "cenaDestinoId": 10303,
+          "cenaDestinoId": 7,
           "flagsConcedidas": [
             "cap1_pbl_prototipo_revisado"
           ],
@@ -1410,7 +1450,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você monta uma versão curta do menu antes de terminarem o documento. {{NOME_OUTRO_PROTAGONISTA}} pede para testar uma opção que você tinha considerado óbvia. A aplicação volta para a tela errada.\n\nSua primeira vontade é consertar sem mostrar. Em vez disso, você registra a sequência de cliques e convida Alan a explicar onde o fluxo se perdeu. O protótipo não está pronto para entrega, mas agora a equipe tem um erro reproduzível. A velocidade serviu para descobrir o problema, não para escondê-lo."
         }
       ]
     },
@@ -1448,7 +1489,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pegar o ônibus e descansar. Amanhã também existe.",
@@ -1479,7 +1521,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "energia": 20
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Passar no Módulo 8 e conhecer gente fora da sala.",
@@ -1508,7 +1551,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Voltar à oficina mesmo sem energia. O circuito continua te incomodando.",
@@ -1539,7 +1583,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1581,7 +1626,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Desligar a fonte, guardar a dúvida e pegar o ônibus.",
@@ -1612,7 +1658,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "energia": 20
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1655,7 +1702,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1695,7 +1743,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1708,7 +1757,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Puxar conversa e conhecer melhor o pessoal.",
-          "cenaDestinoId": 10031,
+          "cenaDestinoId": 15,
           "flagsConcedidas": [
             "cap1_conversou_modulo8"
           ],
@@ -1738,11 +1787,12 @@
           "atributosAlterados": {
             "energia": 10,
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Você pergunta pelo jogo de dominó e descobre que a mesa também troca listas de exercícios. Zé já está contando outra história."
         },
         {
           "textoAlternativa": "Só ouvir por enquanto. Você não precisa render socialmente.",
-          "cenaDestinoId": 10032,
+          "cenaDestinoId": 15,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1770,11 +1820,12 @@
           "atributosAlterados": {
             "energia": 15,
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Você escuta até aprender dois nomes. Ninguém cobra que conte uma história engraçada para ganhar lugar à mesa."
         },
         {
           "textoAlternativa": "Responder à pessoa da oficina que chamou você para a mesa.",
-          "cenaDestinoId": 10033,
+          "cenaDestinoId": 15,
           "flagsConcedidas": [
             "cap1_reconhecido_modulo8"
           ],
@@ -1803,11 +1854,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "A pessoa da oficina reconhece sua bancada e pergunta se o LED acendeu. Você conta o que sabe sem inventar um final para o teste."
         },
         {
           "textoAlternativa": "Aceitar o espetinho que Zé oferece.",
-          "cenaDestinoId": 10034,
+          "cenaDestinoId": 15,
           "flagsConcedidas": [
             "hab_estomago_ferro"
           ],
@@ -1836,7 +1888,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "energia": 10
-          }
+          },
+          "textoConsequencia": "Zé entrega o espetinho e cobra uma avaliação séria de algo que ainda está quente demais. A mesa discorda sobre a pimenta, não sobre sua presença."
         }
       ]
     },
@@ -1876,1299 +1929,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1003,
-      "id": 10003,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Sua mãe acorda procurando os óculos. Lê seu nome na tela, volta ao início da linha e só então abraça você. Às seis, ainda falta entender o edital.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir as etapas da matrícula.",
-          "cenaDestinoId": 1,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1004,
-      "id": 10004,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você deixa um bilhete ao lado da xícara: 'Entrou. 2024.2.' De manhã, sua mãe encontra o papel antes do café; vocês abrem o edital lado a lado.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir as etapas da matrícula.",
-          "cenaDestinoId": 1,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1005,
-      "id": 10005,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você risca os documentos já digitalizados e circula o prazo de envio. O verso que faltava entra na pasta antes do upload.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a homologação.",
-          "cenaDestinoId": 2,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1006,
-      "id": 10006,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "No grupo, alguém nota que a categoria de inscrição muda a lista de comprovantes. Você confere a sua em vez de copiar a pasta de outra pessoa.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a homologação.",
-          "cenaDestinoId": 2,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1007,
-      "id": 10007,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "O recibo de envio chega. Você salva o protocolo e fecha a aba antes de conferir o mesmo anexo pela quinta vez; agora é esperar a análise.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a homologação.",
-          "cenaDestinoId": 2,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1008,
-      "id": 10008,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Malu amplia o mapa para que ambos possam ver. A porta indicada segue trancada; vocês anotam a rota pelo corredor principal.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Entrar no campus.",
-          "cenaDestinoId": 3,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1009,
-      "id": 10009,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Malu ri da farmácia e mostra a foto da placa que o aplicativo ignorou. A conversa acompanha a fila mais rápido que o relógio.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Entrar no campus.",
-          "cenaDestinoId": 3,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1010,
-      "id": 10010,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você resolve o cartão. Quando volta, a fila mudou de lugar; Malu acena do corredor e aponta a saída para o módulo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Entrar no campus.",
-          "cenaDestinoId": 3,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1011,
-      "id": 10011,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "O desconto aparece no cadastro depois de duas tentativas. O almoço de hoje fica no orçamento, mesmo que a fila tenha crescido.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Entrar no campus.",
-          "cenaDestinoId": 3,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1012,
-      "id": 10012,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Caio aceita sua compreensão sem pedir uma explicação parecida em troca. Endireita o copo amassado e indica a sala da oficina.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à oficina.",
-          "cenaDestinoId": 5,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1013,
-      "id": 10013,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Caio abre a agenda: uma hora de estudo na quinta, sem promessa de resolver o semestre. Você salva o horário antes de entrar na oficina.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à oficina.",
-          "cenaDestinoId": 5,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1014,
-      "id": 10014,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você separa as peças e anota a polaridade no roteiro. Dandara compara a marca no LED com seu desenho; a fonte continua desligada.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar a dúvida ao grupo.",
-          "cenaDestinoId": 16,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1015,
-      "id": 10015,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "O datasheet dá uma corrente máxima diferente da que alguém escreveu no quadro. Você assinala a divergência para perguntar a Meira.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar a dúvida ao grupo.",
-          "cenaDestinoId": 16,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1016,
-      "id": 10016,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Dandara segura o resistor enquanto você lê o código de cores. Ela corrige um número do seu rascunho; você confere uma marca no LED dela.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar a dúvida ao grupo.",
-          "cenaDestinoId": 16,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1017,
-      "id": 10017,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Outra bancada começa a montagem. Você acompanha pelo celular e perde a primeira medida, mas ouve a pergunta de Meira: qual era o valor esperado?",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar a dúvida ao grupo.",
-          "cenaDestinoId": 16,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1018,
-      "id": 10018,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A montagem copiada parece igual à figura. Quando Dandara pede o valor do resistor, você não sabe dizer de onde ele veio.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar a dúvida ao grupo.",
-          "cenaDestinoId": 16,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1019,
-      "id": 10019,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Seu registro já tem duas linhas: valor esperado e valor medido. Ainda não há resultado; há um lugar preciso para procurar se algo falhar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar a dúvida ao grupo.",
-          "cenaDestinoId": 16,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1020,
-      "id": 10020,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A leitura rápida sugere polaridade invertida. Você diz 'acho', e Meira pede a medida que distinguiria essa hipótese de um resistor errado.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar a dúvida ao grupo.",
-          "cenaDestinoId": 16,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1021,
-      "id": 10021,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você divide o quadro em hipótese, medida e responsável. Alan finalmente consegue mostrar sua leitura; falta decidir quem consolida as notas.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Começar o PBL.",
-          "cenaDestinoId": 6,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1022,
-      "id": 10022,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você registra a objeção de Alan com um ponto de interrogação em vez de transformá-la em resposta. O grupo terá de voltar à bancada.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Começar o PBL.",
-          "cenaDestinoId": 6,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1023,
-      "id": 10023,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você propõe um teste curto sem tomar a caneta de ninguém. Alan acrescenta o valor esperado ao lado da sua ideia.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Começar o PBL.",
-          "cenaDestinoId": 6,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1024,
-      "id": 10024,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A discussão se resolve sem você por alguns minutos. Quando o tutor pergunta o que foi medido, ninguém acha a anotação.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Começar o PBL.",
-          "cenaDestinoId": 6,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1025,
-      "id": 10025,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você distribui tarefas com horários de revisão. Alan aceita desenhar o fluxo; duas pessoas ainda editam versões diferentes do documento.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1026,
-      "id": 10026,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "No quadro, sua lista separa regra, tela e dúvida. A equipe vota antes de apagar uma seta de Alan, mas ninguém juntou os arquivos ainda.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1027,
-      "id": 10027,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você cria o documento compartilhado e nomeia as seções. A sexta opinião chega como comentário na margem, depois do prazo combinado.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1028,
-      "id": 10028,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você testa com Alan um caminho do menu que volta ao início. O grupo ganha um exemplo; a coordenação ainda está aberta.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1029,
-      "id": 10029,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Alan assume a fala. Você impede que interrompam a explicação na primeira seta e registra a pergunta que ficou sem resposta.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1030,
-      "id": 10030,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A reunião termina sem sua contribuição. No grupo, chegam três versões do arquivo e a pergunta: quem vai reuni-las?",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1031,
-      "id": 10031,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pergunta pelo jogo de dominó e descobre que a mesa também troca listas de exercícios. Zé já está contando outra história.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ficar mais um pouco à mesa.",
-          "cenaDestinoId": 15,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1032,
-      "id": 10032,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você escuta até aprender dois nomes. Ninguém cobra que conte uma história engraçada para ganhar lugar à mesa.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ficar mais um pouco à mesa.",
-          "cenaDestinoId": 15,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1033,
-      "id": 10033,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A pessoa da oficina reconhece sua bancada e pergunta se o LED acendeu. Você conta o que sabe sem inventar um final para o teste.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ficar mais um pouco à mesa.",
-          "cenaDestinoId": 15,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1034,
-      "id": 10034,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Zé entrega o espetinho e cobra uma avaliação séria de algo que ainda está quente demais. A mesa discorda sobre a pimenta, não sobre sua presença.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ficar mais um pouco à mesa.",
-          "cenaDestinoId": 15,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1302,
-      "id": 10302,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você propõe três situações para verificar: entrar no menu, voltar sem perder o estado e escolher uma opção inválida. {{NOME_OUTRO_PROTAGONISTA}} monta uma versão pequena enquanto Alan desenha as transições.\n\nNo teste, a opção \"voltar\" retorna à tela errada. O grupo não ganha a solução pronta; ganha um defeito reproduzível e uma divisão clara: alguém corrige, outra pessoa testa de novo. Você percebe que uma lista de critérios não substitui o teste real.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira com a falha registrada.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1303,
-      "id": 10303,
-      "capitulo": "Capítulo 1 — Matrícula",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você monta uma versão curta do menu antes de terminarem o documento. {{NOME_OUTRO_PROTAGONISTA}} pede para testar uma opção que você tinha considerado óbvia. A aplicação volta para a tela errada.\n\nSua primeira vontade é consertar sem mostrar. Em vez disso, você registra a sequência de cliques e convida Alan a explicar onde o fluxo se perdeu. O protótipo não está pronto para entrega, mas agora a equipe tem um erro reproduzível. A velocidade serviu para descobrir o problema, não para escondê-lo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Chegar à sexta-feira com a falha registrada.",
-          "cenaDestinoId": 7,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

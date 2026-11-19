@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo2.json",
-  "totalCenasArquivo": 56,
+  "totalCenasArquivo": 22,
   "cenas": [
     {
       "ordemGlobal": 19,
@@ -13,7 +13,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Abrir os avisos e conferir os procedimentos do semestre.",
-          "cenaDestinoId": 10035,
+          "cenaDestinoId": 101,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -38,11 +38,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "O aviso atual tem outra data e um procedimento que a portaria antiga não mostrava. Você salva a página certa antes de descer do ônibus."
         },
         {
           "textoAlternativa": "Deixar os avisos sem ler por enquanto.",
-          "cenaDestinoId": 10036,
+          "cenaDestinoId": 101,
           "flagsConcedidas": [
             "ignorou_email"
           ],
@@ -69,7 +70,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você fecha a notificação para não perder o ponto. No mural, terá de descobrir quais avisos ainda valem."
         }
       ]
     },
@@ -107,7 +109,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Escutar a assembleia sobre o RU.",
@@ -136,7 +139,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Conhecer o grupo de software.",
@@ -165,7 +169,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Explorar a Feira de Graduação.",
@@ -194,7 +199,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Investigar os resumos vendidos no mural.",
@@ -223,7 +229,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Anotar as opções e não assumir nada hoje.",
@@ -254,7 +261,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -267,7 +275,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista.",
-          "cenaDestinoId": 10037,
+          "cenaDestinoId": 103,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -292,11 +300,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Seu nome entra na lista provisória. A coordenadora acrescenta: sem transporte confirmado, não há promessa de segunda visita."
         },
         {
           "textoAlternativa": "Perguntar quanto tempo por semana.",
-          "cenaDestinoId": 10038,
+          "cenaDestinoId": 103,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -321,11 +330,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A coordenadora abre a planilha e mostra quatro horas de preparação além da oficina. Você anota antes de decidir se continua."
         },
         {
           "textoAlternativa": "Só olhar. Ainda tô decidindo.",
-          "cenaDestinoId": 10039,
+          "cenaDestinoId": 103,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -350,7 +360,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você não assina. Malu diz que a primeira visita ainda pode ser observada; a continuidade será uma decisão depois da escola."
         }
       ]
     },
@@ -363,7 +374,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Ficar na equipe e cobrar um plano para a próxima visita.",
-          "cenaDestinoId": 10040,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -390,11 +401,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Você escreve à professora pedindo uma data que dependa da confirmação do ônibus. Ela responde com o horário em que pode receber a equipe; ainda falta o transporte."
         },
         {
           "textoAlternativa": "Sair da equipe; não consigo prometer a continuidade.",
-          "cenaDestinoId": 10041,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "ca_saiu"
           ],
@@ -421,7 +433,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você avisa à professora que não consegue assumir a próxima visita. Ela agradece a franqueza e pede que não anunciem data às crianças."
         }
       ]
     },
@@ -461,7 +474,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Assinar e ir.",
@@ -490,7 +504,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Não assinar.",
@@ -521,7 +536,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -534,7 +550,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Continuar indo.",
-          "cenaDestinoId": 10042,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -561,11 +577,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Dandara te envia a ata com três encaminhamentos e a data da próxima assembleia. Você separa um horário para acompanhar a resposta."
         },
         {
           "textoAlternativa": "Ir uma vez e nunca mais.",
-          "cenaDestinoId": 10043,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -590,7 +607,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você entrega a pergunta que anotou e diz que não consegue voltar à próxima reunião. Dandara a inclui na ata mesmo assim."
         }
       ]
     },
@@ -628,7 +646,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -668,7 +687,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar em voz alta se é remunerado.",
@@ -699,7 +719,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ir embora no meio.",
@@ -730,7 +751,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -739,11 +761,11 @@
       "id": 109,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O desafio de seleção tem uma entrada que você não previu. Seu código passa nos exemplos e falha no caso de borda.\n\nNa mesa ao lado, Alan identifica o próprio erro e corrige a lógica; quando pedem que explique, a voz falha. A avaliadora afasta o cronômetro.\n\n— Mostrem o raciocínio. O teste que falhou também conta.\n\nVocê tem uma hipótese sobre o seu caso de borda. Explicá-la diante da equipe pode revelar exatamente onde errou; assistir aos outros é mais confortável. A seleção continua, e ninguém prometeu que saber programar bastaria. A lembrança do primeiro PBL volta: naquela época, uma tela aparentemente simples também tinha um caminho quebrado.",
+      "textoNarrativo": "O desafio de seleção tem uma entrada que você não previu. Seu código passa nos exemplos e falha no caso de borda.\n\nNa mesa ao lado, Alan identifica o próprio erro e corrige a lógica; quando pedem que explique, a voz falha. A avaliadora afasta o cronômetro.\n\n— Mostrem o raciocínio. O teste que falhou também conta.\n\nVocê tem uma hipótese sobre o seu caso de borda. Explicá-la diante da equipe pode revelar exatamente onde errou; assistir aos outros é mais confortável. A seleção continua, e ninguém prometeu que saber programar bastaria.",
       "escolhas": [
         {
           "textoAlternativa": "Explicar a hipótese e testar mais um caso de borda.",
-          "cenaDestinoId": 10044,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -768,11 +790,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra o caso de borda que falhou e o teste seguinte. A avaliadora anota a hipótese; ainda não diz quem passou na seleção."
         },
         {
           "textoAlternativa": "Assistir à apresentação dos outros sem defender o próprio código.",
-          "cenaDestinoId": 10045,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "cap2_so_assistiu"
           ],
@@ -799,11 +822,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Alan apresenta o raciocínio dele. Você observa o seu teste falho sem explicá-lo, e a lista de classificados ficará para outro dia."
         },
         {
           "textoAlternativa": "Usar os critérios de teste do PBL para explicar o caso de borda e propor uma verificação.",
-          "cenaDestinoId": 10304,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "cap2_defendeu_evidencias"
           ],
@@ -830,11 +854,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você não afirma que encontrou a resposta do desafio. Mostra o caso de borda, diz qual entrada foi testada e descreve outro teste que distinguiria duas hipóteses.\n\nA avaliadora pergunta se a primeira versão do PBL já funcionava. Você responde que não: foi o teste que expôs o caminho errado. Ela faz uma anotação. A seleção continua sem anunciar aprovados, mas sua explicação produziu evidência em vez de uma promessa."
         },
         {
           "textoAlternativa": "Mostrar como a revisão de um protótipo revelou um erro que você não tinha previsto.",
-          "cenaDestinoId": 10305,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "cap2_assumiu_erro_revisao"
           ],
@@ -861,7 +886,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra a primeira versão do menu do PBL, inclusive o caminho que falhava. A avaliadora pergunta por que incluiu um protótipo incompleto no portfólio.\n\n— Porque outra pessoa encontrou um erro que eu não tinha visto. Depois disso, comecei a registrar as tentativas.\n\nEla pede que você aplique essa ideia à entrada problemática da seleção. Você propõe um teste novo. Ainda não sabe se passou, mas não precisou fingir que a demo tinha sido perfeita."
         }
       ]
     },
@@ -901,7 +927,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -914,7 +941,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Comprar o resumo. Quinze reais, pix.",
-          "cenaDestinoId": 10046,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "bia_resumos"
           ],
@@ -943,11 +970,12 @@
           "impactoRelacionamento": {
             "BIA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "O Pix sai da conta. Bia envia um resumo com erros marcados; você encontra uma questão que ainda precisa resolver sem olhar a resposta."
         },
         {
           "textoAlternativa": "Perguntar de onde saem os resumos.",
-          "cenaDestinoId": 10047,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -976,11 +1004,12 @@
           },
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Bia admite que juntou exercícios próprios e questões antigas da disciplina. Você pede a fonte de uma fórmula antes de fotografar a página."
         },
         {
           "textoAlternativa": "Agradecer e ficar com a foto do material.",
-          "cenaDestinoId": 10048,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1005,7 +1034,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você agradece e guarda a foto do índice. Na prova, terá só o que conseguir estudar por conta própria."
         }
       ]
     },
@@ -1045,7 +1075,8 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Dizer que não vai ser assim. Você dá conta.",
@@ -1078,7 +1109,8 @@
           },
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ouvir até conseguir responder, sem forçar uma certeza.",
@@ -1107,7 +1139,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1120,7 +1153,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Perguntar o que ele cortou primeiro.",
-          "cenaDestinoId": 10049,
+          "cenaDestinoId": 117,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1149,11 +1182,12 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Caio aponta uma tarefa que só fazia para ser visto e a risca da lista. Você pergunta quem ficou responsável; ele mostra a mensagem de passagem."
         },
         {
           "textoAlternativa": "Agradecer.",
-          "cenaDestinoId": 10050,
+          "cenaDestinoId": 117,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1180,7 +1214,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você agradece sem abrir a própria agenda na frente dele. No ônibus, a lista ainda estará esperando sua decisão."
         }
       ]
     },
@@ -1218,7 +1253,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1231,7 +1267,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Se você ainda tá aqui, alguma coisa valia.",
-          "cenaDestinoId": 10051,
+          "cenaDestinoId": 118,
           "flagsConcedidas": [
             "caio_frase",
             "mentoria_caio"
@@ -1261,11 +1297,12 @@
           "impactoRelacionamento": {
             "VETERANO": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Valia, sim — Caio responde, surpreso por ouvir a frase de volta. Ele guarda o copo antes de o funcionário apagar a última luz."
         },
         {
           "textoAlternativa": "Teimosia. Foi você mesmo que disse.",
-          "cenaDestinoId": 10052,
+          "cenaDestinoId": 118,
           "flagsConcedidas": [
             "caio_sem_frase"
           ],
@@ -1294,11 +1331,12 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Teimosia com plano é outra coisa — Caio rebate. Vocês chegam ao ponto discutindo se ele já fez um plano que cumpriu."
         },
         {
           "textoAlternativa": "Ficar do lado dele, sem dizer nada.",
-          "cenaDestinoId": 10053,
+          "cenaDestinoId": 118,
           "flagsConcedidas": [
             "caio_sem_frase"
           ],
@@ -1327,7 +1365,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você o acompanha até a porta. Caio não preenche o silêncio; aponta o ônibus que acabou de parar do outro lado."
         }
       ]
     },
@@ -1340,7 +1379,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Propor estudar em dupla.",
-          "cenaDestinoId": 10054,
+          "cenaDestinoId": 115,
           "flagsConcedidas": [
             "estuda_com_dandara"
           ],
@@ -1369,11 +1408,12 @@
           "impactoRelacionamento": {
             "DANDARA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Dandara marca uma hora antes da próxima lista. Vocês dividem as questões difíceis, sem prometer ensinar o que ainda não sabem."
         },
         {
           "textoAlternativa": "Desejar boa sorte.",
-          "cenaDestinoId": 10055,
+          "cenaDestinoId": 115,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1400,11 +1440,12 @@
           "impactoRelacionamento": {
             "DANDARA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você deseja boa sorte. Ela agradece, mas guarda o edital virado para baixo enquanto termina o almoço."
         },
         {
           "textoAlternativa": "Só comer. Você também está contando.",
-          "cenaDestinoId": 10056,
+          "cenaDestinoId": 115,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1429,7 +1470,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A fila anda e vocês comem sem falar de seleção. A conta de Dandara continua na mesa, sob o copo."
         }
       ]
     },
@@ -1469,7 +1511,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1507,7 +1550,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Visitar o WIE e conversar com as veteranas.",
@@ -1536,7 +1580,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar sobre redes e segurança.",
@@ -1565,7 +1610,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Conhecer a Liga de Jogos.",
@@ -1594,7 +1640,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Observar os estandes sem compromisso.",
@@ -1623,7 +1670,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Voltar para casa. Hoje já foi suficiente.",
@@ -1652,7 +1700,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1665,7 +1714,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Ficar para medir de novo e voltar para aprender solda.",
-          "cenaDestinoId": 10057,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "ras_curiosa"
           ],
@@ -1694,11 +1743,12 @@
           "impactoRelacionamento": {
             "MALU": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Noa anota a leitura e combina um teste para a semana seguinte. Malu manda uma foto da etiqueta 'desconfiado' no robô."
         },
         {
           "textoAlternativa": "Registrar a leitura e pegar o ônibus; não posso assumir a equipe agora.",
-          "cenaDestinoId": 10058,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1723,7 +1773,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você entrega o multímetro e corre para o ponto. Noa agradece pela leitura; não confunde isso com uma inscrição na equipe."
         }
       ]
     },
@@ -1736,7 +1787,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista de interesse.",
-          "cenaDestinoId": 10059,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "wie_interesse"
           ],
@@ -1763,11 +1814,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Seu contato entra na lista. Uma veterana manda o horário da reunião e avisa que participar não exige saber tudo antes de chegar."
         },
         {
           "textoAlternativa": "Perguntar como é a rotina do grupo.",
-          "cenaDestinoId": 10060,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1794,11 +1846,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "As veteranas descrevem uma semana comum, inclusive o trabalho que não aparece nas fotos. Você confere se cabe na sua grade."
         },
         {
           "textoAlternativa": "Agradecer e seguir. Hoje você não assume mais nada.",
-          "cenaDestinoId": 10061,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1823,7 +1876,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você segue para o próximo estande sem preencher formulário. A conversa ainda te dá uma pergunta para fazer em outro laboratório."
         }
       ]
     },
@@ -1836,7 +1890,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista.",
-          "cenaDestinoId": 10062,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "tisp_interesse"
           ],
@@ -1863,11 +1917,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escreve seu contato ao lado de 'logs'. O grupo te envia o conjunto de dados de demonstração, sem acesso ao servidor real."
         },
         {
           "textoAlternativa": "Só olhar e ir embora.",
-          "cenaDestinoId": 10063,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -1892,7 +1947,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você agradece e vai embora com a anotação sobre a configuração exposta. Não precisa entrar na equipe para usar a pergunta no estudo."
         }
       ]
     },
@@ -1905,7 +1961,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Anotar o contato da Liga para testar outra versão.",
-          "cenaDestinoId": 10064,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "liga_jogos_contato"
           ],
@@ -1932,11 +1988,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A integrante anota seu contato na lista de testadores. O bug continua, mas agora tem passos para ser reproduzido."
         },
         {
           "textoAlternativa": "Testar uma partida em dupla e anotar os problemas.",
-          "cenaDestinoId": 10065,
+          "cenaDestinoId": 112,
           "flagsConcedidas": [
             "cap2_trabalhou_em_equipe"
           ],
@@ -1966,238 +2023,11 @@
           "atributosAlterados": {
             "energia": 10,
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": "Na segunda partida, a parede falha no mesmo ponto. Você registra o botão pressionado; a dupla acrescenta a condição que faltava."
         },
         {
           "textoAlternativa": "Agradecer e sair do estande.",
-          "cenaDestinoId": 10066,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1035,
-      "id": 10035,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "O aviso atual tem outra data e um procedimento que a portaria antiga não mostrava. Você salva a página certa antes de descer do ônibus.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Explorar o mural.",
-          "cenaDestinoId": 101,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1036,
-      "id": 10036,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fecha a notificação para não perder o ponto. No mural, terá de descobrir quais avisos ainda valem.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Explorar o mural.",
-          "cenaDestinoId": 101,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1037,
-      "id": 10037,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Seu nome entra na lista provisória. A coordenadora acrescenta: sem transporte confirmado, não há promessa de segunda visita.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a primeira oficina.",
-          "cenaDestinoId": 103,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1038,
-      "id": 10038,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A coordenadora abre a planilha e mostra quatro horas de preparação além da oficina. Você anota antes de decidir se continua.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a primeira oficina.",
-          "cenaDestinoId": 103,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1039,
-      "id": 10039,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você não assina. Malu diz que a primeira visita ainda pode ser observada; a continuidade será uma decisão depois da escola.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Acompanhar a primeira oficina.",
-          "cenaDestinoId": 103,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1040,
-      "id": 10040,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você escreve à professora pedindo uma data que dependa da confirmação do ônibus. Ela responde com o horário em que pode receber a equipe; ainda falta o transporte.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -2223,1071 +2053,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1041,
-      "id": 10041,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você avisa à professora que não consegue assumir a próxima visita. Ela agradece a franqueza e pede que não anunciem data às crianças.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1042,
-      "id": 10042,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Dandara te envia a ata com três encaminhamentos e a data da próxima assembleia. Você separa um horário para acompanhar a resposta.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1043,
-      "id": 10043,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você entrega a pergunta que anotou e diz que não consegue voltar à próxima reunião. Dandara a inclui na ata mesmo assim.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1044,
-      "id": 10044,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra o caso de borda que falhou e o teste seguinte. A avaliadora anota a hipótese; ainda não diz quem passou na seleção.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1045,
-      "id": 10045,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Alan apresenta o raciocínio dele. Você observa o seu teste falho sem explicá-lo, e a lista de classificados ficará para outro dia.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1046,
-      "id": 10046,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "O Pix sai da conta. Bia envia um resumo com erros marcados; você encontra uma questão que ainda precisa resolver sem olhar a resposta.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1047,
-      "id": 10047,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia admite que juntou exercícios próprios e questões antigas da disciplina. Você pede a fonte de uma fórmula antes de fotografar a página.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1048,
-      "id": 10048,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você agradece e guarda a foto do índice. Na prova, terá só o que conseguir estudar por conta própria.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1049,
-      "id": 10049,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Caio aponta uma tarefa que só fazia para ser visto e a risca da lista. Você pergunta quem ficou responsável; ele mostra a mensagem de passagem.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encontrar Caio no RU.",
-          "cenaDestinoId": 117,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1050,
-      "id": 10050,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você agradece sem abrir a própria agenda na frente dele. No ônibus, a lista ainda estará esperando sua decisão.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encontrar Caio no RU.",
-          "cenaDestinoId": 117,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1051,
-      "id": 10051,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Valia, sim — Caio responde, surpreso por ouvir a frase de volta. Ele guarda o copo antes de o funcionário apagar a última luz.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Dandara.",
-          "cenaDestinoId": 118,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1052,
-      "id": 10052,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Teimosia com plano é outra coisa — Caio rebate. Vocês chegam ao ponto discutindo se ele já fez um plano que cumpriu.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Dandara.",
-          "cenaDestinoId": 118,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1053,
-      "id": 10053,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você o acompanha até a porta. Caio não preenche o silêncio; aponta o ônibus que acabou de parar do outro lado.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Dandara.",
-          "cenaDestinoId": 118,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1054,
-      "id": 10054,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Dandara marca uma hora antes da próxima lista. Vocês dividem as questões difíceis, sem prometer ensinar o que ainda não sabem.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Rever a agenda da semana.",
-          "cenaDestinoId": 115,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1055,
-      "id": 10055,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você deseja boa sorte. Ela agradece, mas guarda o edital virado para baixo enquanto termina o almoço.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Rever a agenda da semana.",
-          "cenaDestinoId": 115,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1056,
-      "id": 10056,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A fila anda e vocês comem sem falar de seleção. A conta de Dandara continua na mesa, sob o copo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Rever a agenda da semana.",
-          "cenaDestinoId": 115,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1057,
-      "id": 10057,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Noa anota a leitura e combina um teste para a semana seguinte. Malu manda uma foto da etiqueta 'desconfiado' no robô.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1058,
-      "id": 10058,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você entrega o multímetro e corre para o ponto. Noa agradece pela leitura; não confunde isso com uma inscrição na equipe.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1059,
-      "id": 10059,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Seu contato entra na lista. Uma veterana manda o horário da reunião e avisa que participar não exige saber tudo antes de chegar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1060,
-      "id": 10060,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "As veteranas descrevem uma semana comum, inclusive o trabalho que não aparece nas fotos. Você confere se cabe na sua grade.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1061,
-      "id": 10061,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você segue para o próximo estande sem preencher formulário. A conversa ainda te dá uma pergunta para fazer em outro laboratório.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1062,
-      "id": 10062,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você escreve seu contato ao lado de 'logs'. O grupo te envia o conjunto de dados de demonstração, sem acesso ao servidor real.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1063,
-      "id": 10063,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você agradece e vai embora com a anotação sobre a configuração exposta. Não precisa entrar na equipe para usar a pergunta no estudo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1064,
-      "id": 10064,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A integrante anota seu contato na lista de testadores. O bug continua, mas agora tem passos para ser reproduzido.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1065,
-      "id": 10065,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Na segunda partida, a parede falha no mesmo ponto. Você registra o botão pressionado; a dupla acrescenta a condição que faltava.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1066,
-      "id": 10066,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você devolve o controle. A integrante risca uma função extra do quadro e volta a trabalhar no bug que já viu.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conversar com Caio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1304,
-      "id": 10304,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você não afirma que encontrou a resposta do desafio. Mostra o caso de borda, diz qual entrada foi testada e descreve outro teste que distinguiria duas hipóteses.\n\nA avaliadora pergunta se a primeira versão do PBL já funcionava. Você responde que não: foi o teste que expôs o caminho errado. Ela faz uma anotação. A seleção continua sem anunciar aprovados, mas sua explicação produziu evidência em vez de uma promessa.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Seguir para a conversa no pátio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1305,
-      "id": 10305,
-      "capitulo": "Capítulo 2 — As Primeiras Sereias",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra a primeira versão do menu do PBL, inclusive o caminho que falhava. A avaliadora pergunta por que incluiu um protótipo incompleto no portfólio.\n\n— Porque outra pessoa encontrou um erro que eu não tinha visto. Depois disso, comecei a registrar as tentativas.\n\nEla pede que você aplique essa ideia à entrada problemática da seleção. Você propõe um teste novo. Ainda não sabe se passou, mas não precisou fingir que a demo tinha sido perfeita.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Seguir para a conversa no pátio.",
-          "cenaDestinoId": 112,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você devolve o controle. A integrante risca uma função extra do quadro e volta a trabalhar no bug que já viu."
         }
       ]
     }

@@ -23,7 +23,7 @@ import java.util.Map;
 import java.util.Set;
 
 final class CarregadorRoteiroJson {
-    private static final int VERSAO_SCHEMA = 2;
+    private static final int VERSAO_SCHEMA = 3;
     private static final Gson GSON = new Gson();
 
     private static final List<String> ARQUIVOS_CAPITULOS = List.of(
@@ -101,9 +101,12 @@ final class CarregadorRoteiroJson {
     private static void validarEstruturaMinima(JsonObject documento, String nomeArquivo) throws IOException {
         exigirCampos(documento, Set.of("schemaVersion", "totalCenasArquivo", "cenas"),
                 "documento " + nomeArquivo);
-        if (!documento.has("schemaVersion")
-                || documento.get("schemaVersion").getAsInt() != VERSAO_SCHEMA) {
-            throw new IOException("Versão de esquema JSON incompatível em " + nomeArquivo + ".");
+        int versao = documento.get("schemaVersion").getAsInt();
+
+        if (versao != 2 && versao != 3) {
+            throw new IOException(
+                    "Versão de esquema JSON incompatível."
+            );
         }
         if (documento.get("totalCenasArquivo").getAsInt() < 1) {
             throw new IOException("O total de cenas declarado é inválido em " + nomeArquivo + ".");
@@ -132,6 +135,11 @@ final class CarregadorRoteiroJson {
                 }
                 exigirCampos(elementoEscolha.getAsJsonObject(), camposDaEscolha(),
                         "escolha " + j + " da cena " + cena.get("id"));
+                if (documento.get("schemaVersion").getAsInt() >= 3
+                        && !elementoEscolha.getAsJsonObject().has("textoConsequencia")) {
+                    throw new IOException("Campo textoConsequencia ausente na escolha " + j
+                            + " da cena " + cena.get("id") + " em " + nomeArquivo + ".");
+                }
             }
         }
     }
@@ -191,7 +199,8 @@ final class CarregadorRoteiroJson {
                 .comLogicaMinima(dados.logicaMinima)
                 .comLogicaMaxima(dados.logicaMaxima)
                 .comSanidadeMinima(dados.sanidadeMinima)
-                .comSanidadeMaxima(dados.sanidadeMaxima);
+                .comSanidadeMaxima(dados.sanidadeMaxima)
+                .comTextoConsequencia(dados.textoConsequencia);
 
         for (String flag : dados.flagsConcedidas) {
             if (flag == null || flag.isBlank()) {
@@ -278,7 +287,7 @@ final class CarregadorRoteiroJson {
 
     private static final class CenaJson { int ordemGlobal;int id;String capitulo;String personagemFalando;String textoNarrativo;List<EscolhaJson> escolhas;}
 
-    private static final class EscolhaJson { String textoAlternativa;int cenaDestinoId;List<String> flagsConcedidas;String flagRequerida;int scoreMinimo;int participacaoMinima;int participacaoMaxima;
+    private static final class EscolhaJson { String textoAlternativa;String textoConsequencia;int cenaDestinoId;List<String> flagsConcedidas;String flagRequerida;int scoreMinimo;int participacaoMinima;int participacaoMaxima;
         int scoreGanho;
         int participacaoGanha;
         int custoEnergia;

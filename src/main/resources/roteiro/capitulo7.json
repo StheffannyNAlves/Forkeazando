@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo7.json",
-  "totalCenasArquivo": 31,
+  "totalCenasArquivo": 9,
   "cenas": [
     {
       "ordemGlobal": 135,
@@ -13,7 +13,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Dividir em capítulos. Um por semana. Você sabe revisar erro.",
-          "cenaDestinoId": 10210,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_tcc_planejou"
           ],
@@ -42,11 +42,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você abre quatro seções com metas pequenas. A primeira semana termina com um método incompleto, mas revisável."
         },
         {
           "textoAlternativa": "Uma página por dia.",
-          "cenaDestinoId": 10211,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_tcc_planejou"
           ],
@@ -73,11 +74,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escreve uma página e marca a fonte que falta. No dia seguinte, ainda sabe por onde continuar."
         },
         {
           "textoAlternativa": "Tudo de uma vez.",
-          "cenaDestinoId": 10212,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -102,11 +104,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você abre todas as abas e tenta terminar em uma noite. O arquivo cresce; o teste que deveria sustentar o resultado ainda não foi repetido."
         },
         {
           "textoAlternativa": "Começar amanhã.",
-          "cenaDestinoId": 10213,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_procrastinou"
           ],
@@ -133,11 +136,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você fecha o documento e marca 'amanhã' na agenda. O prazo não muda de lugar para acompanhar a palavra."
         },
         {
           "textoAlternativa": "Enfrentar tudo. Café, ódio e uma playlist de 2019.",
-          "cenaDestinoId": 10214,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -164,11 +168,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -5
-          }
+          },
+          "textoConsequencia": "A playlist chega à quinta música antes da primeira medida. Quando o café acaba, você finalmente escreve o procedimento."
         },
         {
           "textoAlternativa": "Você senta. Escreve. Só tem trabalho.",
-          "cenaDestinoId": 10215,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -195,11 +200,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você senta e escreve sem revisar o escopo. No fim da tarde, há texto suficiente para enxergar a pergunta que falta."
         },
         {
           "textoAlternativa": "Dividir em capítulos. Um por semana.",
-          "cenaDestinoId": 10216,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [],
           "flagRequerida": "perfil_perfeccionista",
           "scoreMinimo": 0,
@@ -226,11 +232,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você divide o trabalho em capítulos. A seção de resultados depende do teste que ainda precisa repetir."
         },
         {
           "textoAlternativa": "Definir o escopo e registrar as limitações antes de escrever os resultados.",
-          "cenaDestinoId": 10217,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_documentou_limitacoes"
           ],
@@ -257,11 +264,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você registra o que o protótipo faz e onde falha. A limitação entra no plano da apresentação antes do slide bonito."
         },
         {
           "textoAlternativa": "Escrever na véspera.",
-          "cenaDestinoId": 10218,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_tcc_improvisou"
           ],
@@ -290,11 +298,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Na véspera, o primeiro teste falha e não há tempo para fingir que é exceção. Você salva o log e corta uma afirmação do resumo."
         },
         {
           "textoAlternativa": "Você senta. Abre o documento. Escreve a primeira frase.",
-          "cenaDestinoId": 10219,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -321,11 +330,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "A primeira frase sai torta. Você a deixa como rascunho e passa ao procedimento que consegue descrever."
         },
         {
           "textoAlternativa": "Abre. Fecha. Abre de novo.",
-          "cenaDestinoId": 10220,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_procrastinou"
           ],
@@ -354,11 +364,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Você abre e fecha o documento duas vezes. Na terceira, anota uma pergunta, mesmo sem escrever ainda a resposta."
         },
         {
           "textoAlternativa": "Revisar os fundamentos de Cálculo que deixei passar antes de confiar no resultado do TCC.",
-          "cenaDestinoId": 10402,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_revisou_base_apos_cola"
           ],
@@ -385,11 +396,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "No relatório do TCC, uma estimativa depende exatamente de um conceito que você evitou explicar na primeira prova de Cálculo. A planilha oferece um número; não oferece o raciocínio.\n\nVocê interrompe a análise, volta ao material de base e pede uma segunda leitura de quem pode conferir a conta. Uma tarde de trabalho passa sem novo gráfico. O resultado seguinte, porém, tem origem e limite anotados.\n\nA escolha de anos atrás não desapareceu; você mudou o que faz diante dela."
         },
         {
           "textoAlternativa": "Transformar meus antigos erros de Cálculo num roteiro de verificação para os resultados do TCC.",
-          "cenaDestinoId": 10403,
+          "cenaDestinoId": 599,
           "flagsConcedidas": [
             "cap7_testou_metodo_tcc"
           ],
@@ -416,7 +428,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você encontra no registro antigo uma frase simples: \"não confundir resposta familiar com demonstração\". No TCC, adapta a ideia para um protocolo: conferir unidades, reproduzir medidas e registrar quando uma hipótese falha.\n\nUma repetição produz resultado diferente. Em vez de esconder o valor, você anota as condições e discute o experimento com Noa. O método agora tem histórico, não só conclusão."
         }
       ]
     },
@@ -454,7 +467,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Continuar.",
@@ -483,7 +497,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ouvir Téo e conferir o que ele ainda precisa aprender.",
@@ -512,7 +527,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ouvir Téo, apesar do encaminhamento feito depois das práticas.",
@@ -541,7 +557,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Continuar.",
@@ -570,7 +587,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -612,7 +630,8 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar, com educação, como a ordem foi decidida.",
@@ -647,7 +666,8 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Mostrar o print do e-mail em que ele mesmo dividiu as partes.",
@@ -680,7 +700,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -718,7 +739,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -758,7 +780,8 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -771,7 +794,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Dizer que ele está pronto pra ser monitor.",
-          "cenaDestinoId": 10221,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_dtec_ultima_aula"
           ],
@@ -802,11 +825,12 @@
           },
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "— Você já conseguiria orientar a primeira medida — você diz. Téo pede a Meira a data da próxima seleção de monitoria."
         },
         {
           "textoAlternativa": "Pedir pra ele explicar o circuito pra você.",
-          "cenaDestinoId": 10222,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_dtec_ultima_aula"
           ],
@@ -835,7 +859,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você pede que Téo te explique o circuito. Ele começa pelo terra, volta ao resistor e corrige sozinho um valor no caderno."
         }
       ]
     },
@@ -848,7 +873,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assinar. Ele precisa passar.",
-          "cenaDestinoId": 10223,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_dtec_deu_nota"
           ],
@@ -879,11 +904,12 @@
           },
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": "Você assina. Téo entrega os relatórios; Meira pede o registro das práticas que ninguém fez. Você não tem uma medida para mostrar e precisa responder por isso."
         },
         {
           "textoAlternativa": "Recusar e oferecer ajuda pra refazer os relatórios.",
-          "cenaDestinoId": 10224,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_dtec_nao_deu"
           ],
@@ -914,11 +940,12 @@
           },
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você não assina medições inventadas. Téo fica irritado, mas aceita escrever à coordenação para pedir reposição das práticas com os dados reais."
         },
         {
           "textoAlternativa": "Dar uma última aula, a noite inteira, ali.",
-          "cenaDestinoId": 10225,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_dtec_ultima_aula"
           ],
@@ -949,7 +976,8 @@
           },
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Vocês passam a noite montando o que ainda é possível medir. De manhã, o relatório tem resultados próprios e lacunas explicitadas, não práticas fingidas."
         }
       ]
     },
@@ -962,7 +990,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Assinar. É o primeiro contrato de verdade.",
-          "cenaDestinoId": 10226,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_indep_aceitou"
           ],
@@ -991,11 +1019,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Você assina com a cláusula intacta. O cliente manda o cronograma; só então percebe que o código poderá ser repassado sem outra conversa."
         },
         {
           "textoAlternativa": "Procurar um advogado antes de assinar.",
-          "cenaDestinoId": 10227,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_indep_advogado"
           ],
@@ -1024,11 +1053,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você pede análise jurídica e avisa que não assinará hoje. O cliente mantém o prazo, mas a consulta mostra quais direitos estão em jogo."
         },
         {
           "textoAlternativa": "Negociar a cláusula 14 por escrito.",
-          "cenaDestinoId": 10228,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_indep_negociou"
           ],
@@ -1057,11 +1087,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Você risca a cláusula 14 e manda uma proposta de uso delimitado. A contraproposta volta antes da defesa, ainda sem assinatura."
         },
         {
           "textoAlternativa": "Recusar. Esse preço não vale o que eles pedem.",
-          "cenaDestinoId": 10229,
+          "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_indep_recusou"
           ],
@@ -1090,7 +1121,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você recusa. O contrato some da caixa de entrada; o tempo que teria vendido volta à agenda do TCC."
         }
       ]
     },
@@ -1099,7 +1131,7 @@
       "id": 605,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Antes de começar a defesa, chega uma mensagem de {{NOME_OUTRO_PROTAGONISTA}}. A pessoa não conhece todos os seus resultados, mas lembra da primeira bancada.\n\n{{OUTRO_CENA}}\n\nO projetor falha antes do primeiro slide. A banca espera; Noa, na última fileira, levanta uma sobrancelha como quem pergunta se vocês também documentaram aquele modo de falha.\n\nVocê abre o caderno. Começa pela pergunta do TCC, pelo teste que se repetiu e pelo ponto em que o resultado deixou de ser confiável. Quando a imagem volta, a figura no slide é menor do que a história que você acabou de contar.\n\nUma professora pede o dado que você ainda não conseguiu medir.\n\n— Não tenho essa medida — você responde. — Sei qual equipamento falta e como repetiria o ensaio.\n\nHá um segundo de silêncio antes da próxima pergunta. Você não venceu a banca com um truque. Conseguiu mostrar onde termina a evidência e onde começa o próximo trabalho.",
+      "textoNarrativo": "O projetor falha antes do primeiro slide. A banca espera; Noa, na última fileira, levanta uma sobrancelha como quem pergunta se vocês também documentaram aquele modo de falha.\n\nVocê abre o caderno. Começa pela pergunta do TCC, pelo teste que se repetiu e pelo ponto em que o resultado deixou de ser confiável. Quando a imagem volta, a figura no slide é menor do que a história que você acabou de contar.\n\nUma professora pede o dado que você ainda não conseguiu medir.\n\n— Não tenho essa medida — você responde. — Sei qual equipamento falta e como repetiria o ensaio.\n\nHá um segundo de silêncio antes da próxima pergunta. Você não venceu a banca com um truque. Conseguiu mostrar onde termina a evidência e onde começa o próximo trabalho.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 7.",
@@ -1130,843 +1162,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1210,
-      "id": 10210,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você abre quatro seções com metas pequenas. A primeira semana termina com um método incompleto, mas revisável.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1211,
-      "id": 10211,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você escreve uma página e marca a fonte que falta. No dia seguinte, ainda sabe por onde continuar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1212,
-      "id": 10212,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você abre todas as abas e tenta terminar em uma noite. O arquivo cresce; o teste que deveria sustentar o resultado ainda não foi repetido.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1213,
-      "id": 10213,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fecha o documento e marca 'amanhã' na agenda. O prazo não muda de lugar para acompanhar a palavra.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1214,
-      "id": 10214,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A playlist chega à quinta música antes da primeira medida. Quando o café acaba, você finalmente escreve o procedimento.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1215,
-      "id": 10215,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você senta e escreve sem revisar o escopo. No fim da tarde, há texto suficiente para enxergar a pergunta que falta.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1216,
-      "id": 10216,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você divide o trabalho em capítulos. A seção de resultados depende do teste que ainda precisa repetir.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1217,
-      "id": 10217,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você registra o que o protótipo faz e onde falha. A limitação entra no plano da apresentação antes do slide bonito.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1218,
-      "id": 10218,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Na véspera, o primeiro teste falha e não há tempo para fingir que é exceção. Você salva o log e corta uma afirmação do resumo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1219,
-      "id": 10219,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A primeira frase sai torta. Você a deixa como rascunho e passa ao procedimento que consegue descrever.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1220,
-      "id": 10220,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você abre e fecha o documento duas vezes. Na terceira, anota uma pergunta, mesmo sem escrever ainda a resposta.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Continuar o TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1221,
-      "id": 10221,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Você já conseguiria orientar a primeira medida — você diz. Téo pede a Meira a data da próxima seleção de monitoria.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1222,
-      "id": 10222,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pede que Téo te explique o circuito. Ele começa pelo terra, volta ao resistor e corrige sozinho um valor no caderno.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1223,
-      "id": 10223,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você assina. Téo entrega os relatórios; Meira pede o registro das práticas que ninguém fez. Você não tem uma medida para mostrar e precisa responder por isso.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1224,
-      "id": 10224,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você não assina medições inventadas. Téo fica irritado, mas aceita escrever à coordenação para pedir reposição das práticas com os dados reais.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1225,
-      "id": 10225,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Vocês passam a noite montando o que ainda é possível medir. De manhã, o relatório tem resultados próprios e lacunas explicitadas, não práticas fingidas.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1226,
-      "id": 10226,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você assina com a cláusula intacta. O cliente manda o cronograma; só então percebe que o código poderá ser repassado sem outra conversa.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1227,
-      "id": 10227,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pede análise jurídica e avisa que não assinará hoje. O cliente mantém o prazo, mas a consulta mostra quais direitos estão em jogo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1228,
-      "id": 10228,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você risca a cláusula 14 e manda uma proposta de uso delimitado. A contraproposta volta antes da defesa, ainda sem assinatura.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1229,
-      "id": 10229,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você recusa. O contrato some da caixa de entrada; o tempo que teria vendido volta à agenda do TCC.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à defesa.",
-          "cenaDestinoId": 605,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1312,
-      "id": 10402,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "No relatório do TCC, uma estimativa depende exatamente de um conceito que você evitou explicar na primeira prova de Cálculo. A planilha oferece um número; não oferece o raciocínio.\n\nVocê interrompe a análise, volta ao material de base e pede uma segunda leitura de quem pode conferir a conta. Uma tarde de trabalho passa sem novo gráfico. O resultado seguinte, porém, tem origem e limite anotados.\n\nA escolha de anos atrás não desapareceu; você mudou o que faz diante dela.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Retomar os testes do TCC com as contas documentadas.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1313,
-      "id": 10403,
-      "capitulo": "Capítulo 7 — A Última Prova",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você encontra no registro antigo uma frase simples: \"não confundir resposta familiar com demonstração\". No TCC, adapta a ideia para um protocolo: conferir unidades, reproduzir medidas e registrar quando uma hipótese falha.\n\nUma repetição produz resultado diferente. Em vez de esconder o valor, você anota as condições e discute o experimento com Noa. O método agora tem histórico, não só conclusão.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Prosseguir para os testes finais do TCC.",
-          "cenaDestinoId": 599,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

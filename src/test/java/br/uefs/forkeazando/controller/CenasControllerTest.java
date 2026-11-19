@@ -175,7 +175,6 @@ class CenasControllerTest {
         assertEquals(List.of(CAP), view.transicoes);
     }
 
-    // ---------- ações extras do menu ----------
 
     @Test
     void salvarPartidaChamaOSalvamentoManualEMantemAMesmaCena() {

@@ -132,8 +132,7 @@ class GrafoDeCenasTest {
                 if (e.getFlagsConcedidas().contains("trilha_indep")) indep++;
             }
         }
-        // Cada trilha deve ser definida em pelo menos uma escolha.
-        // Se for mais de uma, ok — múltiplos caminhos (IC via 371, 372, 373...)
+        // Cada trilha deve ser definida em pelo menos uma escolha
         assertTrue(ic >= 1, "Nenhuma escolha concede trilha_ic");
         assertTrue(dtec >= 1, "Nenhuma escolha concede trilha_dtec");
         assertTrue(indep >= 1, "Nenhuma escolha concede trilha_indep");

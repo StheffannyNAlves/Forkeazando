@@ -25,8 +25,7 @@ class FluxoCompletoTest {
 
     private static final Map<Integer, String> ESCOLHAS_IC = Map.ofEntries(
             Map.entry(700, "Voltei ao circuito"),
-            Map.entry(701, "Relembrar o início pelos planos"),
-            Map.entry(0, "Acordar sua mãe"),
+            Map.entry(701, "Relembrar o início pelos planos"),            Map.entry(0, "Acordar sua mãe"),
             Map.entry(1, "Ler o edital"),
             Map.entry(2, "Me apresentar à Malu"),
             Map.entry(3, "Perguntar ao veterano"),
@@ -268,9 +267,7 @@ class FluxoCompletoTest {
         Set<Integer> usadas = new HashSet<>();
         Map<Integer, String> escolhasDavi = Map.of(
                 700, "Na hora não soube",
-                701, "Relembrar o início pelas ideias");
-
-        assertTrue(davi.temFlag("protagonista_masculino"));
+                701, "Relembrar o início pelas ideias");        assertTrue(davi.temFlag("protagonista_masculino"));
         assertFalse(davi.temFlag("protagonista_stheffanny"));
         assertEquals(0, avancarAte(jogo, davi, 700, 0, escolhasDavi, usadas));
         assertTrue(davi.temFlag("prologo_resposta_aberta"));

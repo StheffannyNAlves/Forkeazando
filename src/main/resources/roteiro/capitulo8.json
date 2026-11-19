@@ -1,8 +1,8 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo8.json",
-  "totalCenasArquivo": 44,
+  "totalCenasArquivo": 16,
   "cenas": [
     {
       "ordemGlobal": 144,
@@ -40,7 +40,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Comemorar em casa; a cerimônia não cabe no orçamento.",
@@ -73,7 +74,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 5
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Transferir o convite reservado e recuperar parte do valor.",
@@ -104,7 +106,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ir à cerimônia, mesmo precisando reorganizar as contas.",
@@ -137,7 +140,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -5
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Usar a reserva que você fez para este dia.",
@@ -170,7 +174,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ir à cerimônia e decidir depois como comemorar.",
@@ -203,7 +208,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ir para encontrar quem atravessou o curso com você.",
@@ -236,7 +242,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Não ir à cerimônia; reunir as pessoas em outro lugar.",
@@ -269,7 +276,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 5
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -278,7 +286,7 @@
       "id": 650,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O auditório enche enquanto sua mãe tenta te localizar entre as becas no visor do celular. Ela acena para três pessoas erradas antes de acertar.\n\nMalu chega atrasada, com um penteado novo e o mesmo senso de orientação do primeiro dia.\n\n— Dessa vez não me perdi no campus.\n\n— E no estacionamento?\n\n— O estacionamento é um campus paralelo.\n\nDandara ajuda a família a encontrar lugar. Alan segura uma extensão que trouxe 'por precaução'. Caio está perto da saída, sem beca. {{NOME_OUTRO_PROTAGONISTA}} acompanha a transmissão de outro lugar e manda uma mensagem.\n\n{{OUTRO_CENA}}\n\nAinda faltam alguns nomes antes do seu. Você pode falar com Caio, procurar Dandara ou ficar ao lado de sua mãe até a chamada.",
+      "textoNarrativo": "O auditório enche enquanto sua mãe tenta te localizar entre as becas no visor do celular. Ela acena para três pessoas erradas antes de acertar.\n\nMalu chega atrasada, com um penteado novo e o mesmo senso de orientação do primeiro dia.\n\n— Dessa vez não me perdi no campus.\n\n— E no estacionamento?\n\n— O estacionamento é um campus paralelo.\n\nDandara ajuda a família a encontrar lugar. Alan segura uma extensão que trouxe 'por precaução'. Caio está perto da saída, sem beca. {{NOME_OUTRO_PROTAGONISTA}} manda uma mensagem: 'Vi a transmissão começar. Depois me conta como foi.'\n\nAinda faltam alguns nomes antes do seu. Você pode falar com Caio, procurar Dandara ou ficar ao lado de sua mãe até a chamada.",
       "escolhas": [
         {
           "textoAlternativa": "Procurar Caio.",
@@ -307,7 +315,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Procurar Dandara.",
@@ -336,7 +345,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ficar ao lado de sua mãe até chamarem seu nome.",
@@ -367,7 +377,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 5
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -380,7 +391,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Aceitar o copo térmico que Caio oferece.",
-          "cenaDestinoId": 10230,
+          "cenaDestinoId": 653,
           "flagsConcedidas": [
             "item_copo_caio"
           ],
@@ -409,11 +420,12 @@
           "impactoRelacionamento": {
             "VETERANO": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você pega o copo. A tampa já não fecha direito; Caio ensina o jeito de girá-la antes de voltar ao auditório."
         },
         {
           "textoAlternativa": "Agradecer e recusar o presente.",
-          "cenaDestinoId": 10231,
+          "cenaDestinoId": 653,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -440,11 +452,12 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você agradece, mas deixa o copo com Caio. Ele ri: — Melhor assim. Esse objeto tem histórico de vazar na mochila."
         },
         {
           "textoAlternativa": "Responder: 'Se você ainda tá aqui, alguma coisa valia.'",
-          "cenaDestinoId": 10232,
+          "cenaDestinoId": 653,
           "flagsConcedidas": [],
           "flagRequerida": "caio_revelacao",
           "scoreMinimo": 0,
@@ -471,7 +484,8 @@
           "impactoRelacionamento": {
             "VETERANO": 4.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você devolve a frase antiga. Caio segura o copo e responde: — Hoje eu precisava ouvir isso de novo."
         }
       ]
     },
@@ -484,7 +498,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Elogiar.",
-          "cenaDestinoId": 10233,
+          "cenaDestinoId": 653,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -511,11 +525,12 @@
           "impactoRelacionamento": {
             "DANDARA": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você parabeniza Dandara pelo trabalho de monitoria. Ela aponta a família e admite que já está pensando no próximo aluguel."
         },
         {
           "textoAlternativa": "Só 'parabéns'.",
-          "cenaDestinoId": 10234,
+          "cenaDestinoId": 653,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -540,11 +555,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Vocês trocam um 'parabéns' curto. Ela não exige abraço nem reconciliação em foto de formatura."
         },
         {
           "textoAlternativa": "Onde ela vai trabalhar?",
-          "cenaDestinoId": 10235,
+          "cenaDestinoId": 653,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -571,7 +587,8 @@
           "impactoRelacionamento": {
             "DANDARA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você pergunta pelo trabalho. Dandara conta de uma seleção em andamento e pede que não publiquem 'empregada' na legenda ainda."
         }
       ]
     },
@@ -584,7 +601,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Ir tirar foto.",
-          "cenaDestinoId": 10236,
+          "cenaDestinoId": 654,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -609,11 +626,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Malu consegue uma foto com metade das becas cortada e sua mãe inteira no quadro. Vocês riem e guardam as duas versões."
         },
         {
           "textoAlternativa": "Sair antes do fim.",
-          "cenaDestinoId": 10237,
+          "cenaDestinoId": 654,
           "flagsConcedidas": [
             "cap8_saiu_antes"
           ],
@@ -640,11 +658,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você sai antes da última fala. Do lado de fora, ainda ouve os aplausos e confere se sua mãe sabe onde te encontrar."
         },
         {
           "textoAlternativa": "Sair para respirar, sem avisar ninguém.",
-          "cenaDestinoId": 10238,
+          "cenaDestinoId": 654,
           "flagsConcedidas": [
             "cap8_saiu_antes"
           ],
@@ -671,7 +690,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você vai ao corredor sem avisar. A porta amortece o som; depois de respirar, manda uma mensagem dizendo onde está."
         }
       ]
     },
@@ -709,7 +729,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -718,11 +739,11 @@
       "id": 654,
       "capitulo": "Capítulo 8 — Inserção",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Anos depois. A mesma sala da entrevista do começo.\n\nA pessoa à sua frente encontra a foto do LED apagado no portfólio. Você a deixou ali porque a pergunta continuou útil: o que fazer quando o resultado não confirma a primeira ideia?\n\n— Você podia ter escolhido uma imagem de sucesso. O que fez quando falhou?\n\nHá uma resposta ensaiada sobre prazos. Ela não serve. Há também um histórico de provas, projetos, pedidos de ajuda e limites que precisaram ser escritos. O primeiro PBL está ali, com uma seta riscada sobre a opção de voltar. Você escolhe por onde começar.\n\nA pessoa espera, sem corrigir a pergunta por você.",
+      "textoNarrativo": "Anos depois. A mesma sala da entrevista do começo.\n\nA pessoa à sua frente encontra a foto do LED apagado no portfólio. Você a deixou ali porque a pergunta continuou útil: o que fazer quando o resultado não confirma a primeira ideia?\n\n— Você podia ter escolhido uma imagem de sucesso. O que fez quando falhou?\n\nHá uma resposta ensaiada sobre prazos. Ela não serve. Há também um histórico de provas, projetos, pedidos de ajuda e limites que precisaram ser escritos. Você escolhe por onde começar.\n\nA pessoa espera, sem corrigir a pergunta por você.",
       "escolhas": [
         {
           "textoAlternativa": "Entreguei o que consegui e registrei o que ainda faltava.",
-          "cenaDestinoId": 10239,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_pratica"
           ],
@@ -749,11 +770,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra a lista de entregas e o que ficou pendente. A pessoa pergunta qual aviso enviou à equipe antes do prazo; você aponta o registro."
         },
         {
           "textoAlternativa": "Voltei ao problema até entender por que minha hipótese falhou.",
-          "cenaDestinoId": 10240,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_conviccao"
           ],
@@ -780,11 +802,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você aponta a primeira hipótese riscada. — Voltei a medir porque ela parecia boa demais. A pessoa pede o teste que a derrubou."
         },
         {
           "textoAlternativa": "Não sabia. Pedi ajuda e retomei o teste.",
-          "cenaDestinoId": 10241,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_honesta"
           ],
@@ -811,11 +834,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Pedi ajuda — você diz. Nomeia quem revisou o esquema e o passo que conseguiu fazer sem essa pessoa depois."
         },
         {
           "textoAlternativa": "Mostrei o erro e a próxima medida que faria.",
-          "cenaDestinoId": 10242,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_conviccao"
           ],
@@ -842,11 +866,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você descreve o erro e a próxima medição em vez de prometer que o circuito funcionaria. A pessoa escreve 'critério de teste' na margem."
         },
         {
           "textoAlternativa": "Na greve, aprendi que boatos, prazos e compromissos exigiam confirmação.",
-          "cenaDestinoId": 10243,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_verdadeira"
           ],
@@ -875,11 +900,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Você conta como o calendário foi suspenso, como um boato antigo circulou como notícia nova e como a oficina precisou ser reorganizada.\n\nA pessoa entrevistadora pergunta qual foi a sua parte. Você distingue o que fez, o que apenas acompanhou e o que ficou sem resposta. Na greve, nem todo compromisso era seu — mas toda informação precisava ter origem."
         },
         {
           "textoAlternativa": "Pedi apoio quando não conseguia nem abrir a caixa de e-mails.",
-          "cenaDestinoId": 10244,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_verdadeira"
           ],
@@ -908,11 +934,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Você conta da caixa de e-mails fechada e da mensagem curta pedindo prazo. A pessoa não pede que transforme aquele período em frase motivacional."
         },
         {
           "textoAlternativa": "Questionei a autoria do artigo e documentei as contribuições.",
-          "cenaDestinoId": 10245,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_verdadeira"
           ],
@@ -941,11 +968,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Você mostra o registro das contribuições no artigo. A pessoa confere como a equipe resolveu a divergência antes de enviar o texto."
         },
         {
           "textoAlternativa": "Na bancada, medi a falha, testei uma hipótese e registrei a correção.",
-          "cenaDestinoId": 10246,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_verdadeira"
           ],
@@ -974,11 +1002,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Você abre a página da bancada: hipótese, ponto medido, correção. O LED finalmente aceso importa menos que a leitura repetida."
         },
         {
           "textoAlternativa": "Registrei método e limites para outra pessoa repetir o trabalho.",
-          "cenaDestinoId": 10247,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_verdadeira"
           ],
@@ -1007,11 +1036,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Você mostra o trecho do TCC onde escreveu o que não podia concluir. A pessoa pergunta qual ensaio faria com mais tempo de bancada."
         },
         {
           "textoAlternativa": "A candidatura internacional exigiu um plano de custos que eu não tinha.",
-          "cenaDestinoId": 10248,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_internacional"
           ],
@@ -1040,11 +1070,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você mostra a planilha de idioma, custos e editais. — A primeira ideia não fechava no orçamento; a próxima começa por ele."
         },
         {
           "textoAlternativa": "Colei numa prova. Não vou fingir que me arrependi e, por isso, aprendi o conteúdo.",
-          "cenaDestinoId": 10249,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_confissao"
           ],
@@ -1073,11 +1104,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você admite que copiou respostas na prova de Cálculo. Não apresenta arrependimento como se fosse uma nova competência nem finge que a nota mediu o que você sabia.\n\n— E o que fez para preencher essa lacuna? — pergunta a pessoa entrevistadora.\n\nVocê não inventa uma recuperação que o histórico não comprova. A pergunta permanece aberta, e a decisão continua tendo peso."
         },
         {
           "textoAlternativa": "Contestei uma ordem de autoria que não mostrava o trabalho da equipe.",
-          "cenaDestinoId": 10250,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_autoria"
           ],
@@ -1106,11 +1138,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você aponta a ordem de autoria contestada e os e-mails de divisão de tarefas. A pessoa pergunta qual decisão ficou registrada por escrito."
         },
         {
           "textoAlternativa": "Assinei um relatório de prática que não acompanhei. Precisei responder pelo registro falso.",
-          "cenaDestinoId": 10251,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_responsabilidade"
           ],
@@ -1137,11 +1170,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você descreve o relatório de Téo e a assinatura que atestava práticas não realizadas. Meira havia pedido os registros de medições, e você não tinha nenhum para apresentar.\n\n— Achei que estava ajudando alguém a não perder o semestre. Assinei uma afirmação que eu não podia comprovar.\n\nA pessoa entrevistadora pergunta o que teria feito de outro modo. Você fala de registrar as lacunas, buscar reposição das práticas e se recusar a atestar medições que não acompanhou. Nenhuma dessas medidas desfaz a assinatura."
         },
         {
           "textoAlternativa": "Aprendi a planejar testes sem fingir que consigo controlar todo resultado.",
-          "cenaDestinoId": 10308,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_aprendizado_metodo"
           ],
@@ -1168,11 +1202,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você conta sobre a primeira entrega: havia uma lista de critérios, mas foi uma pessoa da equipe que descobriu a navegação quebrada. Depois, na seleção de software, você usou a mesma disciplina para apresentar uma hipótese sem vender certeza.\n\n— Então você aprendeu a prever falhas? — pergunta a pessoa entrevistadora.\n\n— Aprendi a escrever como verificá-las e a deixar tempo para corrigir o plano. Não é a mesma coisa.\n\nEla retorna à foto do LED. Você não precisa acrescentar um sucesso que não aconteceu."
         },
         {
           "textoAlternativa": "Construí cedo, errei na frente da equipe e aprendi a revisar antes da entrega.",
-          "cenaDestinoId": 10309,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_aprendizado_revisao"
           ],
@@ -1199,11 +1234,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você conta sobre um protótipo que mostrou cedo demais e um caminho de menu que não funcionava. Foi a revisão da equipe, não sua confiança, que encontrou o problema. Mais tarde, você escolheu reduzir escopo para não prometer o que não poderia testar.\n\n— E o que mudou? — pergunta a pessoa entrevistadora.\n\n— Continuo gostando de experimentar. Agora sei que apresentar é diferente de demonstrar que funciona.\n\nEla retorna à foto do LED. Você não transforma o erro em vitória; explica o que fez depois."
         },
         {
           "textoAlternativa": "Na primeira prova, copiei uma resposta. Mais tarde, precisei voltar ao fundamento que não sabia explicar.",
-          "cenaDestinoId": 10404,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_reparacao_verificavel"
           ],
@@ -1230,11 +1266,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você conta que copiou uma resposta na primeira prova e que a nota não registrava o conhecimento que faltava. A pessoa entrevistadora não transforma a confissão em virtude.\n\n— O que você fez depois?\n\nVocê mostra o registro de revisão dos fundamentos e a checagem de um cálculo do TCC. A diferença está no que foi efetivamente refeito. A decisão de colar continua errada; o aprendizado seguinte não a apaga."
         },
         {
           "textoAlternativa": "Passei a registrar os meus erros e usei esse método para revisar os testes do TCC.",
-          "cenaDestinoId": 10405,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_metodo_construido"
           ],
@@ -1261,11 +1298,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra uma lista de erros da primeira prova de Cálculo. Depois abre o protocolo dos testes do TCC: unidades, condições da medição, tentativas que falharam e o que precisou ser repetido.\n\n— Você acertou sempre depois disso?\n\n— Não. Eu passei a identificar melhor quando não tinha evidência suficiente.\n\nA pessoa entrevistadora anota a resposta. Não há promessa de contratação, mas há um método que outra pessoa consegue examinar."
         },
         {
           "textoAlternativa": "Na greve, fiquei responsável por avisar a escola. Aprendi a registrar quem receberia a informação.",
-          "cenaDestinoId": 10406,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_responsabilidade_extensao"
           ],
@@ -1292,11 +1330,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você descreve o aviso enviado à escola quando a oficina foi adiada. A direção confirmou o recebimento, mas o grupo ainda precisava definir a reposição.\n\n— Então a atividade foi resolvida?\n\n— Não. A diferença é que as famílias não ficaram esperando uma oficina que não aconteceria naquele dia.\n\nNo portfólio, você aponta o registro do envio e a lista de pendências que restou. Saber o limite do que foi feito faz parte da prestação de contas."
         },
         {
           "textoAlternativa": "Na greve, pedi que outra pessoa avisasse a escola sem definir quem. O atraso foi consequência disso.",
-          "cenaDestinoId": 10407,
+          "cenaDestinoId": 655,
           "flagsConcedidas": [
             "cap8_resposta_delegacao_sem_acordo"
           ],
@@ -1323,7 +1362,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você conta que, durante a greve, pediu para outra pessoa avisar a escola e seguiu para outra discussão sem confirmar quem tinha aceitado a tarefa. A direção ficou sem notícia durante horas.\n\n— E como você percebeu?\n\n— Malu precisou assumir o contato mais tarde e avisou ao grupo. Minha intenção não entregou a mensagem.\n\nVocê não se declara líder porque delegou. Explica que passou a tratar responsáveis e confirmações como partes do trabalho, não como detalhes."
         }
       ]
     },
@@ -1332,7 +1372,7 @@
       "id": 655,
       "capitulo": "Capítulo 8",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A entrevista acaba sem promessa de contrato. Na calçada, você confere o horário do próximo ônibus antes de olhar o celular.\n\nDandara pergunta como foi. Caio deixou um áudio sobre uma prova que pretende fazer. Malu enviou uma foto antiga do laboratório: uma das telas OLED está apagada e todo mundo aponta para um lugar diferente.\n\n{{NOME_OUTRO_PROTAGONISTA}} também pergunta pelo resultado.\n\n{{OUTRO_CENA}}\n\nVocê digita 'deu certo', apaga e escreve: 'ainda não sei. Consegui mostrar o que fiz e o que falta aprender.'\n\nO ônibus vira a esquina antes de qualquer resposta. Você corre dois passos, acena e ele para.",
+      "textoNarrativo": "A entrevista acaba sem promessa de contrato. Na calçada, você confere o horário do próximo ônibus antes de olhar o celular.\n\nDandara pergunta como foi. Caio deixou um áudio sobre uma prova que pretende fazer. Malu enviou uma foto antiga do laboratório: uma das telas OLED está apagada e todo mundo aponta para um lugar diferente.\n\nVocê digita 'deu certo', apaga e escreve: 'ainda não sei. Consegui mostrar o que fiz e o que falta aprender.'\n\nO ônibus vira a esquina antes de qualquer resposta. Você corre dois passos, acena e ele para.",
       "escolhas": [
         {
           "textoAlternativa": "Conferir as opções abertas pela trajetória até aqui.",
@@ -1361,7 +1401,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1399,7 +1440,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1445,7 +1487,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1483,7 +1526,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1521,7 +1565,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1559,7 +1604,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1597,7 +1643,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1638,1071 +1685,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1230,
-      "id": 10230,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pega o copo. A tampa já não fecha direito; Caio ensina o jeito de girá-la antes de voltar ao auditório.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Aguardar a chamada.",
-          "cenaDestinoId": 653,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1231,
-      "id": 10231,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você agradece, mas deixa o copo com Caio. Ele ri: — Melhor assim. Esse objeto tem histórico de vazar na mochila.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Aguardar a chamada.",
-          "cenaDestinoId": 653,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1232,
-      "id": 10232,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você devolve a frase antiga. Caio segura o copo e responde: — Hoje eu precisava ouvir isso de novo.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Aguardar a chamada.",
-          "cenaDestinoId": 653,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1233,
-      "id": 10233,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você parabeniza Dandara pelo trabalho de monitoria. Ela aponta a família e admite que já está pensando no próximo aluguel.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Aguardar a chamada.",
-          "cenaDestinoId": 653,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1234,
-      "id": 10234,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Vocês trocam um 'parabéns' curto. Ela não exige abraço nem reconciliação em foto de formatura.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Aguardar a chamada.",
-          "cenaDestinoId": 653,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1235,
-      "id": 10235,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pergunta pelo trabalho. Dandara conta de uma seleção em andamento e pede que não publiquem 'empregada' na legenda ainda.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Aguardar a chamada.",
-          "cenaDestinoId": 653,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1236,
-      "id": 10236,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Malu consegue uma foto com metade das becas cortada e sua mãe inteira no quadro. Vocês riem e guardam as duas versões.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar à entrevista, anos depois.",
-          "cenaDestinoId": 654,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1237,
-      "id": 10237,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você sai antes da última fala. Do lado de fora, ainda ouve os aplausos e confere se sua mãe sabe onde te encontrar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar à entrevista, anos depois.",
-          "cenaDestinoId": 654,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1238,
-      "id": 10238,
-      "capitulo": "Capítulo 8",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você vai ao corredor sem avisar. A porta amortece o som; depois de respirar, manda uma mensagem dizendo onde está.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Voltar à entrevista, anos depois.",
-          "cenaDestinoId": 654,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1239,
-      "id": 10239,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra a lista de entregas e o que ficou pendente. A pessoa pergunta qual aviso enviou à equipe antes do prazo; você aponta o registro.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1240,
-      "id": 10240,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aponta a primeira hipótese riscada. — Voltei a medir porque ela parecia boa demais. A pessoa pede o teste que a derrubou.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1241,
-      "id": 10241,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Pedi ajuda — você diz. Nomeia quem revisou o esquema e o passo que conseguiu fazer sem essa pessoa depois.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1242,
-      "id": 10242,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você descreve o erro e a próxima medição em vez de prometer que o circuito funcionaria. A pessoa escreve 'critério de teste' na margem.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1243,
-      "id": 10243,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você conta como o calendário foi suspenso, como um boato antigo circulou como notícia nova e como a oficina precisou ser reorganizada.\n\nA pessoa entrevistadora pergunta qual foi a sua parte. Você distingue o que fez, o que apenas acompanhou e o que ficou sem resposta. Na greve, nem todo compromisso era seu — mas toda informação precisava ter origem.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1244,
-      "id": 10244,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você conta da caixa de e-mails fechada e da mensagem curta pedindo prazo. A pessoa não pede que transforme aquele período em frase motivacional.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1245,
-      "id": 10245,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra o registro das contribuições no artigo. A pessoa confere como a equipe resolveu a divergência antes de enviar o texto.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1246,
-      "id": 10246,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você abre a página da bancada: hipótese, ponto medido, correção. O LED finalmente aceso importa menos que a leitura repetida.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1247,
-      "id": 10247,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra o trecho do TCC onde escreveu o que não podia concluir. A pessoa pergunta qual ensaio faria com mais tempo de bancada.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1248,
-      "id": 10248,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra a planilha de idioma, custos e editais. — A primeira ideia não fechava no orçamento; a próxima começa por ele.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1249,
-      "id": 10249,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você admite que copiou respostas na prova de Cálculo. Não apresenta arrependimento como se fosse uma nova competência nem finge que a nota mediu o que você sabia.\n\n— E o que fez para preencher essa lacuna? — pergunta a pessoa entrevistadora.\n\nVocê não inventa uma recuperação que o histórico não comprova. A pergunta permanece aberta, e a decisão continua tendo peso.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1250,
-      "id": 10250,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aponta a ordem de autoria contestada e os e-mails de divisão de tarefas. A pessoa pergunta qual decisão ficou registrada por escrito.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1251,
-      "id": 10251,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você descreve o relatório de Téo e a assinatura que atestava práticas não realizadas. Meira havia pedido os registros de medições, e você não tinha nenhum para apresentar.\n\n— Achei que estava ajudando alguém a não perder o semestre. Assinei uma afirmação que eu não podia comprovar.\n\nA pessoa entrevistadora pergunta o que teria feito de outro modo. Você fala de registrar as lacunas, buscar reposição das práticas e se recusar a atestar medições que não acompanhou. Nenhuma dessas medidas desfaz a assinatura.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Sair da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1308,
-      "id": 10308,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você conta sobre a primeira entrega: havia uma lista de critérios, mas foi uma pessoa da equipe que descobriu a navegação quebrada. Depois, na seleção de software, você usou a mesma disciplina para apresentar uma hipótese sem vender certeza.\n\n— Então você aprendeu a prever falhas? — pergunta a pessoa entrevistadora.\n\n— Aprendi a escrever como verificá-las e a deixar tempo para corrigir o plano. Não é a mesma coisa.\n\nEla retorna à foto do LED. Você não precisa acrescentar um sucesso que não aconteceu.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encerrar a entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1309,
-      "id": 10309,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você conta sobre um protótipo que mostrou cedo demais e um caminho de menu que não funcionava. Foi a revisão da equipe, não sua confiança, que encontrou o problema. Mais tarde, você escolheu reduzir escopo para não prometer o que não poderia testar.\n\n— E o que mudou? — pergunta a pessoa entrevistadora.\n\n— Continuo gostando de experimentar. Agora sei que apresentar é diferente de demonstrar que funciona.\n\nEla retorna à foto do LED. Você não transforma o erro em vitória; explica o que fez depois.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Encerrar a entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1314,
-      "id": 10404,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você conta que copiou uma resposta na primeira prova e que a nota não registrava o conhecimento que faltava. A pessoa entrevistadora não transforma a confissão em virtude.\n\n— O que você fez depois?\n\nVocê mostra o registro de revisão dos fundamentos e a checagem de um cálculo do TCC. A diferença está no que foi efetivamente refeito. A decisão de colar continua errada; o aprendizado seguinte não a apaga.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Seguir para o encerramento da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1315,
-      "id": 10405,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra uma lista de erros da primeira prova de Cálculo. Depois abre o protocolo dos testes do TCC: unidades, condições da medição, tentativas que falharam e o que precisou ser repetido.\n\n— Você acertou sempre depois disso?\n\n— Não. Eu passei a identificar melhor quando não tinha evidência suficiente.\n\nA pessoa entrevistadora anota a resposta. Não há promessa de contratação, mas há um método que outra pessoa consegue examinar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Seguir para o encerramento da entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1316,
-      "id": 10406,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você descreve o aviso enviado à escola quando a oficina foi adiada. A direção confirmou o recebimento, mas o grupo ainda precisava definir a reposição.\n\n— Então a atividade foi resolvida?\n\n— Não. A diferença é que as famílias não ficaram esperando uma oficina que não aconteceria naquele dia.\n\nNo portfólio, você aponta o registro do envio e a lista de pendências que restou. Saber o limite do que foi feito faz parte da prestação de contas.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Concluir a entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1317,
-      "id": 10407,
-      "capitulo": "Capítulo 8 — Inserção",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você conta que, durante a greve, pediu para outra pessoa avisar a escola e seguiu para outra discussão sem confirmar quem tinha aceitado a tarefa. A direção ficou sem notícia durante horas.\n\n— E como você percebeu?\n\n— Malu precisou assumir o contato mais tarde e avisou ao grupo. Minha intenção não entregou a mensagem.\n\nVocê não se declara líder porque delegou. Explica que passou a tratar responsáveis e confirmações como partes do trabalho, não como detalhes.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Concluir a entrevista.",
-          "cenaDestinoId": 655,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

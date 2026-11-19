@@ -1,15 +1,15 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo4.json",
-  "totalCenasArquivo": 50,
+  "totalCenasArquivo": 24,
   "cenas": [
     {
       "ordemGlobal": 61,
       "id": 300,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Segundo semestre. A matrícula agora depende de uma solicitação sua. O primeiro período veio com a grade pronta; desta vez, o portal mostra turmas, horários e um aviso em caixa alta: solicitar não garante vaga.\n\nVocê abre o fluxograma. Uma disciplina que parece interessante depende de outra que ainda não concluiu. Uma turma termina depois do último ônibus. No grupo, Malu compartilha uma planilha colorida e escreve: 'a planilha está ótima; a oferta é que está sendo hostil'.\n\n{{NOME_OUTRO_PROTAGONISTA}} também está montando a grade. Ao comparar as duas propostas, vocês percebem que o mesmo horário livre estava comprometido três vezes.\n\n{{OUTRO_CENA}}\n\nNo mural estão dois editais com o mesmo prazo: IC e monitoria. Pesquisar, ensinar e conseguir renda são motivos possíveis, mas o interesse por um edital não garante que ele caiba no semestre. Você precisa descobrir o que consegue sustentar.\n\nA grade não é um cardápio, e sua semana não tem horas infinitas. Você começa pelo que é obrigatório, não pelo que fica bonito no papel.",
+      "textoNarrativo": "Segundo semestre. A matrícula agora depende de uma solicitação sua. O primeiro período veio com a grade pronta; desta vez, o portal mostra turmas, horários e um aviso em caixa alta: solicitar não garante vaga.\n\nVocê abre o fluxograma. Uma disciplina que parece interessante depende de outra que ainda não concluiu. Uma turma termina depois do último ônibus. No grupo, Malu compartilha uma planilha colorida e escreve: 'a planilha está ótima; a oferta é que está sendo hostil'.\n\nNo mural estão dois editais com o mesmo prazo: IC e monitoria. Você quer os dois por motivos diferentes — aprender a pesquisar e ajudar em casa.\n\nA grade não é um cardápio, e sua semana não tem horas infinitas. Você começa pelo que é obrigatório, não pelo que fica bonito no papel.",
       "escolhas": [
         {
           "textoAlternativa": "Conferir a oferta, os pré-requisitos e os dois editais antes de decidir.",
@@ -40,7 +40,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar no grupo sobre turmas, horários e transporte.",
@@ -71,7 +72,8 @@
           "impactoRelacionamento": {
             "DANDARA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Procurar Caio para entender como montar a grade.",
@@ -102,7 +104,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Resolver a pendência de Cálculo antes de disputar qualquer bolsa.",
@@ -133,7 +136,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ajudar Dandara a revisar limites antes de olhar os editais.",
@@ -164,11 +168,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Usar os critérios de teste aprendidos no PBL para reservar tempo de revisão na nova grade.",
-          "cenaDestinoId": 10306,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap4_planejou_com_evidencias"
           ],
@@ -195,11 +200,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você colore no calendário não apenas as aulas, mas também um bloco de testes e revisão. O desenho inicial invade o horário do último ônibus. Sem romantizar o sacrifício, você retira um compromisso que ainda não tinha sido confirmado.\n\nQuando mostra a proposta ao colegiado, há espaço para perguntar sobre uma oferta que não aparece no sistema. A grade ainda depende de vagas e pré-requisitos, mas agora você consegue explicar suas prioridades."
         },
         {
           "textoAlternativa": "Reservar um horário real para revisão dos protótipos em vez de assumir outra entrega às cegas.",
-          "cenaDestinoId": 10307,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap4_revisou_escopo"
           ],
@@ -226,11 +232,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você descobre que reservou três tardes para um protótipo cuja entrega ninguém confirmou. Na conversa com o grupo, explica o limite de horário e propõe uma revisão menor, com data e testes possíveis.\n\nA primeira reação é de surpresa; depois alguém retira uma funcionalidade do escopo. Você leva ao colegiado uma proposta menos empolgante no papel, porém mais viável com aulas e ônibus. Nem toda oportunidade recusada é uma derrota."
         },
         {
           "textoAlternativa": "Reabrir as questões que copiei: não posso depender de um resultado que não sei explicar.",
-          "cenaDestinoId": 10400,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap4_encarou_lacuna_calculo"
           ],
@@ -257,11 +264,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você abre a prova antiga ao lado da grade. A nota continua no sistema; o que ela não mostra é quais passos você copiou sem compreender.\n\nNo primeiro exercício, você encontra uma passagem que não consegue justificar. Em vez de marcar a disciplina como \"resolvida\", anota a dúvida e procura horário de revisão.\n\nNão é uma absolvição. É uma tarefa concreta que terá de continuar depois que esta tela fechar."
         },
         {
           "textoAlternativa": "Usar a lista de erros da prova para decidir quais conteúdos preciso revisar.",
-          "cenaDestinoId": 10401,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap4_revisou_erros_calculo"
           ],
@@ -288,7 +296,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A lista que você fez ao sair da prova ainda tem três pontos: fatoração, interpretação de limite e tempo de resolução. Você separa um horário possível para cada um, sem lotar a agenda com uma quarta disciplina imaginária.\n\nNa primeira tentativa, o resultado sai errado de novo. Você volta ao passo marcado e consegue explicar onde se perdeu. É menos vistoso do que uma nota, mas é uma mudança verificável no método."
         }
       ]
     },
@@ -301,7 +310,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Perguntar por um plantão de dúvidas e reservar um horário fixo.",
-          "cenaDestinoId": 10095,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap3_buscou_reforco"
           ],
@@ -330,11 +339,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você reserva um plantão e coloca o horário do ônibus ao lado. A vaga na turma continua incerta, mas a dúvida já tem endereço."
         },
         {
           "textoAlternativa": "Salvar o contato, mas esperar a rotina do semestre se estabilizar.",
-          "cenaDestinoId": 10096,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap3_adia_recuperacao"
           ],
@@ -361,7 +371,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você salva o contato sem marcar horário. Outra notificação do portal ocupa a tela antes de a pendência de Cálculo sumir da cabeça."
         }
       ]
     },
@@ -374,7 +385,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Desenhar os passos e admitir o que ainda precisa conferir.",
-          "cenaDestinoId": 10097,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap4_compartilhou_metodo"
           ],
@@ -405,11 +416,12 @@
           },
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você mostra a linha que pulou. Dandara corrige o sinal, e vocês conseguem explicar por que a fatoração funciona."
         },
         {
           "textoAlternativa": "Indicar a lista que ajudou você e voltar aos editais.",
-          "cenaDestinoId": 10098,
+          "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap3_indicou_material"
           ],
@@ -436,7 +448,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Dandara anota a lista indicada. Você volta aos editais com uma justificativa ainda para conferir depois."
         }
       ]
     },
@@ -478,7 +491,8 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar se tem terceira opção.",
@@ -509,7 +523,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Dispensar o conselho de Caio e conferir os editais por conta própria.",
@@ -540,7 +555,8 @@
           "impactoRelacionamento": {
             "VETERANO": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar sobre o edital de cooperação acadêmica internacional.",
@@ -571,7 +587,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -584,7 +601,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Salvar o edital e montar um plano de idioma e portfólio.",
-          "cenaDestinoId": 10099,
+          "cenaDestinoId": 302,
           "flagsConcedidas": [
             "cap4_plano_internacional"
           ],
@@ -613,11 +630,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você abre uma nota com duas colunas: idioma e portfólio. A primeira tarefa é descobrir o custo que o título da bolsa omitiu."
         },
         {
           "textoAlternativa": "Guardar o link, sem assumir mais um prazo agora.",
-          "cenaDestinoId": 10100,
+          "cenaDestinoId": 302,
           "flagsConcedidas": [
             "cap4_viu_internacional"
           ],
@@ -644,7 +662,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você salva o link sem se inscrever. Na pasta de oportunidades, ele ganha uma data para ser revisitado, não uma promessa."
         }
       ]
     },
@@ -682,7 +701,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -720,7 +740,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -733,7 +754,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Insistir.",
-          "cenaDestinoId": 10101,
+          "cenaDestinoId": 303,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -760,11 +781,12 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "carisma": 2
-          }
+          },
+          "textoConsequencia": "Você pede o regulamento do ajuste. A funcionária aponta a seção e confirma o protocolo; dias depois, chega a convocação das entrevistas."
         },
         {
           "textoAlternativa": "Agradecer e sair com o número do protocolo.",
-          "cenaDestinoId": 10102,
+          "cenaDestinoId": 303,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -789,7 +811,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você guarda o protocolo antes de sair. No corredor, chega a convocação para as entrevistas dos dois editais."
         }
       ]
     },
@@ -802,7 +825,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Porque quero aprender a pesquisar. Mesmo que dê trabalho.",
-          "cenaDestinoId": 10103,
+          "cenaDestinoId": 304,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -831,11 +854,12 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "— Quero aprender a pesquisar inclusive quando o resultado contraria a hipótese — você diz. Sérgio volta ao gráfico em vez de oferecer um elogio."
         },
         {
           "textoAlternativa": "Porque preciso da bolsa. E porque quero aprender também.",
-          "cenaDestinoId": 10104,
+          "cenaDestinoId": 304,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -862,11 +886,12 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você fala da passagem, da bolsa e da pergunta do projeto. Sérgio anota a disponibilidade que teria de ser respeitada."
         },
         {
           "textoAlternativa": "Porque quero mudar o mundo com tecnologia.",
-          "cenaDestinoId": 10105,
+          "cenaDestinoId": 304,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -895,7 +920,8 @@
           },
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "— Quero mudar o mundo — você diz. Sérgio pergunta qual parte daquele gráfico você consegue explicar hoje; a sala fica em silêncio por um instante."
         }
       ]
     },
@@ -908,7 +934,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Consigo. Já expliquei coisas pra colegas antes.",
-          "cenaDestinoId": 10106,
+          "cenaDestinoId": 3045,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -935,11 +961,12 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você conta de uma colega a quem explicou uma medida. Para uma dúvida nova, começaria pelo valor esperado e pela leitura do multímetro."
         },
         {
           "textoAlternativa": "Não sei. Mas quero tentar.",
-          "cenaDestinoId": 10107,
+          "cenaDestinoId": 3045,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -968,11 +995,12 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "— Não sei tudo — você admite. Meira aponta o multímetro: — Então começamos pelo que dá para medir."
         },
         {
           "textoAlternativa": "Tenho paciência. Isso conta?",
-          "cenaDestinoId": 10108,
+          "cenaDestinoId": 3045,
           "flagsConcedidas": [],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -999,7 +1027,8 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Paciência conta — Meira diz. — Ela não substitui método. Você anota os dois na mesma página."
         }
       ]
     },
@@ -1037,7 +1066,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1050,7 +1080,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Estudar primeiro. Sem entender, eu não mexo.",
-          "cenaDestinoId": 10109,
+          "cenaDestinoId": 3047,
           "flagsConcedidas": [
             "sistema_q1_estudar"
           ],
@@ -1077,11 +1107,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca 'estudar'. A barra de progresso anda; o portal não pergunta o que fez quando o manual estava incompleto."
         },
         {
           "textoAlternativa": "Mexer primeiro. Eu aprendo quebrando.",
-          "cenaDestinoId": 10110,
+          "cenaDestinoId": 3047,
           "flagsConcedidas": [
             "sistema_q1_mexer"
           ],
@@ -1108,7 +1139,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca 'testar'. A barra de progresso anda; não há campo para dizer que desligou a fonte antes de mudar o fio."
         }
       ]
     },
@@ -1121,7 +1153,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Prefiro trabalhar por conta própria.",
-          "cenaDestinoId": 10111,
+          "cenaDestinoId": 3048,
           "flagsConcedidas": [
             "sistema_q2_sozinha"
           ],
@@ -1148,11 +1180,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca trabalho individual. A tela não pergunta se prefere companhia para revisar um resultado depois."
         },
         {
           "textoAlternativa": "Prefiro trabalhar em grupo.",
-          "cenaDestinoId": 10112,
+          "cenaDestinoId": 3048,
           "flagsConcedidas": [
             "sistema_q2_grupo"
           ],
@@ -1179,7 +1212,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca equipe. Malu responde com uma figurinha de seis pessoas olhando para a mesma planilha vazia."
         }
       ]
     },
@@ -1192,7 +1226,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Sim. Quero ver meu nome em algum lugar.",
-          "cenaDestinoId": 10113,
+          "cenaDestinoId": 3049,
           "flagsConcedidas": [
             "sistema_q3_visivel"
           ],
@@ -1219,11 +1253,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você pede que seu nome apareça quando o trabalho for seu. O portal traduz essa frase em 'ambição'."
         },
         {
           "textoAlternativa": "Não. Isso não muda o que eu faço.",
-          "cenaDestinoId": 10114,
+          "cenaDestinoId": 3049,
           "flagsConcedidas": [
             "sistema_q3_invisivel"
           ],
@@ -1250,7 +1285,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca não. Ainda assim, salva a pergunta: o sistema confundiu holofote com crédito pelo trabalho?"
         }
       ]
     },
@@ -1263,7 +1299,7 @@
       "escolhas": [
         {
           "textoAlternativa": "Saber. Preciso de plano.",
-          "cenaDestinoId": 10115,
+          "cenaDestinoId": 3050,
           "flagsConcedidas": [
             "sistema_q4_planejar"
           ],
@@ -1290,11 +1326,12 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escolhe plano. A notificação do último ônibus toca exatamente quando o portal chama isso de traço permanente."
         },
         {
           "textoAlternativa": "Descobrir. Plano engessa.",
-          "cenaDestinoId": 10116,
+          "cenaDestinoId": 3050,
           "flagsConcedidas": [
             "sistema_q4_improvisar"
           ],
@@ -1321,7 +1358,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escolhe improviso. Na tela seguinte, o portal exige uma data fixa para a trilha que pretende recomendar."
         }
       ]
     },
@@ -1361,7 +1399,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Discordar.",
@@ -1392,7 +1431,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1430,7 +1470,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1468,7 +1509,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1506,7 +1548,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Priorizar a monitoria e o trabalho com estudantes.",
@@ -1535,7 +1578,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Não assumir bolsa; explorar projetos independentes.",
@@ -1564,7 +1608,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Não concorrer e reconsiderar prioridades.",
@@ -1593,7 +1638,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Deixar a decisão para depois; há risco de perder o prazo.",
@@ -1622,7 +1668,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Tentar dar conta de tudo, mesmo sem saber como.",
@@ -1654,7 +1701,8 @@
           "atributosAlterados": {
             "confianca": -5,
             "energia": -30
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1692,7 +1740,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "DTEC.",
@@ -1721,7 +1770,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Nenhum.",
@@ -1750,7 +1800,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Deixar o prazo passar.",
@@ -1779,7 +1830,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1820,7 +1872,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1861,7 +1914,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1903,7 +1957,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1946,995 +2001,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1095,
-      "id": 10095,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você reserva um plantão e coloca o horário do ônibus ao lado. A vaga na turma continua incerta, mas a dúvida já tem endereço.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir a grade com Caio.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1096,
-      "id": 10096,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você salva o contato sem marcar horário. Outra notificação do portal ocupa a tela antes de a pendência de Cálculo sumir da cabeça.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir a grade com Caio.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1097,
-      "id": 10097,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você mostra a linha que pulou. Dandara corrige o sinal, e vocês conseguem explicar por que a fatoração funciona.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir a grade com Caio.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1098,
-      "id": 10098,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Dandara anota a lista indicada. Você volta aos editais com uma justificativa ainda para conferir depois.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir a grade com Caio.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1099,
-      "id": 10099,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você abre uma nota com duas colunas: idioma e portfólio. A primeira tarefa é descobrir o custo que o título da bolsa omitiu.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Confirmar o procedimento no colegiado.",
-          "cenaDestinoId": 302,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1100,
-      "id": 10100,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você salva o link sem se inscrever. Na pasta de oportunidades, ele ganha uma data para ser revisitado, não uma promessa.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Confirmar o procedimento no colegiado.",
-          "cenaDestinoId": 302,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1101,
-      "id": 10101,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pede o regulamento do ajuste. A funcionária aponta a seção e confirma o protocolo; dias depois, chega a convocação das entrevistas.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à entrevista da IC.",
-          "cenaDestinoId": 303,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1102,
-      "id": 10102,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você guarda o protocolo antes de sair. No corredor, chega a convocação para as entrevistas dos dois editais.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à entrevista da IC.",
-          "cenaDestinoId": 303,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1103,
-      "id": 10103,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Quero aprender a pesquisar inclusive quando o resultado contraria a hipótese — você diz. Sérgio volta ao gráfico em vez de oferecer um elogio.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à entrevista da monitoria.",
-          "cenaDestinoId": 304,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1104,
-      "id": 10104,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fala da passagem, da bolsa e da pergunta do projeto. Sérgio anota a disponibilidade que teria de ser respeitada.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à entrevista da monitoria.",
-          "cenaDestinoId": 304,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1105,
-      "id": 10105,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Quero mudar o mundo — você diz. Sérgio pergunta qual parte daquele gráfico você consegue explicar hoje; a sala fica em silêncio por um instante.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ir à entrevista da monitoria.",
-          "cenaDestinoId": 304,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1106,
-      "id": 10106,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você conta de uma colega a quem explicou uma medida. Para uma dúvida nova, começaria pelo valor esperado e pela leitura do multímetro.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Abrir o questionário do portal.",
-          "cenaDestinoId": 3045,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1107,
-      "id": 10107,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Não sei tudo — você admite. Meira aponta o multímetro: — Então começamos pelo que dá para medir.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Abrir o questionário do portal.",
-          "cenaDestinoId": 3045,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1108,
-      "id": 10108,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "— Paciência conta — Meira diz. — Ela não substitui método. Você anota os dois na mesma página.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Abrir o questionário do portal.",
-          "cenaDestinoId": 3045,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1109,
-      "id": 10109,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você marca 'estudar'. A barra de progresso anda; o portal não pergunta o que fez quando o manual estava incompleto.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Responder à segunda pergunta.",
-          "cenaDestinoId": 3047,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1110,
-      "id": 10110,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você marca 'testar'. A barra de progresso anda; não há campo para dizer que desligou a fonte antes de mudar o fio.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Responder à segunda pergunta.",
-          "cenaDestinoId": 3047,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1111,
-      "id": 10111,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você marca trabalho individual. A tela não pergunta se prefere companhia para revisar um resultado depois.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Responder à terceira pergunta.",
-          "cenaDestinoId": 3048,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1112,
-      "id": 10112,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você marca equipe. Malu responde com uma figurinha de seis pessoas olhando para a mesma planilha vazia.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Responder à terceira pergunta.",
-          "cenaDestinoId": 3048,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1113,
-      "id": 10113,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você pede que seu nome apareça quando o trabalho for seu. O portal traduz essa frase em 'ambição'.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Responder à quarta pergunta.",
-          "cenaDestinoId": 3049,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1114,
-      "id": 10114,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você marca não. Ainda assim, salva a pergunta: o sistema confundiu holofote com crédito pelo trabalho?",
-      "escolhas": [
-        {
-          "textoAlternativa": "Responder à quarta pergunta.",
-          "cenaDestinoId": 3049,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1115,
-      "id": 10115,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você escolhe plano. A notificação do último ônibus toca exatamente quando o portal chama isso de traço permanente.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ver a recomendação do portal.",
-          "cenaDestinoId": 3050,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1116,
-      "id": 10116,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você escolhe improviso. Na tela seguinte, o portal exige uma data fixa para a trilha que pretende recomendar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Ver a recomendação do portal.",
-          "cenaDestinoId": 3050,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1306,
-      "id": 10306,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você colore no calendário não apenas as aulas, mas também um bloco de testes e revisão. O desenho inicial invade o horário do último ônibus. Sem romantizar o sacrifício, você retira um compromisso que ainda não tinha sido confirmado.\n\nQuando mostra a proposta ao colegiado, há espaço para perguntar sobre uma oferta que não aparece no sistema. A grade ainda depende de vagas e pré-requisitos, mas agora você consegue explicar suas prioridades.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Pedir orientação sobre a oferta real.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1307,
-      "id": 10307,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você descobre que reservou três tardes para um protótipo cuja entrega ninguém confirmou. Na conversa com o grupo, explica o limite de horário e propõe uma revisão menor, com data e testes possíveis.\n\nA primeira reação é de surpresa; depois alguém retira uma funcionalidade do escopo. Você leva ao colegiado uma proposta menos empolgante no papel, porém mais viável com aulas e ônibus. Nem toda oportunidade recusada é uma derrota.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Pedir orientação sobre a oferta real.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1310,
-      "id": 10400,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "Você abre a prova antiga ao lado da grade. A nota continua no sistema; o que ela não mostra é quais passos você copiou sem compreender.\n\nNo primeiro exercício, você encontra uma passagem que não consegue justificar. Em vez de marcar a disciplina como \"resolvida\", anota a dúvida e procura horário de revisão.\n\nNão é uma absolvição. É uma tarefa concreta que terá de continuar depois que esta tela fechar.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Conferir pré-requisitos e buscar orientação com as lacunas anotadas.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
-        }
-      ]
-    },
-    {
-      "ordemGlobal": 1311,
-      "id": 10401,
-      "capitulo": "Capítulo 4 — A Bifurcação",
-      "personagemFalando": "Narrador",
-      "textoNarrativo": "A lista que você fez ao sair da prova ainda tem três pontos: fatoração, interpretação de limite e tempo de resolução. Você separa um horário possível para cada um, sem lotar a agenda com uma quarta disciplina imaginária.\n\nNa primeira tentativa, o resultado sai errado de novo. Você volta ao passo marcado e consegue explicar onde se perdeu. É menos vistoso do que uma nota, mas é uma mudança verificável no método.",
-      "escolhas": [
-        {
-          "textoAlternativa": "Levar esse planejamento para a conversa sobre a matrícula.",
-          "cenaDestinoId": 301,
-          "flagsConcedidas": [],
-          "flagRequerida": null,
-          "scoreMinimo": 0,
-          "participacaoMinima": 0,
-          "participacaoMaxima": 0,
-          "scoreGanho": 0,
-          "participacaoGanha": 0,
-          "custoEnergia": 0,
-          "permiteEnergiaInsuficiente": false,
-          "energiaAbaixoDe": 0,
-          "confiancaMinima": 0,
-          "confiancaMaxima": 0,
-          "vidaSocialMinima": 0,
-          "vidaSocialMaxima": 0,
-          "carismaMinimo": 0,
-          "carismaMaximo": 0,
-          "logicaMinima": 0,
-          "logicaMaxima": 0,
-          "sanidadeMinima": 0,
-          "sanidadeMaxima": 0,
-          "relacionamentoMinimo": {},
-          "relacionamentoMaximo": {},
-          "interesseAlvo": null,
-          "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

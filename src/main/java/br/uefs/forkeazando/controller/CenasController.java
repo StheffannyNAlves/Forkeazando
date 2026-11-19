@@ -101,37 +101,7 @@ public class CenasController {
                 continue;
             }
 
-            String capituloAtual = atual.getCapitulo();
-            if (!capituloAtual.equals(ultimocapExibido)){
-                view.mostrarTransicao(capituloAtual);
-                ultimocapExibido = capituloAtual;
-            }
-            if (CenasDeChefe.recebeBencaoDoCaramelo(atual.getId(), estado.getProtagonista())) {
-                view.mostrarBencaoCaramelo();
-            }
-
-            if (atual.getId() == CENA_CHUTE_SISTEMA && !estado.getProtagonista().temFlag("viu_chute_sistema")) {
-                view.mostrarChuteDoSistema(estado.getProtagonista());
-                estado.getProtagonista().adicionarFlag("viu_chute_sistema");
-                estado.marcarAlterado();
-            }
-
-            if (atual.getId() == CENA_CURRICULO
-                    && !estado.getProtagonista().temFlag("viu_curriculo_cap8")) {
-                view.mostrarCurriculo(estado.getProtagonista());
-                estado.getProtagonista().adicionarFlag("viu_curriculo_cap8");
-                estado.marcarAlterado();
-            }
-
-            if ((ResultadoCalculo.ehCenaDeResultado(atual.getId()) || atual.getId() == CENA_RESULTADO_LEGADO)
-                    && ResultadoCalculo.assegurarNota(estado.getProtagonista(), atual.getId())) {
-                estado.marcarAlterado();
-            }
-
-            view.renderizar(atual, estado.getProtagonista(), estado.getSemestresExtras(),VisuaisDeCena.paraCena(atual.getId()).orElse(null));
-            if (atual.getId() == CENA_EPILOGOS) {
-                view.mostrarEpilogos(estado.getProtagonista());
-            }
+            processarEntradaDaCena(atual);
 
             List<Escolha> disponiveis = atual.getEscolhasDisponiveis(estado.getProtagonista());
 
@@ -225,6 +195,40 @@ public class CenasController {
             estado.setCenaAtualId(destino);
         }
         return ResultadoPartida.FIM_DE_JOGO;
+    }
+
+    private void processarEntradaDaCena(Cena atual) {
+        String capituloAtual = atual.getCapitulo();
+        if (!capituloAtual.equals(ultimocapExibido)){
+            view.mostrarTransicao(capituloAtual);
+            ultimocapExibido = capituloAtual;
+        }
+        if (CenasDeChefe.recebeBencaoDoCaramelo(atual.getId(), estado.getProtagonista())) {
+            view.mostrarBencaoCaramelo();
+        }
+
+        if (atual.getId() == CENA_CHUTE_SISTEMA && !estado.getProtagonista().temFlag("viu_chute_sistema")) {
+            view.mostrarChuteDoSistema(estado.getProtagonista());
+            estado.getProtagonista().adicionarFlag("viu_chute_sistema");
+            estado.marcarAlterado();
+        }
+
+        if (atual.getId() == CENA_CURRICULO
+                && !estado.getProtagonista().temFlag("viu_curriculo_cap8")) {
+            view.mostrarCurriculo(estado.getProtagonista());
+            estado.getProtagonista().adicionarFlag("viu_curriculo_cap8");
+            estado.marcarAlterado();
+        }
+
+        if ((ResultadoCalculo.ehCenaDeResultado(atual.getId()) || atual.getId() == CENA_RESULTADO_LEGADO)
+                && ResultadoCalculo.assegurarNota(estado.getProtagonista(), atual.getId())) {
+            estado.marcarAlterado();
+        }
+
+        view.renderizar(atual, estado.getProtagonista(), estado.getSemestresExtras(),VisuaisDeCena.paraCena(atual.getId()).orElse(null));
+        if (atual.getId() == CENA_EPILOGOS) {
+            view.mostrarEpilogos(estado.getProtagonista());
+        }
     }
 
     private void registrarFinalSeIdentificado() {

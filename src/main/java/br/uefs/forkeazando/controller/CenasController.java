@@ -87,6 +87,25 @@ public class CenasController {
         return escolhida.getCenaDestinoId();
     }
 
+    private ResultadoTransicao processarEscolha(Cena atual, Escolha escolhida){
+        int destino = aplicarEscolhaEObterDestino(escolhida);
+        if (destino == Estado.CENA_RETOMAR) {
+            // Retoma o caminho original após o apagão
+            destino = estado.consumirDestinoPendente();
+            Protagonista protagonista = estado.getProtagonista();
+            protagonista.recuperarEnergia((int) Math.round(protagonista.getEnergiaMaxima() * RECUPERAR_ENERGIA));
+
+        } else if (podeApagar(atual)
+                && estado.getProtagonista().getEnergia() == 0) {
+
+            entrarEmApagao(destino);
+            return ResultadoTransicao.CONTINUAR_JOGO;
+        }
+
+        registrarFinalSeIdentificado();
+        return processarDestino(destino);
+    }
+
 
     public ResultadoPartida iniciar() {
         view.resetarCacheVisual();
@@ -159,25 +178,7 @@ public class CenasController {
             }
 
             Escolha escolhida = disponiveis.get(indice);
-            int destino = aplicarEscolhaEObterDestino(escolhida);
-
-
-            if (destino == Estado.CENA_RETOMAR) {
-                // Retoma o caminho original após o apagão
-                destino = estado.consumirDestinoPendente();
-
-                Protagonista protagonista = estado.getProtagonista();
-                protagonista.recuperarEnergia((int) Math.round(protagonista.getEnergiaMaxima() * RECUPERAR_ENERGIA));
-
-            } else if (podeApagar(atual)
-                    && estado.getProtagonista().getEnergia() == 0) {
-
-                entrarEmApagao(destino);
-                continue;
-            }
-
-            registrarFinalSeIdentificado();
-            ResultadoTransicao resultadoTransicao = processarDestino(destino);
+            ResultadoTransicao resultadoTransicao = processarEscolha(atual, escolhida);
             if (resultadoTransicao == ResultadoTransicao.CONTINUAR_JOGO) {
                 continue;
             }

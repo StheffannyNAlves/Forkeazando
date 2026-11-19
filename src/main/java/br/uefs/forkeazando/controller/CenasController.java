@@ -52,24 +52,24 @@ public class CenasController {
 
     }
 
-    private enum ResultadoAvancoCapitulo {
-        CAPITULO_AVANCADO,
+    private enum ResultadoTransicao {
+        CONTINUAR_JOGO,
         FIM_DE_JOGO,
         ERRO_DE_ROTA
     }
 
-    private ResultadoAvancoCapitulo processarDestino(int destino){
+    private ResultadoTransicao processarDestino(int destino){
         if (destino != Estado.CENA_ENCERRAR) {
             estado.setCenaAtualId(destino);
-            return ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
+            return ResultadoTransicao.CONTINUAR_JOGO;
         }
 
-        ResultadoAvancoCapitulo resultado = tentarAvancarCapitulo();
+        ResultadoTransicao resultado = tentarAvancarCapitulo();
 
         return switch (resultado) {
-            case CAPITULO_AVANCADO -> ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
-            case FIM_DE_JOGO -> ResultadoAvancoCapitulo.FIM_DE_JOGO;
-            case ERRO_DE_ROTA -> ResultadoAvancoCapitulo.ERRO_DE_ROTA;
+            case CONTINUAR_JOGO -> ResultadoTransicao.CONTINUAR_JOGO;
+            case FIM_DE_JOGO -> ResultadoTransicao.FIM_DE_JOGO;
+            case ERRO_DE_ROTA -> ResultadoTransicao.ERRO_DE_ROTA;
         };
     }
     // A resolução do futuro é uma transição automática, não uma escolha de carreira
@@ -177,22 +177,15 @@ public class CenasController {
             }
 
             registrarFinalSeIdentificado();
-
-            if (destino == Estado.CENA_ENCERRAR) {
-                ResultadoAvancoCapitulo resultadoAvanco = tentarAvancarCapitulo();
-
-                if (resultadoAvanco == ResultadoAvancoCapitulo.CAPITULO_AVANCADO) {
-                    continue;
-                }
-
-                if (resultadoAvanco == ResultadoAvancoCapitulo.FIM_DE_JOGO) {
-                    return ResultadoPartida.FIM_DE_JOGO;
-                }
-
-                return ResultadoPartida.ERRO_DE_ROTA;
+            ResultadoTransicao resultadoTransicao = processarDestino(destino);
+            if (resultadoTransicao == ResultadoTransicao.CONTINUAR_JOGO) {
+                continue;
             }
+            if (resultadoTransicao == ResultadoTransicao.ERRO_DE_ROTA)
+                return ResultadoPartida.ERRO_DE_ROTA;
+            if (resultadoTransicao == ResultadoTransicao.FIM_DE_JOGO)
+                return ResultadoPartida.FIM_DE_JOGO;
 
-            estado.setCenaAtualId(destino);
         }
         return ResultadoPartida.FIM_DE_JOGO;
     }
@@ -259,12 +252,12 @@ public class CenasController {
 
 
 
-    private ResultadoAvancoCapitulo tentarAvancarCapitulo() {
+    private ResultadoTransicao tentarAvancarCapitulo() {
         int capituloAtual = estado.getCapituloAtual();
 
         if (!Roteador.temProximoCapitulo(capituloAtual)) {
             view.mostrarMensagem("Fim. Obrigado por jogar.");
-            return ResultadoAvancoCapitulo.FIM_DE_JOGO;
+            return ResultadoTransicao.FIM_DE_JOGO;
         }
 
         int proximoCapitulo = capituloAtual + 1;
@@ -274,7 +267,7 @@ public class CenasController {
 
         if (primeiraCena < 0) {
             view.mostrarMensagem("Não foi possível determinar a próxima rota. " + "A partida foi mantida na memória, " + "mas a rota precisa ser corrigida.");
-            return ResultadoAvancoCapitulo.ERRO_DE_ROTA;
+            return ResultadoTransicao.ERRO_DE_ROTA;
         }
 
         // A transição só ocorre depois de validar o destino.
@@ -282,7 +275,7 @@ public class CenasController {
         estado.setCenaAtualId(primeiraCena);
         estado.marcarAlterado();
 
-        return ResultadoAvancoCapitulo.CAPITULO_AVANCADO;
+        return ResultadoTransicao.CONTINUAR_JOGO;
     }
 
 

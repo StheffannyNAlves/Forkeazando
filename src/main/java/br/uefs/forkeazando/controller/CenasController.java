@@ -88,6 +88,13 @@ public class CenasController {
     }
 
     private ResultadoTransicao processarEscolha(Cena atual, Escolha escolhida){
+        if (atual.getId() != estado.getCenaAtualId()) {
+            throw new IllegalArgumentException("A cena informada não é a cena atual.");
+        }
+
+        if (!atual.getEscolhasDisponiveis(estado.getProtagonista()).contains(escolhida)) {
+            throw new IllegalArgumentException("Escolha indisponível.");
+        }
         int destino = aplicarEscolhaEObterDestino(escolhida);
         if (destino == Estado.CENA_RETOMAR) {
             // Retoma o caminho original após o apagão

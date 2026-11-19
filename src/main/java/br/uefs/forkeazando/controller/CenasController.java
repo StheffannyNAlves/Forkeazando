@@ -8,7 +8,7 @@ import br.uefs.forkeazando.roteiro.ResultadoCalculo;
 import br.uefs.forkeazando.roteiro.ResolucaoDeFuturo;
 import br.uefs.forkeazando.roteiro.SistemaAcademico;
 import br.uefs.forkeazando.roteiro.VisuaisDeCena;
-import br.uefs.forkeazando.view.CenaView;
+import br.uefs.forkeazando.view.ApresentacaoCena;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 
 
@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class CenasController {
     private final Estado estado;
     private final List<Cena> cenas;
-    private final CenaView view;
+    private final ApresentacaoCena view;
     private final GerenciadorConquistas gerenciadorConquistas;
     private final GerenciadorProgresso gerenciadorProgresso;
     private final Progresso progresso;
@@ -33,11 +33,11 @@ public class CenasController {
     private static final int CENA_EPILOGOS = 660;
     private static final int CENA_RESULTADO_LEGADO = 212;
 
-    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual) {
+    public CenasController(Estado estado, List<Cena> cenas, ApresentacaoCena view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual) {
         this(estado, cenas, view, progresso, gerenciadorProgresso, autosave, gatilhoAutosave, salvarManual, SeletorDeOpcoes.terminal());
     }
 
-    public CenasController(Estado estado, List<Cena> cenas, CenaView view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual, SeletorDeOpcoes seletor) {
+    public CenasController(Estado estado, List<Cena> cenas, ApresentacaoCena view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual, SeletorDeOpcoes seletor) {
         this.estado = estado;
         this.cenas = cenas;
         this.view = view;

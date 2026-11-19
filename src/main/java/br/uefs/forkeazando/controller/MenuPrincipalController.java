@@ -8,10 +8,7 @@ import br.uefs.forkeazando.model.Protagonista;
 import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.roteiro.*;
-import br.uefs.forkeazando.view.CenaView;
-import br.uefs.forkeazando.view.TelaConfiguracoes;
-import br.uefs.forkeazando.view.MenuPrincipal;
-import br.uefs.forkeazando.view.TelaCaracteristicas;
+import br.uefs.forkeazando.view.*;
 import br.uefs.forkeazando.view.widget.MenuInterativo;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.model.Progresso;
@@ -196,7 +193,7 @@ public class MenuPrincipalController {
         Progresso emUso = (progresso != null) ? progresso : new Progresso(); // evita que o construtor de CenasController receba null, sem apagar ou sobrescrever automaticamente os dados inválidos.
 
         var config = ConfiguracoesAdmin.get();
-        CenaView cenaView = new CenaView(config.isDicasAtalho(), config.getVelocidadeTexto());
+        ApresentacaoCena cenaView = new CenaView(config.isDicasAtalho(), config.getVelocidadeTexto());
 
         ResultadoPartida resultado = new CenasController(partidaAtual, cenas, cenaView, emUso, gerenciadorProgresso,
                 savesController::salvarAutosave, gatilhoAutosave, this::salvarPartidaManual).iniciar();

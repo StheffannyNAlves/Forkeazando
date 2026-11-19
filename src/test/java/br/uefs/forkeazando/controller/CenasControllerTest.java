@@ -20,10 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Testa o fluxo do CenasController sem terminal: o menu é respondido por um
- * SeletorRoteirizado e a tela é uma CenaViewFalsa que só registra chamadas.
- */
+
 class CenasControllerTest {
 
     private static final String CAP = "Capítulo 1";
@@ -87,7 +84,6 @@ class CenasControllerTest {
         }
     }
 
-    // ---------- escolha e avanço de cena ----------
 
     @Test
     void escolherUmaOpcaoAplicaOsEfeitosNoEstadoEAvancaParaADestino() {
@@ -286,7 +282,6 @@ class CenasControllerTest {
         assertEquals("jornada_tecnologia", estado.getCodigoFinal());
     }
 
-    // ---------- apagão (energia zerada) ----------
 
     @Test
     void zerarAEnergiaDisparaOApagaoEDepoisRetomaOCaminhoOriginal() {
@@ -310,9 +305,7 @@ class CenasControllerTest {
         Cena inicio = cena(0, escolha("Esforço", 0).comCustoEnergia(5).build());
         Cena apagao = cena(Estado.CENA_APAGAO, escolha("Dormir", Estado.CENA_RETOMAR).build());
         seletor.escolhe("Dormir").escolhe(VOLTAR);
-
         controller(inicio, apagao).iniciar();
-
         assertEquals(List.of(0, Estado.CENA_APAGAO, 0), view.cenasRenderizadas);
         assertTrue(p.getEnergia() > 0);
     }
@@ -323,14 +316,11 @@ class CenasControllerTest {
         Cena inicio = cena(0, escolha("Virar a noite", 1).comCustoEnergia(p.getEnergia()).build());
         Cena destino = cena(1, escolha("Seguir", 1).build());
         seletor.escolhe("Virar a noite").escolhe(VOLTAR);
-
         controller(inicio, destino).iniciar();
-
         assertEquals(List.of(0, 1), view.cenasRenderizadas);
         assertEquals(0, p.getEnergia());
     }
 
-    // ---------- autosave ----------
 
     @Test
     void autosaveDisparaDepoisDeNEscolhasEMostraAviso() {
@@ -338,9 +328,7 @@ class CenasControllerTest {
         Cena b = cena(1, escolha("b", 2).build());
         Cena c = cena(2, escolha("c", 2).build());
         seletor.indice(0).indice(0).escolhe(VOLTAR);
-
         controller(2, e -> autosaves.incrementAndGet(), a, b, c).iniciar();
-
         assertEquals(1, autosaves.get());
         assertTrue(view.temMensagemContendo("Progresso salvo automaticamente."));
     }
@@ -350,9 +338,7 @@ class CenasControllerTest {
         Cena a = cena(0, escolha("a", 1).build());
         Cena b = cena(1, escolha("b", 1).build());
         seletor.indice(0).indice(0).escolhe(VOLTAR);
-
         controller(5, e -> autosaves.incrementAndGet(), a, b).iniciar();
-
         assertEquals(0, autosaves.get());
     }
 
@@ -364,28 +350,22 @@ class CenasControllerTest {
             throw new SaveException("disco cheio");
         };
         seletor.indice(0).escolhe(VOLTAR);
-
         ResultadoPartida resultado = controller(1, quebrado, a, b).iniciar();
-
         assertEquals(ResultadoPartida.VOLTAR_AO_MENU, resultado);
         assertTrue(view.temMensagemContendo("Não foi possível salvar automaticamente: disco cheio"));
     }
 
-    // ---------- progresso e conquistas ----------
 
     @Test
     void escolhaQueCumpreRequisitoDeConquistaNotificaEPersiste() {
         Cena inicio = cena(0, escolha("Concluir", 1).comFlagConcedida("cap3_concluido").build());
         Cena proxima = cena(1, escolha("x", 1).build());
         seletor.escolhe("Concluir").escolhe(VOLTAR);
-
         controller(inicio, proxima).iniciar();
-
         assertEquals(List.of(br.uefs.forkeazando.model.Conquista.PRIMEIRO_PASSO), view.conquistas);
         assertTrue(java.nio.file.Files.exists(pasta.resolve("progresso.json")));
     }
 
-    // ---------- construtor ----------
 
     @Test
     void construtorRejeitaDependenciasNulas() {
@@ -394,13 +374,9 @@ class CenasControllerTest {
         Autosave autosave = e -> { };
         Runnable manual = () -> { };
 
-        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso,
-                gerenciadorProgresso, null, gatilho, manual, seletor));
-        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso,
-                gerenciadorProgresso, autosave, null, manual, seletor));
-        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso,
-                gerenciadorProgresso, autosave, gatilho, null, seletor));
-        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso,
-                gerenciadorProgresso, autosave, gatilho, manual, null));
+        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso, gerenciadorProgresso, null, gatilho, manual, seletor));
+        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso, gerenciadorProgresso, autosave, null, manual, seletor));
+        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso, gerenciadorProgresso, autosave, gatilho, null, seletor));
+        assertThrows(NullPointerException.class, () -> new CenasController(estado, cenas, view, progresso, gerenciadorProgresso, autosave, gatilho, manual, null));
     }
 }

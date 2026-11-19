@@ -206,9 +206,7 @@ public class CenasController {
                 continue;
             }
 
-            Protagonista p = estado.getProtagonista();
-            Optional<Final> f = Final.identificar(p.getHistoricoFlags());
-            f.ifPresent(aFinal -> estado.concluir(aFinal.getCodigo()));
+            registrarFinalSeIdentificado();
 
             if (destino == Estado.CENA_ENCERRAR) {
                 ResultadoAvancoCapitulo resultadoAvanco = tentarAvancarCapitulo();
@@ -228,6 +226,13 @@ public class CenasController {
         }
         return ResultadoPartida.FIM_DE_JOGO;
     }
+
+    private void registrarFinalSeIdentificado() {
+        Protagonista p = estado.getProtagonista();
+        Optional<Final> f = Final.identificar(p.getHistoricoFlags());
+        f.ifPresent(aFinal -> estado.concluir(aFinal.getCodigo()));
+    }
+
     private void registrarAutosave(){
         try {
             autosave.salvar(estado);

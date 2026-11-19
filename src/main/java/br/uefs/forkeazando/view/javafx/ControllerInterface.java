@@ -66,7 +66,7 @@ public class ControllerInterface {
     private Animation animacaoTitulo;
 
     @FXML
-    private void iniciar() {
+    private void  initialize() {
         Image imagem = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/campus_uefp.png")));
         arte.setImage(imagem);
         painelArte.setClip(new Rectangle(625, 760));

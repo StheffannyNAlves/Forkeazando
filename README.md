@@ -26,7 +26,7 @@
 
 A história acompanha estudantes de Engenharia de Computação na sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada decisão pode abrir caminhos, restringir possibilidades e produzir consequências nos capítulos seguintes.
 
-A universidade não é apenas o cenário: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa de administrar recursos, compreender as suas próprias características e construir uma trajetória num sistema que nem sempre reconhece o esforço da maneira esperada.
+A universidade não é apenas o cenário: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa administrar recursos, compreender as suas próprias características e construir uma trajetória num sistema que nem sempre reconhece o esforço da maneira esperada.
 
 **Não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.**
 
@@ -56,9 +56,9 @@ Forkeazando transforma a experiência universitária em uma narrativa interativa
 
 ### Protagonistas
 
-A proposta narrativa contempla **dois protagonistas selecionáveis**, com perfis e perspetivas diferentes sobre a universidade. O jogador pode personalizar o nome do personagem escolhido.
+A proposta narrativa contempla **dois protagonistas selecionáveis**, com perfis e perspectivas diferentes sobre a universidade. O jogador pode personalizar o nome do personagem escolhido.
 
-A diferenciação não deve ficar restrita à aparência: escolhas, condições narrativas e acontecimentos posteriores também precisam de refletir a identidade e as experiências de cada um. A revisão das bifurcações exclusivas e a padronização dos nomes **Tiana e Miles** ainda estão em andamento na Fase 3.
+A diferenciação não deve ficar restrita à aparência: escolhas, condições narrativas e acontecimentos posteriores também precisam refletir a identidade e as experiências de cada um. A revisão das bifurcações exclusivas e a integração dos protagonistas **Stheffanny e Davi** ainda estão em andamento na Fase 3.
 
 ### Uma trajetória moldada por escolhas
 
@@ -319,7 +319,7 @@ Por isso, optou-se por uma **reformulação narrativa e estrutural**, em vez de 
 
 - **Melhorar o ritmo:** consolidar cenas de transição redundantes e apresentar a consequência imediata da escolha pelo campo `textoConsequencia`, sem exigir uma nova decisão apenas para avançar.
 - **Fortalecer a causa e consequência:** manter atributos e *flags* que conectam escolhas anteriores a alternativas, acontecimentos e desfechos posteriores.
-- **Diferenciar os protagonistas:** preservar bifurcações e perspectivas próprias de **Tiana e Miles**, permitindo que suas experiências alterem a forma de percorrer situações comuns.
+- **Diferenciar os protagonistas:** preservar bifurcações e perspectivas próprias de **Stheffanny e Davi**, permitindo que suas experiências alterem a forma de percorrer situações comuns.
 - **Aprimorar a consistência:** revisar diálogos, acontecimentos universitários e conexões entre capítulos, além de adicionar verificações de regressão para evitar perdas de caminhos narrativos.
 - **Evoluir o formato dos dados:** introduzir o esquema JSON v3 e adaptar a leitura e a apresentação das consequências, sem deslocar as regras de negócio para as *views* e sem abandonar MVC.
 

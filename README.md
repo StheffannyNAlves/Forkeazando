@@ -1,10 +1,6 @@
 # Forkeazando
 
 <p align="center">
-  <img src="docs/images/fork-versao1.4.0.gif" alt="Demonstração do menu da versão de terminal do Forkeazando (v1.4.0)" width="700">
-</p>
-
-<p align="center">
   <strong>Entre o que era certo e o que ainda pode ser.</strong>
 </p>
 
@@ -17,33 +13,31 @@
   <img src="https://img.shields.io/badge/JavaFX-21-4B9CD3" alt="JavaFX 21">
   <img src="https://img.shields.io/badge/Maven-build-blue?logo=apachemaven&logoColor=white" alt="Maven">
   <img src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&logoColor=white" alt="JUnit 5">
-  <img src="https://img.shields.io/badge/Interface-Terminal%20%2B%20JavaFX%20(beta)-555555" alt="Interfaces terminal e JavaFX beta">
+  <img src="https://img.shields.io/badge/Fase%203-JavaFX%20em%20desenvolvimento-7B4D99" alt="Fase 3 em desenvolvimento">
 </p>
-
----
 
 **Forkeazando** é um jogo narrativo interativo desenvolvido em Java para a disciplina **MI-Programação**, da Universidade Estadual de Feira de Santana (UEFS), seguindo a metodologia PBL (*Problem-Based Learning*).
 
-A história acompanha estudantes de Engenharia de Computação na sua trajetória universitária. Entre disciplinas, projetos, relacionamentos, oportunidades e exigências institucionais, cada decisão pode abrir caminhos, restringir possibilidades e produzir consequências nos capítulos seguintes.
+A história acompanha estudantes de Engenharia de Computação em sua trajetória universitária. Entre disciplinas, projetos, relações pessoais, oportunidades e exigências institucionais, cada decisão pode abrir caminhos, restringir possibilidades e produzir consequências nos capítulos seguintes.
 
-A universidade não é apenas o cenário: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa administrar recursos, compreender as suas próprias características e construir uma trajetória num sistema que nem sempre reconhece o esforço da maneira esperada.
+A universidade não é apenas o cenário: é um ambiente de aprendizado, convivência, competição, adaptação e burocracia. O jogador precisa administrar recursos, compreender suas próprias características e construir uma trajetória num sistema que nem sempre reconhece o esforço da maneira esperada.
 
-**Não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.**
+> **Não basta escolher o que parece certo: é preciso lidar com as consequências do que foi escolhido.**
 
-> **Estado do projeto:** a Fase 2 foi desenvolvida para terminal. A Fase 3, na branch `fase3`, está migrando a experiência para JavaFX. O menu principal e a tela de carregamento já possuem implementação inicial; a interface gráfica completa ainda está em desenvolvimento.
+**Estado atual:** a **Fase 2** está implementada para terminal. A **Fase 3**, desenvolvida na branch [`fase3`](https://github.com/StheffannyNAlves/Forkeazando/tree/fase3), está migrando a experiência para **JavaFX**, mantendo o núcleo do jogo. Já há apresentação de cenas e escolhas, recursos visuais e animações; a integração completa dos menus, dos salvamentos e a validação de todas as rotas permanecem em andamento.
 
 ## Navegação
 
 - [Sobre o jogo](#sobre-o-jogo)
-- [Sistemas de jogo](#-sistemas-de-jogo)
-- [Conquistas e colecionáveis](#-conquistas-e-colecionáveis)
-- [Salvamento e continuidade](#-salvamento-e-continuidade)
-- [Interfaces e controles](#-interfaces-e-controles)
-- [Tecnologias e arquitetura](#-tecnologias-e-arquitetura)
-- [Estrutura do projeto](#-estrutura-do-projeto)
+- [Sistemas de jogo](#sistemas-de-jogo)
+- [Conquistas, colecionáveis e finais](#conquistas-colecionáveis-e-finais)
+- [Salvamento e continuidade](#salvamento-e-continuidade)
+- [Interfaces e controles](#interfaces-e-controles)
+- [Tecnologias e arquitetura](#tecnologias-e-arquitetura)
+- [Estrutura do projeto](#estrutura-do-projeto)
 - [Como executar](#como-executar)
-- [Fase 2](#-fase-2)
-- [Fase 3 — JavaFX](#-fase-3--interface-gráfica-com-javafx)
+- [Testes e qualidade](#testes-e-qualidade)
+- [Evolução do projeto](#evolução-do-projeto)
 - [Limitações conhecidas](#limitações-conhecidas)
 - [Versões](#versões)
 - [Autoria](#autoria)
@@ -52,193 +46,165 @@ A universidade não é apenas o cenário: é um ambiente de aprendizado, conviv�
 
 ## Sobre o jogo
 
-Forkeazando transforma a experiência universitária em uma narrativa interativa. O contexto anterior ao ingresso, a situação econômica e as características pessoais influenciam o início da jornada. Entretanto, **o passado importa sem determinar sozinho o futuro**: as decisões tomadas durante a graduação também afetam atributos, relacionamentos, oportunidades e desfechos.
+O passado do protagonista importa, mas não determina sozinho seu futuro. Sua experiência escolar, situação econômica e características pessoais influenciam o início da jornada; as escolhas tomadas durante a graduação modificam atributos, vínculos, oportunidades e possíveis desfechos.
 
 ### Protagonistas
 
-A proposta narrativa contempla **dois protagonistas selecionáveis**, com perfis e perspectivas diferentes sobre a universidade. O jogador pode personalizar o nome do personagem escolhido.
+O projeto contempla **dois protagonistas selecionáveis, Stheffanny e Davi**, com perspectivas distintas sobre a universidade. O jogador pode personalizar o nome exibido. A lógica já possui identidades internas específicas; a padronização dos nomes visíveis na interface e em partes do roteiro ainda está em revisão.
 
-A diferenciação não deve ficar restrita à aparência: escolhas, condições narrativas e acontecimentos posteriores também precisam refletir a identidade e as experiências de cada um. A revisão das bifurcações exclusivas e a integração dos protagonistas **Stheffanny e Davi** ainda estão em andamento na Fase 3.
+A proposta não é simplesmente trocar a aparência do personagem: decisões, condições iniciais e variações narrativas devem permitir experiências diferentes sem perder a coerência da história compartilhada.
 
-### Uma trajetória moldada por escolhas
+### Escolhas e consequências
 
-O jogo utiliza atributos, relacionamentos e *flags* para registrar acontecimentos e decisões relevantes. Esses dados condicionam alternativas e situações posteriores, permitindo que uma escolha em determinado capítulo tenha repercussões em outro.
-
-O jogador precisa de equilibrar:
-
-- **Desempenho acadêmico:** conhecimentos, projetos e resultados.
-- **Participação:** envolvimento em discussões e atividades.
-- **Energia:** disposição limitada diante das exigências da rotina.
-- **Relacionamentos:** vínculos com colegas, veteranos e professores.
-- **Habilidades e decisões:** características que habilitam ou restringem caminhos.
-- **Adaptação institucional:** regras, procedimentos, formulários e prazos.
-
-Uma escolha pode favorecer um desses aspectos e gerar custos em outro. O objetivo é construir uma trajetória coerente, e não apresentar cenas isoladas sem consequências.
+As decisões não servem apenas para trocar de texto. Elas modificam o estado do jogo e podem repercutir em capítulos posteriores por meio de **atributos**, **relacionamentos** e **flags**. Algumas alternativas dependem de requisitos específicos; outras deixam de estar disponíveis conforme a trajetória construída.
 
 ### A universidade como sistema
 
-Além dos desafios acadêmicos e pessoais, a narrativa explora procedimentos de matrícula, comunicações institucionais, avaliações e outras exigências burocráticas. Aprender a navegar por essas estruturas pode ser tão importante quanto desenvolver capacidade técnica.
+Além dos desafios acadêmicos, a narrativa incorpora matrícula, editais, avaliações, formulários, comunicados, prazos e demais estruturas institucionais. Aprender a lidar com esses processos faz parte do conflito do jogo: nem sempre saber fazer algo significa conseguir demonstrar isso dentro das regras da instituição.
 
 ---
 
-## 🎮 Sistemas de jogo
+## Sistemas de jogo
 
-### Atributos e recursos
+| Sistema | Papel na jornada |
+|---|---|
+| **Energia** | Recurso limitado, gasto em atividades e responsabilidades; seu esgotamento pode desencadear um episódio específico (cenas 970–972). |
+| **Score** | Representa o desempenho acumulado e participa de condições de progressão. |
+| **Participação** | Representa o envolvimento em atividades e discussões acadêmicas. |
+| **Características e habilidades** | Influenciam atributos e podem habilitar alternativas. |
+| **Relacionamentos** | Registram vínculos com colegas, veteranos e professores. |
+| **Flags** | Preservam acontecimentos e decisões que afetam cenas e desfechos futuros. |
 
-- **Energia:** recurso consumido por atividades e responsabilidades. Na lógica da versão de terminal, chegar a zero pode desencadear um episódio de esgotamento (cenas 970 a 972), cujo desenrolar considera os vínculos construídos.
-- **Score:** desempenho acumulado, utilizado em regras de progressão e condições narrativas.
-- **Participação:** envolvimento nas atividades e discussões acadêmicas.
-- **Características e habilidades:** aspectos do protagonista que podem habilitar alternativas.
-- **Relacionamentos:** vínculos com personagens secundários.
-- **Flags:** registros de escolhas e acontecimentos que influenciam a continuidade da história.
+### Narrativa e percursos
 
-### Cenas e escolhas
+A estrutura inclui um prólogo, oito capítulos e caminhos acadêmicos e profissionais distintos, incluindo trajetórias ligadas à **iniciação científica**, ao **DTEC** e ao **trabalho independente**. O roteiro é carregado de arquivos JSON e processado pelas regras do jogo, independentemente da interface utilizada.
 
-A narrativa é organizada em prólogo, capítulos, cenas e alternativas. As escolhas são processadas pelas regras do jogo, que atualizam o estado da partida e verificam condições de disponibilidade.
-
-### Finais e progressão
-
-As trajetórias podem levar a diferentes desfechos. O sistema de progresso permanente registra finais, conquistas e colecionáveis independentemente dos slots de partida.
+Na Fase 3, a revisão do roteiro procura reduzir cenas de transição redundantes, fortalecer vínculos de causa e consequência e diferenciar a perspectiva dos protagonistas. O formato **JSON v3** já está contemplado pelo carregador; a validação narrativa e a compatibilidade com salvamentos anteriores seguem como tarefas separadas.
 
 ---
 
-## 🏆 Conquistas e colecionáveis
+## Conquistas, colecionáveis e finais
 
-### Conquistas
+O sistema de progresso permanente mantém informações independentes dos slots de partida:
 
-As conquistas são desbloqueadas quando determinadas condições são atendidas. O painel da versão de terminal permite visualizar desbloqueios, total, percentual e, quando aplicável, descrições e datas.
+- **Conquistas:** desbloqueadas ao satisfazer condições específicas.
+- **Colecionáveis:** habilidades e itens obtidos durante as jornadas, com catálogo de conteúdos conhecidos e bloqueados.
+- **Histórico de finais:** registro dos desfechos alcançados, com informações de progresso.
 
-### Galeria de colecionáveis
-
-A galeria utiliza slots em pixel art para apresentar itens e habilidades obtidos durante as partidas, distinguindo conteúdos desbloqueados e ainda desconhecidos.
-
-### Histórico de finais
-
-Os finais alcançados são registrados com data e hora no progresso permanente, mesmo que o slot utilizado seja posteriormente sobrescrito.
+Os recursos de consulta estão implementados na versão de terminal. A apresentação gráfica definitiva da galeria e do progresso ainda precisa ser integrada ao JavaFX.
 
 ---
 
-## 💾 Salvamento e continuidade
+## Salvamento e continuidade
 
-A persistência utiliza **JSON e Gson**. Os recursos descritos a seguir foram desenvolvidos na **versão de terminal**; sua integração à interface JavaFX é gradual.
+A persistência utiliza **Gson e JSON**. A versão de terminal dispõe de três slots independentes, salvamento manual, autosave, confirmação de sobrescrita, exclusão de salvamentos, metadados e tratamento de arquivos corrompidos.
 
-### Partidas
+Arquivos utilizados:
 
-O sistema oferece:
+| Arquivo | Finalidade |
+|---|---|
+| `saves/slot1.json`, `slot2.json`, `slot3.json` | Partidas salvas manualmente. |
+| `saves/autosave.json` | Último salvamento automático. |
+| `saves/progresso.json` | Progresso permanente. |
+| `saves/configuracao.json` | Preferências do jogador. |
 
-- Três slots independentes de salvamento.
-- Salvamento manual com escolha do slot.
-- Carregamento e continuação de partidas.
-- Autosave a cada cinco cenas concluídas e ao concluir uma partida, em `saves/autosave.json`.
-- Confirmação antes de sobrescrever ou excluir salvamentos.
-- Exclusão de slots e autosave pelo gerenciamento de saves.
-- Metadados dos slots: nome, capítulo, data, score, participação, rank e energia.
-- Identificação de arquivos corrompidos sem comprometer os demais slots.
+O autosave é realizado periodicamente (a cada cinco cenas concluídas) e não substitui o salvamento manual. A persistência utiliza validação de dados, exceções próprias e gravação com arquivos temporários antes da substituição do arquivo de destino.
 
-O autosave é um arquivo único e não substitui o salvamento manual. Os estados persistidos incluem a cena e o capítulo atuais, atributos, relacionamentos e flags relevantes.
-
-**Na Fase 3**, a tela gráfica de carregamento já lista três slots e dispõe de uma opção de autosave, utilizando um **Adapter** para acessar a persistência existente. O carregamento de uma partida ocupada e os demais fluxos de salvamento ainda precisam de validação e integração completas.
-
-### Configurações persistentes
-
-As preferências ficam em `saves/configuracao.json` e incluem velocidade de texto, volume, confirmação de saída e dicas de atalhos. Na versão de terminal, configurações inválidas podem ser tratadas com restauração de valores padrão.
-
-### Progresso permanente
-
-O arquivo `saves/progresso.json` armazena finais, conquistas e colecionáveis independentemente dos slots.
-
-### Integridade dos dados
-
-O sistema contempla validação de arquivos, exceções específicas e gravação com arquivos temporários antes da substituição do destino. A persistência das partidas utiliza um envelope com informações de versão e data, mantendo a leitura de determinados saves anteriores.
-
-```text
-PersistenciaException
-├── SaveException
-├── CarregamentoException
-└── DadosInvalidosException
-```
+**Situação no JavaFX:** a tela de carregamento já lista os três slots e oferece o autosave por meio de `AcessoPartidas` e `CarregamentoAdapter`. O fluxo gráfico de **salvar manualmente, escolher ou sobrescrever slots, excluir saves e manter o slot de origem da partida** ainda precisa ser concluído e testado. A conclusão de uma partida possui gravação no autosave, mas o fluxo completo de progresso e salvamento final requer validação.
 
 ---
 
-## 🖥️ Interfaces e controles
+## Interfaces e controles
+
+### JavaFX — Fase 3
+
+A interface gráfica utiliza **JavaFX, FXML e CSS**, com visual inspirado em jogos narrativos e pixel art. A implementação atual inclui:
+
+- Menu principal, navegação por teclado e mouse e telas secundárias.
+- Criação de partida, escolha do protagonista e nome personalizável.
+- Exibição de cenas, narrativa e alternativas com processamento por eventos.
+- Indicadores básicos de energia, score e participação.
+- Tela gráfica de carregamento de slots e autosave.
+- Ilustrações de cena convertidas de `Tela` para imagens JavaFX, com **animações de entrada** executadas por `Timeline`.
+- Retratos em PNG, expressões e animações discretas de piscada e respiração do pacote gráfico, com fallback para os retratos existentes em pixel art.
+- Modais para acontecimentos, mensagens, conquistas e transições.
+
+A implementação visual ainda está sendo refinada. Não se deve interpretar a presença dos recursos como garantia de que todas as cenas, escolhas ou animações foram verificadas manualmente.
 
 ### Terminal — Fase 2
 
-A interface original utiliza **JLine**, com menus, cenas, HUD, ilustrações e retratos em pixel art. As artes são desenhadas no terminal com cores de 24 bits (*truecolor*) e o caractere `▀`, que representa dois pixels.
+A primeira interface utiliza **JLine** e arte desenhada no próprio terminal em cores de 24 bits (*truecolor*). Ela inclui menus, HUD, retratos, ilustrações e animações em pixel art. O último quadro de cada animação também pode ser exibido como imagem estática.
 
-O HUD apresenta indicadores de energia, score, participação e outras informações do protagonista. As ilustrações ocupam 66 colunas por 24 linhas, e várias possuem animações de 12 quadros.
+<p align="center">
+  <img src="docs/images/fork-versao1.4.0.gif" alt="Registro da interface de terminal do Forkeazando, versão 1.4.0" width="700">
+</p>
 
-| Tecla | Ação |
+<p align="center"><em>Registro histórico da interface original — versão 1.4.0 (Fase 2).</em></p>
+
+| Tecla | Ação no terminal |
 |---|---|
-| `↑` / `↓` | Navegar pelas opções |
-| `←` / `→` | Alterar valores quando disponível |
-| `Enter` | Confirmar |
-| `P` | Pausar a exibição do texto |
-| `C` | Retomar a exibição |
-| `0` | Voltar ao menu quando disponível |
+| `↑` / `↓` | Navegar pelas opções. |
+| `←` / `→` | Alterar valores quando disponível. |
+| `Enter` | Confirmar. |
+| `P` / `C` | Pausar / retomar a exibição do texto. |
+| `0` | Voltar ao menu quando disponível. |
 
-Em terminais com menos de 66 colunas e 30 linhas, o jogo continua, mas as ilustrações e os retratos podem ser ocultados. Para desabilitar animações:
+Em terminais menores, retratos e ilustrações podem ser ocultados. Para desabilitar as animações da versão de terminal:
 
 ```bash
 FORKEAZANDO_SEM_ANIMACAO=1 ./rodar.sh
 ```
 
-Recomenda-se um terminal real (Linux, macOS ou Windows Terminal), com suporte a cores de 24 bits.
-
-### JavaFX — Fase 3 (em desenvolvimento)
-
-A nova interface utiliza **JavaFX, FXML e CSS**, com composição visual em pixel art. O menu principal exibe dez opções e oferece navegação por mouse ou teclado.
-
-Atualmente, há implementação inicial de criação de personagem, continuação de partida em memória, apresentação de cenas do capítulo inicial e tela de carregamento. Outras ações do menu ainda exibem avisos de funcionalidade não integrada.
-
-A imagem do campus da UEFP está incluída nos recursos, mas sua exibição na tela inicial ainda está sob investigação. A versão gráfica **não substitui, por enquanto, todos os recursos do terminal**.
+Recomenda-se um terminal com suporte a *truecolor* e JLine, fora do console padrão de execução da IDE.
 
 ---
 
-## 🛠️ Tecnologias e arquitetura
+## Tecnologias e arquitetura
 
 | Tecnologia | Utilização |
 |---|---|
-| Java 21 | Lógica do jogo, modelos e controladores |
-| JavaFX 21 | Interface gráfica em desenvolvimento |
-| FXML e CSS | Estrutura e estilização de telas JavaFX |
-| Scene Builder | Apoio à construção visual das telas FXML |
-| JLine | Navegação e entrada de dados no terminal |
-| Gson | Persistência e leitura de dados JSON |
-| Maven | Dependências, compilação e execução |
-| JUnit 5 | Testes automatizados |
+| Java 21 | Modelos, regras e controladores. |
+| JavaFX 21 | Interface gráfica. |
+| FXML e CSS | Estrutura e estilização das telas. |
+| Scene Builder | Apoio à edição de FXML. |
+| JLine | Interface interativa de terminal. |
+| Gson | Leitura de roteiro e persistência JSON. |
+| Maven | Build, dependências e execução. |
+| JUnit 5 | Testes automatizados. |
 
-O projeto segue **MVC (*Model–View–Controller*)**, separando estado e regras de negócio, fluxo de controle e apresentação. A Fase 3 busca reutilizar a lógica consolidada na versão de terminal, sem replicá-la na interface.
+O projeto adota **MVC (*Model–View–Controller*)**. Estado, regras de escolha, persistência e lógica narrativa são reutilizados pelas duas interfaces, sem a necessidade de reimplementar a mecânica dentro da apresentação gráfica.
 
-### Padrões de projeto — Fase 3
+Na Fase 3, `ControllerInterface` concentra eventos e elementos de apresentação JavaFX, `SessaoGrafica` coordena a sessão e `CenasController` processa as transições e consequências narrativas. `GerenciadorSlots` e as classes de persistência permanecem responsáveis pela gravação e leitura dos saves.
 
-O **Adapter** está sendo utilizado para conectar os recursos existentes de carregamento de partidas à interface JavaFX, por meio de `AcessoPartidas` e `CarregamentoAdapter`.
+### Padrões de projeto
 
-A atividade da Fase 3 prevê padrões GoF de categorias distintas (criacional, estrutural e comportamental). **O Adapter contempla a categoria estrutural; os demais padrões ainda não estão concluídos.**
+O projeto utiliza **Adapter** para expor operações existentes de carregamento à interface JavaFX (`AcessoPartidas` e `CarregamentoAdapter`). A disciplina prevê padrões GoF de categorias distintas; a conclusão e demonstração dos padrões criacional e comportamental ainda devem ser documentadas e verificadas, sem atribuir um padrão a uma classe apenas pela semelhança de nome.
 
 ---
 
-## 📁 Estrutura do projeto
+## Estrutura do projeto
 
 ```text
 src/
 ├── main/
 │   ├── java/br/uefs/forkeazando/
-│   │   ├── adapter/       # Integração da persistência com JavaFX
-│   │   ├── controller/    # Fluxo e regras de controle
-│   │   ├── dao/           # Salvamentos, configurações e progresso
-│   │   ├── excecao/       # Exceções personalizadas
-│   │   ├── model/         # Estado, protagonistas, cenas e escolhas
-│   │   ├── roteiro/       # Leitura e progressão do roteiro
+│   │   ├── adapter/        # Abstrações e adaptadores da persistência
+│   │   ├── controller/     # Fluxo e regras de controle
+│   │   ├── dao/            # Saves, configurações e progresso
+│   │   ├── excecao/        # Exceções de domínio e persistência
+│   │   ├── model/          # Estado, protagonistas, cenas e escolhas
+│   │   ├── roteiro/        # Carregamento e resolução narrativa
 │   │   ├── view/
-│   │   │   ├── javafx/    # Controladores e sessão gráfica
-│   │   │   ├── pixel/     # HUD, artes e animações do terminal
-│   │   │   └── widget/    # Componentes de apresentação
+│   │   │   ├── javafx/     # Interface gráfica e sessão
+│   │   │   ├── pixel/      # Artes, quadros e componentes em pixel art
+│   │   │   └── widget/     # Componentes de interação
 │   │   └── Main.java      # Entrada da versão de terminal
 │   └── resources/
-│       ├── fxml/          # Telas JavaFX
-│       ├── images/        # Recursos visuais JavaFX
-│       └── roteiro/       # Arquivos JSON de cenas
+│       ├── audio/          # Recursos de áudio
+│       ├── fxml/           # Telas JavaFX
+│       ├── images/         # Campus, personagens e animações em PNG
+│       ├── roteiro/        # JSONs do prólogo, capítulos e variações
+│       └── styles/        # Estilos CSS
 └── test/java/br/uefs/forkeazando/
     ├── controller/
     ├── dao/
@@ -247,7 +213,7 @@ src/
     └── view/
 ```
 
-Os dados persistentes são armazenados em `saves/`, no diretório de execução.
+Os dados persistentes são armazenados em `saves/`, relativo ao diretório de execução.
 
 ---
 
@@ -255,116 +221,103 @@ Os dados persistentes são armazenados em `saves/`, no diretório de execução.
 
 ### Requisitos
 
-- Java 21 ou superior.
-- Maven 3.8 ou superior.
-- Terminal com suporte a JLine e *truecolor* para aproveitar a interface original.
+- **JDK 21** (versão utilizada pelo projeto).
+- **Maven 3.8+**.
+- Ambiente gráfico para executar JavaFX.
+
+### Interface gráfica JavaFX (em desenvolvimento)
+
+```bash
+mvn javafx:run
+```
 
 ### Versão de terminal
-
-Na raiz do repositório:
 
 ```bash
 chmod +x rodar.sh
 ./rodar.sh
 ```
 
-### Interface gráfica JavaFX (beta)
-
-```bash
-mvn javafx:run
-```
-
 ### Compilação e testes
 
 ```bash
-mvn test
+mvn clean test
 mvn package
 ```
 
-A geração do pacote requer que os testes executados pelo Maven passem. Para executar o JAR da versão de terminal, quando gerado com esse nome:
+O `pom.xml` também configura um pacote JAR usando Maven Shade, cujo ponto de entrada é `br.uefs.forkeazando.Main` (versão de terminal):
 
 ```bash
 java -jar target/forkeazando.jar
 ```
 
-> **Nota sobre o roteiro em revisão:** a migração para JSONs com `schemaVersion: 3` está sendo preparada para integração à branch. Após restaurar as bifurcações do prólogo e ajustar os testes de regressão, a versão local executou **441 testes com sucesso** (`mvn clean test`). Isso não substitui a validação prática do JavaFX nem garante compatibilidade com saves antigos.
+**Observação:** o JAR acima não é um instalador JavaFX; para testar a interface gráfica utilize `mvn javafx:run`.
 
 ---
 
-## 📋 Fase 2 — Versão de terminal
+## Testes e qualidade
 
-A Fase 2 expandiu a experiência com persistência, progresso permanente e recursos visuais.
+O projeto possui testes JUnit para modelos, controladores, persistência, integridade de salvamentos, fluxo narrativo, roteamento e recursos de pixel art. Entre os testes de integração estão verificações de IDs únicos, escolhas que apontam para cenas existentes, ausência de cenas órfãs e percursos do roteiro.
 
-- [x] Criação e continuação de partidas.
-- [x] Três slots e metadados de salvamento.
-- [x] Salvamento manual, autosave e confirmação de sobrescrita.
-- [x] Gerenciamento e exclusão de saves e autosave.
-- [x] Configurações persistentes.
-- [x] Conquistas, colecionáveis, galeria e registro de finais.
-- [x] Exceções personalizadas e validação de integridade.
-- [x] HUD, retratos, ilustrações e animações em pixel art.
-- [x] Testes de persistência, fluxo de cenas e recursos visuais.
+Há também um workflow em `.github/workflows/tests.yml` que executa `mvn -B test` com **Java 21** no GitHub Actions.
+
+> Em uma execução local relatada durante a revisão do roteiro, `mvn clean test` concluiu **441 testes**. Esse número é um registro histórico, não uma garantia sobre a versão atual. Execute novamente os testes após mudanças e verifique o resultado do CI.
+
+Os testes automatizados de regras e roteiro não substituem os testes manuais da interface JavaFX, especialmente para animações, foco, rolagem, transições e persistência.
 
 ---
 
-## 🎨 Fase 3 — Interface gráfica com JavaFX
+## Evolução do projeto
 
-A Fase 3 migra a apresentação do jogo para JavaFX, **preservando MVC e reutilizando as regras já implementadas**.
+### Fase 2 — Terminal
 
-### Por que o roteiro foi reformulado?
+A Fase 2 consolidou o núcleo da experiência: estados e consequências, três slots, autosave, configurações persistentes, conquistas, colecionáveis, finais e apresentação em pixel art no terminal. A demonstração acima permanece como registro dessa etapa.
 
-A passagem da Fase 2 para a Fase 3 não se limitou à mudança de interface. Uma revisão crítica do roteiro anterior identificou **problemas de ritmo, fragmentação e continuidade narrativa**: muitas cenas intermediárias acrescentavam um clique sem oferecer uma decisão relevante, enquanto algumas consequências e relações entre escolhas de capítulos diferentes não ficavam suficientemente claras para o jogador. Também havia espaço para desenvolver melhor as perspectivas particulares dos dois protagonistas.
+### Fase 3 — JavaFX e revisão narrativa
 
-Por isso, optou-se por uma **reformulação narrativa e estrutural**, em vez de simplesmente transportar o texto da Fase 2 para o JavaFX. A revisão busca:
+A migração vai além da troca de interface. O roteiro está sendo revisto para melhorar **ritmo**, **continuidade**, **consequências** e **perspectivas dos protagonistas**. O campo `textoConsequencia` e o esquema JSON v3 fazem parte dessa evolução. O objetivo não é simplesmente reduzir cenas, mas retirar passagens mecânicas preservando decisões significativas.
 
-- **Melhorar o ritmo:** consolidar cenas de transição redundantes e apresentar a consequência imediata da escolha pelo campo `textoConsequencia`, sem exigir uma nova decisão apenas para avançar.
-- **Fortalecer a causa e consequência:** manter atributos e *flags* que conectam escolhas anteriores a alternativas, acontecimentos e desfechos posteriores.
-- **Diferenciar os protagonistas:** preservar bifurcações e perspectivas próprias de **Stheffanny e Davi**, permitindo que suas experiências alterem a forma de percorrer situações comuns.
-- **Aprimorar a consistência:** revisar diálogos, acontecimentos universitários e conexões entre capítulos, além de adicionar verificações de regressão para evitar perdas de caminhos narrativos.
-- **Evoluir o formato dos dados:** introduzir o esquema JSON v3 e adaptar a leitura e a apresentação das consequências, sem deslocar as regras de negócio para as *views* e sem abandonar MVC.
+#### Funcionalidades presentes no código
 
-A redução da quantidade de cenas **não é um objetivo por si só**: a intenção é retirar passos mecânicos e preservar decisões que realmente mudam a trajetória. Essa revisão é uma evolução do projeto, mas também corrige limitações concretas da narrativa entregue na Fase 2.
+- [x] Estrutura JavaFX com Maven, FXML e CSS.
+- [x] Menu e navegação básica.
+- [x] Criação e continuação de partida em memória.
+- [x] Exibição de cenas e processamento de escolhas por eventos.
+- [x] Carregamento gráfico de slots e autosave.
+- [x] Integração inicial da persistência com Adapter.
+- [x] Carregamento dos roteiros JSON com suporte ao esquema v3.
+- [x] Exibição de cenários com animações de entrada JavaFX.
+- [x] Integração de retratos e animações discretas dos personagens.
+- [x] Apresentação gráfica inicial de eventos e epílogos.
 
-> **Compatibilidade:** a reorganização de identificadores e destinos de cenas pode afetar partidas salvas com versões anteriores. A migração de saves antigos precisa ser avaliada separadamente da validação do novo roteiro.
+#### Pendências de implementação e validação
 
-### Implementado ou iniciado
-
-- [x] Configuração do JavaFX com Maven.
-- [x] Menu principal com as dez opções.
-- [x] Navegação por mouse e teclado.
-- [x] Estilização em CSS e animações de apresentação.
-- [x] Estrutura de FXML para o menu e a tela de carregamento.
-- [x] Criação inicial de personagem e prévia de cenas em JavaFX.
-- [x] Interface de carregamento com três slots e opção de autosave.
-- [x] Integração inicial com a persistência por meio do padrão **Adapter**.
-
-### Em desenvolvimento
-
-- [ ] Integração funcional de todas as opções do menu.
-- [ ] Teste de carregamento de saves ocupados e integração completa de salvamento.
-- [ ] Progressão gráfica além do capítulo inicial, incluindo eventos especiais.
-- [ ] Exibição correta do cenário do campus na tela inicial.
-- [ ] Telas gráficas de configurações, conquistas, galeria e progresso.
-- [ ] Conclusão dos padrões GoF criacional e comportamental.
-- [ ] Consolidação do roteiro, preservando consequências e bifurcações dos protagonistas.
-- [ ] Integração e validação das expressões e animações dos personagens.
+- [ ] Salvamento manual, sobrescrita e gerenciamento de slots no JavaFX.
+- [ ] Integração completa de menus de configurações, galeria e progresso.
+- [ ] Padronizar os nomes visíveis dos protagonistas e conferir as variações narrativas.
+- [ ] Revisar cobertura visual e correspondência entre expressões e cenas.
+- [ ] Aperfeiçoar HUD e organização dos diálogos e escolhas.
+- [ ] Verificar percursos completos de todas as rotas e finais na interface gráfica.
+- [ ] Validar persistência de progresso permanente e conclusão de partidas.
+- [ ] Testar compatibilidade com saves de versões anteriores.
+- [ ] Documentar e demonstrar os padrões GoF exigidos na Fase 3.
+- [ ] Validar empacotamento e execução da interface fora do ambiente de desenvolvimento.
 
 ### Uso de inteligência artificial
 
-Recursos artísticos e animações da interface receberam apoio de inteligência artificial generativa, conforme autorização comunicada pelo professor durante a sessão tutorial. A implementação, integração e validação permanecem sob responsabilidade da autoria.
+A criação de recursos artísticos e animações contou com apoio de inteligência artificial generativa, conforme autorização comunicada pelo professor durante a sessão tutorial. A integração, revisão técnica, testes e validação dos recursos permanecem sob responsabilidade da autoria.
 
 ---
 
 ## Limitações conhecidas
 
-- A interface JavaFX ainda não oferece todas as funcionalidades disponíveis na versão de terminal.
-- A prévia gráfica das cenas não reproduz, por enquanto, a progressão completa dos capítulos e eventos especiais.
-- A exibição da imagem do campus na tela inicial requer correção.
-- A integração do roteiro JSON v3 na interface gráfica ainda precisa de validação prática completa, incluindo as consequências textuais e os caminhos exclusivos dos protagonistas.
-- Saves apontando para cenas removidas por uma revisão narrativa podem exigir tratamento de compatibilidade.
-- O autosave mantém apenas o registro mais recente.
-- No terminal, ilustrações dependem do tamanho da janela e de suporte a *truecolor*; animações podem ser desativadas, mas não puladas individualmente.
-- Parte dos controladores de interface ainda não possui testes de fluxo.
+- Nem todas as opções do menu principal estão integradas ao JavaFX.
+- O salvamento manual e o gerenciamento gráfico dos três slots ainda estão pendentes.
+- A integração das artes e animações existe, mas falta validar a cobertura visual de todas as cenas e os fluxos de transição.
+- A progressão completa de todas as rotas e eventos especiais na interface gráfica ainda exige testes.
+- Alterações de IDs e destinos do roteiro podem afetar arquivos de save de versões anteriores.
+- Parte da interface gráfica ainda carece de testes automatizados de fluxo.
+- O autosave mantém somente o registro mais recente.
 
 ---
 
@@ -372,14 +325,14 @@ Recursos artísticos e animações da interface receberam apoio de inteligência
 
 | Versão | Principais mudanças |
 |---|---|
-| `v1.0.0` | Fase 1 |
-| `v1.1.0` | Fase 2, sessão 1: salvamento em JSON e exceções personalizadas |
-| `v1.2.0` | Fase 2, sessão 2: progressão, conquistas e colecionáveis |
-| `v1.3.0` | Fase 2, sessão 3: ilustrações, retratos, animações e esgotamento |
-| `v1.3.1` | Dicas de atalhos e atualização da documentação |
-| `v1.4.0` | Fase 2, sessão 4: autosave, slots, gerenciamento de saves e configurações |
+| `v1.0.0` | Fase 1. |
+| `v1.1.0` | Fase 2, sessão 1: salvamento JSON e exceções. |
+| `v1.2.0` | Fase 2, sessão 2: progressão, conquistas e colecionáveis. |
+| `v1.3.0` | Fase 2, sessão 3: pixel art, retratos e esgotamento. |
+| `v1.3.1` | Dicas de atalhos e documentação. |
+| `v1.4.0` | Fase 2, sessão 4: autosave, slots e configurações. |
 
-A **Fase 3** segue em desenvolvimento na branch `fase3`, sem nova versão estável declarada neste documento.
+A **Fase 3** segue em desenvolvimento na branch `fase3`, sem uma nova versão estável declarada neste README.
 
 ---
 

@@ -3,6 +3,7 @@ package br.uefs.forkeazando.adapter;
 import br.uefs.forkeazando.dao.GerenciadorSave;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
+import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.ResumoSlot;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
@@ -11,7 +12,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 // O objetivo desse adapter é
-public class CarregamentoAdapter implements AcessoPartidas {
+public class CarregamentoAdapter implements GerenciamentoPartidas {
     private final Path pastaSaves;
 
     public CarregamentoAdapter(Path pastaSaves) {
@@ -40,4 +41,13 @@ public class CarregamentoAdapter implements AcessoPartidas {
         return GerenciadorSave.carregar(caminho);
     }
 
+    @Override
+    public void salvarSlot(Estado estado, int numeroSlot) throws SaveException {
+        GerenciadorSlots.salvar(estado, pastaSaves, numeroSlot);
+    }
+
+    @Override
+    public void excluirSlot(int numeroSlot) throws SaveException {
+        GerenciadorSlots.excluir(pastaSaves, numeroSlot);
+    }
 }

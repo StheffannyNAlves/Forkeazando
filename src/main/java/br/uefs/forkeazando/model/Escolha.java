@@ -128,8 +128,8 @@ public class Escolha  {
         private String textoConsequencia;
         private final int cenaDestinoId;
         private final List<String> flagsConcedidas = new ArrayList<>();
-        public Map<PersonagemSecundario, Float> relacionamentoMinimo = new HashMap<>();
-        private Map<PersonagemSecundario, Float> relacionamentoMaximo = new HashMap<>();
+        private final Map<PersonagemSecundario, Float> relacionamentoMinimo = new HashMap<>();
+        private final Map<PersonagemSecundario, Float> relacionamentoMaximo = new HashMap<>();
         private boolean permiteEnergiaInsuficiente = false;
         private String flagRequerida = null;
         private int scoreMinimo = 0, participacaoMinima = 0, participacaoMaxima = 0;
@@ -141,8 +141,8 @@ public class Escolha  {
         private int logicaMinima = 0, logicaMaxima = 0;
         private int sanidadeMinima = 0, sanidadeMaxima = 0;
         private PersonagemSecundario.Interesse interesseAlvo = null;
-        private Map<PersonagemSecundario, Float> impactoRelacionamento = new HashMap<>();
-        private Map<String, Integer> atributosAlterados = new HashMap<>();
+        private final Map<PersonagemSecundario, Float> impactoRelacionamento = new HashMap<>();
+        private final Map<String, Integer> atributosAlterados = new HashMap<>();
 
         public Builder(String t, int destino) { this.textoAlternativa = t; this.cenaDestinoId = destino; }
 
@@ -157,19 +157,14 @@ public class Escolha  {
             return this;
         }
         public Builder comFlagRequerida(String v)   { flagRequerida = v; return this; }
-
         public Builder comScoreMinimo(int v)        { scoreMinimo = v; return this; }
-
         public Builder comParticipacaoMinima(int v) { participacaoMinima = v; return this; }
-
         public Builder comParticipacaoMaxima(int v) { participacaoMaxima = v; return this; }
-
         public Builder comParticipacaoGanha(int v)  { participacaoGanha = v; return this; }
-
         public Builder comScoreGanho(int v)         { scoreGanho = v; return this; }
 
 
-        public Builder comCustoEnergia(int v) { // Agora aceita numeros negativos
+        public Builder comCustoEnergia(int v) { // Aceita numeros negativos
             if (v == Integer.MIN_VALUE)
                 throw new IllegalArgumentException("O custo de energia fora do intervalo permitido");
             custoEnergia = v;

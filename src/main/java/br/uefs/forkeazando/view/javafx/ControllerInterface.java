@@ -1,5 +1,8 @@
 package br.uefs.forkeazando.view.javafx;
-
+import br.uefs.forkeazando.roteiro.VisuaisDeCena;
+import br.uefs.forkeazando.view.pixel.Ilustracoes;
+import br.uefs.forkeazando.view.pixel.Tela;
+import javafx.scene.image.WritableImage;
 import br.uefs.forkeazando.model.*;
 import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
 import br.uefs.forkeazando.roteiro.Epilogos;
@@ -67,6 +70,7 @@ public class ControllerInterface implements ApresentacaoCena {
     private TranslateTransition movimentoCenario;
     private Animation animacaoTitulo;
     private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
+    private String ilustracaoAtual;
 
     @FXML
     private void  initialize() {
@@ -153,6 +157,18 @@ public class ControllerInterface implements ApresentacaoCena {
         pulsar.play();
         animacaoTitulo = pulsar;
     }
+
+    private Image conversorImagem(Tela tela){
+        WritableImage imagem = new WritableImage(tela.largura(), tela.altura());
+        var pixels = imagem.getPixelWriter();
+        for (int y = 0; y < tela.altura(); y++) {
+            for (int x = 0; x < tela.largura(); x++) {
+                pixels.setArgb(x, y, 0xFF000000 | tela.get(x, y));
+            }
+        }
+
+        return imagem;
+    }
     private void abrirTelaSalvamento() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/telaSalvamento.fxml"));
@@ -193,6 +209,7 @@ public class ControllerInterface implements ApresentacaoCena {
         try {
             sessao.carregarPartida(carregado);
             sessao.inicializarControladorPartida(this);
+            ilustracaoAtual = null;
             sessao.prepararCenaAtual();
 
         } catch (CarregamentoException | DadosInvalidosException e) {
@@ -318,6 +335,7 @@ public class ControllerInterface implements ApresentacaoCena {
                 Protagonista protagonista = new Protagonista(nome.getText(), identidade.getValue(), perfeccionista.isSelected(), sociavel.isSelected(), teorico.isSelected(), vida.getValue(), experiencia.getValue(), economia.getValue());
                 sessao.novaPartida(protagonista);
                 sessao.inicializarControladorPartida(this);
+                resetarCacheVisual();
                 sessao.prepararCenaAtual();
             } catch (CarregamentoException | DadosInvalidosException ex) {
                 mostrarModal("ERRO NO PROGRESSO", ex.getMessage());
@@ -338,6 +356,24 @@ public class ControllerInterface implements ApresentacaoCena {
             Protagonista p = sessao.estado().getProtagonista();
             VBox conteudo = novoPainel("CAPÍTULO " + sessao.estado().getCapituloAtual(), p.getNome() + " · " + cena.getCapitulo());
             conteudo.getChildren().add(rotulo("ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima() + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao()));
+            ApresentacaoDeCena visual = VisuaisDeCena.paraCena(cena.getId()).orElse(null);
+
+            if (visual != null && visual.ilustracao() != null) {
+                ilustracaoAtual = visual.ilustracao();
+            }
+
+            if (ilustracaoAtual != null) {
+                Ilustracoes.animacao(ilustracaoAtual).ifPresent(animacao -> {
+                    Tela quadroFinal = animacao.desenhar(animacao.total() - 1);
+
+                    ImageView cenario = new ImageView(conversorImagem(quadroFinal));
+                    cenario.setFitWidth(528);
+                    cenario.setPreserveRatio(true);
+                    cenario.setSmooth(false);
+                    conteudo.getChildren().add(cenario);
+                });
+            }
+
             if (cena.getPersonagemFalando() != null && !cena.getPersonagemFalando().isBlank()) {
                 conteudo.getChildren().add(rotulo(cena.getPersonagemFalando().toUpperCase()));
             }
@@ -519,6 +555,7 @@ public class ControllerInterface implements ApresentacaoCena {
     @Override
     public void resetarCacheVisual() {
         avisosPendentes.clear();
+        ilustracaoAtual = null;
     }
 
     @Override
@@ -672,10 +709,6 @@ public class ControllerInterface implements ApresentacaoCena {
         String resultado = SistemaAcademico.descricaoDe(
                 SistemaAcademico.classificar(p));
 
-        mostrarModal("SISTEMA ACADÊMICO · VEREDITO",
-                "Processamento concluído.\n\n"
-                        + resultado
-                        + "\n\nRecomendação baseada em padrões históricos."
-                        + "\nO sistema não decide por você. Ainda.");
+        mostrarModal("SISTEMA ACADÊMICO · VEREDITO", "Processamento concluído.\n\n" + resultado + "\n\nRecomendação baseada em padrões históricos." + "\nO sistema não decide por você. Ainda.");
     }
 }

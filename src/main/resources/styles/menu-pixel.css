@@ -118,7 +118,6 @@
 }
 .botao-voltar:hover { -fx-background-color: #f7946d; }
 
-/* Ícones gráficos continuam independentes do texto dos botões. */
 .icone-pixel {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -154,9 +153,10 @@
     -fx-text-fill: #b7ffe4;
 }
 .texto-narrativa {
+    -fx-font-family: "DejaVu Sans";
+    -fx-font-size: 16px;
     -fx-text-fill: #fff4e7;
-    -fx-font-size: 15px;
-    -fx-line-spacing: 5px;
+    -fx-line-spacing: 7px;
 }
 .check-pixel {
     -fx-text-fill: #fff0d8;

@@ -1,13 +1,10 @@
 package br.uefs.forkeazando.view.javafx;
-import br.uefs.forkeazando.roteiro.VisuaisDeCena;
+import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.pixel.Ilustracoes;
 import br.uefs.forkeazando.view.pixel.Tela;
 import br.uefs.forkeazando.view.pixel.Retratos;
 import javafx.scene.image.WritableImage;
 import br.uefs.forkeazando.model.*;
-import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
-import br.uefs.forkeazando.roteiro.Epilogos;
-import br.uefs.forkeazando.roteiro.SistemaAcademico;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
@@ -19,6 +16,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.Priority;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -147,7 +146,6 @@ public class ControllerInterface implements ApresentacaoCena {
         deslocar.setFromX(20);
         deslocar.setToX(0);
         new ParallelTransition(aparecer, deslocar).play();
-
         ScaleTransition pulsar = new ScaleTransition(Duration.seconds(2.8), tituloJogo);
         pulsar.setFromX(1);
         pulsar.setFromY(1);
@@ -368,7 +366,7 @@ public class ControllerInterface implements ApresentacaoCena {
                     Tela quadroFinal = animacao.desenhar(animacao.total() - 1);
 
                     ImageView cenario = new ImageView(conversorImagem(quadroFinal));
-                    cenario.setFitWidth(528);
+                    cenario.setFitWidth(400);
                     cenario.setPreserveRatio(true);
                     cenario.setSmooth(false);
                     conteudo.getChildren().add(cenario);
@@ -378,12 +376,15 @@ public class ControllerInterface implements ApresentacaoCena {
             if (cena.getPersonagemFalando() != null && !cena.getPersonagemFalando().isBlank()) {
                 conteudo.getChildren().add(rotulo(cena.getPersonagemFalando().toUpperCase()));
             }
-            Label narrativa = new Label(br.uefs.forkeazando.roteiro.NarrativaProtagonistas.resolver(cena, p));
+            Label narrativa = new Label(NarrativaProtagonistas.resolver(cena, p));
+
             narrativa.getStyleClass().add("texto-narrativa");
             narrativa.setWrapText(true);
-            narrativa.setMaxWidth(480);
+            narrativa.setPrefWidth(460);
+            narrativa.setMaxWidth(Double.MAX_VALUE);
+            narrativa.setMinHeight(Region.USE_PREF_SIZE);
 
-
+            HBox.setHgrow(narrativa, Priority.ALWAYS);
             HBox dialogo = new HBox(16);
             dialogo.setAlignment(Pos.TOP_LEFT);
 
@@ -475,7 +476,6 @@ public class ControllerInterface implements ApresentacaoCena {
         painel.setAlignment(Pos.CENTER_LEFT);
         painel.setPadding(new Insets(26));
         painel.setMaxWidth(760);
-        painel.setMaxHeight(700);
         painel.getStyleClass().add("painel-interno");
         Label cabecalho = new Label(titulo);
         cabecalho.getStyleClass().add("titulo-modal");

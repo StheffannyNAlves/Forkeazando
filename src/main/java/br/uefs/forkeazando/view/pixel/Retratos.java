@@ -5,13 +5,7 @@ import java.util.Optional;
 import static br.uefs.forkeazando.view.pixel.Cor.mix;
 import static br.uefs.forkeazando.view.pixel.Cor.rgb;
 
-/**
- * Retratos de falantes (24 x 24 pixels = 24 colunas x 12 linhas).
- *
- * A identidade do personagem (cabelo, pele, roupa, acessório) é desenhada uma
- * vez numa base compartilhada; cada expressão só repinta olhos, sobrancelhas e
- * boca. Assim o personagem tem sempre a mesma aparência em qualquer cena.
- */
+
 public final class Retratos {
     public static final int LARGURA = 24;
     public static final int LINHAS = 12;
@@ -32,7 +26,6 @@ public final class Retratos {
     public static final String ZE = "ze";
     public static final String SISTEMA = "sistema";
 
-    /** Início do nome (como aparece em Cena.getPersonagemFalando) de quem cada retrato representa. */
     private static final java.util.Map<String, String> NOMES = java.util.Map.of(
             CAIO, "Caio", SERGIO, "Prof. Dr. Sérgio", RAFAEL, "Prof. Rafael", BIA, "Beatriz",
             DANDARA, "Dandara", ZE, "Zé do", SISTEMA, "Sistema");
@@ -81,7 +74,6 @@ public final class Retratos {
         return REGISTRO.existe(personagem + ":" + NEUTRA);
     }
 
-    /** Linhas ANSI do retrato; expressão desconhecida cai na neutra. Vazio se o personagem não tem retrato. */
     public static Optional<String[]> linhas(String personagem, String expressao) {
         if (personagem == null || !existe(personagem)) {
             return Optional.empty();
@@ -94,10 +86,25 @@ public final class Retratos {
     }
 
     public static java.util.Set<String> chaves() { return REGISTRO.chaves(); }
+    public static Optional<Tela> pixels(
+            String personagem, String expressao) {
 
-    // ------------------------------------------------------------------
-    //  Caio Andrade — veterano cínico, olheiras, copo térmico amassado
-    // ------------------------------------------------------------------
+        if (!existe(personagem)) {
+            return Optional.empty();
+        }
+
+        String expressaoFinal =
+                expressao == null ? NEUTRA : expressao;
+
+        if (!REGISTRO.existe(
+                personagem + ":" + expressaoFinal)) {
+            expressaoFinal = NEUTRA;
+        }
+
+        return Optional.of(
+                desenhar(personagem, expressaoFinal));
+    }
+
     private static final int PELE = rgb(184, 126, 96);
     private static final int PELE_L = rgb(204, 148, 114);
     private static final int PELE_S = rgb(150, 100, 78);
@@ -127,7 +134,6 @@ public final class Retratos {
         return t;
     }
 
-    /** Região do rosto que muda entre expressões (linhas de pixel, inclusive). */
     static final int ROSTO_Y_MIN = 7;
     static final int ROSTO_Y_MAX = 14;
 

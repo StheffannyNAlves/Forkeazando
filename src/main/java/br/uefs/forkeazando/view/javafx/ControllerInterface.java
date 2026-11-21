@@ -2,6 +2,7 @@ package br.uefs.forkeazando.view.javafx;
 import br.uefs.forkeazando.roteiro.VisuaisDeCena;
 import br.uefs.forkeazando.view.pixel.Ilustracoes;
 import br.uefs.forkeazando.view.pixel.Tela;
+import br.uefs.forkeazando.view.pixel.Retratos;
 import javafx.scene.image.WritableImage;
 import br.uefs.forkeazando.model.*;
 import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
@@ -382,22 +383,24 @@ public class ControllerInterface implements ApresentacaoCena {
             narrativa.setWrapText(true);
             narrativa.setMaxWidth(480);
 
-            var recurso = getClass().getResource("/images/personagens/malu/neutra.png");
-
             HBox dialogo = new HBox(16);
             dialogo.setAlignment(Pos.TOP_LEFT);
 
-            if (recurso != null) {
-                Image imagem = new Image(recurso.toExternalForm());
+            if (visual != null && visual.falante() != null) {
+                Retratos.pixels(visual.falante(), visual.expressao())
+                        .ifPresent(tela -> {
+                        ImageView retrato = new ImageView(conversorImagem(tela));
+                        retrato.setFitWidth(128);
+                        retrato.setFitHeight(128);
+                        retrato.setPreserveRatio(true);
+                        retrato.setSmooth(false);
 
-                ImageView retrato = new ImageView(imagem);
-                retrato.setFitWidth(128);
-                retrato.setFitHeight(128);
-                retrato.setPreserveRatio(true);
-                retrato.setSmooth(false);
-
-                dialogo.getChildren().add(retrato);
+                    dialogo.getChildren().add(retrato);
+                });
             }
+
+            dialogo.getChildren().add(narrativa);
+            conteudo.getChildren().add(dialogo);
 
             dialogo.getChildren().add(narrativa);
 

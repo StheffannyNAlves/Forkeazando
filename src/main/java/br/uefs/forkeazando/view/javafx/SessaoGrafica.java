@@ -72,6 +72,7 @@ public final class SessaoGrafica {
         if (controladorCenas == null)
             throw new IllegalStateException("Controlador de partida nao iniciado");
         controladorCenas.prepararCenaAtual();
+        notificarObservadores();
     }
 
     public void novaPartida(Protagonista protagonista) {

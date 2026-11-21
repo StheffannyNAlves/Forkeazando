@@ -24,7 +24,6 @@ public class CarregamentoAdapter implements GerenciamentoPartidas {
         this.pastaSaves = pastaSaves;
     }
 
-
     @Override
     public boolean existeAutosave() {
         return GerenciadorSlots.existeAutosave(pastaSaves);

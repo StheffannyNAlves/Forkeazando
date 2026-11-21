@@ -206,33 +206,46 @@ public class CenasController {
         return ResultadoPartida.FIM_DE_JOGO;
     }
 
-    public void prepararCenaAtual() {
-        Cena atual = buscarCenaPorId(estado.getCenaAtualId());
 
-        // Evita ciclos entre transições automáticas.
+    public void prepararCenaAtual() {
+        if (gatilhoAutosave.deveSalvar()) {
+            registrarAutosave();
+        }
+
         Set<Integer> visitadas = new HashSet<>();
 
         while (true) {
+            Cena atual = buscarCenaPorId(estado.getCenaAtualId());
+
             if (!visitadas.add(atual.getId())) {
-                throw new IllegalStateException("Ciclo de transições automáticas na cena: " + atual.getId());
+                throw new IllegalStateException("Ciclo de transições na cena: " + atual.getId());
             }
-            if (!resolverTransicaoAutomatica(atual)) {
-                break;
+
+            if (resolverTransicaoAutomatica(atual)) {
+                continue;
             }
-            atual = buscarCenaPorId(estado.getCenaAtualId());
-        }
-        // A entrada desta cena já foi processada
-        if (Objects.equals(cenaPreparadaId, atual.getId())) {
+            if (Objects.equals(cenaPreparadaId, atual.getId())) {
+                return;
+            }
+            List<Escolha> disponiveis = atual.getEscolhasDisponiveis(estado.getProtagonista());
+            if (disponiveis.isEmpty()) {
+                if (podeApagar(atual) && atual.temEscolhaBloqueadaSoPorEnergia(estado.getProtagonista())) {
+                    entrarEmApagao(atual.getId());
+                    continue;
+                }
+                throw new IllegalStateException("Nenhuma escolha disponível na cena " + atual.getId() + " (erro de rota).");
+            }
+            cenaPreparadaId = atual.getId();
+            try {
+                processarEntradaDaCena(atual);
+            } catch (RuntimeException e) {
+                cenaPreparadaId = null;
+                throw e;
+            }
             return;
         }
-        cenaPreparadaId = atual.getId();
-        try {
-            processarEntradaDaCena(atual);
-        } catch (RuntimeException e) {
-            cenaPreparadaId = null;
-            throw e;
-        }
     }
+
 
 
     private void processarEntradaDaCena(Cena atual) {

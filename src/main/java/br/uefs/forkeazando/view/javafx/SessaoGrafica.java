@@ -9,9 +9,11 @@ import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.*;
 import br.uefs.forkeazando.controller.CenasController;
+import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.Roteiro;
 import br.uefs.forkeazando.view.ApresentacaoCena;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -20,20 +22,31 @@ import java.util.stream.Collectors;
 
 public final class SessaoGrafica {
     private final Map<Integer, Cena> cenas;
+    private final List<ObservadorPartida> observadores = new ArrayList<>();
     private Estado estado;
     private CenasController controladorCenas;
     private final GerenciamentoPartidas gerenciamentoPartidas;
     public SessaoGrafica(GerenciamentoPartidas gerenciamentoPartidas) {
         this.gerenciamentoPartidas = gerenciamentoPartidas;
         this.cenas = Roteiro.todasAsCenas().stream().collect(Collectors.toMap(Cena::getId, Function.identity()));
-
     }
+
+    public void adicionarObservador(ObservadorPartida observador) {
+        observadores.add(Objects.requireNonNull(observador));
+    }
+    private void notificarObservadores() {
+        for (ObservadorPartida observador : observadores) {
+            observador.atualizar(estado);
+        }
+    }
+
     public CenasController.ResultadoTransicao encaminharEscolha(Escolha escolha) {
         if (controladorCenas == null) {
             throw new IllegalStateException("Controlador da partida não inicializado.");
         }
-
-        return controladorCenas.registrarEscolha(escolha);
+        CenasController.ResultadoTransicao resultadoTransicao = controladorCenas.registrarEscolha(escolha);
+        notificarObservadores();
+        return resultadoTransicao;
     }
 
     public void inicializarControladorPartida(ApresentacaoCena apresentacao)
@@ -67,6 +80,7 @@ public final class SessaoGrafica {
         novo.setCenaAtualId(700);
         estado = novo;
         controladorCenas = null;
+        notificarObservadores();
     }
 
     public void carregarPartida(Estado estadoCarregado){
@@ -85,6 +99,7 @@ public final class SessaoGrafica {
 
         this.estado = estadoCarregado;
         controladorCenas = null;
+        notificarObservadores();
     }
 
     public boolean possuiPartida() {

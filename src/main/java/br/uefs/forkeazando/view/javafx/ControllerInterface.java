@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.view.javafx;
 import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
+import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.pixel.Ilustracoes;
 import br.uefs.forkeazando.view.pixel.Tela;
@@ -34,7 +35,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
-import br.uefs.forkeazando.adapter.AcessoPartidas;
 import br.uefs.forkeazando.adapter.CarregamentoAdapter;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.view.ApresentacaoCena;
@@ -49,8 +49,8 @@ import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 import java.util.*;
 
-/* Recebe os eventos da ‘interface’. O modelo e o roteiro pertencem à SessaoGrafica*/
-public class ControllerInterface implements ApresentacaoCena {
+// Recebe os eventos da ‘interface’. O modelo e o roteiro pertencem à SessaoGrafica
+public class ControllerInterface implements ApresentacaoCena, ObservadorPartida {
 
     @FXML private StackPane raiz;
     @FXML private StackPane painelArte;
@@ -75,6 +75,7 @@ public class ControllerInterface implements ApresentacaoCena {
     private String ilustracaoAtual;
     private Timeline animacaoIlustracao;
     private Timeline animacaoRetrato;
+    private Label indicadoresHud;
 
     private String ultimoFalanteRetrato;
     private String ultimaExpressaoRetrato;
@@ -95,6 +96,7 @@ public class ControllerInterface implements ApresentacaoCena {
 
     @FXML
     private void  initialize() {
+        sessao.adicionarObservador(this);
         Image imagem = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/campus_uefp.png")));
         arte.setImage(imagem);
         painelArte.setClip(new Rectangle(625, 760));
@@ -382,11 +384,15 @@ public class ControllerInterface implements ApresentacaoCena {
     }
 
     private void confirmarSaida() {
-        VBox painel = novoPainel("SAIR DO FORKEAZANDO?",
-                "A partida atual está apenas em memória. Sair encerrará a sessão sem salvar.");
-        Button sair = botaoAcao("SAIR SEM SALVAR");
+        boolean alteracoesPendentes = sessao.estado().temAlteracoes();
+        String mensagem = alteracoesPendentes
+                ? "O salvamento automático é periódico e pode não incluir "
+                + "suas escolhas mais recentes. Deseja realmente sair?"
+                : "Seu progresso foi salvo. Deseja realmente sair do jogo?";
+        VBox painel = novoPainel("SAIR DO FORKEAZANDO?", mensagem);
+        Button sair = botaoAcao("SIM, SAIR");
         sair.setOnAction(e -> encerrar());
-        Button voltar = botaoAcao("VOLTAR AO MENU");
+        Button voltar = botaoAcao("CANCELAR");
         voltar.setOnAction(e -> voltarAoMenu());
         painel.getChildren().addAll(sair, voltar);
         mostrarTela(painel);
@@ -481,7 +487,9 @@ public class ControllerInterface implements ApresentacaoCena {
             Cena cena = sessao.cenaAtual();
             Protagonista p = sessao.estado().getProtagonista();
             VBox conteudo = novoPainel("CAPÍTULO " + sessao.estado().getCapituloAtual(), p.getNome() + " · " + cena.getCapitulo());
-            conteudo.getChildren().add(rotulo("ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima() + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao()));
+            indicadoresHud = rotulo("");
+            conteudo.getChildren().add(indicadoresHud);
+            atualizar(sessao.estado());
             ApresentacaoDeCena visual = VisuaisDeCena.paraCena(cena.getId()).orElse(null);
 
             exibirIlustracao(conteudo, visual);
@@ -1031,4 +1039,12 @@ public class ControllerInterface implements ApresentacaoCena {
         });
     }
 
+    @Override
+    public void atualizar(Estado estado) {
+        if (estado == null || indicadoresHud == null)
+            return;
+        Protagonista p = estado.getProtagonista();
+        indicadoresHud.setText("ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima() + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao());
+    }
 }
+

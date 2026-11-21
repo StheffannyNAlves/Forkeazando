@@ -5,6 +5,7 @@ import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
+import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.*;
 import br.uefs.forkeazando.controller.CenasController;
 import br.uefs.forkeazando.roteiro.Roteiro;
@@ -100,6 +101,18 @@ public final class SessaoGrafica {
 
     public List<Escolha> escolhasDisponiveis() {
         return cenaAtual().getEscolhasDisponiveis(estado().getProtagonista());
+    }
+
+    public void finalizarPartida() throws SaveException {
+        if (controladorCenas == null || !possuiPartida()) {
+            throw new IllegalStateException("Nenhuma partida ativa.");
+        }
+        if (!estado.isPartidaConcluida()) {
+            throw new IllegalStateException("A partida ainda não possui um final registrado.");
+        }
+        GerenciadorSlots.salvarAutosave(estado, GerenciadorSlots.PASTA_PADRAO);
+        estado = null;
+        controladorCenas = null;
     }
 
 }

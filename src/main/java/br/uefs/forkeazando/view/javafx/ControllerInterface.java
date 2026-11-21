@@ -35,8 +35,7 @@ import br.uefs.forkeazando.adapter.CarregamentoAdapter;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.view.ApresentacaoCena;
 import br.uefs.forkeazando.controller.CenasController;
-import br.uefs.forkeazando.controller.GatilhoAutosave;
-import br.uefs.forkeazando.dao.GerenciadorProgresso;
+import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 
@@ -224,9 +223,7 @@ public class ControllerInterface implements ApresentacaoCena {
                 if (sessao.possuiPartida()) confirmarSaida();
                 else encerrar();
             }
-            default -> mostrarModal(botao.getText().toUpperCase(),
-                    "Esta opção ainda não foi integrada ao JavaFX. "
-                            + "Os dados e as regras da versão de terminal continuam preservados.");
+            default -> mostrarModal(botao.getText().toUpperCase(), "Esta opção ainda não foi integrada ao JavaFX. " + "Os dados e as regras da versão de terminal continuam preservados.");
         }
     }
 
@@ -349,9 +346,7 @@ public class ControllerInterface implements ApresentacaoCena {
             narrativa.setWrapText(true);
             narrativa.setMaxWidth(480);
 
-            var recurso = getClass().getResource(
-                    "/images/personagens/malu/neutra.png"
-            );
+            var recurso = getClass().getResource("/images/personagens/malu/neutra.png");
 
             HBox dialogo = new HBox(16);
             dialogo.setAlignment(Pos.TOP_LEFT);
@@ -385,7 +380,15 @@ public class ControllerInterface implements ApresentacaoCena {
 
                         switch (resultado) {
                             case CONTINUAR_JOGO -> sessao.prepararCenaAtual();
-                            case FIM_DE_JOGO -> mostrarModal("FIM DE JOGO", "Você concluiu sua jornada!");
+                            case FIM_DE_JOGO -> {
+                                try {
+                                    sessao.finalizarPartida();
+                                    voltarAoMenu();
+                                    mostrarModal("JORNADA CONCLUÍDA", "Sua história foi concluída e salva!");
+                                } catch (SaveException ex) {
+                                    mostrarModal("ERRO AO SALVAR CONCLUSÃO", "Sua partida permanece em memória.\n" + ex.getMessage());
+                                }
+                            }
                             case ERRO_DE_ROTA -> mostrarModal("ERRO DE ROTA", "Não foi possível determinar a próxima cena.");
                         }
                     } catch (RuntimeException ex) {

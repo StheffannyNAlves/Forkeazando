@@ -176,3 +176,22 @@
 .combo-pixel .list-cell { -fx-text-fill: #fff2ce; -fx-background-color: #342044; }
 .combo-pixel .arrow-button { -fx-background-color: #e89e7b; }
 .combo-pixel .arrow { -fx-background-color: #31153f; }
+
+
+/* fork-animacoes-v1: acabamentos discretos, sem arredondar o visual pixel art */
+.painel-interno {
+    -fx-effect: dropshadow(gaussian, rgba(13, 6, 27, 0.70), 17, 0.20, 0, 7);
+}
+.botao-voltar:focused {
+    -fx-border-color: #fff3b8 #fff3b8 #b75671 #fff3b8;
+    -fx-effect: dropshadow(gaussian, rgba(255, 200, 114, 0.45), 10, 0.25, 0, 0);
+}
+.texto-narrativa {
+    -fx-padding: 6 5 7 5;
+}
+.hud-destaque {
+    -fx-background-color: rgba(22, 11, 40, 0.50);
+    -fx-border-color: rgba(255, 208, 127, 0.50);
+    -fx-border-width: 0 0 2 0;
+    -fx-padding: 9 12 9 12;
+}

@@ -111,6 +111,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             simbolo.getStyleClass().add("icone-pixel");
             button.setGraphic(simbolo);
             button.setOnMouseEntered(e -> selecionar(indice));
+            AnimacoesFx.instalarHover(button);
         }
         selecionar(0);
         configurarTeclado();
@@ -124,6 +125,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         for (Button b : opcoes) b.getStyleClass().remove("selecionado");
         selecionado = indice;
         opcoes.get(indice).getStyleClass().add("selecionado");
+        AnimacoesFx.destacarSelecao(opcoes.get(indice), opcoes);
     }
 
     private void configurarTeclado() {
@@ -488,6 +490,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             Protagonista p = sessao.estado().getProtagonista();
             VBox conteudo = novoPainel("CAPÍTULO " + sessao.estado().getCapituloAtual(), p.getNome() + " · " + cena.getCapitulo());
             indicadoresHud = rotulo("");
+            indicadoresHud.getStyleClass().add("hud-destaque");
             conteudo.getChildren().add(indicadoresHud);
             atualizar(sessao.estado());
             ApresentacaoDeCena visual = VisuaisDeCena.paraCena(cena.getId()).orElse(null);
@@ -510,6 +513,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             exibirRetratoAnimado(dialogo, visual);
             dialogo.getChildren().add(narrativa);
             conteudo.getChildren().add(dialogo);
+            AnimacoesFx.revelarDialogo(narrativa);
 
             List<Escolha> escolhas = sessao.escolhasDisponiveis();
             if (escolhas.isEmpty()) {
@@ -651,6 +655,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private Button botaoAcao(String texto) {
         Button b = new Button(texto);
         b.getStyleClass().add("botao-voltar");
+        AnimacoesFx.instalarHover(b);
         return b;
     }
 
@@ -678,6 +683,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         telaSecundaria.setManaged(true);
         telaSecundaria.setVisible(true);
         telaSecundaria.toFront();
+        AnimacoesFx.entradaTela(rolante);
+        AnimacoesFx.entradaBotoes(painel);
         if (modal.isVisible()) {
             modal.toFront();
         }
@@ -712,6 +719,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         modal.setManaged(true);
         modal.setVisible(true);
         modal.toFront();
+        AnimacoesFx.entradaModal(modal);
         botaoFechar.requestFocus();
     }
 
@@ -994,6 +1002,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 retrato.setSmooth(false);
 
                 dialogo.getChildren().add(retrato);
+                AnimacoesFx.entradaRetrato(retrato);
 
                 String arquivoTransicao = TRANSICOES.get(
                         anterior + ":" + expressao);
@@ -1036,6 +1045,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             retrato.setSmooth(false);
 
             dialogo.getChildren().add(retrato);
+                AnimacoesFx.entradaRetrato(retrato);
         });
     }
 
@@ -1045,6 +1055,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             return;
         Protagonista p = estado.getProtagonista();
         indicadoresHud.setText("ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima() + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao());
+            AnimacoesFx.pulsarHud(indicadoresHud);
     }
 }
 
+/* fork-animacoes-v1 */

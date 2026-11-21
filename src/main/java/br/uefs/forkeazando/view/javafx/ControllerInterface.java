@@ -72,6 +72,7 @@ public class ControllerInterface implements ApresentacaoCena {
     private Animation animacaoTitulo;
     private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
     private String ilustracaoAtual;
+    private Timeline animacaoIlustracao;
     private Timeline animacaoRetrato;
 
     private String ultimoFalanteRetrato;
@@ -227,7 +228,7 @@ public class ControllerInterface implements ApresentacaoCena {
         try {
             sessao.carregarPartida(carregado);
             sessao.inicializarControladorPartida(this);
-            ilustracaoAtual = null;
+            resetarCacheVisual();
             sessao.prepararCenaAtual();
 
         } catch (CarregamentoException | DadosInvalidosException e) {
@@ -376,21 +377,7 @@ public class ControllerInterface implements ApresentacaoCena {
             conteudo.getChildren().add(rotulo("ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima() + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao()));
             ApresentacaoDeCena visual = VisuaisDeCena.paraCena(cena.getId()).orElse(null);
 
-            if (visual != null && visual.ilustracao() != null) {
-                ilustracaoAtual = visual.ilustracao();
-            }
-
-            if (ilustracaoAtual != null) {
-                Ilustracoes.animacao(ilustracaoAtual).ifPresent(animacao -> {
-                    Tela quadroFinal = animacao.desenhar(animacao.total() - 1);
-                    ImageView cenario = new ImageView(conversorImagem(quadroFinal));
-                    cenario.setFitWidth(400);
-                    cenario.setPreserveRatio(true);
-                    cenario.setSmooth(false);
-                    conteudo.getChildren().add(cenario);
-                });
-            }
-
+            exibirIlustracao(conteudo, visual);
             if (cena.getPersonagemFalando() != null && !cena.getPersonagemFalando().isBlank()) {
                 conteudo.getChildren().add(rotulo(cena.getPersonagemFalando().toUpperCase()));
             }
@@ -447,6 +434,82 @@ public class ControllerInterface implements ApresentacaoCena {
         } catch (RuntimeException ex) {
             mostrarModal("ERRO AO CARREGAR CENA", ex.getMessage());
         }
+    }
+
+
+
+    //Interrompe a animação do cenário atual
+
+    private void pararAnimacaoIlustracao() {
+        if (animacaoIlustracao != null) {
+            animacaoIlustracao.stop();
+            animacaoIlustracao = null;
+        }
+    }
+
+    private void exibirIlustracao(
+            VBox conteudo, ApresentacaoDeCena visual) {
+
+        String anterior = ilustracaoAtual;
+
+        if (visual != null && visual.ilustracao() != null) {
+            ilustracaoAtual = visual.ilustracao();
+        }
+        pararAnimacaoIlustracao();
+
+        if (ilustracaoAtual == null) {
+            return;
+        }
+
+        Ilustracoes.animacao(ilustracaoAtual).ifPresent(animacao -> {
+
+            ImageView cenario = new ImageView();
+            cenario.setFitWidth(396);
+            cenario.setPreserveRatio(true);
+            cenario.setSmooth(false);
+
+            conteudo.getChildren().add(cenario);
+
+            int ultimoQuadro = animacao.total() - 1;
+
+            // Cenário já visto ou animação com apenas um quadro.
+            if (Objects.equals(anterior, ilustracaoAtual)
+                    || animacao.total() == 1) {
+
+                cenario.setImage(conversorImagem(
+                        animacao.desenhar(ultimoQuadro)
+                ));
+                return;
+            }
+
+            // Exibe o primeiro quadro imediatamente.
+            cenario.setImage(conversorImagem(
+                    animacao.desenhar(0)
+            ));
+
+            int[] indice = {0};
+
+            Timeline timeline = new Timeline(
+                    new KeyFrame(Duration.millis(Math.max(1, animacao.intervaloMs())),
+                            evento -> {
+                                indice[0]++;
+                                Tela quadro = animacao.desenhar(indice[0]);
+                                cenario.setImage(conversorImagem(quadro));
+                            }
+                    )
+            );
+
+            // O quadro zero já está na tela
+            timeline.setCycleCount(ultimoQuadro);
+            timeline.setOnFinished(evento -> {
+                if (animacaoIlustracao == timeline) {
+                    animacaoIlustracao = null;
+                }
+            });
+
+            animacaoIlustracao = timeline;
+            timeline.play();
+        });
     }
 
     private <E extends Enum<E>> ComboBox<E> novoCombo(E[] valores) {
@@ -506,6 +569,7 @@ public class ControllerInterface implements ApresentacaoCena {
     }
 
     private void voltarAoMenu() {
+        pararAnimacaoIlustracao();
         pararAnimacaoRetrato();
         telaSecundaria.setVisible(false);
         telaSecundaria.setManaged(false);
@@ -555,6 +619,7 @@ public class ControllerInterface implements ApresentacaoCena {
     }
 
     public void pararAnimacoes() {
+        pararAnimacaoIlustracao();
         pararAnimacaoRetrato();
         if (movimentoCenario != null) movimentoCenario.stop();
         if (animacaoTitulo != null) animacaoTitulo.stop();
@@ -562,6 +627,8 @@ public class ControllerInterface implements ApresentacaoCena {
 
     @Override
     public void resetarCacheVisual() {
+        pararAnimacaoIlustracao();
+        pararAnimacaoRetrato();
         avisosPendentes.clear();
         ilustracaoAtual = null;
         pararAnimacaoRetrato();

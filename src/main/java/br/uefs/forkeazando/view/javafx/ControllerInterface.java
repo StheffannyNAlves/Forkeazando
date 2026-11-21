@@ -628,10 +628,9 @@ public class ControllerInterface implements ApresentacaoCena {
             painel.getChildren().add(texto);
         }
 
-        Button voltar = botaoAcao("VOLTAR AO MENU");
-        voltar.setOnAction(e -> voltarAoMenu());
-        painel.getChildren().add(voltar);
-
+        Button continuar = botaoAcao("CONTINUAR PARA O ENCERRAMENTO");
+        continuar.setOnAction(e -> abrirCena());
+        painel.getChildren().add(continuar);
         mostrarTela(painel);
     }
 

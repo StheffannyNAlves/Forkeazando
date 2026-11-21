@@ -383,17 +383,18 @@ public class ControllerInterface implements ApresentacaoCena {
             narrativa.setWrapText(true);
             narrativa.setMaxWidth(480);
 
+
             HBox dialogo = new HBox(16);
             dialogo.setAlignment(Pos.TOP_LEFT);
 
             if (visual != null && visual.falante() != null) {
-                Retratos.pixels(visual.falante(), visual.expressao())
-                        .ifPresent(tela -> {
-                        ImageView retrato = new ImageView(conversorImagem(tela));
-                        retrato.setFitWidth(128);
-                        retrato.setFitHeight(128);
-                        retrato.setPreserveRatio(true);
-                        retrato.setSmooth(false);
+                Retratos.pixels(visual.falante(), visual.expressao()
+                ).ifPresent(tela -> {
+                    ImageView retrato = new ImageView(conversorImagem(tela));
+                    retrato.setFitWidth(128);
+                    retrato.setFitHeight(128);
+                    retrato.setPreserveRatio(true);
+                    retrato.setSmooth(false);
 
                     dialogo.getChildren().add(retrato);
                 });
@@ -402,9 +403,6 @@ public class ControllerInterface implements ApresentacaoCena {
             dialogo.getChildren().add(narrativa);
             conteudo.getChildren().add(dialogo);
 
-            dialogo.getChildren().add(narrativa);
-
-            conteudo.getChildren().add(dialogo);
             List<Escolha> escolhas = sessao.escolhasDisponiveis();
             if (escolhas.isEmpty()) {
                 conteudo.getChildren().add(rotulo("Nenhuma decisão disponível nesta cena."));

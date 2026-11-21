@@ -23,13 +23,6 @@ public final class SessaoGrafica {
     public SessaoGrafica() {
         this.cenas = Roteiro.todasAsCenas().stream().collect(Collectors.toMap(Cena::getId, Function.identity()));
     }
-    public void conectarControlador(CenasController controlador) {
-        if (!possuiPartida()) {
-            throw new IllegalStateException("Nenhuma partida em andamento.");
-        }
-        this.controladorCenas = Objects.requireNonNull(controlador);
-    }
-
     public CenasController.ResultadoTransicao encaminharEscolha(Escolha escolha) {
         if (controladorCenas == null) {
             throw new IllegalStateException("Controlador da partida não inicializado.");
@@ -38,9 +31,6 @@ public final class SessaoGrafica {
         return controladorCenas.registrarEscolha(escolha);
     }
 
-    public List<Cena> obterCenas() {
-        return List.copyOf(cenas.values());
-    }
     public void inicializarControladorPartida(ApresentacaoCena apresentacao)
             throws CarregamentoException, DadosInvalidosException {
 
@@ -112,28 +102,4 @@ public final class SessaoGrafica {
         return cenaAtual().getEscolhasDisponiveis(estado().getProtagonista());
     }
 
-
-    public boolean escolher(Escolha escolha) {
-        if (!escolhasDisponiveis().contains(escolha)) {
-            throw new IllegalArgumentException("Escolha indisponível.");
-        }
-        Estado atual = estado();
-        if (atual.getCapituloAtual() > 1) {
-            throw new IllegalStateException("A prévia gráfica está limitada ao capítulo inicial.");
-        }
-        int destino = escolha.getCenaDestinoId();
-        if (destino == Estado.CENA_RETOMAR) {
-            throw new IllegalStateException("Evento de apagão ainda não disponível na interface gráfica.");
-        }
-        if (destino == Estado.CENA_ENCERRAR) {
-            // Evita iniciar o próximo capítulo sem a lógica completa de CenasController
-            return false;
-        }
-        if (!cenas.containsKey(destino)) {
-            throw new IllegalStateException("Cena de destino não encontrada: " + destino);
-        }
-        atual.aplicarEscolha(escolha); // Reutiliza consequências e flags do modelo terminal
-        atual.setCenaAtualId(destino);
-        return true;
-    }
 }

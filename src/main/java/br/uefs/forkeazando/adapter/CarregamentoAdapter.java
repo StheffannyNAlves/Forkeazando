@@ -11,7 +11,12 @@ import br.uefs.forkeazando.dao.GerenciadorSlots;
 import java.nio.file.Path;
 import java.util.List;
 
-// O objetivo desse adapter é
+/**
+ * O objetivo desse Adapter é "traduzir" as operações de acesso
+ * e gerenciamento de partidas para as chamadas dos métodos
+ * de persistência de GerenciadorSlots e GerenciadorSave,
+ * sem expor essas classes a quem utiliza a interface
+ */
 public class CarregamentoAdapter implements GerenciamentoPartidas {
     private final Path pastaSaves;
 

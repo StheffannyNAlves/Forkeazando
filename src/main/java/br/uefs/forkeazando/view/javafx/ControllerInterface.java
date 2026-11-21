@@ -1,4 +1,5 @@
 package br.uefs.forkeazando.view.javafx;
+import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.pixel.Ilustracoes;
 import br.uefs.forkeazando.view.pixel.Tela;
@@ -65,8 +66,8 @@ public class ControllerInterface implements ApresentacaoCena {
     @FXML private StackPane telaSecundaria;
 
     private final List<Button> opcoes = new ArrayList<>();
-    private final SessaoGrafica sessao = new SessaoGrafica();
-    private final AcessoPartidas acessoPartidas = new CarregamentoAdapter(GerenciadorSlots.PASTA_PADRAO);
+    private final GerenciamentoPartidas acessoPartidas = new CarregamentoAdapter(GerenciadorSlots.PASTA_PADRAO);
+    private final SessaoGrafica sessao = new SessaoGrafica(acessoPartidas);
     private int selecionado;
     private TranslateTransition movimentoCenario;
     private Animation animacaoTitulo;
@@ -254,6 +255,14 @@ public class ControllerInterface implements ApresentacaoCena {
             }
             case "instrucoes" -> mostrarModal("GUIA DE SOBREVIVÊNCIA", "Suas escolhas alteram energia, score, participação e relacionamentos.\n\n" + "No menu: setas e ENTER. Durante uma cena: clique numa decisão.\n" + "ESC volta ao menu sem apagar a partida em memória.");
             case "carregar" -> abrirTelaSalvamento();
+            case "gerenciarSaves" -> abrirTelaSalvar();
+            case "salvar" -> {
+                if (!sessao.possuiPartida()) {
+                    mostrarModal("SALVAR PARTIDA", "Nenhuma partida em andamento.");
+                } else {
+                    abrirTelaSalvar();
+                }
+            }
             case "creditos" -> mostrarModal("CRÉDITOS", "FORKEAZANDO · 2026\n\nStheffanny Alves\n" + "Universidade Estadual do Fork Perdido (UEFP)");
             case "sair" -> {
                 if (sessao.possuiPartida()) confirmarSaida();
@@ -263,9 +272,107 @@ public class ControllerInterface implements ApresentacaoCena {
         }
     }
 
+    private void abrirTelaSalvar() {
+        VBox painel = novoPainel(
+                "GERENCIAR SAVES",
+                "Escolha um slot para salvar ou excluir uma partida."
+        );
+
+        for (ResumoSlot slot : acessoPartidas.listarSlots()) {
+            VBox bloco = new VBox(8);
+
+            bloco.getChildren().add(
+                    rotulo("SLOT " + slot.numero() + " — " + slot.status())
+            );
+
+            if (slot.status() == ResumoSlot.Status.OCUPADO) {
+                bloco.getChildren().add(
+                        rotulo(slot.nome() + " | Capítulo " + slot.capitulo()
+                                + " | " + slot.data())
+                );
+            }
+
+            HBox acoes = new HBox(12);
+
+            if (sessao.possuiPartida()) {
+                Button salvar = botaoAcao("SALVAR");
+
+                salvar.setOnAction(e -> {
+                    if (slot.status() == ResumoSlot.Status.VAZIO) {
+                        salvarNoSlot(slot.numero());
+                    } else {
+                        confirmarSobrescrita(slot.numero());
+                    }
+                });
+
+                acoes.getChildren().add(salvar);
+            }
+
+            if (slot.status() != ResumoSlot.Status.VAZIO) {
+                Button excluir = botaoAcao("EXCLUIR");
+
+                excluir.setOnAction(e ->
+                        confirmarExclusao(slot.numero())
+                );
+
+                acoes.getChildren().add(excluir);
+            }
+
+            bloco.getChildren().add(acoes);
+            painel.getChildren().add(bloco);
+        }
+
+        Button voltar = botaoAcao("VOLTAR AO MENU");
+        voltar.setOnAction(e -> voltarAoMenu());
+
+        painel.getChildren().add(voltar);
+        mostrarTela(painel);
+    }
+
+    private void salvarNoSlot(int numeroSlot) {
+        try {
+            sessao.salvarEmSlot(numeroSlot);
+            abrirTelaSalvar();
+            mostrarModal("PARTIDA SALVA",
+                    "Progresso salvo no slot " + numeroSlot + ".");
+        } catch (SaveException ex) {
+            mostrarModal("ERRO AO SALVAR", ex.getMessage());
+        }
+    }
+    private void confirmarSobrescrita(int numeroSlot) {
+        VBox painel = novoPainel("SOBRESCREVER PARTIDA?", "Os dados anteriores do slot " + numeroSlot + " serão substituídos.");
+
+        Button confirmar = botaoAcao("SIM, SOBRESCREVER");
+        confirmar.setOnAction(e -> salvarNoSlot(numeroSlot));
+
+        Button cancelar = botaoAcao("CANCELAR");
+        cancelar.setOnAction(e -> abrirTelaSalvar());
+
+        painel.getChildren().addAll(confirmar, cancelar);
+        mostrarTela(painel);
+    }
+
+    private void confirmarExclusao(int numeroSlot) {
+        VBox painel = novoPainel("EXCLUIR PARTIDA?", "O slot " + numeroSlot + " será excluído. Esta ação não pode ser desfeita.");
+        Button confirmar = botaoAcao("SIM, EXCLUIR");
+        confirmar.setOnAction(e -> excluirSlot(numeroSlot));
+        Button cancelar = botaoAcao("CANCELAR");
+        cancelar.setOnAction(e -> abrirTelaSalvar());
+        painel.getChildren().addAll(confirmar, cancelar);
+        mostrarTela(painel);
+    }
+
+    private void excluirSlot(int numeroSlot) {
+        try {
+            acessoPartidas.excluirSlot(numeroSlot);
+            abrirTelaSalvar();
+            mostrarModal("PARTIDA EXCLUÍDA", "O slot " + numeroSlot + " foi excluído.");
+        } catch (SaveException ex) {
+            mostrarModal("ERRO AO EXCLUIR", ex.getMessage());
+        }
+    }
     private void confirmarNovaPartida() {
-        VBox painel = novoPainel("INICIAR OUTRA PARTIDA?",
-                "A partida atual está em memória e ainda não pode ser salva pela interface gráfica.");
+        VBox painel = novoPainel("SAIR DO FORKEAZANDO?", "Sua sessão será encerrada. Se houver progresso ainda não salvo, ele poderá ser perdido. Deseja realmente sair?");
         Button nova = botaoAcao("SIM, CRIAR OUTRA PERSONAGEM");
         nova.setOnAction(e -> abrirCriacao());
         Button voltar = botaoAcao("CANCELAR");

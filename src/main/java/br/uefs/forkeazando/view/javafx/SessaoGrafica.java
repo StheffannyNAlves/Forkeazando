@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.view.javafx;
 
+import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
 import br.uefs.forkeazando.controller.GatilhoAutosave;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
@@ -21,8 +22,11 @@ public final class SessaoGrafica {
     private final Map<Integer, Cena> cenas;
     private Estado estado;
     private CenasController controladorCenas;
-    public SessaoGrafica() {
+    private final GerenciamentoPartidas gerenciamentoPartidas;
+    public SessaoGrafica(GerenciamentoPartidas gerenciamentoPartidas) {
+        this.gerenciamentoPartidas = gerenciamentoPartidas;
         this.cenas = Roteiro.todasAsCenas().stream().collect(Collectors.toMap(Cena::getId, Function.identity()));
+
     }
     public CenasController.ResultadoTransicao encaminharEscolha(Escolha escolha) {
         if (controladorCenas == null) {
@@ -113,6 +117,10 @@ public final class SessaoGrafica {
         GerenciadorSlots.salvarAutosave(estado, GerenciadorSlots.PASTA_PADRAO);
         estado = null;
         controladorCenas = null;
+    }
+
+    public void salvarEmSlot(int numSlot) throws SaveException{
+        gerenciamentoPartidas.salvarSlot(estado(), numSlot);
     }
 
 }

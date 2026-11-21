@@ -41,7 +41,8 @@ import br.uefs.forkeazando.controller.CenasController;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
@@ -71,6 +72,24 @@ public class ControllerInterface implements ApresentacaoCena {
     private Animation animacaoTitulo;
     private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
     private String ilustracaoAtual;
+    private Timeline animacaoRetrato;
+
+    private String ultimoFalanteRetrato;
+    private String ultimaExpressaoRetrato;
+
+    private static final Set<String> EXPRESSOES = Set.of(
+            "neutra", "feliz", "pensativa",
+            "surpresa", "triste", "brava"
+    );
+
+    private static final Map<String, String> TRANSICOES = Map.of(
+            "neutra:feliz", "01_neutra_para_feliz.png",
+            "feliz:pensativa", "02_feliz_para_pensativa.png",
+            "pensativa:surpresa", "03_pensativa_para_surpresa.png",
+            "surpresa:triste", "04_surpresa_para_triste.png",
+            "triste:brava", "05_triste_para_brava.png",
+            "brava:neutra", "06_brava_para_neutra.png"
+    );
 
     @FXML
     private void  initialize() {
@@ -364,7 +383,6 @@ public class ControllerInterface implements ApresentacaoCena {
             if (ilustracaoAtual != null) {
                 Ilustracoes.animacao(ilustracaoAtual).ifPresent(animacao -> {
                     Tela quadroFinal = animacao.desenhar(animacao.total() - 1);
-
                     ImageView cenario = new ImageView(conversorImagem(quadroFinal));
                     cenario.setFitWidth(400);
                     cenario.setPreserveRatio(true);
@@ -387,20 +405,7 @@ public class ControllerInterface implements ApresentacaoCena {
             HBox.setHgrow(narrativa, Priority.ALWAYS);
             HBox dialogo = new HBox(16);
             dialogo.setAlignment(Pos.TOP_LEFT);
-
-            if (visual != null && visual.falante() != null) {
-                Retratos.pixels(visual.falante(), visual.expressao()
-                ).ifPresent(tela -> {
-                    ImageView retrato = new ImageView(conversorImagem(tela));
-                    retrato.setFitWidth(128);
-                    retrato.setFitHeight(128);
-                    retrato.setPreserveRatio(true);
-                    retrato.setSmooth(false);
-
-                    dialogo.getChildren().add(retrato);
-                });
-            }
-
+            exibirRetratoAnimado(dialogo, visual);
             dialogo.getChildren().add(narrativa);
             conteudo.getChildren().add(dialogo);
 
@@ -501,6 +506,7 @@ public class ControllerInterface implements ApresentacaoCena {
     }
 
     private void voltarAoMenu() {
+        pararAnimacaoRetrato();
         telaSecundaria.setVisible(false);
         telaSecundaria.setManaged(false);
         telaSecundaria.getChildren().clear();
@@ -549,6 +555,7 @@ public class ControllerInterface implements ApresentacaoCena {
     }
 
     public void pararAnimacoes() {
+        pararAnimacaoRetrato();
         if (movimentoCenario != null) movimentoCenario.stop();
         if (animacaoTitulo != null) animacaoTitulo.stop();
     }
@@ -557,6 +564,9 @@ public class ControllerInterface implements ApresentacaoCena {
     public void resetarCacheVisual() {
         avisosPendentes.clear();
         ilustracaoAtual = null;
+        pararAnimacaoRetrato();
+        ultimoFalanteRetrato = null;
+        ultimaExpressaoRetrato = null;
     }
 
     @Override
@@ -712,4 +722,139 @@ public class ControllerInterface implements ApresentacaoCena {
 
         mostrarModal("SISTEMA ACADÊMICO · VEREDITO", "Processamento concluído.\n\n" + resultado + "\n\nRecomendação baseada em padrões históricos." + "\nO sistema não decide por você. Ainda.");
     }
+
+
+    private void pararAnimacaoRetrato() {
+        if (animacaoRetrato != null) {
+            animacaoRetrato.stop();
+            animacaoRetrato = null;
+        }
+    }
+
+    private String pastaRetrato(String falante) {
+        return switch (falante) {
+            case "sergio" -> "prof_sergio";
+            case "rafael" -> "prof_rafael";
+            case "protagonista_stheffanny" -> "stheffanny";
+            case "protagonista_masculino", "caio", "bia",
+                 "dandara", "malu", "alan", "noa",
+                 "lia", "stheffanny" -> falante;
+            default -> null;
+        };
+    }
+
+    private Image carregarImagemPersonagem(String caminho) {
+        var recurso = getClass().getResource(caminho);
+
+        if (recurso == null) {
+            return null;
+        }
+
+        return new Image(recurso.toExternalForm());
+    }
+
+
+    private void animarRetratoIdle(ImageView retrato, String pastaBase) {
+        String base = pastaBase + "/animations/idle/";
+        Image aberto = carregarImagemPersonagem(base + "frame_000_aberto.png");
+        Image meio = carregarImagemPersonagem(base + "frame_001_piscada_meio.png");
+        Image fechado = carregarImagemPersonagem(base + "frame_002_olhos_fechados.png");
+        Image respiracao = carregarImagemPersonagem(base + "frame_003_respiracao.png");
+
+        if (aberto == null || meio == null || fechado == null || respiracao == null) {
+            return;
+        }
+
+        retrato.setImage(aberto);
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.millis(700),
+                        e -> retrato.setImage(meio)),
+                new KeyFrame(Duration.millis(750),
+                        e -> retrato.setImage(fechado)),
+                new KeyFrame(Duration.millis(820),
+                        e -> retrato.setImage(aberto)),
+                new KeyFrame(Duration.millis(1520),
+                        e -> retrato.setImage(respiracao)),
+                new KeyFrame(Duration.millis(1970),
+                        e -> retrato.setImage(aberto))
+        );
+
+        timeline.setCycleCount(Animation.INDEFINITE);
+        animacaoRetrato = timeline;
+        timeline.play();
+    }
+
+    private void exibirRetratoAnimado(HBox dialogo, ApresentacaoDeCena visual) {
+        pararAnimacaoRetrato();
+        if (visual == null || visual.falante() == null) {
+            ultimoFalanteRetrato = null;
+            ultimaExpressaoRetrato = null;
+            return;
+        }
+
+        String falante = visual.falante();
+        String expressao = visual.expressao() == null ? "neutra" : visual.expressao();
+        String anterior = Objects.equals(ultimoFalanteRetrato, falante) ? ultimaExpressaoRetrato : null;
+        ultimoFalanteRetrato = falante;
+        ultimaExpressaoRetrato = expressao;
+
+        String pasta = pastaRetrato(falante);
+
+        if (pasta != null && EXPRESSOES.contains(expressao)) {
+            String base = "/images/personagens/" + pasta;
+            Image imagem = carregarImagemPersonagem(base + "/expressions/" + expressao + ".png");
+            if (imagem != null) {
+                ImageView retrato = new ImageView(imagem);
+                retrato.setFitWidth(128);
+                retrato.setFitHeight(128);
+                retrato.setPreserveRatio(true);
+                retrato.setSmooth(false);
+
+                dialogo.getChildren().add(retrato);
+
+                String arquivoTransicao = TRANSICOES.get(
+                        anterior + ":" + expressao);
+
+                if (arquivoTransicao != null) {
+                    Image intermediaria = carregarImagemPersonagem(base + "/animations/expressoes/transitions/" + arquivoTransicao);
+
+                    if (intermediaria != null) {
+                        retrato.setImage(intermediaria);
+
+                        Timeline transicao = new Timeline(
+                                new KeyFrame(Duration.millis(80), e -> {
+                                    retrato.setImage(imagem);
+                                    if ("neutra".equals(expressao)) {
+                                        animarRetratoIdle(retrato, base);
+                                    }
+                                })
+                        );
+
+                        animacaoRetrato = transicao;
+                        transicao.play();
+                        return;
+                    }
+                }
+
+                if ("neutra".equals(expressao)) {
+                    animarRetratoIdle(retrato, base);
+                }
+
+                return;
+            }
+        }
+
+        Retratos.pixels(falante, expressao).ifPresent(tela -> {
+            ImageView retrato = new ImageView(conversorImagem(tela));
+
+            retrato.setFitWidth(128);
+            retrato.setFitHeight(128);
+            retrato.setPreserveRatio(true);
+            retrato.setSmooth(false);
+
+            dialogo.getChildren().add(retrato);
+        });
+    }
+
 }

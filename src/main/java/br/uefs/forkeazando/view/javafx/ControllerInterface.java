@@ -1,9 +1,9 @@
 package br.uefs.forkeazando.view.javafx;
 
-import br.uefs.forkeazando.model.IdentidadeProtagonista;
-import br.uefs.forkeazando.model.Cena;
-import br.uefs.forkeazando.model.Escolha;
-import br.uefs.forkeazando.model.Protagonista;
+import br.uefs.forkeazando.model.*;
+import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
+import br.uefs.forkeazando.roteiro.Epilogos;
+import br.uefs.forkeazando.roteiro.SistemaAcademico;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.animation.ParallelTransition;
@@ -33,17 +33,20 @@ import javafx.util.Duration;
 import br.uefs.forkeazando.adapter.AcessoPartidas;
 import br.uefs.forkeazando.adapter.CarregamentoAdapter;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
-import br.uefs.forkeazando.model.Estado;
+import br.uefs.forkeazando.view.ApresentacaoCena;
+import br.uefs.forkeazando.controller.CenasController;
+import br.uefs.forkeazando.controller.GatilhoAutosave;
+import br.uefs.forkeazando.dao.GerenciadorProgresso;
+import br.uefs.forkeazando.excecao.CarregamentoException;
+import br.uefs.forkeazando.excecao.DadosInvalidosException;
 
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /* Recebe os eventos da ‘interface’. O modelo e o roteiro pertencem à SessaoGrafica*/
-public class ControllerInterface {
+public class ControllerInterface implements ApresentacaoCena {
 
     @FXML private StackPane raiz;
     @FXML private StackPane painelArte;
@@ -64,6 +67,7 @@ public class ControllerInterface {
     private int selecionado;
     private TranslateTransition movimentoCenario;
     private Animation animacaoTitulo;
+    private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
 
     @FXML
     private void  initialize() {
@@ -185,10 +189,15 @@ public class ControllerInterface {
 
         concluirCarregamento(carregado);
     }
+
     private void concluirCarregamento(Estado carregado) {
         try {
             sessao.carregarPartida(carregado);
-            abrirCena();
+            sessao.inicializarControladorPartida(this);
+            sessao.prepararCenaAtual();
+
+        } catch (CarregamentoException | DadosInvalidosException e) {
+            mostrarModal("ERRO NO PROGRESSO", e.getMessage());
 
         } catch (IllegalArgumentException e) {
             mostrarModal("PARTIDA INCOMPATÍVEL", e.getMessage());
@@ -252,13 +261,14 @@ public class ControllerInterface {
         VBox conteudo = novoPainel("CRIE SEU PROTAGONISTA", "Cada escolha muda seus atributos iniciais.");
         ComboBox<IdentidadeProtagonista> identidade = novoCombo(IdentidadeProtagonista.values());
         identidade.setConverter(new javafx.util.StringConverter<>() {
-            @Override public String toString(IdentidadeProtagonista valor) {
+            @Override
+            public String toString(IdentidadeProtagonista valor) {
                 if (valor == null) return "";
                 return valor == IdentidadeProtagonista.STHEFFANNY ? "Tiana" : "Miles";
             }
-            @Override public IdentidadeProtagonista fromString(String texto) {
-                return "Miles".equalsIgnoreCase(texto)
-                        ? IdentidadeProtagonista.DAVI : IdentidadeProtagonista.STHEFFANNY;
+            @Override
+            public IdentidadeProtagonista fromString(String texto) {
+                return "Miles".equalsIgnoreCase(texto) ? IdentidadeProtagonista.DAVI : IdentidadeProtagonista.STHEFFANNY;
             }
         });
         TextField nome = new TextField();
@@ -281,8 +291,7 @@ public class ControllerInterface {
 
         ComboBox<Protagonista.NivelVidaSocial> vida = novoCombo(Protagonista.NivelVidaSocial.values());
         vida.setValue(Protagonista.NivelVidaSocial.EQUILIBRADO);
-        ComboBox<Protagonista.ExperienciaEmocionalEnsinoMedio> experiencia =
-                novoCombo(Protagonista.ExperienciaEmocionalEnsinoMedio.values());
+        ComboBox<Protagonista.ExperienciaEmocionalEnsinoMedio> experiencia = novoCombo(Protagonista.ExperienciaEmocionalEnsinoMedio.values());
         experiencia.setValue(Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA);
         ComboBox<Protagonista.SituacaoEconomica> economia = novoCombo(Protagonista.SituacaoEconomica.values());
         economia.setValue(Protagonista.SituacaoEconomica.ESTAVEL);
@@ -309,11 +318,12 @@ public class ControllerInterface {
                 return;
             }
             try {
-                Protagonista protagonista = new Protagonista(
-                        nome.getText(), identidade.getValue(), perfeccionista.isSelected(), sociavel.isSelected(),
-                        teorico.isSelected(), vida.getValue(), experiencia.getValue(), economia.getValue());
+                Protagonista protagonista = new Protagonista(nome.getText(), identidade.getValue(), perfeccionista.isSelected(), sociavel.isSelected(), teorico.isSelected(), vida.getValue(), experiencia.getValue(), economia.getValue());
                 sessao.novaPartida(protagonista);
-                abrirCena();
+                sessao.inicializarControladorPartida(this);
+                sessao.prepararCenaAtual();
+            } catch (CarregamentoException | DadosInvalidosException ex) {
+                mostrarModal("ERRO NO PROGRESSO", ex.getMessage());
             } catch (RuntimeException ex) {
                 mostrarModal("ERRO AO INICIAR", ex.getMessage());
             }
@@ -371,15 +381,13 @@ public class ControllerInterface {
                 escolhaBotao.setMaxWidth(Double.MAX_VALUE);
                 escolhaBotao.setOnAction(e -> {
                     try {
-                        boolean avancou = sessao.escolher(escolha);
-                        if (avancou) {
-                            abrirCena();
-                            String consequencia = escolha.getTextoConsequencia();
-                            if (consequencia != null && !consequencia.isBlank()) {
-                                mostrarModal("CONSEQUÊNCIA", consequencia);
-                            }
+                        CenasController.ResultadoTransicao resultado = sessao.encaminharEscolha(escolha);
+
+                        switch (resultado) {
+                            case CONTINUAR_JOGO -> sessao.prepararCenaAtual();
+                            case FIM_DE_JOGO -> mostrarModal("FIM DE JOGO", "Você concluiu sua jornada!");
+                            case ERRO_DE_ROTA -> mostrarModal("ERRO DE ROTA", "Não foi possível determinar a próxima cena.");
                         }
-                        else mostrarModal("FIM DA PRÉVIA", "Chegamos à transição de capítulo " + "A versão completa segue no terminal enquanto migro os eventos especiais");
                     } catch (RuntimeException ex) {
                         mostrarModal("NÃO FOI POSSÍVEL AVANÇAR", ex.getMessage());
                     }
@@ -447,6 +455,9 @@ public class ControllerInterface {
         telaSecundaria.setManaged(true);
         telaSecundaria.setVisible(true);
         telaSecundaria.toFront();
+        if (modal.isVisible()) {
+            modal.toFront();
+        }
     }
 
     private void voltarAoMenu() {
@@ -458,10 +469,21 @@ public class ControllerInterface {
                 : "✦  SUA HISTÓRIA COMEÇA AQUI");
         raiz.requestFocus();
     }
-
     private void mostrarModal(String titulo, String conteudo) {
+        if (modal.isVisible()) {
+            avisosPendentes.addLast(new String[]{titulo, conteudo});
+            return;
+        }
+
+        exibirModalAgora(titulo, conteudo);
+    }
+
+    private void exibirModalAgora(String titulo, String conteudo) {
         tituloModal.setText(titulo);
-        textoModal.setText(conteudo == null ? "Ocorreu um erro sem detalhes." : conteudo);
+        textoModal.setText(conteudo == null
+                ? "Ocorreu um erro sem detalhes."
+                : conteudo);
+
         modal.setManaged(true);
         modal.setVisible(true);
         modal.toFront();
@@ -470,14 +492,188 @@ public class ControllerInterface {
 
     @FXML
     private void fecharModal() {
+        if (!avisosPendentes.isEmpty()) {
+            String[] proximo = avisosPendentes.removeFirst();
+            exibirModalAgora(proximo[0], proximo[1]);
+            return;
+        }
+
         modal.setVisible(false);
         modal.setManaged(false);
-        if (telaSecundaria.isVisible()) telaSecundaria.toFront();
-        else raiz.requestFocus();
+
+        if (telaSecundaria.isVisible()) {
+            telaSecundaria.toFront();
+        } else {
+            raiz.requestFocus();
+        }
     }
 
     public void pararAnimacoes() {
         if (movimentoCenario != null) movimentoCenario.stop();
         if (animacaoTitulo != null) animacaoTitulo.stop();
+    }
+
+    @Override
+    public void resetarCacheVisual() {
+        avisosPendentes.clear();
+    }
+
+    @Override
+    public void mostrarGaleria(Protagonista protagonista) {
+        VBox painel = novoPainel("GALERIA",
+                "Habilidades e itens conquistados durante a jornada.");
+        painel.setMaxHeight(Double.MAX_VALUE);
+
+        for (Colecionavel.Tipo tipo : Colecionavel.Tipo.values()) {
+            painel.getChildren().add(rotulo(tipo == Colecionavel.Tipo.HABILIDADE
+                    ? "HABILIDADES" : "ITENS"));
+
+            for (Colecionavel item : Colecionavel.values()) {
+                if (item.getTipo() != tipo) continue;
+
+                boolean desbloqueado = protagonista.temFlag(item.getFlag());
+                painel.getChildren().add(rotulo(
+                        (desbloqueado ? "✓ " : "🔒 ")
+                                + (desbloqueado ? item.getNome() : "???")
+                ));
+            }
+        }
+
+        Button voltar = botaoAcao("VOLTAR À CENA");
+        voltar.setOnAction(e -> abrirCena());
+        painel.getChildren().add(voltar);
+        mostrarTela(painel);
+    }
+
+    @Override
+    public void renderizar(Cena cena, Protagonista p,
+                           int semestresExtras, ApresentacaoDeCena visual) {
+        // Reaproveita temporariamente o renderizador JavaFX existente.
+        if (!sessao.possuiPartida()
+                || sessao.estado().getCenaAtualId() != cena.getId()) {
+            throw new IllegalStateException(
+                    "A cena gráfica não corresponde à partida atual.");
+        }
+
+        abrirCena();
+    }
+
+    @Override
+    public void mostrarBencaoCaramelo() {
+        mostrarModal("BENÇÃO DO CARAMELO",
+                "O Caramelo passa do lado. Ele para. Ele te olha.\n\n"
+                        + "Ele vai embora.\n\n(Foi... um sinal?)");
+    }
+
+    @Override
+    public void mostrarHabilidade(String flag) {
+        String nome = Colecionavel.porFlag(flag)
+                .map(Colecionavel::getNome)
+                .orElse(flag);
+
+        mostrarModal("NOVA HABILIDADE", nome);
+    }
+
+    @Override
+    public void mostrarItem(String flag) {
+        String nome = Colecionavel.porFlag(flag)
+                .map(Colecionavel::getNome)
+                .orElse(flag);
+
+        mostrarModal("ITEM ADQUIRIDO", nome);
+    }
+
+
+
+    @Override
+    public void mostrarConquista(Conquista conquista) {
+        mostrarModal("CONQUISTA DESBLOQUEADA",
+                conquista.getTitulo() + "\n\n" + conquista.getDescricao());
+    }
+
+    @Override
+    public void mostrarMensagem(String mensagem) {
+        mostrarModal("MENSAGEM", mensagem);
+    }
+
+    @Override
+    public void mostrarImpactoRelacionamento(
+            PersonagemSecundario npc,
+            float valor,
+            Protagonista.NivelRelacionamento nivel) {
+
+        String mudanca = valor > 0 ? "melhorou"
+                : valor < 0 ? "piorou" : "não mudou";
+
+        mostrarModal("RELACIONAMENTO",
+                "Seu relacionamento com " + npc.getNome()
+                        + " " + mudanca + ".\n"
+                        + "Nível atual: " + nivel);
+    }
+
+    @Override
+    public void mostrarEpilogos(Protagonista p) {
+        VBox painel = novoPainel("O QUE FICOU",
+                "O fim da jornada de " + p.getNome());
+        painel.setMaxHeight(Double.MAX_VALUE);
+
+        for (Epilogos.Epilogo bloco : Epilogos.de(p)) {
+            painel.getChildren().add(rotulo(bloco.titulo()));
+
+            Label texto = new Label(bloco.texto());
+            texto.getStyleClass().add("texto-narrativa");
+            texto.setWrapText(true);
+            texto.setMaxWidth(650);
+
+            painel.getChildren().add(texto);
+        }
+
+        Button voltar = botaoAcao("VOLTAR AO MENU");
+        voltar.setOnAction(e -> voltarAoMenu());
+        painel.getChildren().add(voltar);
+
+        mostrarTela(painel);
+    }
+
+    @Override
+    public void mostrarCurriculo(Protagonista p) {
+        var linhas = Curriculo.linhas(p);
+        Curriculo.Categoria categoria = null;
+        StringBuilder conteudo = new StringBuilder();
+
+        for (Curriculo.Linha linha : linhas) {
+            if (categoria != null && categoria != linha.categoria()) {
+                mostrarModal("CURRÍCULO · " + categoria.rotulo,
+                        conteudo.toString());
+                conteudo.setLength(0);
+            }
+
+            categoria = linha.categoria();
+            conteudo.append(linha.positiva() ? "✓ " : "✗ ")
+                    .append(linha.texto())
+                    .append("\n");
+        }
+
+        if (categoria != null) {
+            mostrarModal("CURRÍCULO · " + categoria.rotulo,
+                    conteudo.toString());
+        }
+    }
+
+    @Override
+    public void mostrarTransicao(String capitulo) {
+        mostrarModal("NOVO CAPÍTULO", capitulo);
+    }
+
+    @Override
+    public void mostrarChuteDoSistema(Protagonista p) {
+        String resultado = SistemaAcademico.descricaoDe(
+                SistemaAcademico.classificar(p));
+
+        mostrarModal("SISTEMA ACADÊMICO · VEREDITO",
+                "Processamento concluído.\n\n"
+                        + resultado
+                        + "\n\nRecomendação baseada em padrões históricos."
+                        + "\nO sistema não decide por você. Ainda.");
     }
 }

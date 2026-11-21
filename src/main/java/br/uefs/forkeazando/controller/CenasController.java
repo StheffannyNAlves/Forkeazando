@@ -32,6 +32,7 @@ public class CenasController {
     private static final int CENA_CURRICULO = 654;
     private static final int CENA_EPILOGOS = 660;
     private static final int CENA_RESULTADO_LEGADO = 212;
+    private Integer cenaPreparadaId = null;
 
     public CenasController(Estado estado, List<Cena> cenas, ApresentacaoCena view, Progresso progresso, GerenciadorProgresso gerenciadorProgresso, Autosave autosave, GatilhoAutosave gatilhoAutosave, Runnable salvarManual) {
         this(estado, cenas, view, progresso, gerenciadorProgresso, autosave, gatilhoAutosave, salvarManual, SeletorDeOpcoes.terminal());
@@ -52,7 +53,7 @@ public class CenasController {
 
     }
 
-    private enum ResultadoTransicao {
+    public enum ResultadoTransicao {
         CONTINUAR_JOGO,
         FIM_DE_JOGO,
         ERRO_DE_ROTA
@@ -72,6 +73,14 @@ public class CenasController {
             case ERRO_DE_ROTA -> ResultadoTransicao.ERRO_DE_ROTA;
         };
     }
+
+    public ResultadoTransicao registrarEscolha(Escolha escolhida) {
+        Cena atual = buscarCenaPorId(estado.getCenaAtualId());
+        ResultadoTransicao resultadoTransicao = processarEscolha(atual, escolhida);
+        cenaPreparadaId = null;
+        return resultadoTransicao;
+    }
+
     // A resolução do futuro é uma transição automática, não uma escolha de carreira
     private boolean resolverTransicaoAutomatica(Cena atual){
         if (atual.getId() != ResolucaoDeFuturo.CENA_RESOLVER_FUTURO)
@@ -112,7 +121,6 @@ public class CenasController {
         registrarFinalSeIdentificado();
         return processarDestino(destino);
     }
-
 
     public ResultadoPartida iniciar() {
         view.resetarCacheVisual();
@@ -197,6 +205,35 @@ public class CenasController {
         }
         return ResultadoPartida.FIM_DE_JOGO;
     }
+
+    public void prepararCenaAtual() {
+        Cena atual = buscarCenaPorId(estado.getCenaAtualId());
+
+        // Evita ciclos entre transições automáticas.
+        Set<Integer> visitadas = new HashSet<>();
+
+        while (true) {
+            if (!visitadas.add(atual.getId())) {
+                throw new IllegalStateException("Ciclo de transições automáticas na cena: " + atual.getId());
+            }
+            if (!resolverTransicaoAutomatica(atual)) {
+                break;
+            }
+            atual = buscarCenaPorId(estado.getCenaAtualId());
+        }
+        // A entrada desta cena já foi processada
+        if (Objects.equals(cenaPreparadaId, atual.getId())) {
+            return;
+        }
+        cenaPreparadaId = atual.getId();
+        try {
+            processarEntradaDaCena(atual);
+        } catch (RuntimeException e) {
+            cenaPreparadaId = null;
+            throw e;
+        }
+    }
+
 
     private void processarEntradaDaCena(Cena atual) {
         String capituloAtual = atual.getCapitulo();

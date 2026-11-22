@@ -95,12 +95,12 @@ Verifique especialmente o Java informado pelo **Maven**: ele também precisa ser
 ### Interface gráfica — Fase 3
 
 ```bash
-git clone --branch fase3 --single-branch https://github.com/StheffannyNAlves/Forkeazando.git
+git clone --branch main --single-branch https://github.com/StheffannyNAlves/Forkeazando.git
 cd Forkeazando
 mvn javafx:run
 ```
 
-Se já possui uma cópia da `fase3`, execute `mvn javafx:run` na pasta que contém o `pom.xml`.
+Se já possui uma cópia desta versão, execute `mvn javafx:run` na pasta que contém o `pom.xml`.
 
 O ponto de entrada gráfico é [`ForkeazandoApp`](src/main/java/br/uefs/forkeazando/view/javafx/ForkeazandoApp.java). A janela abre em **1280 × 760**, permite redimensionamento e define um mínimo de **960 × 620**. Telas e textos extensos usam rolagem.
 
@@ -520,7 +520,8 @@ O acabamento visual ampliou essa migração: legibilidade, janela redimensionáv
 
 - **Status narrativo:** `StatusNarrativo` transforma marcos conhecidos em descrições legíveis e define objetivos contextualizados por capítulo, sem alterar flags ou regras.
 - **Carregamento seguro:** `SessaoGrafica.carregarPartida(Estado, ApresentacaoCena)` prepara o controlador antes da troca da partida.
-- **Nova partida segura:** `SessaoGrafica.novaPartida(Protagonista, ApresentacaoCena)` segue a mesma ordem de preparação e substituição.
+- **Nova partida segura:** `SessaoGrafica.novaPartida(Protagonista, ApresentacaoCena)` segue a mesma ordem de preparação e substituição; a tela entrega um `DadosProtagonista`, validado antes de criar o modelo.
+- **Continuar:** sem partida em memória, o menu retoma o último autosave (exceto o de uma jornada já concluída).
 - **Persistência mais encapsulada:** as consultas de progresso das telas gráficas usam `SessaoGrafica.consultarProgresso()`.
 - **Autosave gerenciável:** `GerenciamentoPartidas` e `CarregamentoAdapter` expõem a exclusão já implementada no DAO, com confirmação e feedback na interface.
 - **Regressão automatizada:** testes específicos foram acrescentados para os fluxos seguros de sessão, apresentação do status e exclusão isolada do autosave.
@@ -582,7 +583,7 @@ Essas decisões orientam o roteiro atual. A coerência de cada percurso ainda pr
 
 O domínio representa personagens, estado, cenas e escolhas. Os controladores conduzem a progressão e coordenam regras e persistência. As views apresentam essas informações no terminal ou no JavaFX.
 
-No JavaFX, `ControllerInterface` é um controlador de apresentação ligado ao FXML. `SessaoGrafica` mantém a sessão e encaminha ações para o controlador do jogo. Apesar da localização em `view.javafx`, a sessão não deve se tornar uma cópia das regras de `CenasController`.
+No JavaFX, `ControllerInterface` é um controlador de apresentação ligado ao FXML. `SessaoGrafica` mantém a sessão e encaminha ações para o controlador do jogo. A sessão fica no pacote `controller` e não deve se tornar uma cópia das regras de `CenasController`. As telas de criação do protagonista e de gerenciamento de saves foram extraídas para `TelaCriacaoFx` e `TelaSavesFx`, que só apresentam e coletam decisões; a validação dos dados do protagonista é feita por `DadosProtagonista` (Controller) e todo acesso a saves e preferências passa pela `SessaoGrafica`.
 
 ```mermaid
 flowchart TD
@@ -614,6 +615,8 @@ A entrada de terminal continua tendo um laço que aguarda ações. Na GUI, callb
 - **Builder — criacional:** `Escolha` é o produto; `Escolha.Builder` configura requisitos e efeitos opcionais e o método `build()` conclui a construção. `CarregadorRoteiroJson.converterEscolha()` é um cliente real do Builder. Assim, uma alternativa pode definir só os efeitos de que precisa, evitando construtores extensos e combinações ambíguas de parâmetros.
 - **Adapter — estrutural:** `GerenciamentoPartidas` (que estende `AcessoPartidas`) é o contrato esperado pelos consumidores; `CarregamentoAdapter` o implementa e traduz as chamadas para `GerenciadorSlots` e `GerenciadorSave`. Inclui salvar, carregar, listar, excluir slots e excluir autosave. `SessaoGrafica` recebe `GerenciamentoPartidas`, em vez de depender das funções concretas de gravação de slots.
 - **Observer — comportamental:** `SessaoGrafica` é o sujeito, registra objetos `ObservadorPartida` e os notifica depois de alterações relevantes; `ControllerInterface` implementa o contrato e atualiza o HUD em `atualizar(Estado)`. O domínio modifica os atributos; o observador apenas recebe a notificação e apresenta os valores. **Não se afirma que todas as atualizações da interface utilizam Observer**.
+
+**Padrão de apoio — Strategy (comportamental):** `ApresentacaoCena` é a estratégia; `CenasController` é o contexto, que recebe a apresentação no construtor e delega a ela toda exibição; `CenaView` (terminal) e `ControllerInterface` (JavaFX) são as estratégias concretas. Resolve a necessidade concreta de rodar **o mesmo núcleo de regras** em duas interfaces sem duplicar consequências (`ApresentacaoCenaStrategyTest` executa o mesmo fluxo com duas implementações e compara o resultado). Os três padrões exigidos continuam sendo Builder, Adapter e Observer; o Strategy é um apoio para a justificativa caso o Adapter seja questionado.
 
 MVC é a organização arquitetural, e DAO identifica a separação da persistência. **Memento** e **Factory** foram possibilidades discutidas durante a evolução; não são apresentados aqui como padrões adicionais formalmente implementados. A composição de nós do JavaFX, por si só, também não é contada como uma implementação autoral extra de GoF.
 
@@ -761,6 +764,10 @@ O workflow de [GitHub Actions](.github/workflows/tests.yml) usa Java 21 e `mvn -
 | `StatusNarrativoTest` | Objetivos e marcos legíveis sem alterar o estado da partida. |
 | `SessaoGraficaCarregamentoTest` | Preservação da sessão anterior diante de falha na preparação de um carregamento. |
 | `SessaoGraficaNovaPartidaTest` | Preparação segura da nova partida e preservação da anterior diante de erro. |
+| `SessaoGraficaFinalizacaoTest` | Autosave da jornada concluída gravado na pasta injetada; finalizar sem final registrado não grava nada. |
+| `SessaoGraficaSavesTest` | Salvar, sobrescrever, excluir slot e ler/excluir autosave pela fachada da sessão, com `@TempDir`. |
+| `ApresentacaoCenaStrategyTest` | O mesmo fluxo de cenas e escolhas produz o mesmo estado com duas implementações de `ApresentacaoCena` (Strategy). |
+| `DadosProtagonistaTest` | Validação dos dados da criação do protagonista (nome, identidade e características). |
 | `CarregamentoAdapterAutosaveTest` | Exclusão do autosave sem apagar os três slots, erro de arquivo ausente e exclusão de JSON corrompido, com `@TempDir`. |
 
 No terminal de desenvolvimento, foi relatada uma execução de **470 testes, 0 falhas, 0 erros e 0 ignorados** após os testes de carregamento seguro. Outros testes foram acrescentados depois; portanto **470 não deve ser apresentado como total atual** sem uma nova execução consolidada. Para atualizar a contagem, execute `mvn clean test` e registre os números da saída Maven. Os testes com `@TempDir` não manipulam os saves reais.

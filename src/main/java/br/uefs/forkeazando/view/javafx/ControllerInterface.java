@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.view.javafx;
 import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
+import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.pixel.Ilustracoes;
@@ -558,9 +559,14 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 });
                 conteudo.getChildren().add(escolhaBotao);
             }
+            Button galeria = botaoAcao("GALERIA E CONQUISTAS");
+            galeria.setOnAction(e -> mostrarGaleria(sessao.estado().getProtagonista()));
+            conteudo.getChildren().add(galeria);
+
             Button statusBotao = botaoAcao("VER STATUS");
             statusBotao.setOnAction(e -> abrirStatus());
             conteudo.getChildren().add(statusBotao);
+
             Button voltar = botaoAcao("VOLTAR AO MENU  ·  CONTINUAR DEPOIS");
             voltar.setOnAction(e -> voltarAoMenu());
             conteudo.getChildren().add(voltar);
@@ -814,23 +820,32 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     @Override
     public void mostrarGaleria(Protagonista protagonista) {
-        VBox painel = novoPainel("GALERIA",
-                "Habilidades e itens conquistados durante a jornada.");
+        VBox painel = novoPainel("GALERIA", "Habilidades e itens conquistados durante a jornada.");
         painel.setMaxHeight(Double.MAX_VALUE);
-
         for (Colecionavel.Tipo tipo : Colecionavel.Tipo.values()) {
             painel.getChildren().add(rotulo(tipo == Colecionavel.Tipo.HABILIDADE
                     ? "HABILIDADES" : "ITENS"));
-
             for (Colecionavel item : Colecionavel.values()) {
                 if (item.getTipo() != tipo) continue;
-
                 boolean desbloqueado = protagonista.temFlag(item.getFlag());
-                painel.getChildren().add(rotulo(
-                        (desbloqueado ? "✓ " : "🔒 ")
-                                + (desbloqueado ? item.getNome() : "???")
-                ));
+                painel.getChildren().add(rotulo((desbloqueado ? "✓ " : "🔒 ") + (desbloqueado ? item.getNome() : "???")));
             }
+        }
+        painel.getChildren().add(rotulo("★ CONQUISTAS"));
+
+        try {
+            GerenciadorProgresso gerenciador = new GerenciadorProgresso(GerenciadorSlots.PASTA_PADRAO);
+            Progresso progresso = gerenciador.carregar();
+            for (Conquista conquista : Conquista.values()) {
+                boolean desbloqueada = progresso.possui(conquista);
+                painel.getChildren().add(rotulo(desbloqueada
+                                ? "★ " + conquista.getTitulo()
+                                + " — " + conquista.getDescricao()
+                                : "🔒 Conquista bloqueada"));
+            }
+
+        } catch (CarregamentoException | DadosInvalidosException ex) {
+            mostrarModal("ERRO NO PROGRESSO", ex.getMessage());
         }
 
         Button voltar = botaoAcao("VOLTAR À CENA");
@@ -840,13 +855,11 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     @Override
-    public void renderizar(Cena cena, Protagonista p,
-                           int semestresExtras, ApresentacaoDeCena visual) {
-        // Reaproveita temporariamente o renderizador JavaFX existente.
+    public void renderizar(Cena cena, Protagonista p, int semestresExtras, ApresentacaoDeCena visual) {
+        // Reaproveita temporariamente o renderizador JavaFX existente
         if (!sessao.possuiPartida()
                 || sessao.estado().getCenaAtualId() != cena.getId()) {
-            throw new IllegalStateException(
-                    "A cena gráfica não corresponde à partida atual.");
+            throw new IllegalStateException("A cena gráfica não corresponde à partida atual.");
         }
 
         abrirCena();

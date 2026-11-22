@@ -50,10 +50,11 @@ public final class NarrativaDinamica {
             return "";
         }
 
+        String boasVindas = p.temFlag("protagonista_masculino") ? "'Bem-vindo.'" : "'Bem-vinda.'";
         return "'Você recorreu da classificação. Eu vi.'\n\n"
                 + "'O recurso leva quinze dias. "
                 + "O laboratório não espera.'\n\n"
-                + "'Bem-vinda.'";
+                + boasVindas;
     }
 
     private static String depoisDaPorta(Protagonista p) {

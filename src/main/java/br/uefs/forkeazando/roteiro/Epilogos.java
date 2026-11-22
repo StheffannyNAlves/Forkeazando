@@ -19,6 +19,10 @@ public final class Epilogos {
 
     private Epilogos() {}
 
+    private static boolean masculino(Protagonista p) {
+        return p.temFlag("protagonista_masculino");
+    }
+
     public static List<Epilogo> de(Protagonista p) {
         List<Epilogo> out = new ArrayList<>();
         DesempenhoAcademico desempenho = avaliarDesempenhoAcademico(p);
@@ -31,7 +35,7 @@ public final class Epilogos {
         evolucaoDoPerfil(out, p, bemEstar);
         personagens(out, p, bemEstar);
         quemVoceVirou(out, bemEstar, p);
-        zeDoModulo8(out);
+        zeDoModulo8(out, p);
         umAnoDepois(out, p);
         formatura(out, p);
         oQueFica(out);
@@ -41,14 +45,15 @@ public final class Epilogos {
         return out;
     }
 
-    // ═══ TRILHA ═══
+
     private static void retrospectivaTrilha(List<Epilogo> out, Protagonista p, DesempenhoAcademico d) {
         if (p.temFlag("trilha_ic")) {
+            String certo = masculino(p) ? "certo" : "certa";
             String t = switch (d) {
                 case DIFICULDADE -> "A iniciação científica foi sua primeira aproximação com perguntas sem resposta pronta. "
                         + "Nem sempre você teve tempo, orientação ou estabilidade para avançar como queria. "
                         + "Ainda assim, aprendeu a separar uma hipótese de uma certeza e a reconhecer o que não sabe.";
-                case RECUPERACAO -> "Na iniciação científica, você descobriu que pesquisar não é provar que estava certa; "
+                case RECUPERACAO -> "Na iniciação científica, você descobriu que pesquisar não é provar que estava " + certo + "; "
                         + "é investigar o que os resultados sustentam. Aprendeu a revisar uma hipótese e a pedir que outra "
                         + "pessoa olhe para o que você não percebeu.";
                 case DESTAQUE -> "A iniciação científica ajudou você a formular perguntas melhores e defender uma ideia "
@@ -82,7 +87,6 @@ public final class Epilogos {
         }
     }
 
-    // ═══ DESEMPENHO (novo — DESTAQUE / DIFICULDADE, RECUPERACAO silencia) ═══
     private static void desempenhoAcademico(List<Epilogo> out, DesempenhoAcademico d) {
         switch (d) {
             case DESTAQUE -> out.add(new Epilogo("O QUE A FACULDADE VIU EM VOCÊ",
@@ -106,7 +110,6 @@ public final class Epilogos {
         }
     }
 
-    // ═══ ECOS (com as 12 amarrações novas) ═══
     private static void ecosDosCapitulos(List<Epilogo> out, Protagonista p) {
         StringBuilder t = new StringBuilder();
 
@@ -271,7 +274,8 @@ public final class Epilogos {
         if (p.temFlag("cap7_dtec_deu_nota")) {
             t.append("Na monitoria, você precisou avaliar o trabalho de outra pessoa.\n\n");
         } else if (p.temFlag("cap7_dtec_ultima_aula")) {
-            t.append("Na última aula como monitora, você percebeu que ensinar também é reconhecer o que não cabe numa "
+            String monitor = masculino(p) ? "monitor" : "monitora";
+            t.append("Na última aula como " + monitor + ", você percebeu que ensinar também é reconhecer o que não cabe numa "
                     + "explicação só.\n\n");
         }
         if (p.temFlag("cap7_tcc_improvisou")) {
@@ -293,7 +297,6 @@ public final class Epilogos {
         }
     }
 
-    // ═══ PERFIL ACADÊMICO (sistema_q*) ═══
     private static void perfilAcademico(List<Epilogo> out, Protagonista p) {
         StringBuilder t = new StringBuilder();
         if (p.temFlag("sistema_chutou_ambiguo")) {
@@ -333,7 +336,6 @@ public final class Epilogos {
         if (!t.isEmpty()) out.add(new Epilogo("O QUE O ÁGATA NÃO ENTENDEU", t.toString().trim()));
     }
 
-    // ═══ EVOLUÇÃO DO PERFIL (com sistema_aceito novo) ═══
     private static void evolucaoDoPerfil(List<Epilogo> out, Protagonista p, BemEstarFinal bemEstar) {
         // Aceite do veredito do Cap 4 (novo)
         if (p.temFlag("sistema_aceito") && p.temFlag("sistema_q4_planejar")) {
@@ -396,7 +398,6 @@ public final class Epilogos {
         }
     }
 
-    // ═══ PERSONAGENS (Caio, Orientador, Dandara, Bia com bem-estar) ═══
     private static void personagens(List<Epilogo> out, Protagonista p, BemEstarFinal bemEstar) {
         if (p.temFlag("mentoria_caio")) {
             String t;
@@ -423,8 +424,9 @@ public final class Epilogos {
         }
 
         if (p.temFlag("cap7_questionou_autoria")) {
+            String coautoria = masculino(p) ? "segundo autor" : "segunda autora";
             out.add(new Epilogo("ORIENTADOR",
-                    "O artigo saiu. Com o nome dele primeiro. Você foi segunda autora. "
+                    "O artigo saiu. Com o nome dele primeiro. Você foi " + coautoria + ". "
                             + "Ele nunca mais te chamou pra outro projeto.\n\n"
                             + "Você perdeu uma oportunidade. Não perdeu o direito de reconhecer o próprio trabalho."));
         } else if (p.temFlag("cap7_aceitou_autoria")) {
@@ -474,7 +476,6 @@ public final class Epilogos {
         }
     }
 
-    // ═══ QUEM VOCÊ VIROU (substitui o antigo por bemEstar) ═══
     private static void quemVoceVirou(List<Epilogo> out, BemEstarFinal bemEstar, Protagonista p) {
         String t;
         switch (bemEstar) {
@@ -504,15 +505,15 @@ public final class Epilogos {
         out.add(new Epilogo("QUEM VOCÊ VIROU", t));
     }
 
-    // ═══ ZÉ ═══
-    private static void zeDoModulo8(List<Epilogo> out) {
+
+    private static void zeDoModulo8(List<Epilogo> out, Protagonista p) {
+        String tratamento = masculino(p) ? "meu filho" : "minha filha";
         out.add(new Epilogo("ZÉ DO MÓDULO 8",
                 "O Zé continua lá. O bar tá maior agora. Ele te reconheceu quando você voltou "
                         + "no semestre passado e não cobrou a cerveja.\n\n"
-                        + "\"Tu já gastou demais nessa faculdade, minha filha. Essa fica por conta da casa.\""));
+                        + "\"Tu já gastou demais nessa faculdade, " + tratamento + ". Essa fica por conta da casa.\""));
     }
 
-    // ═══ UM ANO DEPOIS ═══
     private static void umAnoDepois(List<Epilogo> out, Protagonista p) {
         String t;
         if (p.temFlag("cap8_resposta_verdadeira")) {
@@ -539,7 +540,6 @@ public final class Epilogos {
         out.add(new Epilogo("UM ANO DEPOIS", t));
     }
 
-    // ═══ FORMATURA ═══
     private static void formatura(List<Epilogo> out, Protagonista p) {
         if (p.temFlag("cap8_sem_cerimonia")) {
             out.add(new Epilogo("A FORMATURA",
@@ -557,10 +557,11 @@ public final class Epilogos {
                             + "A conta precisava fechar, mas isso não exigiu abrir mão de ouvir seu nome no auditório.\n\n"
                             + "Sua mãe ainda tem a foto que conseguiu tirar com o celular de lente trincada."));
         } else if (p.temFlag("cap8_pacote_completo")) {
+            String juntos = masculino(p) ? "juntos" : "juntas";
             out.add(new Epilogo("A FORMATURA",
                     "O pacote custou caro, e aceitar a ajuda da sua mãe também teve peso. "
                             + "Mas naquele dia você conseguiu participar da cerimônia e guardar as fotos. "
-                            + "A ajuda não transforma sua conquista em dívida moral: vocês decidiram juntas como atravessar aquele custo."));
+                            + "A ajuda não transforma sua conquista em dívida moral: vocês decidiram " + juntos + " como atravessar aquele custo."));
         } else if (p.temFlag("cap8_colacao_oficial") || p.temFlag("cap8_foi_formatura")) {
             out.add(new Epilogo("A FORMATURA",
                     "Você participou da colação sem contratar o pacote completo. "
@@ -569,7 +570,6 @@ public final class Epilogos {
         }
     }
 
-    // ═══ O QUE FICA ═══
     private static void oQueFica(List<Epilogo> out) {
         out.add(new Epilogo("O QUE FICA",
                 "Você não saiu da universidade com tudo resolvido.\n\n"
@@ -580,7 +580,6 @@ public final class Epilogos {
                         + "A próxima não vem com gabarito."));
     }
 
-    // ═══ ECO DA RESPOSTA INICIAL (com cap8_resposta_confissao/autoria novos) ═══
     private static void ecoDaRespostaInicial(List<Epilogo> out, Protagonista p) {
         String t;
         if (p.temFlag("prologo_resposta_pratica") && p.temFlag("cap8_resposta_conviccao")) {
@@ -610,7 +609,6 @@ public final class Epilogos {
         out.add(new Epilogo("A PERGUNTA DO COMEÇO", t));
     }
 
-    // ═══ FUTURO ESCOLHIDO ═══
     private static void futuroEscolhido(List<Epilogo> out, Protagonista p) {
         String titulo;
         StringBuilder t = new StringBuilder();
@@ -661,7 +659,6 @@ public final class Epilogos {
         out.add(new Epilogo(titulo, t.toString().trim()));
     }
 
-    // ═══ AVALIAÇÕES ═══
     public static DesempenhoAcademico avaliarDesempenhoAcademico(Protagonista p) {
         int score = p.getScore();
         int part = p.getParticipacao();

@@ -322,7 +322,7 @@ Há uma separação entre **estado da partida** e **progresso permanente**:
 - A partida guarda o personagem, sua cena, atributos, relações e decisões daquele percurso.
 - O progresso reúne conteúdos conhecidos, conquistas, datas de desbloqueio e finais registrados entre jornadas.
 
-O menu **Meu progresso** consulta **finais** e **conquistas**. Durante a partida, a **Galeria** reúne **habilidades, itens e conquistas**, enquanto a tela **Status** apresenta atributos, inventário, relacionamentos, objetivo contextualizado e marcos da trajetória em linguagem legível. O progresso global e o estado da partida são armazenados separadamente.
+O menu **Meu progresso** consulta **finais, conquistas e colecionáveis descobertos** (habilidades e itens persistidos em `saves/progresso.json`), permanecendo disponível mesmo após reiniciar o jogo sem partida em memória. Durante a partida, a **Galeria** reúne **habilidades, itens e conquistas**, enquanto a tela **Status** apresenta atributos, inventário, relacionamentos, objetivo contextualizado e marcos da trajetória em linguagem legível. O progresso global e o estado da partida são armazenados separadamente.
 
 O catálogo inclui habilidades como **Olho de Edital**, **Foco Total** e **Palavra Honesta**, além de itens como **Cartão do RU**, **Copo térmico do Caio** e **Contato da Bia**. A representação visual de conteúdo bloqueado não concede esse conteúdo à partida.
 
@@ -345,21 +345,23 @@ Os dados são locais, em JSON, e ficam em uma pasta `saves/` relativa ao diretó
 
 ### Fluxo na interface gráfica
 
-- **Continuar** retoma a sessão que ainda está em memória.
+- **Continuar** retoma a sessão que ainda está em memória (ou, sem ela, o último autosave de jornada não concluída).
 - **Carregar** oferece slots e autosave; não é sinônimo de continuar uma sessão em memória.
-- **Salvar** e **Gerenciar saves** permitem escolher um dos três slots manuais.
+- **Gerenciar saves** concentra o salvamento manual, a sobrescrita e a exclusão nos três slots manuais, exibindo os metadados disponíveis (nome, capítulo, score, rank e data/hora).
 - Slots ocupados exigem confirmação de sobrescrita; a exclusão também possui confirmação.
 - **Excluir autosave** aparece em **Gerenciar saves** quando existe um salvamento automático, exige confirmação e não exclui os três slots manuais nem a partida atual em memória. Cancelar a confirmação preserva o arquivo.
 - A listagem distingue slots vazios, ocupados ou inválidos e apresenta metadados disponíveis.
 - O salvamento manual pede a escolha do slot; a interface não presume que deve sobrescrever automaticamente o slot que foi carregado.
 
-O gatilho periódico do autosave ocorre a cada **cinco cenas concluídas**. A conclusão da jornada também é persistida em autosave. Há somente um `autosave.json`, substituído por registros posteriores.
+O gatilho periódico do autosave ocorre a cada **cinco cenas concluídas**. Ao finalizar a jornada, o progresso global (`saves/progresso.json`) e a conclusão em `saves/autosave.json` são persistidos de forma idempotente. Há somente um `autosave.json`, substituído por registros posteriores.
 
 O autosave **não marca o estado como salvo manualmente**. Por isso, o jogo ainda pode oferecer salvamento ao sair mesmo depois de uma notificação de autosave. Voltar ao menu mantém a sessão em memória; encerrar o processo exige um arquivo salvo para retomá-la depois.
 
-### Proteção da sessão e exclusão do autosave
+### Proteção da sessão, resiliência do progresso e exclusão do autosave
 
 Os fluxos gráficos de **carregar** e **criar outra partida** preparam o controlador candidato antes de substituir o estado atual da sessão. Quando a leitura do progresso ou a criação desse controlador falha, a partida anterior e seu controlador permanecem disponíveis; a interface apresenta o erro. A confirmação de nova partida avisa sobre alterações não salvas. Essa proteção cobre a **preparação da sessão**, não promete rollback de toda exceção posterior de renderização.
+
+A persistência de progresso permanente (`saves/progresso.json`) segue estratégia **copy-on-write**: `CenasController` e `GerenciadorConquistas` aplicam colecionáveis, conquistas e finais em uma cópia candidata (`new Progresso(progresso)`), gravam com `ArquivoAtomico` e só confirmam em memória (`progresso.copiarDe(candidato)`) se a gravação for bem-sucedida. Em caso de `SaveException`, a memória permanece fiel ao disco e a tentativa seguinte repete a persistência sem perda. Na finalização (`SessaoGrafica.finalizarPartida()`), a mesma instância de `Progresso` do `CenasController` é persistida antes do autosave final — preservando a sessão em memória em caso de falha. Além disso, `SessaoGrafica.consultarProgresso()` e a inicialização do controlador recuperam automaticamente, de forma idempotente, qualquer final, conquista ou colecionável presente em um `autosave.json` concluído que ainda não tenha sido gravado em `progresso.json`.
 
 A opção **Excluir autosave** passa por `GerenciamentoPartidas` → `CarregamentoAdapter` → `GerenciadorSlots.excluirAutosave`. A exclusão não exige desserializar o JSON, inclusive se o arquivo estiver corrompido. Se o arquivo estiver ausente, o serviço sinaliza `SaveException`. Excluir não desativa o gatilho: um novo autosave poderá surgir depois de mais cenas concluídas ou ao finalizar a jornada.
 
@@ -529,7 +531,10 @@ O acabamento visual ampliou essa migração: legibilidade, janela redimensionáv
 - **Continuar:** sem partida em memória, o menu retoma o último autosave (exceto o de uma jornada já concluída).
 - **Persistência mais encapsulada:** as consultas de progresso das telas gráficas usam `SessaoGrafica.consultarProgresso()`.
 - **Autosave gerenciável:** `GerenciamentoPartidas` e `CarregamentoAdapter` expõem a exclusão já implementada no DAO, com confirmação e feedback na interface.
-- **Regressão automatizada:** testes específicos foram acrescentados para os fluxos seguros de sessão, apresentação do status e exclusão isolada do autosave.
+- **Persistência resiliente de finais e progresso global:** finais concluídos são gravados em `saves/progresso.json` com *copy-on-write* (sem divergir memória e disco em caso de erro de escrita), instância única de `Progresso` compartilhada entre `CenasController` e `SessaoGrafica` e recuperação idempotente a partir de `autosave.json` concluído.
+- **Feedback de atributos e colecionáveis globais:** `ControllerInterface.atualizar(Estado)` (via `ObservadorPartida`) notifica discretamente variações dos 8 atributos após cada decisão; **Meu progresso** exibe também os colecionáveis descobertos e `TelaSavesFx` exibe `Score` e `Rank` nos slots ocupados.
+- **Concordância narrativa de Tiana e Miles:** ajustadas as flexões de gênero em `Epilogos`, `FinaisNarrativos`, `NarrativaDinamica`, `CenaView` e `StatusNarrativo`, corrigindo vazamentos femininos fixos em partidas de Miles.
+- **Regressão automatizada ampliada:** adicionadas suítes para todas as 3 trilhas e 5 finais de carreira, exploração automatizada de estados, auditoria de protagonistas e resiliência da persistência diante de falhas de gravação.
 
 Essas alterações não constituem uma nova tag de release: devem ser relacionadas aos respectivos commits quando publicadas no histórico da branch.
 
@@ -611,7 +616,7 @@ A entrada de terminal continua tendo um laço que aguarda ações. Na GUI, callb
 |---|---|---|---|
 | Criacional | **Builder** | `Escolha.Builder`, utilizado também pelo carregador JSON | Constrói escolhas com requisitos e efeitos opcionais sem um construtor extenso e ambíguo. |
 | Estrutural | **Adapter** | `CarregamentoAdapter`, implementando `GerenciamentoPartidas` e `AcessoPartidas` | Traduz operações de carregar, listar, salvar e excluir para a infraestrutura de slots e saves já existente. |
-| Comportamental | **Observer** | `ObservadorPartida`, lista de observadores em `SessaoGrafica` e `ControllerInterface.atualizar` | Propaga mudanças do estado para o HUD e a apresentação, inclusive alterações ocorridas na preparação de cenas. |
+| Comportamental | **Observer** | `ObservadorPartida`, lista de observadores em `SessaoGrafica` e `ControllerInterface.atualizar` | Propaga mudanças do estado para o HUD e emite notificações discretas das variações reais nos 8 atributos após escolhas e preparações de cena. |
 
 `GerenciamentoPartidas` estende o contrato de leitura com gravação e exclusão. A sessão recebe essa abstração para o gerenciamento de partidas. O Observer recebe o estado alterado; ele não é o responsável por aplicar a consequência narrativa.
 
@@ -619,7 +624,7 @@ A entrada de terminal continua tendo um laço que aguarda ações. Na GUI, callb
 
 - **Builder — criacional:** `Escolha` é o produto; `Escolha.Builder` configura requisitos e efeitos opcionais e o método `build()` conclui a construção. `CarregadorRoteiroJson.converterEscolha()` é um cliente real do Builder. Assim, uma alternativa pode definir só os efeitos de que precisa, evitando construtores extensos e combinações ambíguas de parâmetros.
 - **Adapter — estrutural:** `GerenciamentoPartidas` (que estende `AcessoPartidas`) é o contrato esperado pelos consumidores; `CarregamentoAdapter` o implementa e traduz as chamadas para `GerenciadorSlots` e `GerenciadorSave`. Inclui salvar, carregar, listar, excluir slots e excluir autosave. `SessaoGrafica` recebe `GerenciamentoPartidas`, em vez de depender das funções concretas de gravação de slots.
-- **Observer — comportamental:** `SessaoGrafica` é o sujeito, registra objetos `ObservadorPartida` e os notifica depois de alterações relevantes; `ControllerInterface` implementa o contrato e atualiza o HUD em `atualizar(Estado)`. O domínio modifica os atributos; o observador apenas recebe a notificação e apresenta os valores. **Não se afirma que todas as atualizações da interface utilizam Observer**.
+- **Observer — comportamental:** `SessaoGrafica` é o sujeito, registra objetos `ObservadorPartida` e os notifica depois de alterações relevantes; `ControllerInterface` implementa o contrato em `atualizar(Estado)`, atualizando o HUD e notificando variações nos 8 atributos (`Energia`, `Score`, `Participação`, `Confiança`, `Vida social`, `Carisma`, `Lógica` e `Sanidade`). O domínio modifica os atributos; o observador apenas recebe a notificação e apresenta os valores. **Não se afirma que todas as atualizações da interface utilizam Observer**.
 
 **Padrão de apoio — Strategy (comportamental):** `ApresentacaoCena` é a estratégia; `CenasController` é o contexto, que recebe a apresentação no construtor e delega a ela toda exibição; `CenaView` (terminal) e `ControllerInterface` (JavaFX) são as estratégias concretas. Resolve a necessidade concreta de rodar **o mesmo núcleo de regras** em duas interfaces sem duplicar consequências (`ApresentacaoCenaStrategyTest` executa o mesmo fluxo com duas implementações e compara o resultado). Os três padrões exigidos continuam sendo Builder, Adapter e Observer; o Strategy é um apoio para a justificativa caso o Adapter seja questionado.
 
@@ -762,43 +767,44 @@ xvfb-run -a mvn clean test
 
 O workflow de [GitHub Actions](.github/workflows/tests.yml) usa Java 21, instala Xvfb e executa `xvfb-run -a mvn -B clean test` em push, pull request e execução manual. Uma etapa adicional verifica o relatório de `ApresentacaoFxTest` para impedir que os testes gráficos sejam silenciosamente ignorados. O resultado de cada execução deve ser conferido na aba **Actions**.
 
-### Regressões adicionadas após o refinamento visual
+### Regressões e auditorias adicionadas na estabilização da Fase 3
 
 | Classe de teste | Comportamento exercitado |
 |---|---|
 | `StatusNarrativoTest` | Objetivos e marcos legíveis sem alterar o estado da partida. |
 | `SessaoGraficaCarregamentoTest` | Preservação da sessão anterior diante de falha na preparação de um carregamento. |
 | `SessaoGraficaNovaPartidaTest` | Preparação segura da nova partida e preservação da anterior diante de erro. |
-| `SessaoGraficaFinalizacaoTest` | Autosave da jornada concluída gravado na pasta injetada; finalizar sem final registrado não grava nada. |
+| `SessaoGraficaFinalizacaoTest` | Persistência do final em `progresso.json` e do autosave da jornada concluída na pasta injetada; finalizar sem final registrado não grava nada. |
 | `SessaoGraficaSavesTest` | Salvar, sobrescrever, excluir slot e ler/excluir autosave pela fachada da sessão, com `@TempDir`. |
 | `ApresentacaoCenaStrategyTest` | O mesmo fluxo de cenas e escolhas produz o mesmo estado com duas implementações de `ApresentacaoCena` (Strategy). |
 | `DadosProtagonistaTest` | Validação dos dados da criação do protagonista (nome, identidade e características). |
 | `CarregamentoAdapterAutosaveTest` | Exclusão do autosave sem apagar os três slots, erro de arquivo ausente e exclusão de JSON corrompido, com `@TempDir`. |
+| `TodasAsRotasIntegracaoTest` | Execução ponta a ponta no motor real (`SessaoGrafica` + `CenasController`) das 3 trilhas (`IC`, `DTEC`, `INDEP`), todos os 5 finais de carreira, ambos os protagonistas (Tiana e Miles), apagão, trancamento, save/load em slot e persistência cumulativa em `progresso.json`. |
+| `ProtagonistasAuditoriaTest` | Paridade de regras, isolamento de flags, expansão das 165 cenas sem vazamento de identidade, concordância de gênero em epílogos/finais/status e preservação de identidade após save/load. |
+| `ExploracaoEstadosRoteiroTest` | Exploração automatizada de estados (busca guiada por cobertura sobre o motor real, 10.000 expansões e 23.365 transições) validando ausência de erros de rota, becos sem saída e placeholders não resolvidos, além de alcançabilidade das 3 trilhas e dos 5 finais. |
+| `PersistenciaProgressoResilienciaTest` | Consistência memória vs. disco após falha temporária de escrita (`.tmp` bloqueado), nova tentativa idempotente com preservação de timestamps, recuperação automática a partir de `autosave.json` concluído e consolidação sem divergência entre instâncias de `Progresso`. |
 
-No terminal de desenvolvimento, foi relatada uma execução de **470 testes, 0 falhas, 0 erros e 0 ignorados** após os testes de carregamento seguro. Outros testes foram acrescentados depois; portanto **470 não deve ser apresentado como total atual** sem uma nova execução consolidada. Para atualizar a contagem, execute `mvn clean test` e registre os números da saída Maven. Os testes com `@TempDir` não manipulam os saves reais.
+### Registro consolidado da validação mais recente
 
-### Registro de validação do refinamento
-
-Na revisão **visual de referência de 22/11/2026**, anterior às regressões adicionais de sessão e autosave:
+Na execução consolidada de **22/11/2026** (branch `testes-rotas`, JDK 21 com `xvfb-run -a mvn -B clean test`):
 
 | Verificação | Resultado e alcance |
 |---|---|
-| `mvn clean test` com Java 21 e display Xvfb | **464 testes, zero falhas, zero erros e zero testes pulados**. |
-| Compilação | Código de produção e testes compilados na execução Maven registrada. |
-| Cobertura de apresentação | As 165 cenas possuem ambiente explícito e recursos de entrada/repouso verificados por testes. |
-| Ambientes procedurais | 44 ambientes/variantes verificados quanto a desenho, dimensões, entrada finita e repouso. |
-| Aplicação gráfica | Executada por `ForkeazandoApp.start`, com renderização Prism por software. |
-| Inspeção de cenas | Entrada e repouso de 12 cenas em estados de teste, incluindo ações e desfechos. |
-| Navegação adicional | Criação, diálogo, escolhas, galeria, status, salvar/carregar, modal, preferências e redimensionamento. |
-| Persistência do percurso comparado | Estado equivalente antes/depois do refinamento, desconsiderada a data externa de salvamento. |
+| `xvfb-run -a mvn -B clean test` | **512 testes em 63 suítes — 0 falhas, 0 erros, 0 ignorados** (`30,328 s`). |
+| Compilação | `106` classes principais e `66` arquivos de teste compilados com `javac --release 21`. |
+| Testes JavaFX (sob Xvfb) | `ApresentacaoFxTest` (12/12), `ProtagonistasFxTest` (3/3), `RasterizadorCenarioTest` (1/1) e `StatusNarrativoTest` (4/4). |
+| Integridade estrutural do roteiro | 165 cenas e 462 escolhas; 0 IDs duplicados, 0 destinos inexistentes, 0 cenas órfãs, 0 ciclos, 0 requisitos contraditórios e 0 flags requeridas impossíveis. |
+| Alcançabilidade real (motor + BFS) | `153/164` cenas jogáveis e `400/462` escolhas na BFS (`23.365` transições, 0 erros de rota); somando integração/apagão, **`157/164` cenas jogáveis + cena automática `667`**, **3/3 trilhas** e **5/5 finais de carreira** validados dinamicamente. |
+| Resiliência da persistência | Recuperação comprovada sem perda de finais, conquistas ou colecionáveis após falhas simuladas em `progresso.json` e `autosave.json`, com `@TempDir` isolado. |
+| Revisão visual de referência anterior (464 testes) | 165 cenas mapeadas por 44 ambientes/variantes; inspeção visual de 12 cenas, navegação, diálogos, galeria, status, saves, preferências e redimensionamento em Prism por software. |
 
-Esse é um registro de uma execução, não um número fixo garantido para todas as revisões. A suíte cresceu com o projeto: a Fase 1 registrava 21 testes; revisões anteriores documentaram 433, 436 e 441; os refinamentos JavaFX chegaram a 452 e depois 464. Esses resultados pertencem a versões e ambientes diferentes.
+A suíte cresceu ao longo do projeto: a Fase 1 registrava 21 testes; revisões da Fase 2 documentaram 433, 436 e 441; os refinamentos JavaFX passaram por 452, 464, 470, 499 e chegaram a **512 testes**. Os testes com `@TempDir` não manipulam os saves reais.
 
 ### O que essa validação não cobre
 
-As capturas e a inspeção gráfica usaram a aplicação real, incluindo estados preparados para alcançar algumas cenas. Não foi jogada manualmente cada combinação das 165 cenas até todos os finais. Uma verificação de mapeamento confirma que existe um ambiente, mas não substitui a avaliação humana de cada fala, emoção e transição.
+As 3 trilhas, os 5 finais de carreira, o apagão e o trancamento foram validados de ponta a ponta pelo motor real em testes automatizados, mas a exploração BFS possui limites explícitos (`22` visitas por bucket e `10.000` expansões a partir de 4 perfis iniciais) e não enumera exaustivamente todas as combinações possíveis de atributos intermediários. Além disso, a aprovação dos testes automatizados do motor e da suíte `ApresentacaoFxTest` não substitui a inspeção visual humana em `mvn javafx:run` das notificações e telas recém-ajustadas.
 
-Não há medição de desempenho em toda a variedade de GPUs, escalas de tela e sistemas operacionais. A reprodução audível da trilha não foi validada no ambiente de captura, que não oferecia uma saída Java Sound compatível. O pacote de distribuição gráfica também ainda exige validação própria.
+Não há medição de desempenho em toda a variedade de GPUs, escalas de tela e sistemas operacionais. A reprodução audível da trilha não foi validada no ambiente automatizado sem saída Java Sound. O pacote de distribuição gráfica fora do Maven também exige validação própria.
 
 ### Roteiro para revisão manual
 
@@ -828,31 +834,32 @@ A **Fase 3 foi concluída para a entrega acadêmica na versão `v1.5.0`**. Os it
 - [x] Jogo de terminal preservado e interface JavaFX funcional.
 - [x] Criação com Tiana/Miles, nome personalizável e variações narrativas.
 - [x] Processamento de escolhas da GUI pelo núcleo compartilhado.
-- [x] Builder, Adapter e Observer integrados.
-- [x] Carregamento, salvamento manual, sobrescrita e exclusão de slots no JavaFX.
+- [x] Builder, Adapter, Observer e Strategy (apoio) integrados.
+- [x] Carregamento, salvamento manual, sobrescrita e exclusão de slots no JavaFX com metadados completos (`Score` e `Rank`).
 - [x] Exclusão de autosave com confirmação e preservação dos slots manuais.
-- [x] Configurações, status com objetivos e marcos legíveis, galeria e consulta de progresso na GUI.
+- [x] Configurações, status com objetivos e marcos legíveis, galeria e consulta completa de progresso (finais, conquistas e colecionáveis) na GUI.
 - [x] Preparação segura de carregamento e nova partida antes de substituir a sessão em memória.
 - [x] Texto progressivo configurável, conclusão imediata e espaço reservado para leitura.
-- [x] HUD e notificações com atualização ligada ao estado da sessão.
-- [x] Encerramento da jornada e persistência de conclusão.
+- [x] HUD e notificações de atributos, relacionamentos, itens, habilidades, conquistas e finais ligados ao estado da sessão.
+- [x] Encerramento da jornada com persistência resiliente (*copy-on-write*) de finais em `progresso.json` e recuperação idempotente via autosave concluído.
+- [x] Concordância narrativa de Tiana e Miles verificada em todas as cenas, epílogos, finais e status.
 - [x] Todas as cenas com ambiente explícito e animações de entrada/repouso.
 - [x] Cancelamento, pausa e retomada de animações nos fluxos de apresentação.
 - [x] Preparação de áudio e rasterização em executores dedicados.
-- [x] Execução de testes gráficos no CI com Xvfb e verificação de testes não ignorados.
+- [x] Execução de testes gráficos no CI com Xvfb e suíte consolidada de 512 testes (incluindo todas as 3 trilhas, os 5 finais e resiliência de persistência).
 
 ### Possibilidades de evolução e validação adicional
 
-- [ ] Percursos completos de todas as rotas e finais na interface gráfica.
-- [ ] Revisão humana de todas as correspondências de expressão, fala, cenário e transição.
-- [ ] Compatibilidade de saves representativos de cada revisão antiga do roteiro.
+- [x] Percursos manuais completos de todas as rotas e finais na interface gráfica (inspeção visual humana).
+- [x] Revisão humana de todas as correspondências de expressão, fala, cenário e transição.
+- [x] Compatibilidade de saves representativos de cada revisão antiga do roteiro.
 - [ ] Empacotamento da GUI para execução fora do Maven/ambiente de desenvolvimento.
 - [ ] Avaliação em mais sistemas, densidades de tela e máquinas modestas reais.
 - [ ] Validação audível da trilha em diferentes dispositivos e sistemas.
 - [ ] Opção gráfica específica de redução/desativação de movimento; a variável existente atende ao terminal.
 - [x] Definição da licença MIT para o código autoral e documentação separada dos direitos sobre conteúdo criativo e materiais de terceiros. A verificação individual das permissões dos recursos distribuídos continua necessária.
 
-Também permanecem limites técnicos: um único autosave, persistência local, chamadas de I/O síncronas em alguns fluxos e dependência de fontes do sistema. A tag `v1.5.0` identifica a versão entregue; não implica disponibilidade de um instalador independente nem validação em todos os ambientes.
+Também permanecem limites técnicos conhecidos: um único autosave, persistência local sem transação ACID multi-arquivo entre `progresso.json` e `autosave.json`, ausência de `FileLock` entre múltiplos processos simultâneos na mesma pasta `saves/`, recuperação automática de autosave concluído restrita à `SessaoGrafica` (JavaFX), chamadas de I/O síncronas em alguns fluxos e dependência de fontes do sistema. A tag `v1.5.0` identifica a versão entregue; não implica disponibilidade de um instalador independente nem validação em todos os ambientes.
 
 ## Versões
 

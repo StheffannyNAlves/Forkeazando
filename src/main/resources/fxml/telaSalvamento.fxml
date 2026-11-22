@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="br.uefs.forkeazando.view.javafx.TelaCarregarController"
+      fx:id="painelCarregar"
+      alignment="TOP_CENTER"
+      prefWidth="700"
+      prefHeight="650"
+      maxWidth="700"
+      maxHeight="650"
+      spacing="16"
+      styleClass="painel-interno"
+      stylesheets="@../styles/menu-pixel.css">
+
+    <children>
+
+        <!-- CABEÇALHO -->
+        <Label text="CARREGAR PARTIDA"
+               styleClass="titulo-modal" />
+
+        <Label text="Selecione uma partida para continuar sua jornada."
+               styleClass="texto-ajuda" />
+
+        <!-- SLOT 1 -->
+        <HBox alignment="CENTER_LEFT"
+              spacing="20"
+              prefWidth="640"
+              prefHeight="100"
+              style="-fx-background-color: #4b2a60;
+                     -fx-border-color: #d28eab;
+                     -fx-border-width: 2;
+                     -fx-padding: 12;">
+
+            <children>
+                <VBox alignment="CENTER_LEFT"
+                      spacing="8"
+                      prefWidth="420"
+                      HBox.hgrow="ALWAYS">
+
+                    <children>
+                        <Label text="SLOT 1"
+                               styleClass="rotulo-pixel" />
+
+                        <Label fx:id="infoSlot1"
+                               text="Slot vazio"
+                               wrapText="true"
+                               styleClass="texto-ajuda" />
+                    </children>
+                </VBox>
+
+                <Button fx:id="btnCarregarSlot1"
+                        text="CARREGAR"
+                        mnemonicParsing="false"
+                        onAction="#aoCarregarSlot"
+                        styleClass="botao-voltar" />
+            </children>
+        </HBox>
+
+        <!-- SLOT 2 -->
+        <HBox alignment="CENTER_LEFT"
+              spacing="20"
+              prefWidth="640"
+              prefHeight="100"
+              style="-fx-background-color: #4b2a60;
+                     -fx-border-color: #d28eab;
+                     -fx-border-width: 2;
+                     -fx-padding: 12;">
+
+            <children>
+                <VBox alignment="CENTER_LEFT"
+                      spacing="8"
+                      prefWidth="420"
+                      HBox.hgrow="ALWAYS">
+
+                    <children>
+                        <Label text="SLOT 2"
+                               styleClass="rotulo-pixel" />
+
+                        <Label fx:id="infoSlot2"
+                               text="Slot vazio"
+                               wrapText="true"
+                               styleClass="texto-ajuda" />
+                    </children>
+                </VBox>
+
+                <Button fx:id="btnCarregarSlot2"
+                        text="CARREGAR"
+                        mnemonicParsing="false"
+                        onAction="#aoCarregarSlot"
+                        styleClass="botao-voltar" />
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER_LEFT"
+              spacing="20"
+              prefWidth="640"
+              prefHeight="100"
+              style="-fx-background-color: #4b2a60;
+                     -fx-border-color: #d28eab;
+                     -fx-border-width: 2;
+                     -fx-padding: 12;">
+
+            <children>
+                <VBox alignment="CENTER_LEFT"
+                      spacing="8"
+                      prefWidth="420"
+                      HBox.hgrow="ALWAYS">
+
+                    <children>
+                        <Label text="SLOT 3"
+                               styleClass="rotulo-pixel" />
+
+                        <Label fx:id="infoSlot3"
+                               text="Slot vazio"
+                               wrapText="true"
+                               styleClass="texto-ajuda" />
+                    </children>
+                </VBox>
+
+                <Button fx:id="btnCarregarSlot3"
+                        text="CARREGAR"
+                        mnemonicParsing="false"
+                        onAction="#aoCarregarSlot"
+                        styleClass="botao-voltar" />
+            </children>
+        </HBox>
+
+        <HBox alignment="CENTER"
+              spacing="20">
+
+            <children>
+                <Button fx:id="btnCarregarAutosave"
+                        text="CARREGAR AUTOSAVE"
+                        mnemonicParsing="false"
+                        onAction="#aoCarregarAutosave"
+                        styleClass="botao-voltar" />
+
+                <Button fx:id="btnVoltar"
+                        text="VOLTAR"
+                        mnemonicParsing="false"
+                        onAction="#aoVoltar"
+                        styleClass="botao-voltar" />
+            </children>
+        </HBox>
+
+    </children>
+</VBox>

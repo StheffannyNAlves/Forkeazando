@@ -13,6 +13,7 @@ class ProtagonistaTest {
     void setUp() {
         protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -143,6 +144,7 @@ class ProtagonistaTest {
     void deveUsarCalouroQuandoNomeForNulo() {
         Protagonista protagonista = new Protagonista(
                 null,
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -158,6 +160,7 @@ class ProtagonistaTest {
     void deveUsarCalouroQuandoNomeForVazio() {
         Protagonista protagonista = new Protagonista(
                 "   ",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -173,6 +176,7 @@ class ProtagonistaTest {
     void deveRemoverEspacosDasExtremidadesDoNome() {
         Protagonista protagonista = new Protagonista(
                 "  Ana  ",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -188,6 +192,7 @@ class ProtagonistaTest {
     void deveInicializarValoresMinimos() {
         Protagonista protagonista = new Protagonista(
                 "Calouro",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 false,
                 false,
@@ -209,6 +214,7 @@ class ProtagonistaTest {
     void deveInicializarValoresMaximos() {
         Protagonista protagonista = new Protagonista(
                 "Calouro",
+                IdentidadeProtagonista.STHEFFANNY,
                 true,
                 true,
                 true,

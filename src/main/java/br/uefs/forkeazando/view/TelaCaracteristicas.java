@@ -14,7 +14,7 @@ public class TelaCaracteristicas {
             System.out.println(Cores.CIANO + "╚══════════════════════════════════════════════════════════╝" + Cores.RESET);
 
             return lerEscolhaBinaria();
-        } // Ainda sem influenciar no jogo
+        }
 
 
         public boolean perguntarSociavel() {

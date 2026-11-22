@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo4.json",
   "totalCenasArquivo": 24,
@@ -9,10 +9,10 @@
       "id": 300,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Segundo semestre, primeira semana. Segunda-feira, 8h. Mural do Módulo 1.\n\nDois editais novos, colados lado a lado com fita crepe por cima da fita crepe do semestre passado. Ninguém tirou o de antes. Ninguém vai tirar o de agora.\n\nO primeiro: PIBIC. Iniciação Científica. R$ 700 se for CNPq, R$ 500 se for FAPESB. Vinte e duas páginas. Exige Lattes.\n\nO segundo: Monitoria de DTEC. R$ 600. Exige CR acima de 7.\n\nAs inscrições fecham no mesmo dia.\n\n(Isso não é coincidência.)",
+      "textoNarrativo": "Segundo semestre. A matrícula agora depende de uma solicitação sua. O primeiro período veio com a grade pronta; desta vez, o portal mostra turmas, horários e um aviso em caixa alta: solicitar não garante vaga.\n\nVocê abre o fluxograma. Uma disciplina que parece interessante depende de outra que ainda não concluiu. Uma turma termina depois do último ônibus. No grupo, Malu compartilha uma planilha colorida e escreve: 'a planilha está ótima; a oferta é que está sendo hostil'.\n\nNo mural estão dois editais com o mesmo prazo: IC e monitoria. Você quer os dois por motivos diferentes — aprender a pesquisar e ajudar em casa.\n\nA grade não é um cardápio, e sua semana não tem horas infinitas. Você começa pelo que é obrigatório, não pelo que fica bonito no papel.",
       "escolhas": [
         {
-          "textoAlternativa": "Ler os dois editais inteiros.",
+          "textoAlternativa": "Conferir a oferta, os pré-requisitos e os dois editais antes de decidir.",
           "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap4_leu_editais"
@@ -40,10 +40,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Perguntar no grupo do WhatsApp.",
+          "textoAlternativa": "Perguntar no grupo sobre turmas, horários e transporte.",
           "cenaDestinoId": 301,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -71,10 +72,11 @@
           "impactoRelacionamento": {
             "DANDARA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Procurar o Caio.",
+          "textoAlternativa": "Procurar Caio para entender como montar a grade.",
           "cenaDestinoId": 301,
           "flagsConcedidas": [
             "cap4_procurou_caio"
@@ -102,7 +104,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Resolver a pendência de Cálculo antes de disputar qualquer bolsa.",
@@ -133,7 +136,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ajudar Dandara a revisar limites antes de olhar os editais.",
@@ -164,7 +168,136 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
+        },
+        {
+          "textoAlternativa": "Usar os critérios de teste aprendidos no PBL para reservar tempo de revisão na nova grade.",
+          "cenaDestinoId": 301,
+          "flagsConcedidas": [
+            "cap4_planejou_com_evidencias"
+          ],
+          "flagRequerida": "cap2_defendeu_evidencias",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 3,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "Você colore no calendário não apenas as aulas, mas também um bloco de testes e revisão. O desenho inicial invade o horário do último ônibus. Sem romantizar o sacrifício, você retira um compromisso que ainda não tinha sido confirmado.\n\nQuando mostra a proposta ao colegiado, há espaço para perguntar sobre uma oferta que não aparece no sistema. A grade ainda depende de vagas e pré-requisitos, mas agora você consegue explicar suas prioridades."
+        },
+        {
+          "textoAlternativa": "Reservar um horário real para revisão dos protótipos em vez de assumir outra entrega às cegas.",
+          "cenaDestinoId": 301,
+          "flagsConcedidas": [
+            "cap4_revisou_escopo"
+          ],
+          "flagRequerida": "cap2_assumiu_erro_revisao",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 3,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "Você descobre que reservou três tardes para um protótipo cuja entrega ninguém confirmou. Na conversa com o grupo, explica o limite de horário e propõe uma revisão menor, com data e testes possíveis.\n\nA primeira reação é de surpresa; depois alguém retira uma funcionalidade do escopo. Você leva ao colegiado uma proposta menos empolgante no papel, porém mais viável com aulas e ônibus. Nem toda oportunidade recusada é uma derrota."
+        },
+        {
+          "textoAlternativa": "Reabrir as questões que copiei: não posso depender de um resultado que não sei explicar.",
+          "cenaDestinoId": 301,
+          "flagsConcedidas": [
+            "cap4_encarou_lacuna_calculo"
+          ],
+          "flagRequerida": "cap3_colou_de_fato",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "Você abre a prova antiga ao lado da grade. A nota continua no sistema; o que ela não mostra é quais passos você copiou sem compreender.\n\nNo primeiro exercício, você encontra uma passagem que não consegue justificar. Em vez de marcar a disciplina como \"resolvida\", anota a dúvida e procura horário de revisão.\n\nNão é uma absolvição. É uma tarefa concreta que terá de continuar depois que esta tela fechar."
+        },
+        {
+          "textoAlternativa": "Usar a lista de erros da prova para decidir quais conteúdos preciso revisar.",
+          "cenaDestinoId": 301,
+          "flagsConcedidas": [
+            "cap4_revisou_erros_calculo"
+          ],
+          "flagRequerida": "cap3_anotou_erros",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 1,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "A lista que você fez ao sair da prova ainda tem três pontos: fatoração, interpretação de limite e tempo de resolução. Você separa um horário possível para cada um, sem lotar a agenda com uma quarta disciplina imaginária.\n\nNa primeira tentativa, o resultado sai errado de novo. Você volta ao passo marcado e consegue explicar onde se perdeu. É menos vistoso do que uma nota, mas é uma mudança verificável no método."
         }
       ]
     },
@@ -173,7 +306,7 @@
       "id": 3001,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A prova de Cálculo aparece entre os dois editais na tela do celular.\n\nVocê não precisa abandonar a IC ou a monitoria para reconhecer uma lacuna. Precisa, isso sim, descobrir quantas horas cabem na semana e qual ajuda existe de verdade.",
+      "textoNarrativo": "A nota de Cálculo ainda limita o que você pode pedir. Você cruza o fluxograma com a oferta de turmas. Uma seta de pré-requisito fecha uma possibilidade; o horário de outra disciplina bate com o ônibus de volta.\n\nNo rascunho, você marca três versões: a ideal, a viável e a que depende de ajuste. A diferença entre elas ocupa quase uma página.\n\nVocê manda a dúvida para o grupo, mas as respostas se contradizem. Antes de montar o resto da grade, precisa confirmar qual turma realmente conta para o próximo período.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar por um plantão de dúvidas e reservar um horário fixo.",
@@ -206,7 +339,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você reserva um plantão e coloca o horário do ônibus ao lado. A vaga na turma continua incerta, mas a dúvida já tem endereço."
         },
         {
           "textoAlternativa": "Salvar o contato, mas esperar a rotina do semestre se estabilizar.",
@@ -237,7 +371,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você salva o contato sem marcar horário. Outra notificação do portal ocupa a tela antes de a pendência de Cálculo sumir da cabeça."
         }
       ]
     },
@@ -246,7 +381,7 @@
       "id": 3002,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Dandara mostra um exercício de limite que você reconhece. Você explica como começou, onde precisou fatorar e por que a resposta não era só decorar uma regra.\n\nEnsinar a primeira etapa é fácil. Quando ela pergunta por que a simplificação funciona, você precisa pensar de novo. A nota ajudou a abrir aquela conversa; a relação de vocês é que tornou possível começá-la.",
+      "textoNarrativo": "Dandara abre uma lista de limites e pede que você explique a fatoração. Você começa confiante; no terceiro passo, percebe que vinha repetindo um procedimento sem saber por que funcionava.\n\n— Espera. Eu acho que pulei uma justificativa.\n\nDandara confere o rascunho e encontra um erro de sinal. Você volta ao começo, agora explicando cada transformação. Ela discorda de uma etapa e vocês consultam o material da disciplina.\n\nO exercício termina mais devagar. A conversa, pela primeira vez, não vira competição por quem entendeu primeiro.",
       "escolhas": [
         {
           "textoAlternativa": "Desenhar os passos e admitir o que ainda precisa conferir.",
@@ -281,7 +416,8 @@
           },
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você mostra a linha que pulou. Dandara corrige o sinal, e vocês conseguem explicar por que a fatoração funciona."
         },
         {
           "textoAlternativa": "Indicar a lista que ajudou você e voltar aos editais.",
@@ -312,7 +448,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Dandara anota a lista indicada. Você volta aos editais com uma justificativa ainda para conferir depois."
         }
       ]
     },
@@ -321,7 +458,7 @@
       "id": 301,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Mesmo lugar. Mesmo copo. Mesma cara de quem dormiu quatro horas e não lembra a última vez que comeu algo que não fosse salgado de cantina.\n\n'Os dois editais são de propósito. Eles querem que você escolha.'\n\n'E se você não escolher, fica sem os dois. É assim todo semestre.'\n\nDá um gole.\n\n'IC é política. DTEC é greve. Os dois são bons. Nenhum é fácil.'",
+      "textoNarrativo": "Caio examina seu rascunho de matrícula.\n\n— Primeiro: pré-requisito. Segundo: oferta real. Terceiro: horário do ônibus. Depois você tenta encaixar projeto, monitoria e qualquer sonho que sobrou.\n\n— E se eu quiser tudo?\n\n— Aí o portal escolhe por você. E ele não tem coração.\n\nEle abre a própria grade. Uma disciplina que Caio esperava cursar não foi ofertada. Ele fecha o celular, irritado.\n\n— Eu devia ter conferido antes de planejar o semestre inteiro.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar qual ele escolheria.",
@@ -354,7 +491,8 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar se tem terceira opção.",
@@ -385,10 +523,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Agradecer e resolver sozinha.",
+          "textoAlternativa": "Dispensar o conselho de Caio e conferir os editais por conta própria.",
           "cenaDestinoId": 302,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -416,7 +555,8 @@
           "impactoRelacionamento": {
             "VETERANO": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar sobre o edital de cooperação acadêmica internacional.",
@@ -447,7 +587,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -456,7 +597,7 @@
       "id": 3013,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "No rodapé do edital, uma chamada para projetos em colaboração com grupos de fora do país. Não promete bolsa integral nem vaga garantida: pede histórico, uma proposta e comprovação de idioma. A candidatura também tem prazo e custo.\n\nCaio não vende aquilo como saída mágica.\n\n'Pode abrir uma porta. Mas primeiro vê o que pedem e o que você consegue sustentar sem abandonar o resto.'",
+      "textoNarrativo": "Um edital de cooperação internacional está preso no mural entre um aviso de manutenção e um anúncio de aulas de inglês. Você lê os requisitos: histórico, idioma, projeto, documentos e custos que não aparecem no título.\n\nCaio aponta a parte sobre financiamento.\n\n— Quando eu era calouro, achei que me faltava coragem. Depois descobri que faltava saber que essa bolsa existia e como pagar a passagem.\n\nVocê fotografa o edital. Não decide hoje se vai tentar. Pela primeira vez, uma oportunidade distante parece uma tarefa que pode ser dividida em etapas.",
       "escolhas": [
         {
           "textoAlternativa": "Salvar o edital e montar um plano de idioma e portfólio.",
@@ -489,7 +630,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você abre uma nota com duas colunas: idioma e portfólio. A primeira tarefa é descobrir o custo que o título da bolsa omitiu."
         },
         {
           "textoAlternativa": "Guardar o link, sem assumir mais um prazo agora.",
@@ -520,7 +662,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você salva o link sem se inscrever. Na pasta de oportunidades, ele ganha uma data para ser revisitado, não uma promessa."
         }
       ]
     },
@@ -529,7 +672,7 @@
       "id": 3011,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele demora mais do que você esperava.\n\n'Eu escolheria a que não precisa de ninguém me dizendo que eu sou bom.'\n\nOlha o copo.\n\n'Mas eu não sou você. Eu errei a conta de quem eu era umas três vezes.'",
+      "textoNarrativo": "Caio lê os dois editais e não escolhe por você.\n\n— Eu iria na pesquisa porque gosto de ficar preso numa pergunta até ela parar de parecer óbvia.\n\nEle olha para o valor da bolsa de monitoria.\n\n— Mas eu não pago suas contas. Seiscentos reais mudam a decisão de um jeito que meu gosto não muda.\n\nEle devolve o celular.\n\n— O que você precisa agora? E o que quer aprender? Talvez dê a mesma resposta. Talvez não.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -558,7 +701,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -567,7 +711,7 @@
       "id": 3012,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "'Tem.'\n\n'Se chama não escolher. Ninguém te impede. Só custa mais caro.'\n\nEle bebe e acrescenta, como nota de rodapé:\n\n'E ninguém põe isso no edital.'",
+      "textoNarrativo": "— E se eu não escolher nenhum? — você pergunta.\n\nCaio dá de ombros.\n\n— Pode ser a decisão mais sensata ou o medo assinando por você. O formulário não vai saber a diferença.\n\nEle conta que fez pesquisa voluntária por um tempo. Aprendeu bastante; também precisou negociar escopo para não transformar boa vontade em trabalho sem limite.\n\n— Se for ficar, combina o que será feito e quando termina. Ciência não paga passagem automaticamente.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -596,7 +740,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -605,7 +750,7 @@
       "id": 302,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Colegiado.\n\nVocê pergunta sobre os editais. A funcionária responde com quatro siglas. Duas você nunca ouviu.\n\nDepois diz:\n\n'Tá no ÁGATA.'\n\nO ÁGATA está fora do ar.\n\n(Claro.)",
+      "textoNarrativo": "No colegiado, você mostra os horários que se sobrepõem e pergunta qual sequência mantém os pré-requisitos.\n\nA funcionária consulta o sistema.\n\n— A solicitação só abre depois da classificação. Se você não conseguir essa turma, ainda há ajuste. Mas não consigo prometer que haverá vaga.\n\nVocê sai com um número de protocolo e uma data para acompanhar. Não é a grade fechada que queria; é informação suficiente para parar de adivinhar.",
       "escolhas": [
         {
           "textoAlternativa": "Insistir.",
@@ -636,10 +781,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "carisma": 2
-          }
+          },
+          "textoConsequencia": "Você pede o regulamento do ajuste. A funcionária aponta a seção e confirma o protocolo; dias depois, chega a convocação das entrevistas."
         },
         {
-          "textoAlternativa": "Agradecer e sair.",
+          "textoAlternativa": "Agradecer e sair com o número do protocolo.",
           "cenaDestinoId": 303,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -665,7 +811,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você guarda o protocolo antes de sair. No corredor, chega a convocação para as entrevistas dos dois editais."
         }
       ]
     },
@@ -674,7 +821,7 @@
       "id": 303,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "A sala do grupo cheira a café velho. Três quadros brancos com anotações de semestres atrás. Ninguém apagou. Ninguém vai apagar.\n\nO orientador te olha por cima dos óculos e depois olha o celular, e depois você de novo.\n\n'Então. A gente tá abrindo vaga. Me diz, em poucas palavras, por que você quer IC?'\n\nNão é pergunta de educação. Ele está medindo se você sabe responder sob pressão, e se você sabe quando parar de falar.",
+      "textoNarrativo": "Dias depois, na entrevista da IC, Sérgio Viana tem duas planilhas abertas e um gráfico que sobe onde, segundo o artigo, deveria cair. Ele aponta para a curva.\n\n— Um grupo chamou isso de ruído. Outro, de descoberta. Ainda não conseguimos repetir nenhum dos dois.\n\nVocê reconhece a pergunta que trouxe do edital: será que saber pesquisar é ter uma resposta ou saber quando ela não se sustenta?\n\nSérgio fecha o gráfico e te encara.\n\n— Por que você quer entrar na IC? A bolsa, o tema, a experiência: pode falar de qualquer um. Só preciso saber a que compromisso você está dizendo sim.\n\nDo lado de fora, há outra pessoa esperando a entrevista. A sua resposta não precisa parecer a dela.",
       "escolhas": [
         {
           "textoAlternativa": "Porque quero aprender a pesquisar. Mesmo que dê trabalho.",
@@ -707,7 +854,8 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "— Quero aprender a pesquisar inclusive quando o resultado contraria a hipótese — você diz. Sérgio volta ao gráfico em vez de oferecer um elogio."
         },
         {
           "textoAlternativa": "Porque preciso da bolsa. E porque quero aprender também.",
@@ -738,7 +886,8 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você fala da passagem, da bolsa e da pergunta do projeto. Sérgio anota a disponibilidade que teria de ser respeitada."
         },
         {
           "textoAlternativa": "Porque quero mudar o mundo com tecnologia.",
@@ -771,7 +920,8 @@
           },
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "— Quero mudar o mundo — você diz. Sérgio pergunta qual parte daquele gráfico você consegue explicar hoje; a sala fica em silêncio por um instante."
         }
       ]
     },
@@ -780,7 +930,7 @@
       "id": 304,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Ele te recebe no laboratório. Tem uma protoboard montada na bancada, um multímetro e uma folha com medições de tensão. Não senta. Você também não.\n\n'Monitoria não é resolver a lista pelo aluno. É descobrir onde a pessoa se perdeu e ajudar a construir o raciocínio.'\n\nAponta o circuito.\n\n'Se o LED não acende, você começa trocando componente ou perguntando o que já foi medido? E se o aluno insistir que corrente e tensão são a mesma coisa?'\n\n'Você consegue explicar a mesma ideia de três jeitos diferentes? E admitir, quando precisar, que vai conferir a resposta antes de ensinar?'",
+      "textoNarrativo": "Na entrevista de monitoria, Meira põe uma protoboard na mesa. O LED não acende.\n\n— Amanhã uma turma inteira pode me perguntar por que. O que você faria se estivesse na monitoria?\n\nEle entrega o multímetro, mas não liga a fonte. No roteiro, o resistor tem um valor; a peça na mesa parece ter outro. Você conhece o circuito o suficiente para começar e pouco o suficiente para precisar conferir.\n\n— E se eu não souber responder a um estudante? — você pergunta.\n\n— Então você mostra como descobrir. Monitoria não é teatro de saber tudo.\n\nHá uma bolsa e há estudantes reais do outro lado da porta. — Consegue assumir essa responsabilidade? — Meira pergunta. Ele espera sua resposta.",
       "escolhas": [
         {
           "textoAlternativa": "Consigo. Já expliquei coisas pra colegas antes.",
@@ -811,7 +961,8 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você conta de uma colega a quem explicou uma medida. Para uma dúvida nova, começaria pelo valor esperado e pela leitura do multímetro."
         },
         {
           "textoAlternativa": "Não sei. Mas quero tentar.",
@@ -844,7 +995,8 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "— Não sei tudo — você admite. Meira aponta o multímetro: — Então começamos pelo que dá para medir."
         },
         {
           "textoAlternativa": "Tenho paciência. Isso conta?",
@@ -875,7 +1027,8 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Paciência conta — Meira diz. — Ela não substitui método. Você anota os dois na mesma página."
         }
       ]
     },
@@ -884,10 +1037,10 @@
       "id": 3045,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "Você está voltando pra casa quando o celular apita. Não é WhatsApp. Não é e-mail.\n\nÉ uma notificação do ÁGATA.\n\n'Prezada discente: foi gerada, em seu nome, uma Avaliação de Perfil Acadêmico. Quatro (4) perguntas. Caráter obrigatório. Tempo estimado: 20 segundos.'\n\n'Esta avaliação não possui valor decisório.'\n\nBotão único: 'Começar'.\n\n(Obrigatório.)\n\n(Eu estou na rua.)",
+      "textoNarrativo": "No ônibus, o portal envia: 'Complete seu perfil acadêmico para receber oportunidades personalizadas'.\n\nVocê toca na notificação. Quatro perguntas de múltipla escolha, nenhuma explicação sobre quem lerá as respostas. O link do aviso de privacidade está abaixo do botão 'Começar', em cinza claro sobre cinza.\n\nUm edital fecha naquela noite. Você quer descobrir se o perfil ajuda de verdade, mas não pretende entregar seus dados sem saber para quê. Há tempo para abrir o aviso antes da primeira pergunta.",
       "escolhas": [
         {
-          "textoAlternativa": "Começar.",
+          "textoAlternativa": "Abrir o formulário e conferir o uso dos dados.",
           "cenaDestinoId": 3046,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -913,7 +1066,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -922,7 +1076,7 @@
       "id": 3046,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Pergunta 1 de 4.'\n\n'Você tem um problema novo para resolver. Existem duas opções: passar um mês estudando o assunto a fundo antes de tocar em qualquer coisa, ou começar a mexer por tentativa e erro até descobrir o que funciona.'\n\n'Qual delas descreve melhor a discente?'\n\n(Isso é avaliação de perfil?)\n\n(Pra que isso serve?)",
+      "textoNarrativo": "Pergunta 1: 'Diante de um problema novo, você estuda a teoria ou começa testando?'\n\nVocê lembra do LED: consultou o roteiro, montou, mediu, voltou à documentação. O portal, porém, só permite uma bolinha.\n\nNo topo, um contador de conclusão avança antes de você tocar em qualquer resposta. A tela parece mais certa sobre sua personalidade do que você. Qual das duas descrições chega mais perto hoje?",
       "escolhas": [
         {
           "textoAlternativa": "Estudar primeiro. Sem entender, eu não mexo.",
@@ -953,7 +1107,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca 'estudar'. A barra de progresso anda; o portal não pergunta o que fez quando o manual estava incompleto."
         },
         {
           "textoAlternativa": "Mexer primeiro. Eu aprendo quebrando.",
@@ -984,7 +1139,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca 'testar'. A barra de progresso anda; não há campo para dizer que desligou a fonte antes de mudar o fio."
         }
       ]
     },
@@ -993,10 +1149,10 @@
       "id": 3047,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Pergunta 2 de 4.'\n\n'A discente prefere trabalhar sozinha ou em grupo?'\n\n(Nenhuma das duas.)\n\n(Depende.)\n\nO formulário não tem campo pra 'depende'. Só duas bolinhas.",
+      "textoNarrativo": "Pergunta 2: 'Prefere trabalhar individualmente ou em equipe?'\n\nNo PBL, Alan só conseguiu terminar uma frase quando alguém segurou a conversa. Na prova, ninguém podia estudar por você. As duas memórias cabem na mesma semana; a página só aceita uma.\n\nMalu manda uma captura do perfil dela: 'Se eu marcar equipe, será que o sistema vem às reuniões também?' Você ri e escolhe a resposta que consegue sustentar sem fingir que é uma lei da natureza.",
       "escolhas": [
         {
-          "textoAlternativa": "Sozinha. Cada um por si.",
+          "textoAlternativa": "Prefiro trabalhar por conta própria.",
           "cenaDestinoId": 3048,
           "flagsConcedidas": [
             "sistema_q2_sozinha"
@@ -1024,10 +1180,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca trabalho individual. A tela não pergunta se prefere companhia para revisar um resultado depois."
         },
         {
-          "textoAlternativa": "Em grupo. É mais rápido.",
+          "textoAlternativa": "Prefiro trabalhar em grupo.",
           "cenaDestinoId": 3048,
           "flagsConcedidas": [
             "sistema_q2_grupo"
@@ -1055,7 +1212,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca equipe. Malu responde com uma figurinha de seis pessoas olhando para a mesma planilha vazia."
         }
       ]
     },
@@ -1064,7 +1222,7 @@
       "id": 3048,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Pergunta 3 de 4.'\n\n'Seu nome em um artigo científico. Em uma banca de TCC. Em uma placa de laboratório.'\n\n'Isso é desejável?'\n\n(Uma placa de laboratório?)\n\n(Essa é específica demais pra ser neutra.)",
+      "textoNarrativo": "Pergunta 3: 'Você deseja reconhecimento acadêmico?'\n\nA palavra parece simples até lembrar quem mediu, quem escreveu, quem conseguiu bolsa e quem aparece na primeira página do artigo. Não querer holofote não é a mesma coisa que aceitar trabalho invisível.\n\nO botão de ajuda oferece uma definição circular: 'Reconhecimento é ser reconhecido'. Você deixa o dedo sobre as duas opções por um segundo.",
       "escolhas": [
         {
           "textoAlternativa": "Sim. Quero ver meu nome em algum lugar.",
@@ -1095,7 +1253,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você pede que seu nome apareça quando o trabalho for seu. O portal traduz essa frase em 'ambição'."
         },
         {
           "textoAlternativa": "Não. Isso não muda o que eu faço.",
@@ -1126,7 +1285,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você marca não. Ainda assim, salva a pergunta: o sistema confundiu holofote com crédito pelo trabalho?"
         }
       ]
     },
@@ -1135,7 +1295,7 @@
       "id": 3049,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Última pergunta.'\n\n'A discente prefere saber exatamente o que fará amanhã, ou descobrir na hora?'\n\n(O que isso tem a ver com edital?)\n\nO Sistema não explica.",
+      "textoNarrativo": "Pergunta 4: 'Rotina planejada ou decisões espontâneas?'\n\nO ônibus tem horário. A bancada, não. Você e {{NOME_OUTRO_PROTAGONISTA}} costumam começar problemas de modos diferentes, mas ambos já precisaram mudar de método no meio de um teste.\n\nA página mostra: 'Sua recomendação será aplicada automaticamente'. Você procura onde desligar essa parte. A opção existe, escondida atrás de 'mais detalhes'. Responder ao questionário não deveria entregar a decisão do semestre.",
       "escolhas": [
         {
           "textoAlternativa": "Saber. Preciso de plano.",
@@ -1166,7 +1326,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escolhe plano. A notificação do último ônibus toca exatamente quando o portal chama isso de traço permanente."
         },
         {
           "textoAlternativa": "Descobrir. Plano engessa.",
@@ -1197,7 +1358,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escolhe improviso. Na tela seguinte, o portal exige uma data fixa para a trilha que pretende recomendar."
         }
       ]
     },
@@ -1206,10 +1368,10 @@
       "id": 3050,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Sistema Acadêmico",
-      "textoNarrativo": "'Perfil registrado. Obrigado pela participação. Esta mensagem foi gerada automaticamente.'\n\nA tela volta ao normal. Sem animação. Sem som. Como se nada tivesse acontecido.\n\nVocê abre o WhatsApp. Nenhuma mensagem.\n\n(Vinte segundos.)\n\n(Vinte segundos e ele decidiu o que eu sou.)\n\nEmbaixo do veredito, um botão pequeno que você nunca tinha visto: 'Discordar da classificação?'",
+      "textoNarrativo": "Resultado: 'Alta autonomia. Liderança emergente. Resiliência'. Quatro cliques viraram três adjetivos.\n\nMalu envia o resultado dela: 'Organizada. Se souberem onde ficou meu cartão do RU, aceito o diagnóstico.'\n\nAbaixo há uma sugestão de trilha e nenhum critério visível para calculá-la. Você pode aceitá-la ou contestar. O prazo dos editais corre nos dois casos; a tela não vai esperar que o sistema explique o que quis dizer.",
       "escolhas": [
         {
-          "textoAlternativa": "Aceitar.",
+          "textoAlternativa": "Aceitar a recomendação do sistema para escolher a trilha.",
           "cenaDestinoId": 3051,
           "flagsConcedidas": [
             "sistema_aceito"
@@ -1237,7 +1399,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Discordar.",
@@ -1268,7 +1431,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1277,7 +1441,7 @@
       "id": 3051,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você aceita.\n\nA tela some sem confirmação. Sem 'obrigado'. Sem nada.\n\n(Aceitei.)\n\n(De qualquer jeito eu ia escolher isso.)\n\n(Não ia?)",
+      "textoNarrativo": "Você aceita a recomendação. O portal destaca uma trilha e a põe no topo da página; as outras continuam disponíveis, alguns cliques abaixo.\n\nNão sabe por que aquela foi a primeira. Salva uma captura para conferir depois e volta aos editais reais, onde requisitos, horários e bolsas precisam ser lidos por você.\n\nA recomendação pode influenciar o primeiro olhar. Ainda não enviou inscrição nenhuma.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -1306,7 +1470,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1315,7 +1480,7 @@
       "id": 3052,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você clica em discordar.\n\n'Recurso aberto. Processo nº 2026-IC-4471. Será analisado por um humano em até quinze (15) dias úteis.'\n\n(Quinze dias.)\n\n(A inscrição fecha em três.)\n\nVocê guarda o celular.\n\n(Não tem humano. Eu sei que não tem humano.)",
+      "textoNarrativo": "Você contesta o perfil e pede acesso aos critérios usados. O sistema abre um protocolo com prazo de resposta posterior ao fim dos editais.\n\nVocê salva a tela, anota o número e envia uma pergunta à coordenação sobre o uso dos dados. Não sabe se a resposta mudará a recomendação.\n\nO que muda agora é que o resultado deixou de parecer uma verdade sem autor.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir.",
@@ -1344,7 +1509,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1353,10 +1519,10 @@
       "id": 305,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║            — O PRAZO DUPLO —             ║\n║     Uma escolha. Só uma. Sem volta.      ║\n╚══════════════════════════════════════════╝\n\nSexta à noite, em casa. Os dois editais abertos no ÁGATA. Prazo: amanhã, 23h59.\n\nO ÁGATA caiu às 20h. Você já tentou dez vezes. (Eu contei.)\n\nNas letras miúdas, os requisitos de cada vaga:\n\nPIBIC: Lattes e histórico de participação comprovada (grupos, extensão, eventos).\n\nMonitoria: CR acima de 7 e aprovação em entrevista.\n\nO ÁGATA só mostra as opções para as quais você está habilitada. O resto some da tela, sem explicação.",
+      "textoNarrativo": "CHEFE DO SISTEMA — O PRAZO DUPLO\n\nSexta-feira, 23h37. Duas abas abertas: iniciação científica e monitoria. A grade do próximo semestre ainda depende de oferta e confirmação de vaga.\n\nA IC oferece uma pergunta que você quer investigar. A monitoria oferece renda e a chance de explicar o que demorou a aprender. Seu orçamento pede dinheiro; sua semana pede horas que ainda não existem.\n\nO portal mostra o relógio. O edital não pergunta o que você vai deixar de fazer para aceitar.\n\n{{NOME_OUTRO_PROTAGONISTA}} também está diante das oportunidades.\n\n{{OUTRO_CENA}}\n\n(A vida adulta podia pelo menos mostrar o consumo de memória antes de abrir mais um processo.)",
       "escolhas": [
         {
-          "textoAlternativa": "PIBIC. Quero aprender a pesquisar. E R$ 700 é R$ 700.",
+          "textoAlternativa": "Priorizar a IC, considerando carga horária e requisitos.",
           "cenaDestinoId": 371,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1382,10 +1548,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "DTEC. Quero ensinar. E R$ 600 paga o ônibus.",
+          "textoAlternativa": "Priorizar a monitoria e o trabalho com estudantes.",
           "cenaDestinoId": 372,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1411,10 +1578,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Nenhum dos dois. Vou fazer freela.",
+          "textoAlternativa": "Não assumir bolsa; explorar projetos independentes.",
           "cenaDestinoId": 373,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1440,10 +1608,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Nenhum dos dois. Nem sei se quero continuar no curso.",
+          "textoAlternativa": "Não concorrer e reconsiderar prioridades.",
           "cenaDestinoId": 373,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1469,10 +1638,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Não consigo decidir. Fecho o notebook e durmo.",
+          "textoAlternativa": "Deixar a decisão para depois; há risco de perder o prazo.",
           "cenaDestinoId": 306,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1498,10 +1668,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Enfrentar tudo. Café e ódio.",
+          "textoAlternativa": "Tentar dar conta de tudo, mesmo sem saber como.",
           "cenaDestinoId": 306,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1530,7 +1701,8 @@
           "atributosAlterados": {
             "confianca": -5,
             "energia": -30
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1539,7 +1711,7 @@
       "id": 306,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sábado, 23h58.\n\nVocê abre o ÁGATA de novo. Clica em IC. Volta. Clica em DTEC. Volta. Clica em IC de novo. Fecha a aba. Abre outra vez.\n\n23h59.\n\n(Eu preciso escolher agora.)",
+      "textoNarrativo": "Faltam minutos para o prazo. Você confere as regras de cada edital, a carga horária e a compatibilidade com as disciplinas que solicitou.\n\nA matrícula ainda não está confirmada. A bolsa também não. Você pode se inscrever e decidir depois, mas cada inscrição cria expectativa e trabalho real.\n\nO cursor pisca. Você não precisa escolher quem será para sempre. Precisa escolher qual compromisso consegue sustentar neste semestre.",
       "escolhas": [
         {
           "textoAlternativa": "IC.",
@@ -1568,7 +1740,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "DTEC.",
@@ -1597,7 +1770,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Nenhum.",
@@ -1626,7 +1800,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Deixar o prazo passar.",
@@ -1655,7 +1830,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1664,7 +1840,7 @@
       "id": 371,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você preenche o formulário de IC.\n\n'Tem certeza? Esta escolha é definitiva.'\n\nVocê clica em sim. O ÁGATA pensa. O círculo gira.\n\n'Inscrição registrada às 23h59min57s.'\n\nTrês segundos de folga. Pela primeira vez, a vantagem é sua.\n\nVocê fecha o notebook e fica olhando o teto por uns dez minutos. O ventilador faz um barulho que você nunca tinha notado.",
+      "textoNarrativo": "O protocolo da IC chega ao e-mail. Você salva o número e o prazo de resposta.\n\nNo caderno, desenha uma pergunta e três coisas que precisaria medir. Uma delas depende de um equipamento que o laboratório não tem.\n\nVocê circula o obstáculo e escreve ao orientador perguntando se existe alternativa. A pesquisa começa antes da bolsa, antes do artigo e antes de qualquer certeza.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",
@@ -1696,7 +1872,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1705,7 +1882,7 @@
       "id": 372,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você preenche o formulário de DTEC.\n\nMesma pergunta de sempre. Você clica em sim. O círculo gira. 'Inscrição registrada às 23h59min57s.'\n\nVocê pensa na Dandara. Não sabe se ela também se inscreveu. Se a vaga for uma só, alguém vai ler um nome antes do outro.\n\nVocê não vai perguntar.",
+      "textoNarrativo": "A inscrição para monitoria foi recebida. Você relê o edital e confere os critérios de classificação.\n\nDandara também se inscreveu. Ela te conta no RU, sem esconder que quer a vaga.\n\n— Se eu passar, preciso me organizar para dar conta da monitoria e das matérias. Se não passar, vou tentar outra bolsa.\n\nVocê quer a vaga. Também torce por ela. A mistura não é confortável, mas é honesta.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",
@@ -1737,7 +1914,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1746,7 +1924,7 @@
       "id": 373,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você fecha o notebook e vai tomar banho. Não se inscreve em nada.\n\nNo dia seguinte, tem um terceiro cartaz no mural, de alguém montando um projeto e precisando de ajuda. Só um nome e um número.\n\nVocê anota.",
+      "textoNarrativo": "Você decide não se inscrever para nenhuma bolsa neste período. A grade já está no limite e ainda falta confirmar horários.\n\nNo mural, alguém procura duas pessoas para construir um sistema simples para o laboratório. Sem bolsa; com escopo pequeno e prazo combinado.\n\nVocê salva o contato e pergunta quanto tempo esperam de cada pessoa. Pela primeira vez, a resposta vem antes do entusiasmo: quatro horas por semana, por seis semanas.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",
@@ -1779,7 +1957,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1788,7 +1967,7 @@
       "id": 374,
       "capitulo": "Capítulo 4 — A Bifurcação",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você perdeu o prazo.\n\nSegunda-feira o mural está sem os editais. Alguém tirou. Ninguém colou nada no lugar.\n\nVocê fica olhando o retângulo de fita crepe velha onde os dois papéis estavam.\n\n(Quem entrou?)\n\n(Não sei.)\n\n(Eu não pergunto.)",
+      "textoNarrativo": "O prazo passou. Os editais saem do mural; a matrícula segue em fase de confirmação e ajuste.\n\nVocê sente o baque de ter perdido uma oportunidade. Depois escreve para a coordenação perguntando a próxima data de seleção e guarda o calendário no celular.\n\nO semestre não está resolvido, mas o próximo prazo não vai te pegar sem aviso.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 4.",
@@ -1822,7 +2001,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

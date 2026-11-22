@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.controller;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.model.Protagonista;
 import br.uefs.forkeazando.view.Entrada;
 import br.uefs.forkeazando.view.TelaCaracteristicas;
@@ -13,8 +14,17 @@ public class TelaCaracteristicasController {
     }
 
     public Protagonista iniciar() {
+        System.out.println("Escolha o protagonista:");
+        System.out.println("[1] Tiana");
+        System.out.println("[2] Miles");
+        int opcao = Entrada.lerInteiro(1, 2);
+        IdentidadeProtagonista identidade = (opcao == 1)
+                ? IdentidadeProtagonista.STHEFFANNY : IdentidadeProtagonista.DAVI;
         System.out.print("Seu nome: ");
         String nome = Entrada.lerLinha();
+        if (nome == null || nome.isBlank()) {
+            nome = (identidade == IdentidadeProtagonista.STHEFFANNY) ? "Tiana" : "Miles";
+        }
 
         boolean perfeccionista = view.perguntarPersonalidade();
         boolean sociavel       = view.perguntarSociavel();
@@ -24,7 +34,7 @@ public class TelaCaracteristicasController {
         var experiencia        = view.perguntarExperienciaEM();
 
         Protagonista p = new Protagonista(
-                nome, perfeccionista, sociavel, estudoTeorico,
+                nome, identidade, perfeccionista, sociavel, estudoTeorico,
                 vidaSocial, experiencia, situacao);
 
         System.out.println();

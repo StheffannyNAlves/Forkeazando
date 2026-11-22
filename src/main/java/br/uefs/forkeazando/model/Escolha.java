@@ -9,6 +9,7 @@ public class Escolha  {
 
 
     private final String textoAlternativa;
+    private final String textoConsequencia;
     private final int cenaDestinoId;
     private final List<String> flagsConcedidas;
     private final String flagRequerida;
@@ -38,6 +39,7 @@ public class Escolha  {
 
     private Escolha(Builder b) {
         this.textoAlternativa      = b.textoAlternativa;
+        this.textoConsequencia = b.textoConsequencia;
         this.cenaDestinoId         = b.cenaDestinoId;
         this.flagsConcedidas       = List.copyOf(b.flagsConcedidas);
         this.flagRequerida         = b.flagRequerida;
@@ -110,6 +112,7 @@ public class Escolha  {
     }
 
     public String getTextoAlternativa() { return textoAlternativa; }
+    public String getTextoConsequencia() { return textoConsequencia; }
     public int getCenaDestinoId()       { return cenaDestinoId; }
     public List<String> getFlagsConcedidas()    { return flagsConcedidas; }
     public String getFlagRequerida() { return flagRequerida; }
@@ -122,10 +125,11 @@ public class Escolha  {
 
     public static class Builder {
         private final String textoAlternativa;
+        private String textoConsequencia;
         private final int cenaDestinoId;
         private final List<String> flagsConcedidas = new ArrayList<>();
-        public Map<PersonagemSecundario, Float> relacionamentoMinimo = new HashMap<>();
-        private Map<PersonagemSecundario, Float> relacionamentoMaximo = new HashMap<>();
+        private final Map<PersonagemSecundario, Float> relacionamentoMinimo = new HashMap<>();
+        private final Map<PersonagemSecundario, Float> relacionamentoMaximo = new HashMap<>();
         private boolean permiteEnergiaInsuficiente = false;
         private String flagRequerida = null;
         private int scoreMinimo = 0, participacaoMinima = 0, participacaoMaxima = 0;
@@ -137,10 +141,15 @@ public class Escolha  {
         private int logicaMinima = 0, logicaMaxima = 0;
         private int sanidadeMinima = 0, sanidadeMaxima = 0;
         private PersonagemSecundario.Interesse interesseAlvo = null;
-        private Map<PersonagemSecundario, Float> impactoRelacionamento = new HashMap<>();
-        private Map<String, Integer> atributosAlterados = new HashMap<>();
+        private final Map<PersonagemSecundario, Float> impactoRelacionamento = new HashMap<>();
+        private final Map<String, Integer> atributosAlterados = new HashMap<>();
 
         public Builder(String t, int destino) { this.textoAlternativa = t; this.cenaDestinoId = destino; }
+
+        public Builder comTextoConsequencia(String texto) {
+            this.textoConsequencia = texto;
+            return this;
+        }
 
         public Builder comFlagConcedida(String v)  {
             if (v != null)
@@ -148,19 +157,14 @@ public class Escolha  {
             return this;
         }
         public Builder comFlagRequerida(String v)   { flagRequerida = v; return this; }
-
         public Builder comScoreMinimo(int v)        { scoreMinimo = v; return this; }
-
         public Builder comParticipacaoMinima(int v) { participacaoMinima = v; return this; }
-
         public Builder comParticipacaoMaxima(int v) { participacaoMaxima = v; return this; }
-
         public Builder comParticipacaoGanha(int v)  { participacaoGanha = v; return this; }
-
         public Builder comScoreGanho(int v)         { scoreGanho = v; return this; }
 
 
-        public Builder comCustoEnergia(int v) { // Agora aceita numeros negativos
+        public Builder comCustoEnergia(int v) { // Aceita numeros negativos
             if (v == Integer.MIN_VALUE)
                 throw new IllegalArgumentException("O custo de energia fora do intervalo permitido");
             custoEnergia = v;

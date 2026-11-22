@@ -65,8 +65,11 @@ final class Elementos {
     private static final String[] LETRA_E = {"XXXXX", "X....", "X....", "XXXX.", "X....", "X....", "XXXXX"};
     private static final String[] LETRA_R = {"XXXX.", "X...X", "X...X", "XXXX.", "X.X..", "X..X.", "X...X"};
 
+    private static final String[] LETRA_F = {"XXXXX", "X....", "X....", "XXXX.", "X....", "X....", "X...."};
+    private static final String[] LETRA_P = {"XXXX.", "X...X", "X...X", "XXXX.", "X....", "X....", "X...."};
+
     static String[] letra(char c) {
-        return switch (c) { case 'U' -> LETRA_U; case 'E' -> LETRA_E; default -> LETRA_R; };
+        return switch (c) { case 'U' -> LETRA_U; case 'E' -> LETRA_E; case 'F' -> LETRA_F; case 'P' -> LETRA_P; default -> LETRA_R; };
     }
 
     /** Desenha a letra revelando só as primeiras `colunas` colunas (traço do dedo). */

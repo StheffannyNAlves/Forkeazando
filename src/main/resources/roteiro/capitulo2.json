@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo2.json",
   "totalCenasArquivo": 22,
@@ -9,10 +9,10 @@
       "id": 100,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Segunda, 7h14. Você está no ônibus, encostada no vidro, quando o celular vibra.\n\n'ÁGATA — Bem-vinda ao semestre 2026.2.'\n\nO e-mail tem doze links. Onze terminam em 'consulte o edital'. O último deseja um bom semestre.\n\nVocê abre o primeiro. A página demora. O ônibus pega um buraco, o sinal some, e o aviso fica ali, esperando que você descubra sozinha por onde começar.",
+      "textoNarrativo": "Segunda-feira, 7h14. O ônibus balança; no Portal do Estudante, você tenta confirmar o horário de uma atividade da Feira de Graduação. Uma portaria antiga aparece antes do aviso atualizado.\n\nA conexão cai quando finalmente encontra a data. No banco ao lado, alguém também está tentando entender o calendário. Vocês comparam as capturas de tela e identificam qual publicação é a mais recente.\n\nA matrícula de ingresso já ficou para trás. Aprender a conferir prazos, fontes e retificações continua fazendo parte do curso.",
       "escolhas": [
         {
-          "textoAlternativa": "Abrir os onze agora, com o sinal caindo.",
+          "textoAlternativa": "Abrir os avisos e conferir os procedimentos do semestre.",
           "cenaDestinoId": 101,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -38,10 +38,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "O aviso atual tem outra data e um procedimento que a portaria antiga não mostrava. Você salva a página certa antes de descer do ônibus."
         },
         {
-          "textoAlternativa": "Marcar como não lido. 'Depois' significa nunca.",
+          "textoAlternativa": "Deixar os avisos sem ler por enquanto.",
           "cenaDestinoId": 101,
           "flagsConcedidas": [
             "ignorou_email"
@@ -69,7 +70,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você fecha a notificação para não perder o ponto. No mural, terá de descobrir quais avisos ainda valem."
         }
       ]
     },
@@ -78,10 +80,10 @@
       "id": 101,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Mural do Módulo 1. Quatro cartazes novos, presos com fita crepe sobre a fita crepe do semestre passado.\n\nCA de Computação: reunião quarta, 17h, sala 12.\n\nDCE: assembleia sobre o RU, quinta, 14h, pátio.\n\nUm grupo de software com nome feito de quatro siglas.\n\nE um quadradinho de sulfite com um QR code e três linhas: 'Resumos de Cálculo I. R$ 15. Pix. Não é cola, é atalho.'\n\nVocê lê os quatro. Todo mundo parece já saber onde quer estar. Você ainda tenta entender o que cada lugar faz.",
+      "textoNarrativo": "O mural do Módulo 1 parece um feed que alguém imprimiu: assembleia do RU, seleção de software, Feira de Graduação, oficinas, resumos por Pix. Um cartaz está colado sobre outro; a data de baixo aparece como uma profecia vencida.\n\nMalu chega com a mochila presa à cadeira e um papel no colo. O papel tem cinco grupos circulados.\n\n— Vou conhecer dois. Três se o café estiver bom.\n\n— Ontem eram cinco — você lembra.\n\n— Ontem eu tinha menos informação.\n\n{{NOME_OUTRO_PROTAGONISTA}} também escolhe grupos.\n\n{{OUTRO_CENA}}\n\nAlan passa carregando um notebook e cabos. Diz que está trabalhando num projeto, mas não conta qual.\n\n— Se eu falar antes de compilar, dá azar.\n\nAs opções parecem convites. Também parecem horas da semana que ainda não existem.",
       "escolhas": [
         {
-          "textoAlternativa": "Ir no CA.",
+          "textoAlternativa": "Conhecer o centro acadêmico.",
           "cenaDestinoId": 102,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -107,10 +109,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir na assembleia do DCE.",
+          "textoAlternativa": "Escutar a assembleia sobre o RU.",
           "cenaDestinoId": 105,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -136,10 +139,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir no grupo de software.",
+          "textoAlternativa": "Conhecer o grupo de software.",
           "cenaDestinoId": 108,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -165,10 +169,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir na Feira de Graduação, no Módulo 3.",
+          "textoAlternativa": "Explorar a Feira de Graduação.",
           "cenaDestinoId": 116,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -194,10 +199,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Fotografar o QR code dos resumos.",
+          "textoAlternativa": "Investigar os resumos vendidos no mural.",
           "cenaDestinoId": 124,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -223,10 +229,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Anotar tudo e decidir depois.",
+          "textoAlternativa": "Anotar as opções e não assumir nada hoje.",
           "cenaDestinoId": 111,
           "flagsConcedidas": [
             "indecisa"
@@ -254,7 +261,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -263,7 +271,7 @@
       "id": 102,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A reunião do CA é numa sala emprestada. Sete pessoas, duas pizzas e um crachá de 'Diretora' escrito à mão em fita crepe.\n\nO assunto é um projeto de extensão numa escola pública. Você acompanha tentando calcular se aquilo cabe na sua rotina, e a conta não fecha em lugar nenhum.",
+      "textoNarrativo": "A reunião do CA cabe numa sala emprestada, sete cadeiras e duas pizzas frias. O plano é levar oficinas de Scratch a uma escola pública; no slide, as crianças já aparecem sorrindo.\n\nUma caloura ergue a mão:\n\n— Quem paga a passagem da equipe?\n\nA planilha não tem essa linha. A coordenadora apaga a data do slide e liga para a escola antes de prometer a visita. Do outro lado, uma professora diz que pode conseguir transporte para parte do grupo, mas precisa da lista de nomes hoje.\n\nO projeto deixou de ser um cartaz bonito. Há uma tarefa concreta e um compromisso que dura mais que a foto de divulgação.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista.",
@@ -292,7 +300,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Seu nome entra na lista provisória. A coordenadora acrescenta: sem transporte confirmado, não há promessa de segunda visita."
         },
         {
           "textoAlternativa": "Perguntar quanto tempo por semana.",
@@ -321,7 +330,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A coordenadora abre a planilha e mostra quatro horas de preparação além da oficina. Você anota antes de decidir se continua."
         },
         {
           "textoAlternativa": "Só olhar. Ainda tô decidindo.",
@@ -350,7 +360,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você não assina. Malu diz que a primeira visita ainda pode ser observada; a continuidade será uma decisão depois da escola."
         }
       ]
     },
@@ -359,10 +370,10 @@
       "id": 103,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na sexta acontece a primeira reunião de verdade.\n\nO projeto significa ir a uma escola pública às terças, ensinar Scratch a vinte crianças de onze anos e voltar pra casa às 19h com dor de cabeça.\n\nParece simples até você encaixar isso entre aulas, trabalhos e as duas horas de ônibus.",
+      "textoNarrativo": "Na terça, você acompanha a primeira oficina, mesmo sem ter assumido uma função fixa. A passagem da equipe foi acertada na véspera, por pouco. Vinte crianças dividem computadores lentos e uma pergunta urgente: o gato do Scratch pode soltar fogo?\n\nAs mesas bloquearam metade do corredor. Malu encontra o gargalo e vocês abrem passagem antes de começar. A dupla dela programa uma galinha que vence todo mundo.\n\n— Equilíbrio perfeito — decreta. — Ninguém vai jogar com o gato agora.\n\nNa saída, uma criança corre atrás do ônibus escolar e pergunta se vocês voltam. A professora espera a resposta. O transporte da próxima visita ainda não foi confirmado.\n\nVocê pode assumir o trabalho de cobrar essa confirmação ou sair da equipe. Prometer a data hoje seria mais fácil; cumprir seria outra história.",
       "escolhas": [
         {
-          "textoAlternativa": "Aguentar.",
+          "textoAlternativa": "Ficar na equipe e cobrar um plano para a próxima visita.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -390,10 +401,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Você escreve à professora pedindo uma data que dependa da confirmação do ônibus. Ela responde com o horário em que pode receber a equipe; ainda falta o transporte."
         },
         {
-          "textoAlternativa": "Sair. Não é pra você.",
+          "textoAlternativa": "Sair da equipe; não consigo prometer a continuidade.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [
             "ca_saiu"
@@ -421,7 +433,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você avisa à professora que não consegue assumir a próxima visita. Ela agradece a franqueza e pede que não anunciem data às crianças."
         }
       ]
     },
@@ -430,7 +443,7 @@
       "id": 105,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A assembleia é no pátio. Uns quarenta estudantes, um megafone e duas faixas contra a terceirização do RU.\n\nA proposta em discussão: a empresa quer subir a refeição de R$ 2 pra R$ 4. Você acompanha as falas tentando entender como uma decisão dessas chega até o prato de quem está na fila.",
+      "textoNarrativo": "No pátio, a assembleia do RU está lotada. Um megafone falha a cada três frases; uma planilha projetada no muro mostra o custo da refeição. Uma estudante pergunta o que acontece com quem não consegue pagar se o preço subir.\n\nDo outro lado, alguém responde que o restaurante também precisa de recursos para continuar funcionando. A conversa esquenta, mas ninguém sai.\n\nVocê não tem dados suficientes para decidir qual proposta é viável. Tem uma pergunta concreta: quem ficará sem almoço se a mudança passar?",
       "escolhas": [
         {
           "textoAlternativa": "Assinar e ficar.",
@@ -461,7 +474,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Assinar e ir.",
@@ -490,7 +504,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Não assinar.",
@@ -521,7 +536,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -530,7 +546,7 @@
       "id": 106,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A assembleia vira discussão sobre orçamento da universidade.\n\nVocê entende metade. O preço do RU depende de subsídio; o subsídio, de verba pública; a verba, de decisões que ninguém ali tomou.\n\nNa volta, você pensa que até o frango com quiabo acaba entrando nessa conversa.",
+      "textoNarrativo": "A assembleia continua, agora com uma lista de encaminhamentos no quadro. Dandara escreve nomes, prazos e perguntas que ficaram sem resposta.\n\n— Se a gente sair sem um pedido específico, semana que vem a reunião começa do zero — ela diz.\n\nVocês ajudam a organizar uma proposta para pedir transparência nos custos e proteção para estudantes em vulnerabilidade. O horário da aula se aproxima; o ônibus de Dandara sai em poucos minutos.\n\nEla fecha o caderno.\n\n— Vamos mandar o documento. Depois eu corro.\n\nA política universitária, por enquanto, cabe numa planilha que precisa chegar antes do prazo.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar indo.",
@@ -561,7 +577,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Dandara te envia a ata com três encaminhamentos e a data da próxima assembleia. Você separa um horário para acompanhar a resposta."
         },
         {
           "textoAlternativa": "Ir uma vez e nunca mais.",
@@ -590,7 +607,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você entrega a pergunta que anotou e diz que não consegue voltar à próxima reunião. Dandara a inclui na ata mesmo assim."
         }
       ]
     },
@@ -599,7 +617,7 @@
       "id": 107,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você passa no RU no caminho. A fila está curta.\n\nFrango com quiabo. De novo.",
+      "textoNarrativo": "No RU, a fila finalmente anda. O cardápio anuncia frango com quiabo.\n\nMalu manda: 'Confirmei com três fontes. É o mesmo frango da semana passada.'\n\nVocê responde com um emoji de auditoria. Ela envia outro: 'Caso encerrado.'\n\nA bandeja chega. Ainda há um edital para ler e uma aula começando.",
       "escolhas": [
         {
           "textoAlternativa": "Seguir pro grupo de software.",
@@ -628,7 +646,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -637,7 +656,7 @@
       "id": 108,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Auditório emprestado. Slide. Pausa dramática. Um cara de camisa social diz 'disruptivo' três vezes em dois minutos.\n\nVocê pensa em ir embora. Aí ele menciona um processo seletivo de estágio. Você fica.",
+      "textoNarrativo": "O grupo de software apresenta seus projetos num auditório emprestado. A pessoa no palco diz 'disruptivo' três vezes; Alan marca cada ocorrência no caderno.\n\nQuando a tela finalmente mostra o código, você reconhece um aplicativo de inscrições e um painel para uma escola. O terceiro projeto está parado há dois semestres.\n\n— Pelo menos esse não está vendendo fumaça — Alan sussurra.\n\nVocê pergunta como funciona a seleção. Desafio técnico, conversa com a equipe, disponibilidade semanal. 'Perfil colaborativo' aparece no slide sem explicar como será avaliado.\n\nVocê anota a pergunta. Se entrar, quer saber no que está se comprometendo.",
       "escolhas": [
         {
           "textoAlternativa": "Pegar o QR code.",
@@ -668,7 +687,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar em voz alta se é remunerado.",
@@ -699,7 +719,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Ir embora no meio.",
@@ -730,7 +751,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -739,10 +761,10 @@
       "id": 109,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Quatro etapas.\n\nA primeira é um desafio de código: receber uma sequência de valores e achar um resultado. Você escreve a solução, roda um caso pequeno e ela quebra.\n\nReleitura. O erro não é de sintaxe: sua condição pula justamente o primeiro elemento. Corrige, o exemplo passa, e você ainda precisa pensar em lista vazia, valor repetido e no que acontece quando a entrada cresce.\n\nA segunda é uma entrevista com alguém que diz 'fit cultural' quatro vezes em sete minutos. Você tenta explicar o que aprendeu sem fingir que já sabe tudo.",
+      "textoNarrativo": "O desafio de seleção tem uma entrada que você não previu. Seu código passa nos exemplos e falha no caso de borda.\n\nNa mesa ao lado, Alan identifica o próprio erro e corrige a lógica; quando pedem que explique, a voz falha. A avaliadora afasta o cronômetro.\n\n— Mostrem o raciocínio. O teste que falhou também conta.\n\nVocê tem uma hipótese sobre o seu caso de borda. Explicá-la diante da equipe pode revelar exatamente onde errou; assistir aos outros é mais confortável. A seleção continua, e ninguém prometeu que saber programar bastaria.",
       "escolhas": [
         {
-          "textoAlternativa": "Fazer mesmo assim.",
+          "textoAlternativa": "Explicar a hipótese e testar mais um caso de borda.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -768,10 +790,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra o caso de borda que falhou e o teste seguinte. A avaliadora anota a hipótese; ainda não diz quem passou na seleção."
         },
         {
-          "textoAlternativa": "Só assistir.",
+          "textoAlternativa": "Assistir à apresentação dos outros sem defender o próprio código.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [
             "cap2_so_assistiu"
@@ -799,7 +822,72 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Alan apresenta o raciocínio dele. Você observa o seu teste falho sem explicá-lo, e a lista de classificados ficará para outro dia."
+        },
+        {
+          "textoAlternativa": "Usar os critérios de teste do PBL para explicar o caso de borda e propor uma verificação.",
+          "cenaDestinoId": 112,
+          "flagsConcedidas": [
+            "cap2_defendeu_evidencias"
+          ],
+          "flagRequerida": "cap1_pbl_planejou_testes",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 4,
+          "participacaoGanha": 2,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "Você não afirma que encontrou a resposta do desafio. Mostra o caso de borda, diz qual entrada foi testada e descreve outro teste que distinguiria duas hipóteses.\n\nA avaliadora pergunta se a primeira versão do PBL já funcionava. Você responde que não: foi o teste que expôs o caminho errado. Ela faz uma anotação. A seleção continua sem anunciar aprovados, mas sua explicação produziu evidência em vez de uma promessa."
+        },
+        {
+          "textoAlternativa": "Mostrar como a revisão de um protótipo revelou um erro que você não tinha previsto.",
+          "cenaDestinoId": 112,
+          "flagsConcedidas": [
+            "cap2_assumiu_erro_revisao"
+          ],
+          "flagRequerida": "cap1_pbl_prototipo_revisado",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 4,
+          "participacaoGanha": 2,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra a primeira versão do menu do PBL, inclusive o caminho que falhava. A avaliadora pergunta por que incluiu um protótipo incompleto no portfólio.\n\n— Porque outra pessoa encontrou um erro que eu não tinha visto. Depois disso, comecei a registrar as tentativas.\n\nEla pede que você aplique essa ideia à entrada problemática da seleção. Você propõe um teste novo. Ainda não sabe se passou, mas não precisou fingir que a demo tinha sido perfeita."
         }
       ]
     },
@@ -808,7 +896,7 @@
       "id": 111,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A semana passa. Você não foi a nenhuma das atividades.\n\nNão foi erro. Foi uma semana em que você ainda não conseguiu escolher, e talvez precisasse justamente dela pra descobrir o que queria.",
+      "textoNarrativo": "A semana termina. No mural, os cartazes continuam se acumulando. Você participou de algumas atividades, recusou outras e ainda não escolheu nenhum grupo.\n\nMalu manda uma foto de um banco vazio debaixo de uma árvore: 'Consegui vaga na atividade mais concorrida: sentar sem prazo.'\n\nVocê ri. Depois apaga um lembrete que tinha criado só por medo de perder uma oportunidade. O espaço livre na agenda parece estranho, mas não vazio.",
       "escolhas": [
         {
           "textoAlternativa": "Ir pra casa.",
@@ -839,7 +927,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -848,7 +937,7 @@
       "id": 124,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "Você mal tirou a foto e alguém já está do seu lado, fita crepe no pulso, colando outro quadradinho de sulfite.\n\n'Resumo de Cálculo I. Vinte e duas páginas, limites até derivada, com os erros que o professor adora. Quinze reais.'\n\nEla fala rápido, sem olhar pra você, olhando o mural como quem confere estoque. Na capa da pasta: Beatriz. Ela vê você lendo e corrige sem esperar a pergunta: 'Bia. Beatriz é só pra pasta.'\n\n'Não é cola. Cola é outra tabela de preço.'",
+      "textoNarrativo": "Uma estudante de cabelo castanho-avermelhado prende um anúncio no mural. O papel diz: 'Resumo de Introdução ao Cálculo — R$ 15 — erros comuns marcados'.\n\n— Você fez? — pergunta alguém.\n\n— Fiz, revisei e testei. Beatriz Menezes, para fins de recibo. Bia, para fins de conversa.\n\nVocê folheia. Há exemplos resolvidos e anotações nas margens, mas também um aviso: o resumo não prevê a prova.\n\n— Se o professor inventar uma questão nova, a culpa é da realidade — ela diz. — Não da diagramação.\n\nBia precisa vender; você percebe isso antes de decidir se compra.",
       "escolhas": [
         {
           "textoAlternativa": "Comprar o resumo. Quinze reais, pix.",
@@ -881,7 +970,8 @@
           "impactoRelacionamento": {
             "BIA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "O Pix sai da conta. Bia envia um resumo com erros marcados; você encontra uma questão que ainda precisa resolver sem olhar a resposta."
         },
         {
           "textoAlternativa": "Perguntar de onde saem os resumos.",
@@ -914,10 +1004,11 @@
           },
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Bia admite que juntou exercícios próprios e questões antigas da disciplina. Você pede a fonte de uma fórmula antes de fotografar a página."
         },
         {
-          "textoAlternativa": "Agradecer e ficar com a foto.",
+          "textoAlternativa": "Agradecer e ficar com a foto do material.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -943,7 +1034,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você agradece e guarda a foto do índice. Na prova, terá só o que conseguir estudar por conta própria."
         }
       ]
     },
@@ -952,7 +1044,7 @@
       "id": 112,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Caio, o veterano, está no pátio, comendo um salgado com uma mão e rolando o celular com a outra. Quando te vê, guarda o aparelho.\n\n'Tá indo em tudo, né?'\n\nNão parece pergunta. Parece conclusão a que ele já chegou.\n\n'Eu fiz isso no primeiro semestre. Três grupos, dois projetos, um campeonato. No segundo eu não ia a nada. Porque estava reprovando em tudo.'\n\n(Ele tá me assustando ou me avisando?)\n\nOs dois.",
+      "textoNarrativo": "Caio está nos degraus do Módulo 1, com um salgado numa mão e o celular na outra. Na tela, uma lista de tarefas aberta.\n\n— Tu tá em tudo? — pergunta.\n\nVocê fala do grupo que visitou e de outros três cujos cartazes ainda estão na sua mochila. Ele não ri.\n\n— Eu também aceitava tudo. Cada convite parecia a última chance de pertencer a algum lugar.\n\n— E não era?\n\n— Alguns voltaram. Eu é que não tinha energia para voltar.\n\nEle pergunta qual atividade você procuraria mesmo se não desse certificado. Você demora a responder. Caio espera, sem preencher o silêncio.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar como ele saiu disso.",
@@ -983,7 +1075,8 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Dizer que não vai ser assim. Você dá conta.",
@@ -1016,10 +1109,11 @@
           },
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ficar quieta.",
+          "textoAlternativa": "Ouvir até conseguir responder, sem forçar uma certeza.",
           "cenaDestinoId": 117,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1045,7 +1139,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1054,7 +1149,7 @@
       "id": 113,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele pensa antes de responder. Mastiga devagar, como se a resposta estivesse no salgado.\n\n'Cortei tudo. Fiquei só no que eu não conseguia parar de pensar.'\n\n'O problema não é fazer muito. É fazer muito do que você não quer.'",
+      "textoNarrativo": "Caio mostra a lista no celular. Metade das tarefas está riscada.\n\n— Cortei o que eu fazia só para parecer ocupado. Fiquei com um projeto e uma disciplina que precisava recuperar. Não virou rotina perfeita. Só parei de dormir em cima do caderno.\n\nVocê pergunta se ele não sente que está ficando para trás.\n\n— Sinto. Aí olho para o semestre que quase perdi tentando acompanhar todo mundo.\n\nEle não oferece uma fórmula. Conta o que abriu mão e o que ganhou: duas noites de sono, uma conversa com a coordenação e menos tempo fingindo que estava tudo bem.",
       "escolhas": [
         {
           "textoAlternativa": "Perguntar o que ele cortou primeiro.",
@@ -1087,7 +1182,8 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Caio aponta uma tarefa que só fazia para ser visto e a risca da lista. Você pergunta quem ficou responsável; ele mostra a mensagem de passagem."
         },
         {
           "textoAlternativa": "Agradecer.",
@@ -1118,7 +1214,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você agradece sem abrir a própria agenda na frente dele. No ônibus, a lista ainda estará esperando sua decisão."
         }
       ]
     },
@@ -1127,10 +1224,10 @@
       "id": 114,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele te olha por um instante.\n\n'Tá bom.'\n\nVolta pro celular. A conversa acabou ali, mas ele não vai embora.",
+      "textoNarrativo": "— Eu dou conta — você diz.\n\nCaio olha para você como se reconhecesse a frase. Não tenta desmontá-la.\n\n— Tomara. Se mudar de ideia, não precisa esperar dar ruim para falar.\n\nO ônibus chega. Ele sobe, mas antes de a porta fechar aponta para a lista no seu celular.\n\n— Só confere se tem horário de comer aí no meio.\n\nVocê ri depois que ele vai. A pergunta fica.",
       "escolhas": [
         {
-          "textoAlternativa": "Seguir.",
+          "textoAlternativa": "Seguir para a próxima atividade.",
           "cenaDestinoId": 117,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1156,7 +1253,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1165,7 +1263,7 @@
       "id": 117,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Fim de tarde. Os dois ainda estão nos degraus do Módulo 1, sem combinar. O café dele esfriou faz tempo e ele continua segurando.\n\n'Cinco anos nisso.'\n\nFala pro copo, não pra você.\n\n'Tem dia que eu me pergunto por que eu ainda tô aqui.'",
+      "textoNarrativo": "Dias depois, o RU está quase fechando quando Caio aparece com o copo térmico. Você pergunta há quanto tempo ele está no curso.\n\n— Tempo suficiente para ter uma pasta chamada 'Cálculo FINAL agora vai'. Quatro arquivos com esse nome.\n\nEle fala de uma bolsa que perdeu e de colegas que se formaram enquanto ele continuava ali. Não pede que você o console.\n\n— Eu gosto do curso. Às vezes isso e estar cansado coexistem. Péssima interface, mas é o que tem.\n\nO funcionário apaga uma das luzes. O ônibus de vocês sai em doze minutos; você pode responder, brincar com a teimosia dele ou simplesmente acompanhá-lo até a porta.",
       "escolhas": [
         {
           "textoAlternativa": "Se você ainda tá aqui, alguma coisa valia.",
@@ -1199,7 +1297,8 @@
           "impactoRelacionamento": {
             "VETERANO": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Valia, sim — Caio responde, surpreso por ouvir a frase de volta. Ele guarda o copo antes de o funcionário apagar a última luz."
         },
         {
           "textoAlternativa": "Teimosia. Foi você mesmo que disse.",
@@ -1232,7 +1331,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Teimosia com plano é outra coisa — Caio rebate. Vocês chegam ao ponto discutindo se ele já fez um plano que cumpriu."
         },
         {
           "textoAlternativa": "Ficar do lado dele, sem dizer nada.",
@@ -1265,7 +1365,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você o acompanha até a porta. Caio não preenche o silêncio; aponta o ônibus que acabou de parar do outro lado."
         }
       ]
     },
@@ -1274,10 +1375,10 @@
       "id": 118,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Dandara Oliveira",
-      "textoNarrativo": "Fila do RU, de novo. Na sua frente, Dandara conta moedas na palma da mão, depois conta de novo, como se o resultado pudesse mudar por insistência.\n\n'Oi. Você é da bancada ao lado, né? Da oficina.'\n\nEla guarda as moedas no bolso da frente.\n\n'Preciso de oito em Cálculo. Não é vaidade. A bolsa de monitoria do semestre que vem pede CR acima de sete, e seiscentos reais pagam o aluguel de março.'\n\nFala como quem lê uma conta de luz: com precisão, sem esperar consolo.",
+      "textoNarrativo": "No dia seguinte, Dandara confere o saldo do cartão na fila do RU.\n\n— Você é da bancada do LED. Eu fiquei com a dúvida da polaridade até chegar em casa.\n\nEla estuda limites entre uma bandeja e outra. Quer tentar a monitoria: gostou de explicar uma questão para uma caloura e precisa da bolsa para ajudar no aluguel.\n\n— Não vou fingir que é só vocação — diz. — Gosto de ensinar. Também preciso da renda.\n\nEla mostra uma conta que não fechou. Você aponta um sinal trocado; Dandara encontra uma lacuna no seu rascunho também.\n\n— Estudar em dupla? — pergunta quando a fila anda. A resposta não precisa vir antes do almoço.",
       "escolhas": [
         {
-          "textoAlternativa": "Propor estudar juntas.",
+          "textoAlternativa": "Propor estudar em dupla.",
           "cenaDestinoId": 115,
           "flagsConcedidas": [
             "estuda_com_dandara"
@@ -1307,7 +1408,8 @@
           "impactoRelacionamento": {
             "DANDARA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Dandara marca uma hora antes da próxima lista. Vocês dividem as questões difíceis, sem prometer ensinar o que ainda não sabem."
         },
         {
           "textoAlternativa": "Desejar boa sorte.",
@@ -1338,7 +1440,8 @@
           "impactoRelacionamento": {
             "DANDARA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você deseja boa sorte. Ela agradece, mas guarda o edital virado para baixo enquanto termina o almoço."
         },
         {
           "textoAlternativa": "Só comer. Você também está contando.",
@@ -1367,7 +1470,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A fila anda e vocês comem sem falar de seleção. A conta de Dandara continua na mesa, sob o copo."
         }
       ]
     },
@@ -1376,7 +1480,7 @@
       "id": 115,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "À noite, no ônibus, você abre o calendário do celular.\n\nReunião, assembleia, estágio, resumo, oficina, lista de exercícios. Os blocos se sobrepõem como camadas de tinta, e a semana tem os mesmos sete dias de sempre.\n\nO semestre está só começando, e já tem mais coisa chamando do que horas no dia.\n\n(O tempo é o único recurso que ninguém me avisou que era finito.)",
+      "textoNarrativo": "No ônibus de volta, você abre a agenda. Aula, lista, seleção, extensão, reunião. Os compromissos parecem componentes ligados em paralelo sem verificar a corrente total.\n\nMalu manda uma foto: 'Bloqueei um horário de descanso. Se alguém tentar marcar reunião, o sistema retorna erro.'\n\nVocê ri e abre sua própria agenda. Um dos compromissos não tem prazo, tarefa nem motivo claro. Você apaga o lembrete e decide esperar antes de assumir outro.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 2.",
@@ -1407,7 +1511,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1416,10 +1521,10 @@
       "id": 116,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A universidade está em Feira de Graduação. Estandes no pátio, caravanas de escolas da região, estudantes do ensino médio andando em bloco e tentando imaginar como seria estudar ali.\n\nUm corredor inteiro tem bandeiras azuis: IEEE, RAS, WIE, TISP, Liga de Jogos, Industry Electronics. Em cada estande, alguém tenta explicar o grupo e convencer os visitantes a ficar.",
+      "textoNarrativo": "A Feira de Graduação ocupa o pátio. Um projetor falha, um robô tenta virar a cabeça e uma turma de escola pergunta se pode tocar em tudo.\n\nVocê passa pelo WIE, por um estande de redes, pela Liga de Jogos e pelo grupo de robótica. Malu está com três panfletos no colo.\n\n— Eu vim olhar. Saio com duas reuniões e uma sacola.\n\nAlan atravessa o pátio com um cabo USB enrolado no braço. O robô funcionou de manhã, informa ele, como se estivesse registrando um evento histórico.\n\nUm estande chama sua atenção. Você tem tempo para escolher um, talvez dois. O último ônibus da tarde segue no horário de sempre.",
       "escolhas": [
         {
-          "textoAlternativa": "Ir no RAS. Robô é mais legal.",
+          "textoAlternativa": "Conhecer o grupo de robótica.",
           "cenaDestinoId": 120,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1445,10 +1550,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir no WIE. Parece acolhedor.",
+          "textoAlternativa": "Visitar o WIE e conversar com as veteranas.",
           "cenaDestinoId": 121,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1474,10 +1580,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir no TISP.",
+          "textoAlternativa": "Perguntar sobre redes e segurança.",
           "cenaDestinoId": 122,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1503,10 +1610,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir na Liga de Jogos.",
+          "textoAlternativa": "Conhecer a Liga de Jogos.",
           "cenaDestinoId": 123,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1532,10 +1640,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Só passar rápido pra ver como é.",
+          "textoAlternativa": "Observar os estandes sem compromisso.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1561,10 +1670,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ignorar. Você não tem tempo.",
+          "textoAlternativa": "Voltar para casa. Hoje já foi suficiente.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1590,7 +1700,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1599,10 +1710,10 @@
       "id": 120,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O estande do RAS tem um robô sobre a mesa, fios de jumper espalhados e um caderno cheio de diagramas. O robô liga, mas o sensor não responde.\n\nUma integrante aponta pra protoboard: alimentação, GND e sinal estão em cores diferentes, só que alguém trocou dois fios.\n\n'A gente pode sair trocando tudo até funcionar', ela diz. 'Ou medir e descobrir onde o sinal parou.'\n\nEla te olha. 'Você sabe soldar?'\n\nVocê não sabe. Mas talvez isso nem seja o primeiro problema.",
+      "textoNarrativo": "O estande de robótica tem duas telas OLED. Uma mostra olhos piscando; a outra, nada. O robô parou bem no meio da demonstração.\n\n— Antes de trocar fio: mede — diz Noa, entregando o multímetro.\n\nNoa cuidou do firmware, Malu desenhou as expressões e Alan organizou os testes. A tensão cai quando a segunda tela liga; o número anotado muda a hipótese da equipe.\n\n— Temos quarenta minutos até o seu ônibus — diz Noa. — Dá para testar mais uma vez. Se quiser voltar depois, também ensinamos a soldar o conector.\n\nO robô pisca um olho só. Malu escreve 'expressão: desconfiado' na etiqueta de defeitos.",
       "escolhas": [
         {
-          "textoAlternativa": "Não sei. Mas quero aprender.",
+          "textoAlternativa": "Ficar para medir de novo e voltar para aprender solda.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [
             "ras_curiosa"
@@ -1632,10 +1743,11 @@
           "impactoRelacionamento": {
             "MALU": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Noa anota a leitura e combina um teste para a semana seguinte. Malu manda uma foto da etiqueta 'desconfiado' no robô."
         },
         {
-          "textoAlternativa": "Não sei soldar e não quero aprender agora.",
+          "textoAlternativa": "Registrar a leitura e pegar o ônibus; não posso assumir a equipe agora.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1661,7 +1773,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você entrega o multímetro e corre para o ponto. Noa agradece pela leitura; não confunde isso com uma inscrição na equipe."
         }
       ]
     },
@@ -1670,7 +1783,7 @@
       "id": 121,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No estande do WIE, duas veteranas falam de extensão e acolhimento de mulheres na engenharia. Uma explica por que é bom ter com quem conversar quando o curso parece feito pra testar resistência. A outra mostra o calendário.\n\nTem reunião, evento e extensão. Nada parece impossível sozinho. O desafio é encaixar tudo entre aula, transporte, prova e descanso.\n\n'Você não precisa prometer que vai dar conta de tudo hoje', uma delas diz. 'Pode perguntar como funciona antes de decidir.'",
+      "textoNarrativo": "No estande do WIE, duas veteranas contam como começaram a participar. Uma fala de um laboratório em que lhe entregaram o cabo e presumiram que outra pessoa faria a programação. A outra conta que deixou um grupo depois de perceber que estava acumulando tarefas sem apoio.\n\n— Acolhimento também é dizer como o trabalho vai ser dividido — diz uma delas.\n\nVocê pergunta se precisa entrar sabendo eletrônica. Ela ri.\n\n— Precisa topar aprender. E a gente precisa explicar o que está pedindo de você.\n\nNo mural há datas de reunião e uma lista de atividades. Você fotografa; não promete presença antes de olhar sua semana.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista de interesse.",
@@ -1701,7 +1814,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Seu contato entra na lista. Uma veterana manda o horário da reunião e avisa que participar não exige saber tudo antes de chegar."
         },
         {
           "textoAlternativa": "Perguntar como é a rotina do grupo.",
@@ -1732,7 +1846,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "As veteranas descrevem uma semana comum, inclusive o trabalho que não aparece nas fotos. Você confere se cabe na sua grade."
         },
         {
           "textoAlternativa": "Agradecer e seguir. Hoje você não assume mais nada.",
@@ -1761,7 +1876,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você segue para o próximo estande sem preencher formulário. A conversa ainda te dá uma pergunta para fazer em outro laboratório."
         }
       ]
     },
@@ -1770,7 +1886,7 @@
       "id": 122,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "TISP: Teacher In-Service Program.\n\nNo estande, uma maquete de ponte feita de palito e um pôster ensinando a construir uma catapulta com material de escritório.\n\nO grupo ajuda professores de escola pública a ensinar engenharia às crianças. Você nunca tinha ouvido falar disso, e agora não consegue parar de pensar na catapulta.",
+      "textoNarrativo": "No estande de redes e segurança, um estudante mostra logs de acessos a um servidor de demonstração. Uma configuração expôs dados que deveriam estar restritos.\n\nVocê pergunta como ele sabe que o problema foi corrigido.\n\n— Ainda não sei. Estou comparando os logs e repetindo o teste.\n\nEle abre a documentação, encontra uma parte que não entendeu e vocês leem juntos. Não há resposta instantânea, mas há um caminho para verificar.\n\nUma lista de interesse fica ao lado do equipamento. Você anota a referência; em casa, talvez a pergunta vire uma investigação pequena.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar a lista.",
@@ -1801,7 +1917,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escreve seu contato ao lado de 'logs'. O grupo te envia o conjunto de dados de demonstração, sem acesso ao servidor real."
         },
         {
           "textoAlternativa": "Só olhar e ir embora.",
@@ -1830,7 +1947,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você agradece e vai embora com a anotação sobre a configuração exposta. Não precisa entrar na equipe para usar a pergunta no estudo."
         }
       ]
     },
@@ -1839,10 +1957,10 @@
       "id": 123,
       "capitulo": "Capítulo 2 — As Primeiras Sereias",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A Liga de Jogos montou um fliperama de improviso: um notebook, um controle de SNES e um jogo de plataforma.\n\nUm rapaz de camiseta de estúdio indie entrega uma folha de teste, com campos para anotar controle que não responde, colisão estranha e o que você fez antes de o erro aparecer.\n\n'Você joga? Tô fazendo um jogo narrativo pra disciplina de Jogos Digitais. Preciso de gente pra testar.'\n\nOutra estudante senta ao seu lado. Vocês vão jogar a mesma fase e comparar o que viram. Não basta dizer que ficou bom ou ruim: alguém precisa explicar por quê.",
+      "textoNarrativo": "A Liga de Jogos mostra uma fase ainda incompleta. O personagem atravessa a parede, perde uma vida e reaparece dentro de um menu.\n\n— É um recurso — diz a integrante, sem convicção.\n\nVocê joga outra vez e encontra o mesmo bug. Em vez de entregar o controle, pergunta onde está a lógica de colisão.\n\nO grupo tem ideias para história, arte, música e três modos de jogo. Ninguém sabe o que entra na próxima versão.\n\n— Escolhe uma coisa que a gente consegue terminar — você sugere.\n\nA integrante olha para o quadro e começa a riscar. O jogo ainda está quebrado; pela primeira vez, o escopo parece menor.",
       "escolhas": [
         {
-          "textoAlternativa": "Anotar o contato dele. Você quer testar.",
+          "textoAlternativa": "Anotar o contato da Liga para testar outra versão.",
           "cenaDestinoId": 112,
           "flagsConcedidas": [
             "liga_jogos_contato"
@@ -1870,7 +1988,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A integrante anota seu contato na lista de testadores. O bug continua, mas agora tem passos para ser reproduzido."
         },
         {
           "textoAlternativa": "Testar uma partida em dupla e anotar os problemas.",
@@ -1904,7 +2023,8 @@
           "atributosAlterados": {
             "energia": 10,
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": "Na segunda partida, a parede falha no mesmo ponto. Você registra o botão pressionado; a dupla acrescenta a condição que faltava."
         },
         {
           "textoAlternativa": "Agradecer e sair do estande.",
@@ -1933,7 +2053,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você devolve o controle. A integrante risca uma função extra do quadro e volta a trabalhar no bug que já viu."
         }
       ]
     }

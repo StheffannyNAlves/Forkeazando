@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo1.json",
   "totalCenasArquivo": 17,
@@ -9,10 +9,10 @@
       "id": 0,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "5h47 da manhã.\n\nA aba do SISU está aberta há trinta e sete minutos. Você já atualizou dezenove vezes, e o F5 do teclado passou a fazer um barulho novo, meio de quem pede socorro.\n\nA tela pisca.\n\n{{APROVACAO}}\n\nVocê olha a parede. O teto. A tela de novo. Continua lá.\n\n(Nossa.)\n\nDo outro lado da parede, sua mãe dorme. Você fecha o notebook devagar, bem devagar, como se o clique pudesse desfazer tudo.",
+      "textoNarrativo": "5h47. A página da CSA está aberta há tanto tempo que o botão de atualizar virou parte da decoração. Você aperta de novo. O ventilador range; a casa inteira dorme.\n\nA tela carrega.\n\n{{APROVACAO}}\n\nSeu nome está na convocação para matrícula em Engenharia de Computação, com ingresso em 2024.2. Você confere o curso e o semestre mais uma vez, só para ter certeza de que a linha não mudou.\n\nA comemoração dura alguns segundos. O aviso manda acompanhar o edital: o resultado abre a solicitação, mas a matrícula ainda tem etapas e prazos.\n\nNa mesa, o caderno de capa azul tem uma lista de coisas para aprender. Você escreveu a lista antes de saber se entraria; agora ela divide espaço com os documentos que precisa organizar.\n\nDo outro lado da parede, sua mãe dorme. Você segura o celular, querendo contar e querendo guardar a notícia por mais um instante.",
       "escolhas": [
         {
-          "textoAlternativa": "Acordar ela. Você precisa ver a cara dela.",
+          "textoAlternativa": "Acordar sua mãe e contar a notícia pessoalmente.",
           "cenaDestinoId": 1,
           "flagsConcedidas": [
             "acordou_mae"
@@ -40,10 +40,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Sua mãe acorda procurando os óculos. Lê seu nome na tela, volta ao início da linha e só então abraça você. Às seis, ainda falta entender o edital."
         },
         {
-          "textoAlternativa": "Deixar dormir. Isso é seu por enquanto.",
+          "textoAlternativa": "Deixar sua mãe dormir e guardar a notícia até amanhecer.",
           "cenaDestinoId": 1,
           "flagsConcedidas": [
             "guardou_pra_si"
@@ -71,7 +72,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você deixa um bilhete ao lado da xícara: 'Entrou. 2024.2.' De manhã, sua mãe encontra o papel antes do café; vocês abrem o edital lado a lado."
         }
       ]
     },
@@ -80,10 +82,10 @@
       "id": 1,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Segunda-feira, 6h. O alarme toca uma música que você nem lembra de ter escolhido. Hoje é matrícula.\n\n6h01. ÁGATA fora do ar.\n\n(O ÁGATA é o sistema acadêmico da universidade. Todo mundo fala dele como se fala do tempo: ninguém controla, todo mundo comenta.)\n\n7h. Fora. 8h. Fora. Você abre o grupo dos calouros pra ver se alguém sabe de algo. Trezentas e quarenta mensagens. Trezentas e trinta e nove são 'alguém sabe o que é isso?'. A outra é um bom-dia.\n\n14h. Fora. 17h48: você já escreveu pro suporte, pra coordenação, pro DCE e pra uma amiga do Direito que não tem nada a ver com isso. Ninguém respondeu.\n\n17h52. O sistema volta.\n\nA vaga de Introdução à Engenharia foi preenchida às 17h49. O ÁGATA estava fora do ar às 17h49. Você lê isso três vezes.\n\nTrês minutos.\n\nSobrou Cálculo I, com o professor que todo mundo chama de 'o pesadelo'. Você nem sabe quem é.",
+      "textoNarrativo": "Na página da CSA, a convocação de ingresso 2024.2 leva ao edital, ao cronograma e à lista de documentos. A palavra 'matrícula' aparece em todas as abas, mas nenhuma delas significa que o processo terminou.\n\nVocê cria o acesso, preenche a Ficha de Cadastro e o Questionário Socioeconômico, salva a ficha em PDF e separa os comprovantes. A orientação da convocação explica como enviar a documentação para análise. Você confere a categoria em que se inscreveu: validações documentais, de renda ou heteroidentificação só se aplicam às categorias indicadas.\n\nNo grupo de ingressantes, {{NOME_OUTRO_PROTAGONISTA}} pergunta se estar na lista já é estar matriculado.\n\n{{OUTRO_CENA}}\n\nMalu manda uma foto de um corredor e pergunta onde fica o Módulo 1. Ainda não há uma grade para escolher: a turma ingressante recebe o horário do primeiro período. Primeiro, você precisa acompanhar a homologação e a confirmação; depois, consultar o comprovante no Portal Sagres.\n\nVocê põe o cronograma ao lado dos documentos. Uma das páginas pede o documento inteiro, frente e verso. O arquivo na sua pasta tem só a frente. Você volta ao scanner antes de enviar.",
       "escolhas": [
         {
-          "textoAlternativa": "Ler o edital inteiro. Nunca mais.",
+          "textoAlternativa": "Ler o edital e organizar documentos e prazos.",
           "cenaDestinoId": 2,
           "flagsConcedidas": [
             "hab_olho_edital"
@@ -111,10 +113,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você risca os documentos já digitalizados e circula o prazo de envio. O verso que faltava entra na pasta antes do upload."
         },
         {
-          "textoAlternativa": "Mandar no grupo perguntando se alguém entendeu.",
+          "textoAlternativa": "Comparar as exigências com o grupo e tirar dúvidas.",
           "cenaDestinoId": 2,
           "flagsConcedidas": [
             "pediu_ajuda_grupo"
@@ -142,10 +145,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "No grupo, alguém nota que a categoria de inscrição muda a lista de comprovantes. Você confere a sua em vez de copiar a pasta de outra pessoa."
         },
         {
-          "textoAlternativa": "Que se dane. Vou pegar o que der.",
+          "textoAlternativa": "Enviar os documentos exigidos e aceitar que não vai revisar tudo uma quarta vez.",
           "cenaDestinoId": 2,
           "flagsConcedidas": [
             "aceitou_caos"
@@ -175,7 +179,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": "O recibo de envio chega. Você salva o protocolo e fecha a aba antes de conferir o mesmo anexo pela quinta vez; agora é esperar a análise."
         }
       ]
     },
@@ -184,10 +189,10 @@
       "id": 2,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você entrega o Termo de Compromisso. O funcionário olha o papel, carimba, assina, arquiva.\n\n'Pronto.'\n\nTrinta segundos. (Anos de estudo. Trinta segundos.)\n\nO RU está com a fila dando a volta no bloco. Cardápio: frango com quiabo. Você não sabe se é frango com quiabo ou frango E quiabo. Talvez os dois.\n\nR$ 2,00 com cartão. R$ 17,18 sem. Você ainda não tem cartão.\n\nNa fila, uma menina de cabelo cacheado te olha. Hesita. Fala:\n\n'Ei. Você é caloura também? Eu não conheço NINGUÉM aqui. Tipo, ninguém. Ontem eu falei bom dia pra uma planta achando que era uma pessoa.'",
+      "textoNarrativo": "Dias depois, você consulta o resultado da solicitação de matrícula de 2024.2 na CSA. A etapa documental foi homologada. Se a sua modalidade de ingresso exige validação adicional, ainda há o resultado correspondente para acompanhar; o caminho não é idêntico para todas as categorias.\n\nNa primeira semana de aula, você confere a orientação para entregar o Termo de Compromisso assinado ao Colegiado. Guarda o registro da entrega. Só então acessa o Portal Sagres e encontra o comprovante de matrícula.\n\nA grade do primeiro período já está definida para a turma. Você não escolhe disciplinas agora; precisa descobrir onde ficam as salas e como chegar sem transformar o campus num teste de orientação.\n\nNo RU, a fila dobra o corredor. O cardápio é frango com quiabo, e você calcula se dá tempo de resolver o cartão antes de a fila andar.\n\nÀ sua frente, uma estudante de cabelo crespo curto, faixa amarela e brincos diferentes consulta um mapa no celular. A mochila está presa ao encosto da cadeira de rodas.\n\n— O GPS me colocou dentro de uma farmácia. Acho que desistiu da universidade antes de mim.\n\nEla se apresenta como Malu e mostra a rota para o Módulo 1. A entrada indicada não tem degraus, mas está trancada. Malu verifica a placa, escolhe o corredor principal e segue por ele. O caminho é mais longo; vocês vão conversando enquanto a fila avança.\n\n— Você já conseguiu o cartão? — ela pergunta. — Achei a sala da primeira aula. Só falta descobrir em qual dos prédios chamados 'anexo' ela fica.",
       "escolhas": [
         {
-          "textoAlternativa": "Puxar conversa. Ela parece tão perdida quanto você.",
+          "textoAlternativa": "Me apresentar à Malu e conferir com ela o caminho até o Módulo 1.",
           "cenaDestinoId": 3,
           "flagsConcedidas": [
             "conheceu_malu"
@@ -219,10 +224,11 @@
           },
           "atributosAlterados": {
             "vidaSocial": 2
-          }
+          },
+          "textoConsequencia": "Malu amplia o mapa para que ambos possam ver. A porta indicada segue trancada; vocês anotam a rota pelo corredor principal."
         },
         {
-          "textoAlternativa": "Rir e responder de leve. Você também está perdida.",
+          "textoAlternativa": "Rir da história e conversar enquanto a fila anda.",
           "cenaDestinoId": 3,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -250,10 +256,11 @@
           "impactoRelacionamento": {
             "MALU": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Malu ri da farmácia e mostra a foto da placa que o aplicativo ignorou. A conversa acompanha a fila mais rápido que o relógio."
         },
         {
-          "textoAlternativa": "Focar no cartão do RU. A fila está aumentando.",
+          "textoAlternativa": "Priorizar o cartão do RU; talvez dê tempo de voltar à fila.",
           "cenaDestinoId": 3,
           "flagsConcedidas": [
             "item_cartao_ru"
@@ -281,10 +288,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você resolve o cartão. Quando volta, a fila mudou de lugar; Malu acena do corredor e aponta a saída para o módulo."
         },
         {
-          "textoAlternativa": "Você não pode pagar R$ 17. Vai atrás do cartão agora.",
+          "textoAlternativa": "Resolver o cartão agora; a refeição sem desconto pesa no orçamento.",
           "cenaDestinoId": 3,
           "flagsConcedidas": [
             "item_cartao_ru"
@@ -314,7 +322,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": -2
-          }
+          },
+          "textoConsequencia": "O desconto aparece no cadastro depois de duas tentativas. O almoço de hoje fica no orçamento, mesmo que a fila tenha crescido."
         }
       ]
     },
@@ -323,10 +332,10 @@
       "id": 3,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No pátio, um caramelo atravessa com a calma de quem tem apê ali.\n\n'Esse é o Caramelo', alguém avisa. 'Ele é do DCE.'\n\nNa SIECOMP, um cara de copo térmico amassado te olha. O copo está tão amassado que parece ter caído do terceiro andar e ele ter descido pra buscar. Segura como se fosse troféu.\n\nEle não sorri. Não fala. Só olha.\n\n(Ele tá me julgando? Me avaliando? Com sono?)",
+      "textoNarrativo": "O campus parece aumentar toda vez que você vira uma esquina. Um cachorro caramelo cruza o pátio com a autoridade de quem já tem crachá.\n\nNa entrada da SIECOMP, projetos antigos ocupam as mesas. Um robô está parado sob um cartaz que diz 'autônomo'. Alguém colou uma etiqueta embaixo: 'hoje, não'.\n\nPerto dali, um veterano segura um copo térmico amassado e tenta responder a três perguntas ao mesmo tempo. Uma estudante o chama de Caio. Ele aponta uma sala, corrige o mapa de um calouro e volta a conferir uma mensagem no celular antes de olhar para você.\n\n— Primeiro semestre? — pergunta.\n\nVocê assente. O olhar dele não é julgamento; é a expressão de quem reconhece a quantidade de coisas que ainda vão te pedir.\n\nPerto do mapa, {{NOME_OUTRO_PROTAGONISTA}} aparece vindo do corredor errado. Vocês já trocaram mensagens no grupo; agora dividem o mesmo mapa torto e uma orientação que aponta para dois prédios diferentes.\n\n{{OUTRO_CENA}}\n\n(Ele sabe onde fica tudo. Isso não quer dizer que tenha dormido.)",
       "escolhas": [
         {
-          "textoAlternativa": "Falar com ele.",
+          "textoAlternativa": "Perguntar ao veterano como sobreviver ao primeiro semestre.",
           "cenaDestinoId": 4,
           "flagsConcedidas": [
             "falou_com_caio"
@@ -354,7 +363,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Dar um salgado pro Caramelo. Ele parece menos assustador.",
@@ -387,7 +397,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Passar reto. Você não precisa de veterano desanimando.",
@@ -420,10 +431,11 @@
           "impactoRelacionamento": {
             "VETERANO": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir direto. Você não tem problema em puxar conversa.",
+          "textoAlternativa": "Ir direto e pedir orientação sobre as salas e os laboratórios.",
           "cenaDestinoId": 4,
           "flagsConcedidas": [
             "falou_com_caio"
@@ -453,7 +465,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Observar de longe. Você precisa medir o terreno.",
@@ -484,7 +497,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -493,7 +507,7 @@
       "id": 4,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele não espera você falar.\n\n'Primeiro semestre?'\n\nVocê confirma com a cabeça. Ele dá um gole e fala como quem receita:\n\n'Não compra livro. Ninguém usa. Todo mundo compra no primeiro semestre e se arrepende em outubro. Se precisar, tem PDF no drive.'\n\nO copo gira meia volta na mão dele.\n\n'Pronto. Foi a última coisa que eu falei de graça.'",
+      "textoNarrativo": "— Primeira regra: não aceite um projeto só porque a apresentação foi bonita — diz Caio. — Segunda: salve o trabalho em mais de um lugar. As duas têm história.\n\nO celular vibra com uma cobrança de aluguel. Caio vira a tela para baixo; sobre a mesa, há uma pasta compartilhada com projetos e editais de IC.\n\n— Por que Engenharia de Computação? — pergunta.\n\nVocê procura uma frase que caiba entre a resposta que deu à família e a que ainda não teve coragem de dizer em voz alta. Caio espera.\n\n— Pode responder com o que é verdade hoje. Não é uma entrevista de estágio.\n\nNo laboratório, alguém liga uma fonte e um LED pisca antes de apagar.\n\n— Ah, e não liga LED direto na fonte. Essa dica eu posso dar sem contexto.",
       "escolhas": [
         {
           "textoAlternativa": "Vim pra dominar o código e mudar o mundo.",
@@ -526,7 +540,8 @@
           "impactoRelacionamento": {
             "VETERANO": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Só quero o diploma e um emprego remoto.",
@@ -559,10 +574,11 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "E você? Tá aqui há quanto tempo?",
+          "textoAlternativa": "Desviar da pergunta e perguntar há quanto tempo Caio estuda ali.",
           "cenaDestinoId": 73,
           "flagsConcedidas": [
             "traco_empatica"
@@ -592,10 +608,11 @@
           "impactoRelacionamento": {
             "VETERANO": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "O que tem no drive?",
+          "textoAlternativa": "Pedir a pasta de projetos e deixar a pergunta para depois.",
           "cenaDestinoId": 5,
           "flagsConcedidas": [
             "item_pdfs_ic",
@@ -626,7 +643,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -635,7 +653,7 @@
       "id": 71,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele te olha por cima do copo.\n\n'Mudar o mundo.'\n\nEle não está rindo de você. Isso é o pior.\n\n'Leva bomba e chiclete pra final de Cálculo. Três horas de prova.'\n\nOutro gole.\n\n'Não é exagero.'",
+      "textoNarrativo": "— Mudar o mundo, é? — Caio repete.\n\nVocê espera a piada, mas ele acompanha um grupo montando um cartaz no pátio.\n\n— Eu dizia isso também. Depois passei um semestre tentando consertar tudo ao mesmo tempo e quase larguei o curso. O mundo não percebeu; meu corpo percebeu.\n\nEle volta a olhar para você.\n\n— Continua sendo um motivo bom. Só não precisa provar que acredita nisso aceitando cada tarefa que aparece.\n\nAntes de ir, empurra uma garrafa de água na sua direção.\n\n— Cálculo começa cedo. Essa parte eu aprendi do jeito burro.",
       "escolhas": [
         {
           "textoAlternativa": "Onde é a sala?",
@@ -664,7 +682,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -673,7 +692,7 @@
       "id": 72,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "'Finalmente alguém com senso.'\n\nEle sorri torto. É o primeiro sorriso que você vê nele, e dura menos que um carregamento de página.\n\n'O mercado não quer herói. Quer quem entrega na sexta às 18h sem derrubar o servidor.'",
+      "textoNarrativo": "— Diploma e emprego — Caio diz. — Resposta honesta. Já é melhor que aquele cartaz ali prometendo 'transformar o futuro' com uma foto de banco de imagens.\n\nVocê ri. Ele aponta para uma vaga impressa no mural: três anos de experiência numa ferramenta lançada há seis meses.\n\n— O mercado às vezes quer uma pessoa e uma máquina do tempo. Mas estabilidade não é motivo menor. Eu só tentaria descobrir que tipo de trabalho você toparia fazer mesmo num dia ruim.\n\nO ônibus de Caio aparece no aplicativo. Ele fecha a conversa antes que vire palestra.\n\n— Se descobrir, me avisa. Eu ainda estou fazendo a conta.",
       "escolhas": [
         {
           "textoAlternativa": "Onde é a sala?",
@@ -704,7 +723,8 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -713,10 +733,10 @@
       "id": 73,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Caio Andrade",
-      "textoNarrativo": "Ele para. O copo fica suspenso no meio do caminho.\n\n'Cinco anos.'\n\n'Entrei aos 18. Reprovei Cálculo duas vezes. Perdi a bolsa. Tô aqui por teimosia.'\n\n(Ele olhou pro copo quando disse 'reprovei'.)\n\nBebe. Volta a ser o cara cínico em menos de um segundo.",
+      "textoNarrativo": "Caio gira o copo entre as mãos. Por um instante, parece que vai responder no automático. Não responde.\n\n— Entrei aos dezoito. Reprovei Cálculo, perdi uma bolsa e passei meses dizendo que estava tudo sob controle. Na real, eu não sabia como pedir ajuda sem parecer que tinha feito uma escolha errada.\n\n— E por que continuou? — você pergunta.\n\n— Porque teve gente que ficou por perto sem exigir que eu tivesse uma explicação pronta. E porque eu ainda queria entender como aquelas coisas funcionavam.\n\nEle olha para o robô parado sob o cartaz.\n\n— E porque alguém precisa impedir os calouros de ligar LED direto na fonte.\n\nA piada volta, mas agora você sabe o que ela está cobrindo.",
       "escolhas": [
         {
-          "textoAlternativa": "Digo que entendo.",
+          "textoAlternativa": "Dizer que entendo.",
           "cenaDestinoId": 5,
           "flagsConcedidas": [
             "mentoria_caio"
@@ -746,10 +766,11 @@
           "impactoRelacionamento": {
             "VETERANO": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Caio aceita sua compreensão sem pedir uma explicação parecida em troca. Endireita o copo amassado e indica a sala da oficina."
         },
         {
-          "textoAlternativa": "Pergunto se ele quer ajuda pra estudar.",
+          "textoAlternativa": "Perguntar se ele quer companhia para estudar.",
           "cenaDestinoId": 5,
           "flagsConcedidas": [
             "mentoria_caio"
@@ -779,7 +800,8 @@
           "impactoRelacionamento": {
             "VETERANO": 3.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Caio abre a agenda: uma hora de estudo na quinta, sem promessa de resolver o semestre. Você salva o horário antes de entrar na oficina."
         }
       ]
     },
@@ -788,7 +810,7 @@
       "id": 5,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "A oficina cheira a estanho e a café requentado. Bancadas compridas, protoboards empilhadas, um osciloscópio que parece mais caro que a sala inteira.\n\nO professor escreve no quadro sem olhar pra turma:\n\n'Hoje vocês vão montar um circuito simples e descobrir por que ele funciona. Ou não.'\n\nDeixa sobre a bancada resistores, diodos, LEDs, uma fonte e um gerador de funções.\n\n'Antes de ligar qualquer coisa: leiam o roteiro, confiram os componentes e não tratem o datasheet como decoração. Volto em duas horas.'\n\nA porta fecha. Silêncio de uns três segundos.\n\n(Eu sei o que é um diodo no papel. Isso não quer dizer que eu reconheça um quando ele estiver fazendo besteira na minha frente.)\n\nAí alguém no fundo grita: 'PEGA O DATASHEET.' A sala se agita. Uma dupla já quer ligar a fonte; outra discute a polaridade do LED. Na bancada ao lado, uma menina de tranças presas com um lápis lê o datasheet com o dedo, linha por linha, mexendo os lábios. Na etiqueta da mochila: Dandara.\n\nMontar é só a primeira metade. A segunda é impedir que o componente queime antes de você entender qualquer coisa.",
+      "textoNarrativo": "A oficina cheira a café requentado e metal quente. Na lousa, o professor Rafael Meira escreve: 'Não é fazer acender. É explicar por que acendeu.'\n\nNa bancada há resistores, diodos, LEDs, uma fonte e um multímetro. Você reconhece tudo no desenho do roteiro; ao vivo, os componentes são pequenos e os códigos de cor parecem uma pegadinha.\n\nNa bancada ao lado, Dandara confere as peças uma por uma. Usa tranças presas num coque alto, mangas arregaçadas e um caderno cheio de anotações nas margens.\n\n— O resistor do esquema não bate com o que entregaram — ela diz. — Se a gente seguir a figura, pode queimar o LED.\n\n{{NOME_OUTRO_PROTAGONISTA}} está na mesma bancada.\n\n{{OUTRO_CENA}}\n\nMeira não entrega a resposta. Pede que vocês mostrem como chegaram à hipótese. Dandara já está procurando o código de cores; você tem o multímetro em mãos.\n\nA primeira decisão do laboratório é simples: ligar logo ou descobrir o que de fato está na bancada?",
       "escolhas": [
         {
           "textoAlternativa": "Separar LED, resistor e diodo; conferir polaridade e identificação antes de montar.",
@@ -821,7 +843,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você separa as peças e anota a polaridade no roteiro. Dandara compara a marca no LED com seu desenho; a fonte continua desligada."
         },
         {
           "textoAlternativa": "Ler o datasheet e cruzar os valores com o esquema do roteiro.",
@@ -855,10 +878,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "O datasheet dá uma corrente máxima diferente da que alguém escreveu no quadro. Você assinala a divergência para perguntar a Meira."
         },
         {
-          "textoAlternativa": "Ajudar a bancada ao lado a conferir polaridade e resistor antes de ligar a fonte.",
+          "textoAlternativa": "Ajudar Dandara a conferir os componentes antes de ligar a fonte.",
           "cenaDestinoId": 16,
           "flagsConcedidas": [
             "cap1_identificou_componentes"
@@ -888,10 +912,11 @@
           "impactoRelacionamento": {
             "DANDARA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Dandara segura o resistor enquanto você lê o código de cores. Ela corrige um número do seu rascunho; você confere uma marca no LED dela."
         },
         {
-          "textoAlternativa": "Ficar no celular. Alguém vai resolver.",
+          "textoAlternativa": "Esperar que outra pessoa resolva e acompanhar pelo celular.",
           "cenaDestinoId": 16,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -917,10 +942,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Outra bancada começa a montagem. Você acompanha pelo celular e perde a primeira medida, mas ouve a pergunta de Meira: qual era o valor esperado?"
         },
         {
-          "textoAlternativa": "Copiar o esquema do grupo da frente.",
+          "textoAlternativa": "Copiar a montagem de outra bancada sem investigar os valores.",
           "cenaDestinoId": 16,
           "flagsConcedidas": [
             "item_esquema_copiado"
@@ -950,10 +976,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": "A montagem copiada parece igual à figura. Quando Dandara pede o valor do resistor, você não sabe dizer de onde ele veio."
         },
         {
-          "textoAlternativa": "Anotar cada passo. Se der errado, refaz.",
+          "textoAlternativa": "Registrar cada etapa para conseguir localizar possíveis erros.",
           "cenaDestinoId": 16,
           "flagsConcedidas": [],
           "flagRequerida": "perfil_perfeccionista",
@@ -981,10 +1008,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Seu registro já tem duas linhas: valor esperado e valor medido. Ainda não há resultado; há um lugar preciso para procurar se algo falhar."
         },
         {
-          "textoAlternativa": "Você lê o datasheet em diagonal e já sabe onde está o erro.",
+          "textoAlternativa": "Ler o datasheet em diagonal e arriscar uma hipótese para a falha.",
           "cenaDestinoId": 16,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1010,7 +1038,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A leitura rápida sugere polaridade invertida. Você diz 'acho', e Meira pede a medida que distinguiria essa hipótese de um resistor errado."
         }
       ]
     },
@@ -1019,7 +1048,7 @@
       "id": 16,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sala 203. O tutor entra e cola uma folha no quadro antes de distribuir o Problema 2.\n\n'Na SIECOMP vocês viram como funciona.'\n\nDois minutos, três tarefas: resumir o que funcionou na oficina, anotar as observações, organizar a ordem das ideias. As pessoas se entreolham. A tarefa é simples. O difícil é decidir quem vai fazer o quê.\n\n(Você pode tomar a frente ou deixar outra pessoa conduzir.)",
+      "textoNarrativo": "Na sala 203, o tutor divide a turma em equipes e propõe uma tarefa curta: explicar o que aconteceu na oficina e transformar dúvidas em questões de estudo. A mesa fica cercada por cadeiras que ninguém lembra de ter arrastado.\n\nDuas pessoas falam ao mesmo tempo. Outra abre o documento compartilhado e digita 'VERSÃO FINAL' antes de existir uma primeira versão.\n\nAlan, na ponta, espera a conversa respirar. Quando alguém diz que o circuito falhou por causa do resistor, ele aponta para as medidas.\n\n— A corrente quase não passou. A gente ainda não testou o resistor.\n\nA frase fica no ar. O tutor observa; não vai escolher quem conduz a discussão.\n\n{{NOME_OUTRO_PROTAGONISTA}} espera Alan concluir a hipótese.\n\n{{OUTRO_CENA}}\n\nVocê pode aproximar ideias diferentes: definir uma hipótese curta e testar uma parte antes de expandir o modelo. O grupo precisa de evidência e de espaço para quem não disputa volume. O relógio já começou a contar.",
       "escolhas": [
         {
           "textoAlternativa": "Assumir a coordenação e distribuir as tarefas.",
@@ -1050,7 +1079,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você divide o quadro em hipótese, medida e responsável. Alan finalmente consegue mostrar sua leitura; falta decidir quem consolida as notas."
         },
         {
           "textoAlternativa": "Anotar as observações enquanto outra pessoa organiza o grupo.",
@@ -1081,7 +1111,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você registra a objeção de Alan com um ponto de interrogação em vez de transformá-la em resposta. O grupo terá de voltar à bancada."
         },
         {
           "textoAlternativa": "Ajudar com as ideias, sem assumir a liderança.",
@@ -1112,7 +1143,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você propõe um teste curto sem tomar a caneta de ninguém. Alan acrescenta o valor esperado ao lado da sua ideia."
         },
         {
           "textoAlternativa": "Esperar que alguém tome a iniciativa.",
@@ -1141,7 +1173,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "A discussão se resolve sem você por alguns minutos. Quando o tutor pergunta o que foi medido, ninguém acha a anotação."
         }
       ]
     },
@@ -1150,10 +1183,10 @@
       "id": 6,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sala 203. Mesa redonda, quadro branco, seis pessoas. Entre elas, o Alan, que tira e põe a tampa da caneta num ritmo que alguém, um dia, vai chamar de método.\n\nO tutor cola uma folha impressa no quadro sem olhar pra ninguém.\n\n'Problema 2 — Jogo Narrativo. Fase 1: modelagem de classes, esboço do Model, menu inicial e tela de características. Vocês têm quarenta minutos.'\n\n'Estrutura de sempre: Ideias, Fatos, Questões. Quadro anota. Mesa transcreve. Coordenador conduz.'\n\nEle senta no canto com um tablet e não fala mais nada.\n\nTodo mundo olha pra todo mundo. Alguém tem que começar.",
+      "textoNarrativo": "Problema 2 — Jogo Narrativo. Fase 1.\n\nNa folha: modelar as classes e desenhar o fluxo do menu inicial. No grupo, seis pessoas já têm sete opiniões sobre por onde começar.\n\n— Se separarmos regra do jogo e tela, uma mudança no menu não quebra a lógica inteira — Alan diz. Ele desenha dois blocos e uma seta no quadro. É um esquema simples; muda o rumo da conversa.\n\n{{NOME_OUTRO_PROTAGONISTA}} também está na equipe.\n\n{{OUTRO_CENA}}\n\nAs demais pessoas também trazem propostas: abrir a IDE logo, listar atributos ou registrar 'o que o grupo decidir'. Ninguém ainda está coordenando.\n\nAlan sabe explicar o desenho se tiver espaço. Você pode organizar esse espaço, assumir uma função, contribuir sem cargo ou deixar o grupo se resolver sozinho.\n\nO prazo não vai esperar vocês decidirem quem tem permissão para falar.",
       "escolhas": [
         {
-          "textoAlternativa": "Assumir a Coordenação. Alguém tem que conduzir isso.",
+          "textoAlternativa": "Assumir a coordenação e organizar a ordem das tarefas.",
           "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_coordenador"
@@ -1183,10 +1216,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você distribui tarefas com horários de revisão. Alan aceita desenhar o fluxo; duas pessoas ainda editam versões diferentes do documento."
         },
         {
-          "textoAlternativa": "Ficar no Quadro. Vou anotar as ideias conforme aparecerem.",
+          "textoAlternativa": "Ficar no quadro e registrar ideias, fatos e questões.",
           "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_quadro"
@@ -1214,10 +1248,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "No quadro, sua lista separa regra, tela e dúvida. A equipe vota antes de apagar uma seta de Alan, mas ninguém juntou os arquivos ainda."
         },
         {
-          "textoAlternativa": "Ficar na Mesa. Transcrevo pro doc, ninguém me pressiona.",
+          "textoAlternativa": "Assumir a mesa e estruturar o documento compartilhado.",
           "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_mesa"
@@ -1245,10 +1280,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você cria o documento compartilhado e nomeia as seções. A sexta opinião chega como comentário na margem, depois do prazo combinado."
         },
         {
-          "textoAlternativa": "Não assumo papel, mas quando alguém propõe algo bom, elaboro.",
+          "textoAlternativa": "Contribuir com a modelagem sem ocupar uma função central.",
           "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_contribuiu"
@@ -1278,10 +1314,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você testa com Alan um caminho do menu que volta ao início. O grupo ganha um exemplo; a coordenação ainda está aberta."
         },
         {
-          "textoAlternativa": "Ceder a vez. Você já coordenou no problema passado.",
+          "textoAlternativa": "Ceder a coordenação a Alan e ajudar a sustentar a discussão.",
           "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_cedeu_vez"
@@ -1311,10 +1348,11 @@
           "impactoRelacionamento": {
             "ALAN": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Alan assume a fala. Você impede que interrompam a explicação na primeira seta e registra a pergunta que ficou sem resposta."
         },
         {
-          "textoAlternativa": "Não participar. Celular até acabar.",
+          "textoAlternativa": "Não participar da discussão e esperar o prazo terminar.",
           "cenaDestinoId": 7,
           "flagsConcedidas": [
             "pbl_passivo"
@@ -1344,7 +1382,76 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": "A reunião termina sem sua contribuição. No grupo, chegam três versões do arquivo e a pergunta: quem vai reuni-las?"
+        },
+        {
+          "textoAlternativa": "Definir critérios de navegação e combinar com a equipe quem vai tentar quebrar o menu.",
+          "cenaDestinoId": 7,
+          "flagsConcedidas": [
+            "cap1_pbl_planejou_testes"
+          ],
+          "flagRequerida": "protagonista_stheffanny",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 5,
+          "participacaoGanha": 4,
+          "custoEnergia": 10,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {
+            "logica": 1
+          },
+          "textoConsequencia": "Você propõe três situações para verificar: entrar no menu, voltar sem perder o estado e escolher uma opção inválida. {{NOME_OUTRO_PROTAGONISTA}} monta uma versão pequena enquanto Alan desenha as transições.\n\nNo teste, a opção \"voltar\" retorna à tela errada. O grupo não ganha a solução pronta; ganha um defeito reproduzível e uma divisão clara: alguém corrige, outra pessoa testa de novo. Você percebe que uma lista de critérios não substitui o teste real."
+        },
+        {
+          "textoAlternativa": "Prototipar um caminho do menu e pedir uma revisão antes de apresentá-lo ao tutor.",
+          "cenaDestinoId": 7,
+          "flagsConcedidas": [
+            "cap1_pbl_prototipo_revisado"
+          ],
+          "flagRequerida": "protagonista_masculino",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 5,
+          "participacaoGanha": 4,
+          "custoEnergia": 10,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {
+            "confianca": 1
+          },
+          "textoConsequencia": "Você monta uma versão curta do menu antes de terminarem o documento. {{NOME_OUTRO_PROTAGONISTA}} pede para testar uma opção que você tinha considerado óbvia. A aplicação volta para a tela errada.\n\nSua primeira vontade é consertar sem mostrar. Em vez disso, você registra a sequência de cliques e convida Alan a explicar onde o fluxo se perdeu. O protótipo não está pronto para entrega, mas agora a equipe tem um erro reproduzível. A velocidade serviu para descobrir o problema, não para escondê-lo."
         }
       ]
     },
@@ -1353,10 +1460,10 @@
       "id": 7,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Sexta-feira. A última atividade da semana acabou.\n\nA tarde inteira está na sua frente. Pela primeira vez em cinco dias, ninguém está te pedindo nada.\n\n(E agora?)",
+      "textoNarrativo": "Sexta-feira. Seu ônibus passa em vinte minutos.\n\nO grupo de PBL ainda discute se o menu vem antes das regras. Há três versões do documento e ninguém assumiu a tarefa de juntar as mudanças. Alan desenha outra seta no quadro; desta vez, alguém pergunta o que ela significa antes de apagá-la.\n\nNa oficina, o LED continua sendo assunto. Você viu uma montagem acender; a sua hipótese para a falha ainda não foi testada.\n\nO celular vibra: 'A gente fica mais um pouco?'. O mapa mostra o ponto do ônibus, a oficina ainda está aberta e Zé acende as luzes do Módulo 8. Você não cabe nos três lugares ao mesmo tempo.",
       "escolhas": [
         {
-          "textoAlternativa": "Voltar pra oficina. Ainda quero entender aquele circuito.",
+          "textoAlternativa": "Voltar à oficina e investigar o circuito com calma.",
           "cenaDestinoId": 8,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1382,10 +1489,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir embora e descansar. A semana foi longa.",
+          "textoAlternativa": "Pegar o ônibus e descansar. Amanhã também existe.",
           "cenaDestinoId": 14,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1413,10 +1521,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "energia": 20
-          }
+          },
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Passar no Módulo 8. Você não precisa merecer uma pausa.",
+          "textoAlternativa": "Passar no Módulo 8 e conhecer gente fora da sala.",
           "cenaDestinoId": 13,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1442,10 +1551,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Voltar pra oficina mesmo exausta. Café e teimosia.",
+          "textoAlternativa": "Voltar à oficina mesmo sem energia. O circuito continua te incomodando.",
           "cenaDestinoId": 8,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1473,7 +1583,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1482,10 +1593,10 @@
       "id": 8,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A oficina está vazia. Só você e o zumbido do osciloscópio. O circuito da manhã continua na protoboard, com um fio amarelo saindo pela beirada, como se tivesse desistido.\n\nVocê não liga a fonte de cara. Confere a orientação do diodo no datasheet, segue as conexões linha por linha, corrige um jumper e só então energiza.\n\nO LED continua apagado.\n\nPega o multímetro. Em volta, tudo o que o roteiro mandou usar: gerador de funções, osciloscópio, o modo X-Y que você nunca tinha tocado. A tarefa não é fazer uma luz acender. É descobrir o que está acontecendo eletricamente.\n\nVocê liga o X-Y e a curva aparece espelhada, como uma letra escrita de trás pra frente. Pode ser a montagem. Pode ser a referência dos canais. Pode ser você.\n\nPela primeira vez, entende por que o professor mandou conferir cada etapa antes de interpretar a tela.",
+      "textoNarrativo": "A oficina ainda está aberta. Você pede licença para voltar à bancada e confere a montagem com a fonte desligada. O resistor está no valor esperado; o diodo pode estar invertido.\n\nCom o limite de corrente ajustado, você liga a fonte. Nada. A leitura do multímetro não combina com o que o roteiro prevê.\n\nO ônibus aparece no aplicativo: chegada em nove minutos.\n\nVocê tem uma escolha concreta: medir com a monitora ou desligar tudo e voltar amanhã. A bancada não vai fugir. O ônibus talvez.",
       "escolhas": [
         {
-          "textoAlternativa": "Medir a tensão no resistor e comparar com o valor esperado.",
+          "textoAlternativa": "Medir a tensão no resistor e pedir à monitora que confira a hipótese.",
           "cenaDestinoId": 9,
           "flagsConcedidas": [
             "cap1_mediu_circuito"
@@ -1515,10 +1626,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ir embora.",
+          "textoAlternativa": "Desligar a fonte, guardar a dúvida e pegar o ônibus.",
           "cenaDestinoId": 14,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -1546,7 +1658,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "energia": 20
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1555,7 +1668,7 @@
       "id": 9,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Zero volt no resistor. Nenhuma corrente passando. Você olha o LED: a perninha mais curta está do lado errado.\n\nInverte. A luz vermelha acende, minúscula, tremendo de leve.\n\nVocê quase comemora, mas volta ao roteiro: a prática não termina quando o componente acende. Estima a corrente pela Lei de Ohm, anota, compara com a medida. Depois lembra da curva espelhada: o resistor precisa ficar do lado do terra, senão o osciloscópio enxerga a corrente de cabeça pra baixo.\n\nTroca de lado. A curva endireita. O joelho do diodo de silício aparece perto de 0,7 V. O do LED, bem mais à direita. Sempre foi assim. Você só nunca precisou olhar.\n\n(Eu consegui fazer funcionar. Entender por que funcionou é outra etapa. Mas hoje a etapa de entender tem dados, e não só um palpite.)\n\nCaio, o veterano da turma de cima, aparece na porta. Olha a bancada, olha você. Assente uma vez, bem devagar, e vai embora.\n\nVocê fica uns cinco segundos olhando pra porta.\n\n(Ele assentiu. Eu acho.)",
+      "textoNarrativo": "Você chama a monitora. Ela não aponta o erro; pede que você siga o circuito do positivo ao terra e diga em voz alta o que espera encontrar em cada ponto.\n\nNa segunda conexão, você para. O cátodo do LED está voltado para o lado errado. A correção leva menos tempo do que a dúvida.\n\nO LED acende, pequeno e quase irritante. Você mede a queda de tensão, confere a corrente pela Lei de Ohm e repete a leitura. Depois percebe que o traçado invertido do osciloscópio vinha da referência dos canais.\n\nNo caderno, registra circuito, medidas e correção. Quando Caio aparece à porta, você mostra o desenho.\n\n— Achei que era um componente queimado — diz ele.\n\n— Eu também. Até medir.\n\nEle lê suas anotações.\n\n— Isso aí vale mais que a luzinha.\n\nO ônibus já passou. Você manda mensagem avisando que vai pegar o próximo.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar a semana e seguir pro próximo capítulo.",
@@ -1589,7 +1702,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -1598,7 +1712,7 @@
       "id": 14,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você vai embora.\n\nNo ônibus, o vidro está embaçado e você escreve 'UEFP' com o dedo sem perceber. Depois apaga com a manga.\n\n(Talvez eu tenha escolhido o curso errado.)\n\n(Talvez não.)",
+      "textoNarrativo": "Você pega o ônibus com a dúvida do circuito na mochila. O PBL também não terminou; pelo menos você chegou ao ponto antes do último horário.\n\nO grupo manda uma foto do quadro. A seta de Alan ainda está lá, com 'verificar' escrito embaixo. Você salva a imagem. Não precisa resolver o circuito em pé no ônibus.\n\nEm casa, sua mãe pergunta como foi o primeiro laboratório.\n\n— O LED me venceu por enquanto.\n\n— Ele vem amanhã para a revanche?\n\nVocê ri antes de tomar banho. No dia seguinte, a bancada e a pergunta continuarão lá.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar a semana e seguir pro próximo capítulo.",
@@ -1629,7 +1743,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1638,7 +1753,7 @@
       "id": 13,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Módulo 8. Dominó batendo, cerveja gelada, um cheiro de espetinho que ninguém sabe de onde vem. Ninguém falando de prova, de CR, de edital.\n\nVocê percebe que não pensa em faculdade há quarenta minutos.\n\n(Quarenta minutos.)",
+      "textoNarrativo": "No Módulo 8, dominó bate na mesa e alguém defende que Cálculo deveria ser tombado como patrimônio imaterial. Zé atravessa o salão com uma bandeja e chama duas pessoas pelo nome antes de chegar à mesa.\n\nVocê se aproxima de um grupo que discute uma apresentação desastrosa. Uma estudante conta que o projetor falhou; outra, que esqueceu a própria fala. As duas riem agora, embora nenhuma tenha achado graça na hora.\n\nPor alguns minutos, ninguém pergunta sua nota nem que linguagem você sabe. O celular vibra com mensagens do PBL. Você deixa a tela virada para baixo.\n\nZé encosta a bandeja na mesa. Um dos estudantes reconhece você da oficina e abre espaço.\n\n— Vai pedir alguma coisa ou veio só assistir a gente resolver o ensino superior no dominó?",
       "escolhas": [
         {
           "textoAlternativa": "Puxar conversa e conhecer melhor o pessoal.",
@@ -1672,7 +1787,8 @@
           "atributosAlterados": {
             "energia": 10,
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Você pergunta pelo jogo de dominó e descobre que a mesa também troca listas de exercícios. Zé já está contando outra história."
         },
         {
           "textoAlternativa": "Só ouvir por enquanto. Você não precisa render socialmente.",
@@ -1704,10 +1820,11 @@
           "atributosAlterados": {
             "energia": 15,
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "Você escuta até aprender dois nomes. Ninguém cobra que conte uma história engraçada para ganhar lugar à mesa."
         },
         {
-          "textoAlternativa": "Alguém te chama pelo nome antes de você sentar.",
+          "textoAlternativa": "Responder à pessoa da oficina que chamou você para a mesa.",
           "cenaDestinoId": 15,
           "flagsConcedidas": [
             "cap1_reconhecido_modulo8"
@@ -1737,10 +1854,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "vidaSocial": 1
-          }
+          },
+          "textoConsequencia": "A pessoa da oficina reconhece sua bancada e pergunta se o LED acendeu. Você conta o que sabe sem inventar um final para o teste."
         },
         {
-          "textoAlternativa": "Aceitar o espetinho que o Zé empurra sem explicar a origem.",
+          "textoAlternativa": "Aceitar o espetinho que Zé oferece.",
           "cenaDestinoId": 15,
           "flagsConcedidas": [
             "hab_estomago_ferro"
@@ -1770,7 +1888,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "energia": 10
-          }
+          },
+          "textoConsequencia": "Zé entrega o espetinho e cobra uma avaliação séria de algo que ainda está quente demais. A mesa discorda sobre a pimenta, não sobre sua presença."
         }
       ]
     },
@@ -1779,7 +1898,7 @@
       "id": 15,
       "capitulo": "Capítulo 1 — Matrícula",
       "personagemFalando": "Zé do Módulo 8",
-      "textoNarrativo": "Alguém conta uma história absurda da semana. Outra pessoa reclama do ÁGATA. Por alguns minutos, ninguém tenta transformar a noite em oportunidade.\n\nO Zé passa com a bandeja, olha você uma vez e decide:\n\n'Aqui ninguém pergunta seu CR, caloura. Pergunta se vai querer mais gelo.'\n\nVocê não resolveu a faculdade. Só passou um tempo com outras pessoas. Por hoje, bastou.",
+      "textoNarrativo": "Zé põe um espetinho na mesa. Você pode ter chegado para conversar ou só para ouvir; de algum jeito, a história do LED apagado entra no dominó e vira a teoria de que componentes têm birra pessoal.\n\nAlguém conta que apresentou o trabalho inteiro com o projetor desligado. A mesa ri, inclusive quem tinha chorado no banheiro naquele dia. Você pega dois contatos sem precisar prometer participação em projeto nenhum.\n\nMalu envia uma foto: o GPS insiste que a sala do Módulo 1 fica dentro da farmácia.\n\nNo ônibus, você responde com uma figurinha de bússola quebrada. A semana não terminou limpa. Terminou com gente para quem mandar a próxima dúvida.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar a semana e seguir pro próximo capítulo.",
@@ -1810,7 +1929,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

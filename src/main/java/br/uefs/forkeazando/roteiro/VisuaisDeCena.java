@@ -7,7 +7,7 @@ import java.util.Optional;
 /**
  * Tabela cena -> apresentação visual. Vive ao lado do roteiro, mas fora das
  * classes de cena: o texto, as escolhas e os saves não dependem de imagens.
- * Cena sem entrada aqui é exibida só com texto, como antes.
+ * Todas as cenas atuais possuem ambiente; IDs desconhecidos continuam opcionais.
  *
  * A ilustração só é (re)desenhada quando a chave muda em relação à cena anterior,
  * então várias cenas seguidas no mesmo lugar compartilham a mesma chave.
@@ -100,6 +100,56 @@ public final class VisuaisDeCena {
         fala(652, "cap8_formatura", "dandara", "feliz");
         arte("abertura_entrevista", 654);           // "A mesma sala. Mesa de vidro."
         arte("cap8_portao", 655);
+        arte("futuro_pesquisa_brasil", 662);
+        arte("futuro_tecnologia", 663);
+        arte("futuro_internacional", 664);
+        arte("futuro_independente", 665);
+        arte("futuro_transicao", 666);
+        // Cada cena possui ambiente explícito, inclusive ao carregar um save diretamente nela.
+        arte("caderno_inicio", 10300, 10301, 212, 214, 215, 216, 217, 218, 219, 3001, 3002, 540, 541, 542, 543, 567);
+        arte("cap1_matricula", 1);
+        arte("cap1_pbl", 7, 102, 109);
+        arte("oficina_extensao", 103);
+        arte("auditorio_campus", 108);
+        arte("cap2_mural", 111);
+        arte("cap1_onibus", 100, 115, 209);
+        fala(124, "cap2_mural", "bia", "neutra");
+        fala(117, "cap1_ru", "caio", "neutra");
+        fala(118, "cap1_ru", "dandara", "neutra");
+        fala(208, "cap1_patio", "caio", "neutra");
+        fala(213, "cap3_prova", "rafael", "seria");
+        arte("cap3_notas", 2105, 2107);
+        fala(3011, "cap4_editais", "caio", "neutra");
+        fala(3012, "cap4_editais", "caio", "neutra");
+        fala(3013, "cap4_editais", "caio", "neutra");
+        arte("secretaria", 302, 374, 565, 649);
+        arte("cap4_agata", 3051, 3052);
+        arte("cap4_prazo", 305);
+        arte("sala_grupo", 401, 405, 410, 416, 417, 418);
+        fala(4101, "sala_grupo", "sergio", "neutra");
+        arte("cap1_oficina", 450, 471);
+        arte("cap1_patio", 452);
+        fala(453, "cap5_greve", "bia", "seria");
+        arte("cap5_freela", 506);
+        fala(5576, "ponto_onibus", "caio", "neutra");
+        fala(5591, "ponto_onibus", "caio", "neutra");
+        fala(5592, "ponto_onibus", "caio", "neutra");
+        arte("ponto_onibus", 560, 564, 661);
+        fala(563, "cap5_freela", "ze", "feliz");
+        fala(5631, "cap5_freela", "ze", "feliz");
+        arte("cap7_tcc", 599, 667);
+        fala(601, "sala_grupo", "sergio", "neutra");
+        fala(6011, "sala_grupo", "sergio", "neutra");
+        fala(6012, "sala_grupo", "sergio", "neutra");
+        arte("cap1_oficina_led", 602);
+        arte("cap1_oficina", 6022);
+        arte("futuro_independente", 603);
+        arte("celebracao_casa", 656);
+        arte("memoria_bancada", 660);
+        arte("corredor_apoio", 970, 971, 972);
+        fala(541, "caderno_inicio", "sergio", "neutra");
+        fala(3050, "cap4_agata_resultado", "sistema", "processando");
+        arte("cap4_agata_resultado", 3051, 3052);
     }
 
     public static Optional<ApresentacaoDeCena> paraCena(int cenaId) {

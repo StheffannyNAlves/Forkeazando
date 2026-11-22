@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "apagao.json",
   "totalCenasArquivo": 3,
@@ -9,10 +9,10 @@
       "id": 970,
       "capitulo": "Esgotamento",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A energia chegou a zero.\n\nNão é dramático. Você só percebe que leu a mesma linha três vezes, que o barulho da sala ficou longe e que o celular está escorregando da sua mão.\n\n(Acho que eu preciso parar.)",
+      "textoNarrativo": "A energia chegou a zero. Você relê a mesma linha pela terceira vez e percebe que não acompanhou a última explicação.\n\nA aula continua, mas seu corpo já pediu pausa. Você fecha o caderno e tenta respirar sem chamar isso de fracasso.\n\n(Por hoje, eu preciso parar.)\n\nVocê pode aceitar apoio de alguém que está por perto ou procurar atendimento depois da aula. A próxima decisão é pequena, mas é sua.",
       "escolhas": [
         {
-          "textoAlternativa": "Caio aparece do seu lado com um copo de café. Não pergunta nada.",
+          "textoAlternativa": "Aceitar a companhia de Caio por alguns minutos.",
           "cenaDestinoId": 971,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -42,10 +42,11 @@
           "impactoRelacionamento": {
             "VETERANO": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Malu percebe antes de você. Pega suas anotações e fala com o professor.",
+          "textoAlternativa": "Aceitar que Malu avise o professor.",
           "cenaDestinoId": 971,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -75,10 +76,11 @@
           "impactoRelacionamento": {
             "MALU": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Dandara te segura pelo braço antes de você levantar rápido demais.",
+          "textoAlternativa": "Pedir a Dandara que ajude a chamar alguém.",
           "cenaDestinoId": 971,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -108,10 +110,11 @@
           "impactoRelacionamento": {
             "DANDARA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Alguém do seu grupo percebe e avisa o professor por você.",
+          "textoAlternativa": "Pedir a alguém do grupo que avise o professor.",
           "cenaDestinoId": 971,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -137,10 +140,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ninguém percebe. Você fica sentada até a sala esvaziar.",
+          "textoAlternativa": "Esperar a sala esvaziar e procurar apoio depois.",
           "cenaDestinoId": 972,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -166,7 +170,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -175,7 +180,7 @@
       "id": 971,
       "capitulo": "Esgotamento",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você apaga por alguns minutos. Quando volta, alguém ficou.\n\nNão resolve o semestre. Mas o dia não foi perdido.\n\nVocê aceita o que não dá para fazer hoje e deixa para depois.",
+      "textoNarrativo": "Alguém percebe que você saiu da sala e espera no corredor. Não pergunta por que você não se esforçou mais.\n\n— Quer que eu avise o professor ou prefere ficar um pouco aqui?\n\nVocê escolhe. A pessoa ajuda a encontrar um horário para conversar sobre o conteúdo e espera até você conseguir voltar ao prédio.\n\nA aula terminou. O problema não desapareceu; agora não está todo nas suas mãos.",
       "escolhas": [
         {
           "textoAlternativa": "Descansar um pouco e voltar.",
@@ -208,7 +213,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 1
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -217,7 +223,7 @@
       "id": 972,
       "capitulo": "Esgotamento",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Quando você levanta, a aula já acabou. A porta está aberta, o quadro apagado, e o aviso do prazo passou sem você ver.\n\nNão é falta de esforço. Você só chegou ao fim do que tinha.",
+      "textoNarrativo": "Quando você se reorganiza, a sala está vazia e o quadro foi apagado. Há mensagens sem resposta e uma parte da matéria que você ainda não viu.\n\nVocê guarda o caderno, anota o nome de alguém a quem pode pedir apoio e confere o horário do próximo ônibus.\n\nA próxima etapa será retomar com informação, descanso e ajuda. Hoje, chegar em casa já é suficiente.",
       "escolhas": [
         {
           "textoAlternativa": "Recolher suas coisas e seguir.",
@@ -250,7 +256,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     }

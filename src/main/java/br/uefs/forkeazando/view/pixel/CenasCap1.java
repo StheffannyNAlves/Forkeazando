@@ -8,7 +8,7 @@ import static br.uefs.forkeazando.view.pixel.Elementos.*;
 final class CenasCap1 {
 
     static final int N_RU = 12, N_OFICINA = 12, N_PBL = 12, N_GRUPO = 12;
-    static final int N_VAZIA = 10, N_LED = 12, N_MODULO8 = 12, N_ONIBUS = 14;
+    static final int N_VAZIA = 10, N_LED = 12, N_MODULO8 = 12, N_ONIBUS = 18;
     private static final int L = Ilustracoes.LARGURA, A = Ilustracoes.LINHAS;
 
     private CenasCap1() {}
@@ -270,17 +270,17 @@ final class CenasCap1 {
         }
         boolean[][] limpo = new boolean[48][L];
         char[] letras = {'U', 'E', 'F', 'P'};
-        int[] x0 = {14, 27, 40};
-        for (int i = 0; i < 3; i++) {
-            int colunas = Math.max(0, Math.min(5, (q - (1 + i * 3)) * 2));
+        int[] x0 = {8, 20, 32, 44};
+        for (int i = 0; i < letras.length; i++) {
+            int colunas = Math.max(0, Math.min(5, (q - (1 + i * 2)) * 3));
             String[] g = letra(letras[i]);
             for (int j = 0; j < 7; j++) for (int c = 0; c < colunas; c++) {
                 if (g[j].charAt(c) == 'X') for (int dy = 0; dy < 2; dy++) for (int dx = 0; dx < 2; dx++)
                     limpo[10 + j * 2 + dy][x0[i] + c * 2 + dx] = true;
             }
         }
-        if (q >= 10) {   // a palma apaga uma faixa
-            int ate = Math.min(60, 3 + (q - 9) * 15);
+        if (q >= 14) {   // a palavra completa permanece visível antes de a palma apagar a faixa
+            int ate = Math.min(60, 3 + (q - 13) * 16);
             for (int y = 8; y < 28; y++) for (int x = 3; x < ate; x++) limpo[y][x] = true;
         }
         for (int y = 3; y < 35; y++) for (int x = 3; x < 63; x++) {

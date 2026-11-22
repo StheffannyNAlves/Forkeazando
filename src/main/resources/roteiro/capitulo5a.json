@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo5a.json",
   "totalCenasArquivo": 11,
@@ -9,7 +9,7 @@
       "id": 400,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Reunião do grupo. Terça, 14h, sala 204. Cinco pessoas: quatro mestrandos e você.\n\nO orientador te apresenta como 'a nova'. Ninguém pergunta seu nome. Você procura um lugar à mesa sem interromper a conversa.\n\nA reunião dura quarenta minutos. Ele fala de prazo, cronograma e artigo atrasado. Você entende metade e anota até o que não entende.\n\nQuando acaba, todo mundo parece saber o que fazer. Você fecha o caderno e espera descobrir por onde começar.",
+      "textoNarrativo": "Terça, 14h. Primeira reunião da IC. Sérgio apresenta os recém-chegados e começa a falar de parâmetros antes que cada pessoa diga o nome.\n\nNo quadro, duas estratégias dividem o espaço de busca. Você reconhece uma delas dos estudos que fez por conta própria. Um doutorando chama os intervalos de 'convenientes'; Sérgio risca a palavra.\n\n— Isso é hipótese, não justificativa.\n\nSeu caderno está aberto na página onde você tinha anotado a mesma dúvida. O grupo passa para o próximo slide. Você pode interromper para se apresentar e fazer a pergunta, guardar a dúvida para depois ou tentar passar despercebido hoje.",
       "escolhas": [
         {
           "textoAlternativa": "Falar meu nome e explicar o que eu sei fazer.",
@@ -42,10 +42,11 @@
           },
           "atributosAlterados": {
             "carisma": 2
-          }
+          },
+          "textoConsequencia": "Você diz seu nome e aponta a palavra riscada no quadro. Sérgio pede que formule a hipótese como uma pergunta testável."
         },
         {
-          "textoAlternativa": "Ficar quieta e anotar. Vou provar pelo trabalho.",
+          "textoAlternativa": "Ficar em silêncio e anotar. Vou provar pelo trabalho.",
           "cenaDestinoId": 402,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -71,7 +72,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você anota a dúvida e marca o slide para perguntar depois. Quando olha de novo, Bia já escreveu um número ao lado da curva."
         },
         {
           "textoAlternativa": "Sentar no canto. Talvez ninguém perceba que cheguei.",
@@ -100,7 +102,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você se senta no canto. Sérgio passa a lista de tarefas, e seu nome aparece no grupo de dados antes de você falar com alguém."
         }
       ]
     },
@@ -109,10 +112,10 @@
       "id": 402,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "No laboratório, Bia está com o fichário de sempre e um Excel aberto.\n\n'Achei que você fosse pra DTEC. Ainda bem que não.'\n\nAponta a planilha: dados de um experimento cujo nome não te diz nada. As colunas estão preenchidas, mas ninguém parece ter explicado o que aqueles números significam.",
+      "textoNarrativo": "Bia está no laboratório, diante de três planilhas e uma pasta chamada 'dados que chegaram sem contexto'. Você imaginava que ela trabalhava só com resumos.\n\n— Faço coleta, organizo resultado, reviso texto. E às vezes descubro que quem assinou não abriu o arquivo — diz.\n\nVocê olha a planilha. Há números, mas falta dizer em que condições foram obtidos.\n\n— Dá para reproduzir?\n\n— É o que estou tentando descobrir desde ontem.\n\nBia compartilha a pasta com você. Não é um convite para salvar o projeto; é para encontrar o que ainda não pode ser afirmado.",
       "escolhas": [
         {
-          "textoAlternativa": "Perguntar o que ela está fazendo ali.",
+          "textoAlternativa": "Pedir a Bia que mostre como foi feita a coleta dos dados.",
           "cenaDestinoId": 403,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -140,7 +143,8 @@
           "impactoRelacionamento": {
             "BIA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia mostra o arquivo de coleta. A terceira coluna não tem unidade; vocês anotam a lacuna antes de analisar os números."
         },
         {
           "textoAlternativa": "Perguntar se ela ainda vende respostas.",
@@ -173,10 +177,11 @@
           "impactoRelacionamento": {
             "BIA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia fecha o fichário por um segundo. — Não vendo respostas. O resumo tinha exercícios comentados. Se quiser falar da prova, fala dela."
         },
         {
-          "textoAlternativa": "Não falar nada. Não preciso de aliada aqui.",
+          "textoAlternativa": "Manter distância enquanto confiro os dados.",
           "cenaDestinoId": 403,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -204,7 +209,8 @@
           "impactoRelacionamento": {
             "BIA": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você copia a planilha e confere as condições sem pedir ajuda. Bia deixa o link da fonte no chat, mesmo depois da distância."
         }
       ]
     },
@@ -213,7 +219,7 @@
       "id": 403,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "'Eu não faço pesquisa. Eu faço o trabalho que ninguém quer.'\n\nGira o notebook na sua direção.\n\n'Planilha, transcrição, revisão de referência. Dois semestres nisso.'\n\nEla não está reclamando pra ganhar consolo. Está avisando alguém que ainda pode decidir se quer entrar nessa.\n\n'Você vai acabar fazendo também. Todo mundo faz.'",
+      "textoNarrativo": "— Eu sei organizar experimento — Bia diz. — O problema é que lembram disso quando precisam de alguém para arrumar dado. Quando chega a hora de decidir autoria, a memória fica seletiva.\n\nEla abre um registro de atividades, com datas, revisões e nomes. Você vê que ela repetiu parte da análise depois de encontrar um erro na primeira planilha.\n\n— Por que fez de novo?\n\n— Porque o resultado estava errado. E porque eu queria saber se a conclusão era minha ou da planilha.\n\nO sarcasmo dela não some. Só ganha contexto.",
       "escolhas": [
         {
           "textoAlternativa": "Dizer que entendo.",
@@ -244,7 +250,8 @@
           "impactoRelacionamento": {
             "BIA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Entendo por que você guardou as versões — você diz. Bia mostra a primeira análise riscada, sem apagar a autoria do erro."
         },
         {
           "textoAlternativa": "Dizer que não foi isso que vim fazer.",
@@ -275,7 +282,8 @@
           "impactoRelacionamento": {
             "BIA": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Eu vim pesquisar, não arbitrar disputa de artigo — você responde. Bia recolhe o caderno e deixa o arquivo original disponível para você conferir."
         }
       ]
     },
@@ -284,7 +292,7 @@
       "id": 401,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Três semanas depois.\n\nA reunião de terça foi cancelada. A de quarta também. Na sexta, o orientador manda uma mensagem no grupo: 'Semana que vem a gente retoma. Tô com prazo de artigo.'\n\nNinguém responde. Você abre o calendário e conta quantas reuniões foram adiadas. É a terceira vez no mês.\n\n{{ORIENTADOR_RECURSO}}\n\nO grupo continua existindo. O trabalho, por enquanto, parece não sair do lugar.",
+      "textoNarrativo": "A reunião é adiada sem novo horário. Você tenta reproduzir um resultado; falta um parâmetro no arquivo original. O gráfico muda muito se você variar aquele número.\n\nNo grupo, ninguém responde. Bia aparece no laboratório e olha seu rascunho.\n\n— Dá para escolher um valor bonito. O artigo fica ótimo. E impossível de repetir.\n\nVocê abre duas versões do experimento, uma com os dados disponíveis e outra bloqueada pela pergunta. Falta decidir como registrar o impasse e a quem cobrar resposta. O relógio do prazo continua andando.\n\n{{ORIENTADOR_RECURSO}}",
       "escolhas": [
         {
           "textoAlternativa": "Mandar mensagem perguntando o que devo fazer enquanto isso.",
@@ -317,10 +325,11 @@
           },
           "atributosAlterados": {
             "carisma": 1
-          }
+          },
+          "textoConsequencia": "Você envia a Sérgio a pergunta com duas saídas possíveis. A mensagem fica sem resposta, mas a lacuna do método está registrada."
         },
         {
-          "textoAlternativa": "Ficar quieta. Ele que resolva quando puder.",
+          "textoAlternativa": "Esperar a orientação antes de escolher um parâmetro.",
           "cenaDestinoId": 405,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -348,10 +357,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Você não escolhe um número por palpite. No relatório, deixa em branco a etapa que depende da orientação."
         },
         {
-          "textoAlternativa": "Perguntar pra Bia se é sempre assim.",
+          "textoAlternativa": "Perguntar a Bia como documentar o dado ausente.",
           "cenaDestinoId": 405,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -379,7 +389,8 @@
           "impactoRelacionamento": {
             "BIA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia sugere marcar cada tentativa com o valor usado e escrever por que nenhuma delas valida o resultado. Você abre uma tabela nova."
         },
         {
           "textoAlternativa": "Achar o cronograma no drive. Última atualização: quatro meses atrás.",
@@ -412,7 +423,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "O cronograma antigo não responde à dúvida, mas mostra um prazo que ninguém mencionou. Você salva a captura com a data visível."
         }
       ]
     },
@@ -421,7 +433,7 @@
       "id": 405,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na sexta, o orientador aparece. Vinte minutos de reunião: distribui tarefas, marca prazos e, na última frase, muda o tamanho do problema.\n\n'Vocês vão escrever um artigo. Cada um pega uma parte. Eu reviso no fim.'\n\nSai antes que alguém pergunte como as partes devem se encaixar.\n\nOs mestrandos se olham. Ninguém sabe o que fazer primeiro. O prazo, porém, já está no calendário.\n\nNa tela do seu celular, o e-mail dele com a divisão das partes ainda está aberto.",
+      "textoNarrativo": "O orientador anuncia um prazo de artigo para a semana seguinte. As tarefas são divididas, mas ninguém sabe quem valida os experimentos nem como as contribuições serão registradas.\n\nVocê pede uma lista de responsabilidades antes de começar. Um pesquisador suspira: 'Não temos tempo para burocracia'.\n\nBia abre o caderno de registros e coloca sobre a mesa.\n\n— Não precisa chamar de burocracia. Pode chamar de quem fez o quê.\n\nO prazo continua curto. A conversa agora tem uma ata.",
       "escolhas": [
         {
           "textoAlternativa": "Assumir a coordenação. Alguém precisa organizar isso.",
@@ -454,10 +466,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você assume a coordenação e pede responsáveis por medida e revisão. Bia exige que o quadro vire um registro compartilhado."
         },
         {
-          "textoAlternativa": "Pegar a parte mais simples. Não quero me queimar.",
+          "textoAlternativa": "Assumir uma tarefa delimitada e pedir revisão.",
           "cenaDestinoId": 451,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -483,10 +496,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você aceita só a análise que consegue repetir e pede que outra pessoa revise a tabela. O artigo ganha um limite de escopo."
         },
         {
-          "textoAlternativa": "Perguntar quem vai revisar. O grupo fica em silêncio.",
+          "textoAlternativa": "Perguntar quem vai revisar o método e os resultados.",
           "cenaDestinoId": 451,
           "flagsConcedidas": [
             "cap5a_perguntou_revisao"
@@ -514,7 +528,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Ninguém assume a revisão de primeira. Sua pergunta entra na ata com nome e data, em vez de desaparecer no fim da reunião."
         },
         {
           "textoAlternativa": "Registrar método, condições do experimento e resultados antes de redigir a seção.",
@@ -545,7 +560,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você registra equipamento, parâmetro e resultado antes de redigir. A seção de método fica mais longa que o resumo."
         },
         {
           "textoAlternativa": "Tirar print do e-mail com a divisão das partes. Por precaução.",
@@ -578,7 +594,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você salva o e-mail que dividiu as partes. A captura não resolve a autoria, mas impede que a divisão seja recontada depois sem registro."
         },
         {
           "textoAlternativa": "Enfrentar tudo. Café e ódio.",
@@ -609,7 +626,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -5
-          }
+          },
+          "textoConsequencia": "Você aceita duas tarefas extras e abre uma terceira aba. Bia pergunta em voz baixa qual delas será entregue se o tempo acabar."
         }
       ]
     },
@@ -618,10 +636,10 @@
       "id": 410,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Dois meses depois, o artigo continua sem estar pronto.\n\nVocê escreveu sua parte e entregou. Os mestrandos fizeram o mesmo. O orientador não revisou, não respondeu, não mandou nada no grupo.\n\nO prazo da revista passou na semana anterior. Ninguém avisou.\n\nVocê abre o arquivo mais uma vez. O texto está lá. O retorno que você precisava, não.",
+      "textoNarrativo": "Dois meses depois, sua análise está pronta. O resultado não confirma a hipótese inicial. Você repete o experimento com as mesmas condições e obtém o mesmo padrão.\n\nO orientador ainda não revisou o texto. Um colega sugere mudar a descrição para fazer o resultado parecer mais promissor.\n\nBia aponta para os registros. Você tem evidência suficiente para descrever o que aconteceu, não para alegar o que gostaria que tivesse acontecido.\n\nA bolsa pode continuar ou não. A decisão sobre como apresentar os dados é sua agora.",
       "escolhas": [
         {
-          "textoAlternativa": "Aguentar. Fiz a minha parte.",
+          "textoAlternativa": "Continuar e registrar o que o experimento de fato mostrou.",
           "cenaDestinoId": 415,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -649,7 +667,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 3
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pedir pra sair do grupo.",
@@ -680,10 +699,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Aceitar que pesquisa também é lidar com resultado que não sai.",
+          "textoAlternativa": "Aceitar que um resultado negativo também precisa ser descrito.",
           "cenaDestinoId": 415,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -711,7 +731,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Pensar em desistir de tudo.",
@@ -742,7 +763,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -751,7 +773,7 @@
       "id": 4101,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Você escreve o pedido de saída. Ele assina sem ler, como assina tudo.\n\n'Sem problema. A gente continua se vendo por aí.'\n\nNão vai continuar. Vocês dois sabem.\n\nNa porta da sala, Bia levanta os olhos da planilha e não diz nada. É a forma mais gentil que ela tem de se despedir.",
+      "textoNarrativo": "Você comunica a saída do grupo. Entrega os registros, explica o que concluiu e marca quais resultados ainda precisam de revisão.\n\nO orientador agradece e diz que espera voltar a trabalhar com você. Você não sabe se a promessa vai virar convite.\n\nBia confere a pasta antes de fechar.\n\n— Está tudo aí?\n\n— Está.\n\n— Então o trabalho não foi invisível. Só não precisa continuar custando mais do que você pode pagar.\n\nVocê atravessa o corredor com saudade da pergunta e alívio por ter escolhido.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5A.",
@@ -783,7 +805,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -792,7 +815,7 @@
       "id": 415,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Fim do semestre.\n\nO orientador te chama à sala em que, meses atrás, você tentou explicar por que queria pesquisar.\n\n'Você entrou como voluntária. Foram meses de reunião, planilha e tarefa sem remuneração. Eu vi.'\n\nFecha uma pasta.\n\n'Tem uma vaga de bolsista pro próximo semestre. É concorrida. Depende do relatório e da minha avaliação.'\n\n'Tem alguma coisa que você queira me dizer antes de eu decidir?'",
+      "textoNarrativo": "No fim do semestre, Sérgio Viana revisa os registros com você.\n\n— Você entregou mais do que eu esperava, mesmo sem bolsa.\n\nVocê gostou da pesquisa. Também calculou quantas passagens e refeições custou chegar até aqui.\n\nEle não tenta converter elogio em pagamento. Pergunta que condições tornariam possível continuar e abre o caderno para anotar sua resposta.\n\nNa saída, Bia te espera no corredor. A reunião foi curta; a conversa sobre trabalho, não.",
       "escolhas": [
         {
           "textoAlternativa": "Falar do projeto, do tema e do que quero pesquisar.",
@@ -827,7 +850,8 @@
           },
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você fala da pergunta que ainda quer testar. Sérgio anota o equipamento necessário antes de voltar ao assunto da bolsa."
         },
         {
           "textoAlternativa": "Falar do trabalho que fiz e do quanto me dediquei.",
@@ -860,7 +884,8 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você mostra o registro de trabalho, inclusive as tentativas que falharam. Sérgio confere as datas em vez de contar só páginas escritas."
         },
         {
           "textoAlternativa": "Dizer a verdade: preciso da bolsa.",
@@ -895,7 +920,8 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "— Preciso da bolsa — você diz. Sérgio não pede uma justificativa mais bonita; abre a tabela de horas e requisitos."
         },
         {
           "textoAlternativa": "Não saber o que dizer e deixar o silêncio responder.",
@@ -924,7 +950,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "O silêncio dura o suficiente para Sérgio baixar a caneta. Você pede que ele mande as condições por escrito antes de responder."
         }
       ]
     },
@@ -933,10 +960,10 @@
       "id": 416,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Ele faz uma anotação no papel. Você tenta descobrir, pelo rosto dele, se aquela conversa mudou alguma coisa. Não consegue.\n\n'Eu vejo semana que vem.'\n\nVocê sai da sala com uma resposta que não é resposta.\n\n(Uma semana.)\n\n(Eu não vou conseguir dormir.)",
+      "textoNarrativo": "Sérgio chama você antes de fechar a sala. Uma bolsa abriu para o próximo semestre; você atende aos critérios do projeto, mas precisa confirmar candidatura, carga horária e documentação até sexta. Outra pessoa também aguarda a vaga.\n\n— Não vou prometer pesquisa sem prazo — você diz.\n\nEle escreve as horas previstas no e-mail e pergunta se você quer finalizar a candidatura. Se não puder assumir agora, o trabalho feito até aqui continua registrado e a vaga segue para a próxima pessoa.\n\nNo mesmo dia vence uma solicitação de matrícula. Aceitar a bolsa é uma decisão possível; recusar também tem custo, mas não apaga o que você pesquisou.",
       "escolhas": [
         {
-          "textoAlternativa": "Esperar a resposta.",
+          "textoAlternativa": "Confirmar a candidatura à bolsa com os documentos e a carga horária.",
           "cenaDestinoId": 417,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -964,10 +991,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Esperar a resposta.",
+          "textoAlternativa": "Não assumir a vaga agora; negociar uma participação voluntária menor.",
           "cenaDestinoId": 418,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -995,7 +1023,8 @@
           },
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1004,7 +1033,7 @@
       "id": 417,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na semana seguinte, chega o e-mail do orientador.\n\n'Aprovada. Bolsa FAPESB. R$ 500 por mês. Começa no próximo semestre.'\n\nVocê lê uma vez. Depois outra. A palavra 'aprovada' parece ter sido escrita pra outra pessoa e enviada por engano pra você.\n\nVocê mostra o e-mail pra sua mãe. Ela não entende bem o que é IC, mas entende o que uma renda mensal pode representar.\n\nR$ 500 não pagam o tempo que você investiu. Ainda assim, ajudam com as passagens e com parte das despesas. Pela primeira vez em meses, o esforço tem uma consequência concreta.",
+      "textoNarrativo": "Você confirma a candidatura com a documentação completa. Na data combinada, chega o e-mail: bolsa concedida para o próximo semestre.\n\nVocê abre primeiro as condições: valor, vigência, horas e obrigações. Só depois manda a notícia para Bia.\n\n'Parabéns', ela responde. 'Agora pergunta se o projeto ganhou equipamento ou se vamos continuar brigando pelo único multímetro.'\n\nVocê encaminha a pergunta a Sérgio. Desta vez, ela entra na resposta ao e-mail da bolsa.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5A.",
@@ -1036,7 +1065,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -1045,7 +1075,7 @@
       "id": 418,
       "capitulo": "Capítulo 5A — IC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Na semana seguinte, chega o e-mail do orientador.\n\n'A vaga foi para outro aluno. Você continua como voluntária por enquanto. Se abrir outra no meio do semestre, eu aviso.'\n\nVocê lê até o fim, embora a decisão já esteja clara.\n\n(Não passei.)\n\n(Outra pessoa passou.)\n\nFecha o e-mail. Vai ao RU. Amanhã o trabalho continua, com bolsa ou sem.",
+      "textoNarrativo": "Você não finaliza a candidatura à bolsa. A vaga segue para outra pessoa; Sérgio pergunta se você gostaria de continuar com o grupo como participante voluntário, com um escopo menor.\n\nVocê abre o registro de horas, calcula transporte e compara com a grade do semestre seguinte. A pergunta que te trouxe ao laboratório ainda interessa. As condições para persegui-la precisam existir.\n\nBia se senta ao seu lado.\n\n— Se ficar, combina escopo e prazo. Se sair, deixa os dados organizados.\n\nVocê marca uma conversa. A decisão sobre a vaga acabou; a decisão sobre seu trabalho continua sua.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 5A.",
@@ -1077,7 +1107,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

@@ -85,6 +85,7 @@ public final class Ilustracoes {
         reg(CAP3_NOTAS, CenasCap2a4.N_NOTAS, 120, CenasCap2a4::notas);
         reg(CAP4_EDITAIS, CenasCap2a4.N_EDITAIS, 120, CenasCap2a4::editais);
         reg(CAP4_AGATA, CenasCap2a4.N_AGATA, 110, CenasCap2a4::agata);
+        reg("cap4_agata_resultado", CenasCap2a4.N_AGATA, 110, CenasCap2a4::agataResultado);
         reg(CAP4_PRAZO, CenasCap2a4.N_PRAZO, 120, CenasCap2a4::prazo);
         reg(CAP5_GREVE, CenasCap5a8.N_GREVE, 100, CenasCap5a8::greve);
         reg(CAP5_FREELA, CenasCap5a8.N_FREELA, 120, CenasCap5a8::freela);
@@ -102,11 +103,25 @@ public final class Ilustracoes {
         reg(FUTURO_INTERNACIONAL, CenasFuturos.N_INTERNACIONAL, 110, CenasFuturos::internacional);
         reg(FUTURO_INDEPENDENTE, CenasFuturos.N_INDEPENDENTE, 120, CenasFuturos::independente);
         reg(FUTURO_TRANSICAO, CenasFuturos.N_TRANSICAO, 120, CenasFuturos::transicao);
+        reg("caderno_inicio", CenasComplementares.QUADROS, 130, CenasComplementares::caderno);
+        reg("secretaria", CenasComplementares.QUADROS, 130, CenasComplementares::secretaria);
+        reg("oficina_extensao", CenasComplementares.QUADROS, 130, CenasComplementares::extensao);
+        reg("auditorio_campus", CenasComplementares.QUADROS, 130, CenasComplementares::auditorio);
+        reg("ponto_onibus", CenasComplementares.QUADROS, 130, CenasComplementares::ponto);
+        reg("celebracao_casa", CenasComplementares.QUADROS, 130, CenasComplementares::casa);
+        reg("corredor_apoio", CenasComplementares.QUADROS, 130, CenasComplementares::corredor);
+        reg("memoria_bancada", CenasComplementares.QUADROS, 130, CenasComplementares::memoria);
     }
 
     /** Animação de entrada da ilustração, se ela tiver uma. */
     public static java.util.Optional<Animacao> animacao(String chave) {
         return java.util.Optional.ofNullable(ANIMACOES.get(chave));
+    }
+
+    /** Repouso independente da entrada: o resultado narrativo final permanece intacto. */
+    public static java.util.Optional<Animacao> ambiente(String chave) {
+        return animacao(chave).map(entrada -> new Animacao(12, 320,
+                quadro -> CenariosAmbiente.desenhar(chave, entrada.desenhar(entrada.total() - 1), quadro)));
     }
 
     private Ilustracoes() {}

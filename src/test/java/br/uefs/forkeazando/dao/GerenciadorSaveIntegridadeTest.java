@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.dao;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
@@ -49,7 +50,7 @@ class GerenciadorSaveIntegridadeTest {
     @Test
     void estadoSalvoPeloJogoSempreEPassaNaValidacao() throws Exception {
         Estado estado = new Estado();
-        estado.iniciar(new Protagonista("Ana", true, true, true,
+        estado.iniciar(new Protagonista("Ana", IdentidadeProtagonista.STHEFFANNY, true, true, true,
                 Protagonista.NivelVidaSocial.AMIGUEIRO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.POSITIVA,
                 Protagonista.SituacaoEconomica.ELITE));

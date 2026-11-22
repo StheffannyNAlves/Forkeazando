@@ -13,6 +13,7 @@ class CurriculoTest {
     void setUp() {
         protagonista = new Protagonista(
                 "Teste",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 false,
                 false,
@@ -77,14 +78,14 @@ class CurriculoTest {
     void freela() {
         // Instâncias separadas porque cada teste muta o próprio protagonista.
         Protagonista pago = new Protagonista(
-                "Pago", false, false, false,
+                "Pago", IdentidadeProtagonista.STHEFFANNY, false, false, false,
                 Protagonista.NivelVidaSocial.ISOLADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);
         pago.adicionarFlag("cap5c_cliente_pagou");
 
         Protagonista naoPago = new Protagonista(
-                "Não pago", false, false, false,
+                "Não pago", IdentidadeProtagonista.STHEFFANNY, false, false, false,
                 Protagonista.NivelVidaSocial.ISOLADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

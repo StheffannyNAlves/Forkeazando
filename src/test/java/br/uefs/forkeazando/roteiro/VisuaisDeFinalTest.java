@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.roteiro;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import static org.junit.jupiter.api.Assertions.*;
 import br.uefs.forkeazando.model.Final;
 import br.uefs.forkeazando.model.Protagonista;
@@ -9,7 +10,7 @@ import org.junit.jupiter.api.Test;
 class VisuaisDeFinalTest {
 
         private static Protagonista protagonista(){
-            return new Protagonista("Teste", false, true, true,
+            return new Protagonista("Teste", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                     Protagonista.NivelVidaSocial.EQUILIBRADO,
                     Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                     Protagonista.SituacaoEconomica.ESTAVEL);

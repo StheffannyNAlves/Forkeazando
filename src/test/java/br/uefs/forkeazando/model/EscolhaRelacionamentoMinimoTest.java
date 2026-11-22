@@ -9,7 +9,7 @@ class EscolhaRelacionamentoMinimoTest {
 
     private static Protagonista protagonista() {
         return new Protagonista(
-                "Teste", false, true, true,
+                "Teste", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.dao;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
 import br.uefs.forkeazando.model.Protagonista;
@@ -17,7 +18,7 @@ class GerenciadorSlotsAutosaveTest {
 
     private static Estado estado() {
         Estado estado = new Estado();
-        estado.iniciar(new Protagonista("Ana", true, true, true,
+        estado.iniciar(new Protagonista("Ana", IdentidadeProtagonista.STHEFFANNY, true, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL));

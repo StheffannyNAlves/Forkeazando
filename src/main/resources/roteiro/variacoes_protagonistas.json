@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "descricao": "Textos da pessoa que continua na UEFP quando o jogador escolhe a outra. A chave é a identidade estável, independente do nome exibido.",
+  "variacoes": {
+    "1": {
+      "protagonista_masculino": "— Eu já ia enviar tudo no impulso. Espera: a convocação é só o começo. Vou conferir a lista de anexos antes.",
+      "protagonista_stheffanny": "— Já comparei os documentos com o edital. Agora quero entender qual publicação confirma cada etapa."
+    },
+    "3": {
+      "protagonista_masculino": "— Aposto que descubro a sala antes do mapa — diz {{NOME_OUTRO_PROTAGONISTA}}, conferindo a placa do corredor em seguida.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} examina as placas e nota que o mapa do grupo usa o nome antigo do módulo. — É por isso que a rota parecia errada."
+    },
+    "5": {
+      "protagonista_masculino": "— Dá para testar uma ligação pequena depois de medir esse resistor — sugere {{NOME_OUTRO_PROTAGONISTA}}. Dandara entrega o multímetro; ele registra o valor antes de ligar a fonte.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} anota o valor esperado do resistor. — Podemos testar uma parte do circuito agora, desde que a fonte tenha limite de corrente."
+    },
+    "6": {
+      "protagonista_masculino": "— A gente abre a IDE, faz um menu mínimo e vê onde quebra — propõe {{NOME_OUTRO_PROTAGONISTA}}. Alan pergunta qual comportamento esperam testar. Ele demora um segundo. — Um caminho que volte ao menu sem perder a escolha. Se falhar, a gente desenha o fluxo de novo.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} escreve três critérios no quadro antes de alguém abrir a IDE. — Se o menu perder uma escolha, não entregamos. Alan pede um exemplo executável para conferir a regra. Ela hesita diante do prazo e concorda em testar só o primeiro fluxo."
+    },
+    "16": {
+      "protagonista_masculino": "{{NOME_OUTRO_PROTAGONISTA}} quer abrir o protótipo e encontrar a falha logo; Alan pede uma hipótese que dê para medir. Os dois concordam em testar primeiro um ponto.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} separa no quadro as medidas e as suposições. Depois aceita a proposta de Alan de testar um ponto antes de redesenhar o circuito todo."
+    },
+    "101": {
+      "protagonista_masculino": "{{NOME_OUTRO_PROTAGONISTA}} circula três grupos e hesita no quarto. — Se eu entrar em todos, vou acabar faltando a algum. Melhor visitar antes de prometer.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} compara os horários com aula e transporte. — Ainda tenho vontade de tentar um grupo fora da minha lista; vou à reunião antes de descartar."
+    },
+    "200": {
+      "protagonista_masculino": "— Ia virar a folha logo para encontrar a questão mais difícil — murmura {{NOME_OUTRO_PROTAGONISTA}}. Ele marca a hora de início no canto do rascunho. — Melhor ver quanto tempo tenho para cada uma.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} confere as canetas, conta as questões e deixa um espaço vazio ao lado do tempo previsto. — Não controlo o que vai cair. Pelo menos posso decidir quando passar para a próxima."
+    },
+    "202": {
+      "protagonista_masculino": "— Eu tentei começar pela mais difícil e perdi o tempo de duas fáceis — admite {{NOME_OUTRO_PROTAGONISTA}}. — Vamos conferir o enunciado antes de discutir nota?",
+      "protagonista_stheffanny": "— Eu revisei três vezes a mesma conta e não terminei outra questão — diz {{NOME_OUTRO_PROTAGONISTA}}. — Se você quiser, podemos comparar os passos sem ficar comparando quem foi melhor."
+    },
+    "300": {
+      "protagonista_masculino": "— Quase confirmei a turma antes de olhar o pré-requisito — admite {{NOME_OUTRO_PROTAGONISTA}}. Ele volta à oferta real e risca da agenda a atividade que se sobrepõe ao ônibus.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} mostra uma planilha cheia de cores e, pela primeira vez, deixa duas células vazias. — Esse espaço é para uma disciplina que talvez nem seja ofertada. Não vou fingir que já sei o semestre inteiro."
+    },
+    "305": {
+      "protagonista_masculino": "{{NOME_OUTRO_PROTAGONISTA}} abre as duas inscrições. — Eu ia confirmar e olhar a agenda depois. Espera: quantas horas cada uma exige?",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} faz uma tabela de prazos. — Eu quero tentar a IC, mesmo sem controlar tudo que vai acontecer neste semestre."
+    },
+    "450": {
+      "protagonista_masculino": "— Eu quase dei a resposta para ganhar tempo — admite {{NOME_OUTRO_PROTAGONISTA}}. — Quando Téo mediu por conta própria, entendeu mais do que se eu tivesse ligado o LED.",
+      "protagonista_stheffanny": "— Precisei parar de explicar cada detalhe — conta {{NOME_OUTRO_PROTAGONISTA}}. — Téo encontrou a ligação quando teve espaço para testar."
+    },
+    "451": {
+      "protagonista_masculino": "— Eu ia repassar sem olhar a data — admite {{NOME_OUTRO_PROTAGONISTA}}. — A imagem é de outro semestre. Alguém tem o comunicado oficial?",
+      "protagonista_stheffanny": "— A foto não prova cancelamento de hoje — observa {{NOME_OUTRO_PROTAGONISTA}}. — Vou procurar a publicação original. Se não existir confirmação, precisamos dizer que não sabemos."
+    },
+    "455": {
+      "protagonista_masculino": "— Conferi o ônibus do grupo: não está confirmado — diz {{NOME_OUTRO_PROTAGONISTA}}. — Posso buscar o contato atualizado da escola. Alguém ainda precisa avisar que a visita não está marcada.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} organiza numa nota o que está confirmado e o que depende da coordenação. — Falta decidir quem avisa a escola e quem acompanha a resposta sobre o auxílio."
+    },
+    "500": {
+      "protagonista_masculino": "{{NOME_OUTRO_PROTAGONISTA}} propõe um protótipo curto do formulário, com prazo e custo anotados antes do teste. — Assim a gente vê o que o pedido realmente envolve.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} lista critérios de aceite e horas de manutenção; depois sugere um protótipo curto para conferir o fluxo de teclado com Lia."
+    },
+    "540": {
+      "protagonista_masculino": "— Não vou te mandar 'força' e desaparecer — escreve {{NOME_OUTRO_PROTAGONISTA}}. — Posso levar as anotações amanhã. Se não quiser conversar, deixo na portaria.",
+      "protagonista_stheffanny": "— Tentei organizar uma solução para tudo e apaguei — escreve {{NOME_OUTRO_PROTAGONISTA}}. — Quer que eu descubra só o prazo mais próximo? O resto pode ficar para depois."
+    },
+    "599": {
+      "protagonista_masculino": "{{NOME_OUTRO_PROTAGONISTA}} traz uma montagem rápida para provocar a falha de novo. Na segunda tentativa, o microcontrolador trava. Ele resiste à vontade de tentar outra coisa às cegas, anota a sequência e diz: — Se cair na banca, mostramos como repetir e onde ainda não sabemos corrigir.",
+      "protagonista_stheffanny": "{{NOME_OUTRO_PROTAGONISTA}} havia planejado mais seis testes, mas só há tempo para dois. Risca quatro sem gostar disso. — Vamos medir o caminho de alimentação e documentar a limitação. Se ainda falhar, a banca precisa ver exatamente o que sabemos."
+    },
+    "605": {
+      "protagonista_masculino": "— Boa defesa! Se o projetor travar, mostra o teste que você consegue repetir — escreve {{NOME_OUTRO_PROTAGONISTA}}. — E não inventa resultado só pra ficar bonito, hein.",
+      "protagonista_stheffanny": "— Estou torcendo — escreve {{NOME_OUTRO_PROTAGONISTA}}. — Se perguntarem pelo dado que falta, diga qual medida conseguiria verificar depois. Isso também é trabalho sério."
+    },
+    "650": {
+      "protagonista_masculino": "— Vi a transmissão começar! — escreve {{NOME_OUTRO_PROTAGONISTA}}. — Não vou prometer foto sem corte, mas já salvei o link. Depois me conta da chamada.",
+      "protagonista_stheffanny": "— A transmissão está funcionando — escreve {{NOME_OUTRO_PROTAGONISTA}}. — Deixei um marcador para encontrar sua chamada depois. Agora aproveita o momento."
+    },
+    "655": {
+      "protagonista_masculino": "— Como foi a conversa? — pergunta {{NOME_OUTRO_PROTAGONISTA}}. — Não precisa de uma resposta bonita. Se quiser, amanhã a gente revisa o portfólio e vê o que faltou mostrar.",
+      "protagonista_stheffanny": "— E a entrevista? — pergunta {{NOME_OUTRO_PROTAGONISTA}}. — Pode responder quando chegar em casa. Uma seleção não resume tudo que você construiu."
+    }
+  }
+}

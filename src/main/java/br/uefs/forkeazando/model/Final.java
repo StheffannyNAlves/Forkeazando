@@ -11,7 +11,7 @@ public enum Final {
     CAMINHO_PROPRIO("jornada_caminho_proprio", "futuro_independente", "Carreira independente", true),
     TRANSICAO("jornada_transicao", "futuro_transicao", "Recomeçar sem apagar o passado", true),
 
-    // Mantidos para saves e progresso criados antes da escolha do futuro no Capítulo 8.
+    // Mantidos para saves e progresso criados antes da escolha do futuro no Capítulo 8
     IC("jornada_ic", "trilha_ic", "A Cientista", false),
     DTEC("jornada_dtec", "trilha_dtec", "Mão na Massa", false),
     INDEPENDENTE("jornada_independente", "trilha_indep", "O Contato", false);
@@ -31,7 +31,9 @@ public enum Final {
 
     public String getCodigo() { return codigo; }
     public String getTitulo() { return titulo; }
-
+    public boolean isFinalDeCarreira() {
+        return finalDeCarreira;
+    }
     public String getTrilha() { return flagDesbloqueio; }
 
     public static Optional<Final> porCodigo(String codigo) {
@@ -47,11 +49,11 @@ public enum Final {
             return Optional.empty();
         }
 
-        // A decisão explícita do último capítulo é o final da partida; a trilha inicial não a sobrepõe.
+        // A decisão explícita do último capítulo é o final da partida; a trilha inicial não a sobrepõe
         for (Final f : Final.values()) {
             if (f.finalDeCarreira && flags.contains(f.flagDesbloqueio)) return Optional.of(f);
         }
-        // Compatibilidade com partidas e progressos anteriores à escolha de futuro.
+        // Compatibilidade com partidas e progressos anteriores à escolha de futuro
         for (Final f : Final.values()) {
             if (!f.finalDeCarreira && flags.contains(f.flagDesbloqueio)) return Optional.of(f);
         }

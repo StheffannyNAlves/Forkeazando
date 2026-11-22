@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.dao;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
@@ -21,7 +22,7 @@ class GerenciadorSlotsTest {
     private static Estado estadoValido(String nome) {
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
-                nome, false, true, true,
+                nome, IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL));
@@ -134,6 +135,7 @@ class GerenciadorSlotsTest {
 
         Protagonista protagonista = new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -256,6 +258,7 @@ class GerenciadorSlotsTest {
         Estado valido = new Estado();
         valido.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -305,6 +308,7 @@ class GerenciadorSlotsTest {
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -330,6 +334,7 @@ class GerenciadorSlotsTest {
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -356,6 +361,7 @@ class GerenciadorSlotsTest {
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -426,6 +432,7 @@ class GerenciadorSlotsTest {
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -455,6 +462,7 @@ class GerenciadorSlotsTest {
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,
@@ -486,6 +494,7 @@ class GerenciadorSlotsTest {
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
                 "Stheffanny",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 true,
                 true,

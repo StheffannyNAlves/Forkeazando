@@ -14,7 +14,7 @@ class EstadoAplicarEscolhaTest {
 
     @BeforeEach
     void preparar() {
-        p = new Protagonista("Ana", false, true, true,
+        p = new Protagonista("Ana", IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);
@@ -25,6 +25,19 @@ class EstadoAplicarEscolhaTest {
     private static Escolha.Builder escolha() {
         return new Escolha.Builder("x", 1);
     }
+
+
+    @Test
+    void custoNegativoTbmDeveConsumirEnergia(){
+        int energiaAnterior = p.getEnergia();
+        Escolha decisao = escolha()
+                .comCustoEnergia(-10)
+                .build();
+        assertTrue(decisao.estaDisponivel(p));
+        estado.aplicarEscolha(decisao);
+        assertEquals(energiaAnterior -10, p.getEnergia());
+    }
+
 
     @Test
     void aplicaScoreParticipacaoEnergiaEMarcaAlterado() {

@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.controller;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.Estado;
@@ -41,7 +42,7 @@ class GerenciadorSavesControllerTest {
     }
 
     private static Estado partida(String nome) {
-        Protagonista p = new Protagonista(nome, false, true, true,
+        Protagonista p = new Protagonista(nome, IdentidadeProtagonista.STHEFFANNY, false, true, true,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

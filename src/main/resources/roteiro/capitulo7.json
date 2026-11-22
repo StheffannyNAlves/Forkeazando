@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo7.json",
   "totalCenasArquivo": 9,
@@ -9,7 +9,7 @@
       "id": 600,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Semestre 10. A reta final chegou.\n\n{{CALENDARIO_CAP7}}\n\nO ÁGATA mostra seu histórico escolar numa tabela de duas cores. Aprovada, aprovada, aprovada. Uma greve de sessenta e cinco dias, que o sistema registra como 'período não computado'. Frequência: regular. Horas de sono: não consta.\n\nCinco anos cabem numa tela. Não foi isso que você sentiu enquanto vivia.\n\nTCC.\n\nVocê está cansada. Não é o cansaço de dormir mal, é o de cinco anos.\n\nAbre o notebook. Documento em branco. O cursor pisca no ritmo do seu pulso.\n\n(Eu preciso escrever o título.)\n\n(Por onde se começa isso?)",
+      "textoNarrativo": "O fluxograma chega ao décimo semestre; sua trajetória pode ter levado mais tempo por ajustes, reprovações, greve e outras curvas.\n\n{{CALENDARIO_CAP7}}\n\nSeu TCC tem um resultado que precisa ser repetido, referências abertas em seis abas e um cronograma que já está atrasado. Alan manda no grupo: 'se teu projeto só funciona na apresentação, ele é um efeito especial'.\n\nVocê fecha as abas e escreve no papel: pergunta, método, evidência, limite. A defesa está marcada. Antes de pensar no último slide, precisa descobrir se o experimento pode ser reproduzido.",
       "escolhas": [
         {
           "textoAlternativa": "Dividir em capítulos. Um por semana. Você sabe revisar erro.",
@@ -42,7 +42,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você abre quatro seções com metas pequenas. A primeira semana termina com um método incompleto, mas revisável."
         },
         {
           "textoAlternativa": "Uma página por dia.",
@@ -73,7 +74,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escreve uma página e marca a fonte que falta. No dia seguinte, ainda sabe por onde continuar."
         },
         {
           "textoAlternativa": "Tudo de uma vez.",
@@ -102,7 +104,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você abre todas as abas e tenta terminar em uma noite. O arquivo cresce; o teste que deveria sustentar o resultado ainda não foi repetido."
         },
         {
           "textoAlternativa": "Começar amanhã.",
@@ -133,7 +136,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você fecha o documento e marca 'amanhã' na agenda. O prazo não muda de lugar para acompanhar a palavra."
         },
         {
           "textoAlternativa": "Enfrentar tudo. Café, ódio e uma playlist de 2019.",
@@ -164,7 +168,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -5
-          }
+          },
+          "textoConsequencia": "A playlist chega à quinta música antes da primeira medida. Quando o café acaba, você finalmente escreve o procedimento."
         },
         {
           "textoAlternativa": "Você senta. Escreve. Só tem trabalho.",
@@ -195,7 +200,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você senta e escreve sem revisar o escopo. No fim da tarde, há texto suficiente para enxergar a pergunta que falta."
         },
         {
           "textoAlternativa": "Dividir em capítulos. Um por semana.",
@@ -226,7 +232,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você divide o trabalho em capítulos. A seção de resultados depende do teste que ainda precisa repetir."
         },
         {
           "textoAlternativa": "Definir o escopo e registrar as limitações antes de escrever os resultados.",
@@ -257,7 +264,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você registra o que o protótipo faz e onde falha. A limitação entra no plano da apresentação antes do slide bonito."
         },
         {
           "textoAlternativa": "Escrever na véspera.",
@@ -290,7 +298,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Na véspera, o primeiro teste falha e não há tempo para fingir que é exceção. Você salva o log e corta uma afirmação do resumo."
         },
         {
           "textoAlternativa": "Você senta. Abre o documento. Escreve a primeira frase.",
@@ -321,7 +330,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "A primeira frase sai torta. Você a deixa como rascunho e passa ao procedimento que consegue descrever."
         },
         {
           "textoAlternativa": "Abre. Fecha. Abre de novo.",
@@ -354,7 +364,72 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Você abre e fecha o documento duas vezes. Na terceira, anota uma pergunta, mesmo sem escrever ainda a resposta."
+        },
+        {
+          "textoAlternativa": "Revisar os fundamentos de Cálculo que deixei passar antes de confiar no resultado do TCC.",
+          "cenaDestinoId": 599,
+          "flagsConcedidas": [
+            "cap7_revisou_base_apos_cola"
+          ],
+          "flagRequerida": "cap4_encarou_lacuna_calculo",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "No relatório do TCC, uma estimativa depende exatamente de um conceito que você evitou explicar na primeira prova de Cálculo. A planilha oferece um número; não oferece o raciocínio.\n\nVocê interrompe a análise, volta ao material de base e pede uma segunda leitura de quem pode conferir a conta. Uma tarde de trabalho passa sem novo gráfico. O resultado seguinte, porém, tem origem e limite anotados.\n\nA escolha de anos atrás não desapareceu; você mudou o que faz diante dela."
+        },
+        {
+          "textoAlternativa": "Transformar meus antigos erros de Cálculo num roteiro de verificação para os resultados do TCC.",
+          "cenaDestinoId": 599,
+          "flagsConcedidas": [
+            "cap7_testou_metodo_tcc"
+          ],
+          "flagRequerida": "cap4_revisou_erros_calculo",
+          "scoreMinimo": 0,
+          "participacaoMinima": 0,
+          "participacaoMaxima": 0,
+          "scoreGanho": 0,
+          "participacaoGanha": 0,
+          "custoEnergia": 0,
+          "permiteEnergiaInsuficiente": false,
+          "energiaAbaixoDe": 0,
+          "confiancaMinima": 0,
+          "confiancaMaxima": 0,
+          "vidaSocialMinima": 0,
+          "vidaSocialMaxima": 0,
+          "carismaMinimo": 0,
+          "carismaMaximo": 0,
+          "logicaMinima": 0,
+          "logicaMaxima": 0,
+          "sanidadeMinima": 0,
+          "sanidadeMaxima": 0,
+          "relacionamentoMinimo": {},
+          "relacionamentoMaximo": {},
+          "interesseAlvo": null,
+          "impactoRelacionamento": {},
+          "atributosAlterados": {},
+          "textoConsequencia": "Você encontra no registro antigo uma frase simples: \"não confundir resposta familiar com demonstração\". No TCC, adapta a ideia para um protocolo: conferir unidades, reproduzir medidas e registrar quando uma hipótese falha.\n\nUma repetição produz resultado diferente. Em vez de esconder o valor, você anota as condições e discute o experimento com Noa. O método agora tem histórico, não só conclusão."
         }
       ]
     },
@@ -363,7 +438,7 @@
       "id": 599,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O TCC avança aos poucos. Entre um capítulo e outro, você percebe que o trabalho técnico é só metade do problema.\n\nA outra metade chega em forma de pergunta que ninguém colocou na ementa.",
+      "textoNarrativo": "O TCC avança em ciclos: ler, montar, testar, encontrar um erro, voltar ao começo. O vídeo da demonstração ficou bonito. O log, não: na terceira tentativa, o microcontrolador deixa de responder.\n\nNoa encontra no diagrama um caminho sem tratamento para essa falha.\n\n— Se acontecer na banca?\n\nVocê abre o caderno na medição que faltou. O problema não desaparece por receber um nome; ao menos agora é possível reproduzi-lo.\n\n{{NOME_OUTRO_PROTAGONISTA}} olha para o diagrama e pergunta o que será mostrado se a tela apagar de novo.\n\n{{OUTRO_CENA}}\n\nVocê acrescenta a limitação ao relatório. Antes da defesa, ainda há uma pendência que o método não resolve sozinho.",
       "escolhas": [
         {
           "textoAlternativa": "Continuar.",
@@ -392,7 +467,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Continuar.",
@@ -421,10 +497,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Continuar.",
+          "textoAlternativa": "Ouvir Téo e conferir o que ele ainda precisa aprender.",
           "cenaDestinoId": 6022,
           "flagsConcedidas": [],
           "flagRequerida": "teo_nao_aprendeu",
@@ -450,10 +527,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Continuar.",
+          "textoAlternativa": "Ouvir Téo, apesar do encaminhamento feito depois das práticas.",
           "cenaDestinoId": 6022,
           "flagsConcedidas": [],
           "flagRequerida": "teo_encaminhado",
@@ -479,7 +557,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Continuar.",
@@ -508,7 +587,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -517,10 +597,10 @@
       "id": 601,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Você escreveu o TCC e dele saiu um artigo de doze páginas. Boa parte das figuras, das tabelas e da discussão é sua.\n\nO orientador te chama à sala e lê o rascunho em silêncio, lábios mexendo na parte dos resultados.\n\n'Ficou ótimo. Vou submeter agora.'\n\nVira a tela. Na linha de autores, o nome dele vem primeiro. O seu, em segundo. Os mestrandos aparecem nos agradecimentos.\n\n'Faz sentido, né? Quem coordena o grupo assina na frente. É assim que funciona.'",
+      "textoNarrativo": "O artigo da IC está pronto para submissão. No arquivo, sua contribuição aparece como apoio técnico; os registros mostram que você formulou a hipótese, executou os testes e escreveu parte da análise.\n\nO orientador pede para deixar a autoria para depois. Você sente o impulso de aceitar para não criar conflito. Bia lembra que os registros existem e pergunta se você quer que ela participe da conversa.\n\nO arquivo será enviado naquela tarde. Você pode aceitar a ordem atual ou pedir que as contribuições sejam conferidas antes do envio.",
       "escolhas": [
         {
-          "textoAlternativa": "Aceitar. Segunda autora já é muito.",
+          "textoAlternativa": "Aceitar a ordem atual de autoria e seguir para a defesa.",
           "cenaDestinoId": 605,
           "flagsConcedidas": [
             "cap7_aceitou_autoria"
@@ -550,7 +630,8 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Perguntar, com educação, como a ordem foi decidida.",
@@ -585,7 +666,8 @@
           },
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": null
         },
         {
           "textoAlternativa": "Mostrar o print do e-mail em que ele mesmo dividiu as partes.",
@@ -618,7 +700,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": null
         }
       ]
     },
@@ -627,7 +710,7 @@
       "id": 6011,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Ele fica um tempo com o dedo parado sobre a tecla.\n\n'A gente vê isso depois. Eu preciso submeter antes do prazo.'\n\nVocê sabe o que 'depois' costuma querer dizer. Ele também sabe.\n\nMas ouviu a pergunta. Isso, a partir de agora, não dá pra desfazer.",
+      "textoNarrativo": "O professor sugere discutir autoria depois da submissão.\n\n— Não estou questionando seu trabalho — você diz. — Estou pedindo que a descrição corresponda ao que foi feito.\n\nVocê mostra a versão do artigo e propõe comparar as contribuições com os critérios da revista. Ele fica em silêncio, depois fecha o arquivo.\n\n— Vamos rever antes de enviar.\n\nVocê sai sem sensação de vitória. A submissão ainda não aconteceu, e a conversa agora tem uma data.",
       "escolhas": [
         {
           "textoAlternativa": "Sair da sala.",
@@ -656,7 +739,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -665,7 +749,7 @@
       "id": 6012,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Prof. Dr. Sérgio Viana",
-      "textoNarrativo": "Ele lê o e-mail. Lê de novo. Você vê o momento exato em que ele reconhece o próprio texto.\n\n'Eu tinha esquecido que eu mesmo escrevi isso.'\n\nTira os óculos, esfrega os olhos.\n\n'Primeira autora é você. Eu fico como orientador e segundo nome.'\n\nNão pede desculpa. Mas muda a linha, e a mudança fica visível na tela antes de você sair.",
+      "textoNarrativo": "Você leva os registros de experimentos, versões do texto e e-mails que dividiram as tarefas.\n\nSérgio lê em silêncio. Depois volta à primeira página.\n\n— Eu não tinha visto quanto da análise ficou com você.\n\nVocês revisam a ordem de autoria e descrevem as contribuições. Bia confere se a coleta e a revisão também foram registradas.\n\nO acordo fica por escrito. Você não sabe se a relação com o orientador será igual, mas seu trabalho não depende mais da memória de ninguém.",
       "escolhas": [
         {
           "textoAlternativa": "Agradecer e sair.",
@@ -696,7 +780,8 @@
           "impactoRelacionamento": {
             "ORIENTADOR_IC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     },
@@ -705,7 +790,7 @@
       "id": 602,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Téo aparece na porta da sala 112 com um notebook embaixo do braço. Sem moletom, pela primeira vez.\n\n'Monitor. Monitora. Sei lá. Olha isso.'\n\nÉ um circuito que ele montou sozinho, um sequenciador de LEDs, com dois fios amarelos bem organizados e um erro que ele mesmo achou antes de mostrar.\n\n'Eu perguntei pra mim o que eu já tinha medido. Funcionou.'\n\nEle não está pedindo nada. Só quer que alguém veja.",
+      "textoNarrativo": "Téo aparece com um notebook e uma protoboard. Antes de ligar, explica o que espera medir e onde vai conectar o terra.\n\n— Vim mostrar que eu entendi.\n\nVocê pede que ele faça o teste e registre o resultado. Ele erra a primeira conexão, percebe, corrige e completa a explicação.\n\nVocê reconhece o jeito como costumava olhar para a bancada. Téo não precisa que você conte a história toda; pergunta se pode usar o procedimento no relatório.\n\nA monitoria terminou no sistema. Téo pede uma cópia das medições para mostrar a outro estudante; você entrega o caderno aberto na página certa.",
       "escolhas": [
         {
           "textoAlternativa": "Dizer que ele está pronto pra ser monitor.",
@@ -740,7 +825,8 @@
           },
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "— Você já conseguiria orientar a primeira medida — você diz. Téo pede a Meira a data da próxima seleção de monitoria."
         },
         {
           "textoAlternativa": "Pedir pra ele explicar o circuito pra você.",
@@ -773,7 +859,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você pede que Téo te explique o circuito. Ele começa pelo terra, volta ao resistor e corrige sozinho um valor no caderno."
         }
       ]
     },
@@ -782,7 +869,7 @@
       "id": 6022,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Téo aparece na porta da sala 112 com a pasta de relatórios debaixo do braço.\n\n'Monitor. Faltam quatro relatórios de laboratório. Eu não fui nas aulas. Se você assinar que eu fiz, o professor nem confere.'\n\nEle fala depressa, como quem treinou. Nos olhos dele não tem malandragem, tem desespero.\n\nVocê sabe que ele tem razão sobre uma coisa: o professor nem confere. É por isso que a decisão é sua.",
+      "textoNarrativo": "Téo chega depois da aula com relatórios de experimentos que não realizou. Perdeu as práticas durante a greve e diz que precisa entregar tudo amanhã para não reprovar.\n\n— Se você assinar, talvez aceitem — pede. — Eu aprendo o resto depois.\n\nVocê olha as folhas. Há medidas que ninguém do grupo fez; sua assinatura diria que você acompanhou um trabalho que não aconteceu.\n\nTéo está com medo. Você pode assinar, recusar e ajudar a documentar o que é possível refazer, ou tentar uma aula longa antes do prazo. Nenhuma escolha muda os dados que faltam.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar. Ele precisa passar.",
@@ -817,7 +904,8 @@
           },
           "atributosAlterados": {
             "confianca": -2
-          }
+          },
+          "textoConsequencia": "Você assina. Téo entrega os relatórios; Meira pede o registro das práticas que ninguém fez. Você não tem uma medida para mostrar e precisa responder por isso."
         },
         {
           "textoAlternativa": "Recusar e oferecer ajuda pra refazer os relatórios.",
@@ -852,7 +940,8 @@
           },
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você não assina medições inventadas. Téo fica irritado, mas aceita escrever à coordenação para pedir reposição das práticas com os dados reais."
         },
         {
           "textoAlternativa": "Dar uma última aula, a noite inteira, ali.",
@@ -887,7 +976,8 @@
           },
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Vocês passam a noite montando o que ainda é possível medir. De manhã, o relatório tem resultados próprios e lacunas explicitadas, não práticas fingidas."
         }
       ]
     },
@@ -896,7 +986,7 @@
       "id": 603,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "O contrato chega por e-mail: seis páginas, formatação perfeita, o tipo de documento que alguém copiou de um modelo sem ler.\n\nVocê lê tudo. Na cláusula 14, a empresa pede cessão total e irrevogável de propriedade intelectual, inclusive de código preexistente: tudo que você já escreveu, em qualquer projeto, antes de qualquer contrato.\n\nO valor é bom. O prazo para assinar é amanhã.\n\n(Código preexistente.)\n\n(Isso inclui meus projetos pessoais?)",
+      "textoNarrativo": "Chega um contrato para o projeto independente. Uma cláusula permite ao cliente reutilizar o código em outros produtos e repassar a terceiros.\n\nVocê não sabe se isso é aceitável para o trabalho proposto. Pergunta a Bia; ela recomenda consultar alguém que entenda de propriedade intelectual antes de assinar.\n\nO cliente diz que precisa da resposta hoje. O projeto seria uma boa oportunidade e o prazo já é apertado.\n\nVocê marca a cláusula, pede uma conversa e decide se a urgência do outro lado também será a sua.",
       "escolhas": [
         {
           "textoAlternativa": "Assinar. É o primeiro contrato de verdade.",
@@ -929,7 +1019,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -1
-          }
+          },
+          "textoConsequencia": "Você assina com a cláusula intacta. O cliente manda o cronograma; só então percebe que o código poderá ser repassado sem outra conversa."
         },
         {
           "textoAlternativa": "Procurar um advogado antes de assinar.",
@@ -962,7 +1053,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você pede análise jurídica e avisa que não assinará hoje. O cliente mantém o prazo, mas a consulta mostra quais direitos estão em jogo."
         },
         {
           "textoAlternativa": "Negociar a cláusula 14 por escrito.",
@@ -995,7 +1087,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 3
-          }
+          },
+          "textoConsequencia": "Você risca a cláusula 14 e manda uma proposta de uso delimitado. A contraproposta volta antes da defesa, ainda sem assinatura."
         },
         {
           "textoAlternativa": "Recusar. Esse preço não vale o que eles pedem.",
@@ -1028,7 +1121,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você recusa. O contrato some da caixa de entrada; o tempo que teria vendido volta à agenda do TCC."
         }
       ]
     },
@@ -1037,7 +1131,7 @@
       "id": 605,
       "capitulo": "Capítulo 7 — A Última Prova",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Você entregou o TCC.\n\nA defesa foi numa sala com três professores e um projetor que não funcionou na primeira tentativa. Você explicou a primeira lâmina com o papel na mão e a segunda de memória.\n\nVocê passou.\n\nA sensação não chega como nos filmes. Primeiro vem o alívio. Depois, o silêncio de não ter mais uma entrega pra fazer amanhã.\n\n(Era isso?)\n\n(Cinco anos, e tudo o que coube dentro deles.)",
+      "textoNarrativo": "O projetor falha antes do primeiro slide. A banca espera; Noa, na última fileira, levanta uma sobrancelha como quem pergunta se vocês também documentaram aquele modo de falha.\n\nVocê abre o caderno. Começa pela pergunta do TCC, pelo teste que se repetiu e pelo ponto em que o resultado deixou de ser confiável. Quando a imagem volta, a figura no slide é menor do que a história que você acabou de contar.\n\nUma professora pede o dado que você ainda não conseguiu medir.\n\n— Não tenho essa medida — você responde. — Sei qual equipamento falta e como repetiria o ensaio.\n\nHá um segundo de silêncio antes da próxima pergunta. Você não venceu a banca com um truque. Conseguiu mostrar onde termina a evidência e onde começa o próximo trabalho.",
       "escolhas": [
         {
           "textoAlternativa": "Encerrar Capítulo 7.",
@@ -1068,7 +1162,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

@@ -1,5 +1,6 @@
 package br.uefs.forkeazando.roteiro;
 
+import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import static org.junit.jupiter.api.Assertions.*;
 
 import br.uefs.forkeazando.model.Protagonista;
@@ -8,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class RoteadorTest {
 
     private static Protagonista p(String... flags) {
-        Protagonista p = new Protagonista("Teste", false, false, false,
+        Protagonista p = new Protagonista("Teste", IdentidadeProtagonista.STHEFFANNY, false, false, false,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL);

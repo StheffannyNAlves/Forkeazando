@@ -1,17 +1,14 @@
 package br.uefs.forkeazando.view;
 
 import br.uefs.forkeazando.model.*;
-import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
-import br.uefs.forkeazando.roteiro.Epilogos;
-import br.uefs.forkeazando.roteiro.SistemaAcademico;
-import br.uefs.forkeazando.roteiro.VisuaisDeFinal;
+import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.view.pixel.*;
-import br.uefs.forkeazando.roteiro.ResultadoCalculo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class CenaView {
+public class CenaView implements ApresentacaoCena {
 
     private static final int LARGURA_PADRAO = 64;
     private static final int LARGURA_MINIMA = 44;
@@ -80,11 +77,7 @@ public class CenaView {
         }
     }
 
-    /** Chamar ao carregar save: se a arte já estava na tela antes, ela precisa redesenhar. */
-    public void resetarCacheVisual() {
-        this.ultimaIlustracao = null;
-        this.avisouArteOculta = false;
-    }
+
 
     private String indicadorPause() {
         return Entrada.estaPausado() ? "PAUSADO" : "";
@@ -95,7 +88,13 @@ public class CenaView {
 
         imprimirLinha("[P] pausar  •  [C] continuar", Cores.CINZA);
     }
-
+    /** Chamar ao carregar save: se a arte já estava na tela antes, ela precisa redesenhar. */
+    @Override
+    public void resetarCacheVisual() {
+        this.ultimaIlustracao = null;
+        this.avisouArteOculta = false;
+    }
+    @Override
     public void mostrarGaleria(Protagonista protagonista) {
         List<String> flags = protagonista.getHistoricoFlags();
         System.out.println();
@@ -122,12 +121,9 @@ public class CenaView {
     }
 
 
-    public void renderizar(Cena cena, Protagonista p) {
-        renderizar(cena, p, p.temFlag("cap6_trancou") ? 1 : 0, null);
-    }
 
-    public void renderizar(Cena cena, Protagonista p,
-                           int semestresExtras, ApresentacaoDeCena visual) {
+    @Override
+    public void renderizar(Cena cena, Protagonista p, int semestresExtras, ApresentacaoDeCena visual) {
         Entrada.permitirPausa(true);
         atualizarLargura();
         try {
@@ -150,7 +146,7 @@ public class CenaView {
                 imprimirLinha("", corTexto);
             }
 
-            for (String paragrafo : cena.getTextoNarrativo().split("\n")) {
+            for (String paragrafo : br.uefs.forkeazando.roteiro.NarrativaProtagonistas.resolver(cena, p).split("\n")) {
                 Entrada.aguardarPause();
                 paragrafo = paragrafo.replace("{{NOTA_CALCULO}}", ResultadoCalculo.notaFormatada(p));
                 if (paragrafo.equals("{{COMENTARIO_NOTA_CALCULO}}")) {
@@ -218,13 +214,26 @@ public class CenaView {
                     for (String l : quebrarLinha(t, larg - 4)) imprimirLinha(l, Cores.CINZA);
                     continue;
                 }
-
-                if (paragrafo.equals("{{FINAL_PESQUISA}}"))       { mostrarFinalPesquisa(p, corTexto);       continue; }
-                if (paragrafo.equals("{{FINAL_TECNOLOGIA}}"))     { mostrarFinalTecnologia(p, corTexto);     continue; }
-                if (paragrafo.equals("{{FINAL_INTERNACIONAL}}"))  { mostrarFinalInternacional(p, corTexto);  continue; }
-                if (paragrafo.equals("{{FINAL_INDEPENDENTE}}"))   { mostrarFinalIndependente(p, corTexto);   continue; }
-                if (paragrafo.equals("{{FINAL_TRANSICAO}}"))      { mostrarFinalTransicao(p, corTexto);      continue; }
-
+                if (paragrafo.equals("{{FINAL_PESQUISA}}")) {
+                    imprimirBloco(FinaisNarrativos.pesquisa(p), corTexto);
+                    continue;
+                }
+                if (paragrafo.equals("{{FINAL_TECNOLOGIA}}")) {
+                    imprimirBloco(FinaisNarrativos.tecnologia(p), corTexto);
+                    continue;
+                }
+                if (paragrafo.equals("{{FINAL_INTERNACIONAL}}")) {
+                    imprimirBloco(FinaisNarrativos.internacional(p), corTexto);
+                    continue;
+                }
+                if (paragrafo.equals("{{FINAL_INDEPENDENTE}}")) {
+                    imprimirBloco(FinaisNarrativos.independente(p), corTexto);
+                    continue;
+                }
+                if (paragrafo.equals("{{FINAL_TRANSICAO}}")) {
+                    imprimirBloco(FinaisNarrativos.transicao(p), corTexto);
+                    continue;
+                }
                 if (paragrafo.isBlank()) {
                     imprimirLinha("", corTexto);
                     continue;
@@ -245,19 +254,8 @@ public class CenaView {
         }
     }
 
-    private Hud.Linha cabecalhoStatus(Protagonista p) {
-        return Hud.status(p.getRank(), indicadorPause(), larg - 2);
-    }
 
-    private void imprimirLinhaHud(Hud.Linha linha) {
-        int espacos = Math.max(0, larg - 2 - linha.visivel());
-        System.out.println(Cores.CIANO + "║" + Cores.RESET + "  "
-                + linha.ansi() + " ".repeat(espacos)
-                + Cores.CIANO + "║" + Cores.RESET);
-    }
-
-    //  Mensagens / avisos
-
+    @Override
     public void mostrarBencaoCaramelo() {
         System.out.println();
         System.out.println(Cores.AMARELO + ">>> O Caramelo passa do lado. Ele para. Ele te olha." + Cores.RESET);
@@ -266,6 +264,7 @@ public class CenaView {
         System.out.println();
     }
 
+    @Override
     public void mostrarHabilidade(String flag) {
         String nome = Colecionavel.porFlag(flag).map(Colecionavel::getNome).orElse(flag);
         System.out.println();
@@ -275,6 +274,7 @@ public class CenaView {
         System.out.println();
     }
 
+    @Override
     public void mostrarItem(String flag) {
         String nome = Colecionavel.porFlag(flag).map(Colecionavel::getNome).orElse(flag);
         System.out.println();
@@ -284,16 +284,116 @@ public class CenaView {
         System.out.println();
     }
 
+    @Override
     public void mostrarConquista(Conquista conquista) {
         mostrarMensagem("\n🏆 CONQUISTA DESBLOQUEADA: " + conquista.getTitulo()
                 + "\n" + conquista.getDescricao());
     }
 
+    @Override
     public void mostrarMensagem(String mensagem) {
         System.out.println();
         System.out.println(Cores.AMARELO + mensagem + Cores.RESET);
     }
+    @Override
+    public void mostrarImpactoRelacionamento(PersonagemSecundario npc, float valor,
+                                             Protagonista.NivelRelacionamento nivel) {
+        String cor = valor > 0 ? Cores.VERDE : Cores.VERMELHO;
+        String mudanca = valor > 0 ? "melhorou" : "piorou";
+        System.out.println();
+        System.out.println(cor + ">>> O teu relacionamento com " + npc.getNome()
+                + " " + mudanca + "." + Cores.RESET);
+        System.out.println(Cores.CIANO + "[ Pressione ENTER para continuar... ]" + Cores.RESET);
+        Entrada.lerLinha();
+    }
 
+    @Override
+    public void mostrarEpilogos(Protagonista p) {
+        atualizarLargura();
+        System.out.println();
+        System.out.println(Cores.MAGENTA + "══════ O QUE FICOU ══════" + Cores.RESET);
+        mostrarIlustracaoDoFinal(p);
+        System.out.println();
+
+        for (Epilogos.Epilogo bloco : Epilogos.de(p)) {
+            renderizarEpilogo(bloco.titulo(), bloco.texto());
+        }
+
+        System.out.println(Cores.CIANO + "[ Pressione ENTER para encerrar. ]" + Cores.RESET);
+        Entrada.lerLinha();
+    }
+    @Override
+    public void mostrarCurriculo(Protagonista p) {
+        atualizarLargura();
+
+        var linhas = Curriculo.linhas(p);
+        if (linhas.isEmpty()) return;
+
+        System.out.println();
+        System.out.println(Cores.AMARELO + "╔" + "═".repeat(larg) + "╗" + Cores.RESET);
+        imprimirLinha("CURRÍCULO — " + p.getNome().toUpperCase(), Cores.AMARELO);
+        System.out.println(Cores.AMARELO + "╠" + "═".repeat(larg) + "╣" + Cores.RESET);
+
+        Curriculo.Categoria categoriaAtual = null;
+        for (var linha : linhas) {
+            if (linha.categoria() != categoriaAtual) {
+                if (categoriaAtual != null) imprimirLinha("", Cores.CINZA);
+                imprimirLinha(linha.categoria().rotulo, Cores.CIANO);
+                categoriaAtual = linha.categoria();
+            }
+            String marcador = linha.positiva() ? "  • " : "  ✗ ";
+            String cor = linha.positiva() ? Cores.BRANCO : Cores.CINZA;
+            for (String quebrada : quebrarLinha(marcador + linha.texto(), larg - 4)) {
+                imprimirLinha(quebrada, cor);
+            }
+        }
+
+        System.out.println(Cores.AMARELO + "╚" + "═".repeat(larg) + "╝" + Cores.RESET);
+        System.out.println();
+        System.out.println(Cores.CIANO + "[ ENTER para continuar ]" + Cores.RESET);
+        Entrada.lerLinha();
+    }
+
+    @Override
+    public void mostrarTransicao(String capitulo) {
+        if (!terminalComporta() || !Animador.habilitada()) return;
+        Animacao animacao = Transicao.animacao(capitulo);
+        Animador.tocar(animacao, System.out, this::dormir);
+    }
+
+    @Override
+    public void mostrarChuteDoSistema(Protagonista p) {
+        atualizarLargura();
+
+        SistemaAcademico.Perfil perfil = SistemaAcademico.classificar(p);
+        String linhaDoChute = SistemaAcademico.descricaoDe(perfil);
+
+        System.out.println();
+        System.out.println(Cores.AMARELO + "  ╭─────────────────────────────────────╮" + Cores.RESET);
+        System.out.println(Cores.AMARELO + "  │  SISTEMA ACADÊMICO — VEREDITO       │" + Cores.RESET);
+        System.out.println(Cores.AMARELO + "  ╰─────────────────────────────────────╯" + Cores.RESET);
+        System.out.println();
+
+        for (String l : quebrarLinha("'Processamento concluído.'", larg)) {
+            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
+        }
+        System.out.println();
+        System.out.println(Cores.AMARELO + "  " + linhaDoChute + Cores.RESET);
+        System.out.println();
+
+        for (String l : quebrarLinha("'Recomendação baseada em padrões históricos.'", larg)) {
+            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
+        }
+        for (String l : quebrarLinha("'Ignore se preferir. O sistema não decide por você.'", larg)) {
+            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
+        }
+        for (String l : quebrarLinha("'Ainda.'", larg)) {
+            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
+        }
+        System.out.println();
+        System.out.println(Cores.CIANO + "[ ENTER para continuar ]" + Cores.RESET);
+        Entrada.lerLinha();
+    }
 
     private void imprimirLinhaAprovacao(String linha, int margem) {
         System.out.print("║");
@@ -345,34 +445,6 @@ public class CenaView {
         for (String linha : linhas) imprimirLinhaAprovacao(linha, margem);
     }
 
-
-    public void mostrarImpactoRelacionamento(PersonagemSecundario npc, float valor,
-                                             Protagonista.NivelRelacionamento nivel) {
-        String cor = valor > 0 ? Cores.VERDE : Cores.VERMELHO;
-        String mudanca = valor > 0 ? "melhorou" : "piorou";
-        System.out.println();
-        System.out.println(cor + ">>> O teu relacionamento com " + npc.getNome()
-                + " " + mudanca + "." + Cores.RESET);
-        System.out.println(Cores.CIANO + "[ Pressione ENTER para continuar... ]" + Cores.RESET);
-        Entrada.lerLinha();
-    }
-
-
-    public void mostrarEpilogos(Protagonista p) {
-        atualizarLargura();
-        System.out.println();
-        System.out.println(Cores.MAGENTA + "══════ O QUE FICOU ══════" + Cores.RESET);
-        mostrarIlustracaoDoFinal(p);
-        System.out.println();
-
-        for (Epilogos.Epilogo bloco : Epilogos.de(p)) {
-            renderizarEpilogo(bloco.titulo(), bloco.texto());
-        }
-
-        System.out.println(Cores.CIANO + "[ Pressione ENTER para encerrar. ]" + Cores.RESET);
-        Entrada.lerLinha();
-    }
-
     private void renderizarEpilogo(String titulo, String texto) {
         System.out.println(Cores.CIANO + "┌" + "─".repeat(larg) + "┐" + Cores.RESET);
         imprimirLinha(titulo, Cores.AMARELO);
@@ -389,46 +461,6 @@ public class CenaView {
         System.out.println(Cores.CIANO + "└" + "─".repeat(larg) + "┘" + Cores.RESET);
         System.out.println();
     }
-
-
-    public void mostrarCurriculo(Protagonista p) {
-        atualizarLargura();
-
-        var linhas = Curriculo.linhas(p);
-        if (linhas.isEmpty()) return;
-
-        System.out.println();
-        System.out.println(Cores.AMARELO + "╔" + "═".repeat(larg) + "╗" + Cores.RESET);
-        imprimirLinha("CURRÍCULO — " + p.getNome().toUpperCase(), Cores.AMARELO);
-        System.out.println(Cores.AMARELO + "╠" + "═".repeat(larg) + "╣" + Cores.RESET);
-
-        Curriculo.Categoria categoriaAtual = null;
-        for (var linha : linhas) {
-            if (linha.categoria() != categoriaAtual) {
-                if (categoriaAtual != null) imprimirLinha("", Cores.CINZA);
-                imprimirLinha(linha.categoria().rotulo, Cores.CIANO);
-                categoriaAtual = linha.categoria();
-            }
-            String marcador = linha.positiva() ? "  • " : "  ✗ ";
-            String cor = linha.positiva() ? Cores.BRANCO : Cores.CINZA;
-            for (String quebrada : quebrarLinha(marcador + linha.texto(), larg - 4)) {
-                imprimirLinha(quebrada, cor);
-            }
-        }
-
-        System.out.println(Cores.AMARELO + "╚" + "═".repeat(larg) + "╝" + Cores.RESET);
-        System.out.println();
-        System.out.println(Cores.CIANO + "[ ENTER para continuar ]" + Cores.RESET);
-        Entrada.lerLinha();
-    }
-
-
-    public void mostrarTransicao(String capitulo) {
-        if (!terminalComporta() || !Animador.habilitada()) return;
-        Animacao animacao = Transicao.animacao(capitulo);
-        Animador.tocar(animacao, System.out, this::dormir);
-    }
-
 
     private void mostrarIlustracao(ApresentacaoDeCena visual) {
         if (visual == null || visual.ilustracao() == null) return;
@@ -447,6 +479,20 @@ public class CenaView {
             System.out.println(Cores.CINZA + "  (aumente o terminal p/ " + LARGURA_ARTE + "×" + ALTURA_MINIMA_ARTE
                     + " e veja a arte)" + Cores.RESET);
         }
+    }
+    private Hud.Linha cabecalhoStatus(Protagonista p) {
+        return Hud.status(p.getRank(), indicadorPause(), larg - 2);
+    }
+
+    private void imprimirLinhaHud(Hud.Linha linha) {
+        int espacos = Math.max(0, larg - 2 - linha.visivel());
+        System.out.println(Cores.CIANO + "║" + Cores.RESET + "  "
+                + linha.ansi() + " ".repeat(espacos)
+                + Cores.CIANO + "║" + Cores.RESET);
+    }
+
+    public void renderizar(Cena cena, Protagonista p) {
+        renderizar(cena, p, p.temFlag("cap6_trancou") ? 1 : 0, null);
     }
 
     private void mostrarIlustracaoDoFinal(Protagonista p) {
@@ -489,164 +535,6 @@ public class CenaView {
                     + "  " + lateral + Cores.CIANO + "║" + Cores.RESET);
         }
         return true;
-    }
-
-
-    public void mostrarChuteDoSistema(Protagonista p) {
-        atualizarLargura();
-
-        SistemaAcademico.Perfil perfil = SistemaAcademico.classificar(p);
-        String linhaDoChute = SistemaAcademico.descricaoDe(perfil);
-
-        System.out.println();
-        System.out.println(Cores.AMARELO + "  ╭─────────────────────────────────────╮" + Cores.RESET);
-        System.out.println(Cores.AMARELO + "  │  SISTEMA ACADÊMICO — VEREDITO       │" + Cores.RESET);
-        System.out.println(Cores.AMARELO + "  ╰─────────────────────────────────────╯" + Cores.RESET);
-        System.out.println();
-
-        for (String l : quebrarLinha("'Processamento concluído.'", larg)) {
-            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
-        }
-        System.out.println();
-        System.out.println(Cores.AMARELO + "  " + linhaDoChute + Cores.RESET);
-        System.out.println();
-
-        for (String l : quebrarLinha("'Recomendação baseada em padrões históricos.'", larg)) {
-            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
-        }
-        for (String l : quebrarLinha("'Ignore se preferir. O sistema não decide por você.'", larg)) {
-            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
-        }
-        for (String l : quebrarLinha("'Ainda.'", larg)) {
-            System.out.println(Cores.CINZA + "  " + l + Cores.RESET);
-        }
-        System.out.println();
-        System.out.println(Cores.CIANO + "[ ENTER para continuar ]" + Cores.RESET);
-        Entrada.lerLinha();
-    }
-
-    //  Coda dos finais (dívida técnica: deveria estar em Epilogos)
-    //  Cada método imprime o bloco de personagem que precede a
-    //  reflexão analítica da cena 662-666.
-
-    private void mostrarFinalPesquisa(Protagonista p, String corTexto) {
-        String t;
-        if (p.getRelacionamento(PersonagemSecundario.DANDARA) >= 3f) {
-            t = "Três meses depois. Você tá no laboratório, às 23h47.\n\n"
-                    + "O celular apita.\n\n"
-                    + "'Li o artigo.' — é a Dandara.\n\n"
-                    + "'Demorei duas semanas. Não entendi metade. A outra metade me deu raiva.'\n\n"
-                    + "Pausa.\n\n"
-                    + "'Quando você termina outro?'";
-        } else if (p.temFlag("caio_revelacao")) {
-            t = "Três meses depois. Você tá no laboratório, às 23h47.\n\n"
-                    + "O celular apita.\n\n"
-                    + "'Vi teu nome no artigo.' — é o Caio.\n\n"
-                    + "'Lembrei da frase que você me disse. Ainda tá valendo, né?'\n\n"
-                    + "Você manda 'tá'. Ele manda um áudio de três minutos.\n\n"
-                    + "Você ouve até o fim.";
-        } else if (p.temFlag("cap7_questionou_autoria")) {
-            t = "Três meses depois. O artigo foi publicado.\n\n"
-                    + "Você abre o PDF. Seu nome tá lá. Segundo autora.\n\n"
-                    + "Abre o e-mail do orientador.\n\n"
-                    + "'Eu subestimei você. Não é elogio. É reconhecimento.'\n\n"
-                    + "Você fecha o e-mail.";
-        } else {
-            t = "Três meses depois. Você tá no laboratório, às 23h47.\n\n"
-                    + "O celular não apita. O artigo não saiu ainda.\n\n"
-                    + "A bolsa cobre metade das passagens.\n\n"
-                    + "Você continua.";
-        }
-        imprimirBloco(t, corTexto);
-    }
-
-    private void mostrarFinalTecnologia(Protagonista p, String corTexto) {
-        String t;
-        if (p.temFlag("mentoria_caio") || p.temFlag("caio_revelacao")) {
-            t = "Primeiro dia. O ambiente de dev demora 4 horas pra liberar.\n\n"
-                    + "O celular apita.\n\n"
-                    + "'Cê tá no meu time, né?' — é o Caio.\n\n"
-                    + "'Não derruba o servidor.'\n\n"
-                    + "Você ri. Ele não tá brincando. Você também não.";
-        } else if (p.temFlag("cap5c_bia_ajudou") || p.temFlag("item_contato_bia")) {
-            t = "Primeiro dia. A empresa tem quinze pessoas.\n\n"
-                    + "Você abre o Slack. Tem mensagem da Bia:\n\n"
-                    + "'Eu avisei que o cliente ia pagar mais. Ninguém acreditou.'\n\n"
-                    + "Você não responde. Guarda o contato.";
-        } else {
-            t = "Primeiro dia. A senha do ambiente de dev demora 4 horas pra liberar.\n\n"
-                    + "Alguém do time te passa o caminho.\n\n"
-                    + "O primeiro commit é pequeno.\n\n"
-                    + "Não derruba nada. Ainda.";
-        }
-        imprimirBloco(t, corTexto);
-    }
-
-    private void mostrarFinalInternacional(Protagonista p, String corTexto) {
-        String t;
-        if (p.temFlag("malu_reconectou") || p.temFlag("conheceu_malu")) {
-            t = "A semana antes do embarque. Malas na cama.\n\n"
-                    + "O celular apita. É a Malu:\n\n"
-                    + "'Eu falei bom dia pra uma planta. Você agora fala bom dia em quantas línguas?'\n\n"
-                    + "Pausa.\n\n"
-                    + "'Quando você voltar, a gente se fala. Ou não. Só não some.'\n\n"
-                    + "Você promete. Você sabe que talvez não cumpra. Ela também.";
-        } else if (p.temFlag("item_copo_caio")) {
-            t = "A semana antes do embarque. O copo térmico amassado tá em cima da escrivaninha.\n\n"
-                    + "Você pensa em deixar. Pensa em levar.\n\n"
-                    + "Pensa em ligar pro Caio. Não liga.\n\n"
-                    + "Leva o copo. Fecha a mala.";
-        } else {
-            t = "A semana antes do embarque. Malas na cama.\n\n"
-                    + "O celular não apita.\n\n"
-                    + "Você abre a conversa com a mãe. Fecha. Abre. Fecha.\n\n"
-                    + "Vai dar notícia em pessoa.";
-        }
-        imprimirBloco(t, corTexto);
-    }
-
-    private void mostrarFinalIndependente(Protagonista p, String corTexto) {
-        String t;
-        if (p.temFlag("cap5c_bia_ajudou") || p.temFlag("item_contato_bia")) {
-            t = "O primeiro contrato grande. R$ 8 mil. Escopo claro.\n\n"
-                    + "Você lê a proposta da Bia: 50/50.\n\n"
-                    + "'Eu entro com o contato. Você entra com o código. Metade pra cada. Se der ruim, a gente divide.'\n\n"
-                    + "Você pensa em dizer não. Você diz sim.\n\n"
-                    + "Pela primeira vez, você não tá fazendo tudo sozinha.";
-        } else if (p.temFlag("cap7_indep_negociou")) {
-            t = "O primeiro contrato grande. R$ 8 mil. Cláusula revisada.\n\n"
-                    + "O cliente pergunta se você tem CNPJ. Você manda o número.\n\n"
-                    + "Ele responde 'ok'.\n\n"
-                    + "Você fecha o notebook. Já era hora.";
-        } else {
-            t = "O primeiro contrato pequeno. R$ 800. Cláusula confusa.\n\n"
-                    + "Você lê três vezes. Não entende. Não assina.\n\n"
-                    + "O cliente reclama. Você aprendeu.\n\n"
-                    + "Próximo.";
-        }
-        imprimirBloco(t, corTexto);
-    }
-
-    private void mostrarFinalTransicao(Protagonista p, String corTexto) {
-        String t;
-        if (p.temFlag("malu_reconectou") || p.temFlag("conheceu_malu")) {
-            t = "Primeiro dia da nova área. Você tá no corredor errado.\n\n"
-                    + "O celular apita. É a Malu:\n\n"
-                    + "'Eu também mudei. Saí de Engenharia. Tô em Design.'\n\n"
-                    + "Pausa.\n\n"
-                    + "'Todo mundo acha que foi fracasso. Eu acho que foi a coisa mais honesta que eu fiz.'\n\n"
-                    + "Você guarda a mensagem. Vai procurar a sala certa.";
-        } else if (p.temFlag("mentoria_caio")) {
-            t = "Primeiro dia da nova área. Você tá no corredor errado.\n\n"
-                    + "Lembra do Caio. Ele desistiu. Voltou. Desistiu de novo. Voltou de novo.\n\n"
-                    + "O copo térmico dele continua amassado. O seu caminho também.\n\n"
-                    + "Você segue.";
-        } else {
-            t = "Primeiro dia da nova área. Você tá no corredor errado.\n\n"
-                    + "Ninguém aqui sabe o que você fez antes. Ninguém vai perguntar.\n\n"
-                    + "Você não precisa contar tudo. Só o suficiente pra começar.";
-        }
-        imprimirBloco(t, corTexto);
     }
 
     private void imprimirParagrafo(String paragrafo, String corTexto) {

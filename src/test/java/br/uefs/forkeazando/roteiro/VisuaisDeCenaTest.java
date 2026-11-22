@@ -16,7 +16,7 @@ class VisuaisDeCenaTest {
 
     private static Map<Integer, Cena> cenasPorId() {
         Map<Integer, Cena> m = new HashMap<>();
-        for (Cena c: Roteiro.cenasDosCapitulos()) {
+        for (Cena c: Roteiro.todasAsCenas()) {
              m.put(c.getId(), c);
         }
         return m;
@@ -95,8 +95,7 @@ class VisuaisDeCenaTest {
     }
 
     @Test
-    void cenaSemEntradaFicaSoComTexto() {
-        assertTrue(VisuaisDeCena.paraCena(1).isEmpty());
+    void apenasCenaDesconhecidaPermaneceOpcional() {
         assertTrue(VisuaisDeCena.paraCena(-5).isEmpty());
     }
 
@@ -114,4 +113,14 @@ class VisuaisDeCenaTest {
             assertTrue(VisuaisDeCena.paraCena(id).isPresent(), "sem visual para a cena " + id);
         }
     }
+    @Test void todasAsCenasPossuemAmbienteExplicitoInclusiveSavesEApagao() {
+        for (Cena cena : Roteiro.todasAsCenas()) {
+            var visual = VisuaisDeCena.paraCena(cena.getId()).orElseThrow(
+                    () -> new AssertionError("Sem apresentação para " + cena.getId()));
+            assertNotNull(visual.ilustracao(), "Ambiente herdado é ambíguo em save: " + cena.getId());
+            assertTrue(Ilustracoes.animacao(visual.ilustracao()).isPresent());
+            assertTrue(Ilustracoes.ambiente(visual.ilustracao()).isPresent());
+        }
+    }
+
 }

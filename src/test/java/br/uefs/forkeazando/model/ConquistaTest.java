@@ -17,6 +17,7 @@ class ConquistaTest {
     void setUp() {
         protagonista = new Protagonista(
                 "Teste",
+                IdentidadeProtagonista.STHEFFANNY,
                 false,
                 false,
                 false,

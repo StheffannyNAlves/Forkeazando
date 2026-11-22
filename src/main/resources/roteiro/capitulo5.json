@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo5.json",
   "totalCenasArquivo": 3,
@@ -9,7 +9,7 @@
       "id": 451,
       "capitulo": "Capítulo 5 — A Greve",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "╔══════════════════════════════════════════╗\n║             CHEFE DO SISTEMA             ║\n║       — O CALENDÁRIO REMANEJADO —        ║\n╚══════════════════════════════════════════╝\n\nQuatro semanas depois, os professores entram em greve. Não é um departamento: é a universidade inteira.\n\nOs avisos chegam fragmentados, cada um por um canal:\n\n— As aulas estão suspensas.\n— O RU continua funcionando por um período reduzido, mas já há data para fechar.\n— A bolsa de monitoria fica suspensa.\n— O auxílio moradia continua em análise.\n— O calendário será remanejado para janeiro.\n\n(Janeiro.)\n\n(EU TÔ DE FÉRIAS EM JANEIRO.)\n\nA assembleia do DCE é segunda, 14h, no pátio. Ninguém consegue dizer por quanto tempo isso vai durar.",
+      "textoNarrativo": "CHEFE DO SISTEMA — O CALENDÁRIO REMANEJADO\n\nA greve começa. No grupo, chegam mensagens de apoio, irritação, boatos sobre o RU e uma foto de uma aula que supostamente foi cancelada — a imagem é do semestre passado.\n\nDandara te liga. Ela não sabe se o próximo pagamento do auxílio será mantido; o aluguel vence mesmo assim. Quer ir à assembleia e também precisa confirmar o funcionamento do restaurante universitário.\n\nNoa está no laboratório tentando guardar os equipamentos antes de a sala fechar. Malu pergunta se a oficina da escola vai acontecer.\n\nO calendário para. As obrigações e as contas seguem em movimento.",
       "escolhas": [
         {
           "textoAlternativa": "Ir na assembleia.",
@@ -40,10 +40,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Na assembleia, Dandara pede uma data para o próximo comunicado. Alguém anota o pedido no quadro; o aluguel continua vencendo."
         },
         {
-          "textoAlternativa": "Continuar dando monitoria por fora.",
+          "textoAlternativa": "Continuar ajudando estudantes com dúvidas durante a greve.",
           "cenaDestinoId": 455,
           "flagsConcedidas": [
             "cap5b_furou_greve"
@@ -73,7 +74,8 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": -2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você responde às dúvidas de estudantes por fora. Meira pergunta se isso foi combinado como atividade; você percebe que não havia definido limite."
         },
         {
           "textoAlternativa": "Ler os artigos do grupo com calma. Greve também é tempo.",
@@ -106,7 +108,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "logica": 1
-          }
+          },
+          "textoConsequencia": "Você lê um artigo e marca uma hipótese que o grupo ainda pode discutir. O laboratório está fechado; o prazo não está resolvido."
         },
         {
           "textoAlternativa": "Aproveitar o calendário parado pra pegar mais um freela.",
@@ -137,7 +140,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Chega uma proposta de freela. Você pede escopo antes de aceitar; a greve não transformou janeiro em tempo infinito."
         },
         {
           "textoAlternativa": "Ir pra casa. Esperar acabar.",
@@ -170,7 +174,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "sanidade": 5
-          }
+          },
+          "textoConsequencia": "Você vai para casa e fecha o grupo por uma tarde. Ao abrir de novo, encontra duas perguntas ainda sem resposta oficial."
         },
         {
           "textoAlternativa": "Enfrentar tudo. Café e ódio.",
@@ -201,7 +206,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": -5
-          }
+          },
+          "textoConsequencia": "Você abre todas as mensagens e não termina nenhuma. À noite, escolhe uma pergunta que pode ser encaminhada amanhã."
         },
         {
           "textoAlternativa": "Você encara a greve com calma. Já passou por coisa pior.",
@@ -232,7 +238,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você salva o calendário oficial e espera a ata da assembleia. A calma não paga a conta de Dandara, mas evita espalhar o boato da foto antiga."
         }
       ]
     },
@@ -241,14 +248,15 @@
       "id": 455,
       "capitulo": "Capítulo 5 — A Greve",
       "personagemFalando": "Dandara Oliveira",
-      "textoNarrativo": "Três semanas de greve. Você encontra Dandara na fila do RU, uma das últimas antes do fechamento anunciado. Ela segura uma marmita com as duas mãos.\n\n'Já são três semanas. Minha bolsa tá suspensa.'\n\n'Minha mãe mandou comida de Feira de Santana. Porque, quando o RU fechar, eu não tenho oito reais pra gastar na cantina todo dia.'\n\nAbre a marmita. Arroz com ovo. O cheiro se mistura ao barulho da fila, que avança devagar.\n\nDandara olha a comida, depois olha você. Não pede nada. Isso torna a situação mais difícil, não menos.",
+      "textoNarrativo": "Três semanas de greve. Dandara espera na fila do RU com uma marmita e o edital de assistência aberto no celular.\n\n— Apoio a paralisação. Também preciso saber como pago o aluguel se a bolsa atrasar.\n\nMalu chega com uma mensagem da escola: 'As crianças perguntaram se vocês vêm amanhã'. A oficina foi adiada; ninguém avisou as famílias. Dandara tem uma assembleia em vinte minutos, Malu tem só o número da direção e você tem a lista de contatos.\n\n— Não vou escolher entre defender a greve e pedir uma resposta sobre o auxílio — diz Dandara.\n\nHá duas mensagens a enviar antes que o RU feche. Uma posição política não escreverá nenhuma delas por vocês.",
       "escolhas": [
         {
-          "textoAlternativa": "Oferecer pra dividir.",
+          "textoAlternativa": "Dividir as mensagens: eu aviso a escola, Dandara acompanha o auxílio.",
           "cenaDestinoId": 460,
           "flagsConcedidas": [
             "cap5b_dividiu_comida",
-            "hab_sobreviveu_greve"
+            "hab_sobreviveu_greve",
+            "cap5b_assumiu_aviso_escola"
           ],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -278,13 +286,15 @@
           "atributosAlterados": {
             "confianca": 2,
             "vidaSocial": 2
-          }
+          },
+          "textoConsequencia": "Malu recebe o texto para a escola; Dandara leva a pergunta do auxílio à assembleia. Nenhuma das duas mensagens promete o que ainda não foi confirmado."
         },
         {
-          "textoAlternativa": "Dizer que a greve é justa.",
+          "textoAlternativa": "Defender a greve e pedir que alguém assuma os avisos.",
           "cenaDestinoId": 460,
           "flagsConcedidas": [
-            "hab_sobreviveu_greve"
+            "hab_sobreviveu_greve",
+            "cap5b_delegou_aviso_sem_acordo"
           ],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -313,13 +323,15 @@
           },
           "atributosAlterados": {
             "vidaSocial": -1
-          }
+          },
+          "textoConsequencia": "Você sustenta o direito à greve e pede outra pessoa para avisar a escola. Dandara pergunta quem ficou responsável pelo auxílio; o nome demora a aparecer."
         },
         {
-          "textoAlternativa": "Ficar quieta.",
+          "textoAlternativa": "Ouvir, sem oferecer ajuda hoje.",
           "cenaDestinoId": 460,
           "flagsConcedidas": [
-            "hab_sobreviveu_greve"
+            "hab_sobreviveu_greve",
+            "cap5b_comunicou_limite"
           ],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -346,14 +358,16 @@
           "impactoRelacionamento": {
             "DANDARA": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você escuta Dandara até o fim. Malu assume o aviso à escola; você não consegue oferecer trabalho hoje e diz isso claramente."
         },
         {
-          "textoAlternativa": "Você já está passando metade do pão antes que ela termine a frase.",
+          "textoAlternativa": "Dividir o pão e perguntar qual mensagem precisa sair primeiro.",
           "cenaDestinoId": 460,
           "flagsConcedidas": [
             "cap5b_dividiu_comida",
-            "hab_sobreviveu_greve"
+            "hab_sobreviveu_greve",
+            "cap5b_priorizou_urgencias"
           ],
           "flagRequerida": null,
           "scoreMinimo": 0,
@@ -383,7 +397,8 @@
           "atributosAlterados": {
             "confianca": 2,
             "vidaSocial": 2
-          }
+          },
+          "textoConsequencia": "Você divide o pão com Dandara. Malu lê em voz alta a primeira mensagem, e o grupo escolhe a pergunta que precisa de resposta oficial."
         }
       ]
     },
@@ -392,10 +407,10 @@
       "id": 460,
       "capitulo": "Capítulo 5 — A Greve",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "A greve termina sessenta e cinco dias depois de começar. O calendário oficial é publicado de novo, com aulas e avaliações remanejadas para janeiro.\n\nVocê abre o calendário, fecha, abre outra vez. As datas mudaram. Os compromissos não sumiram: só foram empurrados pra outro mês.\n\nVocê não sabe se ganhou ou perdeu. Sabe que precisou reorganizar a vida em torno de uma decisão que nunca esteve nas suas mãos.",
+      "textoNarrativo": "Sessenta e cinco dias depois, sai o calendário reorganizado. Janeiro ganhou prova, reposição e reunião. O mês não ganhou dias extras.\n\nA oferta de disciplinas ainda precisa respeitar os pré-requisitos. O laboratório reabre, a monitoria precisa ser retomada e há contratos pendentes no grupo de trabalhos independentes.\n\nVocê abre três conversas antigas. Em cada uma há uma pendência diferente — método, horário, dinheiro. Não dá para voltar ao ponto em que parou; dá para escolher por onde recomeçar.",
       "escolhas": [
         {
-          "textoAlternativa": "Ver o que aconteceu com o cliente.",
+          "textoAlternativa": "Conferir o desfecho do contrato pendente.",
           "cenaDestinoId": 506,
           "flagsConcedidas": [
             "cap5_concluido"
@@ -423,10 +438,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Ver o que aconteceu com o cliente.",
+          "textoAlternativa": "Rever documentos e mensagens do cliente antes de cobrar novamente.",
           "cenaDestinoId": 505,
           "flagsConcedidas": [
             "cap5_concluido"
@@ -454,10 +470,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Voltar pro laboratório. O artigo continua.",
+          "textoAlternativa": "Retomar o laboratório e verificar o projeto de pesquisa.",
           "cenaDestinoId": 410,
           "flagsConcedidas": [
             "cap5_concluido"
@@ -485,10 +502,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         },
         {
-          "textoAlternativa": "Procurar o Meira. A monitoria voltou?",
+          "textoAlternativa": "Conversar com Meira sobre o retorno da monitoria.",
           "cenaDestinoId": 470,
           "flagsConcedidas": [
             "cap5b_concluido"
@@ -516,7 +534,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": null
         }
       ]
     }

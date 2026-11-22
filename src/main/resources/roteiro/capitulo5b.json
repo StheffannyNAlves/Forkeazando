@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "arquivoOrigem": "conversão inicial do roteiro Java ativo; JSON é a fonte de execução",
   "arquivo": "capitulo5b.json",
   "totalCenasArquivo": 5,
@@ -9,7 +9,7 @@
       "id": 450,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Primeiro dia de monitoria. Sala 112.\n\nDoze alunos. Dois já abriram a lista; os outros ainda tentam descobrir qual parte da aula precisam rever. Você escreve no quadro a relação entre tensão, resistência e corrente.\n\nUm aluno usa a resistência em quilohms como se fosse ohm. O resultado sai mil vezes maior. Você percebe que apontar o erro não basta: precisa fazer a pessoa enxergar de onde veio.\n\nOutro pergunta se o LED pode ser ligado direto na fonte. Você respira e volta à ideia de limitar a corrente.\n\nNo fundo, um garoto de moletom, Téo, levanta a mão sem muita esperança:\n\n'Mas isso vai cair na prova?'\n\n(Eu não sou o professor.)\n\n(Mas preciso conseguir explicar por que isso importa.)",
+      "textoNarrativo": "Primeiro dia de monitoria. Sala 112. Doze alunos, uma fonte e um LED apagado.\n\nVocê desenha a Lei de Ohm no quadro. Téo copia a fórmula e pergunta qual resistor deve usar. Em vez de responder, você pergunta o que ele espera medir.\n\nEle olha para o circuito. Não sabe ainda. Vocês calculam juntos e escolhem um valor seguro.\n\nNo fim, uma aluna espera os outros saírem. {{NOME_OUTRO_PROTAGONISTA}} acompanhou a aula do fundo.\n\n{{OUTRO_CENA}}\n\n— Eu achava que não entendia porque era burra.\n\nVocê olha para a bancada cheia de fios.\n\n— O circuito não acendeu. Isso diz algo sobre a ligação, não sobre você.\n\nA frase sai antes que você perceba. Ela parece surpresa por ter sido ouvida.",
       "escolhas": [
         {
           "textoAlternativa": "Explicar do começo, devagar.",
@@ -42,7 +42,8 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você redesenha o circuito em etapas. A aluna repete a primeira medida sem você segurar a ponta do multímetro."
         },
         {
           "textoAlternativa": "Perguntar quem já sabe o básico.",
@@ -73,10 +74,11 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "carisma": 2
-          }
+          },
+          "textoConsequencia": "Você pergunta o que a turma já sabe. Téo admite que decorou a fórmula, mas ainda não sabe onde colocar as pontas de prova."
         },
         {
-          "textoAlternativa": "Preparar um exercício em etapas e pedir que expliquem cada passo.",
+          "textoAlternativa": "Montar um exercício em etapas e pedir que expliquem cada medida.",
           "cenaDestinoId": 452,
           "flagsConcedidas": [
             "teo_ouviu",
@@ -105,7 +107,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você divide o teste em três medidas. A aluna explica a segunda a Téo antes de você voltar ao quadro."
         }
       ]
     },
@@ -114,10 +117,10 @@
       "id": 452,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Bia está na porta quando você sai.\n\n'Você escolheu DTEC.'\n\nOlha o quadro, ainda cheio de fórmula, pela janela.\n\n'Boa sorte com a greve.'\n\nFala como quem já sabe de alguma coisa. Ela sempre fala assim: como se a conversa tivesse começado antes de você chegar.",
+      "textoNarrativo": "Bia espera do lado de fora com o fichário apertado contra o peito.\n\n— Monitoria? Tu gosta mesmo de ensinar ou precisa da bolsa?\n\nA pergunta chega logo depois da aluna que achou que o LED apagado provava que ela era incapaz. Você gosta de explicar. Também fez a conta da passagem antes de aceitar.\n\nBia aponta para um aviso novo de assembleia.\n\n— Minha bolsa pode ser suspensa se a greve começar. A tua também. Quer saber o que descobri?\n\nEla parece estar testando se você quer ouvir a notícia ou se vai fingir que não está preocupado.",
       "escolhas": [
         {
-          "textoAlternativa": "Perguntar o que ela sabe.",
+          "textoAlternativa": "Perguntar a Bia o que ela sabe sobre a possível suspensão.",
           "cenaDestinoId": 453,
           "flagsConcedidas": [
             "bia_sabe_greve"
@@ -147,10 +150,11 @@
           "impactoRelacionamento": {
             "BIA": 2.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Bia mostra a mensagem recebida sobre bolsas: sem data de pagamento, só 'aguardem'. Vocês decidem levar a pergunta à assembleia."
         },
         {
-          "textoAlternativa": "Dizer que não estou preocupada.",
+          "textoAlternativa": "Desconversar; dizer que a bolsa não me preocupa.",
           "cenaDestinoId": 453,
           "flagsConcedidas": [],
           "flagRequerida": null,
@@ -178,7 +182,8 @@
           "impactoRelacionamento": {
             "BIA": -1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "— Não me preocupa — você diz. Bia olha para a conta de passagem na sua mão e não insiste; o aviso continua no mural."
         }
       ]
     },
@@ -187,7 +192,7 @@
       "id": 453,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Beatriz Menezes",
-      "textoNarrativo": "'Greve de professor é bonita no jornal.'\n\nGuarda o celular no bolso.\n\n'Na prática, a aula para, o RU pode fechar, a bolsa fica suspensa. E ninguém coloca isso em destaque no cartaz da assembleia.'\n\nNão espera resposta. Vai embora, deixando o aviso no ar.",
+      "textoNarrativo": "Bia te encontra depois da assembleia.\n\n— A greve suspendeu minha bolsa e algumas aulas. Isso não faz a reivindicação desaparecer — diz. — Mas alguém precisa explicar como ficam os estudantes que dependem do RU e da assistência.\n\nVocê pergunta o que ela pediu na reunião.\n\n— Um canal com prazo de resposta, não só 'vamos avaliar'. E aviso claro para quem perdeu atendimento.\n\nEla mostra o rascunho da solicitação. Há espaço para seu nome como apoio, mas a mensagem precisa ser enviada hoje.",
       "escolhas": [
         {
           "textoAlternativa": "Anotar o aviso.",
@@ -218,7 +223,8 @@
           "impactoRelacionamento": {},
           "atributosAlterados": {
             "confianca": 1
-          }
+          },
+          "textoConsequencia": "Você fotografa o aviso e anota o horário do atendimento. Bia envia a solicitação com seu nome entre as pessoas que cobram resposta."
         },
         {
           "textoAlternativa": "Ignorar.",
@@ -247,7 +253,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você não põe o nome. Bia envia a solicitação assim mesmo; quando o calendário mudar, terá de procurar o protocolo por conta própria."
         }
       ]
     },
@@ -256,7 +263,7 @@
       "id": 470,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Prof. Rafael Meira",
-      "textoNarrativo": "Meira te encontra no corredor do Módulo 5.\n\n'Todo mundo voltando. O calendário foi remanejado pra janeiro.'\n\n'A monitoria volta no próximo semestre. Se você ainda quiser.'\n\n(Eu ainda quero?)\n\n(Não sei. Mas alguma coisa em mim ainda quer.)",
+      "textoNarrativo": "No retorno das atividades, Meira te encontra no corredor com a lista de alunos que perderam aulas práticas.\n\n— Quer continuar na monitoria? O calendário mudou e posso ajustar os horários.\n\nVocê pergunta quais turmas precisam de atendimento e quantas horas estão previstas. Ele responde sem pressionar.\n\n— Dois horários fixos. Se aparecer algo extra, a gente combina; não vira obrigação automática.\n\nVocê abre a agenda antes de responder. Dessa vez, o compromisso tem tamanho e horário.",
       "escolhas": [
         {
           "textoAlternativa": "Ainda quero.",
@@ -289,7 +296,8 @@
           "impactoRelacionamento": {
             "PROFESSOR_DTEC": 1.0
           },
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você confirma os dois horários na agenda. Meira entrega a lista de práticas perdidas; Téo está entre os primeiros nomes."
         },
         {
           "textoAlternativa": "Preciso de uns dias. Mas eu volto.",
@@ -320,7 +328,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Meira segura a vaga por alguns dias e manda as condições por escrito. Na semana seguinte, você volta para um atendimento com Téo."
         }
       ]
     },
@@ -329,10 +338,10 @@
       "id": 471,
       "capitulo": "Capítulo 5B — DTEC",
       "personagemFalando": "Narrador",
-      "textoNarrativo": "Início do semestre seguinte. A sala 112 está lotada de novo, e o ar-condicionado continua quebrado.\n\nTéo, o do moletom, levanta a mão. O circuito dele não funciona. Em cima da protoboard, um fio amarelo sai pela beirada do furo, solto, como se tivesse desistido.\n\nVocê conhece esse fio. Conhece esse tipo de problema. Sabe onde está o erro antes de ele terminar de explicar.\n\nMeira, na porta, cruza os braços e não diz nada.",
+      "textoNarrativo": "Téo chega com uma montagem apressada. O LED não acende. Você reconhece uma ligação suspeita antes de olhar o multímetro.\n\nEle estende o circuito, esperando que você o conserte. A monitoria está terminando e o relatório dele vence logo.\n\nVocê pode mostrar a primeira medição, pedir que Téo explique o que esperava encontrar ou chamar Meira para rever o procedimento com vocês.\n\nTéo segura o multímetro. A decisão de aprender a medir ainda cabe a ele; a de como orientar cabe a você.",
       "escolhas": [
         {
-          "textoAlternativa": "Resolver pra ele. Você sabe onde está o erro.",
+          "textoAlternativa": "Resolver a ligação para Téo e explicar rapidamente; o prazo está acabando.",
           "cenaDestinoId": 999,
           "flagsConcedidas": [
             "teo_nao_aprendeu",
@@ -362,10 +371,11 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Você ajusta a ligação e o LED acende. Téo copia o desenho, mas hesita quando Meira pergunta qual tensão esperava medir."
         },
         {
-          "textoAlternativa": "Devolver perguntas: o que você já mediu? O que você esperava medir?",
+          "textoAlternativa": "Devolver perguntas: o que você mediu e o que esperava medir?",
           "cenaDestinoId": 999,
           "flagsConcedidas": [
             "teo_aprendeu",
@@ -399,7 +409,8 @@
           },
           "atributosAlterados": {
             "confianca": 2
-          }
+          },
+          "textoConsequencia": "Você devolve o multímetro a Téo. Ele encontra a ligação errada e anota a medida; no relatório, a explicação sai com palavras dele."
         },
         {
           "textoAlternativa": "Chamar o Meira. Você ainda não tem certeza de que o ensina bem.",
@@ -432,7 +443,8 @@
           "relacionamentoMaximo": {},
           "interesseAlvo": null,
           "impactoRelacionamento": {},
-          "atributosAlterados": {}
+          "atributosAlterados": {},
+          "textoConsequencia": "Meira vem à bancada. Você diz o que já percebeu, Téo mostra o que ainda não mediu e os três combinam outro atendimento."
         }
       ]
     }

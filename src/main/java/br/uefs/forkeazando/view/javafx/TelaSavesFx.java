@@ -35,7 +35,10 @@ final class TelaSavesFx {
             if (slot.status() == ResumoSlot.Status.OCUPADO) {
                 String data = slot.data() == null ? "Data indisponível"
                         : slot.data().format(DateTimeFormatter.ofPattern("dd/MM/yyyy · HH:mm"));
-                bloco.getChildren().add(rotulo(slot.nome() + " | Capítulo " + slot.capitulo() + " | " + data));
+                String resumoProgressao = "Score: " + slot.score()
+                        + (slot.rank() == null || slot.rank().isBlank() ? "" : " · " + slot.rank());
+                bloco.getChildren().add(rotulo(slot.nome() + " | Capítulo " + slot.capitulo()
+                        + " | " + resumoProgressao + " | " + data));
             }
             HBox acoes = new HBox(12);
             if (sessao.possuiPartida()) {

@@ -93,6 +93,36 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private boolean fechandoModal;
     private boolean suspenso;
     private Label indicadoresHud;
+    private ResumoAtributos ultimoResumoAtributos;
+
+    private record ResumoAtributos(
+            Estado estado, int energia, int score, int participacao,
+            int confianca, int vidaSocial, int carisma, int logica, int sanidade) {
+        static ResumoAtributos de(Estado estado) {
+            Protagonista p = estado.getProtagonista();
+            return new ResumoAtributos(estado, p.getEnergia(), p.getScore(), p.getParticipacao(),
+                    p.getConfianca(), p.getVidaSocial(), p.getCarisma(), p.getLogica(), p.getSanidade());
+        }
+
+        List<String> variacoesDesde(ResumoAtributos anterior) {
+            List<String> mudancas = new ArrayList<>();
+            registrarDelta(mudancas, "Energia", energia - anterior.energia);
+            registrarDelta(mudancas, "Score", score - anterior.score);
+            registrarDelta(mudancas, "Participação", participacao - anterior.participacao);
+            registrarDelta(mudancas, "Confiança", confianca - anterior.confianca);
+            registrarDelta(mudancas, "Vida social", vidaSocial - anterior.vidaSocial);
+            registrarDelta(mudancas, "Carisma", carisma - anterior.carisma);
+            registrarDelta(mudancas, "Lógica", logica - anterior.logica);
+            registrarDelta(mudancas, "Sanidade", sanidade - anterior.sanidade);
+            return mudancas;
+        }
+
+        private static void registrarDelta(List<String> mudancas, String nome, int delta) {
+            if (delta != 0) {
+                mudancas.add(nome + " " + (delta > 0 ? "+" : "") + delta);
+            }
+        }
+    }
 
     @FXML
     private void  initialize() {
@@ -423,6 +453,15 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 boolean desbloqueada = progresso.possui(conquista);
                 painel.getChildren().add(rotulo(desbloqueada ? "★ " + conquista.getTitulo() + " — " + conquista.getDescricao() : "🔒 Conquista não desbloqueada"));
             }
+            painel.getChildren().add(rotulo("COLECIONÁVEIS DESCOBERTOS: " + progresso.colecionaveisColetados().size() + "/" + Colecionavel.values().length));
+            for (Colecionavel.Tipo tipo : Colecionavel.Tipo.values()) {
+                painel.getChildren().add(rotulo(tipo == Colecionavel.Tipo.HABILIDADE ? "HABILIDADES" : "ITENS"));
+                for (Colecionavel item : Colecionavel.values()) {
+                    if (item.getTipo() != tipo) continue;
+                    boolean coletado = progresso.coletou(item);
+                    painel.getChildren().add(rotulo((coletado ? "✓ " : "🔒 ") + (coletado ? item.getNome() : "???")));
+                }
+            }
 
             Button voltar = botaoAcao("VOLTAR AO MENU");
             voltar.setOnAction(e -> voltarAoMenu());
@@ -690,6 +729,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         feedbackEscolhaPendente = null;
         ilustracaoAtual = null;
         perfilIlustracaoAtual = null;
+        ultimoResumoAtributos = null;
         artes.resetar();
     }
 
@@ -789,6 +829,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             mostrarNotificacao("SEU CAMINHO", mensagem);
             return;
         }
+        if (mensagem != null && mensagem.startsWith("Novo final desbloqueado:")) {
+            mostrarNotificacao("NOVO FINAL", mensagem);
+            return;
+        }
         // Falhas de salvamento, problemas de rota e mensagens inesperadas não desaparecem sozinhas
         mostrarModal("MENSAGEM", mensagem);
     }
@@ -876,7 +920,20 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     @Override
     public void atualizar(Estado estado) {
-        if (estado == null || indicadoresHud == null)
+        if (estado == null || estado.getProtagonista() == null) {
+            ultimoResumoAtributos = null;
+            return;
+        }
+        ResumoAtributos atual = ResumoAtributos.de(estado);
+        if (ultimoResumoAtributos != null && ultimoResumoAtributos.estado() == estado && raiz != null) {
+            List<String> variacoes = atual.variacoesDesde(ultimoResumoAtributos);
+            if (!variacoes.isEmpty()) {
+                mostrarNotificacao("ATRIBUTOS", String.join("  ·  ", variacoes));
+            }
+        }
+        ultimoResumoAtributos = atual;
+
+        if (indicadoresHud == null)
             return;
         Protagonista p = estado.getProtagonista();
         String resumo = "ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima()

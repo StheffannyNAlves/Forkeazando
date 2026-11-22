@@ -26,7 +26,7 @@ public final class StatusNarrativo {
             Map.entry("wie_interesse", "Explorou a comunidade de mulheres na engenharia."),
             Map.entry("cap2_so_assistiu", "Observou uma oportunidade sem se inscrever."),
             Map.entry("cap3_colou_de_fato", "Recorreu à cola durante uma avaliação."),
-            Map.entry("hab_palavra_honesta", "Escolheu ser honesta diante de uma situação difícil."),
+            Map.entry("hab_palavra_honesta", "Escolheu agir com honestidade diante de uma situação difícil."),
             Map.entry("cap4_leu_editais", "Consultou os editais antes de escolher uma trilha."),
             Map.entry("cap4_perguntou_alternativa", "Pediu esclarecimentos antes de definir a trilha."),
             Map.entry("cap4_procurou_caio", "Procurou Caio para discutir possibilidades."),

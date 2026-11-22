@@ -2,7 +2,6 @@ package br.uefs.forkeazando.view.javafx;
 import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
 import br.uefs.forkeazando.audio.GerenciadorAudio;
 import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
-import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.model.*;
@@ -504,8 +503,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     private void abrirMeuProgresso() {
         try {
-            GerenciadorProgresso gerenciador = new GerenciadorProgresso(GerenciadorSlots.PASTA_PADRAO);
-            Progresso progresso = gerenciador.carregar();
+            Progresso progresso = sessao.consultarProgresso();
             VBox painel = novoPainel("MEU PROGRESSO", "As jornadas e conquistas que você acumulou.");
             List<Final> finaisAtuais = Arrays.stream(Final.values())
                     .filter(Final::isFinalDeCarreira)
@@ -867,8 +865,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         painel.getChildren().add(rotulo("★ CONQUISTAS"));
 
         try {
-            GerenciadorProgresso gerenciador = new GerenciadorProgresso(GerenciadorSlots.PASTA_PADRAO);
-            Progresso progresso = gerenciador.carregar();
+            Progresso progresso = sessao.consultarProgresso();
             for (Conquista conquista : Conquista.values()) {
                 boolean desbloqueada = progresso.possui(conquista);
                 painel.getChildren().add(rotulo(desbloqueada

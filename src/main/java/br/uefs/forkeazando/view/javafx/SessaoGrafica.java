@@ -157,6 +157,19 @@ public final class SessaoGrafica {
         return estado;
     }
 
+    /**
+     * Consulta o progresso global persistido do jogador.
+     * Centraliza o acesso aos dados fora do controlador JavaFX.
+     */
+    public Progresso consultarProgresso()
+            throws CarregamentoException, DadosInvalidosException {
+
+        GerenciadorProgresso gerenciador =
+                new GerenciadorProgresso(pastaProgresso);
+
+        return gerenciador.carregar();
+    }
+
     public Cena cenaAtual() {
         int id = estado().getCenaAtualId();
         Cena cena = cenas.get(id);

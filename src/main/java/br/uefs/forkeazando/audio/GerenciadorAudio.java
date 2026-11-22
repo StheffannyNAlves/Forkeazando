@@ -15,7 +15,7 @@ public class GerenciadorAudio {
     private FloatControl gainControl;
     private volatile int volume = 100;
     private boolean encerrado;
-    // Clip e seus controles são acessados somente por esta fila; carregar o WAV não bloqueia o JavaFX.
+    // Clip e seus controles são acessados somente por esta fila; carregar o WAV não bloqueia o JavaFX
     private final ExecutorService tarefas = Executors.newSingleThreadExecutor(r -> {
         Thread t = new Thread(r, "forkeazando-audio");
         t.setDaemon(true);
@@ -52,8 +52,7 @@ public class GerenciadorAudio {
             gainControl.setValue(gainControl.getMinimum());
         } else {
             float dB = 20f * (float) Math.log10(volume / 100.0f);
-            gainControl.setValue(Math.max(gainControl.getMinimum(),
-                    Math.min(gainControl.getMaximum(), dB)));
+            gainControl.setValue(Math.max(gainControl.getMinimum(), Math.min(gainControl.getMaximum(), dB)));
         }
     }
 

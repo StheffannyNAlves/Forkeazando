@@ -1,7 +1,6 @@
 package br.uefs.forkeazando.view.javafx;
 import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
 import br.uefs.forkeazando.audio.GerenciadorAudio;
-import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.*;
 import br.uefs.forkeazando.model.*;
@@ -38,6 +37,9 @@ import br.uefs.forkeazando.adapter.CarregamentoAdapter;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.view.ApresentacaoCena;
 import br.uefs.forkeazando.controller.CenasController;
+import br.uefs.forkeazando.controller.DadosProtagonista;
+import br.uefs.forkeazando.controller.SessaoGrafica;
+import static br.uefs.forkeazando.view.javafx.ComponentesFx.*;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
@@ -71,6 +73,13 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private final List<Button> opcoes = new ArrayList<>();
     private final GerenciamentoPartidas acessoPartidas = new CarregamentoAdapter(GerenciadorSlots.PASTA_PADRAO);
     private final SessaoGrafica sessao = new SessaoGrafica(acessoPartidas);
+    private final Navegacao navegacao = new Navegacao() {
+        @Override public void mostrarTela(VBox painel) { ControllerInterface.this.mostrarTela(painel); }
+        @Override public void voltarAoMenu() { ControllerInterface.this.voltarAoMenu(); }
+        @Override public void mostrarModal(String titulo, String conteudo) { ControllerInterface.this.mostrarModal(titulo, conteudo); }
+    };
+    private final TelaSavesFx telaSaves = new TelaSavesFx(sessao, navegacao);
+    private final TelaCriacaoFx telaCriacao = new TelaCriacaoFx();
     private int selecionado;
     private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
     private AvisosFx avisosDiscretos;
@@ -87,7 +96,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private void  initialize() {
         sessao.adicionarObservador(this);
         try {
-            configuracoes = new Configuracoes(ConfiguracoesAdmin.get());
+            configuracoes = sessao.carregarConfiguracoes();
         } catch (CarregamentoException | DadosInvalidosException ex) {
             Platform.runLater(() -> mostrarModal("ERRO NAS CONFIGURAÇÕES", ex.getMessage()));
         }
@@ -189,8 +198,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             mostrarTela(painel);
 
         } catch (IOException e) {
-            e.printStackTrace();
-
             mostrarModal("ERRO NA INTERFACE", "Não foi possível abrir a tela de salvamento: " + e.getMessage());
         }
     }
@@ -240,21 +247,11 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 if (sessao.possuiPartida()) confirmarNovaPartida();
                 else abrirCriacao();
             }
-            case "continuar" -> {
-                if (sessao.possuiPartida()) abrirCena();
-                else mostrarModal("CONTINUAR", "Não há partida em memória. Escolha NOVA PARTIDA para começar.");
-            }
+            case "continuar" -> continuar();
             case "instrucoes" -> mostrarModal("GUIA DE SOBREVIVÊNCIA", "Suas escolhas alteram energia, score, participação e relacionamentos.\n\n" + "No menu: setas e ENTER. Durante uma cena: clique numa decisão.\n" + "ESC volta ao menu sem apagar a partida em memória.");
             case "carregar" -> abrirTelaSalvamento();
-            case "gerenciarSaves" -> abrirTelaSalvar();
+            case "gerenciarSaves" -> telaSaves.abrir();
             case "estilo" -> abrirOpcoesEstilo();
-            case "salvar" -> {
-                if (!sessao.possuiPartida()) {
-                    mostrarModal("SALVAR PARTIDA", "Nenhuma partida em andamento.");
-                } else {
-                    abrirTelaSalvar();
-                }
-            }
             case "progresso" -> abrirMeuProgresso();
             case "creditos" -> mostrarModal("CRÉDITOS", "FORKEAZANDO · 2026\n\nStheffanny Alves\n" + "Universidade Estadual do Fork Perdido (UEFP)");
             case "sair" -> solicitarSaida();
@@ -268,7 +265,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     private void salvarConfiguracoes(Configuracoes novas) {
         try {
-            ConfiguracoesAdmin.salvarConfigPersonalizadas(novas);
+            sessao.salvarConfiguracoes(novas);
             configuracoes = new Configuracoes(novas);
             aplicarDicas();
             if (audio != null) {
@@ -299,122 +296,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         );
     }
 
-    private void abrirTelaSalvar() {
-        VBox painel = novoPainel("GERENCIAR SAVES", "Escolha um slot para salvar ou excluir uma partida.");
-        for (ResumoSlot slot : acessoPartidas.listarSlots()) {
-            VBox bloco = new VBox(8);
-
-            bloco.getChildren().add(rotulo("SLOT " + slot.numero() + " — " + slot.status()));
-            if (slot.status() == ResumoSlot.Status.OCUPADO) {
-                String data = slot.data() == null ? "Data indisponível"
-                        : slot.data().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy · HH:mm"));
-                bloco.getChildren().add(rotulo(slot.nome() + " | Capítulo " + slot.capitulo() + " | " + data));
-            }
-            HBox acoes = new HBox(12);
-            if (sessao.possuiPartida()) {
-                Button salvar = botaoAcao("SALVAR");
-                salvar.setOnAction(e -> {
-                    if (slot.status() == ResumoSlot.Status.VAZIO) {
-                        salvarNoSlot(slot.numero());
-                    } else {
-                        confirmarSobrescrita(slot.numero());
-                    }
-                });
-                acoes.getChildren().add(salvar);
-            }
-            if (slot.status() != ResumoSlot.Status.VAZIO) {
-                Button excluir = botaoAcao("EXCLUIR");
-                excluir.setOnAction(e -> confirmarExclusao(slot.numero()));
-                acoes.getChildren().add(excluir);
-            }
-            bloco.getChildren().add(acoes);
-            painel.getChildren().add(bloco);
-        }
-        if (acessoPartidas.existeAutosave()) {
-            VBox blocoAutosave = new VBox(8);
-
-            blocoAutosave.getChildren().add(rotulo("SALVAMENTO AUTOMÁTICO"));
-            Button excluirAuto = botaoAcao("EXCLUIR AUTOSAVE");
-
-            excluirAuto.setOnAction(e -> confirmarExclusaoAutosave());
-            blocoAutosave.getChildren().add(excluirAuto);
-            painel.getChildren().add(blocoAutosave);
-        }
-        Button voltar = botaoAcao("VOLTAR AO MENU");
-        voltar.setOnAction(e -> voltarAoMenu());
-
-        painel.getChildren().add(voltar);
-        mostrarTela(painel);
-    }
-
-    private void salvarNoSlot(int numeroSlot) {
-        try {
-            sessao.salvarEmSlot(numeroSlot);
-            abrirTelaSalvar();
-            mostrarModal("PARTIDA SALVA",
-                    "Progresso salvo no slot " + numeroSlot + ".");
-        } catch (SaveException ex) {
-            mostrarModal("ERRO AO SALVAR", ex.getMessage());
-        }
-    }
-    private void confirmarSobrescrita(int numeroSlot) {
-        VBox painel = novoPainel("SOBRESCREVER PARTIDA?", "Os dados anteriores do slot " + numeroSlot + " serão substituídos.");
-        Button confirmar = botaoAcao("SIM, SOBRESCREVER");
-        confirmar.setOnAction(e -> salvarNoSlot(numeroSlot));
-        Button cancelar = botaoAcao("CANCELAR");
-        cancelar.setOnAction(e -> abrirTelaSalvar());
-        painel.getChildren().addAll(confirmar, cancelar);
-        mostrarTela(painel);
-    }
-
-    private void confirmarExclusao(int numeroSlot) {
-        VBox painel = novoPainel("EXCLUIR PARTIDA?", "O slot " + numeroSlot + " será excluído. Esta ação não pode ser desfeita.");
-        Button confirmar = botaoAcao("SIM, EXCLUIR");
-        confirmar.setOnAction(e -> excluirSlot(numeroSlot));
-        Button cancelar = botaoAcao("CANCELAR");
-        cancelar.setOnAction(e -> abrirTelaSalvar());
-        painel.getChildren().addAll(confirmar, cancelar);
-        mostrarTela(painel);
-    }
-
-    private void confirmarExclusaoAutosave() {
-        VBox painel = novoPainel(
-                "EXCLUIR AUTOSAVE?",
-                "O salvamento automático atual será excluído. "
-                        + "Esta ação não pode ser desfeita. "
-                        + "Os slots manuais e a partida em memória "
-                        + "não serão afetados."
-        );
-
-        Button confirmar = botaoAcao("SIM, EXCLUIR");
-        confirmar.setOnAction(e -> excluirAutosave());
-
-        Button cancelar = botaoAcao("CANCELAR");
-        cancelar.setOnAction(e -> abrirTelaSalvar());
-
-        painel.getChildren().addAll(confirmar, cancelar);
-        mostrarTela(painel);
-    }
-
-    private void excluirAutosave() {
-        try {
-            acessoPartidas.excluirAutosave();
-            abrirTelaSalvar();
-            mostrarModal("AUTOSAVE EXCLUÍDO", "O salvamento automático foi excluído.");
-        } catch (SaveException ex) {
-            mostrarModal("ERRO AO EXCLUIR", ex.getMessage());
-        }
-    }
-
-    private void excluirSlot(int numeroSlot) {
-        try {
-            acessoPartidas.excluirSlot(numeroSlot);
-            abrirTelaSalvar();
-            mostrarModal("PARTIDA EXCLUÍDA", "O slot " + numeroSlot + " foi excluído.");
-        } catch (SaveException ex) {
-            mostrarModal("ERRO AO EXCLUIR", ex.getMessage());
-        }
-    }
     private void confirmarNovaPartida() {
         boolean pendente = sessao.estado().temAlteracoes();
         String mensagem = pendente
@@ -440,7 +321,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         VBox painel = novoPainel("SAIR DO FORKEAZANDO?", mensagem);
         if (alteracoesPendentes) {
             Button salvar = botaoAcao("ABRIR SALVAMENTO");
-            salvar.setOnAction(e -> abrirTelaSalvar());
+            salvar.setOnAction(e -> telaSaves.abrir());
             painel.getChildren().add(salvar);
         }
         Button sair = botaoAcao(alteracoesPendentes ? "SAIR SEM SALVAR" : "SIM, SAIR");
@@ -463,81 +344,47 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     private void abrirCriacao() {
-        VBox conteudo = novoPainel("CRIE SEU PROTAGONISTA", "Cada escolha muda seus atributos iniciais.");
-        ComboBox<IdentidadeProtagonista> identidade = novoCombo(IdentidadeProtagonista.values());
-        identidade.setConverter(new javafx.util.StringConverter<>() {
-            @Override
-            public String toString(IdentidadeProtagonista valor) {
-                if (valor == null) return "";
-                return valor == IdentidadeProtagonista.STHEFFANNY ? "Tiana" : "Miles";
-            }
-            @Override
-            public IdentidadeProtagonista fromString(String texto) {
-                return "Miles".equalsIgnoreCase(texto) ? IdentidadeProtagonista.DAVI : IdentidadeProtagonista.STHEFFANNY;
-            }
-        });
-        TextField nome = new TextField();
-        nome.setPromptText("Nome exibido no jogo");
-        nome.getStyleClass().add("campo-pixel");
-        nome.setMaxWidth(450);
-        nome.setText("Tiana");
-        identidade.setValue(IdentidadeProtagonista.STHEFFANNY);
-        identidade.valueProperty().addListener((obs, anterior, proximo) -> {
-            if (proximo == null) return;
-            String anteriorPadrao = anterior == IdentidadeProtagonista.DAVI ? "Miles" : "Tiana";
-            if (nome.getText().isBlank() || nome.getText().equals(anteriorPadrao)) {
-                nome.setText(proximo == IdentidadeProtagonista.DAVI ? "Miles" : "Tiana");
-            }
-        });
+        mostrarTela(telaCriacao.criarPainel(
+                this::iniciarPartida,
+                mensagem -> mostrarModal("DADOS INCOMPLETOS", mensagem),
+                this::voltarAoMenu));
+        Platform.runLater(telaCriacao::focarNome);
+    }
 
-        CheckBox perfeccionista = novoCheck("Sou perfeccionista");
-        CheckBox sociavel = novoCheck("Sou sociável");
-        CheckBox teorico = novoCheck("Prefiro estudar a teoria primeiro");
+    private void iniciarPartida(DadosProtagonista dados) {
+        try {
+            sessao.novaPartida(dados, this);
+            resetarCacheVisual();
+            sessao.prepararCenaAtual();
+        } catch (CarregamentoException | DadosInvalidosException ex) {
+            mostrarModal("ERRO NO PROGRESSO", ex.getMessage());
+        } catch (RuntimeException ex) {
+            mostrarModal("ERRO AO INICIAR", ex.getMessage());
+        }
+    }
 
-        ComboBox<Protagonista.NivelVidaSocial> vida = novoCombo(Protagonista.NivelVidaSocial.values());
-        vida.setValue(Protagonista.NivelVidaSocial.EQUILIBRADO);
-        ComboBox<Protagonista.ExperienciaEmocionalEnsinoMedio> experiencia = novoCombo(Protagonista.ExperienciaEmocionalEnsinoMedio.values());
-        experiencia.setValue(Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA);
-        ComboBox<Protagonista.SituacaoEconomica> economia = novoCombo(Protagonista.SituacaoEconomica.values());
-        economia.setValue(Protagonista.SituacaoEconomica.ESTAVEL);
-
-        conteudo.getChildren().addAll(
-                rotulo("ESCOLHA O PROTAGONISTA"), identidade,
-                rotulo("SEU NOME"), nome,
-                perfeccionista, sociavel, teorico,
-                rotulo("VIDA SOCIAL"), vida,
-                rotulo("EXPERIÊNCIA NO ENSINO MÉDIO"), experiencia,
-                rotulo("SITUAÇÃO ECONÔMICA"), economia
-        );
-
-        Label dica = new Label("Essas escolhas definem seu ponto de partida na universidade.");
-        dica.getStyleClass().add("texto-ajuda");
-        Button comecar = botaoAcao("COMEÇAR A JORNADA");
-        comecar.setOnAction(e -> {
-            if (identidade.getValue() == null) {
-                mostrarModal("ESCOLHA O PROTAGONISTA", "Selecione Tiana ou Miles.");
+    /** Retoma a partida em memória; sem ela, tenta o último salvamento automático. */
+    private void continuar() {
+        if (sessao.possuiPartida()) {
+            abrirCena();
+            return;
+        }
+        if (!sessao.existeAutosave()) {
+            mostrarModal("CONTINUAR", "Não há partida em andamento nem salvamento automático. "
+                    + "Escolha NOVA PARTIDA ou CARREGAR.");
+            return;
+        }
+        try {
+            Estado ultimo = sessao.carregarAutosave();
+            if (ultimo.isPartidaConcluida()) {
+                mostrarModal("CONTINUAR", "O último salvamento automático é de uma jornada já concluída. "
+                        + "Escolha NOVA PARTIDA ou carregue um slot.");
                 return;
             }
-            if (nome.getText().isBlank()) {
-                mostrarModal("FALTOU O NOME", "Digite o nome da personagem para continuar.");
-                return;
-            }
-            try {
-                Protagonista protagonista = new Protagonista(nome.getText(), identidade.getValue(), perfeccionista.isSelected(), sociavel.isSelected(), teorico.isSelected(), vida.getValue(), experiencia.getValue(), economia.getValue());
-                sessao.novaPartida(protagonista, this);
-                resetarCacheVisual();
-                sessao.prepararCenaAtual();
-            } catch (CarregamentoException | DadosInvalidosException ex) {
-                mostrarModal("ERRO NO PROGRESSO", ex.getMessage());
-            } catch (RuntimeException ex) {
-                mostrarModal("ERRO AO INICIAR", ex.getMessage());
-            }
-        });
-        Button voltar = botaoAcao("VOLTAR AO MENU");
-        voltar.setOnAction(e -> voltarAoMenu());
-        conteudo.getChildren().addAll(dica, new HBox(14, comecar, voltar));
-        mostrarTela(conteudo);
-        Platform.runLater(nome::requestFocus);
+            receberPartidaCarregada(ultimo);
+        } catch (CarregamentoException | DadosInvalidosException e) {
+            mostrarModal("ERRO AO CARREGAR", e.getMessage());
+        }
     }
 
     private void abrirMeuProgresso() {
@@ -700,54 +547,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         String anterior = ilustracaoAtual;
         if (visual != null && visual.ilustracao() != null) ilustracaoAtual = visual.ilustracao();
         artes.exibirIlustracao(conteudo, ilustracaoAtual, !Objects.equals(anterior, ilustracaoAtual));
-    }
-
-    private <E extends Enum<E>> ComboBox<E> novoCombo(E[] valores) {
-        ComboBox<E> combo = new ComboBox<>();
-        combo.getItems().addAll(valores);
-        combo.setMaxWidth(450);
-        combo.getStyleClass().add("combo-pixel");
-        return combo;
-    }
-
-    private CheckBox novoCheck(String texto) {
-        CheckBox check = new CheckBox(texto);
-        check.getStyleClass().add("check-pixel");
-        return check;
-    }
-
-    private Label rotulo(String texto) {
-        Label l = new Label(texto);
-        l.getStyleClass().add("rotulo-pixel");
-        l.setWrapText(true);
-        return l;
-    }
-
-    private Button botaoAcao(String texto) {
-        Button b = new Button(texto);
-        b.getStyleClass().add("botao-voltar");
-        b.setWrapText(true);
-        b.setMinHeight(Region.USE_PREF_SIZE);
-        AnimacoesFx.instalarHover(b);
-        return b;
-    }
-
-    private VBox novoPainel(String titulo, String subtitulo) {
-        VBox painel = new VBox(12);
-        painel.setAlignment(Pos.CENTER_LEFT);
-        painel.setPadding(new Insets(26));
-        painel.setMaxWidth(760);
-        painel.getStyleClass().add("painel-interno");
-        Label cabecalho = new Label(titulo);
-        cabecalho.getStyleClass().add("titulo-modal");
-        cabecalho.setWrapText(true);
-        cabecalho.setMaxWidth(450);
-        Label descricao = new Label(subtitulo);
-        descricao.getStyleClass().add("texto-ajuda");
-        descricao.setWrapText(true);
-        descricao.setMaxWidth(450);
-        painel.getChildren().addAll(cabecalho, descricao);
-        return painel;
     }
 
     private void encerrarCenaAtual() {

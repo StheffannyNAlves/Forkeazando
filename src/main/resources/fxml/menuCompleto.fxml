@@ -32,8 +32,7 @@
                                 <Button onAction="#aoClicar" styleClass="botao-menu" text="Carregar" userData="carregar" />
                                 <Button onAction="#aoClicar" styleClass="botao-menu" text="Gerenciar saves" userData="gerenciarSaves" />
                                 <Button onAction="#aoClicar" styleClass="botao-menu" text="Instruções" userData="instrucoes" />
-                                <Button onAction="#aoClicar" styleClass="botao-menu" text="Opções de Estilo" userData="estilo" />
-                                <Button onAction="#aoClicar" styleClass="botao-menu" text="Salvar" userData="salvar" />
+                                <Button onAction="#aoClicar" styleClass="botao-menu" text="Configurações" userData="estilo" />
                                 <Button onAction="#aoClicar" styleClass="botao-menu" text="Créditos" userData="creditos" />
                                 <Button onAction="#aoClicar" styleClass="botao-menu" text="Meu progresso" userData="progresso" />
                                 <Button onAction="#aoClicar" styleClass="botao-menu" text="Sair" userData="sair" />

@@ -8,7 +8,7 @@ O código-fonte **original de titularidade de Stheffanny Nascimento Alves**, ou 
 
 A licença MIT permite usar, copiar, modificar, distribuir e até comercializar esse código, desde que o aviso de copyright e a licença sejam preservados nas cópias ou partes substanciais. Ela não oferece garantias.
 
-A licença **não transfere** para a mantenedora direitos sobre contribuições de outras pessoas ou dependências de terceiros; essas partes continuam sujeitas às respectivas autorizações e licenças. O histórico registra uma colaboração na Fase 1, e **não se presume que código de coautoria esteja autorizado sob MIT sem a concordância dos titulares pertinentes**.
+A licença **não transfere** direitos sobre dependências, bibliotecas e materiais de terceiros; esses componentes seguem suas respectivas licenças e autorizações. A autoria do código do Forkeazando é atribuída à mantenedora, Stheffanny Nascimento Alves. Menções a participantes acadêmicos em documentos anteriores não demonstram, por si só, contribuição ou coautoria do software.
 
 ## Narrativa e identidade criativa
 

@@ -101,41 +101,29 @@ public final class TelaStatusFx {
             );
         }
 
-        // Objetivo derivado da progressão atual.
-        painel.getChildren().add(texto("OBJETIVO ATUAL"));
+        // A apresentação interpreta o progresso, sem alterar flags ou saves.
+        painel.getChildren().add(texto("MISSÕES E OBJETIVOS"));
+        painel.getChildren().add(texto("◆ " + StatusNarrativo.objetivo(estado)));
+        if (estado.getTrilha() != null) {
+            String trilha = switch (estado.getTrilha()) {
+                case IC -> "Pesquisa e iniciação científica";
+                case DTEC -> "Ensino e prática";
+                case INDEP -> "Projetos independentes";
+            };
+            painel.getChildren().add(texto("Trilha: " + trilha));
+        }
+        if (estado.getSemestresExtras() > 0) {
+            painel.getChildren().add(texto("Semestres adicionais: " + estado.getSemestresExtras()));
+        }
 
-        painel.getChildren().add(
-                texto(estado.isPartidaConcluida()
-                        ? "Jornada acadêmica concluída."
-                        : "Continuar a jornada do capítulo "
-                        + estado.getCapituloAtual() + ".")
-        );
-
-        // Registros persistidos das escolhas e dos marcos.
         painel.getChildren().add(texto("DECISÕES E MARCOS"));
-
-        List<String> registros = p.getHistoricoFlags()
-                .stream()
-                .filter(flag -> !flag.startsWith("item_"))
-                .filter(flag -> !flag.startsWith("hab_"))
-                .filter(flag -> !flag.startsWith("perfil_"))
-                .toList();
-
+        List<String> registros = StatusNarrativo.marcos(p);
         if (registros.isEmpty()) {
-            painel.getChildren().add(
-                    texto("Nenhum marco registrado.")
-            );
+            painel.getChildren().add(texto("Nenhum marco narrativo registrado até agora."));
         } else {
             int inicio = Math.max(0, registros.size() - 8);
-
             for (int i = inicio; i < registros.size(); i++) {
-                String registro = registros.get(i);
-                String descricao = registro.startsWith("protagonista_")
-                        ? "Protagonista: " + p.getNome()
-                        : registro.replace('_', ' ');
-                painel.getChildren().add(
-                        texto("◆ " + descricao)
-                );
+                painel.getChildren().add(texto("◆ " + registros.get(i)));
             }
         }
 

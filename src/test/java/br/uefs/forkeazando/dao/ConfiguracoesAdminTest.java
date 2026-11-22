@@ -17,9 +17,7 @@ class ConfiguracoesAdminTest {
     Path diretorioTemporario;
 
     @Test
-    void devePreservarConfirmarSaidaAtivado()
-            throws SaveException, DadosInvalidosException,
-            CarregamentoException {
+    void devePreservarConfirmarSaidaAtivado() throws SaveException, DadosInvalidosException, CarregamentoException {
 
         Configuracoes original = new Configuracoes();
         original.setConfirmarSaida(true);
@@ -34,9 +32,7 @@ class ConfiguracoesAdminTest {
     }
 
     @Test
-    void devePreservarConfirmarSaidaDesativado()
-            throws SaveException, DadosInvalidosException,
-            CarregamentoException {
+    void devePreservarConfirmarSaidaDesativado() throws SaveException, DadosInvalidosException, CarregamentoException {
 
         Configuracoes original = new Configuracoes();
         original.setConfirmarSaida(false);

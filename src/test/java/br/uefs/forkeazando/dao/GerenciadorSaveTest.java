@@ -42,41 +42,21 @@ class GerenciadorSaveTest {
 
         protagonista.ganharScore(40);
 
-        protagonista.alterarRelacionamento(
-                PersonagemSecundario.VETERANO,
-                3.5f
-        );
-
+        protagonista.alterarRelacionamento(PersonagemSecundario.VETERANO, 3.5f);
         Estado estadoOriginal = new Estado();
-
         estadoOriginal.iniciar(protagonista);
         estadoOriginal.setCenaAtualId(3050);
-
         Path arquivo = diretorioTemporario.resolve("save.json");
-
         GerenciadorSave.salvar(estadoOriginal, arquivo);
         Estado estadoCarregado = GerenciadorSave.carregar(arquivo);
         assertNotSame(estadoOriginal, estadoCarregado);
 
-        assertEquals(
-                estadoOriginal.getProtagonista().getNome(),
-                estadoCarregado.getProtagonista().getNome()
-        );
+        assertEquals(estadoOriginal.getProtagonista().getNome(), estadoCarregado.getProtagonista().getNome());
 
-        assertEquals(
-                estadoOriginal.getProtagonista().getScore(),
-                estadoCarregado.getProtagonista().getScore()
-        );
+        assertEquals(estadoOriginal.getProtagonista().getScore(), estadoCarregado.getProtagonista().getScore());
 
-        assertEquals(
-                estadoOriginal.getProtagonista().getRelacionamento(
-                        PersonagemSecundario.VETERANO
-                ),
-                estadoCarregado.getProtagonista().getRelacionamento(
-                        PersonagemSecundario.VETERANO
-                ),
-                0.001f
-        );
+        assertEquals(estadoOriginal.getProtagonista().getRelacionamento(PersonagemSecundario.VETERANO),
+                estadoCarregado.getProtagonista().getRelacionamento(PersonagemSecundario.VETERANO), 0.001f);
 
         assertEquals(
                 estadoOriginal.getProtagonista().getHistoricoFlags(),
@@ -90,33 +70,18 @@ class GerenciadorSaveTest {
     }
 
     @Test
-    void deveLancarExcecaoAoCarregarArquivoInexistente()
-            throws CarregamentoException {
-
+    void deveLancarExcecaoAoCarregarArquivoInexistente() throws CarregamentoException {
         Path arquivo = diretorioTemporario.resolve("nao_existe.json");
-
-        CarregamentoException excecao = assertThrows(
-                CarregamentoException.class,
-                () -> GerenciadorSave.carregar(arquivo)
-        );
-
+        CarregamentoException excecao = assertThrows(CarregamentoException.class, () -> GerenciadorSave.carregar(arquivo));
         assertInstanceOf(IOException.class, excecao.getCause());
     }
 
 
     @Test
-    void deveLancarExcecaoAoCarregarJsonInvalido()
-            throws IOException, CarregamentoException {
-
+    void deveLancarExcecaoAoCarregarJsonInvalido() throws IOException, CarregamentoException {
         Path arquivo = diretorioTemporario.resolve("quebrado.json");
-
         Files.writeString(arquivo, "{ \"protagonista\": ");
-
-        CarregamentoException excecao = assertThrows(
-                CarregamentoException.class,
-                () -> GerenciadorSave.carregar(arquivo)
-        );
-
+        CarregamentoException excecao = assertThrows(CarregamentoException.class, () -> GerenciadorSave.carregar(arquivo));
         assertInstanceOf(JsonParseException.class, excecao.getCause());
     }
     @Test

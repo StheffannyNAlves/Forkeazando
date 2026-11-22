@@ -110,24 +110,19 @@ class GerenciadorSaveIntegridadeTest {
     @Test
     void tipoErradoViraCarregamentoException() throws IOException {
         Path arquivo = gravar(estadoJson(PROTAGONISTA_VALIDA, ",\"capituloAtual\":\"abc\""));
-
         assertThrows(CarregamentoException.class, () -> GerenciadorSave.carregar(arquivo));
     }
 
     @Test
     void slotComSaveInvalidoApareceComoCorrompidoNaListagem() throws IOException {
-        Files.writeString(GerenciadorSlots.caminhoDoSlot(pasta, 1),
-                estadoJson(PROTAGONISTA_VALIDA.replace("\"energia\":40", "\"energia\":-50"), ""));
-
+        Files.writeString(GerenciadorSlots.caminhoDoSlot(pasta, 1), estadoJson(PROTAGONISTA_VALIDA.replace("\"energia\":40", "\"energia\":-50"), ""));
         var resumo = GerenciadorSlots.listar(pasta).get(0);
-
         assertEquals(br.uefs.forkeazando.model.ResumoSlot.Status.CORROMPIDO, resumo.status());
     }
 
     @Test
     void falhaDeGravacaoContinuaLancandoSaveException() {
         Path inexistente = pasta.resolve("nao_existe").resolve("save.json");
-
         assertThrows(SaveException.class, () -> GerenciadorSave.salvar(new Estado(), inexistente));
     }
 }

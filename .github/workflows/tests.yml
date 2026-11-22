@@ -26,5 +26,35 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Executar testes
-        run: mvn -B test
+      - name: Instalar servidor gráfico virtual
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libgtk-3-0
+
+      - name: Executar testes de domínio e JavaFX
+        run: xvfb-run -a mvn -B clean test
+
+      - name: Garantir execução dos testes gráficos
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import xml.etree.ElementTree as ET
+
+          arquivo = pathlib.Path("target/surefire-reports/TEST-br.uefs.forkeazando.view.javafx.ApresentacaoFxTest.xml")
+          if not arquivo.is_file():
+              raise SystemExit("FALHA: relatório de ApresentacaoFxTest não encontrado")
+          suite = ET.parse(arquivo).getroot()
+          executados = int(suite.attrib.get("tests", 0))
+          ignorados = int(suite.attrib.get("skipped", 0))
+          print(f"ApresentacaoFxTest: {executados} testes, {ignorados} ignorados")
+          if executados == 0 or ignorados > 0:
+              raise SystemExit("FALHA: testes gráficos não foram integralmente executados")
+          PY
+
+      - name: Publicar relatórios de testes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: relatórios-surefire
+          path: target/surefire-reports/
+          if-no-files-found: ignore

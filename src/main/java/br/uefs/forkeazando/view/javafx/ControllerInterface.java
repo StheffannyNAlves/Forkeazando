@@ -378,12 +378,20 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         }
     }
     private void confirmarNovaPartida() {
-        VBox painel = novoPainel("SAIR DO FORKEAZANDO?", "Sua sessão será encerrada. Se houver progresso ainda não salvo, ele poderá ser perdido. Deseja realmente sair?");
-        Button nova = botaoAcao("SIM, CRIAR OUTRA PERSONAGEM");
+        boolean pendente = sessao.estado().temAlteracoes();
+        String mensagem = pendente
+                ? "Você possui alterações não salvas. "
+                + "Iniciar outra partida descartará esse progresso. "
+                + "Deseja continuar?"
+                : "Deseja iniciar uma nova partida? "
+                + "A partida atual será substituída na memória.";
+
+        VBox painel = novoPainel("INICIAR NOVA PARTIDA?", mensagem);
+        Button nova = botaoAcao("SIM, NOVA PARTIDA");
         nova.setOnAction(e -> abrirCriacao());
-        Button voltar = botaoAcao("CANCELAR");
-        voltar.setOnAction(e -> voltarAoMenu());
-        painel.getChildren().addAll(nova, voltar);
+        Button cancelar = botaoAcao("CANCELAR");
+        cancelar.setOnAction(e -> voltarAoMenu());
+        painel.getChildren().addAll(nova, cancelar);
         mostrarTela(painel);
     }
 

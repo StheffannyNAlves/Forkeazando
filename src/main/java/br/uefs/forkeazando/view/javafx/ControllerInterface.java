@@ -288,15 +288,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             }
             case "progresso" -> abrirMeuProgresso();
             case "creditos" -> mostrarModal("CRÉDITOS", "FORKEAZANDO · 2026\n\nStheffanny Alves\n" + "Universidade Estadual do Fork Perdido (UEFP)");
-            case "sair" -> {
-                if (!configuracoes.isConfirmarSaida()) {
-                    encerrar();
-                } else if (sessao.possuiPartida()) {
-                    confirmarSaida();
-                } else {
-                    encerrar();
-                }
-            }
+            case "sair" -> solicitarSaida();
             default -> mostrarModal(botao.getText().toUpperCase(), "Esta opção ainda não foi integrada ao JavaFX. " + "Os dados e as regras da versão de terminal continuam preservados.");
         }
     }
@@ -1208,6 +1200,16 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             dialogo.getChildren().add(retrato);
                 AnimacoesFx.entradaRetrato(retrato);
         });
+    }
+
+    public void solicitarSaida() {
+        boolean possuiPartida = sessao.possuiPartida();
+        boolean alteracoesPendentes = possuiPartida && sessao.estado().temAlteracoes();
+        if (alteracoesPendentes || (possuiPartida && configuracoes.isConfirmarSaida())) {
+            confirmarSaida();
+            return;
+        }
+        encerrar();
     }
 
     @Override

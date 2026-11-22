@@ -73,7 +73,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private final TelaConfigFx telaConfiguracoes = new TelaConfigFx();
     private Configuracoes configuracoes = new Configuracoes();
     private GerenciadorAudio audio;
-
+    private final TelaStatusFx telaStatus = new TelaStatusFx();
     private final List<Button> opcoes = new ArrayList<>();
     private final GerenciamentoPartidas acessoPartidas = new CarregamentoAdapter(GerenciadorSlots.PASTA_PADRAO);
     private final SessaoGrafica sessao = new SessaoGrafica(acessoPartidas);
@@ -424,17 +424,23 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     private void confirmarSaida() {
-        boolean alteracoesPendentes = sessao.estado().temAlteracoes();
-        String mensagem = alteracoesPendentes
-                ? "O salvamento automático é periódico e pode não incluir "
-                + "suas escolhas mais recentes. Deseja realmente sair?"
-                : "Seu progresso foi salvo. Deseja realmente sair do jogo?";
+        boolean alteracoesPendentes = sessao.possuiPartida() && sessao.estado().temAlteracoes();
+
+        String mensagem = alteracoesPendentes ? "Existem alterações que podem não estar salvas. " + "Deseja salvar antes de sair?" : "Deseja realmente encerrar o jogo?";
         VBox painel = novoPainel("SAIR DO FORKEAZANDO?", mensagem);
-        Button sair = botaoAcao("SIM, SAIR");
+        if (alteracoesPendentes) {
+            Button salvar = botaoAcao("ABRIR SALVAMENTO");
+            salvar.setOnAction(e -> abrirTelaSalvar());
+            painel.getChildren().add(salvar);
+        }
+        Button sair = botaoAcao(alteracoesPendentes ? "SAIR SEM SALVAR" : "SIM, SAIR");
         sair.setOnAction(e -> encerrar());
-        Button voltar = botaoAcao("CANCELAR");
-        voltar.setOnAction(e -> voltarAoMenu());
-        painel.getChildren().addAll(sair, voltar);
+
+        Button cancelar = botaoAcao("CANCELAR");
+        cancelar.setOnAction(e -> voltarAoMenu());
+
+        painel.getChildren().addAll(sair, cancelar);
+
         mostrarTela(painel);
     }
 
@@ -1052,30 +1058,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
 
     private void abrirStatus() {
-        Protagonista p = sessao.estado().getProtagonista();
-
-        VBox painel = novoPainel(
-                "STATUS · " + p.getNome().toUpperCase(),
-                "CAPÍTULO " + sessao.estado().getCapituloAtual()
-                        + "  ·  " + p.getRank()
-        );
-
-        painel.getChildren().addAll(
-                rotulo("ENERGIA: " + p.getEnergia() + "/" + p.getEnergiaMaxima()),
-                rotulo("SCORE: " + p.getScore()),
-                rotulo("PARTICIPAÇÃO: " + p.getParticipacao()),
-                rotulo("CONFIANÇA: " + p.getConfianca()),
-                rotulo("VIDA SOCIAL: " + p.getVidaSocial()),
-                rotulo("CARISMA: " + p.getCarisma()),
-                rotulo("LÓGICA: " + p.getLogica()),
-                rotulo("SANIDADE: " + p.getSanidade())
-        );
-
-        Button voltar = botaoAcao("VOLTAR À HISTÓRIA");
-        voltar.setOnAction(e -> abrirCena());
-
-        painel.getChildren().add(voltar);
-        mostrarTela(painel);
+        mostrarTela(telaStatus.criarPainel(sessao.estado(), this::abrirCena));
     }
 
     @Override

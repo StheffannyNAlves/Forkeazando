@@ -14,6 +14,8 @@
   <img src="https://img.shields.io/badge/Maven-build-C71A36?logo=apachemaven&amp;logoColor=white" alt="Maven">
   <img src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&amp;logoColor=white" alt="JUnit 5">
   <img src="https://img.shields.io/badge/Status-Projeto%20conclu%C3%ADdo-2EA44F" alt="Projeto concluído">
+  <a href="https://github.com/StheffannyNAlves/Forkeazando/tree/v1.5.0"><img src="https://img.shields.io/badge/Release-v1.5.0-67478C" alt="Versão v1.5.0"></a>
+  <a href="https://github.com/StheffannyNAlves/Forkeazando/actions/workflows/tests.yml"><img src="https://github.com/StheffannyNAlves/Forkeazando/actions/workflows/tests.yml/badge.svg?branch=main" alt="Testes Java e JavaFX no GitHub Actions"></a>
 </p>
 
 ![Menu principal da interface JavaFX, com o campus da UEFP e a paleta roxa e dourada](docs/images/forkeazando-javafx-menu.png)
@@ -25,6 +27,9 @@ A história acontece na **Universidade Estadual do Fork Perdido — UEFP**, uma 
 O projeto começou no terminal, ganhou persistência e uma campanha mais extensa e chegou ao JavaFX sem abandonar o núcleo construído nas primeiras fases. Este README apresenta o jogo atual e registra essa evolução, incluindo as decisões de narrativa, arquitetura, apresentação e validação.
 
 > **Status do projeto:** ✅ **Concluído — Fase 3 (v1.5.0).** O Forkeazando teve seu desenvolvimento acadêmico finalizado em **22/11/2026**, com a integração da interface JavaFX, evolução narrativa, persistência, padrões de projeto GoF e testes automatizados. Esta versão representa a entrega final da disciplina MI-Programação (EXA863). Melhorias futuras poderão ser realizadas, mas não fazem parte do escopo desta entrega.
+
+**Acesso rápido:** [Executar](#como-executar) · [Conhecer a interface](#interface-arte-e-animações) · [Arquitetura e GoF](#arquitetura-e-padrões) · [Testes](#testes-e-validação) · [Histórico de versões](#versões)
+
 ## Navegação
 
 - [O jogo e sua proposta](#o-jogo-e-sua-proposta)
@@ -42,7 +47,7 @@ O projeto começou no terminal, ganhou persistência e uma campanha mais extensa
 - [Tecnologias e estrutura](#tecnologias-e-estrutura)
 - [Roteiro em JSON e manutenção](#roteiro-em-json-e-manutenção)
 - [Testes e validação](#testes-e-validação)
-- [Limitações e próximos passos](#limitações-e-próximos-passos)
+- [Estado da entrega e evoluções futuras](#estado-da-entrega-e-evoluções-futuras)
 - [Versões](#versões)
 - [Autoria, créditos e transparência](#autoria-créditos-e-transparência)
 
@@ -366,7 +371,7 @@ A opção **Excluir autosave** passa por `GerenciamentoPartidas` → `Carregamen
 
 Existem tratamentos de compatibilidade para identidades, trilhas, resultados e finais antigos. Isso não garante que qualquer save arbitrário de qualquer revisão narrativa possa ser retomado: IDs removidos, mudanças de percurso e estados incompatíveis precisam ser avaliados. Preserve uma cópia dos saves antes de trocar entre versões do roteiro.
 
-**Três versões diferentes não devem ser confundidas:** o `pom.xml` ainda informa `1.4.0`; os arquivos atuais de cenas usam esquema JSON `3`; o envelope atual de salvamento usa `versao: 1`.
+**Três versões diferentes não devem ser confundidas:** o `pom.xml` informa `1.5.0` (versão do artefato); os arquivos atuais de cenas usam esquema JSON `3`; e o envelope de salvamento usa `versao: 1`.
 
 ### Preferências persistentes
 
@@ -752,7 +757,7 @@ No Linux, `ApresentacaoFxTest` verifica a disponibilidade de `DISPLAY` e pode se
 xvfb-run -a mvn clean test
 ```
 
-O workflow de [GitHub Actions](.github/workflows/tests.yml) usa Java 21 e `mvn -B test`, em push, pull request e execução manual. A configuração atual não inclui uma etapa de Xvfb; um CI verde nesse ambiente não comprova, sozinho, a execução dos testes gráficos.
+O workflow de [GitHub Actions](.github/workflows/tests.yml) usa Java 21, instala Xvfb e executa `xvfb-run -a mvn -B clean test` em push, pull request e execução manual. Uma etapa adicional verifica o relatório de `ApresentacaoFxTest` para impedir que os testes gráficos sejam silenciosamente ignorados. O resultado de cada execução deve ser conferido na aba **Actions**.
 
 ### Regressões adicionadas após o refinamento visual
 
@@ -807,7 +812,9 @@ Esses itens descrevem o procedimento de revisão; não declaram que todos já fo
 
 Na demonstração do produto, recomenda-se mostrar a criação dos protagonistas, o menu e os comandos, uma escolha com consequência observável, o HUD/status, a persistência em três slots e no autosave, as confirmações de ações destrutivas, galeria e conquistas, e ao menos um desfecho. A identificação das classes participantes de **Builder, Adapter e Observer** está na seção de arquitetura. O **vídeo de gameplay** é um entregável próprio e **não deve ser considerado concluído apenas porque existem capturas de tela**. O relatório acadêmico individual é outro entregável, separado da descrição técnica do produto.
 
-## Limitações e próximos passos
+## Estado da entrega e evoluções futuras
+
+A **Fase 3 foi concluída para a entrega acadêmica na versão `v1.5.0`**. Os itens a seguir distinguem funcionalidades entregues de melhorias opcionais para uma eventual continuidade; não são pendências obrigatórias para considerar a entrega concluída.
 
 ### Implementado
 
@@ -825,20 +832,20 @@ Na demonstração do produto, recomenda-se mostrar a criação dos protagonistas
 - [x] Todas as cenas com ambiente explícito e animações de entrada/repouso.
 - [x] Cancelamento, pausa e retomada de animações nos fluxos de apresentação.
 - [x] Preparação de áudio e rasterização em executores dedicados.
+- [x] Execução de testes gráficos no CI com Xvfb e verificação de testes não ignorados.
 
-### Ainda precisa de trabalho ou validação mais ampla
+### Possibilidades de evolução e validação adicional
 
 - [ ] Percursos completos de todas as rotas e finais na interface gráfica.
 - [ ] Revisão humana de todas as correspondências de expressão, fala, cenário e transição.
 - [ ] Compatibilidade de saves representativos de cada revisão antiga do roteiro.
-- [ ] Execução dos testes gráficos também no CI, com infraestrutura de display.
 - [ ] Empacotamento da GUI para execução fora do Maven/ambiente de desenvolvimento.
 - [ ] Avaliação em mais sistemas, densidades de tela e máquinas modestas reais.
 - [ ] Validação audível da trilha em diferentes dispositivos e sistemas.
 - [ ] Opção gráfica específica de redução/desativação de movimento; a variável existente atende ao terminal.
 - [ ] Consolidação de créditos e permissões dos recursos distribuídos e definição de licença do projeto.
 
-Também permanecem limites de projeto: um único autosave, persistência local, chamadas de I/O ainda síncronas em alguns fluxos e dependência de fontes do sistema. A Fase 3 não deve ser interpretada como uma release estável apenas porque o `pom.xml` continua com o número `1.4.0`.
+Também permanecem limites técnicos: um único autosave, persistência local, chamadas de I/O síncronas em alguns fluxos e dependência de fontes do sistema. A tag `v1.5.0` identifica a versão entregue; não implica disponibilidade de um instalador independente nem validação em todos os ambientes.
 
 ## Versões
 
@@ -852,7 +859,7 @@ Também permanecem limites de projeto: um único autosave, persistência local, 
 | [`v1.4.0`](https://github.com/StheffannyNAlves/Forkeazando/tree/v1.4.0) | Fase 2, sessão 4 | Consolidação de autosave, slots e configurações, com a evolução da campanha e do terminal. |
 | [`v1.5.0`](https://github.com/StheffannyNAlves/Forkeazando/tree/v1.5.0) | Fase 3 | JavaFX, fluxo por eventos, integração dos padrões, revisão narrativa e refinamento visual. |
 
-As tags preservam os estados históricos. A branch de desenvolvimento pode conter mudanças posteriores à última tag; o número do artefato Maven e o estado de uma release não são a mesma informação.
+As tags preservam os estados históricos das entregas. A `main` representa a versão oficial atual, enquanto `v1.5.0` mantém o registro imutável da entrega acadêmica. Alterações posteriores na `main` não modificam o conteúdo dessa tag.
 
 ## Autoria, créditos e transparência
 
@@ -880,4 +887,4 @@ Mudanças devem preservar os nomes públicos **Tiana/Miles**, o significado das 
 
 Para relatar um problema, inclua a revisão utilizada, comando de execução, sistema, resolução da janela e passos para reproduzir. Um save de reprodução deve ser uma cópia, sem dados pessoais que não sejam necessários ao problema.
 
-As decisões e os resultados de cada etapa permanecem verificáveis no [histórico do repositório](https://github.com/StheffannyNAlves/Forkeazando/commits/fase3/).
+As decisões e os resultados de cada etapa permanecem verificáveis no [histórico do repositório](https://github.com/StheffannyNAlves/Forkeazando/commits/main/).

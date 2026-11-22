@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/JavaFX-21.0.13-7B4D99" alt="JavaFX 21.0.13">
   <img src="https://img.shields.io/badge/Maven-build-C71A36?logo=apachemaven&amp;logoColor=white" alt="Maven">
   <img src="https://img.shields.io/badge/JUnit-5-25A162?logo=junit5&amp;logoColor=white" alt="JUnit 5">
-  <img src="https://img.shields.io/badge/Fase%203-em%20desenvolvimento-67478C" alt="Fase 3 em desenvolvimento">
+  <img src="https://img.shields.io/badge/Status-Projeto%20conclu%C3%ADdo-2EA44F" alt="Projeto concluído">
 </p>
 
 ![Menu principal da interface JavaFX, com o campus da UEFP e a paleta roxa e dourada](docs/images/forkeazando-javafx-menu.png)
@@ -24,8 +24,7 @@ A história acontece na **Universidade Estadual do Fork Perdido — UEFP**, uma 
 
 O projeto começou no terminal, ganhou persistência e uma campanha mais extensa e chegou ao JavaFX sem abandonar o núcleo construído nas primeiras fases. Este README apresenta o jogo atual e registra essa evolução, incluindo as decisões de narrativa, arquitetura, apresentação e validação.
 
-> **Estado desta documentação:** branch [`fase3`](https://github.com/StheffannyNAlves/Forkeazando/tree/fase3), revisada em **22/11/2026**. O marco visual [`e54d6fb`](https://github.com/StheffannyNAlves/Forkeazando/commit/e54d6fb967689afdead65bc98bd875565be53864) e as melhorias posteriores de status, integridade da sessão e autosave compõem esta revisão. A Fase 3 continua em desenvolvimento: a cobertura automática não equivale a jogar manualmente todas as rotas, e a distribuição autônoma do JavaFX ainda requer trabalho.
-
+> **Status do projeto:** ✅ **Concluído — Fase 3 (v1.5.0).** O Forkeazando teve seu desenvolvimento acadêmico finalizado em **22/11/2026**, com a integração da interface JavaFX, evolução narrativa, persistência, padrões de projeto GoF e testes automatizados. Esta versão representa a entrega final da disciplina MI-Programação (EXA863). Melhorias futuras poderão ser realizadas, mas não fazem parte do escopo desta entrega.
 ## Navegação
 
 - [O jogo e sua proposta](#o-jogo-e-sua-proposta)

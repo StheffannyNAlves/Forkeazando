@@ -99,6 +99,27 @@ public final class SessaoGrafica {
         notificarObservadores();
     }
 
+    /**
+     * Prepara a nova partida por completo antes de substituir a sessao atual
+     * Se a leitura do progresso ou a criacao do controlador falhar, a partida
+     * anterior e seu controlador permanecem intactos.
+     */
+    public void novaPartida(Protagonista protagonista, ApresentacaoCena apresentacao)
+            throws CarregamentoException, DadosInvalidosException {
+        Objects.requireNonNull(protagonista, "O protagonista nao pode ser nulo.");
+        Objects.requireNonNull(apresentacao, "A apresentacao nao pode ser nula.");
+
+        Estado novo = new Estado();
+        novo.iniciar(protagonista);
+        novo.setCenaAtualId(700);
+
+        CenasController preparado = criarControlador(novo, apresentacao);
+        this.estado = novo;
+        this.controladorCenas = preparado;
+        notificarObservadores();
+    }
+
+
     public void carregarPartida(Estado estadoCarregado) {
         validarEstadoCarregado(estadoCarregado);
         this.estado = estadoCarregado;

@@ -486,8 +486,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             }
             try {
                 Protagonista protagonista = new Protagonista(nome.getText(), identidade.getValue(), perfeccionista.isSelected(), sociavel.isSelected(), teorico.isSelected(), vida.getValue(), experiencia.getValue(), economia.getValue());
-                sessao.novaPartida(protagonista);
-                sessao.inicializarControladorPartida(this);
+                sessao.novaPartida(protagonista, this);
                 resetarCacheVisual();
                 sessao.prepararCenaAtual();
             } catch (CarregamentoException | DadosInvalidosException ex) {

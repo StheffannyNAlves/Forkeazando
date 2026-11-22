@@ -219,8 +219,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     private void concluirCarregamento(Estado carregado) {
         try {
-            sessao.carregarPartida(carregado);
-            sessao.inicializarControladorPartida(this);
+            // Prepara tudo antes de descartar a partida anterior.
+            sessao.carregarPartida(carregado, this);
             resetarCacheVisual();
             sessao.prepararCenaAtual();
 

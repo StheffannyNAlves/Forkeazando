@@ -13,6 +13,7 @@ import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.Roteiro;
 import br.uefs.forkeazando.view.ApresentacaoCena;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,9 +27,18 @@ public final class SessaoGrafica {
     private Estado estado;
     private CenasController controladorCenas;
     private final GerenciamentoPartidas gerenciamentoPartidas;
+    private final Path pastaProgresso;
+
     public SessaoGrafica(GerenciamentoPartidas gerenciamentoPartidas) {
-        this.gerenciamentoPartidas = gerenciamentoPartidas;
-        this.cenas = Roteiro.todasAsCenas().stream().collect(Collectors.toMap(Cena::getId, Function.identity()));
+        this(gerenciamentoPartidas, GerenciadorSlots.PASTA_PADRAO);
+    }
+
+    // Injecao de caminho para testar falhas sem modificar saves reais.
+    SessaoGrafica(GerenciamentoPartidas gerenciamentoPartidas, Path pastaProgresso) {
+        this.gerenciamentoPartidas = Objects.requireNonNull(gerenciamentoPartidas);
+        this.pastaProgresso = Objects.requireNonNull(pastaProgresso);
+        this.cenas = Roteiro.todasAsCenas().stream()
+                .collect(Collectors.toMap(Cena::getId, Function.identity()));
     }
 
     public void adicionarObservador(ObservadorPartida observador) {
@@ -51,19 +61,24 @@ public final class SessaoGrafica {
 
     public void inicializarControladorPartida(ApresentacaoCena apresentacao)
             throws CarregamentoException, DadosInvalidosException {
-
         if (!possuiPartida()) {
             throw new IllegalStateException("Nenhuma partida em andamento.");
         }
-        Objects.requireNonNull(apresentacao, "A apresentação não pode ser nula.");
-        GerenciadorProgresso gerenciador = new GerenciadorProgresso(GerenciadorSlots.PASTA_PADRAO);
+        this.controladorCenas = criarControlador(estado(), apresentacao);
+    }
 
+    private CenasController criarControlador(Estado estadoPartida, ApresentacaoCena apresentacao)
+            throws CarregamentoException, DadosInvalidosException {
+        Objects.requireNonNull(apresentacao, "A apresentacao nao pode ser nula.");
+        GerenciadorProgresso gerenciador = new GerenciadorProgresso(pastaProgresso);
         Progresso progresso = gerenciador.carregar();
-        this.controladorCenas = new CenasController(estado(), List.copyOf(cenas.values()), apresentacao, progresso, gerenciador,
-                estadoAtual -> GerenciadorSlots.salvarAutosave(estadoAtual, GerenciadorSlots.PASTA_PADRAO), new GatilhoAutosave(5),
+        return new CenasController(estadoPartida, List.copyOf(cenas.values()),
+                apresentacao, progresso, gerenciador,
+                estadoAtual -> GerenciadorSlots.salvarAutosave(estadoAtual, pastaProgresso),
+                new GatilhoAutosave(5),
                 () -> {
                     throw new UnsupportedOperationException(
-                            "Salvamento manual ainda não integrado ao JavaFX.");
+                            "Salvamento manual ainda nao integrado ao JavaFX.");
                 }
         );
     }
@@ -84,23 +99,32 @@ public final class SessaoGrafica {
         notificarObservadores();
     }
 
-    public void carregarPartida(Estado estadoCarregado){
-        Objects.requireNonNull(estadoCarregado, "O estado carregado não pode está nulo");
-        List<String> problemas = estadoCarregado.verificarIntegridade();
-
-        if (!problemas.isEmpty()) {
-            throw new IllegalArgumentException(
-                    String.join("; ", problemas)
-            );
-        }
-
-        if (!cenas.containsKey(estadoCarregado.getCenaAtualId())) {
-            throw new IllegalArgumentException("Cena inexistente no roteiro");
-        }
-
+    public void carregarPartida(Estado estadoCarregado) {
+        validarEstadoCarregado(estadoCarregado);
         this.estado = estadoCarregado;
         controladorCenas = null;
         notificarObservadores();
+    }
+
+    /** Prepara o novo controlador ANTES de substituir a partida em memoria. */
+    public void carregarPartida(Estado estadoCarregado, ApresentacaoCena apresentacao)
+            throws CarregamentoException, DadosInvalidosException {
+        validarEstadoCarregado(estadoCarregado);
+        CenasController preparado = criarControlador(estadoCarregado, apresentacao);
+        this.estado = estadoCarregado;
+        this.controladorCenas = preparado;
+        notificarObservadores();
+    }
+
+    private void validarEstadoCarregado(Estado estadoCarregado) {
+        Objects.requireNonNull(estadoCarregado, "O estado carregado nao pode ser nulo");
+        List<String> problemas = estadoCarregado.verificarIntegridade();
+        if (!problemas.isEmpty()) {
+            throw new IllegalArgumentException(String.join("; ", problemas));
+        }
+        if (!cenas.containsKey(estadoCarregado.getCenaAtualId())) {
+            throw new IllegalArgumentException("Cena inexistente no roteiro");
+        }
     }
 
     public boolean possuiPartida() {

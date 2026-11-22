@@ -12,7 +12,7 @@ import static br.uefs.forkeazando.view.pixel.Elementos.*;
  */
 final class CenasFuturos {
 
-    static final int N_PESQUISA = 12, N_TECNOLOGIA = 12, N_INTERNACIONAL = 12, N_INDEPENDENTE = 12, N_TRANSICAO = 12;
+    static final int N_PESQUISA = 12, N_TECNOLOGIA = 12, N_INTERNACIONAL = 18, N_INDEPENDENTE = 12, N_TRANSICAO = 12;
     private static final int L = Ilustracoes.LARGURA, A = Ilustracoes.LINHAS;
     private static final int PELE_P = rgb(120, 76, 56), CAB_P = rgb(26, 20, 40), ROXO = rgb(92, 62, 112);
 
@@ -62,7 +62,7 @@ final class CenasFuturos {
         if (q >= 8) {
             int alt = q >= 9 ? 4 : 2;
             t.rect(45, 41, 9, alt, rgb(200, 52, 62));
-            if (q >= 9) t.texto(46, 20, "ACEITO", rgb(255, 240, 240));
+            if (q >= 9) t.texto(46, 20, "DADOS", rgb(255, 240, 240));
         }
         glow(t, 15, 18, 22, 16, rgb(255, 214, 150), 0.22 * k);
         costas(t, 26, 33, PELE_P, CAB_P, ROXO, 14, 14);
@@ -92,7 +92,7 @@ final class CenasFuturos {
         for (int i = 0; i < Math.min(5, q / 2 + 1); i++) t.rect(43, 8 + i * 2, 7 + (i * 5) % 9, 1, rgb(110, 230, 150));
         if (q >= 9) {
             t.rect(43, 18, 16, 4, rgb(30, 110, 60));
-            t.texto(45, 9, "BOOT OK", rgb(220, 255, 230));
+            t.texto(45, 9, "TESTES", rgb(220, 255, 230));
         }
         // bancada e a placa
         bancada(t, 34, rgb(86, 76, 70), rgb(44, 38, 36), rgb(140, 120, 100));
@@ -104,7 +104,7 @@ final class CenasFuturos {
         }
         t.rect(34, 31, 9, 7, rgb(24, 24, 30));
         for (int i = 0; i < 5; i++) { t.px(33, 31 + i, rgb(200, 204, 210)); t.px(43, 31 + i, rgb(200, 204, 210)); }
-        boolean aceso = q >= 4 && q % 4 < 3;
+        boolean aceso = q >= 4 && (q >= 8 || q % 4 < 3);
         t.rect(48, 30, 3, 2, aceso ? rgb(120, 255, 150) : rgb(30, 80, 50));
         if (aceso) glow(t, 49, 31, 7, 6, rgb(120, 255, 150), 0.5);
         t.rect(54, 36, 10, 1, rgb(200, 200, 210));
@@ -123,7 +123,7 @@ final class CenasFuturos {
         t.rect(0, 24, L, 4, rgb(70, 66, 90));
         for (int x = 0; x < L; x += 6) t.rect(x, 26, 3, 1, rgb(240, 220, 120));
         // avião subindo
-        int ax = 6 + (int) Math.round(k * 40), ay = 23 - (int) Math.round(k * 16);
+        int ax = 6 + (int) Math.round(k * 76), ay = 23 - (int) Math.round(k * 16);
         t.rect(ax, ay, 16, 3, rgb(246, 246, 252));
         t.rect(ax + 16, ay + 1, 2, 2, rgb(246, 246, 252));
         t.rect(ax, ay - 3, 4, 3, rgb(190, 196, 214));

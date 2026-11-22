@@ -9,7 +9,7 @@ import static br.uefs.forkeazando.view.pixel.Elementos.*;
 final class CenasCap5a8 {
 
     static final int N_GREVE = 12, N_FREELA = 12, N_QUARTO = 14, N_RU6 = 10;
-    static final int N_TCC = 12, N_DEFESA = 12, N_FORMATURA = 14, N_PORTAO = 14;
+    static final int N_TCC = 12, N_DEFESA = 12, N_FORMATURA = 20, N_PORTAO = 14;
     private static final int L = Ilustracoes.LARGURA, A = Ilustracoes.LINHAS;
 
     private static final int PELE_P = rgb(120, 76, 56), CAB_P = rgb(26, 20, 40), ROXO = rgb(92, 62, 112);
@@ -217,17 +217,18 @@ final class CenasCap5a8 {
                 int y = 26 + fila * 7;
                 int k = fila * 8 + i;
                 int pele = new int[]{rgb(224, 172, 140), rgb(130, 84, 62), rgb(190, 130, 96), rgb(96, 62, 46)}[k % 4];
-                boolean lancado = q >= 8 && (k % 3 == 0);
+                boolean lancado = q >= 8 && q < N_FORMATURA - 1 && (k % 3 == 0);
                 if (!lancado) t.rect(x - 3, y - 1, 7, 1, rgb(20, 20, 28));
                 costas(t, x, y, pele, rgb(30, 24, 30), rgb(28, 28, 40), 8, 6 + (2 - fila) * 3);
             }
         }
-        // gorros no ar (último quadro = apogeu)
+        // Arco completo: lançamento, apogeu, descida e gorros recuperados no quadro final.
         for (int k = 0; k < 24; k += 3) {
-            if (q >= 8) {
+            if (q >= 8 && q < N_FORMATURA - 1) {
                 int fila = k / 8, i = k % 8;
-                int x = 6 + i * 8 + (fila % 2) * 4 + ((k * 7) % 5 - 2) * (q - 7) / 2;
-                int y = 26 + fila * 7 - (q - 7) * 3;
+                double arco = Math.sin(Math.PI * (q - 8) / (N_FORMATURA - 9.0));
+                int x = 6 + i * 8 + (fila % 2) * 4 + (int) Math.round(((k * 7) % 5 - 2) * arco);
+                int y = 26 + fila * 7 - (int) Math.round(18 * arco);
                 t.rect(x - 3, y, 7, 1, rgb(20, 20, 28));
                 t.rect(x - 1, y + 1, 3, 1, rgb(20, 20, 28));
                 t.px(x + 3, y + 1, rgb(240, 200, 60));

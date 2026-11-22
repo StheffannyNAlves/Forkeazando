@@ -26,7 +26,8 @@ public final class ArtesFx implements AutoCloseable {
             "brava:neutra", "06_brava_para_neutra.png");
     private final Map<String, Optional<Image>> imagens = limitado(64);
     // Este cache pertence exclusivamente ao executor de desenho.
-    private final Map<String, int[][]> quadros = limitado(6);
+    private record Cenario(java.util.List<Tela> entrada, java.util.List<Tela> repouso) {}
+    private final Map<String, Cenario> quadros = limitado(6);
     private final ExecutorService desenho = Executors.newSingleThreadExecutor(r -> {
         Thread t = new Thread(r, "forkeazando-arte");
         t.setDaemon(true);
@@ -160,46 +161,87 @@ public final class ArtesFx implements AutoCloseable {
             no.setSmooth(false);
             no.getStyleClass().add("ilustracao-cena");
             painel.getChildren().add(no);
+            Runnable[] aoAnexar = {null};
+            boolean[] removida = {false};
             Future<?> pedido = desenho.submit(() -> {
                 try {
-                    int[][] prontos = quadros.get(chave);
-                    if (prontos == null) {
-                        prontos = new int[animacao.total()][];
-                        for (int i = 0; i < prontos.length; i++) {
+                    Cenario pronto = quadros.get(chave);
+                    var repouso = Ilustracoes.ambiente(chave).orElseThrow();
+                    if (pronto == null) {
+                        var entradaFonte = new java.util.ArrayList<Tela>();
+                        var repousoFonte = new java.util.ArrayList<Tela>();
+                        for (int i = 0; i < animacao.total(); i++) {
                             if (Thread.currentThread().isInterrupted()) return;
-                            prontos[i] = pixels(animacao.desenhar(i));
+                            entradaFonte.add(animacao.desenhar(i));
                         }
-                        quadros.put(chave, prontos);
+                        for (int i = 0; i < repouso.total(); i++) {
+                            if (Thread.currentThread().isInterrupted()) return;
+                            repousoFonte.add(repouso.desenhar(i));
+                        }
+                        pronto = new Cenario(java.util.List.copyOf(entradaFonte), java.util.List.copyOf(repousoFonte));
+                        quadros.put(chave, pronto);
                     }
-                    // Rasterização inteira explícita também mantém a nitidez no pipeline de software.
-                    int[][] sequencia = new int[prontos.length][];
-                    for (int i = 0; i < prontos.length; i++) {
-                        if (Thread.currentThread().isInterrupted()) return;
-                        sequencia[i] = ampliarPixels(prontos[i], largura, altura, ESCALA_CENARIO);
-                    }
+                    java.util.List<Tela> fonte = animar ? pronto.entrada()
+                            : java.util.List.of(pronto.entrada().getLast());
+                    int[][] entrada = rasterizar(fonte);
+                    if (entrada == null) return;
+                    int[][] ambiente = rasterizar(pronto.repouso());
+                    if (ambiente == null) return;
                     Platform.runLater(() -> {
-                        if (encerrado || no.getScene() == null) return;
-                        int ultimo = sequencia.length - 1;
-                        escrever(buffer, sequencia[animar ? 0 : ultimo]);
-                        if (!animar) return;
-                        AnimacoesFx.entradaIlustracao(no);
-                        Timeline entrada = new Timeline();
-                        for (int i = 1; i <= ultimo; i++) {
-                            int indice = i;
-                            entrada.getKeyFrames().add(new KeyFrame(
-                                    Duration.millis(i * Math.max(1, animacao.intervaloMs())),
-                                    e -> escrever(buffer, sequencia[indice])));
-                        }
-                        AnimacoesFx.executar(no, "quadros", entrada);
+                        if (encerrado || removida[0]) return;
+                        Runnable apresentar = () -> {
+                            escrever(buffer, entrada[0]);
+                            Runnable iniciarRepouso = () -> {
+                                Timeline ciclo = new Timeline();
+                                for (int i = 0; i <= ambiente.length; i++) {
+                                    int indice = i % ambiente.length;
+                                    ciclo.getKeyFrames().add(new KeyFrame(Duration.millis(i * repouso.intervaloMs()),
+                                            e -> escrever(buffer, ambiente[indice])));
+                                }
+                                ciclo.setCycleCount(Animation.INDEFINITE);
+                                AnimacoesFx.executar(no, "quadros", ciclo);
+                            };
+                            if (!animar) { iniciarRepouso.run(); return; }
+                            AnimacoesFx.entradaIlustracao(no);
+                            Timeline introducao = new Timeline();
+                            for (int i = 1; i < entrada.length; i++) {
+                                int indice = i;
+                                introducao.getKeyFrames().add(new KeyFrame(
+                                        Duration.millis(i * Math.max(1, animacao.intervaloMs())),
+                                        e -> escrever(buffer, entrada[indice])));
+                            }
+                            introducao.setOnFinished(e -> iniciarRepouso.run());
+                            AnimacoesFx.executar(no, "quadros", introducao);
+                        };
+                        if (no.getScene() != null) apresentar.run();
+                        else aoAnexar[0] = apresentar;
                     });
                 } catch (RuntimeException ex) {
                     System.err.println("Não foi possível preparar a ilustração " + chave + ": " + ex.getMessage());
                 }
             });
             no.sceneProperty().addListener((obs, antes, depois) -> {
-                if (antes != null && depois == null) pedido.cancel(true);
+                if (depois != null && aoAnexar[0] != null && !removida[0] && !encerrado) {
+                    Runnable iniciar = aoAnexar[0];
+                    aoAnexar[0] = null;
+                    iniciar.run();
+                }
+                if (antes != null && depois == null) {
+                    removida[0] = true;
+                    aoAnexar[0] = null;
+                    pedido.cancel(true);
+                }
             });
         });
+    }
+
+    private static int[][] rasterizar(java.util.List<Tela> quadros) {
+        int[][] resultado = new int[quadros.size()][];
+        for (int i = 0; i < quadros.size(); i++) {
+            if (Thread.currentThread().isInterrupted()) return null;
+            resultado[i] = RasterizadorCenario.rasterizar(quadros.get(i), ESCALA_CENARIO);
+        }
+        return resultado;
     }
 
     private static int[] pixels(Tela tela) {

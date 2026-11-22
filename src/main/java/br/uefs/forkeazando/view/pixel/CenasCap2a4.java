@@ -198,7 +198,9 @@ final class CenasCap2a4 {
             else if (fim && i == rowDan) t.rect(6, y - 1, 54, 3, rgb(170, 230, 170));
             else if (!fim && i == varredura) t.rect(6, y - 1, 54, 3, rgb(220, 226, 250));
             t.rect(9, y, 14 + (i * 5) % 10, 1, rgb(120, 126, 150));
-            t.texto(50, (y) / 2, notas[i], i == rowDan && fim ? rgb(20, 110, 40) : rgb(30, 34, 60));
+            // A nota do protagonista vem da narrativa dinâmica; a arte não deve inventar um resultado fixo.
+            t.texto(50, (y) / 2, i == rowSel ? "NOTA" : notas[i],
+                    i == rowDan && fim ? rgb(20, 110, 40) : rgb(30, 34, 60));
         }
         for (int y = 38; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(130, 136, 150), rgb(96, 100, 112), (y - 38) / 10.0));
         costas(t, 22, 34, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 14, 14);
@@ -255,11 +257,21 @@ final class CenasCap2a4 {
         t.rect(24, 29, 18, 1, rgb(90, 130, 230));
         t.rect(24, 36, 18, 2, rgb(30, 36, 64));
         t.rect(24, 36, q * 18 / (N_AGATA - 1), 2, rgb(250, 200, 60));
-        t.texto(23, 20, "Processando", rgb(250, 200, 60));
-        t.texto(34, 20, ".".repeat(1 + q % 3), rgb(250, 200, 60));
-        if (q % 2 == 1) {   // glitch: linhas deslocadas
+        boolean fim = q == N_AGATA - 1;
+        t.texto(23, 20, fim ? "SEU PERFIL" : "Processando", rgb(250, 200, 60));
+        if (!fim) t.texto(34, 20, ".".repeat(1 + q % 3), rgb(250, 200, 60));
+        if (q % 2 == 1 && q < N_AGATA - 2) {   // glitch: linhas deslocadas
             t.rect(22, 14 + (q % 5) * 4, 22, 1, rgb(250, 90, 120));
             t.rect(26, 15 + (q % 5) * 4, 14, 1, rgb(90, 220, 250));
+        }
+        return t;
+    }
+
+    static Tela agataResultado(int q) {
+        Tela t = agata(q);
+        if (q == N_AGATA - 1) {
+            t.texto(23, 20, "             ", rgb(250, 200, 60));
+            t.texto(23, 20, "PERFIL GERADO", rgb(250, 200, 60));
         }
         return t;
     }

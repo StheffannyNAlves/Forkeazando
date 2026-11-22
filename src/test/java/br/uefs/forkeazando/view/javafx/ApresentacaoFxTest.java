@@ -238,4 +238,37 @@ class ApresentacaoFxTest {
             AnimacoesFx.pararArvore(avisos);
         });
     }
+    @Test void imagemPreparadaAntesDaAnexacaoApareceEContinuaAnimada() throws Exception {
+        CountDownLatch terminou = new CountDownLatch(1);
+        AtomicReference<ArtesFx> renderer = new AtomicReference<>();
+        AtomicReference<VBox> painel = new AtomicReference<>();
+        long[] assinaturas = new long[2];
+        naFx(() -> {
+            ArtesFx artes = new ArtesFx(); renderer.set(artes);
+            VBox raiz = new VBox(); painel.set(raiz);
+            artes.exibirIlustracao(raiz, "cap1_onibus", false);
+            ImageView no = (ImageView) raiz.getChildren().getFirst();
+            Timeline ensaio = new Timeline(
+                    new javafx.animation.KeyFrame(Duration.millis(1000), e -> new Scene(raiz)),
+                    new javafx.animation.KeyFrame(Duration.millis(2100), e -> assinaturas[0] = hashImagem(no)),
+                    new javafx.animation.KeyFrame(Duration.millis(3000), e -> {
+                        assinaturas[1] = hashImagem(no); terminou.countDown();
+                    }));
+            AnimacoesFx.executar(raiz, "ensaio", ensaio);
+        });
+        try {
+            assertTrue(terminou.await(6, TimeUnit.SECONDS));
+            assertNotEquals(0, assinaturas[0], "Imagem deve aparecer mesmo anexada depois da preparação");
+            assertNotEquals(assinaturas[0], assinaturas[1], "Reutilizar cenário não pode congelar o repouso");
+        } finally { naFx(() -> { AnimacoesFx.pararArvore(painel.get()); renderer.get().close(); }); }
+    }
+
+    private static long hashImagem(ImageView imagem) {
+        var pixels = imagem.getImage().getPixelReader();
+        if ((pixels.getArgb(0,0) >>> 24) == 0) return 0;
+        long hash = 1;
+        for (int y = 0; y < 288; y += 6) for (int x = 0; x < 396; x += 6) hash = hash * 31 + pixels.getArgb(x,y);
+        return hash;
+    }
+
 }

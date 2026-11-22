@@ -10,6 +10,7 @@ package br.uefs.forkeazando.view.pixel;
  * Extraída do MenuPrincipal sem mudar o comportamento de renderizar().
  */
 public final class Tela {
+    public record Texto(int coluna, int linha, String valor, int cor) {}
     private final int w, h, linhas;
     private final int[][] pix;
     private final char[][] txt;
@@ -72,6 +73,22 @@ public final class Tela {
                 txtFg[linha][xx] = cor;
             }
         }
+    }
+
+    /** Cópia somente de leitura da camada de texto, também utilizada pelo renderizador gráfico. */
+    public java.util.List<Texto> textos() {
+        java.util.List<Texto> textos = new java.util.ArrayList<>();
+        for (int r = 0; r < linhas; r++) {
+            int x = 0;
+            while (x < w) {
+                if (txt[r][x] == 0) { x++; continue; }
+                int inicio = x, cor = txtFg[r][x];
+                StringBuilder trecho = new StringBuilder();
+                while (x < w && txt[r][x] != 0 && txtFg[r][x] == cor) trecho.append(txt[r][x++]);
+                textos.add(new Texto(inicio, r, trecho.toString(), cor));
+            }
+        }
+        return java.util.List.copyOf(textos);
     }
 
     private static void cor(StringBuilder sb, boolean frente, int c) {

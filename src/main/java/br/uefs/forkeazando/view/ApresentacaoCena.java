@@ -12,6 +12,16 @@ import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
  * sem conhecer os detalhes das implementações de apresentação
  * (terminal ou JavaFX). CenasController deixa de depender de CenaView, e passa a depender
  * de ApresentacaoCena
+ *
+ * <p>Também é a aplicação do padrão GoF <b>Strategy</b>: a forma de apresentar a
+ * partida é um comportamento intercambiável escolhido na construção do contexto.
+ * <ul>
+ *   <li>Strategy: esta interface;</li>
+ *   <li>Context: {@code CenasController}, que guarda a referência e delega toda
+ *       apresentação a ela, sem saber qual implementação está em uso;</li>
+ *   <li>ConcreteStrategy: {@code CenaView} (terminal) e {@code ControllerInterface} (JavaFX).</li>
+ * </ul>
+ * O mesmo núcleo de regras roda com qualquer uma das duas, sem duplicar consequências.
  */
 public interface ApresentacaoCena {
     void resetarCacheVisual();

@@ -1,4 +1,4 @@
-package br.uefs.forkeazando.view.javafx;
+package br.uefs.forkeazando.controller;
 
 import br.uefs.forkeazando.adapter.CarregamentoAdapter;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
@@ -15,10 +15,10 @@ import java.nio.file.Path;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class SessaoGraficaNovaPartidaTest {
+class SessaoGraficaCarregamentoTest {
     @TempDir Path pasta;
 
-    private static Protagonista protagonista(String nome) {
+    private static Protagonista personagem(String nome) {
         return new Protagonista(nome, IdentidadeProtagonista.STHEFFANNY,
                 false, false, false,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
@@ -26,43 +26,45 @@ class SessaoGraficaNovaPartidaTest {
                 Protagonista.SituacaoEconomica.ESTAVEL);
     }
 
-    private static ApresentacaoCena apresentacaoSemJavaFx() {
+    private static ApresentacaoCena apresentacaoSemInterfaceGrafica() {
         return (ApresentacaoCena) Proxy.newProxyInstance(
                 ApresentacaoCena.class.getClassLoader(),
                 new Class<?>[]{ApresentacaoCena.class},
                 (proxy, metodo, argumentos) -> null);
     }
 
-    @Test
-    void erroNoProgressoNaoDescartaPartidaAnterior() throws Exception {
-        SessaoGrafica sessao = new SessaoGrafica(new CarregamentoAdapter(pasta), pasta);
-        ApresentacaoCena apresentacao = apresentacaoSemJavaFx();
-        sessao.novaPartida(protagonista("Primeira"), apresentacao);
-        Estado anterior = sessao.estado();
-
-        // Arquivo invalido somente no diretorio temporario deste teste
-        Files.writeString(pasta.resolve("progresso.json"), "{\"conquistas\": 1}");
-        assertThrows(DadosInvalidosException.class,
-                () -> sessao.novaPartida(protagonista("Segunda"), apresentacao));
-
-        assertSame(anterior, sessao.estado(), "A partida anterior nao deve ser substituida");
-        assertEquals("Primeira", sessao.estado().getProtagonista().getNome());
-        assertDoesNotThrow(sessao::prepararCenaAtual,
-                "O controlador antigo deve continuar funcional");
+    private static Estado estado(String nome) {
+        Estado resultado = new Estado();
+        resultado.iniciar(personagem(nome));
+        resultado.setCenaAtualId(700);
+        return resultado;
     }
 
     @Test
-    void novaPartidaValidaJaFicaPreparadaParaJogar() throws Exception {
+    void falhaNaLeituraDoProgressoPreservaPartidaEControladorAnterior() throws Exception {
         SessaoGrafica sessao = new SessaoGrafica(new CarregamentoAdapter(pasta), pasta);
-        ApresentacaoCena apresentacao = apresentacaoSemJavaFx();
-        sessao.novaPartida(protagonista("Primeira"), apresentacao);
+        sessao.novaPartida(personagem("Atual"));
+        ApresentacaoCena apresentacao = apresentacaoSemInterfaceGrafica();
+        sessao.inicializarControladorPartida(apresentacao);
         Estado anterior = sessao.estado();
 
-        sessao.novaPartida(protagonista("Segunda"), apresentacao);
+        // Falha ao ler progresso permanente: nao deve substituir a sessao atual
+        Files.writeString(pasta.resolve("progresso.json"), "{\"conquistas\": 1}");
+        assertThrows(DadosInvalidosException.class,
+                () -> sessao.carregarPartida(estado("Outra"), apresentacao));
+        assertSame(anterior, sessao.estado());
+        assertDoesNotThrow(sessao::prepararCenaAtual,
+                "O controlador da partida anterior deve continuar operacional");
+    }
 
-        assertNotSame(anterior, sessao.estado());
-        assertEquals("Segunda", sessao.estado().getProtagonista().getNome());
-        assertEquals(700, sessao.estado().getCenaAtualId());
+    @Test
+    void carregamentoValidoPreparaControladorEPermiteProsseguir() throws Exception {
+        SessaoGrafica sessao = new SessaoGrafica(new CarregamentoAdapter(pasta), pasta);
+        sessao.novaPartida(personagem("Atual"));
+        Estado carregado = estado("Carregado");
+
+        assertDoesNotThrow(() -> sessao.carregarPartida(carregado, apresentacaoSemInterfaceGrafica()));
+        assertSame(carregado, sessao.estado());
         assertDoesNotThrow(sessao::prepararCenaAtual);
     }
 }

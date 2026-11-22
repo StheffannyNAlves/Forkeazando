@@ -18,8 +18,7 @@ public class TelaCaracteristicasController {
         System.out.println("[1] Tiana");
         System.out.println("[2] Miles");
         int opcao = Entrada.lerInteiro(1, 2);
-        IdentidadeProtagonista identidade = (opcao == 1)
-                ? IdentidadeProtagonista.STHEFFANNY : IdentidadeProtagonista.DAVI;
+        IdentidadeProtagonista identidade = (opcao == 1) ? IdentidadeProtagonista.STHEFFANNY : IdentidadeProtagonista.DAVI;
         System.out.print("Seu nome: ");
         String nome = Entrada.lerLinha();
         if (nome == null || nome.isBlank()) {
@@ -33,9 +32,7 @@ public class TelaCaracteristicasController {
         var vidaSocial         = view.perguntarVidaSocial();
         var experiencia        = view.perguntarExperienciaEM();
 
-        Protagonista p = new Protagonista(
-                nome, identidade, perfeccionista, sociavel, estudoTeorico,
-                vidaSocial, experiencia, situacao);
+        Protagonista p = new Protagonista(nome, identidade, perfeccionista, sociavel, estudoTeorico, vidaSocial, experiencia, situacao);
 
         System.out.println();
         System.out.println("─── " + p.getNome() + " ───");

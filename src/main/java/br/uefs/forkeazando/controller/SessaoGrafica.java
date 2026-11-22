@@ -1,14 +1,13 @@
-package br.uefs.forkeazando.view.javafx;
+package br.uefs.forkeazando.controller;
 
 import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
-import br.uefs.forkeazando.controller.GatilhoAutosave;
+import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.model.*;
-import br.uefs.forkeazando.controller.CenasController;
 import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.Roteiro;
 import br.uefs.forkeazando.view.ApresentacaoCena;
@@ -78,7 +77,8 @@ public final class SessaoGrafica {
                 new GatilhoAutosave(5),
                 () -> {
                     throw new UnsupportedOperationException(
-                            "Salvamento manual ainda nao integrado ao JavaFX.");
+                            "No JavaFX o salvamento manual e feito pelo menu Salvar (SessaoGrafica.salvarEmSlot); "
+                            + "este callback so e usado pelo laco de menu do terminal.");
                 }
         );
     }
@@ -120,6 +120,44 @@ public final class SessaoGrafica {
     }
 
 
+    // Valida os dados da tela de criação e inicia a partida (ver novaPartida com Protagonista)
+    public void novaPartida(DadosProtagonista dados, ApresentacaoCena apresentacao)
+            throws CarregamentoException, DadosInvalidosException {
+        Objects.requireNonNull(dados, "Os dados do protagonista não podem ser nulos.");
+        novaPartida(dados.criarProtagonista(), apresentacao);
+    }
+
+    // a View fala só com a sessão, que passa para o Adapter
+
+    public List<ResumoSlot> listarSlots() {
+        return gerenciamentoPartidas.listarSlots();
+    }
+
+    public boolean existeAutosave() {
+        return gerenciamentoPartidas.existeAutosave();
+    }
+
+    public Estado carregarAutosave() throws CarregamentoException, DadosInvalidosException {
+        return gerenciamentoPartidas.carregarAutosave();
+    }
+
+    public void excluirSlot(int numeroSlot) throws SaveException {
+        gerenciamentoPartidas.excluirSlot(numeroSlot);
+    }
+
+    public void excluirAutosave() throws SaveException {
+        gerenciamentoPartidas.excluirAutosave();
+    }
+
+
+    public Configuracoes carregarConfiguracoes() throws CarregamentoException, DadosInvalidosException {
+        return new Configuracoes(ConfiguracoesAdmin.get());
+    }
+
+    public void salvarConfiguracoes(Configuracoes novas) throws SaveException, DadosInvalidosException {
+        ConfiguracoesAdmin.salvarConfigPersonalizadas(novas);
+    }
+
     public void carregarPartida(Estado estadoCarregado) {
         validarEstadoCarregado(estadoCarregado);
         this.estado = estadoCarregado;
@@ -127,7 +165,7 @@ public final class SessaoGrafica {
         notificarObservadores();
     }
 
-    /** Prepara o novo controlador ANTES de substituir a partida em memoria. */
+    // Prepara o novo controlador ANTES de substituir a partida em memoria
     public void carregarPartida(Estado estadoCarregado, ApresentacaoCena apresentacao)
             throws CarregamentoException, DadosInvalidosException {
         validarEstadoCarregado(estadoCarregado);
@@ -188,7 +226,7 @@ public final class SessaoGrafica {
         if (!estado.isPartidaConcluida()) {
             throw new IllegalStateException("A partida ainda não possui um final registrado.");
         }
-        GerenciadorSlots.salvarAutosave(estado, GerenciadorSlots.PASTA_PADRAO);
+        GerenciadorSlots.salvarAutosave(estado, pastaProgresso);
         estado = null;
         controladorCenas = null;
     }

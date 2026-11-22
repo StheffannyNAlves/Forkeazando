@@ -273,6 +273,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                     abrirTelaSalvar();
                 }
             }
+            case "progresso" -> abrirMeuProgresso();
             case "creditos" -> mostrarModal("CRÉDITOS", "FORKEAZANDO · 2026\n\nStheffanny Alves\n" + "Universidade Estadual do Fork Perdido (UEFP)");
             case "sair" -> {
                 if (sessao.possuiPartida()) confirmarSaida();
@@ -283,11 +284,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     private void abrirTelaSalvar() {
-        VBox painel = novoPainel(
-                "GERENCIAR SAVES",
-                "Escolha um slot para salvar ou excluir uma partida."
-        );
-
+        VBox painel = novoPainel("GERENCIAR SAVES", "Escolha um slot para salvar ou excluir uma partida.");
         for (ResumoSlot slot : acessoPartidas.listarSlots()) {
             VBox bloco = new VBox(8);
 
@@ -301,12 +298,9 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                                 + " | " + slot.data())
                 );
             }
-
             HBox acoes = new HBox(12);
-
             if (sessao.possuiPartida()) {
                 Button salvar = botaoAcao("SALVAR");
-
                 salvar.setOnAction(e -> {
                     if (slot.status() == ResumoSlot.Status.VAZIO) {
                         salvarNoSlot(slot.numero());
@@ -314,16 +308,11 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                         confirmarSobrescrita(slot.numero());
                     }
                 });
-
                 acoes.getChildren().add(salvar);
             }
-
             if (slot.status() != ResumoSlot.Status.VAZIO) {
                 Button excluir = botaoAcao("EXCLUIR");
-
-                excluir.setOnAction(e ->
-                        confirmarExclusao(slot.numero())
-                );
+                excluir.setOnAction(e -> confirmarExclusao(slot.numero()));
 
                 acoes.getChildren().add(excluir);
             }
@@ -488,6 +477,53 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         conteudo.getChildren().addAll(dica, new HBox(14, comecar, voltar));
         mostrarTela(conteudo);
         Platform.runLater(nome::requestFocus);
+    }
+
+    private void abrirMeuProgresso() {
+        try {
+            GerenciadorProgresso gerenciador = new GerenciadorProgresso(GerenciadorSlots.PASTA_PADRAO);
+            Progresso progresso = gerenciador.carregar();
+            VBox painel = novoPainel("MEU PROGRESSO", "As jornadas e conquistas que você acumulou.");
+            List<Final> finaisAtuais = Arrays.stream(Final.values())
+                    .filter(Final::isFinalDeCarreira)
+                    .toList();
+            List<Final> finaisLegados = Arrays.stream(Final.values())
+                    .filter(f -> !f.isFinalDeCarreira())
+                    .toList();
+            long desbloqueados = finaisAtuais.stream()
+                    .filter(progresso::alcancou)
+                    .count();
+            painel.getChildren().add(rotulo("FINAIS DESBLOQUEADOS: " + desbloqueados + "/" + finaisAtuais.size()));
+            for (Final finalJogo : finaisAtuais) {
+                painel.getChildren().add(rotulo(progresso.alcancou(finalJogo) ? "★ " + finalJogo.getTitulo() : "🔒 Final ainda não descoberto"));
+            }
+            List<Final> legadosDesbloqueados = finaisLegados.stream()
+                    .filter(progresso::alcancou)
+                    .toList();
+            if (!legadosDesbloqueados.isEmpty()) {
+                painel.getChildren().add(rotulo(
+                        "HISTÓRICO · FINAIS LEGADOS"));
+                for (Final legado : legadosDesbloqueados) {
+                    painel.getChildren().add(rotulo(
+                            "◆ " + legado.getTitulo()
+                    ));
+                }
+            }
+            painel.getChildren().add(rotulo("CONQUISTAS: " + progresso.conquistasDesbloqueadas().size() + "/" + Conquista.values().length));
+            for (Conquista conquista : Conquista.values()) {
+                boolean desbloqueada = progresso.possui(conquista);
+                painel.getChildren().add(rotulo(desbloqueada ? "★ " + conquista.getTitulo() + " — " + conquista.getDescricao() : "🔒 Conquista não desbloqueada"));
+            }
+
+            Button voltar = botaoAcao("VOLTAR AO MENU");
+            voltar.setOnAction(e -> voltarAoMenu());
+
+            painel.getChildren().add(voltar);
+            mostrarTela(painel);
+
+        } catch (CarregamentoException | DadosInvalidosException ex) {
+            mostrarModal("ERRO NO PROGRESSO", ex.getMessage());
+        }
     }
 
     private void abrirCena() {

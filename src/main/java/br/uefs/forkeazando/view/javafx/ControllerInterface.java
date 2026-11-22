@@ -558,6 +558,9 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 });
                 conteudo.getChildren().add(escolhaBotao);
             }
+            Button statusBotao = botaoAcao("VER STATUS");
+            statusBotao.setOnAction(e -> abrirStatus());
+            conteudo.getChildren().add(statusBotao);
             Button voltar = botaoAcao("VOLTAR AO MENU  ·  CONTINUAR DEPOIS");
             voltar.setOnAction(e -> voltarAoMenu());
             conteudo.getChildren().add(voltar);
@@ -569,7 +572,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
 
 
-    //Interrompe a animação do cenário atual
 
     private void pararAnimacaoIlustracao() {
         if (animacaoIlustracao != null) {
@@ -578,32 +580,23 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         }
     }
 
-    private void exibirIlustracao(
-            VBox conteudo, ApresentacaoDeCena visual) {
-
+    private void exibirIlustracao(VBox conteudo, ApresentacaoDeCena visual) {
         String anterior = ilustracaoAtual;
-
         if (visual != null && visual.ilustracao() != null) {
             ilustracaoAtual = visual.ilustracao();
         }
         pararAnimacaoIlustracao();
-
         if (ilustracaoAtual == null) {
             return;
         }
-
         Ilustracoes.animacao(ilustracaoAtual).ifPresent(animacao -> {
-
             ImageView cenario = new ImageView();
             cenario.setFitWidth(396);
             cenario.setPreserveRatio(true);
             cenario.setSmooth(false);
-
             conteudo.getChildren().add(cenario);
 
             int ultimoQuadro = animacao.total() - 1;
-
-            // Cenário já visto ou animação com apenas um quadro.
             if (Objects.equals(anterior, ilustracaoAtual)
                     || animacao.total() == 1) {
 
@@ -612,25 +605,14 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 ));
                 return;
             }
-
-            // Exibe o primeiro quadro imediatamente.
-            cenario.setImage(conversorImagem(
-                    animacao.desenhar(0)
-            ));
-
+            cenario.setImage(conversorImagem(animacao.desenhar(0)));
             int[] indice = {0};
-
             Timeline timeline = new Timeline(
                     new KeyFrame(Duration.millis(Math.max(1, animacao.intervaloMs())),
                             evento -> {
                                 indice[0]++;
                                 Tela quadro = animacao.desenhar(indice[0]);
-                                cenario.setImage(conversorImagem(quadro));
-                            }
-                    )
-            );
-
-            // O quadro zero já está na tela
+                                cenario.setImage(conversorImagem(quadro));}));
             timeline.setCycleCount(ultimoQuadro);
             timeline.setOnFinished(evento -> {
                 if (animacaoIlustracao == timeline) {
@@ -715,7 +697,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         raiz.requestFocus();
     }
 
-    /** Mostra até três notificações temporárias sem bloquear cliques no jogo. */
+    // Mostra até três notificações temporárias sem bloquear cliques
     private void mostrarNotificacao(String titulo, String mensagem) {
         if (mensagem == null || mensagem.isBlank()) return;
 
@@ -877,9 +859,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     @Override
     public void mostrarBencaoCaramelo() {
-        mostrarModal("BENÇÃO DO CARAMELO",
-                "O Caramelo passa do lado. Ele para. Ele te olha.\n\n"
-                        + "Ele vai embora.\n\n(Foi... um sinal?)");
+        mostrarModal("BENÇÃO DO CARAMELO", "O Caramelo passa do lado. Ele para. Ele te olha.\n\n" + "Ele vai embora.\n\n(Foi... um sinal?)");
     }
 
     @Override
@@ -904,8 +884,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     @Override
     public void mostrarConquista(Conquista conquista) {
-        mostrarNotificacao("CONQUISTA DESBLOQUEADA",
-                conquista.getTitulo() + "\n\n" + conquista.getDescricao());
+        mostrarNotificacao("CONQUISTA DESBLOQUEADA", conquista.getTitulo() + "\n\n" + conquista.getDescricao());
     }
 
     @Override
@@ -923,42 +902,31 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             mostrarNotificacao("SEU CAMINHO", mensagem);
             return;
         }
-        // Falhas de salvamento, problemas de rota e mensagens inesperadas não desaparecem sozinhas.
+        // Falhas de salvamento, problemas de rota e mensagens inesperadas não desaparecem sozinhas
         mostrarModal("MENSAGEM", mensagem);
     }
 
     @Override
-    public void mostrarImpactoRelacionamento(
-            PersonagemSecundario npc,
-            float valor,
-            Protagonista.NivelRelacionamento nivel) {
-
+    public void mostrarImpactoRelacionamento(PersonagemSecundario npc, float valor, Protagonista.NivelRelacionamento nivel) {
         String mudanca = valor > 0 ? "melhorou"
                 : valor < 0 ? "piorou" : "não mudou";
-
-        mostrarNotificacao("RELACIONAMENTO",
-                "Seu relacionamento com " + npc.getNome()
+        mostrarNotificacao("RELACIONAMENTO", "Seu relacionamento com " + npc.getNome()
                         + " " + mudanca + ".\n"
                         + "Nível atual: " + nivel);
     }
 
     @Override
     public void mostrarEpilogos(Protagonista p) {
-        VBox painel = novoPainel("O QUE FICOU",
-                "O fim da jornada de " + p.getNome());
+        VBox painel = novoPainel("O QUE FICOU", "O fim da jornada de " + p.getNome());
         painel.setMaxHeight(Double.MAX_VALUE);
-
         for (Epilogos.Epilogo bloco : Epilogos.de(p)) {
             painel.getChildren().add(rotulo(bloco.titulo()));
-
             Label texto = new Label(bloco.texto());
             texto.getStyleClass().add("texto-narrativa");
             texto.setWrapText(true);
             texto.setMaxWidth(650);
-
             painel.getChildren().add(texto);
         }
-
         Button continuar = botaoAcao("CONTINUAR PARA O ENCERRAMENTO");
         continuar.setOnAction(e -> abrirCena());
         painel.getChildren().add(continuar);
@@ -967,7 +935,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     @Override
     public void mostrarCurriculo(Protagonista p) {
-
         VBox painel = novoPainel("SEU CURRÍCULO", "Um retrato das escolhas feitas até aqui.");
         painel.setMaxHeight(Double.MAX_VALUE);
         Curriculo.Categoria categoriaAnterior = null;
@@ -985,8 +952,35 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         Button continuar = botaoAcao("CONTINUAR A HISTÓRIA");
         continuar.setOnAction(e -> abrirCena());
         painel.getChildren().add(continuar);
-        // CenasController ainda chamará renderizar() após este método.
         curriculoPendente = painel;
+    }
+
+
+    private void abrirStatus() {
+        Protagonista p = sessao.estado().getProtagonista();
+
+        VBox painel = novoPainel(
+                "STATUS · " + p.getNome().toUpperCase(),
+                "CAPÍTULO " + sessao.estado().getCapituloAtual()
+                        + "  ·  " + p.getRank()
+        );
+
+        painel.getChildren().addAll(
+                rotulo("ENERGIA: " + p.getEnergia() + "/" + p.getEnergiaMaxima()),
+                rotulo("SCORE: " + p.getScore()),
+                rotulo("PARTICIPAÇÃO: " + p.getParticipacao()),
+                rotulo("CONFIANÇA: " + p.getConfianca()),
+                rotulo("VIDA SOCIAL: " + p.getVidaSocial()),
+                rotulo("CARISMA: " + p.getCarisma()),
+                rotulo("LÓGICA: " + p.getLogica()),
+                rotulo("SANIDADE: " + p.getSanidade())
+        );
+
+        Button voltar = botaoAcao("VOLTAR À HISTÓRIA");
+        voltar.setOnAction(e -> abrirCena());
+
+        painel.getChildren().add(voltar);
+        mostrarTela(painel);
     }
 
     @Override
@@ -1148,6 +1142,3 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 }
 
-/* fork-animacoes-v1 */
-
-/* forkeazando-fluidez-integrada-v1 */

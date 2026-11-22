@@ -9,6 +9,7 @@ import javafx.scene.image.WritableImage;
 import br.uefs.forkeazando.model.*;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.animation.ParallelTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
@@ -72,6 +73,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private TranslateTransition movimentoCenario;
     private Animation animacaoTitulo;
     private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
+    // Somente apresentação: notificações não interrompem a história.
+    private VBox avisosDiscretos;
+    private String feedbackEscolhaPendente;
+    private VBox curriculoPendente;
     private String ilustracaoAtual;
     private Timeline animacaoIlustracao;
     private Timeline animacaoRetrato;
@@ -493,6 +498,13 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             indicadoresHud.getStyleClass().add("hud-destaque");
             conteudo.getChildren().add(indicadoresHud);
             atualizar(sessao.estado());
+
+            if (feedbackEscolhaPendente != null) {
+                Label feedback = rotulo("↳ SUA ESCOLHA\n" + feedbackEscolhaPendente);
+                feedback.getStyleClass().add("feedback-escolha");
+                conteudo.getChildren().add(feedback);
+                feedbackEscolhaPendente = null;
+            }
             ApresentacaoDeCena visual = VisuaisDeCena.paraCena(cena.getId()).orElse(null);
 
             exibirIlustracao(conteudo, visual);
@@ -685,6 +697,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         telaSecundaria.toFront();
         AnimacoesFx.entradaTela(rolante);
         AnimacoesFx.entradaBotoes(painel);
+        if (avisosDiscretos != null) avisosDiscretos.toFront();
         if (modal.isVisible()) {
             modal.toFront();
         }
@@ -701,7 +714,65 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 : "✦  SUA HISTÓRIA COMEÇA AQUI");
         raiz.requestFocus();
     }
+
+    /** Mostra até três notificações temporárias sem bloquear cliques no jogo. */
+    private void mostrarNotificacao(String titulo, String mensagem) {
+        if (mensagem == null || mensagem.isBlank()) return;
+
+        if (avisosDiscretos == null) {
+            avisosDiscretos = new VBox(8);
+            avisosDiscretos.setAlignment(Pos.TOP_RIGHT);
+            avisosDiscretos.setMouseTransparent(true);
+            avisosDiscretos.setMaxWidth(370);
+            avisosDiscretos.setMaxHeight(Region.USE_PREF_SIZE);
+            StackPane.setAlignment(avisosDiscretos, Pos.TOP_RIGHT);
+            StackPane.setMargin(avisosDiscretos, new Insets(18, 22, 0, 0));
+            raiz.getChildren().add(avisosDiscretos);
+        }
+
+        VBox aviso = new VBox(4);
+        aviso.getStyleClass().add("aviso-discreto");
+        aviso.setMaxWidth(350);
+        Label cabecalho = new Label(titulo);
+        cabecalho.getStyleClass().add("aviso-discreto-titulo");
+        Label descricao = new Label(mensagem);
+        descricao.getStyleClass().add("aviso-discreto-texto");
+        descricao.setWrapText(true);
+        descricao.setMaxWidth(325);
+        aviso.getChildren().addAll(cabecalho, descricao);
+
+        if (avisosDiscretos.getChildren().size() >= 3) {
+            avisosDiscretos.getChildren().remove(0);
+        }
+        avisosDiscretos.getChildren().add(aviso);
+        aviso.setOpacity(0);
+        aviso.setTranslateY(-9);
+        FadeTransition entrada = new FadeTransition(Duration.millis(180), aviso);
+        entrada.setFromValue(0);
+        entrada.setToValue(1);
+        TranslateTransition deslocamento = new TranslateTransition(Duration.millis(180), aviso);
+        deslocamento.setFromY(-9);
+        deslocamento.setToY(0);
+        new ParallelTransition(entrada, deslocamento).play();
+
+        PauseTransition espera = new PauseTransition(Duration.seconds(4.5));
+        espera.setOnFinished(e -> {
+            FadeTransition saida = new FadeTransition(Duration.millis(260), aviso);
+            saida.setToValue(0);
+            saida.setOnFinished(ev -> avisosDiscretos.getChildren().remove(aviso));
+            saida.play();
+        });
+        espera.play();
+
+        avisosDiscretos.toFront();
+        if (modal.isVisible()) modal.toFront();
+    }
+
     private void mostrarModal(String titulo, String conteudo) {
+        if ("PARTIDA SALVA".equals(titulo) || "PARTIDA EXCLUÍDA".equals(titulo)) {
+            mostrarNotificacao(titulo, conteudo);
+            return;
+        }
         if (modal.isVisible()) {
             avisosPendentes.addLast(new String[]{titulo, conteudo});
             return;
@@ -797,6 +868,11 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         }
 
         abrirCena();
+        if (curriculoPendente != null) {
+            VBox painel = curriculoPendente;
+            curriculoPendente = null;
+            mostrarTela(painel);
+        }
     }
 
     @Override
@@ -812,7 +888,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 .map(Colecionavel::getNome)
                 .orElse(flag);
 
-        mostrarModal("NOVA HABILIDADE", nome);
+        mostrarNotificacao("NOVA HABILIDADE", nome);
     }
 
     @Override
@@ -821,19 +897,33 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 .map(Colecionavel::getNome)
                 .orElse(flag);
 
-        mostrarModal("ITEM ADQUIRIDO", nome);
+        mostrarNotificacao("ITEM ADQUIRIDO", nome);
     }
 
 
 
     @Override
     public void mostrarConquista(Conquista conquista) {
-        mostrarModal("CONQUISTA DESBLOQUEADA",
+        mostrarNotificacao("CONQUISTA DESBLOQUEADA",
                 conquista.getTitulo() + "\n\n" + conquista.getDescricao());
     }
 
     @Override
     public void mostrarMensagem(String mensagem) {
+
+        if (mensagem != null && mensagem.startsWith("CONSEQUÊNCIA DA ESCOLHA\n")) {
+            feedbackEscolhaPendente = mensagem.substring("CONSEQUÊNCIA DA ESCOLHA\n".length());
+            return;
+        }
+        if ("Progresso salvo automaticamente.".equals(mensagem)) {
+            mostrarNotificacao("AUTOSAVE", "Progresso salvo automaticamente.");
+            return;
+        }
+        if (mensagem != null && mensagem.startsWith("Sua trilha foi definida:")) {
+            mostrarNotificacao("SEU CAMINHO", mensagem);
+            return;
+        }
+        // Falhas de salvamento, problemas de rota e mensagens inesperadas não desaparecem sozinhas.
         mostrarModal("MENSAGEM", mensagem);
     }
 
@@ -846,7 +936,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         String mudanca = valor > 0 ? "melhorou"
                 : valor < 0 ? "piorou" : "não mudou";
 
-        mostrarModal("RELACIONAMENTO",
+        mostrarNotificacao("RELACIONAMENTO",
                 "Seu relacionamento com " + npc.getNome()
                         + " " + mudanca + ".\n"
                         + "Nível atual: " + nivel);
@@ -877,32 +967,31 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
     @Override
     public void mostrarCurriculo(Protagonista p) {
-        var linhas = Curriculo.linhas(p);
-        Curriculo.Categoria categoria = null;
-        StringBuilder conteudo = new StringBuilder();
 
-        for (Curriculo.Linha linha : linhas) {
-            if (categoria != null && categoria != linha.categoria()) {
-                mostrarModal("CURRÍCULO · " + categoria.rotulo,
-                        conteudo.toString());
-                conteudo.setLength(0);
+        VBox painel = novoPainel("SEU CURRÍCULO", "Um retrato das escolhas feitas até aqui.");
+        painel.setMaxHeight(Double.MAX_VALUE);
+        Curriculo.Categoria categoriaAnterior = null;
+        for (Curriculo.Linha linha : Curriculo.linhas(p)) {
+            if (categoriaAnterior != linha.categoria()) {
+                Label secao = rotulo("◆ " + linha.categoria().rotulo);
+                secao.getStyleClass().add("curriculo-secao");
+                painel.getChildren().add(secao);
+                categoriaAnterior = linha.categoria();
             }
-
-            categoria = linha.categoria();
-            conteudo.append(linha.positiva() ? "✓ " : "✗ ")
-                    .append(linha.texto())
-                    .append("\n");
+            Label item = rotulo((linha.positiva() ? "✓ " : "✗ ") + linha.texto());
+            item.getStyleClass().add("curriculo-linha");
+            painel.getChildren().add(item);
         }
-
-        if (categoria != null) {
-            mostrarModal("CURRÍCULO · " + categoria.rotulo,
-                    conteudo.toString());
-        }
+        Button continuar = botaoAcao("CONTINUAR A HISTÓRIA");
+        continuar.setOnAction(e -> abrirCena());
+        painel.getChildren().add(continuar);
+        // CenasController ainda chamará renderizar() após este método.
+        curriculoPendente = painel;
     }
 
     @Override
     public void mostrarTransicao(String capitulo) {
-        mostrarModal("NOVO CAPÍTULO", capitulo);
+        mostrarNotificacao("NOVO CAPÍTULO", capitulo);
     }
 
     @Override
@@ -1060,3 +1149,5 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 }
 
 /* fork-animacoes-v1 */
+
+/* forkeazando-fluidez-integrada-v1 */

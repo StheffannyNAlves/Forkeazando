@@ -195,3 +195,41 @@
     -fx-border-width: 0 0 2 0;
     -fx-padding: 9 12 9 12;
 }
+
+/* forkeazando-fluidez-integrada-v1: feedback não bloqueante, sem classe Java nova. */
+.aviso-discreto {
+    -fx-background-color: rgba(43, 23, 66, 0.97);
+    -fx-border-color: #ffce80;
+    -fx-border-width: 0 0 0 4;
+    -fx-padding: 11 13;
+    -fx-effect: dropshadow(gaussian, rgba(12, 5, 28, 0.50), 12, 0.20, 0, 4);
+}
+.aviso-discreto-titulo {
+    -fx-font-family: "DejaVu Sans Mono";
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #ffe298;
+}
+.aviso-discreto-texto {
+    -fx-font-family: "DejaVu Sans";
+    -fx-font-size: 12px;
+    -fx-text-fill: #fff0da;
+}
+.feedback-escolha {
+    -fx-background-color: rgba(22, 14, 39, 0.86);
+    -fx-border-color: #8cebd5;
+    -fx-border-width: 0 0 0 3;
+    -fx-padding: 11 13;
+    -fx-text-fill: #eafff8;
+    -fx-font-size: 12px;
+}
+.curriculo-secao {
+    -fx-text-fill: #ffdc93;
+    -fx-font-size: 14px;
+    -fx-padding: 12 0 2 0;
+}
+.curriculo-linha {
+    -fx-text-fill: #fff0df;
+    -fx-font-size: 12px;
+    -fx-padding: 3 0 3 12;
+}

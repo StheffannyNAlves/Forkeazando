@@ -3,6 +3,8 @@ package br.uefs.forkeazando.audio;
 import javax.sound.sampled.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class GerenciadorAudio {
 
@@ -11,7 +13,18 @@ public class GerenciadorAudio {
 
     private Clip clip;
     private FloatControl gainControl;
-    private int volume = 100; // guarda o volume mesmo antes do clip existir
+    private volatile int volume = 100;
+    private boolean encerrado;
+    // Clip e seus controles são acessados somente por esta fila; carregar o WAV não bloqueia o JavaFX.
+    private final ExecutorService tarefas = Executors.newSingleThreadExecutor(r -> {
+        Thread t = new Thread(r, "forkeazando-audio");
+        t.setDaemon(true);
+        return t;
+    });
+
+    private synchronized void executar(Runnable tarefa) {
+        if (!encerrado) tarefas.execute(tarefa);
+    }
 
     private void carregar() throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         URL recurso = GerenciadorAudio.class.getResource(CAMINHO);
@@ -30,7 +43,7 @@ public class GerenciadorAudio {
 
     public void setVolume(int volume) {
         this.volume = Math.max(0, Math.min(100, volume));
-        aplicarVolume();
+        executar(this::aplicarVolume);
     }
 
     private void aplicarVolume() {
@@ -45,27 +58,34 @@ public class GerenciadorAudio {
     }
 
     public void iniciar() {
-        if (clip != null && clip.isRunning()) return; // evita iniciar duas vezes
-        try {
-            if (clip == null) carregar();
-            clip.loop(Clip.LOOP_CONTINUOUSLY);
-        } catch (Exception e) {
-            System.err.println("Áudio indisponível: " + e.getMessage());
-        }
+        executar(() -> {
+            if (clip != null && clip.isRunning()) return;
+            try {
+                if (clip == null) carregar();
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
+            } catch (Exception e) {
+                System.err.println("Áudio indisponível: " + e.getMessage());
+            }
+        });
     }
 
     public void parar() {
-        if (clip != null && clip.isRunning()) {
-            clip.stop();
-        }
+        executar(() -> {
+            if (clip != null && clip.isRunning()) clip.stop();
+        });
     }
 
-    public void fechar() {
-        if (clip != null) {
-            clip.stop();
-            clip.close();
-            clip = null;
-            gainControl = null;
-        }
+    public synchronized void fechar() {
+        if (encerrado) return;
+        encerrado = true;
+        tarefas.execute(() -> {
+            if (clip != null) {
+                clip.stop();
+                clip.close();
+                clip = null;
+                gainControl = null;
+            }
+        });
+        tarefas.shutdown();
     }
 }

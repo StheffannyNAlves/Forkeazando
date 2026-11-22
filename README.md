@@ -843,7 +843,7 @@ A **Fase 3 foi concluída para a entrega acadêmica na versão `v1.5.0`**. Os it
 - [ ] Avaliação em mais sistemas, densidades de tela e máquinas modestas reais.
 - [ ] Validação audível da trilha em diferentes dispositivos e sistemas.
 - [ ] Opção gráfica específica de redução/desativação de movimento; a variável existente atende ao terminal.
-- [ ] Consolidação de créditos e permissões dos recursos distribuídos e definição de licença do projeto.
+- [x] Definição da licença MIT para o código autoral e documentação separada dos direitos sobre conteúdo criativo e materiais de terceiros. A verificação individual das permissões dos recursos distribuídos continua necessária.
 
 Também permanecem limites técnicos: um único autosave, persistência local, chamadas de I/O síncronas em alguns fluxos e dependência de fontes do sistema. A tag `v1.5.0` identifica a versão entregue; não implica disponibilidade de um instalador independente nem validação em todos os ambientes.
 
@@ -877,9 +877,11 @@ A utilização dessas ferramentas não substitui a identificação do que foi im
 
 ### Recursos e licença
 
-O repositório reúne arte procedural em Java, imagens PNG e a trilha `8_bit_ice_cave_lofi.wav`. A origem e as condições de uso de cada recurso externo devem acompanhar seus créditos específicos; a existência do arquivo no projeto não informa, por si só, sua licença.
+O **código-fonte autoral** sobre o qual a mantenedora tem direitos suficientes está disponível sob a [MIT License](LICENSE), que permite reutilização e modificação, inclusive comercial, com preservação do aviso de direitos autorais e da licença.
 
-A referência documentada ainda não possui um arquivo `LICENSE` definindo uma licença geral de distribuição. Esta documentação não atribui uma licença presumida ao código, às imagens ou ao áudio.
+**Roteiro, diálogos, personagens, ilustrações, sprites, animações, áudio e contribuições de terceiros não são automaticamente abrangidos pela MIT.** O uso de cada material depende de sua titularidade e das autorizações específicas. Isso inclui partes históricas com coautoria: não se presume autorização para relicenciar contribuições de outras pessoas.
+
+O repositório reúne arte procedural em Java, imagens PNG e a trilha `8_bit_ice_cave_lofi.wav`. A origem e as condições de uso de recursos externos devem ser confirmadas individualmente. Consulte [Direitos de uso e materiais](COPYRIGHT_AND_ASSETS.md) para detalhes de escopo e limitações.
 
 ### Manutenção e contribuições
 

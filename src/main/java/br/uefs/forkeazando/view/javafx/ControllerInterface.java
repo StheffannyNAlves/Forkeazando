@@ -87,6 +87,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private String ilustracaoAtual;
     private Timeline animacaoIlustracao;
     private Timeline animacaoRetrato;
+    private Timeline animacaoDialogo;
     private Label indicadoresHud;
 
     private String ultimoFalanteRetrato;
@@ -606,7 +607,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             exibirRetratoAnimado(dialogo, visual);
             dialogo.getChildren().add(narrativa);
             conteudo.getChildren().add(dialogo);
-            AnimacoesFx.revelarDialogo(narrativa);
 
             List<Escolha> escolhas = sessao.escolhasDisponiveis();
             if (escolhas.isEmpty()) {
@@ -651,6 +651,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             voltar.setOnAction(e -> voltarAoMenu());
             conteudo.getChildren().add(voltar);
             mostrarTela(conteudo);
+            animacaoDialogo = AnimacoesFx.revelarDialogo(narrativa, configuracoes.getVelocidadeTexto());
         } catch (RuntimeException ex) {
             mostrarModal("ERRO AO CARREGAR CENA", ex.getMessage());
         }
@@ -683,15 +684,12 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             conteudo.getChildren().add(cenario);
 
             int ultimoQuadro = animacao.total() - 1;
-            if (Objects.equals(anterior, ilustracaoAtual)
-                    || animacao.total() == 1) {
-
-                cenario.setImage(conversorImagem(
-                        animacao.desenhar(ultimoQuadro)
-                ));
+            if (Objects.equals(anterior, ilustracaoAtual) || animacao.total() == 1) {
+                cenario.setImage(conversorImagem(animacao.desenhar(ultimoQuadro)));
                 return;
             }
             cenario.setImage(conversorImagem(animacao.desenhar(0)));
+            AnimacoesFx.entradaIlustracao(cenario);
             int[] indice = {0};
             Timeline timeline = new Timeline(
                     new KeyFrame(Duration.millis(Math.max(1, animacao.intervaloMs())),
@@ -754,6 +752,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     private void mostrarTela(VBox painel) {
+        if (animacaoDialogo != null) {
+            animacaoDialogo.stop();
+            animacaoDialogo = null;
+        }
         ScrollPane rolante = new ScrollPane(painel);
         rolante.setFitToWidth(true);
         rolante.setMaxWidth(810);
@@ -772,6 +774,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     private void voltarAoMenu() {
+        if (animacaoDialogo != null) {
+            animacaoDialogo.stop();
+            animacaoDialogo = null;
+        }
         pararAnimacaoIlustracao();
         pararAnimacaoRetrato();
         telaSecundaria.setVisible(false);
@@ -881,6 +887,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     public void pararAnimacoes() {
+        if (animacaoDialogo != null) {
+            animacaoDialogo.stop();
+            animacaoDialogo = null;
+        }
         pararAnimacaoIlustracao();
         pararAnimacaoRetrato();
         if (movimentoCenario != null) movimentoCenario.stop();
@@ -1097,36 +1107,59 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
 
+
     private void animarRetratoIdle(ImageView retrato, String pastaBase) {
         String base = pastaBase + "/animations/idle/";
         Image aberto = carregarImagemPersonagem(base + "frame_000_aberto.png");
         Image meio = carregarImagemPersonagem(base + "frame_001_piscada_meio.png");
         Image fechado = carregarImagemPersonagem(base + "frame_002_olhos_fechados.png");
         Image respiracao = carregarImagemPersonagem(base + "frame_003_respiracao.png");
-
-        if (aberto == null || meio == null || fechado == null || respiracao == null) {
+        if (aberto == null || meio == null
+                || fechado == null || respiracao == null) {
             return;
         }
-
         retrato.setImage(aberto);
+        agendarPiscada(retrato, aberto, meio, fechado, respiracao);
+    }
 
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.millis(700),
-                        e -> retrato.setImage(meio)),
-                new KeyFrame(Duration.millis(750),
-                        e -> retrato.setImage(fechado)),
-                new KeyFrame(Duration.millis(820),
-                        e -> retrato.setImage(aberto)),
-                new KeyFrame(Duration.millis(1520),
-                        e -> retrato.setImage(respiracao)),
-                new KeyFrame(Duration.millis(1970),
-                        e -> retrato.setImage(aberto))
+    private void agendarPiscada(ImageView retrato, Image aberto, Image meio, Image fechado, Image respiracao) {
+        long espera = java.util.concurrent.ThreadLocalRandom.current().nextLong(2500, 4600);
+
+        Timeline ciclo = new Timeline(
+                new KeyFrame(
+                        Duration.millis(espera),
+                        e -> retrato.setImage(meio)
+                ),
+                new KeyFrame(
+                        Duration.millis(espera + 65),
+                        e -> retrato.setImage(fechado)
+                ),
+                new KeyFrame(
+                        Duration.millis(espera + 135),
+                        e -> retrato.setImage(aberto)
+                ),
+                new KeyFrame(
+                        Duration.millis(espera + 540),
+                        e -> retrato.setImage(respiracao)
+                ),
+                new KeyFrame(
+                        Duration.millis(espera + 780),
+                        e -> retrato.setImage(aberto)
+                )
         );
 
-        timeline.setCycleCount(Animation.INDEFINITE);
-        animacaoRetrato = timeline;
-        timeline.play();
+        animacaoRetrato = ciclo;
+
+        ciclo.setOnFinished(e -> {
+            // Só agenda outra piscada se o retrato
+            // ainda for o personagem ativo
+            if (animacaoRetrato == ciclo && retrato.getScene() != null) {
+                agendarPiscada(retrato, aberto, meio, fechado, respiracao);
+            }
+        });
+        ciclo.play();
     }
+
 
     private void exibirRetratoAnimado(HBox dialogo, ApresentacaoDeCena visual) {
         pararAnimacaoRetrato();

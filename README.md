@@ -851,7 +851,7 @@ Também permanecem limites de projeto: um único autosave, persistência local, 
 | [`v1.3.0`](https://github.com/StheffannyNAlves/Forkeazando/tree/v1.3.0) | Fase 2, sessão 3 | Expansão da pixel art, retratos, ilustrações e fluxo de esgotamento. |
 | [`v1.3.1`](https://github.com/StheffannyNAlves/Forkeazando/tree/v1.3.1) | Fase 2 | Dicas de atalhos e documentação. |
 | [`v1.4.0`](https://github.com/StheffannyNAlves/Forkeazando/tree/v1.4.0) | Fase 2, sessão 4 | Consolidação de autosave, slots e configurações, com a evolução da campanha e do terminal. |
-| [`fase3`](https://github.com/StheffannyNAlves/Forkeazando/tree/fase3) | Fase 3 | JavaFX, fluxo por eventos, integração dos padrões, revisão narrativa e refinamento visual. Sem nova versão estável declarada. |
+| [`v1.5.0`](https://github.com/StheffannyNAlves/Forkeazando/tree/v1.5.0) | Fase 3 | JavaFX, fluxo por eventos, integração dos padrões, revisão narrativa e refinamento visual. |
 
 As tags preservam os estados históricos. A branch de desenvolvimento pode conter mudanças posteriores à última tag; o número do artefato Maven e o estado de uma release não são a mesma informação.
 

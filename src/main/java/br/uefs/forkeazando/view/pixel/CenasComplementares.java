@@ -3,7 +3,6 @@ package br.uefs.forkeazando.view.pixel;
 import static br.uefs.forkeazando.view.pixel.Cor.*;
 import static br.uefs.forkeazando.view.pixel.Elementos.*;
 
-/** Ambientes que faltavam no acervo; somente apresentação, sem eventos ou regras. */
 final class CenasComplementares {
     static final int QUADROS = 18;
     private static final int L = Ilustracoes.LARGURA, A = Ilustracoes.LINHAS;

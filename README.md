@@ -24,7 +24,7 @@ A história acontece na **Universidade Estadual do Fork Perdido — UEFP**, uma 
 
 O projeto começou no terminal, ganhou persistência e uma campanha mais extensa e chegou ao JavaFX sem abandonar o núcleo construído nas primeiras fases. Este README apresenta o jogo atual e registra essa evolução, incluindo as decisões de narrativa, arquitetura, apresentação e validação.
 
-> **Estado desta documentação:** branch [`fase3`](https://github.com/StheffannyNAlves/Forkeazando/tree/fase3), revisada em **22/11/2026**, tomando como referência o commit [`e54d6fb`](https://github.com/StheffannyNAlves/Forkeazando/commit/e54d6fb967689afdead65bc98bd875565be53864). A Fase 3 está implementada em vários fluxos e continua em desenvolvimento; a validação integral de todas as rotas e a distribuição da aplicação gráfica permanecem em aberto.
+> **Estado desta documentação:** branch [`fase3`](https://github.com/StheffannyNAlves/Forkeazando/tree/fase3), revisada em **22/11/2026**. O marco visual [`e54d6fb`](https://github.com/StheffannyNAlves/Forkeazando/commit/e54d6fb967689afdead65bc98bd875565be53864) e as melhorias posteriores de status, integridade da sessão e autosave compõem esta revisão. A Fase 3 continua em desenvolvimento: a cobertura automática não equivale a jogar manualmente todas as rotas, e a distribuição autônoma do JavaFX ainda requer trabalho.
 
 ## Navegação
 
@@ -67,7 +67,7 @@ O conflito recorrente é a distância entre **aprender**, **parecer competente**
 | Conquistas | **6** entradas no catálogo. |
 | Colecionáveis | **15** entradas: **7 habilidades e 8 itens**. |
 | Desfechos | **5 finais de carreira atuais**; 3 registros antigos mantidos para compatibilidade. |
-| Persistência | 3 slots manuais, autosave, progresso permanente e preferências. |
+| Persistência | 3 slots manuais, autosave, progresso permanente e preferências; exclusão de autosave com confirmação. |
 | Interfaces | JavaFX na Fase 3; interface de terminal preservada. |
 
 Esses números descrevem o conteúdo cadastrado, não uma única partida: caminhos alternativos, condições e cenas de apoio fazem com que o jogador não veja tudo em um percurso. Os 44 ambientes também são compartilhados entre cenas no mesmo lugar; não há 165 ilustrações diferentes.
@@ -318,7 +318,7 @@ Há uma separação entre **estado da partida** e **progresso permanente**:
 - A partida guarda o personagem, sua cena, atributos, relações e decisões daquele percurso.
 - O progresso reúne conteúdos conhecidos, conquistas, datas de desbloqueio e finais registrados entre jornadas.
 
-O menu **Meu progresso** permite consultar conquistas, colecionáveis e finais. Durante a partida, a **Galeria** reúne habilidades, itens e informações de desbloqueio; a tela de **Status** mostra atributos, inventário, vínculos e marcos do percurso.
+O menu **Meu progresso** consulta **finais** e **conquistas**. Durante a partida, a **Galeria** reúne **habilidades, itens e conquistas**, enquanto a tela **Status** apresenta atributos, inventário, relacionamentos, objetivo contextualizado e marcos da trajetória em linguagem legível. O progresso global e o estado da partida são armazenados separadamente.
 
 O catálogo inclui habilidades como **Olho de Edital**, **Foco Total** e **Palavra Honesta**, além de itens como **Cartão do RU**, **Copo térmico do Caio** e **Contato da Bia**. A representação visual de conteúdo bloqueado não concede esse conteúdo à partida.
 
@@ -345,12 +345,19 @@ Os dados são locais, em JSON, e ficam em uma pasta `saves/` relativa ao diretó
 - **Carregar** oferece slots e autosave; não é sinônimo de continuar uma sessão em memória.
 - **Salvar** e **Gerenciar saves** permitem escolher um dos três slots manuais.
 - Slots ocupados exigem confirmação de sobrescrita; a exclusão também possui confirmação.
+- **Excluir autosave** aparece em **Gerenciar saves** quando existe um salvamento automático, exige confirmação e não exclui os três slots manuais nem a partida atual em memória. Cancelar a confirmação preserva o arquivo.
 - A listagem distingue slots vazios, ocupados ou inválidos e apresenta metadados disponíveis.
 - O salvamento manual pede a escolha do slot; a interface não presume que deve sobrescrever automaticamente o slot que foi carregado.
 
 O gatilho periódico do autosave ocorre a cada **cinco cenas concluídas**. A conclusão da jornada também é persistida em autosave. Há somente um `autosave.json`, substituído por registros posteriores.
 
 O autosave **não marca o estado como salvo manualmente**. Por isso, o jogo ainda pode oferecer salvamento ao sair mesmo depois de uma notificação de autosave. Voltar ao menu mantém a sessão em memória; encerrar o processo exige um arquivo salvo para retomá-la depois.
+
+### Proteção da sessão e exclusão do autosave
+
+Os fluxos gráficos de **carregar** e **criar outra partida** preparam o controlador candidato antes de substituir o estado atual da sessão. Quando a leitura do progresso ou a criação desse controlador falha, a partida anterior e seu controlador permanecem disponíveis; a interface apresenta o erro. A confirmação de nova partida avisa sobre alterações não salvas. Essa proteção cobre a **preparação da sessão**, não promete rollback de toda exceção posterior de renderização.
+
+A opção **Excluir autosave** passa por `GerenciamentoPartidas` → `CarregamentoAdapter` → `GerenciadorSlots.excluirAutosave`. A exclusão não exige desserializar o JSON, inclusive se o arquivo estiver corrompido. Se o arquivo estiver ausente, o serviço sinaliza `SaveException`. Excluir não desativa o gatilho: um novo autosave poderá surgir depois de mais cenas concluídas ou ao finalizar a jornada.
 
 ### Integridade e compatibilidade
 
@@ -496,7 +503,7 @@ O trabalho passou pela extração de operações do fluxo, aplicação do contra
 
 Depois vieram Adapter para carregar e gerenciar saves, Observer para atualizar a interface, conclusão persistida, configurações, galeria, conquistas, status, narrativas dinâmicas e finais. Em paralelo, o roteiro foi revisto e passou a usar o esquema de cenas v3, com consequências textuais e variações de protagonistas.
 
-O acabamento visual ampliou essa migração: legibilidade, janela redimensionável, texto progressivo, notificações discretas, controle do ciclo de animações e preparação de áudio e imagens. A revisão mais recente completou o mapeamento de todas as cenas e separou a entrada dos cenários de seus movimentos ambientais.
+O acabamento visual ampliou essa migração: legibilidade, janela redimensionável, texto progressivo, notificações discretas, controle do ciclo de animações e preparação de áudio e imagens. A revisão completou o mapeamento dos cenários e separou a entrada dos ambientes de seus movimentos de repouso. Em seguida, os fluxos de sessão ganharam preparação segura antes da substituição, o status passou a traduzir objetivos e decisões para o jogador e a tela de gerenciamento ganhou exclusão confirmada do autosave.
 
 ### Marcos verificáveis no histórico
 
@@ -509,6 +516,17 @@ O acabamento visual ampliou essa migração: legibilidade, janela redimensionáv
 | 21/11/2026 | Gerenciamento manual de saves e Observer no JavaFX | [`b0edde9`](https://github.com/StheffannyNAlves/Forkeazando/commit/b0edde9) e [`b4b1f24`](https://github.com/StheffannyNAlves/Forkeazando/commit/b4b1f24) |
 | 22/11/2026 | Preparação de áudio fora da interface e refinamento de diálogos e animações | [`637ed3c`](https://github.com/StheffannyNAlves/Forkeazando/commit/637ed3c) e [`a298ba8`](https://github.com/StheffannyNAlves/Forkeazando/commit/a298ba8) |
 | 22/11/2026 | Testes gráficos e conclusão das animações ambientais | [`8f86006`](https://github.com/StheffannyNAlves/Forkeazando/commit/8f86006) e [`e54d6fb`](https://github.com/StheffannyNAlves/Forkeazando/commit/e54d6fb) |
+
+### Ajustes de robustez e apresentação em 22/11/2026
+
+- **Status narrativo:** `StatusNarrativo` transforma marcos conhecidos em descrições legíveis e define objetivos contextualizados por capítulo, sem alterar flags ou regras.
+- **Carregamento seguro:** `SessaoGrafica.carregarPartida(Estado, ApresentacaoCena)` prepara o controlador antes da troca da partida.
+- **Nova partida segura:** `SessaoGrafica.novaPartida(Protagonista, ApresentacaoCena)` segue a mesma ordem de preparação e substituição.
+- **Persistência mais encapsulada:** as consultas de progresso das telas gráficas usam `SessaoGrafica.consultarProgresso()`.
+- **Autosave gerenciável:** `GerenciamentoPartidas` e `CarregamentoAdapter` expõem a exclusão já implementada no DAO, com confirmação e feedback na interface.
+- **Regressão automatizada:** testes específicos foram acrescentados para os fluxos seguros de sessão, apresentação do status e exclusão isolada do autosave.
+
+Essas alterações não constituem uma nova tag de release: devem ser relacionadas aos respectivos commits quando publicadas no histórico da branch.
 
 ## Decisões de projeto
 
@@ -550,6 +568,15 @@ Essas decisões orientam o roteiro atual. A coerência de cada percurso ainda pr
 | Usar rolagem e layout em pixels lógicos | Textos longos e janelas maiores não dependem de ampliar toda a interface como uma imagem. |
 | Preferir notificações para eventos de rotina | Evita interromper repetidamente a leitura; erros e decisões continuam com apresentação apropriada. |
 
+### Decisões recentes para preservar dados
+
+| Decisão | Razão |
+|---|---|
+| Preparar a sessão candidata antes de substituí-la | Uma falha de leitura/validação do progresso não deve descartar a partida anterior. |
+| Traduzir flags para textos de status | A interface não deve apresentar identificadores internos ao jogador nem duplicar regras do domínio. |
+| Oferecer exclusão específica do autosave | O jogador gerencia o arquivo automático sem apagar slots manuais ou progresso global. |
+| Centralizar consulta de progresso na sessão | Os componentes JavaFX deixam de instanciar diretamente o DAO nessas consultas. |
+
 ## Arquitetura e padrões
 
 ### MVC e fluxo da partida
@@ -583,6 +610,12 @@ A entrada de terminal continua tendo um laço que aguarda ações. Na GUI, callb
 
 `GerenciamentoPartidas` estende o contrato de leitura com gravação e exclusão. A sessão recebe essa abstração para o gerenciamento de partidas. O Observer recebe o estado alterado; ele não é o responsável por aplicar a consequência narrativa.
 
+**Participantes e evidências dos padrões:**
+
+- **Builder — criacional:** `Escolha` é o produto; `Escolha.Builder` configura requisitos e efeitos opcionais e o método `build()` conclui a construção. `CarregadorRoteiroJson.converterEscolha()` é um cliente real do Builder. Assim, uma alternativa pode definir só os efeitos de que precisa, evitando construtores extensos e combinações ambíguas de parâmetros.
+- **Adapter — estrutural:** `GerenciamentoPartidas` (que estende `AcessoPartidas`) é o contrato esperado pelos consumidores; `CarregamentoAdapter` o implementa e traduz as chamadas para `GerenciadorSlots` e `GerenciadorSave`. Inclui salvar, carregar, listar, excluir slots e excluir autosave. `SessaoGrafica` recebe `GerenciamentoPartidas`, em vez de depender das funções concretas de gravação de slots.
+- **Observer — comportamental:** `SessaoGrafica` é o sujeito, registra objetos `ObservadorPartida` e os notifica depois de alterações relevantes; `ControllerInterface` implementa o contrato e atualiza o HUD em `atualizar(Estado)`. O domínio modifica os atributos; o observador apenas recebe a notificação e apresenta os valores. **Não se afirma que todas as atualizações da interface utilizam Observer**.
+
 MVC é a organização arquitetural, e DAO identifica a separação da persistência. **Memento** e **Factory** foram possibilidades discutidas durante a evolução; não são apresentados aqui como padrões adicionais formalmente implementados. A composição de nós do JavaFX, por si só, também não é contada como uma implementação autoral extra de GoF.
 
 ### SOLID na prática
@@ -594,7 +627,7 @@ O projeto usa os princípios como critérios para refatorações concretas:
 - **Segregação de interfaces:** leitura de partidas e gerenciamento completo possuem contratos relacionados, sem obrigar um consumidor de leitura a declarar operações de escrita.
 - **Extensão e substituição:** terminal e JavaFX oferecem implementações de apresentação para o mesmo fluxo central; novas implementações precisam preservar o comportamento esperado pelo contrato.
 
-Isso não significa desacoplamento total de todos os arquivos: há pontos de coordenação de configurações e progresso na apresentação, serviços estáticos e regras de roteamento explícitas. O compromisso de manutenção é evitar novas duplicações e manter as consequências fora dos componentes visuais.
+Isso não significa desacoplamento total: persistem coordenação de configurações na apresentação, alguns serviços estáticos e regras explícitas de roteamento. As consultas de progresso das telas **Meu progresso** e **Galeria** agora passam por `SessaoGrafica.consultarProgresso()`, mas o projeto ainda tem responsabilidades distribuídas que podem evoluir. O compromisso é evitar regras de consequências em componentes visuais e duplicação entre terminal e JavaFX.
 
 ## Tecnologias e estrutura
 
@@ -700,7 +733,7 @@ Os relatórios ficam em `target/surefire-reports/`. A suíte possui testes para:
 
 - Limites, requisitos, efeitos, flags e integridade do domínio.
 - Processamento de escolhas, esgotamento, roteamento e autosave.
-- Slots, formatos de save, dados inválidos, configurações e progresso.
+- Slots, formatos de save, dados inválidos, configurações, progresso e exclusão isolada do autosave.
 - IDs, destinos, alcance e percursos do roteiro.
 - Resultados acadêmicos, narrativas dinâmicas, currículo e finais.
 - Construção de escolhas pelo Builder e aplicação de seus requisitos e efeitos.
@@ -722,9 +755,20 @@ xvfb-run -a mvn clean test
 
 O workflow de [GitHub Actions](.github/workflows/tests.yml) usa Java 21 e `mvn -B test`, em push, pull request e execução manual. A configuração atual não inclui uma etapa de Xvfb; um CI verde nesse ambiente não comprova, sozinho, a execução dos testes gráficos.
 
+### Regressões adicionadas após o refinamento visual
+
+| Classe de teste | Comportamento exercitado |
+|---|---|
+| `StatusNarrativoTest` | Objetivos e marcos legíveis sem alterar o estado da partida. |
+| `SessaoGraficaCarregamentoTest` | Preservação da sessão anterior diante de falha na preparação de um carregamento. |
+| `SessaoGraficaNovaPartidaTest` | Preparação segura da nova partida e preservação da anterior diante de erro. |
+| `CarregamentoAdapterAutosaveTest` | Exclusão do autosave sem apagar os três slots, erro de arquivo ausente e exclusão de JSON corrompido, com `@TempDir`. |
+
+No terminal de desenvolvimento, foi relatada uma execução de **470 testes, 0 falhas, 0 erros e 0 ignorados** após os testes de carregamento seguro. Outros testes foram acrescentados depois; portanto **470 não deve ser apresentado como total atual** sem uma nova execução consolidada. Para atualizar a contagem, execute `mvn clean test` e registre os números da saída Maven. Os testes com `@TempDir` não manipulam os saves reais.
+
 ### Registro de validação do refinamento
 
-Na revisão de **22/11/2026**, incorporada ao código de referência deste README:
+Na revisão **visual de referência de 22/11/2026**, anterior às regressões adicionais de sessão e autosave:
 
 | Verificação | Resultado e alcance |
 |---|---|
@@ -753,12 +797,16 @@ Ao revisar mudanças de interface ou narrativa, verifique:
 - Ler uma fala longa, mudar a velocidade e completar o texto sem disparar uma escolha junto.
 - Alternar falantes, expressões e ambientes; voltar ao menu e retomar.
 - Abrir e fechar modais enquanto há digitação e movimento ambiental.
-- Salvar, sobrescrever, excluir e carregar cada slot, além do autosave.
+- Salvar, sobrescrever, excluir e carregar cada slot; carregar o autosave; **cancelar e confirmar sua exclusão**, verificando que slots manuais e partida em memória permanecem intactos.
 - Conferir conquistas, galeria e progresso depois de reiniciar a aplicação.
 - Redimensionar, maximizar e minimizar a janela com uma cena em andamento.
 - Conferir esgotamento, trancamento, epílogos e conclusão persistida nas rotas afetadas.
 
 Esses itens descrevem o procedimento de revisão; não declaram que todos já foram percorridos em todas as combinações.
+
+### Demonstração e evidências para a avaliação da Fase 3
+
+Na demonstração do produto, recomenda-se mostrar a criação dos protagonistas, o menu e os comandos, uma escolha com consequência observável, o HUD/status, a persistência em três slots e no autosave, as confirmações de ações destrutivas, galeria e conquistas, e ao menos um desfecho. A identificação das classes participantes de **Builder, Adapter e Observer** está na seção de arquitetura. O **vídeo de gameplay** é um entregável próprio e **não deve ser considerado concluído apenas porque existem capturas de tela**. O relatório acadêmico individual é outro entregável, separado da descrição técnica do produto.
 
 ## Limitações e próximos passos
 
@@ -769,7 +817,9 @@ Esses itens descrevem o procedimento de revisão; não declaram que todos já fo
 - [x] Processamento de escolhas da GUI pelo núcleo compartilhado.
 - [x] Builder, Adapter e Observer integrados.
 - [x] Carregamento, salvamento manual, sobrescrita e exclusão de slots no JavaFX.
-- [x] Configurações, status, galeria e consulta de progresso na GUI.
+- [x] Exclusão de autosave com confirmação e preservação dos slots manuais.
+- [x] Configurações, status com objetivos e marcos legíveis, galeria e consulta de progresso na GUI.
+- [x] Preparação segura de carregamento e nova partida antes de substituir a sessão em memória.
 - [x] Texto progressivo configurável, conclusão imediata e espaço reservado para leitura.
 - [x] HUD e notificações com atualização ligada ao estado da sessão.
 - [x] Encerramento da jornada e persistência de conclusão.

@@ -37,8 +37,7 @@
                             </children>
                         </VBox>
                         <Label fx:id="status" styleClass="mensagem-status" text="✦ SUA HISTÓRIA COMEÇA AQUI" wrapText="true" />
-                        <Label styleClass="dica-teclado" text="↑ ↓ NAVEGAR  •  ENTER SELECIONAR  •  ESC VOLTAR" />
-                    </children>
+                        <Label fx:id="dicaTeclado" styleClass="dica-teclado" text="↑ ↓ NAVEGAR  •  ENTER SELECIONAR  •  ESC VOLTAR" />                    </children>
                 </VBox>
             </children>
         </HBox>

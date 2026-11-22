@@ -108,26 +108,32 @@ public final class AnimacoesFx {
 
 
     public static void revelarDialogo(Label narrativa) {
-        String completo = narrativa.getText();
-        if (completo == null || completo.isEmpty()) return;
+        revelarDialogo(narrativa, 1);
+    }
 
+    public static void revelarDialogo(Label narrativa, int velocidade) {
+        String completo = narrativa.getText();
+        if (completo == null || completo.isEmpty()) {
+            return;
+        }
         int total = completo.codePointCount(0, completo.length());
         int quadros = Math.min(total, 72);
         int passo = Math.max(1, (total + quadros - 1) / quadros);
         int[] exibidos = {0};
         narrativa.setText("");
+        int intervaloMs = switch (velocidade) {
+            case 0 -> 45;   // Lenta
+            case 2 -> 12;   // Rápida
+            default -> 24;  // Normal
+        };
 
-        Timeline linhaDoTempo = new Timeline(new KeyFrame(Duration.millis(24), e -> {
-            exibidos[0] = Math.min(total, exibidos[0] + passo);
-            int ate = completo.offsetByCodePoints(0, exibidos[0]);
-            narrativa.setText(completo.substring(0, ate));
-        }));
+        Timeline linhaDoTempo = new Timeline(
+                new KeyFrame(Duration.millis(intervaloMs), e -> {exibidos[0] = Math.min(total, exibidos[0] + passo);
+                            int ate = completo.offsetByCodePoints(0, exibidos[0]);
+                            narrativa.setText(completo.substring(0, ate));}));
         linhaDoTempo.setCycleCount((total + passo - 1) / passo);
         linhaDoTempo.setOnFinished(e -> narrativa.setText(completo));
-        narrativa.setOnMouseClicked(e -> {
-            linhaDoTempo.stop();
-            narrativa.setText(completo);
-        });
+        narrativa.setOnMouseClicked(e -> {linhaDoTempo.stop();narrativa.setText(completo);});
         linhaDoTempo.play();
     }
 

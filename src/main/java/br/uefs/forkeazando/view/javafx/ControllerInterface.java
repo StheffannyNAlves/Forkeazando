@@ -1,5 +1,7 @@
 package br.uefs.forkeazando.view.javafx;
 import br.uefs.forkeazando.adapter.GerenciamentoPartidas;
+import br.uefs.forkeazando.audio.GerenciadorAudio;
+import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.*;
@@ -66,6 +68,11 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     @FXML private Label textoModal;
     @FXML private Button botaoFechar;
     @FXML private StackPane telaSecundaria;
+    @FXML private Label dicaTeclado;
+
+    private final TelaConfigFx telaConfiguracoes = new TelaConfigFx();
+    private Configuracoes configuracoes = new Configuracoes();
+    private GerenciadorAudio audio;
 
     private final List<Button> opcoes = new ArrayList<>();
     private final GerenciamentoPartidas acessoPartidas = new CarregamentoAdapter(GerenciadorSlots.PASTA_PADRAO);
@@ -74,7 +81,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private TranslateTransition movimentoCenario;
     private Animation animacaoTitulo;
     private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
-    // Somente apresentação: notificações não interrompem a história.
     private VBox avisosDiscretos;
     private String feedbackEscolhaPendente;
     private VBox curriculoPendente;
@@ -103,6 +109,11 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     @FXML
     private void  initialize() {
         sessao.adicionarObservador(this);
+        try {
+            configuracoes = new Configuracoes(ConfiguracoesAdmin.get());
+        } catch (CarregamentoException | DadosInvalidosException ex) {
+            Platform.runLater(() -> mostrarModal("ERRO NAS CONFIGURAÇÕES", ex.getMessage()));
+        }
         Image imagem = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/campus_uefp.png")));
         arte.setImage(imagem);
         painelArte.setClip(new Rectangle(625, 760));
@@ -124,6 +135,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         animarCenario();
         animarEntrada();
         Platform.runLater(raiz::requestFocus);
+        aplicarDicas();
     }
 
     private void selecionar(int indice) {
@@ -266,6 +278,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             case "instrucoes" -> mostrarModal("GUIA DE SOBREVIVÊNCIA", "Suas escolhas alteram energia, score, participação e relacionamentos.\n\n" + "No menu: setas e ENTER. Durante uma cena: clique numa decisão.\n" + "ESC volta ao menu sem apagar a partida em memória.");
             case "carregar" -> abrirTelaSalvamento();
             case "gerenciarSaves" -> abrirTelaSalvar();
+            case "estilo" -> abrirOpcoesEstilo();
             case "salvar" -> {
                 if (!sessao.possuiPartida()) {
                     mostrarModal("SALVAR PARTIDA", "Nenhuma partida em andamento.");
@@ -276,11 +289,53 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             case "progresso" -> abrirMeuProgresso();
             case "creditos" -> mostrarModal("CRÉDITOS", "FORKEAZANDO · 2026\n\nStheffanny Alves\n" + "Universidade Estadual do Fork Perdido (UEFP)");
             case "sair" -> {
-                if (sessao.possuiPartida()) confirmarSaida();
-                else encerrar();
+                if (!configuracoes.isConfirmarSaida()) {
+                    encerrar();
+                } else if (sessao.possuiPartida()) {
+                    confirmarSaida();
+                } else {
+                    encerrar();
+                }
             }
             default -> mostrarModal(botao.getText().toUpperCase(), "Esta opção ainda não foi integrada ao JavaFX. " + "Os dados e as regras da versão de terminal continuam preservados.");
         }
+    }
+
+    private void abrirOpcoesEstilo() {
+        mostrarTela(telaConfiguracoes.criarPainel(configuracoes, this::salvarConfiguracoes, this::voltarAoMenu));
+    }
+
+    private void salvarConfiguracoes(Configuracoes novas) {
+        try {
+            ConfiguracoesAdmin.salvarConfigPersonalizadas(novas);
+            configuracoes = new Configuracoes(novas);
+            aplicarDicas();
+            if (audio != null) {
+                audio.setVolume(configuracoes.getVolume());
+            }
+            voltarAoMenu();
+            mostrarNotificacao("CONFIGURAÇÕES", "Preferências salvas com sucesso!");
+
+        } catch (SaveException | DadosInvalidosException ex) {
+            mostrarModal(
+                    "ERRO AO SALVAR",
+                    ex.getMessage()
+            );
+        }
+    }
+
+    private void aplicarDicas() {
+        boolean mostrar = configuracoes.isDicasAtalho();
+        dicaTeclado.setVisible(mostrar);
+        dicaTeclado.setManaged(mostrar);
+    }
+
+    public void configurarAudio(GerenciadorAudio gerenciadorAudio) {
+        audio = Objects.requireNonNull(gerenciadorAudio);
+
+        audio.setVolume(
+                configuracoes.getVolume()
+        );
     }
 
     private void abrirTelaSalvar() {
@@ -288,15 +343,9 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         for (ResumoSlot slot : acessoPartidas.listarSlots()) {
             VBox bloco = new VBox(8);
 
-            bloco.getChildren().add(
-                    rotulo("SLOT " + slot.numero() + " — " + slot.status())
-            );
-
+            bloco.getChildren().add(rotulo("SLOT " + slot.numero() + " — " + slot.status()));
             if (slot.status() == ResumoSlot.Status.OCUPADO) {
-                bloco.getChildren().add(
-                        rotulo(slot.nome() + " | Capítulo " + slot.capitulo()
-                                + " | " + slot.data())
-                );
+                bloco.getChildren().add(rotulo(slot.nome() + " | Capítulo " + slot.capitulo() + " | " + slot.data()));
             }
             HBox acoes = new HBox(12);
             if (sessao.possuiPartida()) {
@@ -313,14 +362,11 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             if (slot.status() != ResumoSlot.Status.VAZIO) {
                 Button excluir = botaoAcao("EXCLUIR");
                 excluir.setOnAction(e -> confirmarExclusao(slot.numero()));
-
                 acoes.getChildren().add(excluir);
             }
-
             bloco.getChildren().add(acoes);
             painel.getChildren().add(bloco);
         }
-
         Button voltar = botaoAcao("VOLTAR AO MENU");
         voltar.setOnAction(e -> voltarAoMenu());
 
@@ -340,13 +386,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
     private void confirmarSobrescrita(int numeroSlot) {
         VBox painel = novoPainel("SOBRESCREVER PARTIDA?", "Os dados anteriores do slot " + numeroSlot + " serão substituídos.");
-
         Button confirmar = botaoAcao("SIM, SOBRESCREVER");
         confirmar.setOnAction(e -> salvarNoSlot(numeroSlot));
-
         Button cancelar = botaoAcao("CANCELAR");
         cancelar.setOnAction(e -> abrirTelaSalvar());
-
         painel.getChildren().addAll(confirmar, cancelar);
         mostrarTela(painel);
     }
@@ -396,6 +439,9 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     private void encerrar() {
+        if (audio != null){
+            audio.fechar();
+        }
         pararAnimacoes();
         Platform.exit();
     }

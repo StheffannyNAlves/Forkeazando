@@ -43,6 +43,8 @@ class SessaoGraficaFinalizacaoTest {
 
         assertTrue(Files.exists(GerenciadorSlots.caminhoDoAutosave(pasta)),
                 "O autosave deve ser gravado na pasta injetada, e nao na pasta padrao");
+        assertTrue(sessao.consultarProgresso().alcancou(Final.TECNOLOGIA),
+                "O final concluido deve permanecer registrado no progresso global");
         assertFalse(sessao.possuiPartida(), "A sessao deve ser encerrada apos finalizar");
     }
 
@@ -50,9 +52,7 @@ class SessaoGraficaFinalizacaoTest {
     void finalizarPartidaSemFinalRegistradoLancaExcecaoENaoGravaNada() throws Exception {
         SessaoGrafica sessao = new SessaoGrafica(new CarregamentoAdapter(pasta), pasta);
         sessao.novaPartida(protagonista(), apresentacaoSemJavaFx());
-
         assertThrows(IllegalStateException.class, sessao::finalizarPartida);
-
         assertFalse(Files.exists(GerenciadorSlots.caminhoDoAutosave(pasta)));
         assertTrue(sessao.possuiPartida(), "A partida deve continuar em memoria");
     }

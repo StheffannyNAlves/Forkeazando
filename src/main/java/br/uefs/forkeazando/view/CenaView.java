@@ -89,7 +89,7 @@ public class CenaView implements ApresentacaoCena {
 
         imprimirLinha("[P] pausar  •  [C] continuar", Cores.CINZA);
     }
-    /** Chamar ao carregar save: se a arte já estava na tela antes, ela precisa redesenhar. */
+    /** Chamar ao carregar save: se a arte já estava na tela antes, ela precisa redesenhar */
     @Override
     public void resetarCacheVisual() {
         this.ultimaIlustracao = null;
@@ -187,9 +187,10 @@ public class CenaView implements ApresentacaoCena {
 
                 if (paragrafo.equals("{{ORIENTADOR_RECURSO}}")) {
                     if (p.temFlag("sistema_contestado")) {
+                        String boasVindas = p.temFlag("protagonista_masculino") ? "'Bem-vindo.'" : "'Bem-vinda.'";
                         String t = "'Você recorreu da classificação. Eu vi.'\n\n"
                                 + "'O recurso leva quinze dias. O laboratório não espera.'\n\n"
-                                + "'Bem-vinda.'";
+                                + boasVindas;
                         imprimirBloco(t, corTexto);
                     }
                     continue;

@@ -42,17 +42,18 @@ public final class FinaisNarrativos {
         }
 
         if (p.temFlag("cap7_questionou_autoria")) {
+            String coautoria = p.temFlag("protagonista_masculino") ? "Segundo autor." : "Segunda autora.";
             return """
                     Três meses depois. O artigo foi publicado.
 
-                    Você abre o PDF. Seu nome tá lá. Segundo autora.
+                    Você abre o PDF. Seu nome tá lá. %s
 
                     Abre o e-mail do orientador.
 
                     'Eu subestimei você. Não é elogio. É reconhecimento.'
 
                     Você fecha o e-mail.
-                    """;
+                    """.formatted(coautoria);
         }
 
         return """
@@ -146,6 +147,7 @@ public final class FinaisNarrativos {
 
     public static String independente(Protagonista p) {
         if (p.temFlag("cap5c_bia_ajudou") || p.temFlag("item_contato_bia")) {
+            String so = p.temFlag("protagonista_masculino") ? "sozinho" : "sozinha";
             return """
                     O primeiro contrato grande. R$ 8 mil. Escopo claro.
 
@@ -155,8 +157,8 @@ public final class FinaisNarrativos {
 
                     Você pensa em dizer não. Você diz sim.
 
-                    Pela primeira vez, você não tá fazendo tudo sozinha.
-                    """;
+                    Pela primeira vez, você não tá fazendo tudo %s.
+                    """.formatted(so);
         }
 
         if (p.temFlag("cap7_indep_negociou")) {

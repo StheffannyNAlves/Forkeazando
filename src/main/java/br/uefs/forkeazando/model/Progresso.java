@@ -12,6 +12,33 @@ public class Progresso {
     private  Map<String, String> colecao = new LinkedHashMap<>();
     private  Map<String, String> conquistas = new LinkedHashMap<>();
 
+    public Progresso() {}
+
+    public Progresso(Progresso outro) {
+        garantirMapasInicializados();
+        if (outro == null) {
+            return;
+        }
+        outro.garantirMapasInicializados();
+        this.finais.putAll(outro.finais);
+        this.colecao.putAll(outro.colecao);
+        this.conquistas.putAll(outro.conquistas);
+    }
+
+    public void copiarDe(Progresso origem) {
+        if (origem == null) {
+            throw new IllegalArgumentException("Progresso de origem não pode ser nulo");
+        }
+        garantirMapasInicializados();
+        origem.garantirMapasInicializados();
+        this.finais.clear();
+        this.finais.putAll(origem.finais);
+        this.colecao.clear();
+        this.colecao.putAll(origem.colecao);
+        this.conquistas.clear();
+        this.conquistas.putAll(origem.conquistas);
+    }
+
     private void garantirMapasInicializados() {
         if (finais == null) {
             finais = new LinkedHashMap<>();
@@ -96,6 +123,43 @@ public class Progresso {
             throw new IllegalArgumentException("Conquista e data não podem ser nulas");
         }
         return conquistas.putIfAbsent(conquista.getCodigo(), quando.toString()) == null;
+    }
+
+    public boolean sincronizarConquistas(Protagonista protagonista, LocalDateTime agora) {
+        garantirMapasInicializados();
+        if (protagonista == null || agora == null) {
+            throw new IllegalArgumentException("Protagonista e data não podem ser nulos");
+        }
+        boolean alterou = false;
+        for (Conquista conquista : Conquista.values()) {
+            if (conquista.atingida(protagonista) && registrarConquista(conquista, agora)) {
+                alterou = true;
+            }
+        }
+        return alterou;
+    }
+
+    public boolean sincronizarEstado(Estado estado, LocalDateTime agora) {
+        garantirMapasInicializados();
+        if (estado == null || estado.getProtagonista() == null || agora == null) {
+            throw new IllegalArgumentException("Estado, protagonista e data não podem ser nulos");
+        }
+        Protagonista p = estado.getProtagonista();
+        boolean alterou = false;
+        if (sincronizarColecao(p, agora)) {
+            alterou = true;
+        }
+        if (sincronizarConquistas(p, agora)) {
+            alterou = true;
+        }
+        if (sincronizarFinais(p, agora)) {
+            alterou = true;
+        }
+        Optional<Final> finalRegistrado = Final.porCodigo(estado.getCodigoFinal());
+        if (finalRegistrado.isPresent() && registrarFinal(finalRegistrado.get(), agora)) {
+            alterou = true;
+        }
+        return alterou;
     }
 
     public boolean coletou(Colecionavel colecionavel) {

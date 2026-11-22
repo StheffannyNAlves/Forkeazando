@@ -5,17 +5,13 @@ import br.uefs.forkeazando.dao.ConfiguracoesAdmin;
 import br.uefs.forkeazando.dao.GerenciadorProgresso;
 import br.uefs.forkeazando.observer.ObservadorPartida;
 import br.uefs.forkeazando.roteiro.*;
-import br.uefs.forkeazando.view.pixel.Ilustracoes;
-import br.uefs.forkeazando.view.pixel.Tela;
-import br.uefs.forkeazando.view.pixel.Retratos;
-import javafx.scene.image.WritableImage;
 import br.uefs.forkeazando.model.*;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
-import javafx.animation.PauseTransition;
-import javafx.animation.ParallelTransition;
-import javafx.animation.ScaleTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.Timeline;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Interpolator;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,8 +42,6 @@ import br.uefs.forkeazando.controller.CenasController;
 import br.uefs.forkeazando.excecao.SaveException;
 import br.uefs.forkeazando.excecao.CarregamentoException;
 import br.uefs.forkeazando.excecao.DadosInvalidosException;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
@@ -66,6 +60,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     @FXML private StackPane modal;
     @FXML private Label tituloModal;
     @FXML private Label textoModal;
+    @FXML private ScrollPane rolagemModal;
     @FXML private Button botaoFechar;
     @FXML private StackPane telaSecundaria;
     @FXML private Label dicaTeclado;
@@ -78,34 +73,16 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private final GerenciamentoPartidas acessoPartidas = new CarregamentoAdapter(GerenciadorSlots.PASTA_PADRAO);
     private final SessaoGrafica sessao = new SessaoGrafica(acessoPartidas);
     private int selecionado;
-    private TranslateTransition movimentoCenario;
-    private Animation animacaoTitulo;
     private final Deque<String[]> avisosPendentes = new ArrayDeque<>();
-    private VBox avisosDiscretos;
+    private AvisosFx avisosDiscretos;
     private String feedbackEscolhaPendente;
     private VBox curriculoPendente;
     private String ilustracaoAtual;
-    private Timeline animacaoIlustracao;
-    private Timeline animacaoRetrato;
-    private Timeline animacaoDialogo;
+    private final ArtesFx artes = new ArtesFx();
+    private DialogoFx dialogoAtual;
+    private boolean fechandoModal;
+    private boolean suspenso;
     private Label indicadoresHud;
-
-    private String ultimoFalanteRetrato;
-    private String ultimaExpressaoRetrato;
-
-    private static final Set<String> EXPRESSOES = Set.of(
-            "neutra", "feliz", "pensativa",
-            "surpresa", "triste", "brava"
-    );
-
-    private static final Map<String, String> TRANSICOES = Map.of(
-            "neutra:feliz", "01_neutra_para_feliz.png",
-            "feliz:pensativa", "02_feliz_para_pensativa.png",
-            "pensativa:surpresa", "03_pensativa_para_surpresa.png",
-            "surpresa:triste", "04_surpresa_para_triste.png",
-            "triste:brava", "05_triste_para_brava.png",
-            "brava:neutra", "06_brava_para_neutra.png"
-    );
 
     @FXML
     private void  initialize() {
@@ -117,7 +94,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         }
         Image imagem = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/campus_uefp.png")));
         arte.setImage(imagem);
-        painelArte.setClip(new Rectangle(625, 760));
+        Rectangle recorte = new Rectangle();
+        recorte.widthProperty().bind(painelArte.widthProperty());
+        recorte.heightProperty().bind(painelArte.heightProperty());
+        painelArte.setClip(recorte);
 
         String[] simbolos = {"▶", "▷", "▣", "▦", "▤", "✦", "▣", "★", "◆", "◀"};
         for (int i = 0; i < listaBotoes.getChildren().size(); i++) {
@@ -157,6 +137,12 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 return;
             }
             if (telaSecundaria.isVisible()) {
+                if (dialogoAtual != null
+                        && (e.getCode() == KeyCode.SPACE || e.getCode() == KeyCode.ENTER)
+                        && dialogoAtual.completar()) {
+                    e.consume();
+                    return;
+                }
                 if (e.getCode() == KeyCode.ESCAPE) {
                     voltarAoMenu();
                     e.consume();
@@ -174,44 +160,27 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
     private void animarCenario() {
-        movimentoCenario = new TranslateTransition(Duration.seconds(12), arte);
-        movimentoCenario.setFromX(15);
-        movimentoCenario.setToX(-15);
-        movimentoCenario.setAutoReverse(true);
-        movimentoCenario.setCycleCount(Animation.INDEFINITE);
-        movimentoCenario.play();
+        Timeline ambiente = new Timeline();
+        for (int i = 0; i <= 12; i++) {
+            ambiente.getKeyFrames().add(new KeyFrame(Duration.seconds(i * 1.25),
+                    new KeyValue(arte.translateXProperty(), i - 6, Interpolator.DISCRETE)));
+        }
+        ambiente.setAutoReverse(true);
+        ambiente.setCycleCount(Animation.INDEFINITE);
+        AnimacoesFx.executar(arte, "ambiente", ambiente);
     }
 
     private void animarEntrada() {
-        FadeTransition aparecer = new FadeTransition(Duration.millis(650), colunaMenu);
-        aparecer.setFromValue(0);
-        aparecer.setToValue(1);
-        TranslateTransition deslocar = new TranslateTransition(Duration.millis(650), colunaMenu);
-        deslocar.setFromX(20);
-        deslocar.setToX(0);
-        new ParallelTransition(aparecer, deslocar).play();
-        ScaleTransition pulsar = new ScaleTransition(Duration.seconds(2.8), tituloJogo);
-        pulsar.setFromX(1);
-        pulsar.setFromY(1);
-        pulsar.setToX(1.025);
-        pulsar.setToY(1.025);
-        pulsar.setAutoReverse(true);
-        pulsar.setCycleCount(Animation.INDEFINITE);
-        pulsar.play();
-        animacaoTitulo = pulsar;
+        AnimacoesFx.entradaTela(colunaMenu);
+        // O título permanece nítido: sem zoom contínuo nas letras.
+        FadeTransition brilho = new FadeTransition(Duration.seconds(3.6), tituloJogo);
+        brilho.setFromValue(0.88);
+        brilho.setToValue(1);
+        brilho.setAutoReverse(true);
+        brilho.setCycleCount(Animation.INDEFINITE);
+        AnimacoesFx.executar(tituloJogo, "brilho", brilho);
     }
 
-    private Image conversorImagem(Tela tela){
-        WritableImage imagem = new WritableImage(tela.largura(), tela.altura());
-        var pixels = imagem.getPixelWriter();
-        for (int y = 0; y < tela.altura(); y++) {
-            for (int x = 0; x < tela.largura(); x++) {
-                pixels.setArgb(x, y, 0xFF000000 | tela.get(x, y));
-            }
-        }
-
-        return imagem;
-    }
     private void abrirTelaSalvamento() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/telaSalvamento.fxml"));
@@ -338,7 +307,9 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
             bloco.getChildren().add(rotulo("SLOT " + slot.numero() + " — " + slot.status()));
             if (slot.status() == ResumoSlot.Status.OCUPADO) {
-                bloco.getChildren().add(rotulo(slot.nome() + " | Capítulo " + slot.capitulo() + " | " + slot.data()));
+                String data = slot.data() == null ? "Data indisponível"
+                        : slot.data().format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy · HH:mm"));
+                bloco.getChildren().add(rotulo(slot.nome() + " | Capítulo " + slot.capitulo() + " | " + data));
             }
             HBox acoes = new HBox(12);
             if (sessao.possuiPartida()) {
@@ -493,7 +464,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
                 rotulo("SITUAÇÃO ECONÔMICA"), economia
         );
 
-        Label dica = new Label("Esses atributos usam o mesmo construtor da Fase 2.");
+        Label dica = new Label("Essas escolhas definem seu ponto de partida na universidade.");
         dica.getStyleClass().add("texto-ajuda");
         Button comecar = botaoAcao("COMEÇAR A JORNADA");
         comecar.setOnAction(e -> {
@@ -578,6 +549,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             VBox conteudo = novoPainel("CAPÍTULO " + sessao.estado().getCapituloAtual(), p.getNome() + " · " + cena.getCapitulo());
             indicadoresHud = rotulo("");
             indicadoresHud.getStyleClass().add("hud-destaque");
+            conteudo.getStyleClass().add("painel-cena");
+            conteudo.setMaxWidth(1080);
             conteudo.getChildren().add(indicadoresHud);
             atualizar(sessao.estado());
 
@@ -589,31 +562,45 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             }
             ApresentacaoDeCena visual = VisuaisDeCena.paraCena(cena.getId()).orElse(null);
 
-            exibirIlustracao(conteudo, visual);
+            VBox colunaVisual = new VBox(16);
+            colunaVisual.getStyleClass().add("coluna-cena");
+            colunaVisual.setMinWidth(418);
+            colunaVisual.setPrefWidth(418);
+            exibirIlustracao(colunaVisual, visual);
+            HBox personagem = new HBox(14);
+            personagem.setAlignment(Pos.CENTER_LEFT);
+            artes.exibirRetrato(personagem, visual);
             if (cena.getPersonagemFalando() != null && !cena.getPersonagemFalando().isBlank()) {
-                conteudo.getChildren().add(rotulo(cena.getPersonagemFalando().toUpperCase()));
+                Label falante = rotulo(cena.getPersonagemFalando().toUpperCase(Locale.ROOT));
+                falante.getStyleClass().add("nome-falante");
+                personagem.getChildren().add(falante);
             }
+            if (!personagem.getChildren().isEmpty()) colunaVisual.getChildren().add(personagem);
             String textoResolvido = NarrativaDinamica.resolver(cena, p, sessao.estado().getSemestresExtras());
-            Label narrativa = new Label(textoResolvido);
-            narrativa.getStyleClass().add("texto-narrativa");
-            narrativa.setWrapText(true);
-            narrativa.setPrefWidth(460);
-            narrativa.setMaxWidth(Double.MAX_VALUE);
-            narrativa.setMinHeight(Region.USE_PREF_SIZE);
-
+            DialogoFx narrativa = new DialogoFx(textoResolvido);
             HBox.setHgrow(narrativa, Priority.ALWAYS);
-            HBox dialogo = new HBox(16);
-            dialogo.setAlignment(Pos.TOP_LEFT);
-            exibirRetratoAnimado(dialogo, visual);
-            dialogo.getChildren().add(narrativa);
-            conteudo.getChildren().add(dialogo);
+            HBox corpo = new HBox(24, colunaVisual, narrativa);
+            corpo.setAlignment(Pos.TOP_LEFT);
+            corpo.setFillHeight(false);
+            corpo.getStyleClass().add("cena-corpo");
+            conteudo.getChildren().add(corpo);
+            if (cena.getId() == 0) {
+                conteudo.getStyleClass().add("momento-especial");
+                Label marco = rotulo("✦  APROVAÇÃO NA UEFP · UM NOVO COMEÇO");
+                marco.getStyleClass().add("marco-jornada");
+                conteudo.getChildren().add(2, marco);
+            }
 
             List<Escolha> escolhas = sessao.escolhasDisponiveis();
             if (escolhas.isEmpty()) {
                 conteudo.getChildren().add(rotulo("Nenhuma decisão disponível nesta cena."));
             }
+            Label convite = rotulo(escolhas.size() > 1 ? "◆  ESCOLHA SEU CAMINHO" : "◆  CONTINUE SUA HISTÓRIA");
+            convite.getStyleClass().add("titulo-escolhas");
+            conteudo.getChildren().add(convite);
             for (Escolha escolha : escolhas) {
                 Button escolhaBotao = botaoAcao(escolha.getTextoAlternativa());
+                escolhaBotao.getStyleClass().add("escolha-narrativa");
                 escolhaBotao.setWrapText(true);
                 escolhaBotao.setMaxWidth(Double.MAX_VALUE);
                 escolhaBotao.setOnAction(e -> {
@@ -641,17 +628,22 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             }
             Button galeria = botaoAcao("GALERIA E CONQUISTAS");
             galeria.setOnAction(e -> mostrarGaleria(sessao.estado().getProtagonista()));
-            conteudo.getChildren().add(galeria);
+            galeria.getStyleClass().add("acao-secundaria");
 
             Button statusBotao = botaoAcao("VER STATUS");
             statusBotao.setOnAction(e -> abrirStatus());
-            conteudo.getChildren().add(statusBotao);
+            statusBotao.getStyleClass().add("acao-secundaria");
 
             Button voltar = botaoAcao("VOLTAR AO MENU  ·  CONTINUAR DEPOIS");
             voltar.setOnAction(e -> voltarAoMenu());
-            conteudo.getChildren().add(voltar);
+            voltar.getStyleClass().add("acao-secundaria");
+            HBox ferramentas = new HBox(12, galeria, statusBotao);
+            ferramentas.getStyleClass().add("acoes-cena");
+            conteudo.getChildren().addAll(ferramentas, voltar);
             mostrarTela(conteudo);
-            animacaoDialogo = AnimacoesFx.revelarDialogo(narrativa, configuracoes.getVelocidadeTexto());
+            dialogoAtual = narrativa;
+            narrativa.iniciar(configuracoes.getVelocidadeTexto());
+            atualizarPausas();
         } catch (RuntimeException ex) {
             mostrarModal("ERRO AO CARREGAR CENA", ex.getMessage());
         }
@@ -660,53 +652,10 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
 
 
-    private void pararAnimacaoIlustracao() {
-        if (animacaoIlustracao != null) {
-            animacaoIlustracao.stop();
-            animacaoIlustracao = null;
-        }
-    }
-
     private void exibirIlustracao(VBox conteudo, ApresentacaoDeCena visual) {
         String anterior = ilustracaoAtual;
-        if (visual != null && visual.ilustracao() != null) {
-            ilustracaoAtual = visual.ilustracao();
-        }
-        pararAnimacaoIlustracao();
-        if (ilustracaoAtual == null) {
-            return;
-        }
-        Ilustracoes.animacao(ilustracaoAtual).ifPresent(animacao -> {
-            ImageView cenario = new ImageView();
-            cenario.setFitWidth(396);
-            cenario.setPreserveRatio(true);
-            cenario.setSmooth(false);
-            conteudo.getChildren().add(cenario);
-
-            int ultimoQuadro = animacao.total() - 1;
-            if (Objects.equals(anterior, ilustracaoAtual) || animacao.total() == 1) {
-                cenario.setImage(conversorImagem(animacao.desenhar(ultimoQuadro)));
-                return;
-            }
-            cenario.setImage(conversorImagem(animacao.desenhar(0)));
-            AnimacoesFx.entradaIlustracao(cenario);
-            int[] indice = {0};
-            Timeline timeline = new Timeline(
-                    new KeyFrame(Duration.millis(Math.max(1, animacao.intervaloMs())),
-                            evento -> {
-                                indice[0]++;
-                                Tela quadro = animacao.desenhar(indice[0]);
-                                cenario.setImage(conversorImagem(quadro));}));
-            timeline.setCycleCount(ultimoQuadro);
-            timeline.setOnFinished(evento -> {
-                if (animacaoIlustracao == timeline) {
-                    animacaoIlustracao = null;
-                }
-            });
-
-            animacaoIlustracao = timeline;
-            timeline.play();
-        });
+        if (visual != null && visual.ilustracao() != null) ilustracaoAtual = visual.ilustracao();
+        artes.exibirIlustracao(conteudo, ilustracaoAtual, !Objects.equals(anterior, ilustracaoAtual));
     }
 
     private <E extends Enum<E>> ComboBox<E> novoCombo(E[] valores) {
@@ -733,6 +682,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private Button botaoAcao(String texto) {
         Button b = new Button(texto);
         b.getStyleClass().add("botao-voltar");
+        b.setWrapText(true);
+        b.setMinHeight(Region.USE_PREF_SIZE);
         AnimacoesFx.instalarHover(b);
         return b;
     }
@@ -745,22 +696,34 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         painel.getStyleClass().add("painel-interno");
         Label cabecalho = new Label(titulo);
         cabecalho.getStyleClass().add("titulo-modal");
+        cabecalho.setWrapText(true);
+        cabecalho.setMaxWidth(450);
         Label descricao = new Label(subtitulo);
         descricao.getStyleClass().add("texto-ajuda");
+        descricao.setWrapText(true);
+        descricao.setMaxWidth(450);
         painel.getChildren().addAll(cabecalho, descricao);
         return painel;
     }
 
-    private void mostrarTela(VBox painel) {
-        if (animacaoDialogo != null) {
-            animacaoDialogo.stop();
-            animacaoDialogo = null;
+    private void encerrarCenaAtual() {
+        if (dialogoAtual != null) {
+            dialogoAtual.encerrar();
+            dialogoAtual = null;
         }
+        AnimacoesFx.pararArvore(telaSecundaria);
+    }
+
+    private void mostrarTela(VBox painel) {
+        encerrarCenaAtual();
+        if (!painel.getStyleClass().contains("painel-cena")) indicadoresHud = null;
         ScrollPane rolante = new ScrollPane(painel);
         rolante.setFitToWidth(true);
-        rolante.setMaxWidth(810);
-        rolante.setMaxHeight(700);
+        rolante.setMaxWidth(painel.getStyleClass().contains("painel-cena") ? 1104 : 810);
+        rolante.setMaxHeight(Double.MAX_VALUE);
+        rolante.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         rolante.getStyleClass().add("rolagem-pixel");
+        StackPane.setMargin(rolante, new Insets(24, 28, 24, 28));
         telaSecundaria.getChildren().setAll(rolante);
         telaSecundaria.setManaged(true);
         telaSecundaria.setVisible(true);
@@ -768,77 +731,47 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         AnimacoesFx.entradaTela(rolante);
         AnimacoesFx.entradaBotoes(painel);
         if (avisosDiscretos != null) avisosDiscretos.toFront();
-        if (modal.isVisible()) {
-            modal.toFront();
-        }
+        if (modal.isVisible()) modal.toFront();
+        atualizarPausas();
+        Platform.runLater(() -> {
+            if (rolante.getScene() != null && !modal.isVisible()) rolante.requestFocus();
+        });
     }
 
     private void voltarAoMenu() {
-        if (animacaoDialogo != null) {
-            animacaoDialogo.stop();
-            animacaoDialogo = null;
-        }
-        pararAnimacaoIlustracao();
-        pararAnimacaoRetrato();
+        encerrarCenaAtual();
+        indicadoresHud = null;
         telaSecundaria.setVisible(false);
         telaSecundaria.setManaged(false);
         telaSecundaria.getChildren().clear();
         status.setText(sessao.possuiPartida()
                 ? "✦  PARTIDA EM MEMÓRIA · CLIQUE EM CONTINUAR"
                 : "✦  SUA HISTÓRIA COMEÇA AQUI");
+        atualizarPausas();
         raiz.requestFocus();
     }
 
-    // Mostra até três notificações temporárias sem bloquear cliques
-    private void mostrarNotificacao(String titulo, String mensagem) {
-        if (mensagem == null || mensagem.isBlank()) return;
+    public void suspenderAnimacoes(boolean pausar) {
+        suspenso = pausar;
+        atualizarPausas();
+    }
 
+    private void atualizarPausas() {
+        AnimacoesFx.pausarArvore(raiz.getChildren().get(0),
+                suspenso || telaSecundaria.isVisible() || modal.isVisible());
+        AnimacoesFx.pausarArvore(telaSecundaria, suspenso || modal.isVisible());
+        AnimacoesFx.pausarArvore(modal, suspenso);
+        if (avisosDiscretos != null) AnimacoesFx.pausarArvore(avisosDiscretos, suspenso || modal.isVisible());
+    }
+
+    private void mostrarNotificacao(String titulo, String mensagem) {
         if (avisosDiscretos == null) {
-            avisosDiscretos = new VBox(8);
-            avisosDiscretos.setAlignment(Pos.TOP_RIGHT);
-            avisosDiscretos.setMouseTransparent(true);
-            avisosDiscretos.setMaxWidth(370);
-            avisosDiscretos.setMaxHeight(Region.USE_PREF_SIZE);
-            StackPane.setAlignment(avisosDiscretos, Pos.TOP_RIGHT);
-            StackPane.setMargin(avisosDiscretos, new Insets(18, 22, 0, 0));
+            avisosDiscretos = new AvisosFx();
             raiz.getChildren().add(avisosDiscretos);
         }
-
-        VBox aviso = new VBox(4);
-        aviso.getStyleClass().add("aviso-discreto");
-        aviso.setMaxWidth(350);
-        Label cabecalho = new Label(titulo);
-        cabecalho.getStyleClass().add("aviso-discreto-titulo");
-        Label descricao = new Label(mensagem);
-        descricao.getStyleClass().add("aviso-discreto-texto");
-        descricao.setWrapText(true);
-        descricao.setMaxWidth(325);
-        aviso.getChildren().addAll(cabecalho, descricao);
-
-        if (avisosDiscretos.getChildren().size() >= 3) {
-            avisosDiscretos.getChildren().remove(0);
-        }
-        avisosDiscretos.getChildren().add(aviso);
-        aviso.setOpacity(0);
-        aviso.setTranslateY(-9);
-        FadeTransition entrada = new FadeTransition(Duration.millis(180), aviso);
-        entrada.setFromValue(0);
-        entrada.setToValue(1);
-        TranslateTransition deslocamento = new TranslateTransition(Duration.millis(180), aviso);
-        deslocamento.setFromY(-9);
-        deslocamento.setToY(0);
-        new ParallelTransition(entrada, deslocamento).play();
-
-        PauseTransition espera = new PauseTransition(Duration.seconds(4.5));
-        espera.setOnFinished(e -> {
-            FadeTransition saida = new FadeTransition(Duration.millis(260), aviso);
-            saida.setToValue(0);
-            saida.setOnFinished(ev -> avisosDiscretos.getChildren().remove(aviso));
-            saida.play();
-        });
-        espera.play();
-
+        avisosDiscretos.mostrar(titulo, mensagem);
         avisosDiscretos.toFront();
+        atualizarPausas();
         if (modal.isVisible()) modal.toFront();
     }
 
@@ -860,52 +793,55 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         textoModal.setText(conteudo == null
                 ? "Ocorreu um erro sem detalhes."
                 : conteudo);
+        rolagemModal.setPrefViewportHeight(Math.min(360, textoModal.prefHeight(540)));
 
+        fechandoModal = false;
         modal.setManaged(true);
         modal.setVisible(true);
         modal.toFront();
         AnimacoesFx.entradaModal(modal);
+        atualizarPausas();
         botaoFechar.requestFocus();
     }
 
     @FXML
     private void fecharModal() {
+        if (fechandoModal) return;
         if (!avisosPendentes.isEmpty()) {
             String[] proximo = avisosPendentes.removeFirst();
             exibirModalAgora(proximo[0], proximo[1]);
             return;
         }
-
-        modal.setVisible(false);
-        modal.setManaged(false);
-
-        if (telaSecundaria.isVisible()) {
-            telaSecundaria.toFront();
-        } else {
-            raiz.requestFocus();
-        }
+        fechandoModal = true;
+        AnimacoesFx.saidaModal(modal, () -> {
+            fechandoModal = false;
+            if (!avisosPendentes.isEmpty()) {
+                String[] proximo = avisosPendentes.removeFirst();
+                exibirModalAgora(proximo[0], proximo[1]);
+                return;
+            }
+            modal.setVisible(false);
+            modal.setManaged(false);
+            AnimacoesFx.pararArvore(modal);
+            atualizarPausas();
+            if (telaSecundaria.isVisible()) telaSecundaria.requestFocus();
+            else raiz.requestFocus();
+        });
     }
 
     public void pararAnimacoes() {
-        if (animacaoDialogo != null) {
-            animacaoDialogo.stop();
-            animacaoDialogo = null;
-        }
-        pararAnimacaoIlustracao();
-        pararAnimacaoRetrato();
-        if (movimentoCenario != null) movimentoCenario.stop();
-        if (animacaoTitulo != null) animacaoTitulo.stop();
+        encerrarCenaAtual();
+        AnimacoesFx.pararArvore(raiz);
+        artes.close();
     }
 
     @Override
     public void resetarCacheVisual() {
-        pararAnimacaoIlustracao();
-        pararAnimacaoRetrato();
+        encerrarCenaAtual();
         avisosPendentes.clear();
+        feedbackEscolhaPendente = null;
         ilustracaoAtual = null;
-        pararAnimacaoRetrato();
-        ultimoFalanteRetrato = null;
-        ultimaExpressaoRetrato = null;
+        artes.resetarRetrato();
     }
 
     @Override
@@ -1021,6 +957,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     @Override
     public void mostrarEpilogos(Protagonista p) {
         VBox painel = novoPainel("O QUE FICOU", "O fim da jornada de " + p.getNome());
+        painel.getStyleClass().add("momento-especial");
+        artes.exibirIlustracao(painel, VisuaisDeFinal.ilustracaoDe(p), true);
         painel.setMaxHeight(Double.MAX_VALUE);
         for (Epilogos.Epilogo bloco : Epilogos.de(p)) {
             painel.getChildren().add(rotulo(bloco.titulo()));
@@ -1039,6 +977,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     @Override
     public void mostrarCurriculo(Protagonista p) {
         VBox painel = novoPainel("SEU CURRÍCULO", "Um retrato das escolhas feitas até aqui.");
+        painel.getStyleClass().add("momento-especial");
         painel.setMaxHeight(Double.MAX_VALUE);
         Curriculo.Categoria categoriaAnterior = null;
         for (Curriculo.Linha linha : Curriculo.linhas(p)) {
@@ -1077,164 +1016,6 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     }
 
 
-    private void pararAnimacaoRetrato() {
-        if (animacaoRetrato != null) {
-            animacaoRetrato.stop();
-            animacaoRetrato = null;
-        }
-    }
-
-    private String pastaRetrato(String falante) {
-        return switch (falante) {
-            case "sergio" -> "prof_sergio";
-            case "rafael" -> "prof_rafael";
-            case "protagonista_stheffanny" -> "stheffanny";
-            case "protagonista_masculino", "caio", "bia",
-                 "dandara", "malu", "alan", "noa",
-                 "lia", "stheffanny" -> falante;
-            default -> null;
-        };
-    }
-
-    private Image carregarImagemPersonagem(String caminho) {
-        var recurso = getClass().getResource(caminho);
-
-        if (recurso == null) {
-            return null;
-        }
-
-        return new Image(recurso.toExternalForm());
-    }
-
-
-
-    private void animarRetratoIdle(ImageView retrato, String pastaBase) {
-        String base = pastaBase + "/animations/idle/";
-        Image aberto = carregarImagemPersonagem(base + "frame_000_aberto.png");
-        Image meio = carregarImagemPersonagem(base + "frame_001_piscada_meio.png");
-        Image fechado = carregarImagemPersonagem(base + "frame_002_olhos_fechados.png");
-        Image respiracao = carregarImagemPersonagem(base + "frame_003_respiracao.png");
-        if (aberto == null || meio == null
-                || fechado == null || respiracao == null) {
-            return;
-        }
-        retrato.setImage(aberto);
-        agendarPiscada(retrato, aberto, meio, fechado, respiracao);
-    }
-
-    private void agendarPiscada(ImageView retrato, Image aberto, Image meio, Image fechado, Image respiracao) {
-        long espera = java.util.concurrent.ThreadLocalRandom.current().nextLong(2500, 4600);
-
-        Timeline ciclo = new Timeline(
-                new KeyFrame(
-                        Duration.millis(espera),
-                        e -> retrato.setImage(meio)
-                ),
-                new KeyFrame(
-                        Duration.millis(espera + 65),
-                        e -> retrato.setImage(fechado)
-                ),
-                new KeyFrame(
-                        Duration.millis(espera + 135),
-                        e -> retrato.setImage(aberto)
-                ),
-                new KeyFrame(
-                        Duration.millis(espera + 540),
-                        e -> retrato.setImage(respiracao)
-                ),
-                new KeyFrame(
-                        Duration.millis(espera + 780),
-                        e -> retrato.setImage(aberto)
-                )
-        );
-
-        animacaoRetrato = ciclo;
-
-        ciclo.setOnFinished(e -> {
-            // Só agenda outra piscada se o retrato
-            // ainda for o personagem ativo
-            if (animacaoRetrato == ciclo && retrato.getScene() != null) {
-                agendarPiscada(retrato, aberto, meio, fechado, respiracao);
-            }
-        });
-        ciclo.play();
-    }
-
-
-    private void exibirRetratoAnimado(HBox dialogo, ApresentacaoDeCena visual) {
-        pararAnimacaoRetrato();
-        if (visual == null || visual.falante() == null) {
-            ultimoFalanteRetrato = null;
-            ultimaExpressaoRetrato = null;
-            return;
-        }
-
-        String falante = visual.falante();
-        String expressao = visual.expressao() == null ? "neutra" : visual.expressao();
-        String anterior = Objects.equals(ultimoFalanteRetrato, falante) ? ultimaExpressaoRetrato : null;
-        ultimoFalanteRetrato = falante;
-        ultimaExpressaoRetrato = expressao;
-
-        String pasta = pastaRetrato(falante);
-
-        if (pasta != null && EXPRESSOES.contains(expressao)) {
-            String base = "/images/personagens/" + pasta;
-            Image imagem = carregarImagemPersonagem(base + "/expressions/" + expressao + ".png");
-            if (imagem != null) {
-                ImageView retrato = new ImageView(imagem);
-                retrato.setFitWidth(128);
-                retrato.setFitHeight(128);
-                retrato.setPreserveRatio(true);
-                retrato.setSmooth(false);
-
-                dialogo.getChildren().add(retrato);
-                AnimacoesFx.entradaRetrato(retrato);
-
-                String arquivoTransicao = TRANSICOES.get(
-                        anterior + ":" + expressao);
-
-                if (arquivoTransicao != null) {
-                    Image intermediaria = carregarImagemPersonagem(base + "/animations/expressoes/transitions/" + arquivoTransicao);
-
-                    if (intermediaria != null) {
-                        retrato.setImage(intermediaria);
-
-                        Timeline transicao = new Timeline(
-                                new KeyFrame(Duration.millis(80), e -> {
-                                    retrato.setImage(imagem);
-                                    if ("neutra".equals(expressao)) {
-                                        animarRetratoIdle(retrato, base);
-                                    }
-                                })
-                        );
-
-                        animacaoRetrato = transicao;
-                        transicao.play();
-                        return;
-                    }
-                }
-
-                if ("neutra".equals(expressao)) {
-                    animarRetratoIdle(retrato, base);
-                }
-
-                return;
-            }
-        }
-
-        Retratos.pixels(falante, expressao).ifPresent(tela -> {
-            ImageView retrato = new ImageView(conversorImagem(tela));
-
-            retrato.setFitWidth(128);
-            retrato.setFitHeight(128);
-            retrato.setPreserveRatio(true);
-            retrato.setSmooth(false);
-
-            dialogo.getChildren().add(retrato);
-                AnimacoesFx.entradaRetrato(retrato);
-        });
-    }
-
     public void solicitarSaida() {
         boolean possuiPartida = sessao.possuiPartida();
         boolean alteracoesPendentes = possuiPartida && sessao.estado().temAlteracoes();
@@ -1250,8 +1031,12 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         if (estado == null || indicadoresHud == null)
             return;
         Protagonista p = estado.getProtagonista();
-        indicadoresHud.setText("ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima() + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao());
+        String resumo = "ENERGIA " + p.getEnergia() + "/" + p.getEnergiaMaxima()
+                + "    SCORE " + p.getScore() + "    PARTICIPAÇÃO " + p.getParticipacao();
+        if (!resumo.equals(indicadoresHud.getText())) {
+            indicadoresHud.setText(resumo);
             AnimacoesFx.pulsarHud(indicadoresHud);
+        }
     }
 }
 

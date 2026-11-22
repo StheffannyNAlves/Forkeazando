@@ -129,9 +129,12 @@ public final class TelaStatusFx {
             int inicio = Math.max(0, registros.size() - 8);
 
             for (int i = inicio; i < registros.size(); i++) {
+                String registro = registros.get(i);
+                String descricao = registro.startsWith("protagonista_")
+                        ? "Protagonista: " + p.getNome()
+                        : registro.replace('_', ' ');
                 painel.getChildren().add(
-                        texto("◆ " + registros.get(i)
-                                .replace('_', ' '))
+                        texto("◆ " + descricao)
                 );
             }
         }

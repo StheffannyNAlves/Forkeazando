@@ -1,96 +1,64 @@
 package br.uefs.forkeazando.view.javafx;
 
 import br.uefs.forkeazando.audio.GerenciadorAudio;
-
 import javafx.application.Application;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.Group;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 public class ForkeazandoApp extends Application {
+    private ControllerInterface controller;
+    private GerenciadorAudio audio;
 
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/menuCompleto.fxml"));
         StackPane raiz = loader.load();
-        ControllerInterface controller = loader.getController();
-        GerenciadorAudio audio = new GerenciadorAudio();
+        controller = loader.getController();
+        audio = new GerenciadorAudio();
         controller.configurarAudio(audio);
         stage.setTitle("FORKEAZANDO • Universidade Estadual do Fork Perdido");
-        HBox colunas = (HBox) raiz.getChildren().get(0);
-        StackPane paisagem = (StackPane) colunas.getChildren().get(0);
-        VBox menu = (VBox) colunas.getChildren().get(1);
-        ImageView imagem = (ImageView) paisagem.getChildren().get(0);
-        Rectangle recorte = (Rectangle) paisagem.getClip();
-        final double LARGURA_BASE = 1280;
-        final double ALTURA_BASE = 760;
-        raiz.setMinSize(LARGURA_BASE, ALTURA_BASE);
-        raiz.setPrefSize(LARGURA_BASE, ALTURA_BASE);
-        raiz.setMaxSize(LARGURA_BASE, ALTURA_BASE);
-        Group jogoEscalavel = new Group(raiz);
-        StackPane container = new StackPane(jogoEscalavel);
-        container.setStyle("-fx-background-color: #241342;");
+        StackPane paisagem = (StackPane) loader.getNamespace().get("painelArte");
+        VBox menu = (VBox) loader.getNamespace().get("colunaMenu");
+        ImageView imagem = (ImageView) loader.getNamespace().get("arte");
+        ScrollPane rolagemMenu = (ScrollPane) loader.getNamespace().get("rolagemMenu");
+        Scene scene = new Scene(raiz, 1280, 760);
 
-        Scene scene = new Scene(container, LARGURA_BASE, ALTURA_BASE);
-
-        Runnable atualizarEscala = () -> {
-            double escalaX = scene.getWidth() / 1280.0;
-            double escalaY = scene.getHeight() / 760.0;
-
-            // Mantém a proporção dos elementos.
-            double escala = Math.min(escalaX, escalaY);
-
-            if (escala <= 0) return;
-
-            // Largura disponível antes de aplicar a escala
-            double larguraDisponivel = scene.getWidth() / escala;
-
-            double espacoExtra = larguraDisponivel - 1280.0;
-
-            // Distribui o espaço adicional entre as colunas
-            double larguraPaisagem = 625.0 + espacoExtra / 2.0;
-            double larguraMenu = 655.0 + espacoExtra / 2.0;
-
-            raiz.setMinWidth(larguraDisponivel);
-            raiz.setPrefWidth(larguraDisponivel);
-            raiz.setMaxWidth(larguraDisponivel);
-
-            colunas.setMinWidth(larguraDisponivel);
-            colunas.setPrefWidth(larguraDisponivel);
-            colunas.setMaxWidth(larguraDisponivel);
-
-            paisagem.setMinWidth(larguraPaisagem);
-            paisagem.setPrefWidth(larguraPaisagem);
-            paisagem.setMaxWidth(larguraPaisagem);
-            menu.setMinWidth(larguraMenu);
-            menu.setPrefWidth(larguraMenu);
-            menu.setMaxWidth(larguraMenu);
-
-            // Atualiza o recorte da paisagem
-            recorte.setWidth(larguraPaisagem);
-
-            // Garante que a imagem cubra a coluna
-            imagem.setFitWidth(Math.max(805, larguraPaisagem));
-
-            jogoEscalavel.setScaleX(escala);
-            jogoEscalavel.setScaleY(escala);
+        // Layout em pixels lógicos: textos não são ampliados por uma escala fracionária global.
+        paisagem.setMinSize(0, 0);
+        paisagem.prefWidthProperty().bind(scene.widthProperty().multiply(0.48));
+        HBox.setHgrow(rolagemMenu, Priority.ALWAYS);
+        menu.minHeightProperty().bind(Bindings.createDoubleBinding(
+                () -> Math.max(0, rolagemMenu.getViewportBounds().getHeight()),
+                rolagemMenu.viewportBoundsProperty()));
+        Runnable cobrirPaisagem = () -> {
+            double proporcao = imagem.getImage().getWidth() / imagem.getImage().getHeight();
+            double largura = Math.max(paisagem.getWidth(), paisagem.getHeight() * proporcao);
+            // Há margem para o deslocamento ambiental existente, sem esticar a arte.
+            imagem.setFitWidth(Math.ceil(largura) + 32);
+            imagem.setFitHeight(0);
         };
-
-        scene.widthProperty().addListener((obs, antigo, novo) -> atualizarEscala.run());
-        scene.heightProperty().addListener((obs, antigo, novo) -> atualizarEscala.run());
+        paisagem.widthProperty().addListener((obs, antes, depois) -> cobrirPaisagem.run());
+        paisagem.heightProperty().addListener((obs, antes, depois) -> cobrirPaisagem.run());
+        stage.iconifiedProperty().addListener((obs, antes, depois) -> controller.suspenderAnimacoes(depois));
         stage.setScene(scene);
+        stage.setMinWidth(960);
+        stage.setMinHeight(620);
         stage.setResizable(true);
-        stage.setResizable(true);
-        stage.setOnCloseRequest(e -> {e.consume();controller.solicitarSaida();});
+        stage.setOnCloseRequest(e -> { e.consume(); controller.solicitarSaida(); });
         stage.show();
-        atualizarEscala.run();
+        cobrirPaisagem.run();
         audio.iniciar();
+    }
+
+    @Override
+    public void stop() {
+        if (controller != null) controller.pararAnimacoes();
+        if (audio != null) audio.fechar();
     }
 
     public static void main(String[] args) {

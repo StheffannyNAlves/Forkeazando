@@ -7,6 +7,8 @@ import br.uefs.forkeazando.model.IdentidadeProtagonista;
 import br.uefs.forkeazando.model.Protagonista;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -178,18 +180,23 @@ class FluxoCompletoTest {
         p.recuperarEnergia(p.getEnergiaMaxima());
     }
 
-    @Test
+    @ParameterizedTest
+    @EnumSource(IdentidadeProtagonista.class)
     @DisplayName("Fase 3: percurso completo de IC até o final de pesquisa")
-    void partidaIcCompleta() {
+    void partidaIcCompleta(IdentidadeProtagonista identidade) {
         Map<Integer, Cena> jogo = jogo();
-        Protagonista p = protagonista(IdentidadeProtagonista.STHEFFANNY);
+        Protagonista p = protagonista(identidade);
         Set<Integer> decisoesUsadas = new HashSet<>();
+        Map<Integer, String> escolhasDaPartida = new HashMap<>(ESCOLHAS_IC);
+        if (identidade == IdentidadeProtagonista.DAVI) {
+            escolhasDaPartida.put(701, "Relembrar o início pelas ideias");
+        }
 
-        assertTrue(p.temFlag("protagonista_stheffanny"));
-        assertFalse(p.temFlag("protagonista_masculino"));
+        assertEquals(identidade == IdentidadeProtagonista.STHEFFANNY, p.temFlag("protagonista_stheffanny"));
+        assertEquals(identidade == IdentidadeProtagonista.DAVI, p.temFlag("protagonista_masculino"));
 
         // Prólogo revisado: entrevista -> memória de 2024.2 -> matrícula
-        assertEquals(0, avancarAte(jogo, p, 700, 0, ESCOLHAS_IC, decisoesUsadas));
+        assertEquals(0, avancarAte(jogo, p, 700, 0, escolhasDaPartida, decisoesUsadas));
         assertTrue(p.temFlag("prologo_resposta_conviccao"));
 
         // Testa o início de cada capítulo, decisões reais e encerramento
@@ -200,7 +207,7 @@ class FluxoCompletoTest {
                     "Início inesperado do capítulo " + capitulo);
             assertEquals(Estado.CENA_ENCERRAR,
                     avancarAte(jogo, p, inicio, Estado.CENA_ENCERRAR,
-                            ESCOLHAS_IC, decisoesUsadas),
+                            escolhasDaPartida, decisoesUsadas),
                     "O capítulo " + capitulo + " não foi concluído");
 
             switch (capitulo) {
@@ -241,7 +248,7 @@ class FluxoCompletoTest {
         assertEquals(649, Roteador.proximaCena(8, p));
         assertEquals(ResolucaoDeFuturo.CENA_RESOLVER_FUTURO,
                 avancarAte(jogo, p, 649, ResolucaoDeFuturo.CENA_RESOLVER_FUTURO,
-                        ESCOLHAS_IC, decisoesUsadas));
+                        escolhasDaPartida, decisoesUsadas));
         assertTrue(p.temFlag("cap8_resposta_autoria"));
 
         // A cena 667 não possui escolha JSON; é resolvida pelo código do jogo
@@ -250,7 +257,7 @@ class FluxoCompletoTest {
         assertTrue(p.temFlag("futuro_pesquisa_brasil"));
         assertEquals(Estado.CENA_ENCERRAR,
                 avancarAte(jogo, p, cenaFinal, Estado.CENA_ENCERRAR,
-                        ESCOLHAS_IC, decisoesUsadas));
+                        escolhasDaPartida, decisoesUsadas));
         assertTrue(p.temFlag("cap8_concluido"));
         assertTrue(p.temFlag("final_formou"));
 

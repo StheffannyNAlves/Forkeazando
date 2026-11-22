@@ -36,6 +36,7 @@ import javafx.util.Duration;
 import br.uefs.forkeazando.adapter.CarregamentoAdapter;
 import br.uefs.forkeazando.dao.GerenciadorSlots;
 import br.uefs.forkeazando.view.ApresentacaoCena;
+import br.uefs.forkeazando.view.pixel.PerfilProtagonista;
 import br.uefs.forkeazando.controller.CenasController;
 import br.uefs.forkeazando.controller.DadosProtagonista;
 import br.uefs.forkeazando.controller.SessaoGrafica;
@@ -86,6 +87,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     private String feedbackEscolhaPendente;
     private VBox curriculoPendente;
     private String ilustracaoAtual;
+    private PerfilProtagonista perfilIlustracaoAtual;
     private final ArtesFx artes = new ArtesFx();
     private DialogoFx dialogoAtual;
     private boolean fechandoModal;
@@ -457,7 +459,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             colunaVisual.getStyleClass().add("coluna-cena");
             colunaVisual.setMinWidth(418);
             colunaVisual.setPrefWidth(418);
-            exibirIlustracao(colunaVisual, visual);
+            exibirIlustracao(colunaVisual, visual, PerfilProtagonista.de(p));
             HBox personagem = new HBox(14);
             personagem.setAlignment(Pos.CENTER_LEFT);
             artes.exibirRetrato(personagem, visual);
@@ -543,10 +545,13 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
 
 
 
-    private void exibirIlustracao(VBox conteudo, ApresentacaoDeCena visual) {
+    private void exibirIlustracao(VBox conteudo, ApresentacaoDeCena visual, PerfilProtagonista perfil) {
         String anterior = ilustracaoAtual;
+        PerfilProtagonista perfilAnterior = perfilIlustracaoAtual;
         if (visual != null && visual.ilustracao() != null) ilustracaoAtual = visual.ilustracao();
-        artes.exibirIlustracao(conteudo, ilustracaoAtual, !Objects.equals(anterior, ilustracaoAtual));
+        perfilIlustracaoAtual = perfil;
+        artes.exibirIlustracao(conteudo, ilustracaoAtual, perfil,
+                !Objects.equals(anterior, ilustracaoAtual) || perfilAnterior != perfil);
     }
 
     private void encerrarCenaAtual() {
@@ -684,7 +689,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         avisosPendentes.clear();
         feedbackEscolhaPendente = null;
         ilustracaoAtual = null;
-        artes.resetarRetrato();
+        perfilIlustracaoAtual = null;
+        artes.resetar();
     }
 
     @Override
@@ -800,7 +806,7 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
     public void mostrarEpilogos(Protagonista p) {
         VBox painel = novoPainel("O QUE FICOU", "O fim da jornada de " + p.getNome());
         painel.getStyleClass().add("momento-especial");
-        artes.exibirIlustracao(painel, VisuaisDeFinal.ilustracaoDe(p), true);
+        artes.exibirIlustracao(painel, VisuaisDeFinal.ilustracaoDe(p), PerfilProtagonista.de(p), true);
         painel.setMaxHeight(Double.MAX_VALUE);
         for (Epilogos.Epilogo bloco : Epilogos.de(p)) {
             painel.getChildren().add(rotulo(bloco.titulo()));

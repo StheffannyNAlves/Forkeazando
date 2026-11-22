@@ -22,6 +22,7 @@ public class CenaView implements ApresentacaoCena {
     private volatile boolean mostrarIndicadorPause = true;
     private volatile Protagonista protagonistaAtual;
     private String ultimaIlustracao;
+    private PerfilProtagonista ultimoPerfil;
     private boolean avisouArteOculta;
     private final boolean dicasAtalho;
     private final int velocidadeTexto;
@@ -92,6 +93,7 @@ public class CenaView implements ApresentacaoCena {
     @Override
     public void resetarCacheVisual() {
         this.ultimaIlustracao = null;
+        this.ultimoPerfil = null;
         this.avisouArteOculta = false;
     }
     @Override
@@ -465,7 +467,7 @@ public class CenaView implements ApresentacaoCena {
     private void mostrarIlustracao(ApresentacaoDeCena visual) {
         if (visual == null || visual.ilustracao() == null) return;
         String chave = visual.ilustracao();
-        if (chave.equals(ultimaIlustracao)) return;
+        if (chave.equals(ultimaIlustracao) && ultimoPerfil == perfilAtual()) return;
         if (!terminalComporta()) {
             avisarArteOculta();
             return;
@@ -496,6 +498,7 @@ public class CenaView implements ApresentacaoCena {
     }
 
     private void mostrarIlustracaoDoFinal(Protagonista p) {
+        protagonistaAtual = p;
         String chave = VisuaisDeFinal.ilustracaoDe(p);
         System.out.println(Cores.AMARELO + "  FINAL — "
                 + VisuaisDeFinal.tituloDe(p).toUpperCase() + Cores.RESET);
@@ -503,17 +506,22 @@ public class CenaView implements ApresentacaoCena {
         System.out.println();
     }
 
+    private PerfilProtagonista perfilAtual() {
+        return protagonistaAtual == null ? PerfilProtagonista.TIANA : PerfilProtagonista.de(protagonistaAtual);
+    }
+
     private void desenharIlustracao(String chave) {
         if (!Ilustracoes.existe(chave) || !terminalComporta()) return;
-        Optional<Animacao> animacao = Ilustracoes.animacao(chave);
+        Optional<Animacao> animacao = Ilustracoes.animacao(chave, perfilAtual());
         if (animacao.isPresent() && Animador.habilitada()) {
             Animador.tocar(animacao.get(), System.out, this::dormir);
         } else {
-            for (String linha : Ilustracoes.linhas(chave)) {
+            for (String linha : Ilustracoes.linhas(chave, perfilAtual())) {
                 System.out.println(linha + Cores.RESET);
             }
         }
         ultimaIlustracao = chave;
+        ultimoPerfil = perfilAtual();
     }
 
 

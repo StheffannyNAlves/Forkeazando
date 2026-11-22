@@ -25,7 +25,7 @@ final class CenasCap2a4 {
 
 
     //  Cena 101 — mural do módulo 1: cartazes presos com fita crepe.
-    static Tela mural(int q) {
+    static Tela mural(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, rgb(214, 208, 196), rgb(190, 184, 172));
         t.rect(5, 3, 56, 33, rgb(104, 72, 46));
@@ -48,14 +48,13 @@ final class CenasCap2a4 {
         t.rect(45 + 10 + dx, 9 + 14, 3, 3, rgb(226, 222, 208));
         t.rect(45 + 11 + dx, 9 + 17, 2, 1, rgb(120, 90, 62));
         for (int y = 36; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(150, 150, 156), rgb(110, 110, 120), (y - 36) / 12.0));
-        costas(t, 14, 33, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 14, 14);
-        t.rect(6, 38, 3, 10, rgb(26, 20, 40));
+        protagonista.costas(t, 14, 33, 14, 14);
         costas(t, 52, 35, rgb(190, 130, 96), rgb(24, 20, 28), rgb(70, 110, 160), 12, 12);
         return t;
     }
 
     //  Cenas 105 / 106 — assembleia no pátio: faixas, megafone, quarenta pessoas.
-    static Tela assembleia(int q) {
+    static Tela assembleia(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         for (int y = 0; y < 22; y++) t.rect(0, y, L, 1, gradiente(y, new int[]{0, 21}, new int[][]{{150, 170, 198}, {214, 220, 228}}));
         for (int[] n : new int[][]{{8, 4, 12}, {38, 3, 14}}) {
@@ -88,6 +87,7 @@ final class CenasCap2a4 {
             for (int i = 0; i < 9; i++) {
                 int x = 4 + i * 7 + (fila % 2) * 3;
                 int k = n++;
+                if (fila == 2 && i == 3) { protagonista.pessoa(t, x, pes[fila], 0); continue; }
                 pessoa(t, x, pes[fila], PELES[k % PELES.length], CABELOS[k % CABELOS.length], ROUPAS[(k * 3) % ROUPAS.length],
                         rgb(40, 44, 70), ((k + q / 2) % 6 == 0) ? 1 : 0);
             }
@@ -102,7 +102,7 @@ final class CenasCap2a4 {
     }
 
     //  Cenas 116–123 — Feira de Graduação: estandes, bandeirolas, balões.
-    static Tela feira(int q) {
+    static Tela feira(int q, ProtagonistaVisual protagonista) {
         int f = N_FEIRA - 1 - q;
         Tela t = new Tela(L, A);
         for (int y = 0; y < 30; y++) t.rect(0, y, L, 1, gradiente(y, new int[]{0, 29}, new int[][]{{60, 150, 240}, {170, 220, 250}}));
@@ -139,12 +139,13 @@ final class CenasCap2a4 {
             int x = (6 + i * 13 - f * 2 + L) % L;
             pessoa(t, x, 46, PELES[i % PELES.length], CABELOS[i % CABELOS.length], rgb(40, 90, 200), rgb(60, 60, 80), 0);
         }
+        protagonista.pessoa(t, 38, 47, 0);
         return t;
     }
 
     //  Cenas 200–207 — prova de Cálculo I: o relógio não anda, a sala sim.
 
-    static Tela prova(int q) {
+    static Tela prova(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 38, rgb(150, 164, 150), rgb(126, 142, 130));
         t.rect(6, 0, 54, 2, rgb(240, 250, 244));
@@ -168,7 +169,8 @@ final class CenasCap2a4 {
                 int x = 8 + i * 13 + (fila % 2) * 4;
                 int y = 17 + fila * 8;
                 int k = n++;
-                costas(t, x, y + ((k + q) % 7 == 0 ? 1 : 0), PELES[k % PELES.length], CABELOS[k % CABELOS.length], ROUPAS[(k * 2) % ROUPAS.length], 8, 4);
+                if (fila == 1 && i == 1) protagonista.costas(t, x, y, 8, 4);
+                else costas(t, x, y + ((k + q) % 7 == 0 ? 1 : 0), PELES[k % PELES.length], CABELOS[k % CABELOS.length], ROUPAS[(k * 2) % ROUPAS.length], 8, 4);
                 t.rect(x - 4, y + 11, 9, 2, rgb(176, 150, 112));   // carteira
             }
         }
@@ -181,7 +183,7 @@ final class CenasCap2a4 {
     }
 
     //  Cenas 210 / 211 — resultado no mural: a nota ao lado da sua.
-    static Tela notas(int q) {
+    static Tela notas(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 38, rgb(190, 200, 214), rgb(160, 172, 190));
         t.rect(4, 2, 58, 36, rgb(110, 116, 130));
@@ -203,8 +205,7 @@ final class CenasCap2a4 {
                     i == rowDan && fim ? rgb(20, 110, 40) : rgb(30, 34, 60));
         }
         for (int y = 38; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(130, 136, 150), rgb(96, 100, 112), (y - 38) / 10.0));
-        costas(t, 22, 34, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 14, 14);
-        t.rect(15, 38, 3, 10, rgb(26, 20, 40));
+        protagonista.costas(t, 22, 34, 14, 14);
         costas(t, 42, 34, rgb(110, 70, 52), rgb(24, 20, 28), rgb(200, 60, 70), 14, 14);
         t.elipse(42, 36, 6, 6, rgb(24, 20, 28));
         return t;
@@ -212,7 +213,7 @@ final class CenasCap2a4 {
 
 
     //  Cenas 300 / 301 dois editais colados um sobre o outro.
-    static Tela editais(int q) {
+    static Tela editais(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 38, rgb(70, 80, 120), rgb(150, 150, 170));
         t.rect(2, 2, 62, 36, rgb(214, 208, 196));
@@ -235,8 +236,7 @@ final class CenasCap2a4 {
         int peel = Math.min(5, q);   // canto do edital de cima descolando
         for (int i = 0; i < peel; i++) t.rect(29 - i, 35 - i, i + 1, 1, rgb(226, 222, 212));
         for (int y = 38; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(150, 150, 160), rgb(110, 110, 124), (y - 38) / 10.0));
-        costas(t, 14, 34, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 14, 14);
-        t.rect(7, 38, 3, 10, rgb(26, 20, 40));
+        protagonista.costas(t, 14, 34, 14, 14);
         return t;
     }
 
@@ -277,7 +277,7 @@ final class CenasCap2a4 {
     }
 
     //  Cenas 306 / 371–374 — 23h58, IC ou DTEC, "preciso escolher AGORA".
-    static Tela prazo(int q) {
+    static Tela prazo(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(16, 12, 34), rgb(30, 22, 52));
         t.rect(6, 4, 36, 30, rgb(40, 44, 70));
@@ -301,8 +301,7 @@ final class CenasCap2a4 {
         t.rect(46, 24, 17, 1, rgb(60, 50, 90));
         for (int y = 34; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(54, 36, 46), rgb(30, 22, 30), (y - 34) / 14.0));
         t.rect(0, 34, L, 1, rgb(100, 72, 76));
-        costas(t, 52, 30, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 14, 14);
-        t.rect(45, 34, 3, 14, rgb(26, 20, 40));
+        protagonista.costas(t, 52, 30, 14, 14);
         t.rect(4, 38, 5, 5, rgb(214, 214, 230));
         return t;
     }

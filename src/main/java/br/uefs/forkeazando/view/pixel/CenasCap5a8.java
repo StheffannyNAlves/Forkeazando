@@ -12,12 +12,11 @@ final class CenasCap5a8 {
     static final int N_TCC = 12, N_DEFESA = 12, N_FORMATURA = 20, N_PORTAO = 14;
     private static final int L = Ilustracoes.LARGURA, A = Ilustracoes.LINHAS;
 
-    private static final int PELE_P = rgb(120, 76, 56), CAB_P = rgb(26, 20, 40), ROXO = rgb(92, 62, 112);
 
     private CenasCap5a8() {}
 
     //  Cenas 451 / 460 — greve: o RU fechado sob chuva, faixa balançando.
-    static Tela greve(int q) {
+    static Tela greve(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         for (int y = 0; y < 36; y++) t.rect(0, y, L, 1, gradiente(y, new int[]{0, 35}, new int[][]{{104, 112, 128}, {160, 166, 178}}));
         t.rect(4, 12, 58, 24, rgb(200, 196, 186));
@@ -42,12 +41,12 @@ final class CenasCap5a8 {
         // guarda-chuva e protagonista de costas
         t.elipse(54, 33, 9, 5, rgb(50, 52, 84));
         t.rect(54, 33, 1, 12, rgb(30, 30, 40));
-        costas(t, 54, 37, PELE_P, CAB_P, ROXO, 10, 11);
+        protagonista.costas(t, 54, 37, 10, 11);
         return t;
     }
 
     //  Cenas 500–505 — freela: o site pronto, o cliente "visualizou" e sumiu.
-    static Tela freela(int q) {
+    static Tela freela(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(40, 28, 36), rgb(66, 44, 44));
         glow(t, 8, 4, 22, 16, rgb(255, 200, 120), 0.30);
@@ -75,15 +74,14 @@ final class CenasCap5a8 {
         }
         for (int y = 34; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(70, 46, 40), rgb(38, 26, 28), (y - 34) / 14.0));
         t.rect(0, 34, L, 1, rgb(120, 84, 70));
-        costas(t, 28, 33, PELE_P, CAB_P, ROXO, 14, 14);
-        t.rect(21, 37, 3, 11, CAB_P);
+        protagonista.costas(t, 28, 33, 14, 14);
         t.rect(54, 38, 5, 5, rgb(220, 220, 232));
         t.tint(55 + (q % 2), 36 - (q % 3), rgb(255, 255, 255), 0.35);
         return t;
     }
 
     //  Cenas 550–554 — quarto fechado: o sol atravessa a parede e some
-    static Tela quarto(int q) {
+    static Tela quarto(int q, ProtagonistaVisual protagonista) {
         double k = q / (double) (N_QUARTO - 1);   // 0 = tarde, 1 = noite
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 40, rgb(226, 204, 170), rgb(206, 182, 148));
@@ -92,11 +90,11 @@ final class CenasCap5a8 {
         t.rect(12, 5, 1, 12, rgb(96, 76, 60));
         t.rect(3, 4, 4, 16, rgb(150, 86, 96));
         t.rect(19, 4, 4, 16, rgb(150, 86, 96));
-        // cama + vulto debaixo do cobertor, cabelo liso no travesseiro
+        // cama + vulto debaixo do cobertor, cabelo no travesseiro
         t.rect(4, 26, 58, 14, rgb(90, 66, 52));
         t.rect(6, 22, 54, 12, rgb(236, 230, 222));
         t.rect(8, 21, 12, 6, rgb(250, 248, 244));
-        t.rect(10, 22, 9, 4, CAB_P);
+        protagonista.dormindo(t, 14, 23);
         t.elipse(30, 31, 16, 6, rgb(86, 70, 112));
         t.elipse(30, 30, 15, 4.5, rgb(104, 86, 132));
         t.rect(24, 28, 12, 2, rgb(124, 106, 150));
@@ -117,12 +115,12 @@ final class CenasCap5a8 {
     }
 
     //  Cenas 555–559 — RU: o frango esfria, Bia senta do lado sem perguntar
-    static Tela ru6(int q) {
+    static Tela ru6(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 28, rgb(204, 216, 212), rgb(184, 198, 196));
         for (int x = 0; x < L; x += 6) t.rect(x, 0, 1, 28, rgb(168, 184, 182));
         for (int y = 4; y < 28; y += 6) t.rect(0, y, L, 1, rgb(168, 184, 182));
-        frente(t, 16, 8, PELE_P, CAB_P, ROXO, 18, true, true);
+        protagonista.frente(t, 16, 8, 18, ProtagonistaVisual.Expressao.CANSADA);
         frente(t, 50, 8, rgb(190, 130, 96), rgb(60, 36, 26), rgb(214, 196, 160), 18, true, false);
         for (int y = 28; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(190, 170, 140), rgb(150, 130, 104), (y - 28) / 20.0));
         t.rect(0, 28, L, 1, rgb(226, 208, 176));
@@ -142,7 +140,7 @@ final class CenasCap5a8 {
     }
 
     //  Cena 600 — último semestre, documento em branco, cansaço de cinco anos
-    static Tela tcc(int q) {
+    static Tela tcc(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 38, rgb(24, 28, 54), rgb(46, 50, 80));
         t.rect(48, 4, 14, 14, rgb(14, 16, 32));
@@ -161,14 +159,13 @@ final class CenasCap5a8 {
         t.rect(52, 40, 6, 6, rgb(214, 214, 228));   // café frio, sem vapor
         t.rect(58, 41, 2, 3, rgb(214, 214, 228));
         t.rect(53, 41, 4, 1, rgb(70, 44, 30));
-        costas(t, 56, 26, PELE_P, CAB_P, ROXO, 14, 14);
-        t.rect(49, 30, 3, 15, CAB_P);
+        protagonista.costas(t, 56, 26, 14, 14);
         glow(t, 24, 24, 30, 16, rgb(150, 190, 255), 0.22);
         return t;
     }
 
     //  Cena 605 — defesa do TCC: o projetor falha na primeira tentativa.
-    static Tela defesa(int q) {
+    static Tela defesa(int q, ProtagonistaVisual protagonista) {
         boolean[] liga = {false, false, true, false, false, false, true, true, true, true, true, true};
         boolean on = liga[q];
         Tela t = new Tela(L, A);
@@ -194,13 +191,12 @@ final class CenasCap5a8 {
         t.rect(4, 34, 58, 1, rgb(196, 152, 110));
         for (int y = 37; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(100, 74, 56), rgb(60, 44, 38), (y - 37) / 11.0));
         t.rect(24, 36, 12, 1, rgb(30, 30, 40));   // projetor na mesa
-        costas(t, 33, 36, PELE_P, CAB_P, ROXO, 16, 12);
-        t.rect(25, 40, 3, 8, CAB_P);
+        protagonista.costas(t, 33, 36, 16, 12);
         return t;
     }
 
     //  Cenas 650–653 — formatura: becas, flash da mãe, gorros no ar.
-    static Tela formatura(int q) {
+    static Tela formatura(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 14, rgb(120, 24, 40), rgb(170, 40, 56));
         for (int x = 0; x < L; x += 5) t.rect(x, 0, 1, 14, rgb(100, 18, 34));
@@ -219,7 +215,8 @@ final class CenasCap5a8 {
                 int pele = new int[]{rgb(224, 172, 140), rgb(130, 84, 62), rgb(190, 130, 96), rgb(96, 62, 46)}[k % 4];
                 boolean lancado = q >= 8 && q < N_FORMATURA - 1 && (k % 3 == 0);
                 if (!lancado) t.rect(x - 3, y - 1, 7, 1, rgb(20, 20, 28));
-                costas(t, x, y, pele, rgb(30, 24, 30), rgb(28, 28, 40), 8, 6 + (2 - fila) * 3);
+                if (fila == 2 && i == 3) protagonista.costas(t, x, y, 8, 6, rgb(28, 28, 40));
+                else costas(t, x, y, pele, rgb(30, 24, 30), rgb(28, 28, 40), 8, 6 + (2 - fila) * 3);
             }
         }
         // Arco completo: lançamento, apogeu, descida e gorros recuperados no quadro final.
@@ -243,7 +240,7 @@ final class CenasCap5a8 {
 
     //  Cena 655  o portão ao anoitecer: "Daqui pra frente é outra coisa."
 
-    static Tela portao(int q) {
+    static Tela portao(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         for (int y = 0; y < 38; y++) t.rect(0, y, L, 1, gradiente(y, new int[]{0, 20, 37}, new int[][]{{10, 8, 38}, {40, 22, 84}, {112, 46, 110}}));
         int[][] est = {{6, 4}, {14, 9}, {22, 3}, {40, 5}, {47, 2}, {56, 8}, {61, 3}, {30, 10}, {51, 12}};
@@ -272,8 +269,7 @@ final class CenasCap5a8 {
                 glow(t, lx[i], 40, 9, 4, rgb(255, 200, 110), 0.40);
             }
         }
-        costas(t, 33, 35, PELE_P, CAB_P, ROXO, 12, 14);
-        t.rect(28, 39, 3, 9, CAB_P);
+        protagonista.costas(t, 33, 35, 12, 14);
         return t;
     }
 }

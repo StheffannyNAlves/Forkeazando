@@ -14,7 +14,6 @@ final class CenasFuturos {
 
     static final int N_PESQUISA = 12, N_TECNOLOGIA = 12, N_INTERNACIONAL = 18, N_INDEPENDENTE = 12, N_TRANSICAO = 12;
     private static final int L = Ilustracoes.LARGURA, A = Ilustracoes.LINHAS;
-    private static final int PELE_P = rgb(120, 76, 56), CAB_P = rgb(26, 20, 40), ROXO = rgb(92, 62, 112);
 
     private CenasFuturos() {}
 
@@ -24,7 +23,7 @@ final class CenasFuturos {
     }
 
     // "Aceito" — a janela do laboratório, o gráfico que fecha e o carimbo no artigo.
-    static Tela pesquisa(int q) {
+    static Tela pesquisa(int q, ProtagonistaVisual protagonista) {
         double k = q / (double) (N_PESQUISA - 1);
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, rgb(204, 208, 198), rgb(176, 184, 176));
@@ -65,12 +64,12 @@ final class CenasFuturos {
             if (q >= 9) t.texto(46, 20, "DADOS", rgb(255, 240, 240));
         }
         glow(t, 15, 18, 22, 16, rgb(255, 214, 150), 0.22 * k);
-        costas(t, 26, 33, PELE_P, CAB_P, ROXO, 14, 14);
+        protagonista.costas(t, 26, 33, 14, 14);
         return t;
     }
 
     // "Boot OK" — a placa liga, a onda do osciloscópio estabiliza e o log fecha no notebook.
-    static Tela tecnologia(int q) {
+    static Tela tecnologia(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(22, 28, 46), rgb(42, 50, 68));
         // osciloscópio
@@ -109,12 +108,12 @@ final class CenasFuturos {
         if (aceso) glow(t, 49, 31, 7, 6, rgb(120, 255, 150), 0.5);
         t.rect(54, 36, 10, 1, rgb(200, 200, 210));
         t.rect(60, 30, 1, 6, rgb(200, 200, 210));
-        costas(t, 14, 31, PELE_P, CAB_P, ROXO, 14, 14);
+        protagonista.costas(t, 14, 31, 14, 14);
         return t;
     }
 
     // "Embarque" — o avião sobe pela janela do terminal enquanto a mala espera.
-    static Tela internacional(int q) {
+    static Tela internacional(int q, ProtagonistaVisual protagonista) {
         double k = q / (double) (N_INTERNACIONAL - 1);
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 26, mix(rgb(70, 60, 140), rgb(46, 40, 110), k), mix(rgb(255, 150, 90), rgb(255, 120, 100), k));
@@ -145,13 +144,13 @@ final class CenasFuturos {
         t.elipse(60.5, 43, 1.5, 1.5, rgb(232, 192, 70));
         t.rect(57, 35, 8, 4, rgb(246, 246, 240));
         t.rect(58, 36, 4, 1, rgb(60, 90, 190));
-        costas(t, 22, 28, PELE_P, CAB_P, ROXO, 14, 14);
+        protagonista.costas(t, 22, 28, 14, 14);
         t.rect(14, 34, 3, 12, rgb(70, 50, 40));
         return t;
     }
 
     // "Contrato" — a assinatura se desenha na linha enquanto o café esfria.
-    static Tela independente(int q) {
+    static Tela independente(int q, ProtagonistaVisual protagonista) {
         double k = q / (double) (N_INDEPENDENTE - 1);
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, rgb(140, 102, 82), rgb(112, 80, 66));
@@ -189,12 +188,12 @@ final class CenasFuturos {
         t.tint(59 + (q % 2), 38 - q % 3, rgb(255, 255, 255), 0.6);
         t.rect(30, 42, 4, 6, rgb(24, 24, 34));
         t.rect(31, 43, 2, 4, rgb(120, 190, 240));
-        costas(t, 46, 31, PELE_P, CAB_P, ROXO, 14, 14);
+        protagonista.costas(t, 46, 31, 14, 14);
         return t;
     }
 
     // "Bifurcação" — a protagonista segue pela trilha até a porta acesa, levando o que viveu.
-    static Tela transicao(int q) {
+    static Tela transicao(int q, ProtagonistaVisual protagonista) {
         double k = q / (double) (N_TRANSICAO - 1);
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 28, rgb(30, 24, 76), mix(rgb(210, 112, 112), rgb(250, 160, 100), k));
@@ -232,7 +231,7 @@ final class CenasFuturos {
         t.rect(11, 30, 3, 3, rgb(150, 110, 78));
         // protagonista (de costas, com mochila) caminhando trilha acima
         int y0 = 34 - (int) Math.round(k * 8);
-        costas(t, 33, y0, PELE_P, CAB_P, ROXO, 12, 12);
+        protagonista.costas(t, 33, y0, 12, 12);
         t.rect(27, y0 + 7, 2, 7, rgb(170, 100, 60));
         t.rect(38, y0 + 7, 2, 7, rgb(170, 100, 60));
         return t;

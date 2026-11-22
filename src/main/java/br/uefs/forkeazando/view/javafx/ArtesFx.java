@@ -2,6 +2,7 @@ package br.uefs.forkeazando.view.javafx;
 
 import br.uefs.forkeazando.roteiro.ApresentacaoDeCena;
 import br.uefs.forkeazando.view.pixel.Ilustracoes;
+import br.uefs.forkeazando.view.pixel.PerfilProtagonista;
 import br.uefs.forkeazando.view.pixel.Retratos;
 import br.uefs.forkeazando.view.pixel.Tela;
 import javafx.animation.*;
@@ -27,7 +28,11 @@ public final class ArtesFx implements AutoCloseable {
     private final Map<String, Optional<Image>> imagens = limitado(64);
     // Este cache pertence exclusivamente ao executor de desenho.
     private record Cenario(java.util.List<Tela> entrada, java.util.List<Tela> repouso) {}
-    private final Map<String, Cenario> quadros = limitado(6);
+    private record ChaveCenario(String ilustracao, PerfilProtagonista perfil) {}
+    private final Map<ChaveCenario, Cenario> quadros = limitado(6);
+    // A geração é alterada somente na thread JavaFX; resultados antigos são descartados nela.
+    private long geracaoIlustracao;
+    private Future<?> pedidoAtual;
     private final ExecutorService desenho = Executors.newSingleThreadExecutor(r -> {
         Thread t = new Thread(r, "forkeazando-arte");
         t.setDaemon(true);
@@ -149,8 +154,16 @@ public final class ArtesFx implements AutoCloseable {
     }
 
     public void exibirIlustracao(VBox painel, String chave, boolean animar) {
+        exibirIlustracao(painel, chave, PerfilProtagonista.TIANA, animar);
+    }
+
+    public void exibirIlustracao(VBox painel, String chave, PerfilProtagonista perfil, boolean animar) {
+        Objects.requireNonNull(perfil, "O perfil visual é obrigatório");
+        invalidarIlustracao();
         if (chave == null || encerrado) return;
-        Ilustracoes.animacao(chave).ifPresent(animacao -> {
+        long geracao = geracaoIlustracao;
+        ChaveCenario recurso = new ChaveCenario(chave, perfil);
+        Ilustracoes.animacao(chave, perfil).ifPresent(animacao -> {
             int largura = Ilustracoes.LARGURA;
             int altura = Ilustracoes.LINHAS * 2; // Tela: cada linha de terminal contém dois pixels.
             WritableImage buffer = new WritableImage(largura * ESCALA_CENARIO, altura * ESCALA_CENARIO);
@@ -165,8 +178,8 @@ public final class ArtesFx implements AutoCloseable {
             boolean[] removida = {false};
             Future<?> pedido = desenho.submit(() -> {
                 try {
-                    Cenario pronto = quadros.get(chave);
-                    var repouso = Ilustracoes.ambiente(chave).orElseThrow();
+                    Cenario pronto = quadros.get(recurso);
+                    var repouso = Ilustracoes.ambiente(chave, perfil).orElseThrow();
                     if (pronto == null) {
                         var entradaFonte = new java.util.ArrayList<Tela>();
                         var repousoFonte = new java.util.ArrayList<Tela>();
@@ -179,7 +192,7 @@ public final class ArtesFx implements AutoCloseable {
                             repousoFonte.add(repouso.desenhar(i));
                         }
                         pronto = new Cenario(java.util.List.copyOf(entradaFonte), java.util.List.copyOf(repousoFonte));
-                        quadros.put(chave, pronto);
+                        quadros.put(recurso, pronto);
                     }
                     java.util.List<Tela> fonte = animar ? pronto.entrada()
                             : java.util.List.of(pronto.entrada().getLast());
@@ -188,7 +201,7 @@ public final class ArtesFx implements AutoCloseable {
                     int[][] ambiente = rasterizar(pronto.repouso());
                     if (ambiente == null) return;
                     Platform.runLater(() -> {
-                        if (encerrado || removida[0]) return;
+                        if (encerrado || removida[0] || geracao != geracaoIlustracao) return;
                         Runnable apresentar = () -> {
                             escrever(buffer, entrada[0]);
                             Runnable iniciarRepouso = () -> {
@@ -220,8 +233,10 @@ public final class ArtesFx implements AutoCloseable {
                     System.err.println("Não foi possível preparar a ilustração " + chave + ": " + ex.getMessage());
                 }
             });
+            pedidoAtual = pedido;
             no.sceneProperty().addListener((obs, antes, depois) -> {
-                if (depois != null && aoAnexar[0] != null && !removida[0] && !encerrado) {
+                if (depois != null && aoAnexar[0] != null && !removida[0] && !encerrado
+                        && geracao == geracaoIlustracao) {
                     Runnable iniciar = aoAnexar[0];
                     aoAnexar[0] = null;
                     iniciar.run();
@@ -282,8 +297,23 @@ public final class ArtesFx implements AutoCloseable {
         ultimaExpressao = null;
     }
 
+    private void invalidarIlustracao() {
+        geracaoIlustracao++;
+        if (pedidoAtual != null) {
+            pedidoAtual.cancel(true);
+            pedidoAtual = null;
+        }
+    }
+
+    /** Chamado em novas sessões e após carregar: nenhuma preparação anterior pode reaparecer. */
+    public void resetar() {
+        invalidarIlustracao();
+        resetarRetrato();
+    }
+
     @Override public void close() {
         encerrado = true;
+        invalidarIlustracao();
         desenho.shutdownNow();
         imagens.clear();
     }

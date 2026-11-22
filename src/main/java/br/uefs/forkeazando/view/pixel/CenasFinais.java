@@ -10,13 +10,12 @@ final class CenasFinais {
 
     static final int N_IC = 12, N_DTEC = 12, N_INDEP = 12;
     private static final int L = Ilustracoes.LARGURA, A = Ilustracoes.LINHAS;
-    private static final int PELE_P = rgb(120, 76, 56), CAB_P = rgb(26, 20, 40), ROXO = rgb(92, 62, 112);
 
     private CenasFinais() {}
 
 
     //  "A Cientista" — o amanhecer entra pela janela e a curva do gráfico fecha.
-    static Tela ic(int q) {
+    static Tela ic(int q, ProtagonistaVisual protagonista) {
         double k = q / (double) (N_IC - 1);
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, mix(rgb(52, 40, 80), rgb(150, 130, 150), k), mix(rgb(40, 34, 70), rgb(120, 100, 120), k));
@@ -54,13 +53,12 @@ final class CenasFinais {
         t.rect(40, 36, 5, 5, rgb(236, 236, 242));
         t.tint(41 + (q % 2), 34 - q % 3, rgb(255, 255, 255), 0.5);
         glow(t, 15, 24, 24, 18, rgb(255, 214, 150), 0.25 * k);
-        costas(t, 22, 33, PELE_P, CAB_P, ROXO, 14, 14);
-        t.rect(15, 37, 3, 11, CAB_P);
+        protagonista.costas(t, 22, 33, 14, 14);
         return t;
     }
 
     //  "Mão na Massa" — a placa que a gente montou liga LED por LED.
-    static Tela dtec(int q) {
+    static Tela dtec(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(50, 70, 92), rgb(78, 98, 118));
         t.rect(2, 3, 30, 17, rgb(40, 52, 66));                         // painel de ferramentas
@@ -85,14 +83,14 @@ final class CenasFinais {
         t.rect(52, 20, 11, 7, rgb(30, 34, 48));                        // display
         t.rect(53, 21, 9, 5, rgb(120, 170, 110));
         if (q >= 10) t.texto(55, 11, "OK", rgb(20, 60, 30));
-        frente(t, 10, 22, PELE_P, CAB_P, rgb(240, 240, 246), 18, true, true);
+        protagonista.frente(t, 10, 22, 18, ProtagonistaVisual.Expressao.FELIZ, rgb(240, 240, 246));
         t.rect(5, 40, 10, 8, rgb(240, 240, 246));
         return t;
     }
 
 
     //  "O Contato" — o celular acende com um projeto novo; o calendário vai fechando.
-    static Tela independente(int q) {
+    static Tela independente(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, rgb(70, 48, 64), rgb(100, 66, 70));
         glow(t, 33, 4, 34, 20, rgb(255, 210, 140), 0.22);
@@ -120,8 +118,7 @@ final class CenasFinais {
             if (q >= 7) { t.rect(53, 36, 2, 1, rgb(40, 140, 230)); t.rect(55, 36, 1, 1, rgb(40, 140, 230)); }
             glow(t, 52, 34, 8, 8, rgb(255, 255, 255), 0.25);
         }
-        costas(t, 12, 34, PELE_P, CAB_P, ROXO, 14, 14);
-        t.rect(5, 38, 3, 10, CAB_P);
+        protagonista.costas(t, 12, 34, 14, 14);
         return t;
     }
 }

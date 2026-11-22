@@ -36,7 +36,7 @@ final class CenasComplementares {
         t.rect(x - 4, y + 6, 9, 2, rgb(226, 147, 109));
     }
 
-    static Tela caderno(int q) {
+    static Tela caderno(int q, ProtagonistaVisual protagonista) {
         Tela t = sala(rgb(100, 65, 118), rgb(157, 106, 127));
         janela(t, 41, 3, true);
         t.rect(5, 3, 24, 15, rgb(71, 43, 82));
@@ -59,11 +59,14 @@ final class CenasComplementares {
         t.rect(49, 38, 6, 6, rgb(108, 186, 193));
         if (q > 9) t.rect(50, 39, 4, 2, rgb(213, 249, 223));
         planta(t, 5, 22);
+        int mao = q / 3 % 3;
+        protagonista.mao(t, 17 + mao, 42, 7);
+        t.rect(22 + mao, 39, 1, 6, rgb(57, 49, 83));
         t.texto(13, 17, "IDEIAS", rgb(93, 58, 104));
         return t;
     }
 
-    static Tela secretaria(int q) {
+    static Tela secretaria(int q, ProtagonistaVisual protagonista) {
         Tela t = sala(rgb(218, 204, 194), rgb(171, 171, 183));
         t.rect(4, 3, 58, 6, rgb(76, 61, 113));
         t.texto(11, 2, "ATENDIMENTO", rgb(255, 226, 164));
@@ -77,12 +80,12 @@ final class CenasComplementares {
         for (int i = 0; i < Math.min(3, q / 4 + 1); i++) t.rect(39, 25 + i * 2, 7, 1, rgb(64, 122, 125));
         t.rect(22, 28, 12, 4, rgb(250, 237, 211));
         t.rect(24, 29, 6, 1, rgb(119, 102, 135));
-        costas(t, 15, 32, PELE, CABELO, ROXO, 13, 14);
+        protagonista.costas(t, 15, 32, 13, 14);
         planta(t, 59, 23);
         return t;
     }
 
-    static Tela extensao(int q) {
+    static Tela extensao(int q, ProtagonistaVisual protagonista) {
         Tela t = sala(rgb(207, 223, 202), rgb(152, 184, 176));
         t.rect(6, 3, 54, 13, rgb(55, 83, 78));
         t.rect(6, 3, 54, 1, rgb(192, 156, 105));
@@ -95,13 +98,14 @@ final class CenasComplementares {
             for (int b = 0; b < 3; b++) t.rect(x + 3 + b % 2, 23 + b * 2 + mover, 7 - b, 2,
                     b % 2 == 0 ? rgb(231, 155, 71) : rgb(143, 100, 166));
             t.rect(x - 1, 32, 18, 2, rgb(176, 148, 111));
-            costas(t, x + 7, 34, i == 1 ? rgb(111, 71, 53) : rgb(204, 146, 103), CABELO,
+            if (i == 1) { protagonista.costas(t, x + 7, 34, 10, 11); continue; }
+            costas(t, x + 7, 34, rgb(204, 146, 103), CABELO,
                     i % 2 == 0 ? rgb(60, 116, 174) : rgb(213, 116, 97), 10, 11);
         }
         return t;
     }
 
-    static Tela auditorio(int q) {
+    static Tela auditorio(int q, ProtagonistaVisual protagonista) {
         Tela t = sala(rgb(71, 58, 110), rgb(124, 94, 132));
         t.rect(12, 3, 42, 22, rgb(40, 35, 65));
         t.rect(13, 4, 40, 20, rgb(220, 227, 218));
@@ -110,13 +114,15 @@ final class CenasComplementares {
         for (int i = 0; i < Math.min(5, q / 3 + 1); i++) t.rect(18, 11 + i * 2, 22 - i * 3, 1, rgb(129, 146, 155));
         glow(t, 33, 16, 24, 16, rgb(224, 235, 222), 0.14);
         pessoa(t, 57, 30, rgb(187, 128, 92), CABELO, rgb(70, 131, 128), rgb(40, 37, 56), 0);
-        for (int row = 0; row < 2; row++) for (int i = 0; i < 7; i++)
-            costas(t, 6 + i * 9, 33 + row * 8, i % 2 == 0 ? PELE : rgb(214, 158, 120), CABELO,
+        for (int row = 0; row < 2; row++) for (int i = 0; i < 7; i++) {
+            if (row == 1 && i == 2) protagonista.costas(t, 6 + i * 9, 33 + row * 8, 7, 8);
+            else costas(t, 6 + i * 9, 33 + row * 8, i % 2 == 0 ? PELE : rgb(214, 158, 120), CABELO,
                     i % 3 == 0 ? ROXO : rgb(69, 82, 108), 7, 8);
+        }
         return t;
     }
 
-    static Tela ponto(int q) {
+    static Tela ponto(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 38, rgb(49, 38, 96), rgb(231, 135, 117));
         t.elipse(50, 23, 5, 5, rgb(255, 211, 147));
@@ -130,7 +136,7 @@ final class CenasComplementares {
         t.rect(53, 8, 2, 29, rgb(80, 74, 101));
         t.rect(50, 8, 9, 8, rgb(230, 199, 135));
         t.texto(51, 5, "PONTO", rgb(49, 50, 80));
-        pessoa(t, 23, 35, PELE, CABELO, ROXO, rgb(55, 48, 80), 0);
+        protagonista.pessoa(t, 23, 35, 0);
         pessoa(t, 36, 35, rgb(194, 141, 107), CABELO, rgb(72, 111, 134), rgb(44, 43, 64), 0);
         gradV(t, 0, 37, L, 11, rgb(76, 63, 84), rgb(36, 29, 54));
         t.rect(0, 38, L, 1, rgb(199, 143, 113));
@@ -139,7 +145,7 @@ final class CenasComplementares {
         return t;
     }
 
-    static Tela casa(int q) {
+    static Tela casa(int q, ProtagonistaVisual protagonista) {
         Tela t = sala(rgb(123, 71, 106), rgb(186, 112, 123));
         janela(t, 39, 3, true);
         for (int i = 0; i < 11; i++) {
@@ -148,7 +154,7 @@ final class CenasComplementares {
             t.rect(x, y + 1, 2, 2, (q + i) % 5 == 0 ? rgb(211, 137, 125) : rgb(255, 219, 151));
         }
         frente(t, 16, 21, rgb(191, 130, 91), CABELO, rgb(163, 93, 119), 16, true, false);
-        frente(t, 48, 21, PELE, CABELO, ROXO, 16, true, false);
+        protagonista.frente(t, 48, 21, 16, ProtagonistaVisual.Expressao.FELIZ);
         t.rect(0, 34, L, 14, rgb(158, 95, 76));
         t.rect(0, 34, L, 1, rgb(232, 172, 120));
         t.elipse(33, 39, 10, 3, rgb(239, 213, 174));
@@ -159,7 +165,7 @@ final class CenasComplementares {
         return t;
     }
 
-    static Tela corredor(int q) {
+    static Tela corredor(int q, ProtagonistaVisual protagonista) {
         Tela t = sala(rgb(170, 191, 180), rgb(214, 218, 193));
         janela(t, 4, 4, false);
         t.rect(42, 4, 18, 29, rgb(106, 99, 109));
@@ -170,7 +176,7 @@ final class CenasComplementares {
         t.rect(8, 27, 26, 3, rgb(152, 104, 82));
         t.rect(10, 30, 2, 5, rgb(84, 65, 74));
         t.rect(30, 30, 2, 5, rgb(84, 65, 74));
-        costas(t, 21, 23, PELE, CABELO, ROXO, 11, 11);
+        protagonista.costas(t, 21, 23, 11, 11);
         planta(t, 37, 23);
         glow(t, 16 + q / 6, 18, 15, 13, rgb(255, 230, 166), 0.12);
         return t;

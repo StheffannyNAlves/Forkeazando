@@ -57,13 +57,21 @@ public final class Ilustracoes {
     static final int QUADROS_MATRICULA = 14;
     static final int QUADROS_PATIO = 18;
 
-    private static final RegistroDeArte REGISTRO = new RegistroDeArte();
-    private static final java.util.Map<String, Animacao> ANIMACOES = new java.util.LinkedHashMap<>();
+    private record Recurso(int quadros, long intervaloMs,
+            java.util.function.BiFunction<Integer, ProtagonistaVisual, Tela> desenho) {}
+    private static final java.util.Map<String, Recurso> RECURSOS = new java.util.LinkedHashMap<>();
+    private static final java.util.Map<PerfilProtagonista, RegistroDeArte> REGISTROS =
+            new java.util.EnumMap<>(PerfilProtagonista.class);
 
-    /** Cadastra a arte final (último quadro) e a animação de entrada sob a mesma chave. */
-    private static void reg(String chave, int quadros, long intervaloMs, java.util.function.IntFunction<Tela> desenho) {
-        REGISTRO.registrar(chave, () -> desenho.apply(quadros - 1));
-        ANIMACOES.put(chave, new Animacao(quadros, intervaloMs, desenho));
+    private static void reg(String chave, int quadros, long intervaloMs,
+            java.util.function.BiFunction<Integer, ProtagonistaVisual, Tela> desenho) {
+        if (RECURSOS.putIfAbsent(chave, new Recurso(quadros, intervaloMs, desenho)) != null)
+            throw new IllegalStateException("Arte duplicada: " + chave);
+    }
+
+    private static void reg(String chave, int quadros, long intervaloMs,
+            java.util.function.IntFunction<Tela> desenho) {
+        reg(chave, quadros, intervaloMs, (quadro, protagonista) -> desenho.apply(quadro));
     }
 
     static {
@@ -111,26 +119,49 @@ public final class Ilustracoes {
         reg("celebracao_casa", CenasComplementares.QUADROS, 130, CenasComplementares::casa);
         reg("corredor_apoio", CenasComplementares.QUADROS, 130, CenasComplementares::corredor);
         reg("memoria_bancada", CenasComplementares.QUADROS, 130, CenasComplementares::memoria);
+        for (PerfilProtagonista perfil : PerfilProtagonista.values()) {
+            RegistroDeArte registro = new RegistroDeArte();
+            RECURSOS.forEach((chave, recurso) -> registro.registrar(chave,
+                    () -> desenhar(recurso, perfil, recurso.quadros() - 1, 0)));
+            REGISTROS.put(perfil, registro);
+        }
     }
 
-    /** Animação de entrada da ilustração, se ela tiver uma. */
+    private static Tela desenhar(Recurso recurso, PerfilProtagonista perfil, int quadro, int fase) {
+        return recurso.desenho().apply(quadro, new ProtagonistaVisual(perfil, fase));
+    }
+
+    /** API anterior preservada para consumidores que ainda não informam a identidade. */
     public static java.util.Optional<Animacao> animacao(String chave) {
-        return java.util.Optional.ofNullable(ANIMACOES.get(chave));
+        return animacao(chave, PerfilProtagonista.TIANA);
     }
 
-    /** Repouso independente da entrada: o resultado narrativo final permanece intacto. */
+    public static java.util.Optional<Animacao> animacao(String chave, PerfilProtagonista perfil) {
+        java.util.Objects.requireNonNull(perfil, "O perfil visual é obrigatório");
+        return java.util.Optional.ofNullable(RECURSOS.get(chave)).map(recurso ->
+                new Animacao(recurso.quadros(), recurso.intervaloMs(),
+                        quadro -> desenhar(recurso, perfil, quadro, 0)));
+    }
+
     public static java.util.Optional<Animacao> ambiente(String chave) {
-        return animacao(chave).map(entrada -> new Animacao(12, 320,
-                quadro -> CenariosAmbiente.desenhar(chave, entrada.desenhar(entrada.total() - 1), quadro)));
+        return ambiente(chave, PerfilProtagonista.TIANA);
+    }
+
+    /** A ação narrativa fica no último quadro; somente a pose e o ambiente respiram. */
+    public static java.util.Optional<Animacao> ambiente(String chave, PerfilProtagonista perfil) {
+        java.util.Objects.requireNonNull(perfil, "O perfil visual é obrigatório");
+        return java.util.Optional.ofNullable(RECURSOS.get(chave)).map(recurso -> new Animacao(12, 320,
+                quadro -> CenariosAmbiente.desenhar(chave,
+                        desenhar(recurso, perfil, recurso.quadros() - 1, quadro), quadro)));
     }
 
     private Ilustracoes() {}
-
-    public static boolean existe(String chave) { return REGISTRO.existe(chave); }
-
-    public static String[] linhas(String chave) { return REGISTRO.linhas(chave); }
-
-    public static java.util.Set<String> chaves() { return REGISTRO.chaves(); }
+    public static boolean existe(String chave) { return chave != null && RECURSOS.containsKey(chave); }
+    public static java.util.Set<String> chaves() { return java.util.Collections.unmodifiableSet(RECURSOS.keySet()); }
+    public static String[] linhas(String chave) { return linhas(chave, PerfilProtagonista.TIANA); }
+    public static String[] linhas(String chave, PerfilProtagonista perfil) {
+        return REGISTROS.get(java.util.Objects.requireNonNull(perfil)).linhas(chave);
+    }
 
     //  Cap. 1 / cenas 3, 4, 71, 72, 73 — pátio da SIECOMP
     //  Caramelo passa; Caio olha com o copo térmico amassado.
@@ -231,7 +262,7 @@ public final class Ilustracoes {
     //  Paleta fria (azul-aço + vidro), oposta ao entardecer do menu.
     //  Animação: a luz fluorescente pisca até estabilizar; depois a caneta
     //  do candidato bate na mesa (nervosismo).
-    static Tela abertura(int quadro) {
+    static Tela abertura(int quadro, ProtagonistaVisual protagonista) {
         double[] luzes = {0.15, 1.0, 0.25, 1.0, 0.45, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
         double luz = luzes[Math.min(quadro, luzes.length - 1)];
         int caneta = (quadro >= 4 && quadro % 2 == 0) ? 1 : 0;   // quadro final (ímpar) = 0
@@ -347,8 +378,7 @@ public final class Ilustracoes {
         }
         t.rect(9, 44, 7, 1, rgb(214, 70, 78));
         t.rect(13, 45, 10, 1, rgb(160, 164, 188));
-        t.rect(46, 42 - caneta, 9, 3, rgb(198, 142, 112));
-        t.rect(46, 41 - caneta, 5, 1, rgb(198, 142, 112));
+        protagonista.mao(t, 46, 42 - caneta, 9);
         t.rect(52, 40 - caneta, 1, 5, rgb(30, 30, 50));
         t.rect(42, 43, 5, 1, rgb(214, 214, 230));
         t.rect(58, 39, 4, 6, rgb(176, 214, 232));
@@ -363,7 +393,7 @@ public final class Ilustracoes {
     //  Animação: a tela liga (brilho sobe e a luz invade o quarto), o banner
     //  APROVADO(A) aparece e só então ela reage (sobrancelha, boca aberta).
     //  O ":" do relógio pisca durante tudo.
-    static Tela cap1Matricula(int quadro) {
+    static Tela cap1Matricula(int quadro, ProtagonistaVisual protagonista) {
         double b = quadro < 2 ? 0.0 : Math.min(1.0, (quadro - 1) / 5.0);   // brilho da tela
         boolean banner = quadro >= 7;
         boolean texto = quadro >= 8;
@@ -460,66 +490,7 @@ public final class Ilustracoes {
             }
         }
 
-        // protagonista de perfil (pele negra, cabelo liso), luz azul no rosto
-        int pele = rgb(120, 76, 56);
-        int peleLuz = mix(pele, rgb(156, 104, 80), b);
-        peleLuz = mix(peleLuz, rgb(120, 170, 255), 0.20 * b);
-        int cabelo = rgb(26, 20, 40);
-        int cabLuz = mix(cabelo, rgb(70, 78, 140), b);
-        int moletom = rgb(92, 62, 112);
-        int molLuz = mix(moletom, rgb(130, 120, 190), b);
-        for (int y = 27; y < 48; y++) {
-            double meia = 7 + (y - 27) * 0.55;
-            t.rect((int) (15 - meia), y, (int) (meia * 2 + 3), 1, moletom);
-            t.px((int) (15 + meia + 2), y, molLuz);
-            t.px((int) (15 + meia + 1), y, molLuz);
-        }
-        t.rect(6, 28, 7, 5, mix(moletom, rgb(10, 10, 30), 0.35));
-        t.rect(17, 25, 5, 5, mix(pele, rgb(40, 30, 60), 0.35));
-        t.elipse(21, 19, 6.6, 7.6, pele);
-        t.rect(26, 17, 3, 6, pele);
-        t.rect(28, 20, 1, 2, pele);
-        for (int y = 13; y < 26; y++) {
-            for (int x = 23; x < 30; x++) {
-                if (t.get(x, y) == pele) t.px(x, y, peleLuz);
-            }
-        }
-        t.rect(26, 24, 3, 1, peleLuz);
-        if (reacao) {
-            t.rect(25, 23, 3, 1, rgb(122, 52, 72));   // boca entreaberta (surpresa)
-            t.rect(26, 24, 2, 1, rgb(66, 28, 48));
-        } else {
-            t.rect(25, 23, 3, 1, rgb(90, 40, 54));    // boca fechada
-        }
-        t.rect(19, 21, 3, 2, mix(pele, rgb(190, 100, 90), 0.30));
-        // óculos: lente reflete o verde do APROVADO quando ele aparece
-        t.rect(24, 17, 5, 3, rgb(18, 16, 32));
-        t.rect(25, 18, 3, 1, banner ? rgb(150, 236, 196) : mix(rgb(30, 34, 70), rgb(150, 190, 255), b));
-        t.px(27, 17, rgb(255, 255, 255));
-        t.rect(17, 18, 7, 1, rgb(18, 16, 32));
-        if (reacao) {
-            t.rect(23, 14, 4, 1, rgb(46, 30, 50));    // sobrancelha erguida
-            t.px(26, 15, rgb(46, 30, 50));
-        } else {
-            t.rect(23, 15, 4, 1, rgb(46, 30, 50));
-        }
-        t.rect(18, 19, 2, 3, mix(pele, rgb(40, 30, 60), 0.2));
-        // cabelo liso e comprido
-        t.elipse(19, 13, 7.6, 5.0, cabelo);
-        t.rect(22, 11, 6, 3, cabelo);
-        t.rect(25, 13, 3, 1, cabelo);
-        t.rect(11, 13, 7, 18, cabelo);
-        t.rect(12, 28, 6, 6, cabelo);
-        t.rect(17, 9, 8, 1, cabLuz);
-        t.rect(26, 11, 2, 2, cabLuz);
-        t.rect(18, 25, 1, 5, cabelo);
-        t.px(13, 22, rgb(48, 40, 74));
-        t.px(14, 26, rgb(48, 40, 74));
-        t.px(12, 18, rgb(48, 40, 74));
-        // braço até o teclado
-        t.rect(21, 33, 9, 3, moletom);
-        t.rect(21, 33, 9, 1, molLuz);
-        t.rect(29, 34, 3, 2, peleLuz);
+        protagonista.matricula(t, reacao, b);
         return t;
     }
 

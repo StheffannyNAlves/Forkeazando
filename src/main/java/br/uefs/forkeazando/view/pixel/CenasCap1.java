@@ -14,7 +14,7 @@ final class CenasCap1 {
     private CenasCap1() {}
 
     //  Cena 2 / 107 / 455 — RU: a fila avança. Paleta: azulejo verde + bege.
-    static Tela ru(int q) {
+    static Tela ru(int q, ProtagonistaVisual protagonista) {
         int f = N_RU - 1 - q;
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 14, rgb(236, 222, 178), rgb(224, 206, 158));
@@ -48,14 +48,14 @@ final class CenasCap1 {
         int[] cab = {rgb(60, 40, 30), rgb(24, 20, 28), rgb(26, 20, 40), rgb(120, 80, 40), rgb(40, 30, 30), rgb(24, 20, 28)};
         for (int i = 5; i >= 0; i--) {
             int x = 52 - i * 8 - f;
-            pessoa(t, x, 44, pele[i], cab[i], roupa[i], rgb(40, 44, 70), i == 4 && q % 4 < 2 ? 1 : 0);
-            if (i == 2) t.rect(x - 4, 36, 1, 7, cab[i]);   // cabelo liso comprido da protagonista
+            if (i == 2) protagonista.pessoa(t, x, 44, q < N_RU - 1 ? q % 2 : 0);
+            else pessoa(t, x, 44, pele[i], cab[i], roupa[i], rgb(40, 44, 70), i == 4 && q % 4 < 2 ? 1 : 0);
         }
         return t;
     }
 
     //  Cena 5 / 304 / 562 — oficina de eletrônica: LEDs piscando, fumaça.
-    static Tela oficina(int q) {
+    static Tela oficina(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 30, rgb(70, 86, 108), rgb(96, 112, 134));
         t.rect(10, 0, 46, 2, rgb(236, 244, 255));
@@ -92,6 +92,8 @@ final class CenasCap1 {
             t.tint(statSway(38, q, k), 22 - k * 2, rgb(200, 200, 210), Math.max(0.12, 0.55 - k * 0.08));
             t.tint(statSway(38, q, k) + 1, 22 - k * 2, rgb(200, 200, 210), Math.max(0.1, 0.4 - k * 0.07));
         }
+        // O aluno trabalha no primeiro plano sem cobrir o circuito.
+        protagonista.costas(t, 10, 32, 14, 14);
         // fonte de bancada
         t.rect(52, 22, 11, 8, rgb(70, 76, 90));
         t.rect(54, 24, 7, 3, rgb(10, 20, 14));
@@ -104,7 +106,7 @@ final class CenasCap1 {
     }
 
     //  Cena 6 / 16 — PBL, sala 203: o tutor cola o Problema 2 no quadro.
-    static Tela pbl(int q) {
+    static Tela pbl(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(206, 210, 200), rgb(186, 192, 184));
         gradV(t, 0, 34, L, 14, rgb(124, 106, 96), rgb(78, 66, 64));       // piso
@@ -123,20 +125,23 @@ final class CenasCap1 {
         int[] pele = {rgb(224, 172, 140), rgb(190, 130, 96), rgb(120, 76, 56), rgb(236, 190, 160), rgb(160, 108, 80)};
         int[] cab = {rgb(60, 40, 30), rgb(24, 20, 28), rgb(26, 20, 40), rgb(120, 80, 40), rgb(24, 20, 28)};
         int[] xs = {22, 33, 44, 54, 28};
-        for (int i = 0; i < 4; i++) costas(t, xs[i], 27 + (i % 2), pele[i], cab[i], roupa[i], 9, 8);
+        for (int i = 0; i < 4; i++) {
+            if (i == 2) continue; // O jogador ocupa a cadeira do primeiro plano.
+            costas(t, xs[i], 27 + (i % 2), pele[i], cab[i], roupa[i], 9, 8);
+        }
         t.elipse(33, 41, 25, 6.5, rgb(112, 80, 56));
         t.elipse(33, 40, 25, 6.0, rgb(166, 120, 82));
         t.elipse(33, 39, 22, 4.5, rgb(178, 134, 94));
         t.rect(28, 36, 10, 3, rgb(60, 64, 90));
         t.rect(28, 36, 10, 1, rgb(160, 170, 200));
         t.rect(44, 38, 6, 2, rgb(246, 246, 240));
-        costas(t, 14, 38, pele[2], cab[2], roupa[2], 12, 12);
+        protagonista.costas(t, 14, 38, 12, 12);
         costas(t, 52, 38, pele[4], cab[4], roupa[4], 12, 12);
         return t;
     }
 
     //  Cena 11/12 (Cap.1), 303 (Cap.4), 400-415 (Cap.5) — sala do grupo.
-    static Tela salaGrupo(int q) {
+    static Tela salaGrupo(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 33, rgb(238, 224, 194), rgb(218, 198, 160));
         glow(t, 33, 0, 36, 18, rgb(255, 236, 190), 0.30);
@@ -161,22 +166,22 @@ final class CenasCap1 {
             t.tint(x + (q % 2), 28 - (q % 3), rgb(255, 255, 255), 0.4);
         }
         costas(t, 14, 36, rgb(190, 130, 96), rgb(24, 20, 28), rgb(70, 110, 160), 12, 12);
-        costas(t, 36, 38, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 12, 12);
+        protagonista.costas(t, 36, 38, 12, 12);
         costas(t, 54, 37, rgb(224, 172, 140), rgb(120, 80, 40), rgb(170, 80, 70), 12, 12);
         return t;
     }
 
     //  Cena 8 / 9 — oficina vazia à tarde; o LED acende; Caio na porta.
-    static Tela oficinaVazia(int q) {
-        return oficinaTarde(q, 0.0, false);
+    static Tela oficinaVazia(int q, ProtagonistaVisual protagonista) {
+        return oficinaTarde(q, 0.0, false, protagonista);
     }
 
-    static Tela oficinaLed(int q) {
+    static Tela oficinaLed(int q, ProtagonistaVisual protagonista) {
         double g = q < 3 ? 0 : q == 3 ? 1.0 : q == 4 ? 0.15 : Math.min(1.0, 0.6 + (q - 5) * 0.08);
-        return oficinaTarde(q, g, q >= 7);
+        return oficinaTarde(q, g, q >= 7, protagonista);
     }
 
-    private static Tela oficinaTarde(int q, double led, boolean caio) {
+    private static Tela oficinaTarde(int q, double led, boolean caio, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 32, rgb(22, 40, 52), rgb(40, 62, 76));
         // luz laranja do fim da tarde entrando pela janela
@@ -205,12 +210,9 @@ final class CenasCap1 {
         int ledCor = mix(rgb(90, 20, 24), rgb(255, 70, 70), led);
         t.rect(47, 25, 2, 2, ledCor);
         if (led > 0) glow(t, 48, 26, 9, 7, rgb(255, 70, 70), 0.6 * led);
-        // protagonista de costas, de roxo, cabelo liso comprido
-        costas(t, 11, 20, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 16, 24);
-        t.rect(3, 24, 3, 18, rgb(26, 20, 40));
-        t.rect(16, 24, 2, 14, rgb(26, 20, 40));
-        t.rect(5, 29, 12, 3, mix(rgb(92, 62, 112), rgb(250, 150, 80), 0.25));
-        if (led > 0.5) t.rect(15, 28, 2, 8, mix(rgb(92, 62, 112), rgb(255, 80, 80), 0.3));
+        protagonista.costas(t, 11, 20, 16, 24);
+        t.rect(5, 29, 12, 2, mix(protagonista.roupa(), rgb(250, 150, 80), 0.25));
+        if (led > 0.5) t.tint(17, 30, rgb(255, 80, 80), 0.3);
         // Caio aparece na porta (contraluz do corredor)
         if (caio) {
             t.rect(56, 14, 9, 25, rgb(250, 214, 150));
@@ -222,7 +224,7 @@ final class CenasCap1 {
     }
 
     //  Cena 13 / 15 — Módulo 8: dominó, cerveja gelada, ninguém fala de prova.
-    static Tela modulo8(int q) {
+    static Tela modulo8(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 34, rgb(40, 24, 52), rgb(78, 40, 60));
         int[] bulbos = {rgb(255, 214, 102), rgb(255, 130, 90), rgb(120, 220, 255), rgb(190, 255, 150)};
@@ -236,7 +238,10 @@ final class CenasCap1 {
         int[] pele = {rgb(190, 130, 96), rgb(224, 172, 140), rgb(120, 76, 56)};
         int[] cab = {rgb(24, 20, 28), rgb(120, 80, 40), rgb(26, 20, 40)};
         int[] xs = {12, 32, 54};
-        for (int i = 0; i < 3; i++) pessoa(t, xs[i], 36, pele[i], cab[i], roupa[i], rgb(40, 44, 70), (q / 2 + i) % 3 == 0 ? 1 : 0);
+        for (int i = 0; i < 3; i++) {
+            if (i == 2) protagonista.pessoa(t, xs[i], 36, 0);
+            else pessoa(t, xs[i], 36, pele[i], cab[i], roupa[i], rgb(40, 44, 70), (q / 2 + i) % 3 == 0 ? 1 : 0);
+        }
         for (int y = 30; y < 48; y++) t.rect(0, y, L, 1, mix(rgb(156, 108, 66), rgb(98, 66, 44), (y - 30) / 18.0));
         t.rect(0, 30, L, 1, rgb(206, 156, 100));
         int[][] pecas = {{20, 33}, {26, 33}, {32, 34}, {38, 36}, {44, 38}, {38, 41}, {32, 43}, {26, 44}};
@@ -260,7 +265,7 @@ final class CenasCap1 {
 
     //  Cena 14 — ônibus: o vidro embaçado, "UEFP" escrito com o dedo, depois apagado.
 
-    static Tela onibus(int q) {
+    static Tela onibus(int q, ProtagonistaVisual protagonista) {
         Tela t = new Tela(L, A);
         gradV(t, 0, 0, L, 36, rgb(20, 24, 56), rgb(44, 34, 72));
         int[][] bokeh = {{10, 8, 3}, {22, 22, 2}, {30, 12, 4}, {44, 26, 3}, {52, 10, 3}, {58, 24, 2}, {16, 28, 2}, {38, 6, 2}, {48, 18, 4}};
@@ -295,8 +300,17 @@ final class CenasCap1 {
         t.rect(0, 35, L, 13, rgb(18, 18, 36));
         t.rect(0, 35, L, 1, rgb(60, 60, 90));
         t.rect(0, 37, L, 1, rgb(230, 190, 60));
-        costas(t, 12, 30, rgb(120, 76, 56), rgb(26, 20, 40), rgb(92, 62, 112), 14, 14);
-        t.rect(5, 34, 3, 14, rgb(26, 20, 40));
+        // Plano subjetivo: a manga entra pela borda inferior, junto do vidro.
+        // O gesto acompanha o traço; a mão só apaga depois da pausa de leitura.
+        if (q > 0 && q < 17) {
+            int maoX = q >= 14 ? Math.min(60, 3 + (q - 13) * 16)
+                    : q >= 10 ? 54 : 8 + Math.min(3, (q - 1) / 2) * 12 + (q % 2 == 0 ? 6 : 0);
+            int maoY = q >= 14 ? 18 : q >= 10 ? 24 : 14 + q % 3 * 3;
+            protagonista.alcancar(t, Math.min(61, maoX + 7), 47, maoX, maoY, q >= 14);
+        } else {
+            protagonista.mao(t, 48, 43, 9);
+            t.rect(57, 43, 9, 5, protagonista.roupa());
+        }
         return t;
     }
 }

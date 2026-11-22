@@ -100,6 +100,11 @@ public final class VisuaisDeCena {
         fala(652, "cap8_formatura", "dandara", "feliz");
         arte("abertura_entrevista", 654);           // "A mesma sala. Mesa de vidro."
         arte("cap8_portao", 655);
+        arte("futuro_pesquisa_brasil", 662);
+        arte("futuro_tecnologia", 663);
+        arte("futuro_internacional", 664);
+        arte("futuro_independente", 665);
+        arte("futuro_transicao", 666);
     }
 
     public static Optional<ApresentacaoDeCena> paraCena(int cenaId) {

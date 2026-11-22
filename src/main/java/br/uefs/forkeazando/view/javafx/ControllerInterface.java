@@ -592,8 +592,8 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             if (cena.getPersonagemFalando() != null && !cena.getPersonagemFalando().isBlank()) {
                 conteudo.getChildren().add(rotulo(cena.getPersonagemFalando().toUpperCase()));
             }
-            Label narrativa = new Label(NarrativaProtagonistas.resolver(cena, p));
-
+            String textoResolvido = NarrativaDinamica.resolver(cena, p, sessao.estado().getSemestresExtras());
+            Label narrativa = new Label(textoResolvido);
             narrativa.getStyleClass().add("texto-narrativa");
             narrativa.setWrapText(true);
             narrativa.setPrefWidth(460);

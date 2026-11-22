@@ -285,7 +285,46 @@ public class CenasController {
     private void registrarFinalSeIdentificado() {
         Protagonista p = estado.getProtagonista();
         Optional<Final> f = Final.identificar(p.getHistoricoFlags());
-        f.ifPresent(aFinal -> estado.concluir(aFinal.getCodigo()));
+        if (f.isEmpty()) {
+            return;
+        }
+        Final finalAlcancado = f.get();
+        estado.concluir(finalAlcancado.getCodigo());
+        salvarFinalNoProgresso(finalAlcancado);
+    }
+
+    private void salvarFinalNoProgresso(Final finalAlcancado) {
+        Progresso candidato = new Progresso(progresso);
+        LocalDateTime agora = LocalDateTime.now();
+        boolean novoFinal = candidato.registrarFinal(finalAlcancado, agora);
+        boolean outrosPendentes = candidato.sincronizarEstado(estado, agora);
+        if (!novoFinal && !outrosPendentes) {
+            return;
+        }
+        try {
+            gerenciadorProgresso.salvar(candidato);
+            progresso.copiarDe(candidato);
+            gerenciadorConquistas.marcarPersistidas(progresso);
+            if (novoFinal) {
+                view.mostrarMensagem("Novo final desbloqueado: " + finalAlcancado.getTitulo());
+            }
+        } catch (SaveException e) {
+            view.mostrarMensagem("Erro ao salvar o final no progresso: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Sincroniza e persiste atomicamente colecionáveis, conquistas e final da partida atual
+     * sobre a mesma instância de Progresso. Não altera o Progresso em memória se a gravação falhar.
+     */
+    public void persistirProgressoAtual() throws SaveException {
+        Progresso candidato = new Progresso(progresso);
+        if (!candidato.sincronizarEstado(estado, LocalDateTime.now())) {
+            return;
+        }
+        gerenciadorProgresso.salvar(candidato);
+        progresso.copiarDe(candidato);
+        gerenciadorConquistas.marcarPersistidas(progresso);
     }
 
     private void registrarAutosave(){
@@ -338,17 +377,14 @@ public class CenasController {
 
 
     private void salvarColecao(Protagonista protagonista) {
-        boolean novaColecao = progresso.sincronizarColecao(
-                protagonista,
-                LocalDateTime.now()
-        );
-
-        if (!novaColecao) {
+        Progresso candidato = new Progresso(progresso);
+        if (!candidato.sincronizarColecao(protagonista, LocalDateTime.now())) {
             return;
         }
 
         try {
-            gerenciadorProgresso.salvar(progresso);
+            gerenciadorProgresso.salvar(candidato);
+            progresso.copiarDe(candidato);
         } catch (SaveException e) {
             view.mostrarMensagem("Erro ao salvar a coleção: " + e.getMessage());
         }

@@ -14,9 +14,9 @@ import java.util.function.Consumer;
 /** Identifica conquistas atingidas, registra o desbloqueio e notifica a interface */
 public class GerenciadorConquistas {
     private final Set<String> desbloqueadas = new HashSet<>();
+    private final Map<Conquista, LocalDateTime> pendentes = new LinkedHashMap<>();
     private final GerenciadorProgresso gerenciadorProgresso;
     private final Consumer<String> mostrarMensagem;
-    private boolean salvamentoPendente;
 
 
     public GerenciadorConquistas(GerenciadorProgresso gerenciadorProgresso, Consumer<String> mostrarMensagem) {
@@ -30,7 +30,18 @@ public class GerenciadorConquistas {
         }
 
         desbloqueadas.clear();
+        pendentes.clear();
 
+        for (Conquista conquista : progresso.conquistasDesbloqueadas()) {
+            desbloqueadas.add(conquista.getCodigo());
+        }
+    }
+
+    void marcarPersistidas(Progresso progresso) {
+        if (progresso == null) {
+            return;
+        }
+        pendentes.keySet().removeIf(progresso::possui);
         for (Conquista conquista : progresso.conquistasDesbloqueadas()) {
             desbloqueadas.add(conquista.getCodigo());
         }
@@ -47,22 +58,25 @@ public class GerenciadorConquistas {
             if (conquista.atingida(protagonista)
                     && desbloqueadas.add(conquista.getCodigo())) {
 
-                progresso.registrarConquista(conquista, LocalDateTime.now());
+                pendentes.putIfAbsent(conquista, LocalDateTime.now());
                 notificador.notificar(conquista);
                 novas.add(conquista);
-                salvamentoPendente = true;
             }
         }
 
-        if (!salvamentoPendente) {
+        if (pendentes.isEmpty()) {
             return;
         }
 
+        Progresso candidato = new Progresso(progresso);
+        pendentes.forEach(candidato::registrarConquista);
+
         try {
-            gerenciadorProgresso.salvar(progresso);
-            salvamentoPendente = false;
+            gerenciadorProgresso.salvar(candidato);
+            progresso.copiarDe(candidato);
+            pendentes.clear();
         } catch (SaveException e) {
-            // Continua pendente: a próxima verificação tenta gravar de novo.
+            // Progresso em memória permanece fiel ao disco; pendentes serão tentadas novamente.
             mostrarMensagem.accept("A conquista foi desbloqueada nesta partida, mas não foi possível persisti-la"
                     + (novas.isEmpty() ? "" : ": " + titulos(novas)) + " - " + e.getMessage());
         }

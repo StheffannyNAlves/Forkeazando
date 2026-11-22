@@ -13,6 +13,7 @@ import br.uefs.forkeazando.roteiro.Roteiro;
 import br.uefs.forkeazando.view.ApresentacaoCena;
 
 import java.nio.file.Path;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -70,7 +71,7 @@ public final class SessaoGrafica {
             throws CarregamentoException, DadosInvalidosException {
         Objects.requireNonNull(apresentacao, "A apresentacao nao pode ser nula.");
         GerenciadorProgresso gerenciador = new GerenciadorProgresso(pastaProgresso);
-        Progresso progresso = gerenciador.carregar();
+        Progresso progresso = carregarProgressoComRecuperacao(gerenciador);
         return new CenasController(estadoPartida, List.copyOf(cenas.values()),
                 apresentacao, progresso, gerenciador,
                 estadoAtual -> GerenciadorSlots.salvarAutosave(estadoAtual, pastaProgresso),
@@ -196,7 +197,8 @@ public final class SessaoGrafica {
     }
 
     /**
-     * Consulta o progresso global persistido do jogador.
+     * Consulta o progresso global persistido do jogador, recuperando de forma
+     * idempotente eventuais registros de um autosave concluído ainda não sincronizado.
      * Centraliza o acesso aos dados fora do controlador JavaFX.
      */
     public Progresso consultarProgresso()
@@ -205,7 +207,34 @@ public final class SessaoGrafica {
         GerenciadorProgresso gerenciador =
                 new GerenciadorProgresso(pastaProgresso);
 
-        return gerenciador.carregar();
+        return carregarProgressoComRecuperacao(gerenciador);
+    }
+
+    private Progresso carregarProgressoComRecuperacao(GerenciadorProgresso gerenciador)
+            throws CarregamentoException, DadosInvalidosException {
+        Progresso progresso = gerenciador.carregar();
+        recuperarDeAutosaveConcluido(gerenciador, progresso);
+        return progresso;
+    }
+
+    private void recuperarDeAutosaveConcluido(GerenciadorProgresso gerenciador, Progresso progresso) {
+        if (!gerenciamentoPartidas.existeAutosave()) {
+            return;
+        }
+        try {
+            Estado autosave = gerenciamentoPartidas.carregarAutosave();
+            if (autosave == null || !autosave.isPartidaConcluida()) {
+                return;
+            }
+            Progresso candidato = new Progresso(progresso);
+            if (!candidato.sincronizarEstado(autosave, LocalDateTime.now())) {
+                return;
+            }
+            gerenciador.salvar(candidato);
+            progresso.copiarDe(candidato);
+        } catch (CarregamentoException | DadosInvalidosException | SaveException ignored) {
+            // Autosave ausente/corrompido ou erro temporário de disco não impede consultar o progresso já salvo.
+        }
     }
 
     public Cena cenaAtual() {
@@ -226,6 +255,9 @@ public final class SessaoGrafica {
         if (!estado.isPartidaConcluida()) {
             throw new IllegalStateException("A partida ainda não possui um final registrado.");
         }
+        // Persiste progresso global antes do autosave, usando a mesma instância do controlador;
+        // em caso de falha, a sessão permanece em memória para nova tentativa idempotente.
+        controladorCenas.persistirProgressoAtual();
         GerenciadorSlots.salvarAutosave(estado, pastaProgresso);
         estado = null;
         controladorCenas = null;

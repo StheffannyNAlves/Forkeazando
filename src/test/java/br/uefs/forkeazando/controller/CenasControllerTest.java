@@ -267,7 +267,7 @@ class CenasControllerTest {
     }
 
     @Test
-    void concluirFinalDeCarreiraMarcaAPartidaComoConcluida() {
+    void concluirFinalDeCarreiraMarcaAPartidaComoConcluida() throws Exception {
         irParaUltimoCapitulo();
         Cena inicio = cena(0, escolha("Formar", Estado.CENA_ENCERRAR)
                 .comFlagConcedida("futuro_tecnologia")
@@ -280,6 +280,10 @@ class CenasControllerTest {
         assertEquals(ResultadoPartida.FIM_DE_JOGO, resultado);
         assertTrue(estado.isPartidaConcluida());
         assertEquals("jornada_tecnologia", estado.getCodigoFinal());
+        assertTrue(progresso.alcancou(br.uefs.forkeazando.model.Final.TECNOLOGIA));
+        Progresso recarregado = new GerenciadorProgresso(pasta).carregar();
+        assertTrue(recarregado.alcancou(br.uefs.forkeazando.model.Final.TECNOLOGIA),
+                "Final alcançado deve ser persistido em progresso.json");
     }
 
 

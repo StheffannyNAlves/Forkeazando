@@ -54,4 +54,9 @@ public class CarregamentoAdapter implements GerenciamentoPartidas {
     public void excluirSlot(int numeroSlot) throws SaveException {
         GerenciadorSlots.excluir(pastaSaves, numeroSlot);
     }
+
+    @Override
+    public void excluirAutosave() throws SaveException {
+        GerenciadorSlots.excluirAutosave(pastaSaves);
+    }
 }

@@ -330,6 +330,16 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
             bloco.getChildren().add(acoes);
             painel.getChildren().add(bloco);
         }
+        if (acessoPartidas.existeAutosave()) {
+            VBox blocoAutosave = new VBox(8);
+
+            blocoAutosave.getChildren().add(rotulo("SALVAMENTO AUTOMÁTICO"));
+            Button excluirAuto = botaoAcao("EXCLUIR AUTOSAVE");
+
+            excluirAuto.setOnAction(e -> confirmarExclusaoAutosave());
+            blocoAutosave.getChildren().add(excluirAuto);
+            painel.getChildren().add(blocoAutosave);
+        }
         Button voltar = botaoAcao("VOLTAR AO MENU");
         voltar.setOnAction(e -> voltarAoMenu());
 
@@ -365,6 +375,35 @@ public class ControllerInterface implements ApresentacaoCena, ObservadorPartida 
         cancelar.setOnAction(e -> abrirTelaSalvar());
         painel.getChildren().addAll(confirmar, cancelar);
         mostrarTela(painel);
+    }
+
+    private void confirmarExclusaoAutosave() {
+        VBox painel = novoPainel(
+                "EXCLUIR AUTOSAVE?",
+                "O salvamento automático atual será excluído. "
+                        + "Esta ação não pode ser desfeita. "
+                        + "Os slots manuais e a partida em memória "
+                        + "não serão afetados."
+        );
+
+        Button confirmar = botaoAcao("SIM, EXCLUIR");
+        confirmar.setOnAction(e -> excluirAutosave());
+
+        Button cancelar = botaoAcao("CANCELAR");
+        cancelar.setOnAction(e -> abrirTelaSalvar());
+
+        painel.getChildren().addAll(confirmar, cancelar);
+        mostrarTela(painel);
+    }
+
+    private void excluirAutosave() {
+        try {
+            acessoPartidas.excluirAutosave();
+            abrirTelaSalvar();
+            mostrarModal("AUTOSAVE EXCLUÍDO", "O salvamento automático foi excluído.");
+        } catch (SaveException ex) {
+            mostrarModal("ERRO AO EXCLUIR", ex.getMessage());
+        }
     }
 
     private void excluirSlot(int numeroSlot) {

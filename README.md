@@ -867,7 +867,7 @@ As tags preservam os estados históricos das entregas. A `main` representa a ver
 
 **Contexto acadêmico:** Engenharia de Computação, MI-Programação (EXA863), Universidade Estadual de Feira de Santana — UEFS, metodologia PBL.
 
-**Créditos históricos:** o README da entrega [`v1.0.0`](https://github.com/StheffannyNAlves/Forkeazando/blob/v1.0.0/docs/README.md) registra **Stheffanny Nascimento Alves e Davi** como integrantes da Fase 1. Esse registro identifica a etapa original; não atribui automaticamente participação nas alterações posteriores.
+**Autoria do desenvolvimento:** Stheffanny Nascimento Alves. A participação em atividades acadêmicas ou a menção nominal em documentos anteriores não deve ser confundida com autoria de código ou contribuição técnica ao projeto.
 
 ### Uso de inteligência artificial
 
@@ -879,7 +879,7 @@ A utilização dessas ferramentas não substitui a identificação do que foi im
 
 O **código-fonte autoral** sobre o qual a mantenedora tem direitos suficientes está disponível sob a [MIT License](LICENSE), que permite reutilização e modificação, inclusive comercial, com preservação do aviso de direitos autorais e da licença.
 
-**Roteiro, diálogos, personagens, ilustrações, sprites, animações, áudio e contribuições de terceiros não são automaticamente abrangidos pela MIT.** O uso de cada material depende de sua titularidade e das autorizações específicas. Isso inclui partes históricas com coautoria: não se presume autorização para relicenciar contribuições de outras pessoas.
+**Roteiro, diálogos, personagens, ilustrações, sprites, animações, áudio e materiais de terceiros não são automaticamente abrangidos pela MIT.** O uso de cada material depende de sua titularidade e das autorizações específicas. A existência de uma referência histórica a outra pessoa não significa que ela tenha contribuído para o código.
 
 O repositório reúne arte procedural em Java, imagens PNG e a trilha `8_bit_ice_cave_lofi.wav`. A origem e as condições de uso de recursos externos devem ser confirmadas individualmente. Consulte [Direitos de uso e materiais](COPYRIGHT_AND_ASSETS.md) para detalhes de escopo e limitações.
 

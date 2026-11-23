@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.charset.StandardCharsets;
+import java.util.UUID;
 import java.util.Arrays;
 import java.util.List;
 import java.time.Instant;
@@ -79,11 +81,11 @@ public class GerenciadorSave {
         validarTrilha(json);
     }
 
-    private static SaveCarregado interpretar(JsonObject raiz) throws DadosInvalidosException {
+    private static SaveCarregado interpretar(JsonObject raiz, Path origem) throws DadosInvalidosException {
 
         // Sem "estado" na raiz: considera o formato antigo.
         if (!raiz.has("estado")) {
-            return new SaveCarregado(converter(raiz),
+            return new SaveCarregado(converter(raiz, origem),
                     Optional.empty()
             );
         }
@@ -129,7 +131,7 @@ public class GerenciadorSave {
 
         JsonObject jsonEstado = raiz.getAsJsonObject("estado");
 
-        return new SaveCarregado(converter(jsonEstado), Optional.of(dataSalvamento));
+        return new SaveCarregado(converter(jsonEstado, origem), Optional.of(dataSalvamento));
     }
 
     public static Estado carregar(Path origem)
@@ -153,7 +155,7 @@ public class GerenciadorSave {
                 throw new DadosInvalidosException("Save inválido: estrutura JSON deve ser um objeto");
             }
 
-            return interpretar(elemento.getAsJsonObject());
+            return interpretar(elemento.getAsJsonObject(), origem);
 
         } catch (IOException | JsonParseException e) {
             throw new CarregamentoException("Não foi possível carregar o arquivo: " + origem, e);
@@ -177,10 +179,18 @@ public class GerenciadorSave {
         }
     }
 
-    private static Estado converter(JsonObject json) throws DadosInvalidosException {
+    private static Estado converter(JsonObject json, Path origem) throws DadosInvalidosException {
 
         validar(json);
         Estado estado = gson.fromJson(json, Estado.class);
+        if (!json.has("idPartida")) {
+            // Saves antigos não possuem ID. Usar o caminho mantém a mesma
+            // identidade em carregamentos sucessivos, sem regravar o arquivo.
+            String idLegado = UUID.nameUUIDFromBytes(
+                    ("forkeazando:save-legado:" + origem.toAbsolutePath().normalize())
+                            .getBytes(StandardCharsets.UTF_8)).toString();
+            estado.restaurarIdentidadeLegada(idLegado);
+        }
         List<String> problemas = estado.verificarIntegridade();
         if (!problemas.isEmpty()) {
             throw new DadosInvalidosException("Save inválido: " + String.join("; ", problemas));

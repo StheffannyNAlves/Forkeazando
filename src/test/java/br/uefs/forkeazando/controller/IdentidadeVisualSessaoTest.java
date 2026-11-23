@@ -22,7 +22,7 @@ class IdentidadeVisualSessaoTest {
     @TempDir Path pasta;
 
     private static Protagonista personagem(IdentidadeProtagonista identidade) {
-        // O nome não pode decidir qual protagonista aparece.
+        // O nome não pode decidir qual protagonista aparece
         return new Protagonista("Nome personalizado", identidade, false, false, false,
                 Protagonista.NivelVidaSocial.EQUILIBRADO,
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,

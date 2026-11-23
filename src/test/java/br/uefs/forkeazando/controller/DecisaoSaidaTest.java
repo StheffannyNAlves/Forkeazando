@@ -8,41 +8,27 @@ class DecisaoSaidaTest {
 
     @Test
     void semAlteracoesSaiDiretoComSlotLivre() {
-        Assertions.assertEquals(
-                DecisaoSaida.SAIR,
-                DecisaoSaida.decidir(false, true)
-        );
+        Assertions.assertEquals(DecisaoSaida.SAIR, DecisaoSaida.decidir(false, true));
     }
 
     @Test
     void semAlteracoesSaiDiretoSemSlotLivre() {
-        assertEquals(
-                DecisaoSaida.SAIR,
-                DecisaoSaida.decidir(false, false)
-        );
+        assertEquals(DecisaoSaida.SAIR, DecisaoSaida.decidir(false, false));
     }
 
     @Test
     void comAlteracoesEComSlotLivrePerguntaSeQuerSalvar() {
-        assertEquals(
-                DecisaoSaida.PERGUNTAR_SALVAR,
-                DecisaoSaida.decidir(true, true)
-        );
+        assertEquals(DecisaoSaida.PERGUNTAR_SALVAR, DecisaoSaida.decidir(true, true));
     }
 
     @Test
     void comAlteracoesESemSlotLivrePermiteEscolherSlot() {
-        assertEquals(
-                DecisaoSaida.ESCOLHER_SLOT,
-                DecisaoSaida.decidir(true, false)
-        );
+        assertEquals(DecisaoSaida.ESCOLHER_SLOT, DecisaoSaida.decidir(true, false));
     }
 
     @Test
     void comConfirmacaoDesligadaSaiDiretoMesmoComAlteracoesESlotLivre() {
-         assertEquals(
-                 DecisaoSaida.SAIR,
-                 DecisaoSaida.decidir(true, true, false));
+         assertEquals(DecisaoSaida.SAIR, DecisaoSaida.decidir(true, true, false));
     }
 
     @Test

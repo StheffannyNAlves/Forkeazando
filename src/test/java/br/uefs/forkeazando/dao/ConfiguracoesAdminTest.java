@@ -18,31 +18,21 @@ class ConfiguracoesAdminTest {
 
     @Test
     void devePreservarConfirmarSaidaAtivado() throws SaveException, DadosInvalidosException, CarregamentoException {
-
         Configuracoes original = new Configuracoes();
         original.setConfirmarSaida(true);
-
         Path arquivo = diretorioTemporario.resolve("config-true.json");
-
         ConfiguracoesAdmin.salvarConfigPersonalizadas(original, arquivo);
-
         Configuracoes carregada = ConfiguracoesAdmin.carregar(arquivo);
-
         assertTrue(carregada.isConfirmarSaida());
     }
 
     @Test
     void devePreservarConfirmarSaidaDesativado() throws SaveException, DadosInvalidosException, CarregamentoException {
-
         Configuracoes original = new Configuracoes();
         original.setConfirmarSaida(false);
-
         Path arquivo = diretorioTemporario.resolve("config-false.json");
-
         ConfiguracoesAdmin.salvarConfigPersonalizadas(original, arquivo);
-
         Configuracoes carregada = ConfiguracoesAdmin.carregar(arquivo);
-
         assertFalse(carregada.isConfirmarSaida());
     }
 }

@@ -27,11 +27,8 @@ class GerenciadorProgressoTest {
     }
     @Test
     void arquivoAusenteDevolveProgressoVazio() throws Exception {
-        GerenciadorProgresso gerenciador =
-                new GerenciadorProgresso(tempDir.resolve("saves"));
-
+        GerenciadorProgresso gerenciador = new GerenciadorProgresso(tempDir.resolve("saves"));
         Progresso progresso = gerenciador.carregar();
-
         assertNotNull(progresso);
         assertTrue(progresso.finaisAlcancados().isEmpty());    }
 
@@ -39,9 +36,7 @@ class GerenciadorProgressoTest {
     void arquivoVazioLancaCarregamentoException() throws Exception {
         Path pasta = Files.createDirectory(tempDir.resolve("vazio"));
         Files.createFile(pasta.resolve("progresso.json"));
-
         GerenciadorProgresso gerenciador = new GerenciadorProgresso(pasta);
-
         assertThrows(CarregamentoException.class, gerenciador::carregar);
     }
 
@@ -69,9 +64,7 @@ class GerenciadorProgressoTest {
 
     @Test
     void dataInvalidaLancaDadosInvalidosException() throws Exception {
-        verificarJsonInvalido(
-                "{\"finais\":{\"final_ic\":\"data-invalida\"}}"
-        );
+        verificarJsonInvalido("{\"finais\":{\"final_ic\":\"data-invalida\"}}");
     }
 
     private void verificarJsonInvalido(String conteudo) throws Exception {
@@ -96,14 +89,10 @@ class GerenciadorProgressoTest {
     void arquivoTemporarioNaoSobraDepoisDeSalvar() throws Exception {
         Path pasta = Files.createDirectory(tempDir.resolve("temporario"));
         GerenciadorProgresso gerenciador = new GerenciadorProgresso(pasta);
-
         gerenciador.salvar(new Progresso());
 
         try (var arquivos = Files.list(pasta)) {
-            assertFalse(
-                    arquivos.anyMatch(p ->
-                            p.getFileName().toString().endsWith(".tmp"))
-            );
+            assertFalse(arquivos.anyMatch(p -> p.getFileName().toString().endsWith(".tmp")));
         }
     }
 
@@ -113,13 +102,9 @@ class GerenciadorProgressoTest {
         Path arquivo = tempDir.resolve("nao-e-pasta");
         Files.writeString(arquivo, "sou um arquivo");
 
-        GerenciadorProgresso gerenciador =
-                new GerenciadorProgresso(arquivo);
+        GerenciadorProgresso gerenciador = new GerenciadorProgresso(arquivo);
 
-        assertThrows(
-                SaveException.class,
-                () -> gerenciador.salvar(new Progresso())
-        );
+        assertThrows(SaveException.class, () -> gerenciador.salvar(new Progresso()));
     }
 
 
@@ -127,15 +112,10 @@ class GerenciadorProgressoTest {
     void arquivoCorrompidoBloqueiaSalvamento() throws Exception {
         Path pasta = Files.createDirectory(tempDir.resolve("corrompido"));
         Files.writeString(pasta.resolve("progresso.json"), "{ inválido");
-
         GerenciadorProgresso gerenciador = new GerenciadorProgresso(pasta);
-
         assertThrows(CarregamentoException.class, gerenciador::carregar);
 
-        assertThrows(
-                SaveException.class,
-                () -> gerenciador.salvar(new Progresso())
-        );
+        assertThrows(SaveException.class, () -> gerenciador.salvar(new Progresso()));
         assertEquals("{ inválido", Files.readString(pasta.resolve("progresso.json")));
     }
 
@@ -193,10 +173,7 @@ class GerenciadorProgressoTest {
         JsonObject finais = json.getAsJsonObject("finais");
 
         assertTrue(finais.has("final_que_nao_existe"));
-        assertEquals(
-                "2026-03-01T10:00:00",
-                finais.get("final_que_nao_existe").getAsString()
-        );
+        assertEquals("2026-03-01T10:00:00", finais.get("final_que_nao_existe").getAsString());
     }
 
     @Test
@@ -322,12 +299,7 @@ class GerenciadorProgressoTest {
 
     private void verificarProgressoInvalido(String json) throws Exception {
         Files.writeString(pasta.resolve("progresso.json"), json);
-
         GerenciadorProgresso gerenciador = new GerenciadorProgresso(pasta);
-
-        assertThrows(
-                DadosInvalidosException.class,
-                gerenciador::carregar
-        );
+        assertThrows(DadosInvalidosException.class, gerenciador::carregar);
     }
 }

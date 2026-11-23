@@ -58,15 +58,9 @@ class GerenciadorSaveTest {
         assertEquals(estadoOriginal.getProtagonista().getRelacionamento(PersonagemSecundario.VETERANO),
                 estadoCarregado.getProtagonista().getRelacionamento(PersonagemSecundario.VETERANO), 0.001f);
 
-        assertEquals(
-                estadoOriginal.getProtagonista().getHistoricoFlags(),
-                estadoCarregado.getProtagonista().getHistoricoFlags()
-        );
+        assertEquals(estadoOriginal.getProtagonista().getHistoricoFlags(), estadoCarregado.getProtagonista().getHistoricoFlags());
 
-        assertEquals(
-                estadoOriginal.getCenaAtualId(),
-                estadoCarregado.getCenaAtualId()
-        );
+        assertEquals(estadoOriginal.getCenaAtualId(), estadoCarregado.getCenaAtualId());
     }
 
     @Test
@@ -90,10 +84,8 @@ class GerenciadorSaveTest {
 
         Files.writeString(arquivo, "[]");
 
-        assertThrows(
-                DadosInvalidosException.class,
-                () -> GerenciadorSave.carregar(arquivo)
-        );
+        assertThrows(DadosInvalidosException.class,
+                () -> GerenciadorSave.carregar(arquivo));
     }
     @Test
     void deveRejeitarProtagonistaQueNaoEhObjeto() throws IOException {
@@ -209,9 +201,7 @@ class GerenciadorSaveTest {
     @Test
     void deveRejeitarSaveSemHistoricoFlags() throws IOException {
         Path arquivo = diretorioTemporario.resolve("save.json");
-
-        Files.writeString(
-                arquivo,
+        Files.writeString(arquivo,
                 """
                 {
                     "protagonista": {
@@ -224,10 +214,7 @@ class GerenciadorSaveTest {
                 """
         );
 
-        assertThrows(
-                DadosInvalidosException.class,
-                () -> GerenciadorSave.carregar(arquivo)
-        );
+        assertThrows(DadosInvalidosException.class, () -> GerenciadorSave.carregar(arquivo));
     }
     @Test
     void deveRejeitarSaveSemRelacionamentos() throws IOException {
@@ -247,15 +234,11 @@ class GerenciadorSaveTest {
                 """
         );
 
-        assertThrows(
-                DadosInvalidosException.class,
-                () -> GerenciadorSave.carregar(arquivo)
-        );
+        assertThrows(DadosInvalidosException.class, () -> GerenciadorSave.carregar(arquivo));
     }
 
     @Test
-    void naoDeveDeixarArquivoTemporarioAposSalvar()
-            throws SaveException, IOException {
+    void naoDeveDeixarArquivoTemporarioAposSalvar() throws SaveException, IOException {
 
         Path arquivo = diretorioTemporario.resolve("save.json");
         Path temporario = diretorioTemporario.resolve("save.json.tmp");

@@ -35,7 +35,6 @@ class GerenciadorSlotsTest {
     @Test
     void deveRetornarPrimeiroQuandoPastaNaoExiste() throws Exception{
         Path pasta = pastaTemp.resolve("saves");
-
         OptionalInt result = GerenciadorSlots.primeiroSlotLivre(pasta);
         assertEquals(OptionalInt.of(1), result);
 
@@ -428,7 +427,6 @@ class GerenciadorSlotsTest {
     @Test
     void deveListarSlotOcupadoComNomeECapitulo() throws Exception {
         Path pasta = pastaTemp.resolve("saves");
-
         Estado estado = new Estado();
         estado.iniciar(new Protagonista(
                 "Stheffanny",
@@ -442,13 +440,9 @@ class GerenciadorSlotsTest {
         ));
 
         GerenciadorSlots.salvar(estado, pasta, 1);
-
         List<ResumoSlot> slots = GerenciadorSlots.listar(pasta);
-
         assertEquals(GerenciadorSlots.TOTAL_SLOTS, slots.size());
-
         ResumoSlot slot = slots.get(0);
-
         assertEquals(1, slot.numero());
         assertEquals(ResumoSlot.Status.OCUPADO, slot.status());
         assertEquals("Stheffanny", slot.nome());
@@ -472,11 +466,8 @@ class GerenciadorSlotsTest {
         ));
 
         GerenciadorSlots.salvar(estado, pasta, 2);
-
         List<ResumoSlot> slots = GerenciadorSlots.listar(pasta);
-
         assertEquals(GerenciadorSlots.TOTAL_SLOTS, slots.size());
-
         assertEquals(ResumoSlot.Status.VAZIO, slots.get(0).status());
         assertEquals(ResumoSlot.Status.OCUPADO, slots.get(1).status());
         assertEquals("Stheffanny", slots.get(1).nome());
@@ -502,13 +493,9 @@ class GerenciadorSlotsTest {
                 Protagonista.ExperienciaEmocionalEnsinoMedio.NEUTRA,
                 Protagonista.SituacaoEconomica.ESTAVEL
         ));
-
         GerenciadorSlots.salvar(estado, pasta, 2);
-
         List<ResumoSlot> slots = GerenciadorSlots.listar(pasta);
-
         assertEquals(GerenciadorSlots.TOTAL_SLOTS, slots.size());
-
         assertEquals(ResumoSlot.Status.CORROMPIDO, slots.get(0).status());
         assertEquals(ResumoSlot.Status.OCUPADO, slots.get(1).status());
         assertEquals("Stheffanny", slots.get(1).nome());
@@ -520,9 +507,7 @@ class GerenciadorSlotsTest {
         Path pasta = pastaTemp.resolve("saves");
         Estado estado = estadoValido();
         estado.marcarAlterado();
-
         GerenciadorSlots.salvarAutosave(estado, pasta);
-
         assertTrue(Files.exists(GerenciadorSlots.caminhoDoAutosave(pasta)));
         assertEquals(OptionalInt.of(1), GerenciadorSlots.primeiroSlotLivre(pasta));
         assertTrue(estado.temAlteracoes());
@@ -532,16 +517,13 @@ class GerenciadorSlotsTest {
     void salvarEmSlotDeveMarcarComoSalvo() throws Exception {
         Estado estado = estadoValido();
         estado.marcarAlterado();
-
         GerenciadorSlots.salvar(estado, pastaTemp, 1);
-
         assertFalse(estado.temAlteracoes());
     }
 
     @Test
     void autosaveDeveRejeitarEstadoSemProtagonista() {
-        assertThrows(SaveException.class,
-                () -> GerenciadorSlots.salvarAutosave(new Estado(), pastaTemp));
+        assertThrows(SaveException.class, () -> GerenciadorSlots.salvarAutosave(new Estado(), pastaTemp));
     }
 
     @Test
@@ -549,9 +531,7 @@ class GerenciadorSlotsTest {
         Path pasta = pastaTemp.resolve("saves");
         GerenciadorSlots.salvar(estadoValido(), pasta, 2);
         assertTrue(Files.exists(GerenciadorSlots.caminhoDoSlot(pasta, 2)));
-
         GerenciadorSlots.excluir(pasta, 2);
-
         assertFalse(Files.exists(GerenciadorSlots.caminhoDoSlot(pasta, 2)));
         assertEquals(OptionalInt.of(1), GerenciadorSlots.primeiroSlotLivre(pasta));
     }
@@ -559,10 +539,7 @@ class GerenciadorSlotsTest {
     @Test
     void excluirSlotVazioDeveLancarSaveException() {
         Path pasta = pastaTemp.resolve("saves");
-
-        SaveException e = assertThrows(SaveException.class,
-                () -> GerenciadorSlots.excluir(pasta, 1));
-
+        SaveException e = assertThrows(SaveException.class, () -> GerenciadorSlots.excluir(pasta, 1));
         assertTrue(e.getMessage().contains("O slot 1 já está vazio"));
     }
 
@@ -571,9 +548,7 @@ class GerenciadorSlotsTest {
         Path pasta = pastaTemp.resolve("saves");
         GerenciadorSlots.salvar(estadoValido("A"), pasta, 1);
         GerenciadorSlots.salvar(estadoValido("B"), pasta, 2);
-
         GerenciadorSlots.excluir(pasta, 1);
-
         assertTrue(Files.exists(GerenciadorSlots.caminhoDoSlot(pasta, 2)));
     }
 }

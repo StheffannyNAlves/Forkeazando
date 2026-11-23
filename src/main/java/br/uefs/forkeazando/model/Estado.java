@@ -2,6 +2,7 @@ package br.uefs.forkeazando.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Estado completo de uma partida: protagonista (com atributos, relacionamentos
@@ -13,6 +14,8 @@ public class Estado  {
     /** Efeito de uma escolha sobre o vínculo com um personagem, para a view exibir. */
     public record ImpactoRelacionamento(PersonagemSecundario personagem, float valor, Protagonista.NivelRelacionamento nivel) {}
 
+    /** Identidade da jornada, independente do nome do protagonista. */
+    private String idPartida = UUID.randomUUID().toString();
     private Protagonista protagonista;
     private Trilha trilha;
     public enum Trilha {
@@ -92,6 +95,18 @@ public class Estado  {
         }
     }
 
+    public String getIdPartida() {
+        return idPartida;
+    }
+
+    /** Usado somente ao carregar arquivos anteriores à identidade persistida. */
+    public void restaurarIdentidadeLegada(String identificador) {
+        if (identificador == null || identificador.isBlank()) {
+            throw new IllegalArgumentException("Identificador legado inválido.");
+        }
+        idPartida = identificador;
+    }
+
     public Protagonista getProtagonista() {
         return protagonista;
     }
@@ -152,6 +167,9 @@ public class Estado  {
     public List<String> verificarIntegridade() {
         List<String> problemas = new ArrayList<>();
 
+        if (idPartida == null || idPartida.isBlank()) {
+            problemas.add("identificador da partida ausente");
+        }
         if (protagonista == null) {
             problemas.add("protagonista ausente");
         } else {

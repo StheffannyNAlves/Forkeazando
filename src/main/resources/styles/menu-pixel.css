@@ -291,3 +291,28 @@
 .aviso-marco { -fx-border-color: #ffce80; -fx-border-width: 2; -fx-padding: 16; }
 .curriculo-secao { -fx-text-fill: #ffdc93; -fx-font-size: 14px; -fx-padding: 12 0 2 0; }
 .curriculo-linha { -fx-text-fill: #fff0df; -fx-font-size: 13px; -fx-padding: 3 0 3 12; }
+
+.previa-protagonistas { -fx-padding: 4 0 6 0; }
+.cartao-protagonista {
+    -fx-background-color: #281a35;
+    -fx-background-radius: 0;
+    -fx-border-color: #75516d #75516d #211129 #75516d;
+    -fx-border-width: 2 2 4 2;
+    -fx-border-radius: 0;
+    -fx-padding: 10 16;
+    -fx-cursor: hand;
+}
+.cartao-protagonista:hover {
+    -fx-background-color: #3d244c;
+    -fx-border-color: #d9a16f #d9a16f #211129 #d9a16f;
+}
+.cartao-protagonista.selecionado {
+    -fx-background-color: #513255;
+    -fx-border-color: #ffe5a0 #ffe5a0 #9b465e #ffe5a0;
+}
+.previa-protagonista-nome {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #fff0d8;
+}
+.cartao-protagonista.selecionado .previa-protagonista-nome { -fx-text-fill: #ffe5a0; }

@@ -65,10 +65,32 @@ public class GerenciadorSlots {
         }
     }
 
-    public static void salvar(Estado estado, Path pasta, int numeroSlot)
+    public static synchronized void salvar(Estado estado, Path pasta, int numeroSlot)
             throws SaveException {
         Path destino = caminhoDoSlot(pasta, numeroSlot);
         prepararSalvamento(estado, pasta);
+
+        if (estado.getIdPartida() == null || estado.getIdPartida().isBlank()) {
+            throw new SaveException("A partida está sem identificador.");
+        }
+
+        // Um mesmo jogo só pode ocupar um dos três slots manuais.
+        for (int i = 1; i <= TOTAL_SLOTS; i++) {
+            if (i == numeroSlot) continue;
+            Path outroSlot = caminhoDoSlot(pasta, i);
+            if (!Files.isRegularFile(outroSlot)) continue;
+
+            try {
+                Estado existente = GerenciadorSave.carregar(outroSlot);
+                if (estado.getIdPartida().equals(existente.getIdPartida())) {
+                    throw new SaveException("Esta partida já está salva no slot " + i
+                            + ". Atualize esse slot ou exclua o salvamento anterior "
+                            + "antes de escolher outro.");
+                }
+            } catch (CarregamentoException | DadosInvalidosException ignored) {
+                // Um slot corrompido não deve impedir salvar outra partida.
+            }
+        }
 
         GerenciadorSave.salvar(estado, destino);
         estado.marcarSalvo();
